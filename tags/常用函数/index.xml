@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>常用函数 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
+    <description>Recent content in 常用函数 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 03 May 2020 19:02:58 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>php 常用函数</title>
+      <link>https://zsmhub.github.io/post/php/common_func/</link>
+      <pubDate>Sun, 03 May 2020 19:02:58 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/common_func/</guid>
+      <description>时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&amp;#39;PRC&amp;#39;); //默认时区 echo &amp;#34;今天:&amp;#34;,date(&amp;#34;Y-m-d&amp;#34;,time()),</description>
+    </item>
+    
+  </channel>
+</rss>

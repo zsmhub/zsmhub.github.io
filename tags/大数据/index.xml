@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>大数据 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</link>
+    <description>Recent content in 大数据 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 03 May 2020 23:06:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>大数据表设计方案</title>
+      <link>https://zsmhub.github.io/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Sun, 03 May 2020 23:06:53 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/</guid>
+      <description>方案 当数据总量或者并发数很大的时候，我们通常选择NoSQL存储产品来存储数据，但常见的NoSQL产品都没有提供自增列的功能，因此通常要借助外</description>
+    </item>
+    
+  </channel>
+</rss>

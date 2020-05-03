@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>about on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/about/</link>
+    <description>Recent content in about on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 03 May 2020 17:51:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>https://zsmhub.github.io/about/</link>
+      <pubDate>Sun, 03 May 2020 17:51:03 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/about/</guid>
+      <description>介绍 ZsmHub 后端开发工程师，2015年开始在广州从事后端开发至今，主要的编程语言：PHP、GoLang、Python。 联系方式 邮箱：zhangsh</description>
+    </item>
+    
+  </channel>
+</rss>

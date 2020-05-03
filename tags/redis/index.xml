@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>redis on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/redis/</link>
+    <description>Recent content in redis on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 03 May 2020 22:38:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Redis</title>
+      <link>https://zsmhub.github.io/post/database/redis/</link>
+      <pubDate>Sun, 03 May 2020 22:38:49 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/redis/</guid>
+      <description>基础信息 Redis是一个基于内存的高效的非关系型数据库，占用端口：6379 配置文件路径：/usr/local/etc/redis.conf r</description>
+    </item>
+    
+  </channel>
+</rss>

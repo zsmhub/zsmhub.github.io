@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/categories/</link>
+    <description>Recent content in Categories on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 03 May 2020 23:06:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Database</title>
+      <link>https://zsmhub.github.io/categories/database/</link>
+      <pubDate>Sun, 03 May 2020 23:06:53 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PHP</title>
+      <link>https://zsmhub.github.io/categories/php/</link>
+      <pubDate>Sun, 03 May 2020 21:50:58 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://zsmhub.github.io/categories/about/</link>
+      <pubDate>Sun, 03 May 2020 17:51:03 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/about/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
