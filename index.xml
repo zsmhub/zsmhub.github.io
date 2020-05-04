@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 03 May 2020 17:51:03 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jan 2019 17:51:03 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>大数据表设计方案</title>
       <link>https://zsmhub.github.io/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/</link>
-      <pubDate>Sun, 03 May 2020 23:06:53 +0800</pubDate>
+      <pubDate>Sat, 25 Apr 2020 23:06:53 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/</guid>
       <description>方案 当数据总量或者并发数很大的时候，我们通常选择NoSQL存储产品来存储数据，但常见的NoSQL产品都没有提供自增列的功能，因此通常要借助外</description>
@@ -24,52 +24,52 @@
     <item>
       <title>数据库知识点</title>
       <link>https://zsmhub.github.io/post/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
-      <pubDate>Sun, 03 May 2020 22:45:33 +0800</pubDate>
+      <pubDate>Fri, 03 Apr 2020 22:45:33 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
       <description>一、基础知识 表存储引擎必须用InnoDB 字符集必须使用utf8mb4 （utf8不是真utf8） 禁止使用存储过程、视图、触发器、Event 命名</description>
     </item>
     
     <item>
-      <title>Memcached</title>
-      <link>https://zsmhub.github.io/post/database/memcached/</link>
-      <pubDate>Sun, 03 May 2020 22:43:26 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/database/memcached/</guid>
-      <description>基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca</description>
-    </item>
-    
-    <item>
       <title>Redis</title>
       <link>https://zsmhub.github.io/post/database/redis/</link>
-      <pubDate>Sun, 03 May 2020 22:38:49 +0800</pubDate>
+      <pubDate>Fri, 03 Jan 2020 22:38:49 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/redis/</guid>
       <description>基础信息 Redis是一个基于内存的高效的非关系型数据库，占用端口：6379 配置文件路径：/usr/local/etc/redis.conf r</description>
     </item>
     
     <item>
-      <title>Composer</title>
-      <link>https://zsmhub.github.io/post/php/composer/</link>
-      <pubDate>Sun, 03 May 2020 21:50:58 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/php/composer/</guid>
-      <description>常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解</description>
-    </item>
-    
-    <item>
       <title>php 常用函数</title>
       <link>https://zsmhub.github.io/post/php/common_func/</link>
-      <pubDate>Sun, 03 May 2020 19:02:58 +0800</pubDate>
+      <pubDate>Mon, 03 Jun 2019 19:02:58 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/php/common_func/</guid>
       <description>时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&amp;#39;PRC&amp;#39;); //默认时区 echo &amp;#34;今天:&amp;#34;,date(&amp;#34;Y-m-d&amp;#34;,time()),</description>
     </item>
     
     <item>
+      <title>Memcached</title>
+      <link>https://zsmhub.github.io/post/database/memcached/</link>
+      <pubDate>Sat, 04 May 2019 22:43:26 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/memcached/</guid>
+      <description>基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca</description>
+    </item>
+    
+    <item>
+      <title>Composer</title>
+      <link>https://zsmhub.github.io/post/php/composer/</link>
+      <pubDate>Wed, 03 Apr 2019 21:50:58 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/composer/</guid>
+      <description>常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解</description>
+    </item>
+    
+    <item>
       <title>About</title>
       <link>https://zsmhub.github.io/about/</link>
-      <pubDate>Sun, 03 May 2020 17:51:03 +0800</pubDate>
+      <pubDate>Tue, 01 Jan 2019 17:51:03 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/about/</guid>
       <description>介绍 ZsmHub 后端开发工程师，2015年开始在广州从事后端开发至今，主要的编程语言：PHP、GoLang、Python。 联系方式 邮箱：zhangsh</description>

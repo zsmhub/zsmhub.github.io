@@ -35,7 +35,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
-
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
@@ -45,7 +45,7 @@
 <meta property="og:description" content="This is a site of zsmhub-blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://zsmhub.github.io/" />
-<meta property="og:updated_time" content="2020-05-03T17:51:03+08:00" />
+<meta property="og:updated_time" content="2019-01-01T17:51:03+08:00" />
 <meta itemprop="name" content="ZsmHub - Blog">
 <meta itemprop="description" content="This is a site of zsmhub-blog."><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ZsmHub - Blog"/>
@@ -118,7 +118,7 @@
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/">大数据表设计方案</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-05-03 23:06:53 </span>
+      <span class="post-time"> 2020-04-25 23:06:53 </span>
       <div class="post-category">
           <a href="/categories/database/"> Database </a>
           </div>
@@ -141,7 +141,7 @@
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9/">数据库知识点</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-05-03 22:45:33 </span>
+      <span class="post-time"> 2020-04-03 22:45:33 </span>
       <div class="post-category">
           <a href="/categories/database/"> Database </a>
           </div>
@@ -162,32 +162,9 @@
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/memcached/">Memcached</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-03 22:43:26 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> Database </a>
-          </div>
-        <span class="more-meta"> 约 103 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca
-    </div>
-    <div class="read-more">
-      <a href="/post/database/memcached/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/database/redis/">Redis</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-05-03 22:38:49 </span>
+      <span class="post-time"> 2020-01-03 22:38:49 </span>
       <div class="post-category">
           <a href="/categories/database/"> Database </a>
           </div>
@@ -208,23 +185,46 @@
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/php/composer/">Composer</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/php/common_func/">php 常用函数</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-05-03 21:50:58 </span>
+      <span class="post-time"> 2019-06-03 19:02:58 </span>
       <div class="post-category">
           <a href="/categories/php/"> PHP </a>
           </div>
-        <span class="more-meta"> 约 1286 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 1646 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解
+      时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),
     </div>
     <div class="read-more">
-      <a href="/post/php/composer/" class="read-more-link">阅读更多</a>
+      <a href="/post/php/common_func/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/memcached/">Memcached</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-05-04 22:43:26 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> Database </a>
+          </div>
+        <span class="more-meta"> 约 103 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca
+    </div>
+    <div class="read-more">
+      <a href="/post/database/memcached/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -261,10 +261,15 @@
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
-  
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
 
   <span class="copyright-year">
     &copy; 
+    2019 - 
     2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>

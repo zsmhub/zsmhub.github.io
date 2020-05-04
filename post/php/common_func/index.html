@@ -33,7 +33,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
-
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
@@ -43,12 +43,12 @@
 <meta property="og:description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time())," />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/php/common_func/" />
-<meta property="article:published_time" content="2020-05-03T19:02:58+08:00" />
-<meta property="article:modified_time" content="2020-05-03T19:02:58+08:00" />
+<meta property="article:published_time" content="2019-06-03T19:02:58+08:00" />
+<meta property="article:modified_time" content="2019-06-03T22:45:33+08:00" />
 <meta itemprop="name" content="php 常用函数">
 <meta itemprop="description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),">
-<meta itemprop="datePublished" content="2020-05-03T19:02:58&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-03T19:02:58&#43;08:00" />
+<meta itemprop="datePublished" content="2019-06-03T19:02:58&#43;08:00" />
+<meta itemprop="dateModified" content="2019-06-03T22:45:33&#43;08:00" />
 <meta itemprop="wordCount" content="1646">
 
 
@@ -125,13 +125,13 @@
       <h1 class="post-title">php 常用函数</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-05-03 19:02:58 </span>
+        <span class="post-time"> 2019-06-03 19:02:58 </span>
         <div class="post-category">
             <a href="/categories/php/"> PHP </a>
             </div>
           <span class="more-meta"> 约 1646 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
-        
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
 
@@ -292,7 +292,7 @@ filter_var — 使用特定的过滤器过滤一个变量
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-05-03 19:02:58
+        2019-06-03 22:45:33
         
     </span>
   </p>
@@ -322,12 +322,16 @@ filter_var — 使用特定的过滤器过滤一个变量
           <a href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">常用函数</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/php/composer/">
+        <a class="prev" href="/post/database/redis/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Composer</span>
+            <span class="prev-text nav-default">Redis</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        
+        <a class="next" href="/post/database/memcached/">
+            <span class="next-text nav-default">Memcached</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
       </nav>
     </footer>
   </article>
@@ -337,7 +341,7 @@ filter_var — 使用特定的过滤器过滤一个变量
     <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitment = new Gitment({
-        id: '2020-05-03 19:02:58 \x2b0800 CST',
+        id: '2019-06-03 19:02:58 \x2b0800 CST',
         title: 'php 常用函数',
         link: decodeURI(location.href),
         desc: '时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(\x26#39;PRC\x26#39;); \/\/默认时区 echo \x26#34;今天:\x26#34;,date(\x26#34;Y-m-d\x26#34;,time()),',
@@ -376,10 +380,15 @@ filter_var — 使用特定的过滤器过滤一个变量
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
-  
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
 
   <span class="copyright-year">
     &copy; 
+    2019 - 
     2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>

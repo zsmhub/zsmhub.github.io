@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 03 May 2020 22:38:49 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jan 2020 22:38:49 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Redis</title>
       <link>https://zsmhub.github.io/post/database/redis/</link>
-      <pubDate>Sun, 03 May 2020 22:38:49 +0800</pubDate>
+      <pubDate>Fri, 03 Jan 2020 22:38:49 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/redis/</guid>
       <description>基础信息 Redis是一个基于内存的高效的非关系型数据库，占用端口：6379 配置文件路径：/usr/local/etc/redis.conf r</description>
