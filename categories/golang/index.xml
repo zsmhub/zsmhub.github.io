@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GoLang on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/categories/golang/</link>
+    <description>Recent content in GoLang on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 15 Mar 2020 17:46:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go 基础知识</title>
+      <link>https://zsmhub.github.io/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Sun, 15 Mar 2020 17:46:46 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C++、Java 和 C# 一样属于 C 系。 Go</description>
+    </item>
+    
+  </channel>
+</rss>

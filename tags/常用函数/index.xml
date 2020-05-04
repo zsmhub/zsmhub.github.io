@@ -14,10 +14,10 @@
     
     <item>
       <title>PHP 常用函数</title>
-      <link>https://zsmhub.github.io/post/php/php-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
+      <link>https://zsmhub.github.io/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 03 Jun 2019 19:02:58 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/php-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://zsmhub.github.io/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
       <description>时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&amp;#39;PRC&amp;#39;); //默认时区 echo &amp;#34;今天:&amp;#34;,date(&amp;#34;Y-m-d&amp;#34;,time()),</description>
     </item>
     
