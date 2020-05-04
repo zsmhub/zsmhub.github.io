@@ -22,11 +22,11 @@
     </item>
     
     <item>
-      <title>PHP面向对象编程</title>
-      <link>https://zsmhub.github.io/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</link>
+      <title>PHP 面向对象编程</title>
+      <link>https://zsmhub.github.io/post/php/php-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Sat, 09 Mar 2019 13:22:34 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://zsmhub.github.io/post/php/php-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</guid>
       <description>PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。 OOP（Object Oriented Programmin</description>
     </item>
     

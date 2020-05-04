@@ -31,29 +31,29 @@
     </item>
     
     <item>
-      <title>Laravel定时任务与常驻进程</title>
-      <link>https://zsmhub.github.io/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</link>
+      <title>Laravel 定时任务与常驻进程</title>
+      <link>https://zsmhub.github.io/post/php/laravel-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</link>
       <pubDate>Wed, 04 Dec 2019 14:28:22 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</guid>
+      <guid>https://zsmhub.github.io/post/php/laravel-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</guid>
       <description>任务调度功能 Laravel 命令行调度器允许你在 Laravel 中对命令调度进行清晰流畅的定义。且使用这个任务调度器时，你只需要在你的服务器上创建单个 Cron 入口接口。你的任</description>
     </item>
     
     <item>
-      <title>Laravel常用组件</title>
-      <link>https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/</link>
+      <title>Laravel 常用组件</title>
+      <link>https://zsmhub.github.io/post/php/laravel-%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Thu, 01 Aug 2019 14:15:47 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/</guid>
+      <guid>https://zsmhub.github.io/post/php/laravel-%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/</guid>
       <description>dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&amp;#34;Dingo\Api\Provider\LaravelServiceProvider&amp;#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存</description>
     </item>
     
     <item>
-      <title>Laravel基础知识</title>
-      <link>https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/</link>
+      <title>Laravel 基础知识</title>
+      <link>https://zsmhub.github.io/post/php/laravel-%E5%85%A5%E9%97%A8/</link>
       <pubDate>Thu, 01 Aug 2019 13:50:49 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/</guid>
+      <guid>https://zsmhub.github.io/post/php/laravel-%E5%85%A5%E9%97%A8/</guid>
       <description>php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器</description>
     </item>
     
@@ -67,11 +67,11 @@
     </item>
     
     <item>
-      <title>php 常用函数</title>
-      <link>https://zsmhub.github.io/post/php/common_func/</link>
+      <title>PHP 常用函数</title>
+      <link>https://zsmhub.github.io/post/php/php-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 03 Jun 2019 19:02:58 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/common_func/</guid>
+      <guid>https://zsmhub.github.io/post/php/php-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
       <description>时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&amp;#39;PRC&amp;#39;); //默认时区 echo &amp;#34;今天:&amp;#34;,date(&amp;#34;Y-m-d&amp;#34;,time()),</description>
     </item>
     
@@ -94,11 +94,11 @@
     </item>
     
     <item>
-      <title>PHP面向对象编程</title>
-      <link>https://zsmhub.github.io/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</link>
+      <title>PHP 面向对象编程</title>
+      <link>https://zsmhub.github.io/post/php/php-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Sat, 09 Mar 2019 13:22:34 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://zsmhub.github.io/post/php/php-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</guid>
       <description>PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。 OOP（Object Oriented Programmin</description>
     </item>
     
@@ -130,11 +130,11 @@
     </item>
     
     <item>
-      <title>PHP基础知识</title>
-      <link>https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <title>PHP 基础知识</title>
+      <link>https://zsmhub.github.io/post/php/php-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Jan 2019 10:37:43 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://zsmhub.github.io/post/php/php-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&amp;#39;display_errors&amp;#39;, 1); //打</description>
     </item>
     

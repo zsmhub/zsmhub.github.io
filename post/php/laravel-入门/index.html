@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Laravel 基础知识 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/php/laravel-%E5%85%A5%E9%97%A8/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Laravel 基础知识" />
+<meta property="og:description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel-%E5%85%A5%E9%97%A8/" />
+<meta property="article:published_time" content="2019-08-01T13:50:49+08:00" />
+<meta property="article:modified_time" content="2019-12-15T13:50:49+08:00" />
+<meta itemprop="name" content="Laravel 基础知识">
+<meta itemprop="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器">
+<meta itemprop="datePublished" content="2019-08-01T13:50:49&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-15T13:50:49&#43;08:00" />
+<meta itemprop="wordCount" content="6156">
+
+
+
+<meta itemprop="keywords" content="入门,Laravel," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Laravel 基础知识"/>
+<meta name="twitter:description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Laravel 基础知识</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-01 </span>
+        <div class="post-category">
+            <a href="/categories/php/"> PHP </a>
+            </div>
+          <span class="more-meta"> 约 6156 字 </span>
+          <span class="more-meta"> 预计阅读 13 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#php-框架运行的核心三步">php 框架运行的核心三步</a></li>
+    <li><a href="#laravel">Laravel</a>
+      <ul>
+        <li><a href="#artisan">Artisan</a></li>
+        <li><a href="#other">OTHER</a></li>
+        <li><a href="#词汇">词汇</a></li>
+        <li><a href="#规范">规范</a></li>
+        <li><a href="#全局辅助方法">全局辅助方法</a></li>
+        <li><a href="#中间件">中间件</a></li>
+        <li><a href="#auth-类">Auth 类</a></li>
+        <li><a href="#blade">Blade</a></li>
+      </ul>
+    </li>
+    <li><a href="#项目实践案例">项目实践案例</a></li>
+    <li><a href="#laravel-install">Laravel Install</a></li>
+    <li><a href="#laravel-构建已有项目流程">Laravel 构建已有项目流程</a></li>
+    <li><a href="#laravel-创建新项目流程">Laravel 创建新项目流程</a></li>
+    <li><a href="#laravel-ide-helper">Laravel IDE Helper</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="php-框架运行的核心三步">php 框架运行的核心三步</h2>
+<ol>
+<li>从入口进入 index.php</li>
+<li>解析 url，匹配路由</li>
+<li>根据路由，调用控制器，渲染视图</li>
+</ol>
+<blockquote>
+<p>tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。</p>
+</blockquote>
+<h2 id="laravel">Laravel</h2>
+<blockquote>
+<p>发音：</p>
+<p>Laravel: /ˈlærəvel/【/let 罗 vel/】</p>
+<p>Lumen: /lu 门/</p>
+</blockquote>
+<ul>
+<li>Laravel 是个功能齐全的全栈框架，学习她相当于你在学习成为全栈工程师。</li>
+<li>框架知识分类</li>
+</ul>
+<blockquote>
+<ol>
+<li>
+<p>底层实现知识 —— 如服务容器、服务提供器、Facades、Contracts、Repository 等</p>
+</li>
+<li>
+<p>框架使用知识 —— 如用户注册登录、邮件发送、数据模型的 CRUD、用户数据获取等</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="artisan">Artisan</h3>
+<p>Artisan 是 Laravel 内置的命令行接口。它提供了一些有用的命令协助您开发，它是由强大的 Symfony Console 组件所驱动。利用它，我们可以快速的新建 Controller、Model等类。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">&gt; php artisan optimize <span class="c1"># 重置配置和路由的缓存文件，使用了此命令后不要在config目录外使用env()函数</span>
+&gt; php artisan list  <span class="c1"># 查看所有artisan命令&lt;br/&gt;</span>
+&gt; php artisan make:model Models/User --migration <span class="c1"># 创建 Eloquent 模型类和迁移类</span>
+&gt; php artisan make:migration create_categories_table <span class="c1"># 生成迁移类，常用规则：create_(数据表名称)_table, add_(字段名称)_column, seed_(数据表名称)_table</span>
+&gt; php artisan make:seeder seed_categories_data <span class="c1"># 生成数据填充类[一般是用来生成假数据，开发测试时使用的]</span>
+&gt; php artisan migrate <span class="c1"># 数据库迁移</span>
+&gt; php artisan db:seed <span class="c1"># 往数据库填充假数据</span>
+&gt; php artisan migrate:refresh --seed <span class="c1"># 刷新数据库结构、清除已有数据并执行数据填充</span>
+&gt; php artisan lang:publish zh-CN <span class="c1"># 发布语言文件到项目里</span>
+&gt; php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Intervention\Image\ImageServiceProviderLaravelRecent&#34;</span> <span class="c1"># 复制某个扩展的配置文件到config文件夹下</span>
+&gt; php artisan make:auth
+&gt; php artisan make:scaffold Topic --schema<span class="o">=</span><span class="s2">&#34;title:string:index,body:text,user_id:bigInteger:unsigned:index,category_id:integer:unsigned:index&#34;</span> <span class="c1"># 资源脚手架：代码生成器，一键生成表 Topic 的模型、表、控制路、路由、视图等</span>
+&gt; php artisan queue:listen <span class="c1"># 常驻进程：启动队列系统并进入监听状态</span>
+&gt; php artisan make:command CalculateActiveUser --command<span class="o">=</span>larabbs:calculate-active-user <span class="c1"># 创建 Artisan 命令</span>
+- php artisan tinker <span class="c1"># 启动交互式shell</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="other">OTHER</h3>
+<ol>
+<li>
+<p>框架核心内容</p>
+<ul>
+<li>
+<p><a href="https://www.jianshu.com/p/08b810b720d9">生命周期详解链接</a></p>
+</li>
+<li>
+<p>Laravel 服务容器</p>
+</li>
+</ul>
+<blockquote>
+<p>app()： app(SlugTranslateHandler::class) =&gt; 获取应用实例</p>
+</blockquote>
+</li>
+<li>
+<p>.editorconfig文件：代码风格配置</p>
+<p><a href="https://learnku.com/articles/24174">详解链接</a></p>
+<blockquote>
+<p>配置好代码风格后，在vs code上安装扩展EditorConfig for VS Code，这样就可以了。</p>
+</blockquote>
+</li>
+<li>
+<p>tinker: 是 Laravel 包含的一个强大 REPL，REPL 是 Read Eval Print Loop 的缩写，它是一种交互式 shell（即可交互式的编程环境），它接受单个用户输入，运行它们，并将结果返回给用户。</p>
+<p><a href="https://learnku.com/articles/7338/understand-laravel-tinker-shell">参考链接</a></p>
+</li>
+<li>
+<p>使用npm run production编译sass、js等文件，可以大大压缩js和css等文件的大小。</p>
+</li>
+<li>
+<p>Route::resource(&lsquo;users&rsquo;, &lsquo;UsersController&rsquo;)，resource 方法将遵从 RESTful 架构为用户资源生成路由。该方法接收两个参数，第一个参数为资源名称，第二个参数为控制器名称【隐性路由模型绑定】</p>
+<blockquote>
+<ul>
+<li>上面代码将等同于：</li>
+<li>Route::get('/users&rsquo;, &lsquo;UsersController@index&rsquo;)-&gt;name(&lsquo;users.index&rsquo;); // 列表</li>
+<li>Route::get('/users/{user}', &lsquo;UsersController@show&rsquo;)-&gt;name(&lsquo;users.show&rsquo;);  // 信息展示页面</li>
+<li>Route::get('/users/create&rsquo;, &lsquo;UsersController@create&rsquo;)-&gt;name(&lsquo;users.create&rsquo;);  // 新增页面</li>
+<li>Route::post('/users&rsquo;, &lsquo;UsersController@store&rsquo;)-&gt;name(&lsquo;users.store&rsquo;);  // 保存新增功能</li>
+<li>Route::get('/users/{user}/edit&rsquo;, &lsquo;UsersController@edit&rsquo;)-&gt;name(&lsquo;users.edit&rsquo;);  // 编辑页面</li>
+<li>Route::patch('/users/{user}', &lsquo;UsersController@update&rsquo;)-&gt;name(&lsquo;users.update&rsquo;);  // 保存编辑功能</li>
+<li>Route::delete('/users/{user}', &lsquo;UsersController@destroy&rsquo;)-&gt;name(&lsquo;users.destroy&rsquo;);  // 删除功能</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>policy: 授权策略，用于做权限控制</p>
+<blockquote>
+<p>php artisan make:policy UserPolicy</p>
+<p>blade使用授权策略：@can(&lsquo;授权策略类的函数&rsquo;, &lsquo;授权策略类对应模型的实例&rsquo;)，eg: @can(&lsquo;update&rsquo;, $user) @endcan</p>
+<p>控制器端使用授权策略：$this-&gt;authorize(&lsquo;update&rsquo;, $user);</p>
+</blockquote>
+<blockquote>
+<p>Gates 和 Policies</p>
+<p>Laravel 授权的方式主要分两种：Gates 和策略（Policies）。</p>
+<p>Gates 和策略的关系像路由和控制器的。Gates 提供基于路由的授权方式；而策略将针对某个资源的操作逻辑组织起来，放在一个地方管理</p>
+<p>我们不需要在「项目里的授权，是选择使用 Gates，还是选择使用策略呢？」这个问题上纠结。许多项目里，都会混用这两种授权方式，而且运行良好。基本上，使用 Gates 的地方都是资源不相关的，比如查看管理员面板页；相反，策略是资源相关的，当你是具体授权某个资源的操作权限时，使用策略是没错啦。</p>
+</blockquote>
+</li>
+<li>
+<p>隐性路由模型绑定：传输id，Laravel框架直接去获取id的实例对象</p>
+</li>
+<li>
+<p>关联方法 Vs. 动态属性</p>
+<blockquote>
+<p>动态属性: eg: 模型类可以全局使用$this-&gt;数据库字段名
+<img src="https://github.com/zsmhub/markdown-images/blob/master/QQ20200103-162558@2x.png?raw=true" alt="参考图片"></p>
+</blockquote>
+</li>
+<li>
+<p>Eloquent ORM</p>
+<ul>
+<li>本地作用域：允许我们在模型中定义通用的约束集合以便在应用中复用。要定义这样的一个作用域，只需简单在对应 Eloquent 模型方法前加上一个 scope 前缀，作用域总是返回 查询构建器。一旦定义了作用域，则可以在查询模型时调用作用域方法。在进行方法调用时不需要加上 scope 前缀。</li>
+<li>模型关联：默认关联数据是懒加载，使用预加载方法：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">// 预加载方式1
+// 此循环将执行一个查询，用于获取全部书籍，然后为每本书执行获取作者的查询。如果我们有 25 本书，此循环将运行 26 个查询：1 个用于查询书籍，25 个附加查询用于查询每本书的作者。
+// 谢天谢地，我们能够使用预加载将操作压缩到只有 2 个查询。在查询时，可以使用 with 方法指定想要预加载的关联(de方法名)
+
+// $books = App\Book::all();  // 懒加载
+$books = App\Book::with(&#39;author&#39;)-&gt;get();  // 预加载
+
+foreach ($books as $book) {
+    echo $book-&gt;author-&gt;name;
+}
+
+// 执行预加载的sql示例
+// select * from books
+// select * from authors where id in (1, 2, 3, 4, 5, ...)
+
+// 预加载方式2：有可能你还希望在模型加载完成后在进行渴求式加载。举例来说，如果你想要根据某个条件动态决定是否加载关联数据，那么 load 方法对你来说会非常有用
+$books = App\Book::all();
+
+if ($someCondition) {
+    $books-&gt;load(&#39;author&#39;, &#39;publisher&#39;);
+    // $book-&gt;loadMissing(&#39;author&#39;, &#39;publisher&#39;);  // 希望关联关系仅在尚未加载时才去加载，以避免无效重复加载
+}
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>访问器&amp;修改器：当你在 Eloquent 模型实例中获取或设置某些属性值的时候，访问器和修改器允许你对 Eloquent 属性值进行格式化。</li>
+<li>API资源：当构建 API 时，你往往需要一个转换层来联结你的 Eloquent 模型和实际返回给用户的 JSON 响应。</li>
+<li>常用方法</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">$user = App\Models\User::first();
+
+# 使用 isDirty() 方法确定模型或给定属性是否已被修改
+$user-&gt;name = &#39;Michael&#39;;
+$user-&gt;isDirty(&#39;title&#39;); # true
+
+# 获取记录的原始属性
+$user-&gt;getOriginal(&#39;name&#39;);
+
+# Laravel 的模型可以通过 query 方法获取一个 Builder 实例，这种写法在一些场景下是有用的，比如说自定义过滤器
+$query = User::query();
+if( $request-&gt;name ){
+    $query-&gt;where(&#39;name&#39;, $request-&gt;name);
+}
+
+# 打印执行 SQL 日志
+DB::enableQueryLog();
+dd(DB::getQueryLog())
+
+# 打印 SQL 语句
+$sql = User::where(&#39;age&#39;, 18)-&gt;toSql();
+dd($sql)
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>模型观察器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"># 模型观察器
+- 对模型的生命周期内的多个时间点进行监控，分别有 ~ing 和 ~ed 事件
+// creating, created, updating, updated, saving,
+// saved,  deleting, deleted, restoring, restored
+- 每个监控方法接收 model 作为唯一参数
+# 使用观察器
+- 创建观察器文件，一个普通类，不需要继承什么
+- 针对需要的事件，编写对应的 ~ing 或 ~ed 方法，方法接收 model 作为唯一参数
+# 在 AppServiceProvider 中注册
+// 在 boot 方法中
+YourModel::observe(YourModelObserver::class);
+# 在模型下的 boot 方法中实现
+无论模型何时初始化，静态 boot() 方法自动执行，所以它是一个添加行为或者绑定事件的理想所在。比如，在我们当前的案例中，模型中发生删除事件时自动删除一个相关图片。
+    public static function boot()
+    {
+        parent::boot();
+
+        //当删除时触发
+        self::deleted(function ($model)
+        {
+            Cache::forget(config(&#39;cache_keys.account&#39;) . $model-&gt;id);
+            Cache::forget(config(&#39;cache_keys.account_wxid&#39;) . $model-&gt;wxid);
+        });
+    }
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Laravel Job 和 事件系统</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">- Job 和 队列 结合
+Job既可以用作同步，也可以用作异步。
+如果你想延迟执行一个操作，或者这个过程需要花费一段时间，那么就可以选择用Job，例如上传一个比较大的文件。
+Job一般用在正在处理的事情。比如我们去银行办理业务，很多人排队等待，我们可以把这条队看成一个队列queue,把每一个人看成一个Job，服务人员会帮我们一个接一个的处理业务。办完了一个业务，系统会叫号叫到下一个人，执行下一个Job。每个人需要办理的业务都不一样，这就是每个Job需要完成的任务。
+
+- Event
+事件监听可以允许参与不同的角色。事件监听可以认为是特定事件发生的一个Job,一旦事件创建，监听器就会触发。事件可以理解成“当...”，“就...”。 一个事件可以被多个监听器监听，比如登录后，系统既要发送邮件，又要发送短信，这个时候，就可以建立一个登录事件，事件触发后，同事被发送邮件和发送短信监听到。
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>表单请求验证类：将表单字段验证逻辑从控制器中解耦</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">use App\Http\Requests\UserRequest;
+
+// 消息提示：with(&#39;success&#39;, &#39;...&#39;) <span class="err">&lt;</span>=&gt; session()-&gt;flash(&#39;success&#39;, &#39;...&#39;)
+public function update(UserRequest $request, User $user)
+{
+    $user-&gt;update($request-&gt;all());
+    return redirect()-&gt;route(&#39;users.show&#39;, $user-&gt;id)-&gt;with(&#39;success&#39;, &#39;个人资料更新成功！&#39;);
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Carbon 是 PHP 知名的日期和时间操作扩展，Laravel 框架中使用此扩展来处理时间、日期相关的操作。在 Laravel 中，时间戳 created_at 和 updated_at 作为模型属性被调用时，都会自动转换为 Carbon 对象。</p>
+</li>
+<li>
+<p>Facades（读音：/fəˈsäd/ ）为应用程序的 服务容器 中可用的类提供了一个「静态」接口。你不必 use 一大串的命名空间，也不用实例化对象，就能访问对象的具体方法。</p>
+<ul>
+<li>Facade 其实是一个容器中类的静态代理，他可以让你以静态的方式来调用存放在容器中任何对象的任何方法。</li>
+<li>创建自定义 Facade: 写好一个新功能后，先自定义一个 Facade 类后，然后在 Providers/&hellip;Provider.php 文件中的 register 方法中，将服务绑定到服务容器中。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"># 案例
+# app/Services/SocketIO/WeChat.php
+<span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Services\SocketIO</span><span class="p">;</span>
+
+<span class="sd">/**
+</span><span class="sd">* socket io 版的事件接口
+</span><span class="sd">* Class WeChat
+</span><span class="sd">* @package App\Services\SocketIO
+</span><span class="sd">*/</span>
+<span class="k">class</span> <span class="nc">WeChat</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="no">TEXT_MSG_TYPE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//文本
+</span><span class="c1"></span>    <span class="k">const</span> <span class="no">IMAGE_MSG_TYPE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//图片
+</span><span class="c1"></span>    <span class="k">const</span> <span class="no">AUDIO_MSG_TYPE</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//音频
+</span><span class="c1"></span>    <span class="k">const</span> <span class="no">VIDEO_MSG_TYPE</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//视频
+</span><span class="c1"></span>    <span class="k">const</span> <span class="no">NAMECARD_MSG_TYPE</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//名片
+</span><span class="c1"></span>    <span class="k">const</span> <span class="no">EMOJI_MSG_TYPE</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//表情
+</span><span class="c1"></span>
+    <span class="sd">/**
+</span><span class="sd">    * 获取消息类型对应的uri
+</span><span class="sd">    * @return array
+</span><span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getMsgTypeUris</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="nx">self</span><span class="o">::</span><span class="na">TEXT_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_message_v2&#39;</span><span class="p">,</span>
+            <span class="nx">self</span><span class="o">::</span><span class="na">IMAGE_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_image_v2&#39;</span><span class="p">,</span>
+            <span class="nx">self</span><span class="o">::</span><span class="na">EMOJI_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_emoji_v2&#39;</span><span class="p">,</span>
+            <span class="nx">self</span><span class="o">::</span><span class="na">NAMECARD_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_namecard&#39;</span><span class="p">,</span>
+            <span class="nx">self</span><span class="o">::</span><span class="na">CHATROOM_INVITE_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/invite_friend_to_chatroom&#39;</span><span class="p">,</span>
+            <span class="nx">self</span><span class="o">::</span><span class="na">VIDEO_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_video&#39;</span><span class="p">,</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="c1"># app/Facades/WeChat.php
+</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Facades</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Facade</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">WeChat</span> <span class="k">extends</span> <span class="nx">Facade</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getFacadeAccessor</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;WeChat&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># app/Providers/AppServiceProvider.php: 将服务绑定到服务容器中
+</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Services\SocketIO\WeChat</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AppServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="sd">/**
+</span><span class="sd">    * Register any application services.
+</span><span class="sd">    * @return void
+</span><span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">singleton</span><span class="p">(</span><span class="s1">&#39;WeChat&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">WeChat</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># config/app.php
+</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+    <span class="s1">&#39;providers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="nx">App\Providers\AppServiceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;aliases&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;WeChat&#39;</span> <span class="o">=&gt;</span> <span class="nx">App\Facades\WeChat</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="p">],</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>消息通知类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Notifications\Notifiable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Auth\User</span> <span class="k">as</span> <span class="nx">Authenticatable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Auth\MustVerifyEmail</span> <span class="k">as</span> <span class="nx">MustVerifyEmailTrait</span>
+<span class="k">use</span> <span class="nx">Auth</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span> <span class="k">implements</span> <span class="nx">MustVerifyEmailContract</span>
+<span class="p">{</span>
+    <span class="c1">// use Notifiable;
+</span><span class="c1"></span>
+    <span class="c1">// trait 中的 notify 方法重命名为 laravelNotify
+</span><span class="c1"></span>    <span class="k">use</span> <span class="nx">Notifiable</span> <span class="p">{</span>
+        <span class="nx">notify</span> <span class="k">as</span> <span class="k">protected</span> <span class="nx">laravelNotify</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">notify</span><span class="p">();</span>  <span class="c1">// 推送消息通知
+</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">notifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span> <span class="c1">// 获取该用户所有的通知列表
+</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">readNotifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>  <span class="c1">// 获取已读的通知列表
+</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">unreadNotifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>  <span class="c1">// 获取未读的通知列表
+</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">unreadNotifications</span><span class="o">-&gt;</span><span class="na">markAsRead</span><span class="p">();</span>  <span class="c1">// 将未读标记为已读
+</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">readNotifications</span><span class="o">-&gt;</span><span class="na">markAsRead</span><span class="p">();</span>  <span class="c1">// 将已读标记为纬度
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Services层：使用 Traits 来为数据模型瘦身</p>
+<blockquote>
+<p>namespace Models/Traits;</p>
+</blockquote>
+</li>
+<li>
+<p>本地化（或者多语言系统处理方案）</p>
+<ul>
+<li>客户端请求 API 时, 加上 HTTP 的 Accept-Language 头信息，便于服务器区分系统语言。</li>
+<li>从接口的可扩展性、适用性和专业性上考虑，最合理的也是最推荐的做法是：API 既提供错误码，又提供本地化的错误消息。</li>
+<li>另外，错误消息 默认 返回英文，也会是比较合理的最佳实践，当然最终视 API 业务逻辑而定。</li>
+</ul>
+</li>
+<li>
+<p>切记：config目录里用 env() 获取环境变量，其他地方用 config() 获取环境变量。</p>
+<ul>
+<li>因为线上环境启用 config 缓存后，config 文件夹外的 env 函数不起效果</li>
+</ul>
+</li>
+<li>
+<p>开发环境记录程序执行的 sql 语句方案</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">// App\Providers\AppServiceProvider
+public function boot()
+{
+    if (env(&#39;APP_ENV&#39;) == &#39;local&#39;) {
+        DB::listen(function ($query) {
+            $sql = str_replace(&#34;?&#34;, &#34;&#39;%s&#39;&#34;, $query-&gt;sql);
+            $sql = vsprintf($sql, $query-&gt;bindings);
+            $sql = str_replace(&#34;\\&#34;, &#34;&#34;, $sql);
+            Log::info($sql);
+        });
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Laravel 指定日志文件记录任意日志</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">use Illuminate\Support\Facades\Log;
+
+Log::getMonolog()-&gt;popHandler();
+Log::useFiles(storage_path(&#39;logs/data_info_market.log&#39;), &#39;info&#39;);
+Log::info(&#39;==&gt;id=1111&#39;);
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用 chunk(分块) 和 cursor(游标) 减少内存的使用量</p>
+</li>
+</ol>
+<h3 id="词汇">词汇</h3>
+<ol>
+<li>mass assignment =&gt; 批量赋值</li>
+<li>fillable =&gt; 用户可赋值字段，guarded =&gt; 仅保护字段
+<blockquote>
+<p>设置 fillable 属性</p>
+<p>protected $fillable = [&lsquo;name&rsquo;, &lsquo;password&rsquo;, &lsquo;email&rsquo;];</p>
+<p>此时即使用户提交了 is_admin 属性也会被忽略。那么我们如何才能设置此属性呢？单独赋值，即</p>
+<p>$user-&gt;is_admin = true;</p>
+<p>$user-&gt;save();</p>
+</blockquote>
+</li>
+<li>reguarded =&gt; 保护，unguarded =&gt; 取消保护</li>
+<li>pivot =&gt; 它代表中间表的一个模型对象</li>
+</ol>
+<h3 id="规范">规范</h3>
+<ul>
+<li>遵守『约定优于配置』设计范式</li>
+<li>使用复数形式命名：控制器、数据库表名、文件夹名</li>
+<li>其他使用单数形式命名，如model、policy、seeder</li>
+</ul>
+<h3 id="全局辅助方法">全局辅助方法</h3>
+<ol>
+<li>session()</li>
+<li>redirect()</li>
+<li>csrf_token(), csrf_field()</li>
+<li>snake_case() =&gt; 驼峰法字符串格式化为下划线命名。</li>
+<li>config(&lsquo;app&rsquo;) =&gt; 获取配置文件的数据，可以使用点语法获取具体参数</li>
+</ol>
+<h3 id="中间件">中间件</h3>
+<blockquote>
+<p>Laravel 中间件提供了一种方便的机制来过滤进入应用的 HTTP 请求。类似CI框架的钩子。</p>
+</blockquote>
+<ol>
+<li>auth: 控制已登录用户才能访问的函数</li>
+<li>guest：控制游客才能访问的函数</li>
+</ol>
+<h3 id="auth-类">Auth 类</h3>
+<ol>
+<li>use Auth; 等价于 use Illuminate\Support\Facades\Auth;</li>
+<li>Auth::loginUsingId(1);  // 登录指定用户 ID 的用户到应用上</li>
+<li>Auth::user()  // 获取当前用户实例</li>
+<li>Auth::check()  // 判断是否已登录</li>
+<li>Auth::id() &lt;=&gt; Auth::user()-&gt;id;  // 获取id</li>
+<li>Auth::once($credentials);  // 只针对一次的请求来认证用户</li>
+<li>Auth::logout();  // 使用户退出登录（清除会话）</li>
+</ol>
+<h3 id="blade">Blade</h3>
+<ul>
+<li>Request::url() == route(&lsquo;categories.show&rsquo;, 4 ) // 判断当前请求链接和某路由是否一致</li>
+<li>Blade 语法 {{ }} 会自动调用 PHP htmlspecialchars 函数来避免 XSS 攻击。</li>
+<li>Blade 的 {!! !!} 语法是直接数据，不会对数据做任何处理。</li>
+<li>@include(&lsquo;layouts._header&rsquo;, []) , @includeWhen(Auth::check(), &lsquo;layouts._header&rsquo;, [])</li>
+</ul>
+<h2 id="项目实践案例">项目实践案例</h2>
+<ol>
+<li>
+<p>mergeBindings方式查询 和 子连接查询</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">$subQuery = MemberActivity::table(MemberActivity::getMonthTableName(strtotime(&#39;-1 month&#39;)))::query()
+    -&gt;where(&#39;chatroom_id&#39;, $chatroomId)
+    -&gt;select([&#39;member_id&#39;, &#39;date&#39;])
+    -&gt;orderByDesc(&#39;id&#39;);
+$query = MemberActivity::table()::query()
+    -&gt;where(&#39;chatroom_id&#39;, $chatroomId)
+    -&gt;select([&#39;member_id&#39;, &#39;date&#39;])
+    -&gt;orderByDesc(&#39;id&#39;)
+    -&gt;union($subQuery);
+
+$queryUnionSql = $query-&gt;toSql();
+
+$lastActivityData = DB::connection(&#34;mysql_big_data&#34;)
+    -&gt;table(DB::raw(&#34;($queryUnionSql) as temp&#34;))
+    -&gt;mergeBindings($query-&gt;getQuery()) // 子查询语句参数实例化
+    -&gt;groupBy(&#39;member_id&#39;)
+    -&gt;pluck(&#39;date&#39;, &#39;member_id&#39;)
+    -&gt;toArray();
+
+// 子连接查询
+public function getTraceLatestList(array $ownerAccountIds, array $bindAccountIds): array
+{
+    $subQuery = \App\Models\Trace::query()
+        -&gt;select(DB::raw(&#34;max(id) max_id&#34;))
+        -&gt;whereIn(&#39;account_id&#39;, $ownerAccountIds)
+        -&gt;whereIn(&#39;target_account_id&#39;, $bindAccountIds)
+        -&gt;groupBy(DB::raw(&#34;concat(account_id, &#39;-&#39;, target_account_id)&#34;));
+
+    $ret = \App\Models\Trace::query()
+        -&gt;select([DB::raw(&#34;concat(traces.account_id, &#39;-&#39;, traces.target_account_id) as account_key&#34;), &#39;traces.content&#39;])
+        -&gt;joinSub($subQuery, &#39;sub&#39;, function ($join) {
+            $join-&gt;on(&#39;traces.id&#39;, &#39;=&#39;, &#39;sub.max_id&#39;);
+        })
+        -&gt;whereIn(&#39;traces.account_id&#39;, $ownerAccountIds)
+        -&gt;whereIn(&#39;traces.target_account_id&#39;, $bindAccountIds)
+        -&gt;pluck(&#39;traces.content&#39;, &#39;account_key&#39;)
+        -&gt;toArray();
+
+    return $ret;
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>PhpStorm Ide Helper安装</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>1、在PhpStorm中搜索安装 Laravel Plugin</p>
+</li>
+<li>
+<p>2、<code>composer require barryvdh/laravel-ide-helper</code></p>
+</li>
+<li>
+<p>3、打开项目 config/app.php 于 providers 添加如下一行 <code>Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class</code></p>
+</li>
+<li>
+<p>4、Generate a new IDE Helper file: <code>php artisan ide-helper:generate</code>
+[可以解决Facades的引用问题]</p>
+</li>
+</ul>
+<h2 id="laravel-install">Laravel Install</h2>
+<ol>
+<li>
+<p>方法一: 安装器安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 缺点不能安装指定版本，默认安装最新版本</span>
+
+composer global require <span class="s2">&#34;laravel/laravel-installer&#34;</span>
+
+lumen new <span class="nb">test</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>方法二：通过 Composer Create-Project 命令安装，可以指定版本号</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/www/
+
+composer create-project laravel/laravel <span class="nb">test</span> --prefer-dist <span class="s1">&#39;5.8.*&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查看版本号</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/www/your_project
+
+php ./artisan
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="laravel-构建已有项目流程">Laravel 构建已有项目流程</h2>
+<ol>
+<li>
+<p>修改配置文件 .env</p>
+<blockquote>
+<p>包括数据库配置、邮箱配置、redis配置、时区配置等</p>
+</blockquote>
+</li>
+<li>
+<p>组件安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">composer install
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>数据库表迁移和数据填充</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 执行数据库迁移和数据填充</span>
+php artisan migrate:refresh --seed
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="laravel-创建新项目流程">Laravel 创建新项目流程</h2>
+<ol>
+<li>
+<p>框架安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/Code/
+
+composer create-project laravel/laravel laravel-test --prefer-dist <span class="s1">&#39;5.8.*&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>更改 readme.md</p>
+</li>
+<li>
+<p>统一代码风格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># .editorconfig 文件添加以下代码</span>
+<span class="o">[</span>*.<span class="o">{</span>js,html,blade.php,css,scss<span class="o">}]</span>
+<span class="nv">indent_style</span> <span class="o">=</span> space
+<span class="nv">indent_size</span> <span class="o">=</span> <span class="m">2</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>修改配置文件 .env</p>
+<blockquote>
+<p>包括数据库配置、邮箱配置、redis配置、时区配置、语言包配置等</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 配置时区</span>
+1. .env 文件添加：TIMEZONE<span class="o">=</span><span class="s2">&#34;asia/shanghai&#34;</span>
+2. 更改 config/app.php : <span class="s1">&#39;timezone&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;TIMEZONE&#39;</span>, <span class="s1">&#39;UTC&#39;</span><span class="o">)</span>,
+
+<span class="c1"># 添加中文语言包</span>
+1. composer require <span class="s2">&#34;overtrue/laravel-lang:~3.0&#34;</span>
+
+2. 安装成功后，在 config/app.php 文件中将以下这一行：
+Illuminate<span class="se">\T</span>ranslation<span class="se">\T</span>ranslationServiceProvider::class,
+替换为：
+Overtrue<span class="se">\L</span>aravelLang<span class="se">\T</span>ranslationServiceProvider::class,
+
+3. .env 文件添加 : <span class="nv">LOCALE</span><span class="o">=</span><span class="s2">&#34;zh-CN&#34;</span>
+
+4. 更改 config/app.php : <span class="s1">&#39;locale&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;LOCALE&#39;</span>, <span class="s1">&#39;en&#39;</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>数据库表迁移和数据填充</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 执行数据库迁移和数据填充</span>
+php artisan migrate:refresh --seed
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>基础布局</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Models</span>
+mkdir app/Models
+mv app/User.php app/Models/User.php
+在执行上面的操作之后，我们还需要执行下面这两个操作：
+1、修改 Models/User.php 文件，更改 namespace 为我们新创建的文件夹路径。
+2、编辑器全局搜索 App<span class="se">\U</span>ser 替换为 App<span class="se">\M</span>odels<span class="se">\U</span>ser。
+
+<span class="c1"># Views</span>
+rm resources/views/welcome.blade.php
+
+mkdir resources/views/layouts
+touch resources/views/layouts/app.blade.php
+touch resources/views/layouts/_header.blade.php
+touch resources/views/layouts/_footer.blade.php
+
+mkdir resources/views/shared
+touch resources/views/shared/_messages.blade.php
+
+<span class="c1"># 运行Laravel Mix</span>
+vi resources/sass/app.scss <span class="o">=</span>&gt; 删除 Fonts
+vi ./webpack.mix.js <span class="o">=</span>&gt; 加上 version<span class="o">()</span>，解决浏览器对静态文件的缓存问题
+yarn config <span class="nb">set</span> registry https://registry.npm.taobao.org
+yarn <span class="nv">install</span> <span class="o">=</span>&gt; 安装依赖
+npm run watch-poll
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>加上授权策略自动发现的逻辑(Laravel 5.8)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">// 自动授权默认会假设 Model 模型文件直接存放在 app 目录下，鉴于我们已将模型存放目录修改为 app/Models，接下来还需自定义自动授权注册的规则，修改 boot() 方法：
+// 在 app/Providers/AuthServiceProvider.php 中的 boot 方法中加上授权策略自动发现的逻辑
+Gate::guessPolicyNamesUsing(function ($modelClass) {
+    // 动态返回模型对应的策略名称，如：// &#39;App\Models\User&#39; =&gt; &#39;App\Policies\UserPolicy&#39;,
+    return &#39;App\Policies\\&#39;.class_basename($modelClass).&#39;Policy&#39;;
+});
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>项目部署相关命令「可选」</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 迁移队列任务执行失败记录表</span>
+php artisan queue:failed-table
+php artisan migrate
+
+<span class="c1"># 迁移通知消息表</span>
+php artisan notifications:table
+
+<span class="c1"># 安装 redis 依赖包</span>
+composer require predis/predis <span class="s2">&#34;~1.0&#34;</span>
+
+<span class="c1"># 安装 HTMLPurifier，HTMLPurifier 本身就是一个独立的项目，运用『白名单机制』对 HTML 文本信息进行 XSS 过滤。这种过滤机制可以有效地防止各种 XSS 变种攻击。</span>
+composer require <span class="s2">&#34;mews/purifier:~2.0&#34;</span>
+php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Mews\Purifier\PurifierServiceProvider&#34;</span>
+
+<span class="c1"># 构建系统管理员后台</span>
+composer require <span class="s2">&#34;summerblue/administrator:~1.1&#34;</span>
+php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Frozennode\Administrator\AdministratorServiceProvider&#34;</span>
+
+<span class="c1"># Laravel开发者工具类</span>
+1. 代码生成器
+&gt; composer require <span class="s2">&#34;summerblue/generator:~1.0&#34;</span> --dev
+
+2. 调试工具
+&gt; composer require <span class="s2">&#34;barryvdh/laravel-debugbar:~3.2&#34;</span> --dev
+
+3. 账号切换工具：测试用户权限将会很方便
+&gt; composer require <span class="s2">&#34;viacreative/sudo-su:~1.1&#34;</span> --dev
+
+4. 安装 Horizon， Horizon 是 Laravel 生态圈里的一员，默认只能在 <span class="nb">local</span> 环境中访问仪表盘，为 Laravel Redis 队列提供了一个漂亮的仪表板，允许我们很方便地查看和管理 Redis 队列任务执行的情况。
+&gt; composer require <span class="s2">&#34;laravel/horizon:~3.1&#34;</span> --dev
+&gt; php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Laravel\Horizon\HorizonServiceProvider&#34;</span> <span class="c1"># 至此安装完毕，浏览器打开 http://hosts/horizon 访问控制台：</span>
+&gt; php artisan horizon <span class="c1"># 队列监控，用来代替 Laravel 自带的 artisan queue:listen，需要常驻运行</span>
+&gt; Tip: 需要注意的是，artisan horizon 队列工作的守护进程是一个常驻进程，它不会在你的代码改变时进行重启，当我们修改代码以后，需要在命令行中对其进行重启操作。
+
+5. 查询日志组件：可以查看sql的输出
+composer require overtrue/laravel-query-logger --dev
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="laravel-ide-helper">Laravel IDE Helper</h2>
+<p>Laravel IDE Helper 是一个极其好用的代码提示及补全工具，可以给编写代码带来极大的便利。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 安装 larave-ide-helper#</span>
+<span class="c1"># 如果只想在开发环境安装请加上 --dev</span>
+composer require barryvdh/laravel-ide-helper
+
+php artisan ide-helper:generate - 为 Facades 生成注释
+php artisan ide-helper:meta - 生成 PhpStorm Meta file
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-12-15
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://github.com/zsmhub/zsmhub.github.io/blob/master/LICENSE" target="_blank">Apache License 2.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://github.com/zsmhub/markdown-images/blob/master/wechat-qr-code.png?raw=true">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://raw.githubusercontent.com/zsmhub/markdown-images/master/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%85%A5%E9%97%A8/">入门</a>
+          <a href="/tags/laravel/">Laravel</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/php/laravel-%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Laravel 常用组件</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/">
+            <span class="next-text nav-default">高并发处理</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-08-01 13:50:49 \x2b0800 CST',
+        title: 'Laravel 基础知识',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>PHP 基础知识 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&amp;#39;display_errors&amp;#39;, 1); //打" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/php/php-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="PHP 基础知识" />
+<meta property="og:description" content="操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&#39;display_errors&#39;, 1); //打" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/php-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
+<meta property="article:published_time" content="2019-01-01T10:37:43+08:00" />
+<meta property="article:modified_time" content="2020-05-04T10:37:43+08:00" />
+<meta itemprop="name" content="PHP 基础知识">
+<meta itemprop="description" content="操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&#39;display_errors&#39;, 1); //打">
+<meta itemprop="datePublished" content="2019-01-01T10:37:43&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-04T10:37:43&#43;08:00" />
+<meta itemprop="wordCount" content="2093">
+
+
+
+<meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PHP 基础知识"/>
+<meta name="twitter:description" content="操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&#39;display_errors&#39;, 1); //打"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">PHP 基础知识</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-01 </span>
+        <div class="post-category">
+            <a href="/categories/php/"> PHP </a>
+            </div>
+          <span class="more-meta"> 约 2093 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <ul>
+<li>操作符
+两个相连的冒号: 范围解析操作符::
+执行操作符`</li>
+<li>getenv 获取一个系统环境变量的值</li>
+<li>php设置错误信息输出级别：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">error_reporting(-1);  //报告所有 PHP 错误
+ini_set(&#39;display_errors&#39;, 1);    //打开错误信息输出
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>array</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">in_array($value, $array);  //在$array中查找$value值，若存在则返回true
+array_search($value, $array);  //在$array中查找$value值，若存在则返回对象key值
+array_walk() // 二维数组新增一列
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>php 编码转换函数</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">$string = iconv(&#34;gb2312&#34;, &#34;utf-8//IGNORE&#34;, $string);
+$string = mb_convert_encoding($string, &#34;UTF-8&#34;, &#34;gb2312&#34;);
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>格式化输出函数</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">printf(format,arg1,arg2,arg++)： 输出格式化的字符串
+sprintf(format,arg1,arg2,arg++):  把格式化的字符串写入变量中
+fprintf(stream,format,arg1,arg2,arg++):  把格式化的字符串写入指定的输出流（例如：文件或数据库）
+
+// format: 必需。规定字符串以及如何格式化其中的变量，可能的格式值：
+%% - 返回一个百分号 %
+%b - 二进制数
+%c - ASCII 值对应的字符
+%d - 包含正负号的十进制数（负数、0、正数）
+%e - 使用小写的科学计数法（例如 1.2e+2）
+%E - 使用大写的科学计数法（例如 1.2E+2）
+%u - 不包含正负号的十进制数（大于等于 0）
+%f - 浮点数（本地设置）
+%F - 浮点数（非本地设置）
+%g - 较短的 %e 和 %f
+%G - 较短的 %E 和 %f
+%o - 八进制数
+%s - 字符串
+%x - 十六进制数（小写字母）
+%X - 十六进制数（大写字母）
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>$_SERVER</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">$_SERVER[&#39;HTTP_ACCEPT_LANGUAGE&#39;]//浏览器语言
+$_SERVER[&#39;REMOTE_ADDR&#39;] //当前用户 IP 。
+$_SERVER[&#39;REMOTE_HOST&#39;] //当前用户主机名
+$_SERVER[&#39;REQUEST_URI&#39;] //注意是uri: URL
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>php变量定义特殊之处</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;shi&#39;</span><span class="p">;</span>
+<span class="nv">$$a</span> <span class="o">=</span> <span class="s1">&#39;mian&#39;</span><span class="p">;</span>  <span class="c1">//相当于$($a),即$shi
+</span><span class="c1"></span><span class="nv">$$$a</span> <span class="o">=</span> <span class="s1">&#39;de&#39;</span><span class="p">;</span>  <span class="c1">//相当于$($($a)),即$mian
+</span><span class="c1"></span><span class="k">echo</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$$a</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$$$a</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+echo ‘shi mian de&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>exec与shell_exec区别：</li>
+</ul>
+<p>这两个函数都是执行Linux命令函数，不同的是获取返回结果不一样，exec只能获取最后一行数据，shell_exec则可以获取全部数据。</p>
+<ul>
+<li>
+<p>编码知识</p>
+<blockquote>
+<p>Base64</p>
+</blockquote>
+<ol>
+<li>Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，Base64要求把每三个8Bit的字节转换为四个6Bit的字节（3<em>8 = 4</em>6 = 24），然后把6Bit再添两位高位0，组成四个8Bit的字节，也就是说，转换后的字符串理论上将要比原来的长1/3。</li>
+<li>php 用base64_encode() 编码的数据要比原始数据多占用 33% 左右的空间。</li>
+<li>base64编码中的符号&quot;=&rdquo;、&ldquo;+&rdquo;、&quot;/&ldquo;不适合在URL里传输，所以要替换为 &lsquo;,', &lsquo;_', &lsquo;('，这样就免去了在URL编解码和数据库存储时所要作的转换。</li>
+</ol>
+</li>
+<li>
+<p>浮点数比较</p>
+<p>需要用到高精度的比较函数，不然会比较失败(使用bccomp，比较浮点数时bccomp第三个参数必须加上，不加第三个参数则是比较整数位)</p>
+</li>
+<li>
+<p>php字符串块和代码块处理方式：</p>
+<ol>
+<li>Heredoc结构：第三种表达字符串的方法是用 heredoc 句法结构：&laquo;&lt;。在该运算符之后要提供一个标识符，然后换行。接下来是字符串 string 本身，最后要用前面定义的标识符作为结束标志。</li>
+<li>Nowdoc结构：就象 heredoc 结构类似于双引号字符串，Nowdoc 结构是类似于单引号字符串的。Nowdoc 结构很象 heredoc 结构，但是 nowdoc 中不进行解析操作。</li>
+</ol>
+</li>
+<li>
+<p>pear和pecl的区别和联系</p>
+<p>Pear：是PHP的扩展代码包，所有的扩展均以PHP代码的形式出现，功能强大，安装简单，甚至可以改改就用。使用的时候，要在代码中进行Include才能够使用。</p>
+<p>Pecl：是PHP的标准扩展，可以补充实际开发中所需的功能，所有的扩展都需要安装，在Windows下面以Dll的形式出现，在linux下面，需要单独进行编译，它的表现形式为根据PHP官方的标准用C语言写成，尽管源码开放但是一般人无法随意更改源码。</p>
+<p>最直接的表述：Pear是PHP的上层扩展，Pecl是PHP的底层扩展。</p>
+</li>
+<li>
+<p>闭包</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// php的闭包（Closure）也就是匿名函数。是PHP5.3引入的。
+</span><span class="c1"></span>
+<span class="c1">// 闭包的语法很简单，需要注意的关键字就只有use，use意思是连接闭包和外界变量。
+</span><span class="c1"></span>
+<span class="c1">// 计算数组$arr所有参数的合计数
+</span><span class="c1"></span><span class="nv">$arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nv">$total</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$callback</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$num</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="o">&amp;</span><span class="nv">$total</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$total</span> <span class="o">+=</span> <span class="nv">$num</span><span class="p">;</span>
+<span class="p">};</span>  <span class="c1">//注意使用引用传值，使用引用和不使用引用就代表了是调用时赋值，还是申明时候赋值
+</span><span class="c1"></span><span class="nx">array_walk</span><span class="p">(</span><span class="nv">$arr</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$total</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>php内存管理-垃圾回收机制|深拷贝与浅拷贝、写时拷贝</p>
+<blockquote>
+<p>PHP进行内存管理的核心算法一共两项：一是引用计数，二是写时拷贝。</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/weixin_30746117/article/details/98407567">参考文章</a></p>
+<p>深拷贝：赋值时值完全复制，完全的copy，对其中一个作出改变，不会影响另一个</p>
+<p>浅拷贝：赋值时，引用赋值，相当于取了一个别名。对其中一个修改，会影响另一个</p>
+<p>PHP中， = 赋值时，普通对象是深拷贝，但对对象来说，是浅拷贝。也就是说，对象的赋值是引用赋值。（对象作为参数传递时，也是引用传递，无论函数定义时参数前面是否有&amp;符号）</p>
+<blockquote>
+<p>写时拷贝</p>
+</blockquote>
+<p><a href="https://hillmay.gitee.io/fishblog/2018/12/21/php7%E5%86%85%E6%A0%B8%E5%89%96%E6%9E%90%E4%B9%8B%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6/">参考文章</a></p>
+<p>定义：当你把$a赋值给$b的时候，$a的值并没有真的复制了一份，这样是对内存的极度不尊重，也是对时间复杂度的极度不尊重，计算机仅仅是将$b指向了$a的值而已，这就叫多快好省。那么，什么时候真正的发生复制呢？就是当我们修改$a的值为123的时候，这个时候就不得已进行复制，避免$b的值和$a的一样。</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-04
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://github.com/zsmhub/zsmhub.github.io/blob/master/LICENSE" target="_blank">Apache License 2.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://github.com/zsmhub/markdown-images/blob/master/wechat-qr-code.png?raw=true">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://raw.githubusercontent.com/zsmhub/markdown-images/master/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%85%A5%E9%97%A8/">入门</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/database/redis/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Redis</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-01-01 10:37:43 \x2b0800 CST',
+        title: 'PHP 基础知识',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>持续集成工作流 - ZsmHub - Blog</title>
+  <title>PHP 面向对象编程 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="互联网软件的开发和发布，已经形成了一套标准流程。 持续集成 持续集成（Continuous integration，简称CI）指的是，频繁地（一天" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。 OOP（Object Oriented Programmin" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/php/php-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="持续集成工作流" />
-<meta property="og:description" content="互联网软件的开发和发布，已经形成了一套标准流程。 持续集成 持续集成（Continuous integration，简称CI）指的是，频繁地（一天" />
+<meta property="og:title" content="PHP 面向对象编程" />
+<meta property="og:description" content="PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。 OOP（Object Oriented Programmin" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/" />
-<meta property="article:published_time" content="2019-05-27T13:41:28+08:00" />
-<meta property="article:modified_time" content="2019-05-27T13:41:28+08:00" />
-<meta itemprop="name" content="持续集成工作流">
-<meta itemprop="description" content="互联网软件的开发和发布，已经形成了一套标准流程。 持续集成 持续集成（Continuous integration，简称CI）指的是，频繁地（一天">
-<meta itemprop="datePublished" content="2019-05-27T13:41:28&#43;08:00" />
-<meta itemprop="dateModified" content="2019-05-27T13:41:28&#43;08:00" />
-<meta itemprop="wordCount" content="1133">
+<meta property="og:url" content="https://zsmhub.github.io/post/php/php-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" />
+<meta property="article:published_time" content="2019-03-09T13:22:34+08:00" />
+<meta property="article:modified_time" content="2019-03-09T13:22:34+08:00" />
+<meta itemprop="name" content="PHP 面向对象编程">
+<meta itemprop="description" content="PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。 OOP（Object Oriented Programmin">
+<meta itemprop="datePublished" content="2019-03-09T13:22:34&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-09T13:22:34&#43;08:00" />
+<meta itemprop="wordCount" content="1398">
 
 
 
-<meta itemprop="keywords" content="持续集成," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="持续集成工作流"/>
-<meta name="twitter:description" content="互联网软件的开发和发布，已经形成了一套标准流程。 持续集成 持续集成（Continuous integration，简称CI）指的是，频繁地（一天"/>
+<meta itemprop="keywords" content="php," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PHP 面向对象编程"/>
+<meta name="twitter:description" content="PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。 OOP（Object Oriented Programmin"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,14 +126,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">持续集成工作流</h1>
+      <h1 class="post-title">PHP 面向对象编程</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-05-27 </span>
+        <span class="post-time"> 2019-03-09 </span>
         <div class="post-category">
-            <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+            <a href="/categories/php/"> PHP </a>
             </div>
-          <span class="more-meta"> 约 1133 字 </span>
+          <span class="more-meta"> 约 1398 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -142,56 +142,120 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#持续集成">持续集成</a></li>
-    <li><a href="#持续交付">持续交付</a></li>
-    <li><a href="#持续部署">持续部署</a></li>
-    <li><a href="#apache-ant">Apache Ant</a></li>
-    <li><a href="#jenkins">Jenkins</a></li>
-    <li><a href="#phar扩展开启">phar扩展开启</a></li>
-    <li><a href="#可持续集成方案">可持续集成方案</a></li>
-  </ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
     <div class="post-content">
-      <p>互联网软件的开发和发布，已经形成了一套标准流程。</p>
-<h2 id="持续集成">持续集成</h2>
-<p>持续集成（Continuous integration，简称CI）指的是，频繁地（一天多次）将代码集成到主干。</p>
-<p>它的好处主要有两个。</p>
-<p>（1）快速发现错误。每完成一点更新，就集成到主干，可以快速发现错误，定位错误也比较容易。</p>
-<p>（2）防止分支大幅偏离主干。如果不是经常集成，主干又在不断更新，会导致以后集成的难度  变大，甚至难以集成。</p>
-<p>持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。</p>
-<h2 id="持续交付">持续交付</h2>
-<p>持续交付（Continuous delivery）指的是，频繁地将软件的新版本，交付给质量团队或者用户，以供评审。如果评审通过，代码就进入生产阶段。</p>
-<p>持续交付可以看作持续集成的下一步。它强调的是，不管怎么更新，软件是随时随地可以交付的。</p>
-<h2 id="持续部署">持续部署</h2>
-<p>持续部署（continuous deployment）是持续交付的下一步，指的是代码通过评审以后，自动部署到生产环境。</p>
-<p>持续部署的目标是，代码在任何时刻都是可部署的，可以进入生产阶段。</p>
-<p>持续部署的前提是能自动化完成测试、构建、部署等步骤。</p>
-<h2 id="apache-ant">Apache Ant</h2>
-<p>Apache Ant，是一个将软件编译、测试、部署等步骤联系在一起加以自动化的一个工具，大多用于Java环境中的软件开发。由Apache软件基金会所提供。默认情况下，它的buildfile(XML文件)名为build.xml。每一个buildfile含有一个<!-- raw HTML omitted -->和至少一个预设的<!-- raw HTML omitted -->，这些targets包含许多task elements。每一个task element有一个用来被参考的id，此id必须是唯一的。</p>
-<h2 id="jenkins">Jenkins</h2>
-<p>Jenkins is an award-winning, cross-platform, continuous integration and continuous delivery application that increases your productivity. Use Jenkins to build and test your software projects continuously making it easier for developers to integrate changes to the project, and making it easier for users to obtain a fresh build. It also allows you to continuously deliver your software by providing powerful ways to define your build pipelines and integrating with a large number of testing and deployment technologies.</p>
-<h2 id="phar扩展开启">phar扩展开启</h2>
-<ol>
-<li>开启openssl扩展</li>
-</ol>
-<h2 id="可持续集成方案">可持续集成方案</h2>
-<ol>
+      <ol>
 <li>
-<p>Jenkins</p>
+<p>PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。</p>
+<blockquote>
+<p>OOP（Object Oriented Programming）：面向对象编程，三大特性：封装、继承、多态。</p>
+</blockquote>
+<p><a href="https://www.jb51.net/article/105579.htm">参考文章</a></p>
+<blockquote>
+<p>为什么要使用trait，使用它有什么好处：</p>
+</blockquote>
 <ul>
-<li>Jenkins跟gitlab进行连接配置【gitlab在Settings里的Webhooks进行配置jenkins的项目url，Jenkins进行项目配置等】</li>
-<li>当开发者提交代码到gitlab分支上时，触发事件通知Jenkins，Jenkins会从gitlab上下载最新代码</li>
-<li>Jenkins调用Ant的配置，进行相关的测试，如单元测试、代码风格测试</li>
-<li>Ant的配置文件为：./build.xml, phpunit的配置文件为：./tests/phpunit.xml, ./tests/case文件夹负责存放测试案例代码</li>
-<li>引导文件为：./tests/bootstrap.php, bootstrap.php是链接PHPUnit框架和Codeigniter框架的bridge</li>
+<li>开发人员能够自由地在不同层次结构内独立的类中复用 method，在一定程度上弥补了单继承语言在某些情况下代码不能复用的问题。</li>
+<li>在PHP中,只能实现单继承。而Trait则避免了这点</li>
+</ul>
+<blockquote>
+<p>trait与普通类的相同点：</p>
+</blockquote>
+<ul>
+<li>trait 能够像普通的类一样定义属性，方法（包含抽象的、静态的、抽象的）；</li>
+<li>trait 引入到基类里面，其子类里面也能访问trait里面的属性和方法。</li>
+</ul>
+<blockquote>
+<p>trait与普通类的不同点</p>
+</blockquote>
+<ul>
+<li>trait不用实例化就能访问定义的普通方法以及属性。</li>
+<li>trait里面不能定义构造函数。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// trait 方法重写案例
+</span><span class="c1"></span><span class="k">trait</span> <span class="nx">Calculator</span>
+<span class="p">{</span>
+    <span class="k">function</span> <span class="nf">increase</span><span class="p">(</span><span class="nv">$num</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nv">$num</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">ClassName</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">Calculator</span><span class="p">{</span>
+        <span class="nx">increase</span> <span class="k">as</span> <span class="k">protected</span> <span class="nx">increaseMore</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">function</span> <span class="nf">increase</span><span class="p">(</span><span class="nv">$num</span><span class="p">){</span>
+        <span class="nv">$num</span><span class="o">=</span><span class="nv">$num</span><span class="o">+</span><span class="mi">10</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">increaseMore</span><span class="p">(</span><span class="nv">$num</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>对象关系映射（Object Relational Mapping，简称ORM）模式是一种为了解决面向对象与关系数据库存在的互不匹配现象的技术。</p>
+<blockquote>
+<p>简单的说，ORM就是对象模型和关系模型的一种映射。它的实现思想就是将关系数据库中表的数据映射成为对象，以对象的形式展现，这样开发人员就可以把对数据库的操作转化为对这些对象的操作。因此它的目的是为了方便开发人员以面向对象的思想来实现对数据库的操作。</p>
+<p>作用：ORM就是数据访问层强大的一种解决方案，通过它，可以最大限度隔离业务逻辑层和数据源之间的耦合度。</p>
+</blockquote>
+</li>
+<li>
+<p>在new类名前面写反斜杠的作用
+new \PHPExcel() , 这个斜杠表示，如果当前类中没有，就去全局搜索这个类[全局命名空间]。</p>
+</li>
+<li>
+<p>命名空间</p>
+<blockquote>
+<p>PHP 命名空间中的元素使用同样的原理。例如，类名可以通过三种方式引用：</p>
+</blockquote>
+<ul>
+<li>
+<p>非限定名称，或不包含前缀的类名称，例如 $a=new foo(); 或 foo::staticmethod();。如果当前命名空间是 currentnamespace，foo 将被解析为currentnamespace\foo。如果使用 foo 的代码是全局的，不包含在任何命名空间中的代码，则 foo 会被解析为foo。 警告：如果命名空间中的函数或常量未定义，则该非限定的函数名称或常量名称会被解析为全局函数名称或常量名称。详情参见 使用命名空间：后备全局函数名称/常量名称。</p>
+</li>
+<li>
+<p>限定名称,或包含前缀的名称，例如 $a = new subnamespace\foo(); 或 subnamespace\foo::staticmethod();。如果当前的命名空间是currentnamespace，则 foo 会被解析为 currentnamespace\subnamespace\foo。如果使用 foo 的代码是全局的，不包含在任何命名空间中的代码，foo 会被解析为subnamespace\foo。</p>
+</li>
+<li>
+<p>完全限定名称，或包含了全局前缀操作符的名称，例如， $a = new \currentnamespace\foo(); 或 \currentnamespace\foo::staticmethod();。在这种情况下，foo 总是被解析为代码中的文字名(literal name)currentnamespace\foo</p>
+</li>
+<li>
+<p>注意访问任意全局类、函数或常量，都可以使用完全限定名称，例如 \strlen() 或 \Exception 或 \INI_ALL。</p>
+</li>
 </ul>
 </li>
 <li>
-<p>gitlab CI runner</p>
+<p>类设计，性状(trait)优于继承。优先考虑用组合关系提高代码的可重用性 。继承使得子类和父类捆绑在一起。组合仅通过唯一接口和外部进行通信，耦合度低于继承。</p>
+<p>底层代码多用组合，顶层/业务层代码多用继承。底层用组合可以提高效率，避免对象臃肿。顶层代码用继承可以提高灵活性，让业务使用更方便。
+<a href="https://www.kancloud.cn/threethousand/phpcore/127993">参考原文</a></p>
 </li>
 </ol>
 
@@ -205,7 +269,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-05-27
+        2019-03-09
         
     </span>
   </p>
@@ -231,16 +295,16 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a>
+          <a href="/tags/php/">php</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/php/php-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
+        <a class="prev" href="/post/php/composer/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">PHP 常用函数</span>
+            <span class="prev-text nav-default">Composer</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/php/composer/">
-            <span class="next-text nav-default">Composer</span>
+        <a class="next" href="/post/php/opcache%E4%B8%8Eopcode/">
+            <span class="next-text nav-default">Opcache与Opcode</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -253,8 +317,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-05-27 13:41:28 \x2b0800 CST',
-        title: '持续集成工作流',
+        id: '2019-03-09 13:22:34 \x2b0800 CST',
+        title: 'PHP 面向对象编程',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
