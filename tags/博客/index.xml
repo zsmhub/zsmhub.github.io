@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>博客 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E5%8D%9A%E5%AE%A2/</link>
+    <description>Recent content in 博客 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 03 May 2020 20:45:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo/</link>
+      <pubDate>Sun, 03 May 2020 20:45:07 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo/</guid>
+      <description>Hugo是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nsq on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/nsq/</link>
+    <description>Recent content in nsq on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Wed, 15 Apr 2020 20:50:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/nsq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>NSQ-分布式实时消息平台</title>
+      <link>https://zsmhub.github.io/post/im/nsq/</link>
+      <pubDate>Wed, 15 Apr 2020 20:50:45 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/im/nsq/</guid>
+      <description>NSQ 简介 NSQ是一个基于Go语言的分布式实时消息平台，它基于MIT开源协议发布，由bitly公司开源出来的一款简单易用的消息中间件。 NSQ 是实时的</description>
+    </item>
+    
+  </channel>
+</rss>

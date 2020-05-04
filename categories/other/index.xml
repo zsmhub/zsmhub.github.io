@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/categories/other/</link>
+    <description>Recent content in Other on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sat, 23 Nov 2019 21:40:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/categories/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>时间单位</title>
+      <link>https://zsmhub.github.io/post/other/%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D/</link>
+      <pubDate>Sat, 23 Nov 2019 21:40:00 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D/</guid>
+      <description>秒、毫秒、微秒、纳秒 10位数的时间戳是以 秒 为单位； 13位数的时间戳是以 毫秒 为单位； 16位数的时间戳是以 微秒 为单位； 19位数的时间戳是以 纳秒 为</description>
+    </item>
+    
+    <item>
+      <title>Git 基础知识</title>
+      <link>https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 02 Oct 2019 21:05:31 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修</description>
+    </item>
+    
+  </channel>
+</rss>

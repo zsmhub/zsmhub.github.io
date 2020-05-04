@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 03 Apr 2020 22:45:33 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2020 20:53:50 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/tags/%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IM 基础知识</title>
+      <link>https://zsmhub.github.io/post/im/im%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Thu, 16 Apr 2020 20:53:50 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/im/im%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>IM 消息可靠性及一致性的解决方案 参考文章 对于 IM 系统消息可靠性及一致性问题，通过消息重发机制保证消息成功被服务端接收，通过会话记录检查保证收取消</description>
+    </item>
     
     <item>
       <title>数据库基础知识</title>
@@ -28,6 +37,15 @@
       
       <guid>https://zsmhub.github.io/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C++、Java 和 C# 一样属于 C 系。 Go</description>
+    </item>
+    
+    <item>
+      <title>Git 基础知识</title>
+      <link>https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 02 Oct 2019 21:05:31 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修</description>
     </item>
     
     <item>

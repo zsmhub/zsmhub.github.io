@@ -22,12 +22,48 @@
     </item>
     
     <item>
+      <title>Hugo</title>
+      <link>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo/</link>
+      <pubDate>Sun, 03 May 2020 20:45:07 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo/</guid>
+      <description>Hugo是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown</description>
+    </item>
+    
+    <item>
       <title>大数据表设计方案</title>
       <link>https://zsmhub.github.io/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/</link>
       <pubDate>Sat, 25 Apr 2020 23:06:53 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/</guid>
       <description>方案 当数据总量或者并发数很大的时候，我们通常选择NoSQL存储产品来存储数据，但常见的NoSQL产品都没有提供自增列的功能，因此通常要借助外</description>
+    </item>
+    
+    <item>
+      <title>即时通讯-心跳机制</title>
+      <link>https://zsmhub.github.io/post/im/%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Fri, 17 Apr 2020 20:56:26 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/im/%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6/</guid>
+      <description>作为即时通讯应用，心跳机制是其网络通信技术底层中非常重要的一环，有没有心跳机制、心跳机制的算法实现好坏，都将直接影响即时通讯应用在应用层的表</description>
+    </item>
+    
+    <item>
+      <title>IM 基础知识</title>
+      <link>https://zsmhub.github.io/post/im/im%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Thu, 16 Apr 2020 20:53:50 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/im/im%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>IM 消息可靠性及一致性的解决方案 参考文章 对于 IM 系统消息可靠性及一致性问题，通过消息重发机制保证消息成功被服务端接收，通过会话记录检查保证收取消</description>
+    </item>
+    
+    <item>
+      <title>NSQ-分布式实时消息平台</title>
+      <link>https://zsmhub.github.io/post/im/nsq/</link>
+      <pubDate>Wed, 15 Apr 2020 20:50:45 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/im/nsq/</guid>
+      <description>NSQ 简介 NSQ是一个基于Go语言的分布式实时消息平台，它基于MIT开源协议发布，由bitly公司开源出来的一款简单易用的消息中间件。 NSQ 是实时的</description>
     </item>
     
     <item>
@@ -49,9 +85,45 @@
     </item>
     
     <item>
+      <title>接口对接安全性方案</title>
+      <link>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Wed, 25 Dec 2019 21:44:01 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/</guid>
+      <description>接口对接安全性方案 鉴权（authentication）是指验证用户是否拥有访问系统的权利。 建立访问IP白名单 可以在nginx上配置只允许某些</description>
+    </item>
+    
+    <item>
+      <title>算法时间复杂度</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
+      <pubDate>Wed, 04 Dec 2019 21:51:34 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
+      <description>本文属于转载，点击查看原文 时间复杂度基础概念 在计算机科学中，算法的时间复杂度（Time complexity）是一个函数，它定性描述该算法的运</description>
+    </item>
+    
+    <item>
+      <title>时间单位</title>
+      <link>https://zsmhub.github.io/post/other/%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D/</link>
+      <pubDate>Sat, 23 Nov 2019 21:40:00 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D/</guid>
+      <description>秒、毫秒、微秒、纳秒 10位数的时间戳是以 秒 为单位； 13位数的时间戳是以 毫秒 为单位； 16位数的时间戳是以 微秒 为单位； 19位数的时间戳是以 纳秒 为</description>
+    </item>
+    
+    <item>
+      <title>Git 基础知识</title>
+      <link>https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 02 Oct 2019 21:05:31 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修</description>
+    </item>
+    
+    <item>
       <title>Laravel 定时任务与常驻进程</title>
       <link>https://zsmhub.github.io/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</link>
-      <pubDate>Wed, 04 Dec 2019 14:28:22 +0800</pubDate>
+      <pubDate>Wed, 04 Sep 2019 14:28:22 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</guid>
       <description>任务调度功能 Laravel 命令行调度器允许你在 Laravel 中对命令调度进行清晰流畅的定义。且使用这个任务调度器时，你只需要在你的服务器上创建单个 Cron 入口接口。你的任</description>

@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 04 Dec 2019 14:28:22 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Sep 2019 14:28:22 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/php/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Laravel 定时任务与常驻进程</title>
       <link>https://zsmhub.github.io/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</link>
-      <pubDate>Wed, 04 Dec 2019 14:28:22 +0800</pubDate>
+      <pubDate>Wed, 04 Sep 2019 14:28:22 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</guid>
       <description>任务调度功能 Laravel 命令行调度器允许你在 Laravel 中对命令调度进行清晰流畅的定义。且使用这个任务调度器时，你只需要在你的服务器上创建单个 Cron 入口接口。你的任</description>
