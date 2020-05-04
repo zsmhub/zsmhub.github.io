@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>入门 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E5%85%A5%E9%97%A8/</link>
+    <description>Recent content in 入门 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Fri, 03 Apr 2020 22:45:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数据库基础知识</title>
+      <link>https://zsmhub.github.io/post/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Fri, 03 Apr 2020 22:45:33 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>一、基础知识 表存储引擎必须用InnoDB 字符集必须使用utf8mb4 （utf8不是真utf8） 禁止使用存储过程、视图、触发器、Event 命名</description>
+    </item>
+    
+    <item>
+      <title>Laravel基础知识</title>
+      <link>https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 01 Aug 2019 13:50:49 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/</guid>
+      <description>php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器</description>
+    </item>
+    
+    <item>
+      <title>PHP基础知识</title>
+      <link>https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Tue, 01 Jan 2019 10:37:43 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&amp;#39;display_errors&amp;#39;, 1); //打</description>
+    </item>
+    
+  </channel>
+</rss>

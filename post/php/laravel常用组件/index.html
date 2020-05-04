@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Laravel常用组件 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&amp;#34;Dingo\Api\Provider\LaravelServiceProvider&amp;#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Laravel常用组件" />
+<meta property="og:description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" />
+<meta property="article:published_time" content="2019-08-01T14:15:47+08:00" />
+<meta property="article:modified_time" content="2020-04-04T14:15:47+08:00" />
+<meta itemprop="name" content="Laravel常用组件">
+<meta itemprop="description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存">
+<meta itemprop="datePublished" content="2019-08-01T14:15:47&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-04T14:15:47&#43;08:00" />
+<meta itemprop="wordCount" content="1591">
+
+
+
+<meta itemprop="keywords" content="Laravel," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Laravel常用组件"/>
+<meta name="twitter:description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Laravel常用组件</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-01 </span>
+        <div class="post-category">
+            <a href="/categories/php/"> PHP </a>
+            </div>
+          <span class="more-meta"> 约 1591 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#dingoapi">dingo/api</a></li>
+    <li><a href="#socialiteproviders">socialiteproviders</a></li>
+    <li><a href="#jwt">jwt</a></li>
+    <li><a href="#fractal">Fractal</a></li>
+    <li><a href="#laravel-query-logger">laravel-query-logger</a></li>
+    <li><a href="#barryvdhlaravel-cors">barryvdh/laravel-cors</a></li>
+    <li><a href="#encorelaravel-admin">encore/laravel-admin</a></li>
+    <li><a href="#guzzlehttpguzzle">guzzlehttp/guzzle</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="dingoapi">dingo/api</h2>
+<p>dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">composer require dingo/api
+php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Dingo\Api\Provider\LaravelServiceProvider&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意点：</p>
+</blockquote>
+<p>由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。</p>
+<p>路由交给 DingoApi 来处理了，所以模型绑定的中间件并没有注册上。需要手动增加 bindings 中间件。【否则会导致隐形路由模型绑定功能失效】</p>
+<blockquote>
+<p>使用 Accept 头来指定我们需要访问的 API 版本</p>
+</blockquote>
+<p>Accept: application/&lt;API_STANDARDS_TREE&gt;.&lt;API_SUBTYPE&gt;.v1+json</p>
+<p>API_STANDARDS_TREE 有是三个值可选</p>
+<ul>
+<li>x 本地开发的或私有环境的</li>
+<li>prs 未对外发布的，提供给公司 app，单页应用，桌面应用等</li>
+<li>vnd 对外发布的，开放给所有用户</li>
+</ul>
+<blockquote>
+<p>是否有 N+1 问题呢？</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">dingo api V2.2.3: 该版本的查询是会存在 N+1 问题的，因为目前 Dingo 最新的版本引入了一个 Bug ——
+https://github.com/dingo/api/issues/1645 ，有兴趣的同学可以关注一下这个 Bug，在这个 Bug 修复之前，我们 include 如果太深了，则会出现 N+1 问题，因为我们使用 topic.user 这样的深层嵌套。
+
+解决方法有这么几个：
+
+- 持续关注这个 Bug，等待 Bug 解决；
+- 安装回 Dingo 2.0.0 以下的版本；
+- 关闭 Dingo 的预加载，手动处理预加载的问题。
+
+这里可以暂时使用第三种:先来关闭 Dingo 的预加载。
+app<span class="o">(</span><span class="se">\D</span>ingo<span class="se">\A</span>pi<span class="se">\T</span>ransformer<span class="se">\F</span>actory::class<span class="o">)</span>-&gt;disableEagerLoading<span class="o">()</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="socialiteproviders">socialiteproviders</h2>
+<p>由于 Laravel 本身自带的 socialite 不包含微信、qq等第三方登录驱动，故 socialiteproviders 提供了更多的第三方登录方式，基本上你需要的，都能在这里找到。socialiteproviders算是对 socialite 的补充。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 微信</span>
+composer require socialiteproviders/weixin
+
+<span class="c1"># qq</span>
+composer require socialiteproviders/qq
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="jwt">jwt</h2>
+<p><a href="https://learnku.com/articles/17883">JWT 超详细分析</a></p>
+<p><a href="https://learnku.com/articles/17979">JWT 在项目中的实际使用</a></p>
+<p><a href="https://learnku.com/articles/7264/using-jwt-auth-to-implement-api-user-authentication-and-painless-refresh-access-token">使用 Jwt-Auth 实现 API 用户认证以及无痛刷新访问令牌</a></p>
+<p><a href="https://learnku.com/articles/12679/jwt-auth-blacklist-function">JWT-Auth 黑名单功能</a></p>
+<p>Token 的种类，一般来说 token 主要三种：</p>
+<ul>
+<li>自定义的 token：开发者根据业务逻辑自定义的 token</li>
+<li>JWT：JSON Web Token，定义在 RFC 7519 中的一种 token 规范</li>
+<li>Oauth2.0：定义在 RFC 6750 中的一种授权规范，但这其实并不是一种 token，只是其中也有用到 token</li>
+</ul>
+<blockquote>
+<p>Oauth2.0 &amp;&amp; JWT:两者其实并不是一个层面的东西。Oauth2.0 是一个方便的第三方授权规范，而 JWT 是一个 token 结构规范。</p>
+</blockquote>
+<blockquote>
+<p>JWT 是 JSON Web Token 的缩写，是一个非常轻巧的规范，这个规范允许我们使用 JWT 在用户和服务器之间传递安全可靠的信息。</p>
+<p>JWT 由头部（header）、载荷（payload）与签名（signature）组成。</p>
+<p>用户登录后生成的 token 不需要保存在数据库，直接根据前端传递过来的 token 判断用户的登录状态。</p>
+<p>JWT 生成的 Token 包含 token 生效时间和一个签名，利用签名可以验证数据是否被篡改，然后再获取 token 里携带的生效时间判断 token 是否有效。</p>
+<p>刷新 Token 就是将旧 Token 放入黑名单，然后生成一个新的 Token。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">composer require tymon/jwt-auth:1.0.0-rc.4.1
+
+JWT 生成 token 的四个优点
+- 防 CSRF
+- 适合移动应用
+- 无状态
+- 编码数据
+&gt; 前两个是 token 的优势，后两个是 JWT 独特的优势。
+
+JWT 前后端 token 过期时的交互流程：
+1. 用户请求一个业务接口时，如果后端发现 token 失效了，就返回 token 失效的信息，
+2. 前端界面提示网络有问题、稍后重试等提示，并调用续签 token 接口
+3. 用户再发起一次业务请求时，前端直接携带新的 token 去请求服务器
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="fractal">Fractal</h2>
+<p>api 输出结果处理层，也可以选择官方的 eloquent-resources</p>
+<ul>
+<li>
+<p>Fractal 是一个转换层（transformer），API 开发中非常方便的一种开发方法，可以帮助我们处理响应数据的结构与复杂的嵌套关系，最后将数据返回给客户端。可以把 Fractal 理解为 Web 开发中视图，控制着 API 的最终数据输出。Laravel 5.5 的新功能 eloquent-resources 整体思路跟 Fractal 一致，用法也基本相同。</p>
+</li>
+<li>
+<p>Fractal 为我们提供了 3 种 基本结构。</p>
+<blockquote>
+<p>DataArraySerializer 结构类似 eloquent-resources 的 Data Wrapping</p>
+<p>ArraySerializer 结构类似 eloquent-resources 的 withoutWrapping</p>
+<p>JsonApiSerializer 结构出自 JSON-API，是一套 json 接口响应规范。</p>
+<p>我们常用的结构是 DataArraySerializer 和 ArraySerializer</p>
+</blockquote>
+</li>
+<li>
+<p>DingoApi 已经安装了 Fractal，并且做了很多整合，基本解决了 N+1 问题，我们可以快速的开始使用。但是它返回的单资源的数据结构为 DataArraySerializer，我们可以使用以下扩展包将 dingo/api 的单资源数据结构更改为 ArraySerializer，减少嵌套层数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">composer require liyu/dingo-serializer-switch
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>用法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 返回单个资源</span>
+<span class="k">return</span> <span class="nv">$this</span>-&gt;response-&gt;item<span class="o">(</span><span class="nv">$topics</span>, new TopicTransformer<span class="o">())</span>-&gt;setStatusCode<span class="o">(</span>201<span class="o">)</span><span class="p">;</span>
+
+<span class="c1"># 返回多个资源</span>
+<span class="nv">$this</span>-&gt;response-&gt;collection<span class="o">(</span>Topics::all<span class="o">()</span>, new TopicTransformer<span class="o">())</span><span class="p">;</span>
+
+<span class="c1"># 返回列表分页数据</span>
+<span class="nv">$this</span>-&gt;response-&gt;paginator<span class="o">(</span><span class="nv">$topics</span>, new TopicTransformer<span class="o">())</span><span class="p">;</span>
+
+<span class="c1"># 返回空数据</span>
+<span class="nv">$this</span>-&gt;response-&gt;noContent<span class="o">()</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="laravel-query-logger">laravel-query-logger</h2>
+<p>查询日志扩展</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">composer require overtrue/laravel-query-logger --dev
+
+<span class="c1"># 日志路径</span>
+<span class="nb">cd</span> ./storage/logs
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="barryvdhlaravel-cors">barryvdh/laravel-cors</h2>
+<p>解决跨域问题</p>
+<h2 id="encorelaravel-admin">encore/laravel-admin</h2>
+<p>后台管理系统</p>
+<h2 id="guzzlehttpguzzle">guzzlehttp/guzzle</h2>
+<p>Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-04-04
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://github.com/zsmhub/zsmhub.github.io/blob/master/LICENSE" target="_blank">Apache License 2.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://github.com/zsmhub/markdown-images/blob/master/wechat-qr-code.png?raw=true">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://raw.githubusercontent.com/zsmhub/markdown-images/master/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/laravel/">Laravel</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Laravel定时任务与常驻进程</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/php/laravel%E5%85%A5%E9%97%A8/">
+            <span class="next-text nav-default">Laravel基础知识</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-08-01 14:15:47 \x2b0800 CST',
+        title: 'Laravel常用组件',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: '16890747',
+        admin: ['16890747'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

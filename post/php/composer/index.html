@@ -296,35 +296,37 @@
           <a href="/tags/php/">php</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/database/memcached/">
+        <a class="prev" href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Memcached</span>
+            <span class="prev-text nav-default">持续集成工作流</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        
+        <a class="next" href="/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+            <span class="next-text nav-default">PHP面向对象编程</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
       </nav>
     </footer>
   </article>
         </div>
-        <div id="comments-gitment"></div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.min.css" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.min.js" crossorigin="anonymous"></script>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      var gitment = new Gitment({
+      var gitalk = new Gitalk({
         id: '2019-04-03 21:50:58 \x2b0800 CST',
         title: 'Composer',
-        link: decodeURI(location.href),
-        desc: '常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解',
-        owner: '16890747',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
-        oauth: {
-          client_id: 'fe63c88fe7fc18e38512',
-          client_secret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85'
-        }
+        owner: '16890747',
+        admin: ['16890747'],
+        body: decodeURI(location.href)
       });
-      gitment.render('comments-gitment');
+      gitalk.render('gitalk-container');
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
   
 

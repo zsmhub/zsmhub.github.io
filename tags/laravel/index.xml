@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Laravel on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/laravel/</link>
+    <description>Recent content in Laravel on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Wed, 04 Dec 2019 14:28:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Laravel定时任务与常驻进程</title>
+      <link>https://zsmhub.github.io/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</link>
+      <pubDate>Wed, 04 Dec 2019 14:28:22 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/</guid>
+      <description>任务调度功能 Laravel 命令行调度器允许你在 Laravel 中对命令调度进行清晰流畅的定义。且使用这个任务调度器时，你只需要在你的服务器上创建单个 Cron 入口接口。你的任</description>
+    </item>
+    
+    <item>
+      <title>Laravel常用组件</title>
+      <link>https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Thu, 01 Aug 2019 14:15:47 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/</guid>
+      <description>dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&amp;#34;Dingo\Api\Provider\LaravelServiceProvider&amp;#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存</description>
+    </item>
+    
+    <item>
+      <title>Laravel基础知识</title>
+      <link>https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 01 Aug 2019 13:50:49 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/</guid>
+      <description>php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器</description>
+    </item>
+    
+  </channel>
+</rss>

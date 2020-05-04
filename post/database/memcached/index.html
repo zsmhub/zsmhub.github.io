@@ -43,12 +43,12 @@
 <meta property="og:description" content="基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/database/memcached/" />
-<meta property="article:published_time" content="2019-05-04T22:43:26+08:00" />
-<meta property="article:modified_time" content="2019-05-04T22:43:26+08:00" />
+<meta property="article:published_time" content="2019-01-04T22:43:26+08:00" />
+<meta property="article:modified_time" content="2019-01-04T22:43:26+08:00" />
 <meta itemprop="name" content="Memcached">
 <meta itemprop="description" content="基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca">
-<meta itemprop="datePublished" content="2019-05-04T22:43:26&#43;08:00" />
-<meta itemprop="dateModified" content="2019-05-04T22:43:26&#43;08:00" />
+<meta itemprop="datePublished" content="2019-01-04T22:43:26&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-04T22:43:26&#43;08:00" />
 <meta itemprop="wordCount" content="103">
 
 
@@ -125,7 +125,7 @@
       <h1 class="post-title">Memcached</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-05-04 </span>
+        <span class="post-time"> 2019-01-04 </span>
         <div class="post-category">
             <a href="/categories/database/"> Database </a>
             </div>
@@ -168,7 +168,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-05-04
+        2019-01-04
         
     </span>
   </p>
@@ -197,13 +197,13 @@
           <a href="/tags/memcached/">memcached</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/php/common_func/">
+        <a class="prev" href="/post/php/opcache%E4%B8%8Eopcode/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">php 常用函数</span>
+            <span class="prev-text nav-default">Opcache与Opcode</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/php/composer/">
-            <span class="next-text nav-default">Composer</span>
+        <a class="next" href="/post/database/redis/">
+            <span class="next-text nav-default">Redis</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -211,25 +211,23 @@
     </footer>
   </article>
         </div>
-        <div id="comments-gitment"></div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.min.css" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.min.js" crossorigin="anonymous"></script>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      var gitment = new Gitment({
-        id: '2019-05-04 22:43:26 \x2b0800 CST',
+      var gitalk = new Gitalk({
+        id: '2019-01-04 22:43:26 \x2b0800 CST',
         title: 'Memcached',
-        link: decodeURI(location.href),
-        desc: '基础信息 telnet memcached 11211 \/\/ 连接memcached服务器 flush_all \/\/ 清除全部缓存 delete key \/\/ 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca',
-        owner: '16890747',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
-        oauth: {
-          client_id: 'fe63c88fe7fc18e38512',
-          client_secret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85'
-        }
+        owner: '16890747',
+        admin: ['16890747'],
+        body: decodeURI(location.href)
       });
-      gitment.render('comments-gitment');
+      gitalk.render('gitalk-container');
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
   
 

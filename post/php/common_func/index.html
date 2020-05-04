@@ -49,11 +49,11 @@
 <meta itemprop="description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),">
 <meta itemprop="datePublished" content="2019-06-03T19:02:58&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-03T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="1646">
+<meta itemprop="wordCount" content="1831">
 
 
 
-<meta itemprop="keywords" content="php,常用函数," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="常用函数," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="php 常用函数"/>
 <meta name="twitter:description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),"/>
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/php/"> PHP </a>
             </div>
-          <span class="more-meta"> 约 1646 字 </span>
+          <span class="more-meta"> 约 1831 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -141,6 +141,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#时间函数">时间函数</a></li>
+    <li><a href="#文件上传下载">文件上传下载</a></li>
     <li><a href="#其他函数">其他函数</a></li>
   </ul>
 </nav>
@@ -201,12 +202,32 @@ echo $timeStamp;
 </div>
 </div></li>
 </ol>
+<h2 id="文件上传下载">文件上传下载</h2>
+<ol>
+<li>readfile() // 直接输出输出文件流 或 强制下载</li>
+<li>header() // 输出文件 或 定义文件类型</li>
+</ol>
 <h2 id="其他函数">其他函数</h2>
 <ol>
-<li>
-<p>hash_hmac — 使用 HMAC 方法生成带有密钥的哈希值</p>
-<p>string hash_hmac ( string $algo , string $data , string $key [, bool $raw_output = false ] )</p>
-</li>
+<li>密码加密哈希函数</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">string password_hash ( string $password , int $algo [, array $options ] )
+bool password_verify ( string $password , string $hash )
+password_hash() 使用足够强度的单向散列算法创建密码的散列（hash）
+password_verify — 验证密码是否和散列值匹配
+hash_hmac — 使用 HMAC 方法生成带有密钥的哈希值
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
 <li>
 <p>http_build_query — 生成 URL-encode 之后的请求字符串
 string http_build_query ( mixed $query_data [, string $numeric_prefix [, string$arg_separator [, int $enc_type = PHP_QUERY_RFC1738 ]]] )</p>
@@ -280,6 +301,12 @@ filter_var — 使用特定的过滤器过滤一个变量
 </code></pre></td></tr></table>
 </div>
 </div></li>
+<li>
+<p>ignore_user_abort — 设置客户端断开连接时是否中断脚本的执行</p>
+</li>
+<li>
+<p>ob_start — 打开输出控制缓冲: 此函数将打开输出缓冲。当输出缓冲激活后，脚本将不会输出内容（除http标头外），相反需要输出的内容被存储在内部缓冲区中。</p>
+</li>
 </ol>
 
     </div>
@@ -318,17 +345,16 @@ filter_var — 使用特定的过滤器过滤一个变量
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/php/">php</a>
           <a href="/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">常用函数</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/database/redis/">
+        <a class="prev" href="/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Redis</span>
+            <span class="prev-text nav-default">高并发处理</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/database/memcached/">
-            <span class="next-text nav-default">Memcached</span>
+        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+            <span class="next-text nav-default">持续集成工作流</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -336,25 +362,23 @@ filter_var — 使用特定的过滤器过滤一个变量
     </footer>
   </article>
         </div>
-        <div id="comments-gitment"></div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.min.css" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.min.js" crossorigin="anonymous"></script>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      var gitment = new Gitment({
+      var gitalk = new Gitalk({
         id: '2019-06-03 19:02:58 \x2b0800 CST',
         title: 'php 常用函数',
-        link: decodeURI(location.href),
-        desc: '时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(\x26#39;PRC\x26#39;); \/\/默认时区 echo \x26#34;今天:\x26#34;,date(\x26#34;Y-m-d\x26#34;,time()),',
-        owner: '16890747',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
-        oauth: {
-          client_id: 'fe63c88fe7fc18e38512',
-          client_secret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85'
-        }
+        owner: '16890747',
+        admin: ['16890747'],
+        body: decodeURI(location.href)
       });
-      gitment.render('comments-gitment');
+      gitalk.render('gitalk-container');
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
   
 
