@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/linux/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
 <meta property="article:published_time" content="2019-01-01T17:32:56+08:00" />
-<meta property="article:modified_time" content="2019-01-01T17:32:56+08:00" />
+<meta property="article:modified_time" content="2020-05-05T17:32:56+08:00" />
 <meta itemprop="name" content="Linux 基础知识">
 <meta itemprop="description" content="基本命令 find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $">
 <meta itemprop="datePublished" content="2019-01-01T17:32:56&#43;08:00" />
-<meta itemprop="dateModified" content="2019-01-01T17:32:56&#43;08:00" />
-<meta itemprop="wordCount" content="3495">
+<meta itemprop="dateModified" content="2020-05-05T17:32:56&#43;08:00" />
+<meta itemprop="wordCount" content="3956">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/linux/"> Linux </a>
             </div>
-          <span class="more-meta"> 约 3495 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 3956 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
     </header>
@@ -150,6 +150,10 @@
     <li><a href="#管道">管道</a></li>
     <li><a href="#常用文本处理命令">常用文本处理命令</a></li>
     <li><a href="#脚本后端挂起方式">脚本后端挂起方式</a></li>
+    <li><a href="#rsync">rsync</a></li>
+    <li><a href="#用户和用户组">用户和用户组</a></li>
+    <li><a href="#回车和换行">回车和换行</a></li>
+    <li><a href="#软件包管理器">软件包管理器</a></li>
   </ul>
 </nav>
   </div>
@@ -513,6 +517,41 @@ screen -d -r yourname <span class="c1"># 结束当前session并回到yournamed�
 <p>Ctrl-a键 d键 -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里，每个 window 内运行的 process (无论是前台/后台)都在继续执行，即使 logout 也不影响。</p>
 </li>
 </ol>
+<h2 id="rsync">rsync</h2>
+<p>rsync命令是一个远程数据同步工具，可通过LAN/WAN快速同步多台主机间的文件。rsync使用所谓的“rsync算法”来使本地和远程两个主机之间的文件达到同步，这个算法只传送两个文件的不同部分，而不是每次都整份传送，因此速度相当快。</p>
+<p>使用 Git 和 rsync 更新生产环境代码的 ssh 脚本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nb">cd</span> /data/git/data/qy_admin/
+git pull
+chown -R www:www *
+/usr/bin/rsync -avzhP --delete --exclude<span class="o">=</span><span class="s1">&#39;.git/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.gitignore&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.svn/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.idea&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/cache/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/config/database.php&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/logs/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/controllers/defaultcontroller.php&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;upload/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;sql/&#39;</span> /data/git/data/qy_admin/  192.168.1.1:/data/wx/www/
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="用户和用户组">用户和用户组</h2>
+<ul>
+<li>/etc/passwd: 存放用户信息</li>
+<li>/etc/shadow:  存放用户加密信息</li>
+<li>/etc/group: 存放用户组信息</li>
+<li>/etc/gshadow: 存放用户组加密信息</li>
+</ul>
+<h2 id="回车和换行">回车和换行</h2>
+<ul>
+<li>在linux/mac下，回车是\r，代表结束的意思。换行是\n，代表换行的意思。</li>
+<li>在windows下，一般换行就是指回车+换行两种意思，即\r\n。</li>
+</ul>
+<h2 id="软件包管理器">软件包管理器</h2>
+<ul>
+<li>yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基於RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</li>
+</ul>
 
     </div>
 
@@ -524,7 +563,7 @@ screen -d -r yourname <span class="c1"># 结束当前session并回到yournamed�
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-01-01
+        2020-05-05
         
     </span>
   </p>
@@ -540,11 +579,11 @@ screen -d -r yourname <span class="c1"># 结束当前session并回到yournamed�
   <div class="qr-code">
     
     <label class="qr-code-image" for="reward">
-        <img class="image" src="https://github.com/zsmhub/markdown-images/blob/master/wechat-qr-code.png?raw=true">
+        <img class="image" src="https://github.com/zsmhub/markdown-images/blob/master/wechat-qr-code.png?raw=true" alt="请科学上网">
         <span>微信打赏</span>
       </label>
     <label class="qr-code-image" for="reward">
-        <img class="image" src="https://raw.githubusercontent.com/zsmhub/markdown-images/master/alipay-qr-code.png">
+        <img class="image" src="https://raw.githubusercontent.com/zsmhub/markdown-images/master/alipay-qr-code.png" alt="请科学上网">
         <span>支付宝打赏</span>
       </label>
   </div>

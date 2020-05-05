@@ -94,6 +94,42 @@
     </item>
     
     <item>
+      <title>队列与栈</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/</link>
+      <pubDate>Sun, 01 Mar 2020 21:33:03 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/</guid>
+      <description>队列 1 2 3 4 5 6 7 8 9 10 # 队列：FIFO即First in First Out,先进先出 from queue import Queue q = Queue() for i in range(5): q.put(i) while not q.empty(): print(q.get()) 栈 1 2 3 4 5 6 7 8 9 10 # 栈：LIFO</description>
+    </item>
+    
+    <item>
+      <title>设计模式</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 15 Feb 2020 21:05:40 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 总体来说，设计模式分</description>
+    </item>
+    
+    <item>
+      <title>AB测试的简单使用</title>
+      <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 10 Jan 2020 21:01:48 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</guid>
+      <description>简单运用 1 2 # -n: 请求100次，-c: 并发10次 ab -n 100 -c 10 https://www.baidu.com/</description>
+    </item>
+    
+    <item>
+      <title>软件测试分类</title>
+      <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/</link>
+      <pubDate>Mon, 06 Jan 2020 20:54:06 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/</guid>
+      <description>在软件测试中UT，IT，ST，UAT指单元测试，集成测试，系统测试 ，用户接受测试。 UT-单元测试 Unit Test 单元测试任务包括： 1、模块接口测试； 2、</description>
+    </item>
+    
+    <item>
       <title>Navigation</title>
       <link>https://zsmhub.github.io/navigation/</link>
       <pubDate>Wed, 01 Jan 2020 16:30:02 +0800</pubDate>
@@ -235,6 +271,24 @@
       
       <guid>https://zsmhub.github.io/post/database/redis/</guid>
       <description>基础信息 Redis是一个基于内存的高效的非关系型数据库，占用端口：6379 配置文件路径：/usr/local/etc/redis.conf r</description>
+    </item>
+    
+    <item>
+      <title>加密算法</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 02 Jan 2019 21:45:06 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</guid>
+      <description>对称加密算法 AES 高级加密标准（Advanced Encryption Standard，AES），在密码学中又称Rijndael 加密法，是美国联邦政府采用的一种区块</description>
+    </item>
+    
+    <item>
+      <title>常用算法</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 02 Jan 2019 21:39:19 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/</guid>
+      <description>常见算法 快速排序，二分法查找，深度优先搜索，广度优先搜索 区间重合算法 时间重合判断逻辑： 开始时间s1、s2 结束时间e1、e2 只要满足s1 &amp;lt;= e2 &amp;amp;&amp;amp;</description>
     </item>
     
     <item>

@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 04 Dec 2019 21:51:34 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 21:33:03 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>队列与栈</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/</link>
+      <pubDate>Sun, 01 Mar 2020 21:33:03 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/</guid>
+      <description>队列 1 2 3 4 5 6 7 8 9 10 # 队列：FIFO即First in First Out,先进先出 from queue import Queue q = Queue() for i in range(5): q.put(i) while not q.empty(): print(q.get()) 栈 1 2 3 4 5 6 7 8 9 10 # 栈：LIFO</description>
+    </item>
     
     <item>
       <title>算法时间复杂度</title>

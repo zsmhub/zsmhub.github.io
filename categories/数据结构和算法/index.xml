@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 04 Dec 2019 21:51:34 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 21:33:03 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>队列与栈</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/</link>
+      <pubDate>Sun, 01 Mar 2020 21:33:03 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/</guid>
+      <description>队列 1 2 3 4 5 6 7 8 9 10 # 队列：FIFO即First in First Out,先进先出 from queue import Queue q = Queue() for i in range(5): q.put(i) while not q.empty(): print(q.get()) 栈 1 2 3 4 5 6 7 8 9 10 # 栈：LIFO</description>
+    </item>
+    
+    <item>
+      <title>设计模式</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 15 Feb 2020 21:05:40 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 总体来说，设计模式分</description>
+    </item>
     
     <item>
       <title>算法时间复杂度</title>
@@ -19,6 +37,24 @@
       
       <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
       <description>时间复杂度基础概念 在计算机科学中，算法的时间复杂度（Time complexity）是一个函数，它定性描述该算法的运行时间。这是一个代表算法输</description>
+    </item>
+    
+    <item>
+      <title>加密算法</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 02 Jan 2019 21:45:06 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</guid>
+      <description>对称加密算法 AES 高级加密标准（Advanced Encryption Standard，AES），在密码学中又称Rijndael 加密法，是美国联邦政府采用的一种区块</description>
+    </item>
+    
+    <item>
+      <title>常用算法</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 02 Jan 2019 21:39:19 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/</guid>
+      <description>常见算法 快速排序，二分法查找，深度优先搜索，广度优先搜索 区间重合算法 时间重合判断逻辑： 开始时间s1、s2 结束时间e1、e2 只要满足s1 &amp;lt;= e2 &amp;amp;&amp;amp;</description>
     </item>
     
   </channel>
