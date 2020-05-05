@@ -76,11 +76,11 @@
     </item>
     
     <item>
-      <title>安全相关</title>
-      <link>https://zsmhub.github.io/tags/%E5%AE%89%E5%85%A8%E7%9B%B8%E5%85%B3/</link>
+      <title>Web安全</title>
+      <link>https://zsmhub.github.io/tags/web%E5%AE%89%E5%85%A8/</link>
       <pubDate>Wed, 25 Dec 2019 21:44:01 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/tags/%E5%AE%89%E5%85%A8%E7%9B%B8%E5%85%B3/</guid>
+      <guid>https://zsmhub.github.io/tags/web%E5%AE%89%E5%85%A8/</guid>
       <description></description>
     </item>
     
@@ -180,6 +180,15 @@
       <pubDate>Thu, 03 Jan 2019 22:38:49 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://zsmhub.github.io/tags/linux/</link>
+      <pubDate>Tue, 01 Jan 2019 17:32:56 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/linux/</guid>
       <description></description>
     </item>
     

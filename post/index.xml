@@ -229,6 +229,24 @@
     </item>
     
     <item>
+      <title>Web 安全攻防总结</title>
+      <link>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 02 Jan 2019 17:25:01 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/</guid>
+      <description>XSS（跨站攻击） XSS 种类 Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意</description>
+    </item>
+    
+    <item>
+      <title>Linux 基础知识</title>
+      <link>https://zsmhub.github.io/post/linux/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Tue, 01 Jan 2019 17:32:56 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/linux/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>基本命令 find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $</description>
+    </item>
+    
+    <item>
       <title>PHP 基础知识</title>
       <link>https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Jan 2019 10:37:43 +0800</pubDate>

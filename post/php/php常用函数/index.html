@@ -49,7 +49,7 @@
 <meta itemprop="description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),">
 <meta itemprop="datePublished" content="2019-06-03T19:02:58&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-03T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="1831">
+<meta itemprop="wordCount" content="1911">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> PHP </a>
             </div>
-          <span class="more-meta"> 约 1831 字 </span>
+          <span class="more-meta"> 约 1911 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -213,8 +213,8 @@ echo $timeStamp;
 </ol>
 <h2 id="其他函数">其他函数</h2>
 <ol>
-<li>密码加密哈希函数</li>
-</ol>
+<li>
+<p>密码&amp;哈希函数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -224,14 +224,14 @@ echo $timeStamp;
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">string password_hash ( string $password , int $algo [, array $options ] )
-bool password_verify ( string $password , string $hash )
-password_hash() 使用足够强度的单向散列算法创建密码的散列（hash）
-password_verify — 验证密码是否和散列值匹配
-hash_hmac — 使用 HMAC 方法生成带有密钥的哈希值
+<pre class="chroma"><code class="language-php" data-lang="php">password_hash(string $password , int $algo [, array $options ]): string // 使用足够强度的单向散列算法创建密码的散列（hash）
+password_verify(string $password , string $hash): bool // 验证密码是否和散列值匹配
+
+hash_hmac(string $algo , string $data , string $key [, bool $raw_output = FALSE ]): string // 使用 HMAC 方法生成带有密钥的哈希值
+hash_equals(string $known_string , string $user_string): bool // 可防止时序攻击的字符串比较，应用场景：密码、验证码等字段的校验。（比较两个字符串，无论它们是否相等，本函数的时间消耗是恒定的）
 </code></pre></td></tr></table>
 </div>
-</div><ol start="2">
+</div></li>
 <li>
 <p>http_build_query — 生成 URL-encode 之后的请求字符串
 string http_build_query ( mixed $query_data [, string $numeric_prefix [, string$arg_separator [, int $enc_type = PHP_QUERY_RFC1738 ]]] )</p>

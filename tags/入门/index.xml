@@ -58,6 +58,15 @@
     </item>
     
     <item>
+      <title>Linux 基础知识</title>
+      <link>https://zsmhub.github.io/post/linux/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Tue, 01 Jan 2019 17:32:56 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/linux/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>基本命令 find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $</description>
+    </item>
+    
+    <item>
       <title>PHP 基础知识</title>
       <link>https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Jan 2019 10:37:43 +0800</pubDate>

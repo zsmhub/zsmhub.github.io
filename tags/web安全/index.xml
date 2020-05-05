@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web安全 on ZsmHub - Blog</title>
-    <link>https://zsmhub.github.io/categories/web%E5%AE%89%E5%85%A8/</link>
+    <link>https://zsmhub.github.io/tags/web%E5%AE%89%E5%85%A8/</link>
     <description>Recent content in Web安全 on ZsmHub - Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
     <lastBuildDate>Wed, 25 Dec 2019 21:44:01 +0800</lastBuildDate>
     
-	<atom:link href="https://zsmhub.github.io/categories/web%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zsmhub.github.io/tags/web%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
