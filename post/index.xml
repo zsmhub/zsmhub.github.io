@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 04 May 2020 18:15:11 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 May 2020 14:13:30 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang 学习——数组指针和指针数组的区别</title>
+      <link>https://zsmhub.github.io/post/golang/golang%E5%AD%A6%E4%B9%A0%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Tue, 05 May 2020 14:13:30 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/golang%E5%AD%A6%E4%B9%A0%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>Golang中数组指针和指针数组区别 区别二者，字面上只看后两个字即可： 数组指针 ：它是一个指针，但是数据类型为数组，或者说指向数组 指针数组 ：它</description>
+    </item>
     
     <item>
       <title>理解并发与并行</title>
@@ -27,7 +36,7 @@
       <pubDate>Sun, 03 May 2020 20:45:07 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo/</guid>
-      <description>Hugo是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown</description>
+      <description>Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的</description>
     </item>
     
     <item>
