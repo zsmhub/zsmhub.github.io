@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on ZsmHub - Blog</title>
-    <link>https://zsmhub.github.io/categories/golang/</link>
-    <description>Recent content in Golang on ZsmHub - Blog</description>
+    <title>转载 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E8%BD%AC%E8%BD%BD/</link>
+    <description>Recent content in 转载 on ZsmHub - Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
     <lastBuildDate>Tue, 05 May 2020 14:13:30 +0800</lastBuildDate>
     
-	<atom:link href="https://zsmhub.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zsmhub.github.io/tags/%E8%BD%AC%E8%BD%BD/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -22,12 +22,12 @@
     </item>
     
     <item>
-      <title>Go 基础知识</title>
-      <link>https://zsmhub.github.io/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
-      <pubDate>Sun, 15 Mar 2020 17:46:46 +0800</pubDate>
+      <title>算法时间复杂度</title>
+      <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
+      <pubDate>Wed, 04 Dec 2019 21:51:34 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C++、Java 和 C# 一样属于 C 系。 Go</description>
+      <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
+      <description>时间复杂度基础概念 在计算机科学中，算法的时间复杂度（Time complexity）是一个函数，它定性描述该算法的运行时间。这是一个代表算法输</description>
     </item>
     
   </channel>
