@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>坑 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E5%9D%91/</link>
+    <description>Recent content in 坑 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Thu, 07 May 2020 16:00:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E5%9D%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHP 的一些坑</title>
+      <link>https://zsmhub.github.io/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</link>
+      <pubDate>Thu, 07 May 2020 16:00:02 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</guid>
+      <description>大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 1 2 3 4 5 6 7 8 // 使用回调函数比较数据，计算数组</description>
+    </item>
+    
+  </channel>
+</rss>

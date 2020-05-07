@@ -7,13 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 05 May 2020 14:13:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2020 16:00:02 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Golang</title>
+      <title>php</title>
+      <link>https://zsmhub.github.io/categories/php/</link>
+      <pubDate>Thu, 07 May 2020 16:00:02 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>database</title>
+      <link>https://zsmhub.github.io/categories/database/</link>
+      <pubDate>Thu, 07 May 2020 09:34:49 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
       <link>https://zsmhub.github.io/categories/golang/</link>
       <pubDate>Tue, 05 May 2020 14:13:30 +0800</pubDate>
       
@@ -40,16 +58,7 @@
     </item>
     
     <item>
-      <title>Database</title>
-      <link>https://zsmhub.github.io/categories/database/</link>
-      <pubDate>Sat, 25 Apr 2020 23:06:53 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/database/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>IM</title>
+      <title>im</title>
       <link>https://zsmhub.github.io/categories/im/</link>
       <pubDate>Fri, 17 Apr 2020 20:56:26 +0800</pubDate>
       
@@ -76,7 +85,7 @@
     </item>
     
     <item>
-      <title>Web安全</title>
+      <title>web安全</title>
       <link>https://zsmhub.github.io/categories/web%E5%AE%89%E5%85%A8/</link>
       <pubDate>Wed, 25 Dec 2019 21:44:01 +0800</pubDate>
       
@@ -85,7 +94,7 @@
     </item>
     
     <item>
-      <title>Other</title>
+      <title>other</title>
       <link>https://zsmhub.github.io/categories/other/</link>
       <pubDate>Sat, 23 Nov 2019 21:40:00 +0800</pubDate>
       
@@ -94,16 +103,7 @@
     </item>
     
     <item>
-      <title>PHP</title>
-      <link>https://zsmhub.github.io/categories/php/</link>
-      <pubDate>Wed, 04 Sep 2019 14:28:22 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/php/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
+      <title>linux</title>
       <link>https://zsmhub.github.io/categories/linux/</link>
       <pubDate>Tue, 01 Jan 2019 17:32:56 +0800</pubDate>
       

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mysql 主从复制延时案例 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Mysql 主从复制延时案例" />
+<meta property="og:description" content="MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/" />
+<meta property="article:published_time" content="2020-05-07T09:34:49+08:00" />
+<meta property="article:modified_time" content="2020-05-07T09:34:49+08:00" />
+<meta itemprop="name" content="Mysql 主从复制延时案例">
+<meta itemprop="description" content="MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制">
+<meta itemprop="datePublished" content="2020-05-07T09:34:49&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-07T09:34:49&#43;08:00" />
+<meta itemprop="wordCount" content="3683">
+
+
+
+<meta itemprop="keywords" content="Mysql 主从复制," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mysql 主从复制延时案例"/>
+<meta name="twitter:description" content="MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mysql 主从复制延时案例</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-07 </span>
+        <div class="post-category">
+            <a href="/categories/database/"> database </a>
+            </div>
+          <span class="more-meta"> 约 3683 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#案例一主库dml请求频繁">案例一：主库DML请求频繁</a>
+      <ul>
+        <li><a href="#现象描述">现象描述</a></li>
+        <li><a href="#原因分析">原因分析</a></li>
+        <li><a href="#解决思路">解决思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#案例二主库执行大事务">案例二：主库执行大事务</a>
+      <ul>
+        <li><a href="#现象描述-1">现象描述</a></li>
+        <li><a href="#原因分析-1">原因分析</a></li>
+        <li><a href="#解决思路-1">解决思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#案例三主库对大表执行ddl语句">案例三：主库对大表执行DDL语句</a>
+      <ul>
+        <li><a href="#现象描述-2">现象描述</a></li>
+        <li><a href="#原因分析-2">原因分析</a></li>
+        <li><a href="#解决思路-2">解决思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#案例四主库与从库配置不一致">案例四：主库与从库配置不一致</a>
+      <ul>
+        <li><a href="#现象描述-3">现象描述</a></li>
+        <li><a href="#原因分析-3">原因分析</a></li>
+        <li><a href="#解决思路-3">解决思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#案例五表缺乏主键或合适索引">案例五：表缺乏主键或合适索引</a>
+      <ul>
+        <li><a href="#现象描述-4">现象描述</a></li>
+        <li><a href="#原因分析-4">原因分析</a></li>
+        <li><a href="#解决思路-4">解决思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#案例六从库自身压力过大">案例六：从库自身压力过大</a>
+      <ul>
+        <li><a href="#现象描述-5">现象描述</a></li>
+        <li><a href="#原因分析-5">原因分析</a></li>
+        <li><a href="#解决思路-5">解决思路</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#转载声明">转载声明</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。</p>
+<p>如果主从复制之间出现延时，就会影响主从数据的一致性。</p>
+<p>生产环境中延时问题的分析及解决，我们将最常见的主从复制延时案例总结为几类，以下是相关案例的现象描述、原因分析和解决方法汇总。</p>
+<h2 id="案例一主库dml请求频繁">案例一：主库DML请求频繁</h2>
+<p>某些用户在业务高峰期间，特别是对于数据库主库有大量的写请求操作，即大量insert、delete、update等并发操作的情况下，会出现主从复制延时问题。</p>
+<h3 id="现象描述">现象描述</h3>
+<p>我们通过观察主库的写操作的QPS的值，会看到主库的写操作的QPS值突然升高，伴随主从复制延时的上升，可以判断是由于主库DML请求频繁原因造成的。</p>
+<p><img src="https://github.com/zsmhub/markdown-images/blob/master/blog/6913c3662b5e40cb9bb98c98bbde90ed.jpeg?raw=true" alt="请先科学上网"></p>
+<p>如上图，可以看出，在17:58分左右QPS突增，查看控制台上的写相关QPS，也有相应提升。而QPS突增的时间，对应的延时也在逐步上升，如下图所示。</p>
+<p><img src="https://github.com/zsmhub/markdown-images/blob/master/blog/9b9ece56472641ad9b149418cd5a76da.jpeg?raw=true" alt="请先科学上网"></p>
+<h3 id="原因分析">原因分析</h3>
+<p>经过分析，我们认为这是由于主库大量的写请求操作，在短时间产生了大量的binlog。这些操作需要全部同步到从库，并且执行，因此产生了主从的数据复制延时。</p>
+<p>从深层次分析原因，是因为在业务高峰期间的主库写入数据是并发写入的，而从库SQL Thread为单线程回放binlog日志，很容易造成relaylog堆积，产生延时。</p>
+<h3 id="解决思路">解决思路</h3>
+<p>如果是MySQL 5.7以下的版本，可以做分片(sharding)，通过水平扩展(scale out)的方法打散写请求，提升写请求写入binlog的并行度。</p>
+<p>如果是MySQL 5.7以上的版本，在MySQL 5.7，使用了基于逻辑时钟(Group Commit)的并行复制。而在MySQL 8.0，使用了基于Write Set的并行复制。这两种方案都能够提升回放binlog的性能，减少延时。</p>
+<h2 id="案例二主库执行大事务">案例二：主库执行大事务</h2>
+<p>大事务指一个事务的执行，耗时非常长。常见产生大事务的语句有：</p>
+<p>使用了大量速度很慢的导入数据语句，比如：INSERT INTO $tb、SELECT * FROM $tb、LOAD DATA INFILE等；
+使用了UPDATE、DELETE语句，对于一个很大的表进行全表的UPDATE和DELETE等。
+当这个事务在从库执行回放执行操作时，就有可能会产生主从复制延时。</p>
+<h3 id="现象描述-1">现象描述</h3>
+<p>我们从SHOW SLAVE STATUS的结果进行分析，会发现 Exec_Master_Log_Pos 字段一直未变，且second_behinds_master持续增加，而 Slave_SQL_Running_State 字段的值为”Reading event from the relay log”；同时，分析主库binlog，看主库当前执行的事务，会发现有一些大事务，这样基本可以判定是执行大事务的原因导致的主从复制延时。</p>
+<p><img src="https://github.com/zsmhub/markdown-images/blob/master/blog/6eb23f89803041f7a69f827447641617.jpeg?raw=true" alt="请先科学上网"></p>
+<h3 id="原因分析-1">原因分析</h3>
+<p>当大事务记录入binlog并同步到从库之后，从库执行这个事务的操作耗时也非常长，这段时间，就会产生主从复制延时。</p>
+<p>举个例子，假如主库花费200s更新了一张大表，在主从库配置相近的情况下，从库也需要花几乎同样的时间更新这张大表，此时从库延时开始堆积，后续的events无法更新。</p>
+<h3 id="解决思路-1">解决思路</h3>
+<p>对于这种情况引起的主从复制延时，我们的改进方法是：拆分大事务语句到若干小事务中，这样能够进行及时提交，减小主从复制延时。</p>
+<h2 id="案例三主库对大表执行ddl语句">案例三：主库对大表执行DDL语句</h2>
+<p>DDL全称为 Data Definition Language ，指一些对表结构进行修改操作的语句，比如，对表加一个字段或者加一个索引等等。当DDL对主库大表执行DDL语句的情况下，可能会产生主从复制延时。</p>
+<h3 id="现象描述-2">现象描述</h3>
+<p>从现象上，如果从库执行SHOW SLAVE STATUS的输出中，检查Exec_Master_Log_Pos一直未动，在排除主库执行大事务的情况下，那么就有可能是在执行大表的 DDL。这一点结合分析主库binlog，看主库当前执行的事务就可以进行确认。</p>
+<p>DDL语句的执行情况，可以进一步细分现象来更好地判断：</p>
+<p>1.DDL未开始，被阻塞，这时SHOW SLAVE STATUS的结果能检查到Slave_SQL_Running_State为waiting for table metadata lock，且Exec_Master_Log_Pos不变；</p>
+<p><img src="https://github.com/zsmhub/markdown-images/blob/master/blog/0537ce3ffa01411ab524a726488839fb.jpeg?raw=true" alt="请先科学上网"></p>
+<p>2.DDL正在执行，SQL Thread单线程应用导致延时增加。这种情况下观察SHOW SLAVE STATU的结果能发现Slave_SQL_Running_State为altering table，而Exec_Master_Log_Pos不变。</p>
+<p><img src="https://github.com/zsmhub/markdown-images/blob/master/blog/c59350bb17f14f699db6fcf7e079b680.jpeg?raw=true" alt="请先科学上网"></p>
+<p>如果有上述的现象，那么很有可能主库对大表执行DDL语句，同步到从库并在从库回放时，就产生了主从复制延时。</p>
+<h3 id="原因分析-2">原因分析</h3>
+<p>DDL导致的主从复制延时的原因和大事务类似，也是因为从库执行DDL的binlog较慢而产生了主从复制延时。</p>
+<h3 id="解决思路-2">解决思路</h3>
+<p>遇到这种情况，我们主要通过SHOW PROCESSLIST或对information_schema.innodb_trx做查询，来找到阻塞DDL语句，并KILL掉相关查询，让DDL正常在从库执行。</p>
+<p>DDL本身造成的延时难以避免，建议考虑：</p>
+<p>避免业务高峰，尽量安排在业务低峰期执行 ；
+set sql_log_bin=0后，分别在主从库上手动执行DDL（此操作对于某些DDL操作会造成数据不一致，请务必严格测试），这一条如果用户使用云数据库UDB，可以联系UCloud UDB运维团队进行协助操作。</p>
+<h2 id="案例四主库与从库配置不一致">案例四：主库与从库配置不一致</h2>
+<p>如果主库和从库使用了不同的计算资源和存储资源，或者使用了不同的内核调教参数，可能会造成主从不一致。</p>
+<h3 id="现象描述-3">现象描述</h3>
+<p>我们会详细比对主库和从库的性能监控数据，如果发现监控数据差异巨大，结合查看主从的各个配置情况，即可作出明确判断。</p>
+<h3 id="原因分析-3">原因分析</h3>
+<p>各种硬件或者资源的配置差异都有可能导致主从的性能差异，从而导致主从复制延时发生：</p>
+<p>硬件上：比如，主库实例服务器使用SSD磁盘，而从库实例服务器使用普通SAS盘，那么主库产生的写入操作在从库上不能马上消化掉，就产生了主从复制延时；</p>
+<p>配置上：比如，RAID卡写策略不一致、OS内核参数设置不一致、MySQL落盘策略不一致等，都是可能的原因。</p>
+<h3 id="解决思路-3">解决思路</h3>
+<p>考虑尽量统一DB机器的配置（包括硬件及选项参数）。甚至对于某些OLAP业务，从库实例硬件配置需要略高于主库。</p>
+<h2 id="案例五表缺乏主键或合适索引">案例五：表缺乏主键或合适索引</h2>
+<p>如果数据库的表缺少主键或者合适索引，在主从复制的binlog_format设置为’row’的情况下，可能会产生主从复制延时。</p>
+<h3 id="现象描述-4">现象描述</h3>
+<p>我们进行数据库检查时，会发现：</p>
+<p>观察SHOW SLAVE STATUS的输出，发现Slave_SQL_Running_State为Reading event from the relay log；</p>
+<p>SHOW OPEN TABLES WHERE in_use=1的表一直存在；</p>
+<p>观察SHOW SLAVE STATUS的Exec_Master_Log_Pos字段不变；</p>
+<p>mysqld进程的CPU接近100%（无读业务时），IO压力不大。</p>
+<p>这些现象出现的情况下，可以认为很可能有表缺乏主键或唯一索引。</p>
+<h3 id="原因分析-4">原因分析</h3>
+<p>在主从复制的binlog_format设置为’row’的情况下，比如有这样的一个场景，主库更新一张500万表中的20万行数据。binlog在row格式下，记录到binlog的为20万次update操作，也就是每次操作更新1条记录。如果这条语句恰好有不好的执行计划，如发生全表扫描，那么每一条update语句需要全表扫描。此时SQL Thread重放将特别慢，造成严重的主从复制延时。</p>
+<h3 id="解决思路-4">解决思路</h3>
+<p>这种情况下，我们会去检查表结构，保证每个表都有显式自增主键，并协助用户建立合适索引。</p>
+<h2 id="案例六从库自身压力过大">案例六：从库自身压力过大</h2>
+<p>有时候，从库性能压力很大的情况下，跟不上主库的更新速度，就产生了主从复制延时。</p>
+<h3 id="现象描述-5">现象描述</h3>
+<p>观察数据库实例时，会发现CPU负载过高，IO利用率过高等现象，这些导致SQL Thread应用过慢。这样就可以判断是因为从库自身压力过大引起主从复制延时。</p>
+<h3 id="原因分析-5">原因分析</h3>
+<p>部分UCloud用户对于数据库的主从会使用读写分离模式，读请求大部分在从库上执行。在业务有大量读请求的场景下，从库会产生比主库大得多的性能压力。有的用户甚至会在从库运行十分耗费计算资源的OLAP业务，这也对从库造成了更高的性能挑战，这些都会造成主从复制的延时。</p>
+<h3 id="解决思路-5">解决思路</h3>
+<p>这种情况下，我们会建议用户建立更多从库，打散读请求，降低现有从库实例的压力。对于OLAP业务来说，可以专门建立一个从库来做OLAP业务，并对这个从库，允许适当的主从复制延时。</p>
+<h2 id="总结">总结</h2>
+<p>在使用MySQL的主从复制模式进行数据复制时，主从复制延时是一个需要考量的关键因素。它会影响数据的一致性，进而影响数据库高可用的容灾切换。</p>
+<p>在遇到数据库之间出现主从复制延时的情况下，我们团队基于过往经验，归纳出以下方法与流程来协助排查问题：</p>
+<p>通过 SHOW SLAVE STATUS 与 SHOW PROCESSLIST 查看现在从库的情况。（顺便也可排除在从库备份时的类似原因）；</p>
+<p>若Exec_Master_Log_Pos不变，考虑大事务、DDL、无主键，检查主库对应的binlog及position即可；</p>
+<p>若Exec_Master_Log_Pos变化，延时逐步增加，考虑从库机器负载，如IO、CPU等，并考虑主库写操作与从库自身压力是否过大。</p>
+<h2 id="转载声明">转载声明</h2>
+<blockquote>
+<p>作者：资深专家丁顺&amp;张苏宁</p>
+<p>链接：http://blog.ucloud.cn/archives/4132</p>
+<p>来源：UCloud技术</p>
+<p>著作权归作者所有，任何形式的转载都请联系作者</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-07
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://github.com/zsmhub/markdown-images/blob/master/wechat-qr-code.png?raw=true" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://raw.githubusercontent.com/zsmhub/markdown-images/master/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/mysql-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/">Mysql 主从复制</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">PHP 的一些坑</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/golang/golang%E5%AD%A6%E4%B9%A0%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/">
+            <span class="next-text nav-default">Golang 学习——数组指针和指针数组的区别</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-05-07 09:34:49 \x2b0800 CST',
+        title: 'Mysql 主从复制延时案例',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
