@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>规范 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E8%A7%84%E8%8C%83/</link>
+    <description>Recent content in 规范 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Fri, 08 May 2020 08:51:58 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E8%A7%84%E8%8C%83/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHP注释规范</title>
+      <link>https://zsmhub.github.io/post/php/php%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Fri, 08 May 2020 08:51:58 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/php%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/</guid>
+      <description>函数/方法注释规范 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 /** * @param 定义函数或者方法的参数信息 * @return 定义函数或者方法的返回信息 * @throws 指明</description>
+    </item>
+    
+  </channel>
+</rss>

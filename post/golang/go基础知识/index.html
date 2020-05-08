@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
 <meta property="article:published_time" content="2020-03-15T17:46:46+08:00" />
-<meta property="article:modified_time" content="2020-05-04T17:46:46+08:00" />
+<meta property="article:modified_time" content="2020-05-08T17:46:46+08:00" />
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go">
 <meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-04T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="8313">
+<meta itemprop="dateModified" content="2020-05-08T17:46:46&#43;08:00" />
+<meta itemprop="wordCount" content="8573">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8313 字 </span>
-          <span class="more-meta"> 预计阅读 17 分钟 </span>
+          <span class="more-meta"> 约 8573 字 </span>
+          <span class="more-meta"> 预计阅读 18 分钟 </span>
         
       </div>
     </header>
@@ -714,28 +714,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">// int和string互转
-strconv.Itoa(i int) string //将整数转换为十进制字符串形式
-strconv.Atoi(s string) (int, error) //将字符串转换为十进制整数
-
-// int64和string互转
-i := int64(123)
-s := strconv.FormatInt(i, 10) // int64转string
-i, err := strconv.ParseInt(s, 10, 64) // string转int64
-
-// uint64和string互转
-i := uint(18446744073709551615)
-str := strconv.FormatUint(i, 10) // uint64转string
-i, err := strconv.ParseUint(s, 10, 64) // string转int64
-
-// float和string互转
-v := 3.1415926535
-s1 := strconv.FormatFloat(v, &#39;E&#39;, -1, 32) // float32转string
-s2 := strconv.FormatFloat(v, &#39;E&#39;, -1, 64) // float64转string
-s := &#34;3.1415926535&#34;
-v1, err := strconv.ParseFloat(v, 32) // string转float32
-v2, err := strconv.ParseFloat(v, 64) // string转float64
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// int和string互转，Atoi代表什么意思, A 就是ASCII, i就是integer,所以Atoi= ASCII to integer. ItoA= Integer to ASCII.
+</span><span class="c1"></span><span class="nx">strconv</span><span class="p">.</span><span class="nf">Itoa</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="c1">// 将整数转换为十进制字符串形式[读法：i to a]
+</span><span class="c1"></span><span class="nx">strconv</span><span class="p">.</span><span class="nf">Atoi</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="c1">// 将字符串转换为十进制整数 [读法：a to i]
+</span><span class="c1"></span>
+<span class="c1">// int64和string互转
+</span><span class="c1"></span><span class="nx">i</span> <span class="o">:=</span> <span class="nb">int64</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="nx">s</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatInt</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// int64转string
+</span><span class="c1"></span><span class="nx">i</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseInt</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="c1">// string转int64，Tip: strconv.ParseInt(s string, base int, bitSize int) 的 bitSize 参数不会将字符串转换为您选择的类型, 而只是在此处将结果限制为特定的“位”，如果想要得到你要的 int 类型必须手动转换类型.
+</span><span class="c1"></span>
+<span class="c1">// uint64和string互转
+</span><span class="c1"></span><span class="nx">i</span> <span class="o">:=</span> <span class="nb">uint</span><span class="p">(</span><span class="mi">18446744073709551615</span><span class="p">)</span>
+<span class="nx">str</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatUint</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// uint64转string
+</span><span class="c1"></span><span class="nx">i</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseUint</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="c1">// string转int64
+</span><span class="c1"></span>
+<span class="c1">// float和string互转
+</span><span class="c1"></span><span class="nx">v</span> <span class="o">:=</span> <span class="mf">3.1415926535</span>
+<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatFloat</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="sc">&#39;E&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">// float32转string
+</span><span class="c1"></span><span class="nx">s2</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatFloat</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="sc">&#39;E&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="c1">// float64转string
+</span><span class="c1"></span><span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;3.1415926535&#34;</span>
+<span class="nx">v1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseFloat</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">// string转float32
+</span><span class="c1"></span><span class="nx">v2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseFloat</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="c1">// string转float64
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1572,6 +1572,38 @@ for i := 0; i &lt; len(r); i++ {
 <li>os.Exit(0) 会结束当前程序，不管你三七二十一</li>
 </ul>
 </li>
+<li>
+<p>字符串拼接方式推荐</p>
+<ul>
+<li>
+<p>strings.Builder // 性能最好，不推荐被拷贝。当你试图拷贝 strings.Builder 并写入的时候，你的程序就会崩溃。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">builder</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Builder</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder</span><span class="p">)</span> <span class="nf">Write</span><span class="p">(</span><span class="nx">p</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder</span><span class="p">)</span> <span class="nf">WriteByte</span><span class="p">(</span><span class="nx">c</span> <span class="kt">byte</span><span class="p">)</span> <span class="kt">error</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder</span><span class="p">)</span> <span class="nf">WriteRune</span><span class="p">(</span><span class="nx">r</span> <span class="kt">rune</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder</span><span class="p">)</span> <span class="nf">WriteString</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+<span class="nx">builder</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="c1">// 获取最终的字符串
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>连接符 <code>+</code>: 字符串类型的拼接方式</p>
+</li>
+<li>
+<p>fmt.Sprintf()：多种数据类型的拼接方式</p>
+</li>
+</ul>
+</li>
 </ol>
 <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
 <div class="highlight"><div class="chroma">
@@ -1610,7 +1642,7 @@ for i := 0; i &lt; len(r); i++ {
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-05-04
+        2020-05-08
         
     </span>
   </p>
