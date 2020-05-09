@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mysql基础知识一 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&amp;#39;2019-12-12 12:22:33&amp;#39;, format) -- 日期格式化 FROM_UNIXTIME(&amp;#39;时间戳&amp;#39;,&amp;#39;%Y年%m月%d %H:%i:%s&amp;#39;)" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Mysql基础知识一" />
+<meta property="og:description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y年%m月%d %H:%i:%s&#39;)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/" />
+<meta property="article:published_time" content="2019-01-09T22:13:42+08:00" />
+<meta property="article:modified_time" content="2019-01-09T22:13:42+08:00" />
+<meta itemprop="name" content="Mysql基础知识一">
+<meta itemprop="description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y年%m月%d %H:%i:%s&#39;)">
+<meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-09T22:13:42&#43;08:00" />
+<meta itemprop="wordCount" content="1592">
+
+
+
+<meta itemprop="keywords" content="database,入门," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mysql基础知识一"/>
+<meta name="twitter:description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y年%m月%d %H:%i:%s&#39;)"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mysql基础知识一</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-09 </span>
+        <div class="post-category">
+            <a href="/categories/database/"> database </a>
+            </div>
+          <span class="more-meta"> 约 1592 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#常用函数">常用函数</a></li>
+    <li><a href="#常用命令">常用命令</a></li>
+    <li><a href="#常用案例">常用案例</a></li>
+    <li><a href="#其他">其他</a></li>
+    <li><a href="#ddl">DDL</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="常用函数">常用函数</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="nf">date_format</span><span class="p">(</span><span class="s1">&#39;2019-12-12 12:22:33&#39;</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>  <span class="c1">-- 日期格式化
+</span><span class="c1"></span><span class="nf">FROM_UNIXTIME</span><span class="p">(</span><span class="s1">&#39;时间戳&#39;</span><span class="p">,</span><span class="s1">&#39;%Y年%m月%d %H:%i:%s&#39;</span><span class="p">)</span>   <span class="c1">-- 时间戳转换为日期格式
+</span><span class="c1"></span><span class="nf">date_add</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">DUE_DAY</span><span class="p">,</span> <span class="k">INTERVAL</span> <span class="mi">90</span> <span class="n">day</span><span class="p">)</span> <span class="c1">-- 日期增加90天
+</span><span class="c1"></span><span class="nf">UNIX_TIMESTAMP</span><span class="p">(</span><span class="s1">&#39;2015-04-29&#39;</span><span class="p">)</span>  <span class="c1">-- 日期转换成时间戳
+</span><span class="c1"></span>
+<span class="nf">concat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span>  <span class="c1">--  字符串 s1,s2 等多个字符串合并为一个字符串
+</span><span class="c1"></span><span class="nf">concat_ws</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span>  <span class="c1">-- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符
+</span><span class="c1"></span><span class="nf">group_concat</span><span class="p">(</span><span class="k">column</span><span class="p">)</span>  <span class="c1">-- 将某列的所有值合并成一个字符串
+</span><span class="c1"></span>
+<span class="nf">format</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>  <span class="c1">-- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位
+</span><span class="c1"></span><span class="k">convert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">type</span><span class="p">)</span><span class="o">/</span><span class="nf">cast</span><span class="p">(</span><span class="n">value</span> <span class="k">as</span> <span class="err">类型</span><span class="p">)</span>  <span class="c1">-- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。
+</span><span class="c1"></span><span class="n">eg</span><span class="p">:</span> <span class="k">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span><span class="p">,</span> <span class="kt">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="err">或者</span> <span class="nf">cast</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span> <span class="k">as</span> <span class="kt">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1">-- 保留小数后两位
+</span><span class="c1"></span>
+<span class="nf">IFNULL</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">)</span> <span class="c1">-- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。
+</span><span class="c1"></span><span class="nf">find_in_set</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>  <span class="c1">-- 返回在字符串s2中与s1匹配的字符串的位置 ,  SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;);
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="常用命令">常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
+</span><span class="c1"></span>
+<span class="k">explain</span><span class="o">/</span><span class="k">desc</span> <span class="k">select</span> <span class="o">*</span>  <span class="k">from</span> <span class="k">table</span><span class="p">;</span> <span class="c1">-- 查看查询语句性能，即查看执行计划
+</span><span class="c1"></span><span class="k">desc</span> <span class="n">table_name</span><span class="p">;</span>  <span class="c1">-- 查看 table 等结构
+</span><span class="c1"></span><span class="k">show</span> <span class="k">index</span> <span class="k">from</span> <span class="n">table_name</span><span class="p">;</span>  <span class="c1">-- 查看索引信息
+</span><span class="c1"></span><span class="k">create</span> <span class="k">index</span> <span class="k">on</span> <span class="k">table</span><span class="p">(</span><span class="nf">id</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>  <span class="c1">-- 增加前缀索引
+</span><span class="c1"></span>
+<span class="k">SHOW</span> <span class="n">BINLOG</span> <span class="n">EVENTS</span> <span class="k">LIMIT</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">-- 查看 binlog 日志
+</span><span class="c1"></span>
+<span class="k">select</span> <span class="o">@@</span><span class="n">global</span><span class="p">.</span><span class="n">sql_mode</span><span class="p">;</span> <span class="c1">-- 查询 时 sql_mode
+</span><span class="c1"></span>
+<span class="k">show</span> <span class="n">variables</span> <span class="k">like</span> <span class="s2">&#34;%time_zone%&#34;</span><span class="p">;</span> <span class="c1">-- 查看时区
+</span><span class="c1"></span>
+<span class="c1">-- 查询表所有字段的名称
+</span><span class="c1"></span><span class="k">select</span> <span class="n">COLUMN_NAME</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">COLUMNS</span> <span class="k">where</span> <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;your_table_name&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 查询一个表中所有字段的名字和注释
+</span><span class="c1"></span><span class="k">SELECT</span> <span class="n">COLUMN_NAME</span><span class="p">,</span> <span class="n">COLUMN_COMMENT</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">Columns</span> <span class="k">WHERE</span> <span class="n">table_name</span><span class="o">=</span><span class="s1">&#39;provision&#39;</span> <span class="k">AND</span> <span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;test&#39;</span>
+
+<span class="c1">-- 授权root用户新ip可以访问：
+</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
+<span class="k">flush</span> <span class="k">privileges</span><span class="p">;</span> <span class="c1">-- 刷新激活变更操作
+</span><span class="c1"></span>
+<span class="c1">-- 导出数据库『不用进入mysql命令界面』
+</span><span class="c1"></span><span class="n">mysqldump</span> <span class="o">-</span><span class="n">u</span> <span class="err">用户名</span> <span class="o">-</span><span class="n">p</span> <span class="err">数据库名</span> <span class="o">&gt;</span> <span class="err">导出的文件名</span>
+
+<span class="c1">-- 创建新用户并授权root用户所有权限且所有ip可以访问：
+</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
+
+<span class="c1">-- 创建新用户并授权root用户新ip可以访问某个数据库：
+</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">database_name</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
+
+<span class="c1">-- 创建只读用户：
+</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;db_read&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;A1ta939a@Qn*iTls&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="常用案例">常用案例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1">-- 分析数据表大小
+</span><span class="c1"></span><span class="k">SELECT</span>
+<span class="o">*</span><span class="p">,</span>
+<span class="c1">-- 数据表大小
+</span><span class="c1"></span><span class="nf">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">DATA_LENGTH</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">data_size</span><span class="o">`</span><span class="p">,</span>
+<span class="c1">-- 索引大小
+</span><span class="c1"></span><span class="nf">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">INDEX_LENGTH</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">index_size</span><span class="o">`</span><span class="p">,</span>
+<span class="c1">-- 碎片大小
+</span><span class="c1"></span><span class="nf">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">DATA_FREE</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">free_size</span><span class="o">`</span>
+<span class="k">FROM</span> <span class="o">`</span><span class="n">information_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="kp">TABLES</span><span class="o">`</span>
+<span class="k">WHERE</span>
+<span class="kp">ENGINE</span><span class="o">=</span><span class="s1">&#39;InnoDB&#39;</span>
+<span class="k">AND</span> <span class="n">TABLE_NAME</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">&#39;bi_mid_layer_cache&#39;</span><span class="p">,</span> <span class="s1">&#39;bi_credit_apply&#39;</span><span class="p">)</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">DATA_LENGTH</span> <span class="k">DESC</span>
+<span class="p">;</span>
+
+<span class="c1">-- 查询某张表的字段注释
+</span><span class="c1"></span><span class="k">select</span>
+<span class="n">COLUMN_NAME</span> <span class="err">字段名</span><span class="p">,</span>
+<span class="n">column_comment</span> <span class="err">字段说明</span><span class="p">,</span>
+<span class="n">column_type</span> <span class="err">字段类型</span><span class="p">,</span>
+<span class="n">column_key</span> <span class="err">约束</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span>
+<span class="k">where</span> <span class="n">table_schema</span> <span class="o">=</span> <span class="s1">&#39;数据库名&#39;</span>
+<span class="k">and</span> <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;表名&#39;</span> <span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="其他">其他</h2>
+<ol>
+<li>
+<p>数据库目录：</p>
+<ul>
+<li>db.opt  //存放数据库配置</li>
+<li>table.frm  //存放表结构</li>
+<li>table.MYD  //存放表数据</li>
+<li>table.MYI  //存放表索引</li>
+</ul>
+</li>
+<li>
+<p>MySQL对InnoDB存储引擎的表进行行级锁定，对MyISAM存储引擎的表进行表级锁定。</p>
+</li>
+<li>
+<p>浮点数计算存在误差问题，如7.22f-7.0f = 0.21999979;  尽量避免做浮点数比较</p>
+</li>
+<li>
+<p>mysql终端连接方式：mysql -uroot -p&rsquo;password&rsquo; &ndash;socket=/var/lib/mysql/mysql.sock</p>
+</li>
+<li>
+<p>linux 下 mysql 数据库密码修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">-&gt; mysql -uroot -p
+-&gt; Enter password: 【输入密码】
+mysql&gt; use mysql<span class="p">;</span>
+mysql&gt; update user <span class="nb">set</span> <span class="nv">authentication_string</span><span class="o">=</span>password<span class="o">(</span><span class="s2">&#34;test&#34;</span><span class="o">)</span> where <span class="nv">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+mysql&gt; flush privileges<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>union 对两个结果集进行并集操作，重复数据只显示一次</p>
+<p>Union All，对两个结果集进行并集操作，重复数据全部显示</p>
+</li>
+<li>
+<p>char和varchar使用说明: 根据字符串长度确定，凡是固定长度的字符串或者类似固定长度的字符串一律用char。比如身份证号码，手机号码，银行卡号，MD5，哈希值等这是字符串是固定长度的，毫无疑问用char，还有一类是基本固定长度但是略有出入的，比如中国人的姓名等，一般长度可能是2~5个汉字，这类信息也非常适合用char来存储，只要分配一些略大于通常长度即可。</p>
+</li>
+<li>
+<p>having: having 子句在聚合后对组记录进行筛选, HAVING 子句总是包含聚集函数</p>
+<p>eg: select payment_channel_id, count(1) as total from bi_payment_channel group by payment_channel_id having total&gt;1</p>
+</li>
+<li>
+<p>MySql的like语句中的通配符：百分号、下划线和escape</p>
+<p><img src="/images/QQ20200509-225612@2x.png" alt="图片"></p>
+</li>
+</ol>
+<h2 id="ddl">DDL</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1">-- 查看已创建数据库的创建语句
+</span><span class="c1"></span><span class="k">show</span> <span class="k">create</span> <span class="k">database</span> <span class="n">database_name</span><span class="p">;</span>
+
+<span class="c1">-- 创建数据库
+</span><span class="c1"></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">`</span><span class="n">auto_audit</span><span class="o">`</span> <span class="cm">/*!40100 DEFAULT CHARACTER SET utf8 */</span>
+
+<span class="c1">-- 创建新表
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="nf">table_name</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="kp">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">title</span> <span class="kt">text</span><span class="p">,</span>
+    <span class="kt">date</span> <span class="kt">datetime</span> <span class="k">default</span> <span class="no">NULL</span><span class="p">,</span>
+    <span class="kt">timestamp</span> <span class="kt">timestamp</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="k">default</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+    <span class="p">)</span><span class="kp">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+
+<span class="c1">-- 重命名表
+</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">table_name_old</span> <span class="k">RENAME</span> <span class="n">table_name_new</span><span class="p">;</span>
+
+<span class="c1">-- 删除表
+</span><span class="c1"></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">table_name</span><span class="p">;</span>
+
+<span class="c1">-- 删除数据库
+</span><span class="c1"></span><span class="k">DROP</span> <span class="k">DATABASE</span> <span class="n">database_name</span><span class="p">;</span>
+
+<span class="c1">-- 增加字段
+</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">ADD</span> <span class="n">teacher_name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="n">COMMENT</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 编辑字段
+</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">CHANGE</span> <span class="n">name</span> <span class="n">stu_name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="no">NULL</span><span class="p">;</span>
+
+<span class="c1">-- 删除字段
+</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">DROP</span> <span class="n">teacher_name</span><span class="p">;</span>
+
+<span class="c1">-- 从另一张表获取数据到新表
+</span><span class="c1"></span><span class="k">insert</span> <span class="k">into</span> <span class="nf">tableA</span><span class="p">(</span><span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span><span class="p">)</span> <span class="p">(</span><span class="k">select</span> <span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span> <span class="k">from</span> <span class="n">tableB</span><span class="p">)</span>
+<span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="o">`</span><span class="n">fieldA</span><span class="o">`</span> <span class="o">=</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">`</span><span class="n">fieldA</span><span class="o">`</span><span class="p">)</span>
+
+<span class="c1">-- 设置自动递增值
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">tablename</span> <span class="kp">auto_increment</span><span class="o">=</span><span class="n">num</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-01-09
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/database/">database</a>
+          <a href="/tags/%E5%85%A5%E9%97%A8/">入门</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/php/opcache%E4%B8%8Eopcode/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Opcache与Opcode</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/database/memcached/">
+            <span class="next-text nav-default">Memcached</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-01-09 22:13:42 \x2b0800 CST',
+        title: 'Mysql基础知识一',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

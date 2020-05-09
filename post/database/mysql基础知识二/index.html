@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mysql基础知识二 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="一、基础知识 表存储引擎必须用InnoDB 字符集必须使用utf8mb4 （utf8不是真utf8） 禁止使用存储过程、视图、触发器、Event 命名" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Mysql基础知识二" />
+<meta property="og:description" content="一、基础知识 表存储引擎必须用InnoDB 字符集必须使用utf8mb4 （utf8不是真utf8） 禁止使用存储过程、视图、触发器、Event 命名" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/" />
+<meta property="article:published_time" content="2020-04-03T22:45:33+08:00" />
+<meta property="article:modified_time" content="2020-04-03T22:45:33+08:00" />
+<meta itemprop="name" content="Mysql基础知识二">
+<meta itemprop="description" content="一、基础知识 表存储引擎必须用InnoDB 字符集必须使用utf8mb4 （utf8不是真utf8） 禁止使用存储过程、视图、触发器、Event 命名">
+<meta itemprop="datePublished" content="2020-04-03T22:45:33&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-03T22:45:33&#43;08:00" />
+<meta itemprop="wordCount" content="1797">
+
+
+
+<meta itemprop="keywords" content="database,入门," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mysql基础知识二"/>
+<meta name="twitter:description" content="一、基础知识 表存储引擎必须用InnoDB 字符集必须使用utf8mb4 （utf8不是真utf8） 禁止使用存储过程、视图、触发器、Event 命名"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mysql基础知识二</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-04-03 </span>
+        <div class="post-category">
+            <a href="/categories/database/"> database </a>
+            </div>
+          <span class="more-meta"> 约 1797 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一基础知识">一、基础知识</a></li>
+    <li><a href="#二事务锁索引数据库性能的死亡三角">二、事务、锁、索引，数据库性能的死亡三角</a></li>
+    <li><a href="#三数据库主从不一致如何破">三、数据库主从不一致，如何破</a></li>
+    <li><a href="#四数据库层面的挑战主要在哪">四、数据库层面的挑战主要在哪</a></li>
+    <li><a href="#五数据库性能优化有哪些手段">五、数据库性能优化有哪些手段</a></li>
+    <li><a href="#六以上优化都做了还有哪些坑">六、以上优化都做了，还有哪些坑</a></li>
+    <li><a href="#七一些坑和注意点">七、一些坑和注意点</a></li>
+    <li><a href="#八数据库不仅仅是mysql">八、数据库不仅仅是MySQL</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="一基础知识">一、基础知识</h2>
+<ol>
+<li>表存储引擎必须用InnoDB</li>
+<li>字符集必须使用utf8mb4 （utf8不是真utf8）</li>
+<li>禁止使用存储过程、视图、触发器、Event</li>
+<li>命名规则：库、表、字段列都必须小写，用 _ 分隔</li>
+<li>表必须有主键，默认推荐使用unsignd整形，命名为id，自增</li>
+<li>字段必须为not null，原则上每个字段必须有默认值</li>
+<li>合理建立索引</li>
+<li>三范式与反范式（业务出发，权衡利弊、适当冗余）</li>
+<li>分库分表：垂直拆分（分库）、水平拆分（分表）
+分表：垂直分割（一表变多表，结构相同）、水平分割（大表拆小表）</li>
+<li>数据库集群：主从架构</li>
+</ol>
+<h2 id="二事务锁索引数据库性能的死亡三角">二、事务、锁、索引，数据库性能的死亡三角</h2>
+<p>A. 事务</p>
+<ol>
+<li>事务特性ACID：原子性、一致性、隔离性、持久性</li>
+<li>事务的隔离级别：
+<ul>
+<li>Read uncommited（未提交读），无法保证；级别最低，一般不用</li>
+<li>Read commited（可提交读），可避免脏读；不加锁</li>
+<li>Repeatable read（可重复读），可避免脏读、不可重复读；Mysql默认级别，对数据加锁</li>
+<li>Serializable（串行化），可避免脏读、不可重复读、幻读；会锁表，慎用</li>
+</ul>
+</li>
+</ol>
+<p>B. 锁</p>
+<ol>
+<li>表级锁（MyISAM）</li>
+<li>行级锁（InnoDB），记录加锁，可同时读不可同时写；粒度小、并发度高；会出现死锁</li>
+<li>InnoDB行锁，用不到索引会变成表锁</li>
+<li>四类锁
+<ul>
+<li>乐观锁：更新时认为不会冲突，不特殊处理，通过代码判断冲突</li>
+<li>悲观锁：认为更新时会冲突，加锁</li>
+<li>共享锁： lock in share mode，数据库内置实现，多个事务同时操作，但必须等待其他事务完成才能继续</li>
+<li>排他锁：for update，同时只能一个事务获得锁</li>
+</ul>
+</li>
+<li>默认已经是共享锁，一般我们只关注使用排他锁（for update）</li>
+</ol>
+<p>C. 索引</p>
+<ol>
+<li>索引类型：
+<ul>
+<li>普通索引：加快数据检索</li>
+<li>唯一索引：避免重复</li>
+<li>主键索引：效率最高</li>
+<li>全文索引：一般不用，通过第三方工具来实现（ES、Sphinx等）</li>
+</ul>
+</li>
+<li>索引的好处：提高检索效率，减少检索数据量、降低IO成本</li>
+<li>索引的弊端：增加增删改的操作IO、占用较大的存储空间</li>
+<li>什么时候该用索引？
+<ul>
+<li>频繁作为条件查询的字段</li>
+<li>唯一性太差的字段不适宜单独索引，数据的区分度过低</li>
+</ul>
+</li>
+<li>索引字段类型：字符串字段查询时一定要加引号，否则索引失效引发全表扫描</li>
+<li>索引优化：善用explain分析索引有效性</li>
+</ol>
+<h2 id="三数据库主从不一致如何破">三、数据库主从不一致，如何破</h2>
+<ul>
+<li>数据库集群：一主多从，主从复制，读写分离【主库负责写，主库和从库都负责读】</li>
+<li>目的：降低主库压力，提升读效率</li>
+<li>问题产生：主从同步存在延时</li>
+<li>写请求-&gt;读请求（主从同步未完成，读到不一致的脏数据）-&gt;主从同步完成</li>
+</ul>
+<blockquote>
+<p>解决方案：</p>
+</blockquote>
+<ol>
+<li>忽略（业务能够接受，架构越简单越好）</li>
+<li>强制读主（增加主库压力、配合缓存减少压力，无法发挥集群效果）</li>
+<li>选择性读主（有写操作的后续读请求都读主库，简单粗暴相对有效）</li>
+<li>选择性读主（缓存db:table:PK，缓存过期时间设为主从延时，缓存里有这个key就读主库，否则读从库，实现复杂性较高）</li>
+<li>选择性读主（对数据实时要求高，如资金操作，强制读主）</li>
+</ol>
+<p>业务需求决定技术方案：尽量不要让构架设计过于复杂</p>
+<h2 id="四数据库层面的挑战主要在哪">四、数据库层面的挑战主要在哪</h2>
+<ol>
+<li>连接数过多</li>
+<li>慢查询、全表扫描</li>
+<li>事务、锁</li>
+<li>数据量合理预估和分布</li>
+<li>查询数过多（合并查询）</li>
+<li>并发更新（异步化、串行化、最小粒度）</li>
+<li>……</li>
+</ol>
+<p>高并发下很多看似不会出问题的操作最终都出了问题</p>
+<h2 id="五数据库性能优化有哪些手段">五、数据库性能优化有哪些手段</h2>
+<p>A、数据库层面</p>
+<ol>
+<li>合理设计表结构和表字段</li>
+<li>合理预估数据量，做好分库分表设计</li>
+<li>合理建立索引</li>
+<li>适当冗余数据，减少关联查询</li>
+<li>使用主从集群，减轻主库压力，提升查询效率</li>
+</ol>
+<p>B. 代码层面</p>
+<ol>
+<li>合理使用事务</li>
+<li>合理使用锁</li>
+<li>合并请求，减少数据库的操作次数（批量查询、批量更新）</li>
+</ol>
+<p>C. 架构层面</p>
+<ol>
+<li>使用前端缓存，减少查询</li>
+<li>使用消息队列，减少并发</li>
+</ol>
+<p>D. 问题追踪</p>
+<ol>
+<li>慢查询日志</li>
+<li>死锁监测</li>
+</ol>
+<h2 id="六以上优化都做了还有哪些坑">六、以上优化都做了，还有哪些坑</h2>
+<ol>
+<li>分库带来分布式事务如何解决？</li>
+<li>分库分表后，原来很简单的聚合、排序、联表查询都不可用了</li>
+<li>非分表字段如何做查询？</li>
+<li>为什么会出现死锁</li>
+<li>……</li>
+</ol>
+<p>高并发，大数据是数据库最大的挑战，优化没有尽头</p>
+<p>没有解决一切问题的架构，只有结合业务，适当妥协的方案</p>
+<h2 id="七一些坑和注意点">七、一些坑和注意点</h2>
+<ol>
+<li>insert ignore：会导致自增 ID不连续，跳跃式增长</li>
+<li>select * ：如果没有缓存一定要指定要查询的字段</li>
+<li>order by rand()：慎用，数据量大的表禁用</li>
+<li>in和exists：外表大用in,内表大用exists</li>
+<li>null值查询：field is null才能查到</li>
+<li>varchar字段要设置合适的长度</li>
+</ol>
+<h2 id="八数据库不仅仅是mysql">八、数据库不仅仅是MySQL</h2>
+<ol>
+<li>Redis：NoSQL键值数据库</li>
+<li>MogoDB：NoSQL文档数据库</li>
+<li>TiDB：分布式NewSQL关系数据库</li>
+<li>其它</li>
+</ol>
+<p>根据业务场景选用合适的存储方案</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-04-03
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/database/">database</a>
+          <a href="/tags/%E5%85%A5%E9%97%A8/">入门</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/im/nsq/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">NSQ-分布式实时消息平台</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+            <span class="next-text nav-default">Go 基础知识</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-04-03 22:45:33 \x2b0800 CST',
+        title: 'Mysql基础知识二',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

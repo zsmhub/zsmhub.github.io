@@ -247,7 +247,7 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/post/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <loc>https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/</loc>
     <lastmod>2020-04-03T22:45:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -494,6 +494,13 @@
   <url>
     <loc>https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/</loc>
     <lastmod>2019-02-23T13:10:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/</loc>
+    <lastmod>2019-01-09T22:13:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的">
 <meta itemprop="datePublished" content="2020-05-03T20:45:07&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-03T20:45:07&#43;08:00" />
-<meta itemprop="wordCount" content="534">
+<meta itemprop="wordCount" content="568">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E5%8D%9A%E5%AE%A2/"> 博客 </a>
             </div>
-          <span class="more-meta"> 约 534 字 </span>
+          <span class="more-meta"> 约 568 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -177,7 +177,7 @@
 <li>theme 目录里放的是主题皮肤</li>
 <li>content目录里放的是你写的markdown文章</li>
 <li>archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。</li>
-<li>static目录里放的是一些图片、css、js等资源</li>
+<li>static目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png</li>
 <li>layouts目录里放的是网站的模板文件</li>
 </ul>
 <h2 id="主题推荐">主题推荐</h2>
@@ -263,11 +263,11 @@ comment: <span class="nb">true</span>
   <div class="qr-code">
     
     <label class="qr-code-image" for="reward">
-        <img class="image" src="https://github.com/zsmhub/markdown-images/blob/master/wechat-qr-code.png?raw=true" alt="请先科学上网">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
         <span>微信打赏</span>
       </label>
     <label class="qr-code-image" for="reward">
-        <img class="image" src="https://raw.githubusercontent.com/zsmhub/markdown-images/master/alipay-qr-code.png" alt="请先科学上网">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
         <span>支付宝打赏</span>
       </label>
   </div>
