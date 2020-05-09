@@ -49,7 +49,7 @@
 <meta itemprop="description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。 代码分析 测试环境：macbook pro macos Go 版本:">
 <meta itemprop="datePublished" content="2020-05-09T14:32:23&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T14:32:23&#43;08:00" />
-<meta itemprop="wordCount" content="635">
+<meta itemprop="wordCount" content="653">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 635 字 </span>
+          <span class="more-meta"> 约 653 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -185,12 +185,12 @@
 <td>6.099719ms</td>
 </tr>
 <tr>
-<td>循环100次，json长度1000</td>
+<td>循环100次，json长度1,000</td>
 <td>131.037902ms</td>
 <td>23.466147ms</td>
 </tr>
 <tr>
-<td>循环1000次，json长度10000</td>
+<td>循环1,000次，json长度10,000</td>
 <td>12.451799096s</td>
 <td>2.631567452s</td>
 </tr>
@@ -209,27 +209,27 @@
 </thead>
 <tbody>
 <tr>
-<td>循环10次</td>
+<td>json长度10</td>
 <td>239.665µs</td>
 <td>162.146µs</td>
 </tr>
 <tr>
-<td>循环50次</td>
+<td>json长度50</td>
 <td>231.41µs</td>
 <td>150.292µs</td>
 </tr>
 <tr>
-<td>循环500次</td>
+<td>json长度500</td>
 <td>735.36µs</td>
 <td>258.523µs</td>
 </tr>
 <tr>
-<td>循环1,000次</td>
+<td>json长度1,000</td>
 <td>1.346841ms</td>
 <td>379.458µs</td>
 </tr>
 <tr>
-<td>循环10,000次</td>
+<td>json长度10,000</td>
 <td>132.953435ms</td>
 <td>29.646291ms</td>
 </tr>
