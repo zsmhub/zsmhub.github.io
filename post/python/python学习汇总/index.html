@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Opcache与Opcode - ZsmHub - Blog</title>
+  <title>Python学习汇总 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="学习资料 Python 3教程-廖雪峰 Python初学者书籍、视频、资料、社区推荐" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/python/python%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Opcache与Opcode" />
-<meta property="og:description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优" />
+<meta property="og:title" content="Python学习汇总" />
+<meta property="og:description" content="学习资料 Python 3教程-廖雪峰 Python初学者书籍、视频、资料、社区推荐" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/" />
-<meta property="article:published_time" content="2019-02-23T13:10:09+08:00" />
-<meta property="article:modified_time" content="2019-02-23T13:10:09+08:00" />
-<meta itemprop="name" content="Opcache与Opcode">
-<meta itemprop="description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优">
-<meta itemprop="datePublished" content="2019-02-23T13:10:09&#43;08:00" />
-<meta itemprop="dateModified" content="2019-02-23T13:10:09&#43;08:00" />
-<meta itemprop="wordCount" content="1465">
+<meta property="og:url" content="https://zsmhub.github.io/post/python/python%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/" />
+<meta property="article:published_time" content="2019-02-06T09:57:29+08:00" />
+<meta property="article:modified_time" content="2019-02-06T09:57:29+08:00" />
+<meta itemprop="name" content="Python学习汇总">
+<meta itemprop="description" content="学习资料 Python 3教程-廖雪峰 Python初学者书籍、视频、资料、社区推荐">
+<meta itemprop="datePublished" content="2019-02-06T09:57:29&#43;08:00" />
+<meta itemprop="dateModified" content="2019-02-06T09:57:29&#43;08:00" />
+<meta itemprop="wordCount" content="34">
 
 
 
-<meta itemprop="keywords" content="php," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Opcache与Opcode"/>
-<meta name="twitter:description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优"/>
+<meta itemprop="keywords" content="python," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python学习汇总"/>
+<meta name="twitter:description" content="学习资料 Python 3教程-廖雪峰 Python初学者书籍、视频、资料、社区推荐"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,15 +126,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Opcache与Opcode</h1>
+      <h1 class="post-title">Python学习汇总</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-02-23 </span>
+        <span class="post-time"> 2019-02-06 </span>
         <div class="post-category">
-            <a href="/categories/php/"> php </a>
+            <a href="/categories/python/"> python </a>
             </div>
-          <span class="more-meta"> 约 1465 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 34 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
     </header>
@@ -144,78 +144,15 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#相关文章">相关文章</a></li>
-    <li><a href="#啥是opcache">啥是Opcache</a></li>
-    <li><a href="#opcache的生命周期">Opcache的生命周期</a></li>
-    <li><a href="#常用配置">常用配置</a></li>
+    <li><a href="#学习资料">学习资料</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="相关文章">相关文章</h2>
-<ul>
-<li><a href="https://www.zybuluo.com/phper/note/1016714">Opcode是啥以及如何使用好Opcache</a></li>
-</ul>
-<h2 id="啥是opcache">啥是Opcache</h2>
-<ul>
-<li>Opcache 的前生是 Optimizer+ ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优化加速组件。 Optimizer+ 将PHP代码预编译生成的脚本文件 Opcode 缓存在共享内存中供以后反复使用，从而避免了从磁盘读取代码再次编译的时间消耗。同时，它还应用了一些代码优化模式，使得代码执行更快。从而加速PHP的执行。</li>
-</ul>
-<h2 id="opcache的生命周期">Opcache的生命周期</h2>
-<ol>
-<li>
-<p>正常的php代码的执行过程如下</p>
-<p>request请求（nginx,apache,cli等）&ndash;&gt;Zend引擎读取.php文件&ndash;&gt;扫描其词典和表达式 &ndash;&gt;解析文件&ndash;&gt;创建要执行的计算机代码(称为Opcode)&ndash;&gt;最后执行Opcode&ndash;&gt; response 返回</p>
-</li>
-<li>
-<p>每一次请求PHP脚本都会执行一遍以上步骤，如果PHP源代码没有变化，那么Opcode也不会变化，显然没有必要每次都重行生成Opcode，结合在Web中无所不在的缓存机制，我们可以把Opcode缓存下来，以后直接访问缓存的Opcode岂不是更快，启用Opcode缓存之后的流程图如下所示：</p>
-<p>request请求（nginx,apache,cli等）&ndash;&gt;Zend引擎读取.php文件&ndash;&gt;读取Opcode&ndash;&gt;执行Opcode&ndash;&gt; response 返回</p>
-</li>
-</ol>
-<h2 id="常用配置">常用配置</h2>
-<ul>
-<li>opcache.enable=1 (default &ldquo;1&rdquo;)</li>
-</ul>
-<blockquote>
-<p>OPcache打开/关闭开关。当设置为Off或者0时，会关闭Opcache, 代码没有被优化和缓存。</p>
-</blockquote>
-<ul>
-<li>opcache.enable_cli=1 (default &ldquo;0&rdquo;)</li>
-</ul>
-<blockquote>
-<p>CLI环境下，PHP启用OPcache。这主要是为了测试和调试。从 PHP 7.1.2 开始，默认启用。</p>
-</blockquote>
-<ul>
-<li>opcache.memory_consumption=128 (default &ldquo;64&rdquo;)</li>
-</ul>
-<blockquote>
-<p>OPcache共享内存存储大小。用于存储预编译的opcode（以MB为单位）。</p>
-</blockquote>
-<ul>
-<li>opcache.validate_timestamps (default &ldquo;1&rdquo;)</li>
-</ul>
-<blockquote>
-<p>如果启用（设置为1），OPcache会在opcache.revalidate_freq设置的秒数去检测文件的时间戳（timestamp）检查脚本是否更新。</p>
-</blockquote>
-<ul>
-<li>opcache.revalidate_freq (default &ldquo;2&rdquo;)</li>
-</ul>
-<blockquote>
-<p>这个选项用于设置缓存的过期时间（单位是秒），当这个时间达到后，opcache会检查你的代码是否改变，如果改变了PHP会重新编译它，生成新的opcode，并且更新缓存。值为“0”表示每次请求都会检查你的PHP代码是否更新（这意味着会增加很多次stat系统调用，译注：stat系统调用是读取文件的状态，这里主要是获取最近修改时间，这个系统调用会发生磁盘I/O，所以必然会消耗一些CPU时间，当然系统调用本身也会消耗一些CPU时间）。可以在开发环境中把它设置为0，生产环境下不用管。</p>
-</blockquote>
-<ul>
-<li>opcache.max_accelerated_files (default &ldquo;2000&rdquo;)</li>
-</ul>
-<blockquote>
-<p>这个选项用于控制内存中最多可以缓存多少个PHP文件。这个选项必须得设置得足够大，大于你的项目中的所有PHP文件的总和。</p>
-</blockquote>
-<ul>
-<li>opcache.interned_strings_buffer=8 (default &ldquo;4&rdquo;)</li>
-</ul>
-<blockquote>
-<p>这是一个很有用的选项，但是似乎完全没有文档说明。PHP使用了一种叫做字符串驻留（string interning）的技术来改善性能。例如，如果你在代码中使用了1000次字符串“foobar”，在PHP内部只会在第一使用这个字符串的时候分配一个不可变的内存区域来存储这个字符串，其他的999次使用都会直接指向这个内存区域。这个选项则会把这个特性提升一个层次——默认情况下这个不可变的内存区域只会存在于单个php-fpm的进程中，如果设置了这个选项，那么它将会在所有的php-fpm进程中共享。在比较大的应用中，这可以非常有效地节约内存，提高应用的性能。</p>
-<p>这个选项的值是以兆字节（megabytes）作为单位，如果把它设置为16，则表示16MB，默认是4MB，这是一个比较低的值。</p>
-</blockquote>
+      <h2 id="学习资料">学习资料</h2>
+<p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400">Python 3教程-廖雪峰</a></p>
+<p><a href="https://github.com/Yixiaohan/codeparkshare">Python初学者书籍、视频、资料、社区推荐</a></p>
 
     </div>
 
@@ -227,7 +164,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-02-23
+        2019-02-06
         
     </span>
   </p>
@@ -253,16 +190,16 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/php/">php</a>
+          <a href="/tags/python/">python</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+        <a class="prev" href="/post/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">PHP 面向对象编程</span>
+            <span class="prev-text nav-default">Python 基础知识</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/python/python%E5%B8%B8%E7%94%A8%E7%9A%84package%E5%92%8Cmodule/">
-            <span class="next-text nav-default">Python 常用的 package 和 module</span>
+        <a class="next" href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/">
+            <span class="next-text nav-default">Mysql基础知识一</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -275,8 +212,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-02-23 13:10:09 \x2b0800 CST',
-        title: 'Opcache与Opcode',
+        id: '2019-02-06 09:57:29 \x2b0800 CST',
+        title: 'Python学习汇总',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python 基础知识 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="python 简介 在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。 越低级的语言" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Python 基础知识" />
+<meta property="og:description" content="python 简介 在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。 越低级的语言" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
+<meta property="article:published_time" content="2019-02-06T10:05:13+08:00" />
+<meta property="article:modified_time" content="2019-05-10T10:05:13+08:00" />
+<meta itemprop="name" content="Python 基础知识">
+<meta itemprop="description" content="python 简介 在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。 越低级的语言">
+<meta itemprop="datePublished" content="2019-02-06T10:05:13&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-10T10:05:13&#43;08:00" />
+<meta itemprop="wordCount" content="4242">
+
+
+
+<meta itemprop="keywords" content="python," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python 基础知识"/>
+<meta name="twitter:description" content="python 简介 在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。 越低级的语言"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python 基础知识</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-06 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> python </a>
+            </div>
+          <span class="more-meta"> 约 4242 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#python-简介">python 简介</a></li>
+    <li><a href="#py-文件申明">.py 文件申明</a></li>
+    <li><a href="#开发规范">开发规范</a></li>
+    <li><a href="#基础知识点">基础知识点</a></li>
+    <li><a href="#定义默认参数">定义默认参数</a></li>
+    <li><a href="#参数分类">参数分类</a></li>
+    <li><a href="#模块">模块</a></li>
+    <li><a href="#高级特性">高级特性</a></li>
+    <li><a href="#函数式编程">函数式编程</a></li>
+    <li><a href="#常用命令">常用命令</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="python-简介">python 简介</h2>
+<p>在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。</p>
+<p>越低级的语言，越贴近计算机，抽象程度低，执行效率高，比如C语言；越高级的语言，越贴近计算，抽象程度高，执行效率低，比如Python语言。</p>
+<p>人工智能领域：现在最流行的人工智能技术栈就是 TensorFlow 和 PyTorch</p>
+<h2 id="py-文件申明">.py 文件申明</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">.</span><span class="n">py文件开头应先写以下两条注释申明</span><span class="err">：</span>
+<span class="c1">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="开发规范">开发规范</h2>
+<p>开发环境根据自己的习惯安装 Python，推荐使用 pyenv，避免和已存在的版本造成冲突</p>
+<p>安装完 Python 后安装 pipenv</p>
+<p>通过使用环境变量控制必要的参数，如 redis 服务器地址，redis 队列名等，环境变量写在源码目录的 .env 文件中，格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">REDIS_HOST</span><span class="o">=</span>127.0.0.1
+<span class="nv">REDIS_PORT</span><span class="o">=</span><span class="m">63790</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="基础知识点">基础知识点</h2>
+<ul>
+<li>
+<p>__new__方法是创建类实例的方法, __new__方法的调用是发生在__init__之前</p>
+</li>
+<li>
+<p>代码注释docstring: 出现在模块、函数、类、方法里第一个语句。可以用class_name.__doc__访问</p>
+</li>
+<li>
+<p>CPython解释器: 对python语法的检查仅限于执行到的代码，故测试时必须所有逻辑判断都要测试一遍，这样才能保证代码不出语法错误！</p>
+</li>
+<li>
+<p>python字符串连接符组合列表：+</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="o">+</span> <span class="s1">&#39;B&#39;</span>  <span class="c1"># print(&#39;AB&#39;)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span> <span class="n">L</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">))</span> <span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># +号用于组合列表</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>对于不变对象来说，调用对象自身的任意方法，也不会改变该对象自身的内容。相反，这些方法会创建新的对象并返回，这样，就保证了不可变对象本身永远是不可变的。eg： var.replace(&lsquo;A&rsquo;, &lsquo;a&rsquo;)</p>
+</li>
+<li>
+<p>赋值：n, a, b = 0, 0, 1 #同时赋值多个变量,相当于t = (0， 0， 1) n=t[0] a=t[1] b=t[2] #t是一个tuple</p>
+</li>
+<li>
+<p>大部分字符转义使用\，而格式化字符串时%的转义使用%。</p>
+</li>
+<li>
+<p>函数定义需要进行参数检查</p>
+</li>
+<li>
+<p>在语法上，返回一个tuple可以省略括号，而多个变量可以同时接收一个tuple，按位置赋给对应的值，所以，Python的函数返回多值其实就是返回一个tuple，但写起来更方便</p>
+</li>
+<li>
+<p>python中List删除元素的几种方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="c1"># 1.使用del删除对应下标的元素</span>
+<span class="k">del</span> <span class="n">li</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1">#print(li) -&gt;  li = [1,2,4,5,6]</span>
+<span class="c1"># 2.删除指定值的元素</span>
+<span class="n">li</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># print(li) -&gt; li = [1,2,5,6]</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>以后遇到了IndentationError: unexpected indent你就要知道python编译器是在告诉你“Hi，老兄，你的文件里格式不对了，可能是tab和空格没对齐的问题，你需要检查下tab和空格了”。</p>
+</li>
+<li>
+<p>Python标准的解释器没有针对尾递归做优化，任何递归函数都存在栈溢出的问题。</p>
+</li>
+<li>
+<p>is检查两个对象是否是同一个对象,而==检查他们是否相等.</p>
+</li>
+<li>
+<p>把函数作为参数传入，这样的函数称为高阶函数，函数式编程就是指这种高度抽象的编程范式。</p>
+</li>
+<li>
+<p>函数也是一个对象，而且函数对象可以被赋值给变量，所以，通过变量也能调用该函数</p>
+</li>
+<li>
+<p>字符串单引号、双引号、三引号</p>
+<ol>
+<li>单引号中可以使用双引号，中间的会当作字符串输出</li>
+<li>双引号中可以使用单引号，中间的会当作字符串输出</li>
+<li>三单引号和三双引号中间的字符串在输出时保持原来的格式。[包含换行符]</li>
+</ol>
+</li>
+<li>
+<p>字符串格式化的两种方式:</p>
+<ol>
+<li>
+<p>使用format() [推荐使用这种方式，格式方式更多]</p>
+<p>&ldquo;{1} {0} {1}&quot;.format(&ldquo;hello&rdquo;, &ldquo;world&rdquo;)  # 设置指定位置</p>
+<p>&ldquo;网站名：{name}, 地址 {url}&quot;.format(name=&quot;菜鸟教程&rdquo;, url=&quot;www.runoob.com&rdquo;)</p>
+<p>&ldquo;{:.2f}&quot;.format(3.1415926)</p>
+</li>
+<li>
+<p>使用%</p>
+<p>print(&ldquo;the length of (%s) is %d&rdquo; %(&lsquo;Hello World&rsquo;,len(&lsquo;Hello World&rsquo;)))</p>
+</li>
+</ol>
+</li>
+<li>
+<p>列表list对 + 和 <code>*</code> 的操作符与字符串相似。+ 号用于组合列表，* 号用于重复列表。</p>
+<p><img src="/images/2020/QQ20200510-103304@2x.png" alt="图片"></p>
+</li>
+<li>
+<p>字符串和编码转换：str和bytes互相转换时，需要指定编码。最常用的编码是UTF-8。chr/ord, encode/decode</p>
+</li>
+<li>
+<p>错误异常处理机制</p>
+<p>Python内置的try&hellip;except&hellip;else&hellip;finally用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。[通用捕捉异常错误代码：except Exception as e]</p>
+</li>
+<li>
+<p>代码调试</p>
+<p>如果要比较爽地设置断点、单步执行，就需要一个支持调试功能的IDE。目前比较好的Python IDE有PyCharm。</p>
+<p>虽然用IDE调试起来比较方便，但是最后你会发现，logging才是终极武器。</p>
+</li>
+<li>
+<p>IO编程：</p>
+<p>IO在计算机中指Input/Output，也就是输入和输出。由于程序和运行时数据是在内存中驻留，由CPU这个超快的计算核心来执行，涉及到数据交换的地方，通常是磁盘、网络等，就需要IO接口。</p>
+<p>IO编程中，Stream（流）是一个很重要的概念，可以把流想象成一个水管，数据就是水管里的水，但是只能单向流动。Input Stream就是数据从外面（磁盘、网络）流进内存，Output Stream就是数据从内存流到外面去。对于浏览网页来说，浏览器和新浪服务器之间至少需要建立两根水管，才可以既能发数据，又能收数据。</p>
+</li>
+<li>
+<p>图形界面：Python内置的Tkinter可以满足基本的GUI程序的要求</p>
+</li>
+<li>
+<p>dict 和 set: set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。【可以用于list去重】</p>
+</li>
+<li>
+<p>字符串前加 r 和 u 的作用</p>
+<ol>
+<li>字符串前加u：后面字符串以 Unicode 格式 进行编码，一般用在中文字符串前面，防止因为源码储存格式问题，导致再次使用时出现乱码。</li>
+<li>字符串前加r: 去掉反斜杠的转移机制，常用于正则表达式</li>
+</ol>
+</li>
+</ul>
+<h2 id="定义默认参数">定义默认参数</h2>
+<p>定义默认参数要牢记一点：默认参数必须指向不变对象</p>
+<ol>
+<li>不变对象：str, None, tuple, int, florat</li>
+<li>可变对象：list</li>
+</ol>
+<p>为什么要设计str、None这样的不变对象呢？因为不变对象一旦创建，对象内部的数据就不能修改，这样就减少了由于修改数据导致的错误。此外，由于对象不变，多任务环境下同时读取对象不需要加锁，同时读一点问题都没有。我们在编写程序时，如果可以设计一个不变对象，那就尽量设计成不变对象。</p>
+<p>对于不变对象来说，调用对象自身的任意方法，也不会改变该对象自身的内容。相反，这些方法会创建新的对象并返回，这样，就保证了不可变对象本身永远是不可变的。-</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">add_end</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">L</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1">#定义参数为list类型的正确方式</span>
+    <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;END&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">L</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参数分类">参数分类</h2>
+<ol>
+<li>
+<p>可变参数。顾名思义，可变参数就是传入的参数个数是可变的</p>
+</li>
+<li>
+<p>关键字参数</p>
+<p>可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。</p>
+</li>
+<li>
+<p>命名关键字参数</p>
+</li>
+<li>
+<p>在Python中定义函数，可以用必选参数、默认参数、可变参数、关键字参数和命名关键字参数，这5种参数都可以组合使用。但是请注意，参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。</p>
+</li>
+</ol>
+<p>所以，对于任意函数，都可以通过类似func(*args, **kw)的形式调用它，无论它的参数是如何定义的。</p>
+<h2 id="模块">模块</h2>
+<ol>
+<li>
+<p>在Python中，一个.py文件就称之为一个模块（Module）</p>
+<p>为了避免模块名冲突，Python又引入了按目录来组织模块的方法，称为包（Package）。</p>
+<p>[请注意，每一个包目录下面都会有一个__init__.py的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。__init__.py可以是空文件，也可以有Python代码，因为__init__.py本身就是一个模块，而它的模块名就是上层文件名]</p>
+</li>
+<li>
+<p>标准文件模板：</p>
+<p><img src="/images/2020/QQ20200510-102717@2x.png" alt="标准模板"></p>
+</li>
+<li>
+<p>__name__有2个取值：当模块是被调用执行的，取值为模块的名字；当模块是直接执行的，则该变量取值为：<strong>main</strong></p>
+</li>
+<li>
+<p>安装第三方模块：</p>
+<p>在Python中，安装第三方模块，是通过包管理工具pip或pip3完成的。eg: pip install Pillow</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pip</span> <span class="nb">list</span> <span class="c1"># 查看已安装的module</span>
+<span class="n">help</span><span class="p">(</span><span class="s1">&#39;modules&#39;</span><span class="p">)</span> <span class="c1"># 查看系统自带的moudle</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="高级特性">高级特性</h2>
+<ol>
+<li>
+<p>切片：Python的切片非常灵活，一行代码就可以实现很多行循环才能完成的操作。</p>
+<p>可以处理list/tuple/string等数据类型 eg: L[0:10:2] #从索引0开始，到9结束，每隔两个取数；</p>
+<p>L[::-1]  # 倒序每隔一个取数</p>
+</li>
+<li>
+<p>迭代: for in</p>
+</li>
+<li>
+<p>列表生成式:</p>
+<p>L = [x * x for x in range(10)]</p>
+</li>
+<li>
+<p>生成器[generator]：一边循环一边计算的机制。【两种语法：一：将列表生成式的[]改成()就变成了一种生成器，二：包含yield关键字的函数】</p>
+<p>g = (x * x for x in range(10))</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 杨辉三角高级算法：</span>
+<span class="k">def</span> <span class="nf">triangles</span><span class="p">():</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">L</span>
+        <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1">#精髓所在</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">))]</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">triangles</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">break</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>调用方法：</p>
+</blockquote>
+<p>&lt;1&gt; send()  #生成器函数最大的特点是可以接受外部传入的一个变量，并根据变量内容计算结果后返回。</p>
+<p>&lt;2&gt; close(0)  #手动关闭生成器函数，后面的调用会直接返回StopIteration异常。</p>
+<p>&lt;3&gt; throw()  #用来向生成器函数送入一个异常，可以结束系统定义的异常，或者自定义的异常。throw()后直接跑出异常并结束程序，或者消耗掉一个yield，或者在没有下一个yield的时候直接进行到程序的结尾。</p>
+<p>生成器函数最大的特点是可以接受外部传入的一个变量，并根据变量内容计算结果后返回。</p>
+</li>
+<li>
+<p>迭代器[Iterator]：可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator。</p>
+<p>生成器都是Iterator对象，但list、dict、str虽然是Iterable，却不是Iterator。</p>
+<p>把list、dict、str等Iterable变成Iterator可以使用iter()函数。</p>
+<p>Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。【惰性序列】</p>
+<p>Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的。</p>
+</li>
+<li>
+<p>生成器和迭代器的区别：迭代器 包含 生成器。</p>
+</li>
+</ol>
+<h2 id="函数式编程">函数式编程</h2>
+<ol>
+<li>
+<p>map/filter : 返回一个Iterator</p>
+</li>
+<li>
+<p>reduce/sorted: 直接返回值</p>
+</li>
+<li>
+<p>返回函数</p>
+<p>闭包：相关参数和变量都保存在返回的函数中，这种称为“闭包（Closure）”的程序结构拥有极大的威力。返回闭包时牢记的一点就是：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</p>
+</li>
+<li>
+<p>匿名函数</p>
+<p>lambda 定义了一个匿名函数,直接return 一个返回值</p>
+<p>lambda 并不会带来程序运行效率的提高，只会使代码更简洁。</p>
+<p>Python lambda总共以下2种写法，一种是不含if…else…的，一种是包含if…else…的：</p>
+<p>lambda <!-- raw HTML omitted -->: <!-- raw HTML omitted --></p>
+<p>lambda <!-- raw HTML omitted -->: <!-- raw HTML omitted --> if <!-- raw HTML omitted --> else <!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>装饰器：decorator可以增强函数的功能</p>
+<p>代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）</p>
+</li>
+<li>
+<p>偏函数</p>
+<p>当函数的参数个数太多，需要简化时，使用functools.partial可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。</p>
+</li>
+</ol>
+<h2 id="常用命令">常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># 显示模块</span>
+<span class="n">pip</span> <span class="nb">list</span>
+
+<span class="c1"># 显示过期模块</span>
+<span class="n">pip</span> <span class="nb">list</span> <span class="o">--</span><span class="n">outdated</span>
+
+<span class="c1"># 安装模块</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">xxx</span>
+
+<span class="c1"># 升级模块</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">xxx</span>
+
+<span class="c1"># 升级pip3版本</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/python/python%E5%B8%B8%E7%94%A8%E7%9A%84package%E5%92%8Cmodule/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Python 常用的 package 和 module</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/python/python%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/">
+            <span class="next-text nav-default">Python学习汇总</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-02-06 10:05:13 \x2b0800 CST',
+        title: 'Python 基础知识',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

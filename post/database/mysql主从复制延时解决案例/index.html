@@ -200,9 +200,9 @@
 <p>某些用户在业务高峰期间，特别是对于数据库主库有大量的写请求操作，即大量insert、delete、update等并发操作的情况下，会出现主从复制延时问题。</p>
 <h3 id="现象描述">现象描述</h3>
 <p>我们通过观察主库的写操作的QPS的值，会看到主库的写操作的QPS值突然升高，伴随主从复制延时的上升，可以判断是由于主库DML请求频繁原因造成的。</p>
-<p><img src="/images/6913c3662b5e40cb9bb98c98bbde90ed.jpeg" alt="图片"></p>
+<p><img src="/images/2020/6913c3662b5e40cb9bb98c98bbde90ed.jpeg" alt="图片"></p>
 <p>如上图，可以看出，在17:58分左右QPS突增，查看控制台上的写相关QPS，也有相应提升。而QPS突增的时间，对应的延时也在逐步上升，如下图所示。</p>
-<p><img src="/images/9b9ece56472641ad9b149418cd5a76da.jpeg" alt="图片"></p>
+<p><img src="/images/2020/9b9ece56472641ad9b149418cd5a76da.jpeg" alt="图片"></p>
 <h3 id="原因分析">原因分析</h3>
 <p>经过分析，我们认为这是由于主库大量的写请求操作，在短时间产生了大量的binlog。这些操作需要全部同步到从库，并且执行，因此产生了主从的数据复制延时。</p>
 <p>从深层次分析原因，是因为在业务高峰期间的主库写入数据是并发写入的，而从库SQL Thread为单线程回放binlog日志，很容易造成relaylog堆积，产生延时。</p>
@@ -216,7 +216,7 @@
 当这个事务在从库执行回放执行操作时，就有可能会产生主从复制延时。</p>
 <h3 id="现象描述-1">现象描述</h3>
 <p>我们从SHOW SLAVE STATUS的结果进行分析，会发现 Exec_Master_Log_Pos 字段一直未变，且second_behinds_master持续增加，而 Slave_SQL_Running_State 字段的值为”Reading event from the relay log”；同时，分析主库binlog，看主库当前执行的事务，会发现有一些大事务，这样基本可以判定是执行大事务的原因导致的主从复制延时。</p>
-<p><img src="/images/6eb23f89803041f7a69f827447641617.jpeg" alt="图片"></p>
+<p><img src="/images/2020/6eb23f89803041f7a69f827447641617.jpeg" alt="图片"></p>
 <h3 id="原因分析-1">原因分析</h3>
 <p>当大事务记录入binlog并同步到从库之后，从库执行这个事务的操作耗时也非常长，这段时间，就会产生主从复制延时。</p>
 <p>举个例子，假如主库花费200s更新了一张大表，在主从库配置相近的情况下，从库也需要花几乎同样的时间更新这张大表，此时从库延时开始堆积，后续的events无法更新。</p>
@@ -228,9 +228,9 @@
 <p>从现象上，如果从库执行SHOW SLAVE STATUS的输出中，检查Exec_Master_Log_Pos一直未动，在排除主库执行大事务的情况下，那么就有可能是在执行大表的 DDL。这一点结合分析主库binlog，看主库当前执行的事务就可以进行确认。</p>
 <p>DDL语句的执行情况，可以进一步细分现象来更好地判断：</p>
 <p>1.DDL未开始，被阻塞，这时SHOW SLAVE STATUS的结果能检查到Slave_SQL_Running_State为waiting for table metadata lock，且Exec_Master_Log_Pos不变；</p>
-<p><img src="/images/0537ce3ffa01411ab524a726488839fb.jpeg" alt="图片"></p>
+<p><img src="/images/2020/0537ce3ffa01411ab524a726488839fb.jpeg" alt="图片"></p>
 <p>2.DDL正在执行，SQL Thread单线程应用导致延时增加。这种情况下观察SHOW SLAVE STATU的结果能发现Slave_SQL_Running_State为altering table，而Exec_Master_Log_Pos不变。</p>
-<p><img src="/images/c59350bb17f14f699db6fcf7e079b680.jpeg" alt="图片"></p>
+<p><img src="/images/2020/c59350bb17f14f699db6fcf7e079b680.jpeg" alt="图片"></p>
 <p>如果有上述的现象，那么很有可能主库对大表执行DDL语句，同步到从库并在从库回放时，就产生了主从复制延时。</p>
 <h3 id="原因分析-2">原因分析</h3>
 <p>DDL导致的主从复制延时的原因和大事务类似，也是因为从库执行DDL的binlog较慢而产生了主从复制延时。</p>

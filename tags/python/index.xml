@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/python/</link>
+    <description>Recent content in python on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Fri, 15 Feb 2019 10:05:13 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python 常用的 package 和 module</title>
+      <link>https://zsmhub.github.io/post/python/python%E5%B8%B8%E7%94%A8%E7%9A%84package%E5%92%8Cmodule/</link>
+      <pubDate>Fri, 15 Feb 2019 10:05:13 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/python/python%E5%B8%B8%E7%94%A8%E7%9A%84package%E5%92%8Cmodule/</guid>
+      <description>简介 Python 是通过 module 组织代码的，一个 py 文件就是一个 module，module 又是通过 package 来组织的，package 是一个包含 init.py 的文件夹，代码，modu</description>
+    </item>
+    
+    <item>
+      <title>Python 基础知识</title>
+      <link>https://zsmhub.github.io/post/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 06 Feb 2019 10:05:13 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>python 简介 在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。 越低级的语言</description>
+    </item>
+    
+    <item>
+      <title>Python学习汇总</title>
+      <link>https://zsmhub.github.io/post/python/python%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Wed, 06 Feb 2019 09:57:29 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/python/python%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/</guid>
+      <description>学习资料 Python 3教程-廖雪峰 Python初学者书籍、视频、资料、社区推荐</description>
+    </item>
+    
+  </channel>
+</rss>
