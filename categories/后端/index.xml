@@ -31,12 +31,30 @@
     </item>
     
     <item>
+      <title>SonarQube 代码质量管理平台</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</link>
+      <pubDate>Sat, 15 Jun 2019 15:06:48 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</guid>
+      <description>SonarLint 与 SonarQube SonarLint 仅存在于 IDE（IntelliJ，Eclipse 和 Visual Studio）中。 其目的是在您键入代码时提供即时反馈。 为此，它专注于您要添加或更</description>
+    </item>
+    
+    <item>
       <title>持续集成工作流</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
       <pubDate>Mon, 27 May 2019 13:41:28 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
       <description>互联网软件的开发和发布，已经形成了一套标准流程。 持续集成 持续集成（Continuous integration，简称CI）指的是，频繁地（一天</description>
+    </item>
+    
+    <item>
+      <title>OAuth 与 OpenID</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/</link>
+      <pubDate>Wed, 17 Apr 2019 15:23:38 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/</guid>
+      <description>概念 开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用</description>
     </item>
     
   </channel>

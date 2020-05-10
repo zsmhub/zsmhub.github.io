@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 10 May 2020 09:43:27 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2020 14:32:23 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>面试汇总</title>
-      <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</link>
-      <pubDate>Sun, 10 May 2020 09:43:27 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</guid>
-      <description>2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总 参考原文</description>
-    </item>
     
     <item>
       <title>Go 开发遇到的性能问题</title>
@@ -130,6 +121,15 @@
     </item>
     
     <item>
+      <title>数据传输方式汇总</title>
+      <link>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Fri, 10 Apr 2020 15:02:25 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/</guid>
+      <description>json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人</description>
+    </item>
+    
+    <item>
       <title>Mysql基础知识二</title>
       <link>https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/</link>
       <pubDate>Fri, 03 Apr 2020 22:45:33 +0800</pubDate>
@@ -181,6 +181,15 @@
       
       <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description>设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 总体来说，设计模式分</description>
+    </item>
+    
+    <item>
+      <title>面试汇总</title>
+      <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Sun, 09 Feb 2020 09:43:27 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</guid>
+      <description>2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总 参考原文</description>
     </item>
     
     <item>
@@ -238,6 +247,15 @@
     </item>
     
     <item>
+      <title>Supervisor</title>
+      <link>https://zsmhub.github.io/post/other/supervisor/</link>
+      <pubDate>Sat, 05 Oct 2019 15:15:06 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/supervisor/</guid>
+      <description>常用命令 1 2 3 4 5 supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本 supervisorctl reload // 重启，每次更改了脚本代码后需要reload supervisorctl status // 查看进程启动状态 supervisor reload 后报错 Exited too quickly (process log may have details) 解</description>
+    </item>
+    
+    <item>
       <title>Git 基础知识</title>
       <link>https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 02 Oct 2019 21:05:31 +0800</pubDate>
@@ -283,6 +301,15 @@
     </item>
     
     <item>
+      <title>SonarQube 代码质量管理平台</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</link>
+      <pubDate>Sat, 15 Jun 2019 15:06:48 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</guid>
+      <description>SonarLint 与 SonarQube SonarLint 仅存在于 IDE（IntelliJ，Eclipse 和 Visual Studio）中。 其目的是在您键入代码时提供即时反馈。 为此，它专注于您要添加或更</description>
+    </item>
+    
+    <item>
       <title>PHP 常用函数</title>
       <link>https://zsmhub.github.io/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 03 Jun 2019 19:02:58 +0800</pubDate>
@@ -298,6 +325,15 @@
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
       <description>互联网软件的开发和发布，已经形成了一套标准流程。 持续集成 持续集成（Continuous integration，简称CI）指的是，频繁地（一天</description>
+    </item>
+    
+    <item>
+      <title>OAuth 与 OpenID</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/</link>
+      <pubDate>Wed, 17 Apr 2019 15:23:38 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/</guid>
+      <description>概念 开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用</description>
     </item>
     
     <item>

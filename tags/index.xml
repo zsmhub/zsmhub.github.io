@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 10 May 2020 09:43:27 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2020 14:32:23 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>面试题</title>
-      <link>https://zsmhub.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
-      <pubDate>Sun, 10 May 2020 09:43:27 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>性能</title>
@@ -139,11 +130,29 @@
     </item>
     
     <item>
+      <title>数据传输方式</title>
+      <link>https://zsmhub.github.io/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Fri, 10 Apr 2020 15:02:25 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>database</title>
       <link>https://zsmhub.github.io/tags/database/</link>
       <pubDate>Fri, 03 Apr 2020 22:45:33 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>面试题</title>
+      <link>https://zsmhub.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sun, 22 Mar 2020 09:22:50 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
       <description></description>
     </item>
     
@@ -202,6 +211,15 @@
     </item>
     
     <item>
+      <title>supervisor</title>
+      <link>https://zsmhub.github.io/tags/supervisor/</link>
+      <pubDate>Sat, 05 Oct 2019 15:15:06 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/supervisor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>git</title>
       <link>https://zsmhub.github.io/tags/git/</link>
       <pubDate>Wed, 02 Oct 2019 21:05:31 +0800</pubDate>
@@ -229,6 +247,15 @@
     </item>
     
     <item>
+      <title>sonarqube</title>
+      <link>https://zsmhub.github.io/tags/sonarqube/</link>
+      <pubDate>Sat, 15 Jun 2019 15:06:48 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/sonarqube/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>常用函数</title>
       <link>https://zsmhub.github.io/tags/%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 03 Jun 2019 19:02:58 +0800</pubDate>
@@ -243,6 +270,15 @@
       <pubDate>Mon, 27 May 2019 13:41:28 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>oauth</title>
+      <link>https://zsmhub.github.io/tags/oauth/</link>
+      <pubDate>Wed, 17 Apr 2019 15:23:38 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/oauth/</guid>
       <description></description>
     </item>
     
