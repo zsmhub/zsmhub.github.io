@@ -77,10 +77,10 @@
     
     <item>
       <title>Hugo 使用教程</title>
-      <link>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo/</link>
+      <link>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
       <pubDate>Sun, 03 May 2020 20:45:07 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo/</guid>
+      <guid>https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
       <description>Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的</description>
     </item>
     
@@ -130,6 +130,15 @@
     </item>
     
     <item>
+      <title>Golang 面试题</title>
+      <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sun, 22 Mar 2020 09:22:50 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>参考文章 Golang面试问题汇总</description>
+    </item>
+    
+    <item>
       <title>Go 基础知识</title>
       <link>https://zsmhub.github.io/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sun, 15 Mar 2020 17:46:46 +0800</pubDate>
@@ -148,12 +157,30 @@
     </item>
     
     <item>
+      <title>SQL 面试题</title>
+      <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Fri, 21 Feb 2020 09:11:06 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条sql怎么写 假如公司分成若干个部门(员工从属于部门), 要列出</description>
+    </item>
+    
+    <item>
       <title>设计模式</title>
       <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 15 Feb 2020 21:05:40 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description>设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 总体来说，设计模式分</description>
+    </item>
+    
+    <item>
+      <title>中高级PHP面试题</title>
+      <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sun, 09 Feb 2020 09:28:00 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>前言 定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。 建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就</description>
     </item>
     
     <item>

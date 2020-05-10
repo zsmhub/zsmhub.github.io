@@ -174,21 +174,21 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="nf">date_format</span><span class="p">(</span><span class="s1">&#39;2019-12-12 12:22:33&#39;</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>  <span class="c1">-- 日期格式化
-</span><span class="c1"></span><span class="nf">FROM_UNIXTIME</span><span class="p">(</span><span class="s1">&#39;时间戳&#39;</span><span class="p">,</span><span class="s1">&#39;%Y年%m月%d %H:%i:%s&#39;</span><span class="p">)</span>   <span class="c1">-- 时间戳转换为日期格式
-</span><span class="c1"></span><span class="nf">date_add</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">DUE_DAY</span><span class="p">,</span> <span class="k">INTERVAL</span> <span class="mi">90</span> <span class="n">day</span><span class="p">)</span> <span class="c1">-- 日期增加90天
-</span><span class="c1"></span><span class="nf">UNIX_TIMESTAMP</span><span class="p">(</span><span class="s1">&#39;2015-04-29&#39;</span><span class="p">)</span>  <span class="c1">-- 日期转换成时间戳
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2019-12-12 12:22:33&#39;</span><span class="p">,</span> <span class="n">format</span><span class="p">)</span>  <span class="c1">-- 日期格式化
+</span><span class="c1"></span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="s1">&#39;时间戳&#39;</span><span class="p">,</span><span class="s1">&#39;%Y年%m月%d %H:%i:%s&#39;</span><span class="p">)</span>   <span class="c1">-- 时间戳转换为日期格式
+</span><span class="c1"></span><span class="n">date_add</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">DUE_DAY</span><span class="p">,</span> <span class="nb">INTERVAL</span> <span class="mi">90</span> <span class="k">day</span><span class="p">)</span> <span class="c1">-- 日期增加90天
+</span><span class="c1"></span><span class="n">UNIX_TIMESTAMP</span><span class="p">(</span><span class="s1">&#39;2015-04-29&#39;</span><span class="p">)</span>  <span class="c1">-- 日期转换成时间戳
 </span><span class="c1"></span>
-<span class="nf">concat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span>  <span class="c1">--  字符串 s1,s2 等多个字符串合并为一个字符串
-</span><span class="c1"></span><span class="nf">concat_ws</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span>  <span class="c1">-- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符
-</span><span class="c1"></span><span class="nf">group_concat</span><span class="p">(</span><span class="k">column</span><span class="p">)</span>  <span class="c1">-- 将某列的所有值合并成一个字符串
+<span class="n">concat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span>  <span class="c1">--  字符串 s1,s2 等多个字符串合并为一个字符串
+</span><span class="c1"></span><span class="n">concat_ws</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span>  <span class="c1">-- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符
+</span><span class="c1"></span><span class="n">group_concat</span><span class="p">(</span><span class="k">column</span><span class="p">)</span>  <span class="c1">-- 将某列的所有值合并成一个字符串
 </span><span class="c1"></span>
-<span class="nf">format</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>  <span class="c1">-- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位
-</span><span class="c1"></span><span class="k">convert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">type</span><span class="p">)</span><span class="o">/</span><span class="nf">cast</span><span class="p">(</span><span class="n">value</span> <span class="k">as</span> <span class="err">类型</span><span class="p">)</span>  <span class="c1">-- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。
-</span><span class="c1"></span><span class="n">eg</span><span class="p">:</span> <span class="k">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span><span class="p">,</span> <span class="kt">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="err">或者</span> <span class="nf">cast</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span> <span class="k">as</span> <span class="kt">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1">-- 保留小数后两位
+<span class="n">format</span><span class="p">(</span><span class="nb">number</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>  <span class="c1">-- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位
+</span><span class="c1"></span><span class="k">convert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="k">type</span><span class="p">)</span><span class="o">/</span><span class="k">cast</span><span class="p">(</span><span class="n">value</span> <span class="k">as</span> <span class="err">类型</span><span class="p">)</span>  <span class="c1">-- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。
+</span><span class="c1"></span><span class="n">eg</span><span class="p">:</span> <span class="k">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span><span class="p">,</span> <span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="err">或者</span> <span class="k">cast</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span> <span class="k">as</span> <span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1">-- 保留小数后两位
 </span><span class="c1"></span>
-<span class="nf">IFNULL</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">)</span> <span class="c1">-- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。
-</span><span class="c1"></span><span class="nf">find_in_set</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>  <span class="c1">-- 返回在字符串s2中与s1匹配的字符串的位置 ,  SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;);
+<span class="n">IFNULL</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">)</span> <span class="c1">-- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。
+</span><span class="c1"></span><span class="n">find_in_set</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>  <span class="c1">-- 返回在字符串s2中与s1匹配的字符串的位置 ,  SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;);
 </span></code></pre></td></tr></table>
 </div>
 </div><h2 id="常用命令">常用命令</h2>
@@ -230,40 +230,40 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
 </span><span class="c1"></span>
 <span class="k">explain</span><span class="o">/</span><span class="k">desc</span> <span class="k">select</span> <span class="o">*</span>  <span class="k">from</span> <span class="k">table</span><span class="p">;</span> <span class="c1">-- 查看查询语句性能，即查看执行计划
-</span><span class="c1"></span><span class="k">desc</span> <span class="n">table_name</span><span class="p">;</span>  <span class="c1">-- 查看 table 等结构
-</span><span class="c1"></span><span class="k">show</span> <span class="k">index</span> <span class="k">from</span> <span class="n">table_name</span><span class="p">;</span>  <span class="c1">-- 查看索引信息
-</span><span class="c1"></span><span class="k">create</span> <span class="k">index</span> <span class="k">on</span> <span class="k">table</span><span class="p">(</span><span class="nf">id</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>  <span class="c1">-- 增加前缀索引
+</span><span class="c1"></span><span class="k">desc</span> <span class="k">table_name</span><span class="p">;</span>  <span class="c1">-- 查看 table 等结构
+</span><span class="c1"></span><span class="k">show</span> <span class="k">index</span> <span class="k">from</span> <span class="k">table_name</span><span class="p">;</span>  <span class="c1">-- 查看索引信息
+</span><span class="c1"></span><span class="k">create</span> <span class="k">index</span> <span class="k">on</span> <span class="k">table</span><span class="p">(</span><span class="n">id</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>  <span class="c1">-- 增加前缀索引
 </span><span class="c1"></span>
 <span class="k">SHOW</span> <span class="n">BINLOG</span> <span class="n">EVENTS</span> <span class="k">LIMIT</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">-- 查看 binlog 日志
 </span><span class="c1"></span>
-<span class="k">select</span> <span class="o">@@</span><span class="n">global</span><span class="p">.</span><span class="n">sql_mode</span><span class="p">;</span> <span class="c1">-- 查询 时 sql_mode
+<span class="k">select</span> <span class="o">@@</span><span class="k">global</span><span class="p">.</span><span class="n">sql_mode</span><span class="p">;</span> <span class="c1">-- 查询 时 sql_mode
 </span><span class="c1"></span>
 <span class="k">show</span> <span class="n">variables</span> <span class="k">like</span> <span class="s2">&#34;%time_zone%&#34;</span><span class="p">;</span> <span class="c1">-- 查看时区
 </span><span class="c1"></span>
 <span class="c1">-- 查询表所有字段的名称
-</span><span class="c1"></span><span class="k">select</span> <span class="n">COLUMN_NAME</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">COLUMNS</span> <span class="k">where</span> <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;your_table_name&#39;</span><span class="p">;</span>
+</span><span class="c1"></span><span class="k">select</span> <span class="k">COLUMN_NAME</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">COLUMNS</span> <span class="k">where</span> <span class="k">table_name</span> <span class="o">=</span> <span class="s1">&#39;your_table_name&#39;</span><span class="p">;</span>
 
 <span class="c1">-- 查询一个表中所有字段的名字和注释
-</span><span class="c1"></span><span class="k">SELECT</span> <span class="n">COLUMN_NAME</span><span class="p">,</span> <span class="n">COLUMN_COMMENT</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">Columns</span> <span class="k">WHERE</span> <span class="n">table_name</span><span class="o">=</span><span class="s1">&#39;provision&#39;</span> <span class="k">AND</span> <span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;test&#39;</span>
+</span><span class="c1"></span><span class="k">SELECT</span> <span class="k">COLUMN_NAME</span><span class="p">,</span> <span class="n">COLUMN_COMMENT</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">Columns</span> <span class="k">WHERE</span> <span class="k">table_name</span><span class="o">=</span><span class="s1">&#39;provision&#39;</span> <span class="k">AND</span> <span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;test&#39;</span>
 
 <span class="c1">-- 授权root用户新ip可以访问：
-</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
-<span class="k">flush</span> <span class="k">privileges</span><span class="p">;</span> <span class="c1">-- 刷新激活变更操作
+</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
+<span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span> <span class="c1">-- 刷新激活变更操作
 </span><span class="c1"></span>
 <span class="c1">-- 导出数据库『不用进入mysql命令界面』
 </span><span class="c1"></span><span class="n">mysqldump</span> <span class="o">-</span><span class="n">u</span> <span class="err">用户名</span> <span class="o">-</span><span class="n">p</span> <span class="err">数据库名</span> <span class="o">&gt;</span> <span class="err">导出的文件名</span>
 
 <span class="c1">-- 创建新用户并授权root用户所有权限且所有ip可以访问：
-</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
+</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
 
 <span class="c1">-- 创建新用户并授权root用户新ip可以访问某个数据库：
-</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">database_name</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
+</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">database_name</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
 
 <span class="c1">-- 创建只读用户：
-</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;db_read&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;A1ta939a@Qn*iTls&#39;</span>
+</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;db_read&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;A1ta939a@Qn*iTls&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="常用案例">常用案例</h2>
@@ -295,30 +295,30 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1">-- 分析数据表大小
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 分析数据表大小
 </span><span class="c1"></span><span class="k">SELECT</span>
 <span class="o">*</span><span class="p">,</span>
 <span class="c1">-- 数据表大小
-</span><span class="c1"></span><span class="nf">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">DATA_LENGTH</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">data_size</span><span class="o">`</span><span class="p">,</span>
+</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">DATA_LENGTH</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">data_size</span><span class="o">`</span><span class="p">,</span>
 <span class="c1">-- 索引大小
-</span><span class="c1"></span><span class="nf">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">INDEX_LENGTH</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">index_size</span><span class="o">`</span><span class="p">,</span>
+</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">INDEX_LENGTH</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">index_size</span><span class="o">`</span><span class="p">,</span>
 <span class="c1">-- 碎片大小
-</span><span class="c1"></span><span class="nf">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">DATA_FREE</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">free_size</span><span class="o">`</span>
-<span class="k">FROM</span> <span class="o">`</span><span class="n">information_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="kp">TABLES</span><span class="o">`</span>
+</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">DATA_FREE</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">free_size</span><span class="o">`</span>
+<span class="k">FROM</span> <span class="o">`</span><span class="n">information_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">TABLES</span><span class="o">`</span>
 <span class="k">WHERE</span>
-<span class="kp">ENGINE</span><span class="o">=</span><span class="s1">&#39;InnoDB&#39;</span>
-<span class="k">AND</span> <span class="n">TABLE_NAME</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">&#39;bi_mid_layer_cache&#39;</span><span class="p">,</span> <span class="s1">&#39;bi_credit_apply&#39;</span><span class="p">)</span>
+<span class="n">ENGINE</span><span class="o">=</span><span class="s1">&#39;InnoDB&#39;</span>
+<span class="k">AND</span> <span class="k">TABLE_NAME</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">&#39;bi_mid_layer_cache&#39;</span><span class="p">,</span> <span class="s1">&#39;bi_credit_apply&#39;</span><span class="p">)</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">DATA_LENGTH</span> <span class="k">DESC</span>
 <span class="p">;</span>
 
 <span class="c1">-- 查询某张表的字段注释
 </span><span class="c1"></span><span class="k">select</span>
-<span class="n">COLUMN_NAME</span> <span class="err">字段名</span><span class="p">,</span>
+<span class="k">COLUMN_NAME</span> <span class="err">字段名</span><span class="p">,</span>
 <span class="n">column_comment</span> <span class="err">字段说明</span><span class="p">,</span>
 <span class="n">column_type</span> <span class="err">字段类型</span><span class="p">,</span>
 <span class="n">column_key</span> <span class="err">约束</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span>
 <span class="k">where</span> <span class="n">table_schema</span> <span class="o">=</span> <span class="s1">&#39;数据库名&#39;</span>
-<span class="k">and</span> <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;表名&#39;</span> <span class="p">;</span>
+<span class="k">and</span> <span class="k">table_name</span> <span class="o">=</span> <span class="s1">&#39;表名&#39;</span> <span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="其他">其他</h2>
@@ -420,45 +420,45 @@ mysql&gt; flush privileges<span class="p">;</span>
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1">-- 查看已创建数据库的创建语句
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 查看已创建数据库的创建语句
 </span><span class="c1"></span><span class="k">show</span> <span class="k">create</span> <span class="k">database</span> <span class="n">database_name</span><span class="p">;</span>
 
 <span class="c1">-- 创建数据库
 </span><span class="c1"></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">`</span><span class="n">auto_audit</span><span class="o">`</span> <span class="cm">/*!40100 DEFAULT CHARACTER SET utf8 */</span>
 
 <span class="c1">-- 创建新表
-</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="nf">table_name</span> <span class="p">(</span>
-    <span class="n">id</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="kp">AUTO_INCREMENT</span><span class="p">,</span>
-    <span class="n">title</span> <span class="kt">text</span><span class="p">,</span>
-    <span class="kt">date</span> <span class="kt">datetime</span> <span class="k">default</span> <span class="no">NULL</span><span class="p">,</span>
-    <span class="kt">timestamp</span> <span class="kt">timestamp</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="k">default</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">table_name</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">title</span> <span class="nb">text</span><span class="p">,</span>
+    <span class="nb">date</span> <span class="n">datetime</span> <span class="k">default</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">timestamp</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">default</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
     <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
-    <span class="p">)</span><span class="kp">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+    <span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
 
 <span class="c1">-- 重命名表
 </span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">table_name_old</span> <span class="k">RENAME</span> <span class="n">table_name_new</span><span class="p">;</span>
 
 <span class="c1">-- 删除表
-</span><span class="c1"></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">table_name</span><span class="p">;</span>
+</span><span class="c1"></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">table_name</span><span class="p">;</span>
 
 <span class="c1">-- 删除数据库
 </span><span class="c1"></span><span class="k">DROP</span> <span class="k">DATABASE</span> <span class="n">database_name</span><span class="p">;</span>
 
 <span class="c1">-- 增加字段
-</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">ADD</span> <span class="n">teacher_name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="n">COMMENT</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">ADD</span> <span class="n">teacher_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
 
 <span class="c1">-- 编辑字段
-</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">CHANGE</span> <span class="n">name</span> <span class="n">stu_name</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="no">NULL</span><span class="p">;</span>
+</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="n">CHANGE</span> <span class="n">name</span> <span class="n">stu_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="k">NULL</span><span class="p">;</span>
 
 <span class="c1">-- 删除字段
 </span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">DROP</span> <span class="n">teacher_name</span><span class="p">;</span>
 
 <span class="c1">-- 从另一张表获取数据到新表
-</span><span class="c1"></span><span class="k">insert</span> <span class="k">into</span> <span class="nf">tableA</span><span class="p">(</span><span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span><span class="p">)</span> <span class="p">(</span><span class="k">select</span> <span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span> <span class="k">from</span> <span class="n">tableB</span><span class="p">)</span>
+</span><span class="c1"></span><span class="k">insert</span> <span class="k">into</span> <span class="n">tableA</span><span class="p">(</span><span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span><span class="p">)</span> <span class="p">(</span><span class="k">select</span> <span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span> <span class="k">from</span> <span class="n">tableB</span><span class="p">)</span>
 <span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="o">`</span><span class="n">fieldA</span><span class="o">`</span> <span class="o">=</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">`</span><span class="n">fieldA</span><span class="o">`</span><span class="p">)</span>
 
 <span class="c1">-- 设置自动递增值
-</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">tablename</span> <span class="kp">auto_increment</span><span class="o">=</span><span class="n">num</span>
+</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">tablename</span> <span class="n">auto_increment</span><span class="o">=</span><span class="n">num</span>
 </code></pre></td></tr></table>
 </div>
 </div>

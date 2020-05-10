@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>大数据表设计方案 - ZsmHub - Blog</title>
+  <title>Hugo 使用教程 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="方案 当数据总量或者并发数很大的时候，我们通常选择NoSQL存储产品来存储数据，但常见的NoSQL产品都没有提供自增列的功能，因此通常要借助外" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="大数据表设计方案" />
-<meta property="og:description" content="方案 当数据总量或者并发数很大的时候，我们通常选择NoSQL存储产品来存储数据，但常见的NoSQL产品都没有提供自增列的功能，因此通常要借助外" />
+<meta property="og:title" content="Hugo 使用教程" />
+<meta property="og:description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/" />
-<meta property="article:published_time" content="2020-04-25T23:06:53+08:00" />
-<meta property="article:modified_time" content="2020-04-25T23:06:53+08:00" />
-<meta itemprop="name" content="大数据表设计方案">
-<meta itemprop="description" content="方案 当数据总量或者并发数很大的时候，我们通常选择NoSQL存储产品来存储数据，但常见的NoSQL产品都没有提供自增列的功能，因此通常要借助外">
-<meta itemprop="datePublished" content="2020-04-25T23:06:53&#43;08:00" />
-<meta itemprop="dateModified" content="2020-04-25T23:06:53&#43;08:00" />
-<meta itemprop="wordCount" content="677">
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" />
+<meta property="article:published_time" content="2020-05-03T20:45:07+08:00" />
+<meta property="article:modified_time" content="2020-05-03T20:45:07+08:00" />
+<meta itemprop="name" content="Hugo 使用教程">
+<meta itemprop="description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的">
+<meta itemprop="datePublished" content="2020-05-03T20:45:07&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-03T20:45:07&#43;08:00" />
+<meta itemprop="wordCount" content="568">
 
 
 
-<meta itemprop="keywords" content="大数据," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="大数据表设计方案"/>
-<meta name="twitter:description" content="方案 当数据总量或者并发数很大的时候，我们通常选择NoSQL存储产品来存储数据，但常见的NoSQL产品都没有提供自增列的功能，因此通常要借助外"/>
+<meta itemprop="keywords" content="博客," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo 使用教程"/>
+<meta name="twitter:description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,14 +126,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">大数据表设计方案</h1>
+      <h1 class="post-title">Hugo 使用教程</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-04-25 </span>
+        <span class="post-time"> 2020-05-03 </span>
         <div class="post-category">
-            <a href="/categories/database/"> database </a>
+            <a href="/categories/%E5%8D%9A%E5%AE%A2/"> 博客 </a>
             </div>
-          <span class="more-meta"> 约 677 字 </span>
+          <span class="more-meta"> 约 568 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -144,36 +144,99 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#方案">方案</a></li>
-    <li><a href="#tablestore">TableStore</a></li>
+    <li><a href="#hugo-是什么">Hugo 是什么</a></li>
+    <li><a href="#hugo-常用命令">Hugo 常用命令</a></li>
+    <li><a href="#hugo-项目目录">Hugo 项目目录</a></li>
+    <li><a href="#主题推荐">主题推荐</a></li>
+    <li><a href="#如何修改主题">如何修改主题</a></li>
+    <li><a href="#如何添加分类和标签">如何添加分类和标签</a></li>
+    <li><a href="#markdown-模板示例">Markdown 模板示例</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="方案">方案</h2>
-<p>当数据总量或者并发数很大的时候，我们通常选择NoSQL存储产品来存储数据，但常见的NoSQL产品都没有提供自增列的功能，因此通常要借助外部组件来实现ID的递增，使得整体的架构更加复杂，也影响了整条链路的延时。</p>
-<p>建议使用阿里云推出的表格存储（TableStore）作为大数据数据库的存储方式。</p>
-<p>优势：</p>
-<ul>
-<li>自带主键列递增功能</li>
-</ul>
-<h2 id="tablestore">TableStore</h2>
-<p><a href="https://zhuanlan.zhihu.com/p/74867813">Tablestore存储和索引引擎详解</a></p>
+      <h2 id="hugo-是什么">Hugo 是什么</h2>
 <blockquote>
-<p>首先说明一下为什么Tablestore的主键可以包含多个主键列，这里有几点：</p>
+<p>静态网站生成器</p>
 </blockquote>
 <ul>
-<li>多列主键列按照顺序共同构成一个联合主键，类似MySQL的联合主键。如果使用过HBase，可以把这里的多列主键列，拼接起来看作一个RowKey，每一列其实都只是整体主键的一部分。</li>
-<li>第一列主键列是分区键，使用分区键的范围进行分区划分，保证了分区键相同的行，一定在同一个分区(Partition)上。一些功能依赖这一特性，比如分区内事务(Transection)，本地二级索引(LocalIndex, 待发布)，分区内自增列等。</li>
-<li>业务上常需要多个字段来构成主键，如果只支持一个主键列，业务需要进行拼接，多列主键列避免了业务层做主键拼接和拆解。</li>
-<li>许多用户第一次看到多列主键列时，常会有误解，认为主键的范围查询(GetRange接口)可以针对每一列单独进行，实际上这里的主键范围指的是整体主键的范围，而非单独某一列的范围。</li>
+<li>Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe）</li>
+<li>Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。</li>
+<li>Hugo内置web服务器，可以方便的用于本地调试。</li>
 </ul>
-<blockquote>
-<p>Timeline模型</p>
-</blockquote>
-<p>Timeline模型是针对消息数据场景所设计的，能够满足消息数据场景对消息保序、海量消息存储、实时同步的特殊需求，同时支持全文检索与多维度组合查询。可以同时应用在IM、Feed流等消息场景的实现上。</p>
-
+<h2 id="hugo-常用命令">Hugo 常用命令</h2>
+<ul>
+<li>hugo // 构建静态页面，不包含 draft=true 的文件</li>
+<li>hugo -D // 构建静态页面，包含 draft=true 的文件</li>
+<li>hugo server -D // Start the Hugo server</li>
+</ul>
+<h2 id="hugo-项目目录">Hugo 项目目录</h2>
+<ul>
+<li>config.toml是网站的配置文件，这是一个TOML文件，全称是Tom’s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。</li>
+<li>theme 目录里放的是主题皮肤</li>
+<li>content目录里放的是你写的markdown文章</li>
+<li>archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。</li>
+<li>static目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png</li>
+<li>layouts目录里放的是网站的模板文件</li>
+</ul>
+<h2 id="主题推荐">主题推荐</h2>
+<ul>
+<li>even</li>
+</ul>
+<h2 id="如何修改主题">如何修改主题</h2>
+<p>如果需要调整更改主题，需要在 themes/even 目录下重新 build</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> themes/even <span class="o">&amp;&amp;</span> npm i <span class="o">&amp;&amp;</span> npm start
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="如何添加分类和标签">如何添加分类和标签</h2>
+<p>在 your project/config.toml 尾部追加以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 分类和标签</span>
+<span class="o">[</span>taxonomies<span class="o">]</span>
+<span class="nv">tag</span> <span class="o">=</span> <span class="s2">&#34;tags&#34;</span>
+<span class="nv">category</span> <span class="o">=</span> <span class="s2">&#34;categories
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="markdown-模板示例">Markdown 模板示例</h2>
+<p>修改文件： your project/archetypes/default.md</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">---
+title: <span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
+date: <span class="o">{{</span> .Date <span class="o">}}</span>
+lastmod: <span class="o">{{</span> .Date <span class="o">}}</span>
+draft: <span class="nb">false</span>
+tags: <span class="o">[</span>  <span class="o">]</span>
+categories: <span class="o">[</span>  <span class="o">]</span>
+comment: <span class="nb">true</span>
+---
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
@@ -184,7 +247,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-04-25
+        2020-05-03
         
     </span>
   </p>
@@ -210,16 +273,16 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+          <a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+        <a class="prev" href="/post/%E5%90%8E%E7%AB%AF/%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Hugo 使用教程</span>
+            <span class="prev-text nav-default">理解并发与并行</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/im/%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6/">
-            <span class="next-text nav-default">即时通讯-心跳机制</span>
+        <a class="next" href="/post/database/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88/">
+            <span class="next-text nav-default">大数据表设计方案</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -232,8 +295,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-04-25 23:06:53 \x2b0800 CST',
-        title: '大数据表设计方案',
+        id: '2020-05-03 20:45:07 \x2b0800 CST',
+        title: 'Hugo 使用教程',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

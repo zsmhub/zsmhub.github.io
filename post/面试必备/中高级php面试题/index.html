@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>中高级PHP面试题 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="前言 定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。 建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="中高级PHP面试题" />
+<meta property="og:description" content="前言 定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。 建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/" />
+<meta property="article:published_time" content="2020-02-09T09:28:00+08:00" />
+<meta property="article:modified_time" content="2020-02-09T09:28:00+08:00" />
+<meta itemprop="name" content="中高级PHP面试题">
+<meta itemprop="description" content="前言 定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。 建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就">
+<meta itemprop="datePublished" content="2020-02-09T09:28:00&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-09T09:28:00&#43;08:00" />
+<meta itemprop="wordCount" content="1650">
+
+
+
+<meta itemprop="keywords" content="面试题," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="中高级PHP面试题"/>
+<meta name="twitter:description" content="前言 定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。 建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">中高级PHP面试题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-02-09 </span>
+        <div class="post-category">
+            <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
+            </div>
+          <span class="more-meta"> 约 1650 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#操作系统csappapue">操作系统（《CSAPP》/《APUE》）</a></li>
+    <li><a href="#phpphp-源代码主流-php-框架源代码">PHP（php 源代码，主流 php 框架源代码）</a></li>
+    <li><a href="#mysql高性能-mysqlmysql-技术内幕-innodb-储存引擎">mysql（《高性能 mysql》/《mysql 技术内幕 innodb 储存引擎》）</a></li>
+    <li><a href="#redisredis-源代码">redis（redis 源代码）</a></li>
+    <li><a href="#nginx">nginx</a></li>
+    <li><a href="#数据结构">数据结构</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="前言">前言</h2>
+<p>定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。</p>
+<p>建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就问得出来。面试题只是帮助我们了解自己技术方面的缺陷，背几个面试题对自己没有任何帮助。</p>
+<p>获取答案的方式在每个标题后面的括号里，都是书或者源代码，系统性补充知识最佳途径就是经典书籍和优质源代码，网上博客知识点过于零散，难以深入。</p>
+<h2 id="操作系统csappapue">操作系统（《CSAPP》/《APUE》）</h2>
+<ol>
+<li>IO 多路复用是什么？有哪些 api？</li>
+<li>select 和 epoll 的区别？水平触发和边缘触发的区别是啥？使用的时候需要注意什么？</li>
+<li>epoll 储存描述符的数据结构是什么？</li>
+<li>select 有描述符限制吗？是多少？</li>
+<li>进程 / 线程 / 协程区别？go 和 swoole 的协程实现有啥区别？（分配资源的基本单位 / 运行和调度的基本单位 / 用户线程，M:N 模型和 N:1 模型）</li>
+</ol>
+<h2 id="phpphp-源代码主流-php-框架源代码">PHP（php 源代码，主流 php 框架源代码）</h2>
+<ol>
+<li>描述一下 cli 模式下的几个生命周期？</li>
+<li>php-fpm 运行机制？（master 管理，worker 循环 accept）</li>
+<li>php-fpm 模式下，kill -9 master-pid，会怎么样？kill matser-pid 呢？（信号机制）</li>
+<li>内存分配流程？为什么要这么设计？</li>
+<li>GC 的出现是为了解决什么问题？什么时候会触发 GC？说下大概流程</li>
+<li>php 里的数组是怎么实现的？（这里要注意下 php5 和 php7 实现的区别，优化了非常多）</li>
+<li>nginx 和 php-fpm 的通信机制？fast-cgi 和 cgi 区别？</li>
+<li>php-fpm 创建 worker 进程的规则是什么？不同场景下怎么选择？</li>
+<li>php 和 mysql 的通信机制？长链接和短链接啥区别？怎么实现的？连接池要怎么实现？</li>
+<li>swoole 协程的原理？（遇到阻塞时引发 php 栈和 c 栈的切换，细节可以参考下我的文章）</li>
+<li>依赖注入是什么？如何实现的？能解决什么问题？（代码层面不再依赖具体实现，解耦）</li>
+</ol>
+<h2 id="mysql高性能-mysqlmysql-技术内幕-innodb-储存引擎">mysql（《高性能 mysql》/《mysql 技术内幕 innodb 储存引擎》）</h2>
+<ol>
+<li>innodb 的索引组织方式？（聚簇索引必须要很清楚，注意 innodb 聚簇索引叶子结点保存的是完整数据，innodb 普通索引叶子保存的是记录的主键，myisam 索引叶子保存的是记录的位置 / 偏移量）</li>
+<li>B + 树的结构和插入细节？为什么主键一般都要自增？和 B 树什么区别？为什么索引要使用 B + 树不是 B 树也不是其他的平衡树？为什么 redis 可以用跳表？（关键词：页的分裂，随机 IO，缓存体系）</li>
+<li>常见的优化（这里我就不展开了，主要考察覆盖索引查询和最左匹配，其实只要清楚 innodb 索引的结构，这些都不需要记忆，自然而然推导出来的）</li>
+<li>redolog/undolog/binlog 的区别？binlog 的几种格式？说下两阶段提交？</li>
+<li>事务隔离级别和不同级别会出现的问题，innodb 默认哪个级别？MVCC 怎么实现的？快照读和当前读有啥区别？幻读的问题怎么解决？</li>
+<li>死锁什么时候会出现？应用层应该怎么做避免死锁？mysql 是怎么处理死锁的呢？</li>
+<li>int 占多少字节？bigint 呢？int (3) 和 int (11) 有区别吗？可以往 int (3) 里存 1 亿吗？varchar 最长多少？</li>
+<li>sql 的执行流程（原始 sql-&gt; 词法语法分析生成 AST-&gt; 关系代数表达式（逻辑计划）-&gt; 逻辑优化（谓词下推 / 常量传递）-&gt; 物理查询优化（计算最佳 cost 路径，扫表还是使用索引，join 算法）-&gt; 执行，仅做参考）</li>
+</ol>
+<h2 id="redisredis-源代码">redis（redis 源代码）</h2>
+<ol>
+<li>sds 的结构是什么？为什么要存长度？跟 c 里的字符串有什么区别？（关键词：获取长度复杂度 O (1) 和 O (n)，二进制安全，保存 \0，跟 C 库字符串函数可以通用）</li>
+<li>hash 怎么实现的？怎么解决 hash 冲突？除了 hashTable 还有别的吗？</li>
+<li>zset 怎么实现的？跳表是怎么插入的？为什么选择跳表不用其他平衡二叉树？除了跳表还有别的吗？</li>
+<li>rehash 过程？会主动 rehash 吗？</li>
+<li>用 redis 可以实现队列吗？有什么优点和缺点？</li>
+<li>用 redis 怎么实现一个延时队列？</li>
+<li>rdb 和 aof 过程？rdb 为什么可以用创建子进程的方式进行？（这里考察一个 cow）这两种持久化方式会丢数据吗？</li>
+<li>redis 为什么快？（主要考察一个 IO 多路复用和单线程不加锁）</li>
+<li>一致性哈希是什么？节点较少时数据分布不均匀怎么办？</li>
+<li>简单说下几种 key 的淘汰策略，redis 里的 lru 算法，什么时候会触发？实现细节是什么？怎么保证淘汰合理的 key？</li>
+<li>lua 脚本的作用是什么？</li>
+<li>缓存击穿 / 穿透 / 雪崩的处理策略</li>
+</ol>
+<h2 id="nginx">nginx</h2>
+<ol>
+<li>LVS 和 Nginx 分别作用在 osi 哪一层？</li>
+<li>负载均衡算法</li>
+</ol>
+<h2 id="数据结构">数据结构</h2>
+<ol>
+<li>布隆过滤器，什么时候用？优点是什么？</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-02-09
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">设计模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+            <span class="next-text nav-default">AB测试的简单使用</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-02-09 09:28:00 \x2b0800 CST',
+        title: '中高级PHP面试题',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
