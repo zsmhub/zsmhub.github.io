@@ -319,6 +319,15 @@
     </item>
     
     <item>
+      <title>Python 进程、线程和协程</title>
+      <link>https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/</link>
+      <pubDate>Sat, 02 Mar 2019 11:08:07 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/</guid>
+      <description>基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自</description>
+    </item>
+    
+    <item>
       <title>Opcache与Opcode</title>
       <link>https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/</link>
       <pubDate>Sat, 23 Feb 2019 13:10:09 +0800</pubDate>

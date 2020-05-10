@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 15 Feb 2019 10:05:13 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Mar 2019 11:08:07 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python 进程、线程和协程</title>
+      <link>https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/</link>
+      <pubDate>Sat, 02 Mar 2019 11:08:07 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/</guid>
+      <description>基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自</description>
+    </item>
     
     <item>
       <title>Python 常用的 package 和 module</title>

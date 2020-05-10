@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 22 Mar 2020 09:22:50 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2020 09:43:27 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>面试汇总</title>
+      <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Sun, 10 May 2020 09:43:27 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</guid>
+      <description>2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总 参考原文</description>
+    </item>
     
     <item>
       <title>Golang 面试题</title>
