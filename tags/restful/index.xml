@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>restful on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/restful/</link>
+    <description>Recent content in restful on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Wed, 01 May 2019 15:44:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/restful/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Restful架构</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Wed, 01 May 2019 15:44:01 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/</guid>
+      <description>什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个</description>
+    </item>
+    
+  </channel>
+</rss>

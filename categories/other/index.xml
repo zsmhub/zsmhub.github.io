@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 23 Nov 2019 21:40:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 15:59:09 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/other/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>了解版本号</title>
+      <link>https://zsmhub.github.io/post/other/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</link>
+      <pubDate>Wed, 01 Jan 2020 15:59:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</guid>
+      <description>版本号迭代规则 系统重构：主版本号+1 新增功能：次版本号+1 BUG修复：修订号+1 常见案例 版本号的规范可采用很多公司采用的这套：http://</description>
+    </item>
     
     <item>
       <title>时间单位</title>

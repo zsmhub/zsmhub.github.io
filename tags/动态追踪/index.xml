@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>动态追踪 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA/</link>
+    <description>Recent content in 动态追踪 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 10 Nov 2019 16:06:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>动态追踪技术</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Sun, 10 Nov 2019 16:06:01 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</guid>
+      <description>简介 动态追踪技术通常是基于操作系统内核来实现的。是一种调试技术。 作用 用于排查线上出现的诡异问题，如网站运行缓慢、超时、CPU占用率高 优点 动态</description>
+    </item>
+    
+  </channel>
+</rss>

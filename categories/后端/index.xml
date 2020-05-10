@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>动态追踪技术</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Sun, 10 Nov 2019 16:06:01 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</guid>
+      <description>简介 动态追踪技术通常是基于操作系统内核来实现的。是一种调试技术。 作用 用于排查线上出现的诡异问题，如网站运行缓慢、超时、CPU占用率高 优点 动态</description>
+    </item>
+    
+    <item>
       <title>高并发处理</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/</link>
       <pubDate>Sat, 06 Jul 2019 13:32:31 +0800</pubDate>
@@ -49,12 +58,30 @@
     </item>
     
     <item>
+      <title>Restful架构</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Wed, 01 May 2019 15:44:01 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/</guid>
+      <description>什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个</description>
+    </item>
+    
+    <item>
       <title>OAuth 与 OpenID</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/</link>
       <pubDate>Wed, 17 Apr 2019 15:23:38 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/</guid>
       <description>概念 开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用</description>
+    </item>
+    
+    <item>
+      <title>开发者须知</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</link>
+      <pubDate>Fri, 25 Jan 2019 15:42:14 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</guid>
+      <description>开发过程：SOLID五大设计原则 S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Pricipl</description>
     </item>
     
   </channel>

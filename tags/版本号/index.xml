@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>版本号 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E7%89%88%E6%9C%AC%E5%8F%B7/</link>
+    <description>Recent content in 版本号 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Wed, 01 Jan 2020 15:59:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E7%89%88%E6%9C%AC%E5%8F%B7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>了解版本号</title>
+      <link>https://zsmhub.github.io/post/other/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</link>
+      <pubDate>Wed, 01 Jan 2020 15:59:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</guid>
+      <description>版本号迭代规则 系统重构：主版本号+1 新增功能：次版本号+1 BUG修复：修订号+1 常见案例 版本号的规范可采用很多公司采用的这套：http://</description>
+    </item>
+    
+  </channel>
+</rss>
