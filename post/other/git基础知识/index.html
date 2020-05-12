@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修">
 <meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="1413">
+<meta itemprop="wordCount" content="1488">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/other/"> other </a>
             </div>
-          <span class="more-meta"> 约 1413 字 </span>
+          <span class="more-meta"> 约 1488 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -267,24 +267,36 @@ git ls-files -v <span class="p">|</span> grep <span class="s1">&#39;^h&#39;</spa
 </div><h2 id="其他常用命令">其他常用命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">git log  <span class="c1"># 回顾下提交历史</span>
 git reflog  <span class="c1"># 用来记录你的每一次的提交版本命令</span>
 git commit --amend <span class="c1"># 重新编辑提交说明 或 在上一个commit中添加新更改的文件</span>
-git pull origin  <span class="c1"># 更新所有代码</span>
+git pull  <span class="c1"># 拉取所有分支代码</span>
+git pull origin develop <span class="c1"># 拉取远程分支代码到当前分支</span>
 git checkout -b test_branch develop <span class="c1"># 在develop分支下创建新分支并切换分支</span>
+
 git branch -d test_branch <span class="c1"># 删除已合并的分支</span>
 git branch -D test_branch <span class="c1"># 删除任意分支</span>
 git branch <span class="p">|</span> grep <span class="s1">&#39;zsm_&#39;</span> <span class="p">|</span> xargs git branch -d <span class="c1"># 批量删除已合并分支</span>
+
+<span class="c1"># 拉取远程分支的 2 种方式</span>
+git fetch origin develop <span class="c1"># 拉取develop远程分支到本地</span>
+git checkout -b develop origin/develop <span class="c1"># 本地创建并切换到 develop 分支</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="git-文件的三种状态">Git 文件的三种状态</h2>
