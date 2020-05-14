@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 12 May 2020 21:51:25 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 09:23:17 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>面试必备</title>
+      <link>https://zsmhub.github.io/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/</link>
+      <pubDate>Thu, 14 May 2020 09:23:17 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>other</title>
+      <link>https://zsmhub.github.io/categories/other/</link>
+      <pubDate>Thu, 14 May 2020 09:12:26 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/other/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>golang</title>
@@ -85,15 +103,6 @@
     </item>
     
     <item>
-      <title>面试必备</title>
-      <link>https://zsmhub.github.io/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/</link>
-      <pubDate>Sun, 22 Mar 2020 09:22:50 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>数据结构和算法</title>
       <link>https://zsmhub.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</link>
       <pubDate>Sun, 01 Mar 2020 21:33:03 +0800</pubDate>
@@ -108,15 +117,6 @@
       <pubDate>Fri, 10 Jan 2020 21:01:48 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>other</title>
-      <link>https://zsmhub.github.io/categories/other/</link>
-      <pubDate>Wed, 01 Jan 2020 15:59:09 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/other/</guid>
       <description></description>
     </item>
     

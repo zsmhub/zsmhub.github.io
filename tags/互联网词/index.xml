@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>互联网词 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</link>
+    <description>Recent content in 互联网词 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Thu, 14 May 2020 09:12:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一下互联网词</title>
+      <link>https://zsmhub.github.io/post/other/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</link>
+      <pubDate>Thu, 14 May 2020 09:12:26 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</guid>
+      <description>职位 PM(Product Manager): 产品经理 AM(Account Manager): 客户经理 RD(Research &amp;amp; Develop): 研发 FE(Front End): 前端 用户指标 DAU(Daily Active Users): 日活跃数 微服务 RPC(Remote Procedure Call): 远程过程调用，是一个计算机通信协议。该协议允许运行于一台计算</description>
+    </item>
+    
+  </channel>
+</rss>

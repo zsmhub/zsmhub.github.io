@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 22 Mar 2020 09:22:50 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 09:23:17 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>大牛面试记录</title>
+      <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%A4%A7%E7%89%9B%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Thu, 14 May 2020 09:23:17 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%A4%A7%E7%89%9B%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</guid>
+      <description>心得 本来想找PHP的，误打误撞发现广州的Golang和PHP混合用的公司还蛮多。 面试过程 看你简历里也有用过Go，Go和PHP在运行的时候有什</description>
+    </item>
     
     <item>
       <title>Golang 面试题</title>
