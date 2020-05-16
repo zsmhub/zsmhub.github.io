@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>大牛面试记录 - ZsmHub - Blog</title>
+  <title>Dubbo - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="心得 本来想找PHP的，误打误撞发现广州的Golang和PHP混合用的公司还蛮多。 面试过程 看你简历里也有用过Go，Go和PHP在运行的时候有什" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%A4%A7%E7%89%9B%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="大牛面试记录" />
-<meta property="og:description" content="心得 本来想找PHP的，误打误撞发现广州的Golang和PHP混合用的公司还蛮多。 面试过程 看你简历里也有用过Go，Go和PHP在运行的时候有什" />
+<meta property="og:title" content="Dubbo" />
+<meta property="og:description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%A4%A7%E7%89%9B%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/" />
-<meta property="article:published_time" content="2020-05-14T09:23:17+08:00" />
-<meta property="article:modified_time" content="2020-05-14T09:23:17+08:00" />
-<meta itemprop="name" content="大牛面试记录">
-<meta itemprop="description" content="心得 本来想找PHP的，误打误撞发现广州的Golang和PHP混合用的公司还蛮多。 面试过程 看你简历里也有用过Go，Go和PHP在运行的时候有什">
-<meta itemprop="datePublished" content="2020-05-14T09:23:17&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-14T09:23:17&#43;08:00" />
-<meta itemprop="wordCount" content="1382">
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/" />
+<meta property="article:published_time" content="2020-05-16T10:15:48+08:00" />
+<meta property="article:modified_time" content="2020-05-16T10:15:48+08:00" />
+<meta itemprop="name" content="Dubbo">
+<meta itemprop="description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智">
+<meta itemprop="datePublished" content="2020-05-16T10:15:48&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-16T10:15:48&#43;08:00" />
+<meta itemprop="wordCount" content="438">
 
 
 
-<meta itemprop="keywords" content="面试题," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="大牛面试记录"/>
-<meta name="twitter:description" content="心得 本来想找PHP的，误打误撞发现广州的Golang和PHP混合用的公司还蛮多。 面试过程 看你简历里也有用过Go，Go和PHP在运行的时候有什"/>
+<meta itemprop="keywords" content="dubbo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dubbo"/>
+<meta name="twitter:description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,15 +126,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">大牛面试记录</h1>
+      <h1 class="post-title">Dubbo</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-05-14 </span>
+        <span class="post-time"> 2020-05-16 </span>
         <div class="post-category">
-            <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
+            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 1382 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 438 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
     </header>
@@ -144,97 +144,43 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#心得">心得</a></li>
-    <li><a href="#面试过程">面试过程</a></li>
+    <li><a href="#dubbo-简介">Dubbo 简介</a></li>
+    <li><a href="#dubbo-主要特性">Dubbo 主要特性</a></li>
+    <li><a href="#dubbo-支持多种注册中心">Dubbo 支持多种注册中心</a></li>
+    <li><a href="#官网链接">官网链接</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="心得">心得</h2>
-<p>本来想找PHP的，误打误撞发现广州的Golang和PHP混合用的公司还蛮多。</p>
-<h2 id="面试过程">面试过程</h2>
+      <h2 id="dubbo-简介">Dubbo 简介</h2>
+<p>Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。</p>
+<h2 id="dubbo-主要特性">Dubbo 主要特性</h2>
+<ul>
+<li>面向接口代理的高性能RPC调用</li>
+<li>服务自动注册与发现</li>
+<li>运行期流量调度</li>
+<li>智能负载均衡</li>
+<li>高度可扩展能力</li>
+<li>可视化的服务治理与运维</li>
+</ul>
+<h2 id="dubbo-支持多种注册中心">Dubbo 支持多种注册中心</h2>
+<p><a href="https://segmentfault.com/a/1190000016097418">参考文章</a></p>
 <ol>
 <li>
-<p>看你简历里也有用过Go，Go和PHP在运行的时候有什么区别和优势？</p>
-<p>答：PHP每个请求进来时都会创建fpm-worker进程，从而导致系统并发高时CPU会产生频繁创建进程的开销，而Go不会。</p>
+<p>Zookeeper</p>
+<p><a href="https://segmentfault.com/a/1190000016349824">参考文章</a></p>
+<p>ZooKeeper 是一个开源的分布式协调服务。</p>
+<p>ZooKeeper 是一个典型的分布式数据一致性解决方案，分布式应用程序可以基于 ZooKeeper 实现诸如数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master 选举、分布式锁和分布式队列等功能。</p>
+<p>Zookeeper 一个最常用的使用场景就是用于担任服务生产者和服务消费者的注册中心。 服务生产者将自己提供的服务注册到Zookeeper中心，服务的消费者在进行服务调用的时候先到Zookeeper中查找服务，获取到服务生产者的详细信息之后，再去调用服务生产者的内容与数据。如下图所示，在 Dubbo架构中 Zookeeper 就担任了注册中心这一角色。</p>
 </li>
 <li>
-<p>你刚刚说到PHP那既然是多进程，那怎么共享数据？</p>
-<p>答：PHP既然是多进程，进程资源的地址和PCB空间都是独立的，没办法共享数据吧。</p>
-</li>
-<li>
-<p>那我如果要在Go里实现共享数据，有什么方式？</p>
-<p>答：我在项目里使用过协程，可以用channel</p>
-</li>
-<li>
-<p>那channel的本质和底层是什么？</p>
-<p>答：这个知识点有点模糊，我想想，如果没记错，我记得就是linux的管道吧</p>
-</li>
-<li>
-<p>那linux的管道有什么特性？</p>
-<p>答：管道的特性应该是只能等一边写完，另一边才能读，不知道我回答的对不对？</p>
-</li>
-<li>
-<p>对你说得没错，那你觉得管道是用什么实现的？</p>
-<p>答：不好意思，这题我不会</p>
-</li>
-<li>
-<p>其实管道就是文件，那对文件操作就是加锁</p>
-<p>答：对对对，我想起来了，其实这里涉及到资源的抢占，那系统对资源的抢占肯定就是加锁实现。</p>
-</li>
-<li>
-<p>既然刚刚你也提到协程，可以描述下Go的协程原理吗？</p>
-<p>答：Go的协程是基于CSP并发模型的GPM调度机制，M可以理解为处理机CPU，P就是Go底层用来管理Goroutine协程的。</p>
-</li>
-<li>
-<p>(这个时候面试官拿了一张白纸过来）写一个二分查找的算法看看吧，用PHP或Go都可以</p>
-<p>答：好，那我用PHP写吧（PS:这里我用的是递归法，要注意二分查找的临界问题）</p>
-</li>
-<li>
-<p>嗯，算法没问题，问一点网络的吧，socket用过吗？</p>
-<p>答：websocket用过，在做直播聊天室的时候会用到长连接</p>
-</li>
-<li>
-<p>那你觉得websocket是基于什么协议？</p>
-<p>答：是基于TCP协议的</p>
-</li>
-<li>
-<p>TCP客户端和服务端是怎么建立连接通信的？</p>
-<p>答：（ps：一开始答错了，我说是ack吧，面试官纠正是syn）然后我恍然大悟接着说，第一步是客户端发送syn，第二步是服务器应答syn+ack,第三步是客户端回复ack</p>
-</li>
-<li>
-<p>那TCP握手是几次，断开是几次？</p>
-<p>答：握手是三次，断开是四次（ps:有些面试官会问为什么断开要四次，这里涉及到半连接等待关闭，幸好没问）</p>
-</li>
-<li>
-<p>假设我们现在要做一对一视频聊天，每日DAU可能达到几十万以上，后端怎么实现一对一匹配的算法？还有，怎么实现快速的匹配服务器不会有压力问题？</p>
-<p>答：我想一下。用户登录的时候，如果未开始匹配，可以把用户放到redis里的set集合里，通过SRANDMEMBER命令随机抽取人出来就好了 ，至于redis的value最大可以保持512m数据，也就是理论上我们承载可以达到上千万上亿用户都不是问题，至于要保持redis的高可用，可以用rdb或aof做数据持久化，另外，redis也有哨兵模式，主redis挂了也可以选举抽取空闲的redis服务器顶上</p>
-</li>
-<li>
-<p>mysql主从的时候有没有遇到过主从延迟同步的情况？是怎么解决的？</p>
-<p>答：emmmmm，这个情况我还没遇到过。</p>
-</li>
-<li>
-<p>你也知道我们是做社交APP的，如果我们要做一些兴趣推荐的内容或者人，你会怎样实现？</p>
-<p>答：可以用ElasticSearch，我以前的项目有配合ik中文分词使用，缺点是比较吃机器内存。</p>
-</li>
-<li>
-<p>redis在项目里用过哪些数据类型？</p>
-</li>
-<li>
-<p>怎么解决redis在并发下商品超卖的问题？</p>
-</li>
-<li>
-<p>Golang长连接的时候是怎样做心跳机制的？</p>
-</li>
-<li>
-<p>说一下你是怎么理解微服务的？</p>
-</li>
-<li>
-<p>mq用过吗？在什么场景使用的？</p>
+<p>redis</p>
 </li>
 </ol>
+<h2 id="官网链接">官网链接</h2>
+<p><a href="https://dubbogo.github.io/dubbo-go-website/zh-cn/docs/user/preface/architecture.html">dubbo-go</a></p>
+<p><a href="https://github.com/apache/dubbo-php-framework/wiki/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B">dubbo-php</a></p>
 
     </div>
 
@@ -246,7 +192,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-05-14
+        2020-05-16
         
     </span>
   </p>
@@ -272,16 +218,16 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+          <a href="/tags/dubbo/">dubbo</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/">
+        <a class="prev" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/restfulsoaprpcsoa%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Dubbo</span>
+            <span class="prev-text nav-default">Restful、SOAP、RPC、SOA、微服务之间的区别</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/other/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/">
-            <span class="next-text nav-default">记一下互联网词</span>
+        <a class="next" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%A4%A7%E7%89%9B%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/">
+            <span class="next-text nav-default">大牛面试记录</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -294,8 +240,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-05-14 09:23:17 \x2b0800 CST',
-        title: '大牛面试记录',
+        id: '2020-05-16 10:15:48 \x2b0800 CST',
+        title: 'Dubbo',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
