@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 16 May 2020 10:41:57 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2020 20:05:18 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>API 网关</title>
+      <link>https://zsmhub.github.io/tags/api-%E7%BD%91%E5%85%B3/</link>
+      <pubDate>Sun, 17 May 2020 20:05:18 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/api-%E7%BD%91%E5%85%B3/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>微服务架构</title>

@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 16 May 2020 10:41:57 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2020 20:05:18 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>API Gateway</title>
+      <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/api%E7%BD%91%E5%85%B3/</link>
+      <pubDate>Sun, 17 May 2020 20:05:18 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/api%E7%BD%91%E5%85%B3/</guid>
+      <description>API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的</description>
+    </item>
     
     <item>
       <title>Restful、SOAP、RPC、SOA、微服务之间的区别</title>

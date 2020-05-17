@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API 网关 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/api-%E7%BD%91%E5%85%B3/</link>
+    <description>Recent content in API 网关 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 17 May 2020 20:05:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/api-%E7%BD%91%E5%85%B3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>API Gateway</title>
+      <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/api%E7%BD%91%E5%85%B3/</link>
+      <pubDate>Sun, 17 May 2020 20:05:18 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/api%E7%BD%91%E5%85%B3/</guid>
+      <description>API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的</description>
+    </item>
+    
+  </channel>
+</rss>
