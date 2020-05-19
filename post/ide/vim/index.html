@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>了解版本号 - ZsmHub - Blog</title>
+  <title>Vim - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="版本号迭代规则 系统重构：主版本号&#43;1 新增功能：次版本号&#43;1 BUG修复：修订号&#43;1 常见案例 版本号的规范可采用很多公司采用的这套：http://" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式、替换模式(R)、Ex模式。 在可视化模式下，可以对一个文本块的整体进行操作。例如，首先高" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/other/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/ide/vim/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="了解版本号" />
-<meta property="og:description" content="版本号迭代规则 系统重构：主版本号&#43;1 新增功能：次版本号&#43;1 BUG修复：修订号&#43;1 常见案例 版本号的规范可采用很多公司采用的这套：http://" />
+<meta property="og:title" content="Vim" />
+<meta property="og:description" content="Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式、替换模式(R)、Ex模式。 在可视化模式下，可以对一个文本块的整体进行操作。例如，首先高" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/other/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/" />
-<meta property="article:published_time" content="2020-01-01T15:59:09+08:00" />
-<meta property="article:modified_time" content="2020-01-01T15:59:09+08:00" />
-<meta itemprop="name" content="了解版本号">
-<meta itemprop="description" content="版本号迭代规则 系统重构：主版本号&#43;1 新增功能：次版本号&#43;1 BUG修复：修订号&#43;1 常见案例 版本号的规范可采用很多公司采用的这套：http://">
-<meta itemprop="datePublished" content="2020-01-01T15:59:09&#43;08:00" />
-<meta itemprop="dateModified" content="2020-01-01T15:59:09&#43;08:00" />
-<meta itemprop="wordCount" content="486">
+<meta property="og:url" content="https://zsmhub.github.io/post/ide/vim/" />
+<meta property="article:published_time" content="2019-12-31T20:53:44+08:00" />
+<meta property="article:modified_time" content="2019-12-31T20:53:44+08:00" />
+<meta itemprop="name" content="Vim">
+<meta itemprop="description" content="Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式、替换模式(R)、Ex模式。 在可视化模式下，可以对一个文本块的整体进行操作。例如，首先高">
+<meta itemprop="datePublished" content="2019-12-31T20:53:44&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-31T20:53:44&#43;08:00" />
+<meta itemprop="wordCount" content="978">
 
 
 
-<meta itemprop="keywords" content="版本号," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="了解版本号"/>
-<meta name="twitter:description" content="版本号迭代规则 系统重构：主版本号&#43;1 新增功能：次版本号&#43;1 BUG修复：修订号&#43;1 常见案例 版本号的规范可采用很多公司采用的这套：http://"/>
+<meta itemprop="keywords" content="ide," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vim"/>
+<meta name="twitter:description" content="Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式、替换模式(R)、Ex模式。 在可视化模式下，可以对一个文本块的整体进行操作。例如，首先高"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,15 +126,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">了解版本号</h1>
+      <h1 class="post-title">Vim</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-01-01 </span>
+        <span class="post-time"> 2019-12-31 </span>
         <div class="post-category">
-            <a href="/categories/other/"> other </a>
+            <a href="/categories/ide/"> ide </a>
             </div>
-          <span class="more-meta"> 约 486 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 978 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -144,32 +144,115 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#版本号迭代规则">版本号迭代规则</a></li>
-    <li><a href="#常见案例">常见案例</a></li>
+    <li><a href="#vim-的-6-种模式">Vim 的 6 种模式</a></li>
+    <li><a href="#基本使用">基本使用</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="版本号迭代规则">版本号迭代规则</h2>
+      <p><img src="/images/2020/QQ20200519-210231@2x.png" alt="点击查看大图"></p>
+<h2 id="vim-的-6-种模式">Vim 的 6 种模式</h2>
+<p>一般模式、编辑模式、命令模式、可视化模式、替换模式(R)、Ex模式。</p>
+<ol>
+<li>
+<p>在可视化模式下，可以对一个文本块的整体进行操作。例如，首先高亮选中一部分文本，然后用d命令删除这个文本块。可视化模式的好处在于，你可以在做改动之前，就看到操作将影响的文本。可视化模式可以分为以下三种：</p>
 <ul>
-<li>系统重构：主版本号+1</li>
-<li>新增功能：次版本号+1</li>
-<li>BUG修复：修订号+1</li>
+<li>
+<p>用v命令进入的字符可视化模式（Characterwise visual mode)。文本选择是以字符为单位的。</p>
+<p>v : 移动光标可选中多个单词，</p>
+<p>v+i+单引号/双引号/括号等：选中单引号/双引号/括号等内的内容，不包含单引号/双引号/括号等</p>
+<p>v+a+单引号/双引号/括号等：选中单引号/双引号/括号等内的内容，包含单引号/双引号/括号等</p>
+</li>
+<li>
+<p>用shift+v命令进入的行可视化模式（Linewise visual mode)。文本选择是以行为单位的。(常用）</p>
+<p>如果需要多行编辑，则再按下shift+i 或 shift+a，即可进入批量编辑</p>
+</li>
+<li>
+<p>用ctrl-V进入的块可视化模式（Blockwise visual mode）。可以选择一个矩形内的文本。（注意：在Windows中，ctrl-V可能已经被影射为粘贴操作，可以使用ctrl-Q进入块可视化模式。）</p>
+</li>
 </ul>
-<h2 id="常见案例">常见案例</h2>
-<p>版本号的规范可采用很多公司采用的这套：http://semver.org/lang/zh-CN/</p>
-<p>版本格式：主版本号.次版本号.修订号，版本号递增规则如下：</p>
-<p>主版本号：当你做了不兼容的 API 修改，
-次版本号：当你做了向下兼容的功能性新增，
-修订号：当你做了向下兼容的问题修正。</p>
-<p>在 0.y.z 初始开发阶段，我该如何进行版本控制？</p>
-<p>最简单的做法是以 0.1.0 作为你的初始化开发版本，并在后续的每次发行时递增次版本号。</p>
-<p>如何判断发布 1.0.0 版本的时机？</p>
-<p>当你的软件被用于正式环境，它应该已经达到了 1.0.0 版。如果你已经有个稳定的 API 被使用者依赖，也会是 1.0.0 版。如果你很担心向下兼容的问题，也应该算是 1.0.0 版了。</p>
-<p>这不会阻碍快速开发和迭代吗？</p>
-<p>主版本号为零的时候就是为了做快速开发。如果你每天都在改变 API，那么你应该仍在主版本号为零的阶段（0.y.z），或是正在下个主版本的独立开发分支中。</p>
-<p>最开始在做原型或试用版开发时，版本号可从0.y.z开始，然后等到正式上线部署到生产环境，用户在使用时，版本号认为达到1.0.0阶段了，此后就从1.0.0开始了。</p>
+</li>
+<li>
+<p>命令模式</p>
+<ul>
+<li>一般模式下按冒号进入命令模式，eg: w, q, q!</li>
+</ul>
+</li>
+</ol>
+<h2 id="基本使用">基本使用</h2>
+<ol>
+<li>
+<p>打标签方法：</p>
+<p>m+任意单词如a: 打标签/取消标签</p>
+<p>`+任意单词如a: 标签跳转</p>
+</li>
+<li>
+<p>cp 操作符:  j&amp;k, h&amp;l, a&amp;i, ctrl+f&amp;ctrl+b,</p>
+</li>
+<li>
+<p>组合键</p>
+<ul>
+<li>ctrl+g: 页面最底部出现一个文件状态信息行，显示的内容包含当前编辑的文件路径和文件中光标位置。</li>
+<li>ctrl+o: 回到之前光标的位置</li>
+<li>ctrl+]: 链接跳转</li>
+<li>ctrl+d: 命令补全功能</li>
+</ul>
+</li>
+<li>
+<p>命令操作</p>
+<ul>
+<li>s/old/new/g // 则是替换全行的匹配串</li>
+<li>%s/old/new/g // 则是替换整个文件中的每个匹配串</li>
+</ul>
+</li>
+<li>
+<p>y: 复制，d: 删除或剪切，x: 剪切或退格，p: 粘贴，c为change，其中dd删除一行，yy复制一行，ndd删除n行，nyy复制多行，ce/cw：替换一个单词</p>
+</li>
+<li>
+<p>跳转翻页</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">hjkl 这是代替箭头键功能的
+H M L 跳到屏幕的顶上 中间 下方 ,
+CTRL-F 向前一页 CTRL-B 向后一页
+w 跳到下一个单词的首字符
+e 跳到下一个单词的末尾字符
+b 跳到上一个单词的首字符
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>输入 :help cmd 可以找到关于 cmd 命令的帮助。</p>
+</li>
+<li>
+<p>多行操作：ctrl+v =&gt; shit+i =&gt; 输入想要插入的字符 =&gt; esc =&gt; ok</p>
+</li>
+<li>
+<p>:e -&gt; 刷新或重载reload 已打开的文件</p>
+</li>
+<li>
+<p>u: 回退上一步操作</p>
+</li>
+<li>
+<p>:1, $s/word1/word2/g: 全局替换word1为word2</p>
+<p>:n1, n2/word1/word2/g: n1至n2行之间全局替换word1为word2</p>
+</li>
+<li>
+<p>代码折叠: zc， 展开折叠: zo</p>
+</li>
+<li>
+<p>o是将在光标的下方打开新的一行并进入插入模式， O是向上新开一行</p>
+</li>
+</ol>
 
     </div>
 
@@ -181,7 +264,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-01-01
+        2019-12-31
         
     </span>
   </p>
@@ -207,16 +290,16 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/%E7%89%88%E6%9C%AC%E5%8F%B7/">版本号</a>
+          <a href="/tags/ide/">ide</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/">
+        <a class="prev" href="/post/ide/excel/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">软件测试分类</span>
+            <span class="prev-text nav-default">Excel 使用总结</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/ide/excel/">
-            <span class="next-text nav-default">Excel 使用总结</span>
+        <a class="next" href="/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/">
+            <span class="next-text nav-default">接口对接安全性方案</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -229,8 +312,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-01-01 15:59:09 \x2b0800 CST',
-        title: '了解版本号',
+        id: '2019-12-31 20:53:44 \x2b0800 CST',
+        title: 'Vim',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 18 May 2020 11:21:18 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2020 21:18:05 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>常用软件和平台</title>
+      <link>https://zsmhub.github.io/post/ide/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%B9%B3%E5%8F%B0/</link>
+      <pubDate>Tue, 19 May 2020 21:18:05 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ide/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%B9%B3%E5%8F%B0/</guid>
+      <description>code SourceTree TortoiseSvn / TortoiseGit IDE sublime visual studio code phpStorm hbuilder gvim / macvim database powerdesigner / workbench navicat SQLyog sequelPro datagrip DBeaver Robot 3T (MongoDB) ssh windows: SecureCRT MacOs: iTerm2 CI/CD gitlab/github Jenkins Ant phpunit api 接口平台 ApiDoc：是一款可以有源代码中的注释直接自动生成ap</description>
+    </item>
+    
+    <item>
+      <title>JetBrains</title>
+      <link>https://zsmhub.github.io/post/ide/jetbrains/</link>
+      <pubDate>Tue, 19 May 2020 21:09:40 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ide/jetbrains/</guid>
+      <description>常用快捷键 goland快捷键说明文章 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 Double shift: 查找任何东西 Command + , : 打开ide配置 Command + option + L: 代码格式化（默</description>
+    </item>
     
     <item>
       <title>女性轻松了解下HPV</title>
@@ -319,6 +337,24 @@
     </item>
     
     <item>
+      <title>Excel 使用总结</title>
+      <link>https://zsmhub.github.io/post/ide/excel/</link>
+      <pubDate>Tue, 31 Dec 2019 21:13:49 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ide/excel/</guid>
+      <description>excel怎么删除空白单元格，就是右边的数据往左移动，填补空白单元格？ 答：选上数据区域，ctrl+G-&amp;gt;定位条件-空值，这时区域内所有</description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://zsmhub.github.io/post/ide/vim/</link>
+      <pubDate>Tue, 31 Dec 2019 20:53:44 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ide/vim/</guid>
+      <description>Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式、替换模式(R)、Ex模式。 在可视化模式下，可以对一个文本块的整体进行操作。例如，首先高</description>
+    </item>
+    
+    <item>
       <title>接口对接安全性方案</title>
       <link>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/</link>
       <pubDate>Wed, 25 Dec 2019 21:44:01 +0800</pubDate>
@@ -415,6 +451,15 @@
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/</guid>
       <description>高并发之问题描述 某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种</description>
+    </item>
+    
+    <item>
+      <title>Vscode</title>
+      <link>https://zsmhub.github.io/post/ide/vscode/</link>
+      <pubDate>Wed, 19 Jun 2019 21:04:16 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ide/vscode/</guid>
+      <description>常用快捷键 cmd+P: 打开命令面板 直接输入文件名，跳转到文件 ? 列出当前可执行的动作 : 跳转到行数，也可以 Cmd+G 直接进入 &amp;gt; 显示并运行命令 @ 函数名跳转 设置光标 o</description>
     </item>
     
     <item>

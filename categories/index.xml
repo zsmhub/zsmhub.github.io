@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 18 May 2020 11:21:18 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2020 21:18:05 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ide</title>
+      <link>https://zsmhub.github.io/categories/ide/</link>
+      <pubDate>Tue, 19 May 2020 21:18:05 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/ide/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>生活笔记</title>

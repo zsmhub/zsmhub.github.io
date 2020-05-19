@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>excel on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/excel/</link>
+    <description>Recent content in excel on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Tue, 31 Dec 2019 21:13:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/excel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Excel 使用总结</title>
+      <link>https://zsmhub.github.io/post/ide/excel/</link>
+      <pubDate>Tue, 31 Dec 2019 21:13:49 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ide/excel/</guid>
+      <description>excel怎么删除空白单元格，就是右边的数据往左移动，填补空白单元格？ 答：选上数据区域，ctrl+G-&amp;gt;定位条件-空值，这时区域内所有</description>
+    </item>
+    
+  </channel>
+</rss>
