@@ -49,7 +49,7 @@
 <meta itemprop="description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y年%m月%d %H:%i:%s&#39;)">
 <meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="1702">
+<meta itemprop="wordCount" content="1786">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1702 字 </span>
+          <span class="more-meta"> 约 1786 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -300,18 +300,31 @@
 </span><span class="lnt">29
 </span><span class="lnt">30
 </span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 分析数据表大小
 </span><span class="c1"></span><span class="k">SELECT</span>
-<span class="o">*</span><span class="p">,</span>
+<span class="k">table_name</span><span class="p">,</span>
+<span class="n">table_rows</span><span class="p">,</span>
 <span class="c1">-- 数据表大小
-</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">DATA_LENGTH</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">data_size</span><span class="o">`</span><span class="p">,</span>
+</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">data_length</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">data_size</span><span class="p">(</span><span class="k">G</span><span class="p">)</span><span class="o">`</span><span class="p">,</span>
 <span class="c1">-- 索引大小
-</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">INDEX_LENGTH</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">index_size</span><span class="o">`</span><span class="p">,</span>
+</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">index_length</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">index_size</span><span class="p">(</span><span class="k">G</span><span class="p">)</span><span class="o">`</span><span class="p">,</span>
 <span class="c1">-- 碎片大小
-</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">DATA_FREE</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">free_size</span><span class="o">`</span>
-<span class="k">FROM</span> <span class="o">`</span><span class="n">information_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">TABLES</span><span class="o">`</span>
+</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">data_free</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">free_size</span><span class="p">(</span><span class="k">G</span><span class="p">)</span><span class="o">`</span>
+<span class="k">FROM</span> <span class="o">`</span><span class="n">information_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">tables</span><span class="o">`</span>
 <span class="k">WHERE</span>
 <span class="n">ENGINE</span><span class="o">=</span><span class="s1">&#39;InnoDB&#39;</span>
 <span class="k">AND</span> <span class="k">TABLE_NAME</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">&#39;bi_mid_layer_cache&#39;</span><span class="p">,</span> <span class="s1">&#39;bi_credit_apply&#39;</span><span class="p">)</span>
@@ -333,6 +346,17 @@
 <span class="k">SET</span>
     <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">+</span> <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">*</span> <span class="n">merits</span><span class="p">.</span><span class="n">percentage</span><span class="p">,</span>
     <span class="n">merits</span><span class="p">.</span><span class="n">test</span> <span class="o">=</span> <span class="s2">&#34;666&#34;</span><span class="p">;</span>
+
+<span class="c1">-- 查询某个数据库内哪些表包含个字段
+</span><span class="c1"></span><span class="k">select</span> <span class="n">tables</span><span class="p">.</span><span class="k">table_name</span><span class="p">,</span> <span class="n">group_concat</span><span class="p">(</span><span class="k">column_name</span> <span class="n">separator</span> <span class="s2">&#34;,&#34;</span><span class="p">),</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">table_rows</span>
+<span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="o">`</span><span class="n">TABLES</span><span class="o">`</span>
+<span class="k">join</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span> <span class="k">on</span> <span class="n">tables</span><span class="p">.</span><span class="n">table_schema</span><span class="o">=</span><span class="n">columns</span><span class="p">.</span><span class="n">table_schema</span> <span class="k">and</span> <span class="n">tables</span><span class="p">.</span><span class="k">table_name</span><span class="o">=</span><span class="n">columns</span><span class="p">.</span><span class="k">table_name</span>
+<span class="k">where</span>
+<span class="n">tables</span><span class="p">.</span><span class="n">table_schema</span><span class="o">=</span><span class="s2">&#34;database_name&#34;</span> <span class="c1">-- 数据库名
+</span><span class="c1"></span><span class="k">and</span> <span class="n">data_type</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span> <span class="c1">-- 搜索字段数据类型为 int 型
+</span><span class="c1"></span><span class="k">and</span> <span class="k">column_name</span> <span class="k">like</span> <span class="s1">&#39;%account_id&#39;</span> <span class="c1">-- 搜索字段名
+</span><span class="c1"></span><span class="k">group</span> <span class="k">by</span> <span class="n">tables</span><span class="p">.</span><span class="k">table_name</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">table_rows</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="其他">其他</h2>
