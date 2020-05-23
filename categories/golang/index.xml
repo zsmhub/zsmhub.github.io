@@ -7,17 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 12 May 2020 21:51:25 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2020 14:51:21 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Go ELK 日志收集方案</title>
+      <link>https://zsmhub.github.io/post/golang/go%E4%B9%8Belk%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Sat, 23 May 2020 14:51:21 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/go%E4%B9%8Belk%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%96%B9%E6%A1%88/</guid>
+      <description>ELK 简介 对于日志来说，最常见的需求就是收集、存储、查询、展示，开源社区正好有相对应的开源项目 elasticsearch（存储+搜索）, logs</description>
+    </item>
+    
+    <item>
       <title>Go Json 技巧</title>
-      <link>https://zsmhub.github.io/post/golang/go-json%E6%8A%80%E5%B7%A7/</link>
+      <link>https://zsmhub.github.io/post/golang/go%E4%B9%8Bson%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Tue, 12 May 2020 21:51:25 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/golang/go-json%E6%8A%80%E5%B7%A7/</guid>
+      <guid>https://zsmhub.github.io/post/golang/go%E4%B9%8Bson%E6%8A%80%E5%B7%A7/</guid>
       <description>omitempty 忽略 struct 空字段，当字段的值为空值的时候，它不会出现在JSON数据中. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 package main import ( &amp;#34;encoding/json&amp;#34; &amp;#34;fmt&amp;#34; ) type User struct { Email string `json:&amp;#34;email&amp;#34;` Password string</description>
     </item>
     
