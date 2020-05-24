@@ -67,6 +67,15 @@
     </item>
     
     <item>
+      <title>Docker 基础知识</title>
+      <link>https://zsmhub.github.io/post/docker/docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Fri, 01 Feb 2019 14:12:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/docker/docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>docker 简介 2013年3月20日发布Docker0.1 如何定义Docker？ Docker 是一个承载和驱动容器的。Docker 是一个重新定义了程序开发测试、交</description>
+    </item>
+    
+    <item>
       <title>Mysql基础知识一</title>
       <link>https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/</link>
       <pubDate>Wed, 09 Jan 2019 22:13:42 +0800</pubDate>

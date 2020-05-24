@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/categories/docker/</link>
+    <description>Recent content in docker on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Fri, 01 Feb 2019 14:36:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>K8s 介绍</title>
+      <link>https://zsmhub.github.io/post/docker/docker-k8s/</link>
+      <pubDate>Fri, 01 Feb 2019 14:36:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/docker/docker-k8s/</guid>
+      <description>简介 K8S，就是基于容器的集群管理平台，它的全称，是kubernetes。 k8s集群主要包括两个部分：一个Master节点（主节点），一群N</description>
+    </item>
+    
+    <item>
+      <title>docker-compose</title>
+      <link>https://zsmhub.github.io/post/docker/docker-compose/</link>
+      <pubDate>Fri, 01 Feb 2019 14:13:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/docker/docker-compose/</guid>
+      <description>简介 参考文章 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64</description>
+    </item>
+    
+    <item>
+      <title>Docker 基础知识</title>
+      <link>https://zsmhub.github.io/post/docker/docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Fri, 01 Feb 2019 14:12:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/docker/docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>docker 简介 2013年3月20日发布Docker0.1 如何定义Docker？ Docker 是一个承载和驱动容器的。Docker 是一个重新定义了程序开发测试、交</description>
+    </item>
+    
+  </channel>
+</rss>

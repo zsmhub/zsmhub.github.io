@@ -48,5 +48,14 @@
       <description>相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer+ ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优</description>
     </item>
     
+    <item>
+      <title>PHP 开发环境之 Lnmp</title>
+      <link>https://zsmhub.github.io/post/php/lnmp/</link>
+      <pubDate>Tue, 01 Jan 2019 13:55:39 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/lnmp/</guid>
+      <description>Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且</description>
+    </item>
+    
   </channel>
 </rss>

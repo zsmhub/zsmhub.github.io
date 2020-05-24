@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macos on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/categories/macos/</link>
+    <description>Recent content in macos on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 24 May 2020 13:46:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/categories/macos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MacOs 之 brew</title>
+      <link>https://zsmhub.github.io/post/macos/macos-brew/</link>
+      <pubDate>Sun, 24 May 2020 13:46:00 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/macos/macos-brew/</guid>
+      <description>brew 和 brew cask 区别 brew主要是用于安装没UI的软件。 brew cask主要用于安装有UI的软件。 brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Pa</description>
+    </item>
+    
+    <item>
+      <title>MacOs 使用心得</title>
+      <link>https://zsmhub.github.io/post/macos/macos%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</link>
+      <pubDate>Sun, 24 May 2020 13:30:56 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/macos/macos%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</guid>
+      <description>MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&amp;gt; Command ⇧ ——&amp;gt; Shift ⌥ ——&amp;gt; Option ⌃ ——&amp;gt; Control ↩︎ ——&amp;gt; Return/Enter</description>
+    </item>
+    
+  </channel>
+</rss>

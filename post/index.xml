@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 23 May 2020 14:51:21 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2020 13:46:00 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MacOs 之 brew</title>
+      <link>https://zsmhub.github.io/post/macos/macos-brew/</link>
+      <pubDate>Sun, 24 May 2020 13:46:00 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/macos/macos-brew/</guid>
+      <description>brew 和 brew cask 区别 brew主要是用于安装没UI的软件。 brew cask主要用于安装有UI的软件。 brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Pa</description>
+    </item>
+    
+    <item>
+      <title>MacOs 使用心得</title>
+      <link>https://zsmhub.github.io/post/macos/macos%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</link>
+      <pubDate>Sun, 24 May 2020 13:30:56 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/macos/macos%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/</guid>
+      <description>MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&amp;gt; Command ⇧ ——&amp;gt; Shift ⌥ ——&amp;gt; Option ⌃ ——&amp;gt; Control ↩︎ ——&amp;gt; Return/Enter</description>
+    </item>
     
     <item>
       <title>Go ELK 日志收集方案</title>
@@ -580,6 +598,33 @@
     </item>
     
     <item>
+      <title>K8s 介绍</title>
+      <link>https://zsmhub.github.io/post/docker/docker-k8s/</link>
+      <pubDate>Fri, 01 Feb 2019 14:36:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/docker/docker-k8s/</guid>
+      <description>简介 K8S，就是基于容器的集群管理平台，它的全称，是kubernetes。 k8s集群主要包括两个部分：一个Master节点（主节点），一群N</description>
+    </item>
+    
+    <item>
+      <title>docker-compose</title>
+      <link>https://zsmhub.github.io/post/docker/docker-compose/</link>
+      <pubDate>Fri, 01 Feb 2019 14:13:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/docker/docker-compose/</guid>
+      <description>简介 参考文章 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64</description>
+    </item>
+    
+    <item>
+      <title>Docker 基础知识</title>
+      <link>https://zsmhub.github.io/post/docker/docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Fri, 01 Feb 2019 14:12:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/docker/docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>docker 简介 2013年3月20日发布Docker0.1 如何定义Docker？ Docker 是一个承载和驱动容器的。Docker 是一个重新定义了程序开发测试、交</description>
+    </item>
+    
+    <item>
       <title>开发者须知</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</link>
       <pubDate>Fri, 25 Jan 2019 15:42:14 +0800</pubDate>
@@ -649,6 +694,15 @@
       
       <guid>https://zsmhub.github.io/post/linux/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>基本命令 find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $</description>
+    </item>
+    
+    <item>
+      <title>PHP 开发环境之 Lnmp</title>
+      <link>https://zsmhub.github.io/post/php/lnmp/</link>
+      <pubDate>Tue, 01 Jan 2019 13:55:39 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/lnmp/</guid>
+      <description>Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且</description>
     </item>
     
     <item>

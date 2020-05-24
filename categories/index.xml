@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 23 May 2020 14:51:21 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2020 13:46:00 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>macos</title>
+      <link>https://zsmhub.github.io/categories/macos/</link>
+      <pubDate>Sun, 24 May 2020 13:46:00 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/macos/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>golang</title>
@@ -153,6 +162,15 @@
       <pubDate>Sat, 02 Mar 2019 11:08:07 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://zsmhub.github.io/categories/docker/</link>
+      <pubDate>Fri, 01 Feb 2019 14:36:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/docker/</guid>
       <description></description>
     </item>
     
