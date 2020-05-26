@@ -49,7 +49,7 @@
 <meta itemprop="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器">
 <meta itemprop="datePublished" content="2019-08-01T13:50:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-05T13:50:49&#43;08:00" />
-<meta itemprop="wordCount" content="6292">
+<meta itemprop="wordCount" content="6394">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 6292 字 </span>
+          <span class="more-meta"> 约 6394 字 </span>
           <span class="more-meta"> 预计阅读 13 分钟 </span>
         
       </div>
@@ -913,13 +913,38 @@ Log::info(&#39;==&gt;id=1111&#39;);
 <p>1、在PhpStorm中搜索安装 Laravel Plugin</p>
 </li>
 <li>
-<p>2、<code>composer require barryvdh/laravel-ide-helper</code></p>
+<p>2、<code>composer require --dev barryvdh/laravel-ide-helper</code></p>
 </li>
 <li>
-<p>3、打开项目 config/app.php 于 providers 添加如下一行 <code>Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class</code></p>
+<p>3、如果你只在开发环境中安装「larave-ide-helper」，那么可以在「app/Providers/AppServiceProvider.php」的「register」方法中写入下面代码：</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">public function register()
+{
+    if ($this-&gt;app-&gt;environment() === &#39;local&#39;) {
+        $this-&gt;app-&gt;register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+    }
+    // ...
+}
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>4、<code>php artisan ide-helper:generate</code> - 为 Facades 生成 phpDocs 注释</p>
 </li>
 <li>
-<p>4、Generate a new IDE Helper file: <code>php artisan ide-helper:generate</code> [可以解决Facades的引用问题]</p>
+<p>5、<code>php artisan ide-helper:meta</code> - 为 PhpStorm 生成类路径提示文件</p>
 </li>
 </ul>
 </li>

@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
 <meta property="article:published_time" content="2020-03-15T17:46:46+08:00" />
-<meta property="article:modified_time" content="2020-05-08T17:46:46+08:00" />
+<meta property="article:modified_time" content="2020-05-26T17:46:46+08:00" />
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go">
 <meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-08T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="8584">
+<meta itemprop="dateModified" content="2020-05-26T17:46:46&#43;08:00" />
+<meta itemprop="wordCount" content="7102">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8584 字 </span>
-          <span class="more-meta"> 预计阅读 18 分钟 </span>
+          <span class="more-meta"> 约 7102 字 </span>
+          <span class="more-meta"> 预计阅读 15 分钟 </span>
         
       </div>
     </header>
@@ -156,12 +156,6 @@
       </ul>
     </li>
     <li><a href="#常用命令">常用命令</a></li>
-    <li><a href="#常用库">常用库</a>
-      <ul>
-        <li><a href="#标准库">标准库</a></li>
-        <li><a href="#第三方库">第三方库</a></li>
-      </ul>
-    </li>
     <li><a href="#go-基础知识">Go 基础知识</a></li>
     <li><a href="#启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</a></li>
   </ul>
@@ -277,361 +271,7 @@
 <span class="k">go</span> <span class="nx">test</span> <span class="c1">// 这是一个轻量级的单元测试框架
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="常用库">常用库</h2>
-<h3 id="标准库">标准库</h3>
-<ul>
-<li>time</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 获取当前时间，这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4-5
-</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">))</span>
-
-<span class="nx">timeUnix</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span>         <span class="c1">//单位秒
-</span><span class="c1"></span><span class="nx">timeUnixNano</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">()</span> <span class="c1">//单位纳秒
-</span><span class="c1"></span>
-<span class="c1">// 日期转换成时间戳: 注意时区设置
-</span><span class="c1"></span><span class="nx">deadlineTimeStruct</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="s">&#34;2015-08-19 11:38:56&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">LoadLocation</span><span class="p">(</span><span class="s">&#34;Asia/Shanghai&#34;</span><span class="p">))</span>
-
-<span class="c1">// 时间戳转换成日期
-</span><span class="c1"></span><span class="nx">timestamp</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="nx">timestamp</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// 时间戳字符串转为Time类型
-</span><span class="c1"></span><span class="nx">str_time</span> <span class="o">:=</span> <span class="nx">timestamp</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span>
-
-<span class="c1">// 未来第30天
-</span><span class="c1"></span><span class="nx">lastDay</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02&#34;</span><span class="p">)</span>
-
-<span class="c1">// 获取 1 小时之前的时间
-</span><span class="c1"></span><span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseDuration</span><span class="p">(</span><span class="s">&#34;-1h&#34;</span><span class="p">)</span>
-<span class="nx">result</span> <span class="o">:=</span> <span class="nx">currentTime</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>encoding/json</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 输出json后的数据
-</span><span class="c1"></span><span class="nx">data</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">userDevice</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
-
-<span class="c1">// json解析成map并输出
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">ret</span> <span class="kd">interface</span><span class="p">{}</span>
-<span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">ret</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ret</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>sync</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="err">：</span><span class="nx">互斥锁</span>
-<span class="kd">type</span> <span class="nx">Mutex</span>
-    <span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">Mutex</span><span class="p">)</span> <span class="nf">Lock</span><span class="p">()</span>
-    <span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">Mutex</span><span class="p">)</span> <span class="nf">Unlock</span><span class="p">()</span>
-
-<span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span><span class="p">:</span> <span class="nx">读写锁</span><span class="err">，</span><span class="nx">一般用在大量读操作</span><span class="err">、</span><span class="nx">少量写操作的情况</span>
-<span class="mf">1.</span> <span class="nx">同时只能有一个</span> <span class="nx">goroutine</span> <span class="nx">能够获得写锁定</span><span class="err">。</span>
-<span class="mf">2.</span> <span class="nx">同时可以有任意多个</span> <span class="nx">gorouinte</span> <span class="nx">获得读锁定</span><span class="err">。</span>
-<span class="mf">3.</span> <span class="nx">同时只能存在写锁定或读锁定</span><span class="err">（</span><span class="nx">读和写互斥</span><span class="err">）。</span>
-
-<span class="err">#</span> <span class="nx">sync</span><span class="o">/</span><span class="nx">atomic</span>
-<span class="nx">原子操作共有5种</span><span class="err">：</span><span class="nx">增或减</span><span class="err">，</span><span class="nx">比较并交换</span><span class="err">、</span><span class="nx">载入</span><span class="err">、</span><span class="nx">存储和交换</span><span class="err">。</span>
-<span class="nx">atomic</span><span class="p">.</span><span class="nf">AddUint32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">addr</span><span class="p">,</span><span class="nx">n</span><span class="p">)</span> <span class="c1">// 在原来的基础上加n
-</span><span class="c1"></span><span class="nx">atomic</span><span class="p">.</span><span class="nf">AddUint32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">addr</span><span class="p">,^</span><span class="nb">uint32</span><span class="p">(</span><span class="o">-</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1">// 在原来的基础上加n（n为负数)
-</span><span class="c1"></span>
-<span class="err">#</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-<span class="c1">// 使用sync.WaitGroup方式保证所有goroutine都运行完毕
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span> <span class="c1">// 初始化等待组
-</span><span class="c1"></span>    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1">// 初始化计数器，设置为100
-</span><span class="c1"></span>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span> <span class="c1">// 计数器-1
-</span><span class="c1"></span>            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span> <span class="c1">// 进程阻塞
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="err">#</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup对象不是一个引用类型</span><span class="err">，</span><span class="nx">在通过函数传值的时候需要使用地址</span>
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">go</span> <span class="nf">f</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-<span class="p">}</span>
-<span class="c1">// 一定要通过指针传值，不然进程会进入死锁状态
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">f</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="err">#</span> <span class="nx">条件变量</span><span class="o">-</span><span class="nx">总是与锁一块使用的条件变量</span>
-<span class="nx">sync</span><span class="p">.</span><span class="nx">Cond</span>
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>flag 或 os.Args[]</li>
-</ul>
-<p>用于处理命令行参数</p>
-<ul>
-<li>errors包 或 fmt.Errorf()</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="kt">error</span> <span class="kd">interface</span> <span class="p">{</span>
-    <span class="nf">Error</span><span class="p">()</span> <span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="nx">错误处理</span><span class="err">，</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;math: square root of negative number %g&#34;</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span>
-
-<span class="nx">Go</span> <span class="nx">没有像</span> <span class="nx">Java</span> <span class="nx">和</span> <span class="p">.</span><span class="nx">NET</span> <span class="nx">那样的</span> <span class="nx">try</span><span class="o">/</span><span class="nx">catch</span> <span class="nx">异常机制</span><span class="err">：</span><span class="nx">不能执行抛异常操作</span><span class="err">。</span><span class="nx">但是有一套</span> <span class="k">defer</span><span class="o">-</span><span class="nx">panic</span><span class="o">-</span><span class="nx">and</span><span class="o">-</span><span class="nx">recover</span> <span class="nx">机制</span>
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>net, net/http</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="err">#</span> <span class="nx">网络通讯包</span>
-<span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nx">sayHelloName</span><span class="p">)</span> <span class="c1">// 路由注册
-</span><span class="c1"></span><span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;:8080&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span> <span class="c1">// TCP 端口监听，对每个请求实例化一个 Conn，并且开启一个 goroutine 为这个请求进行服务 go c.serve ()
-</span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>html/template</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 字符转义
-</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;username:&#34;</span><span class="p">,</span> <span class="nx">template</span><span class="p">.</span><span class="nf">HTMLEscapeString</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Form</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;username&#34;</span><span class="p">)))</span> <span class="c1">// 输出到服务器端
-</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;password:&#34;</span><span class="p">,</span> <span class="nx">template</span><span class="p">.</span><span class="nf">HTMLEscapeString</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Form</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;password&#34;</span><span class="p">)))</span>
-<span class="nx">template</span><span class="p">.</span><span class="nf">HTMLEscape</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Form</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;username&#34;</span><span class="p">)))</span> <span class="c1">// 输出到客户端
-</span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>strings &amp; strconv</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 将一个[]string的切片通过分隔符，分割成一个字符串
-</span><span class="c1"></span><span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;hello&#34;</span><span class="p">,</span> <span class="s">&#34;word&#34;</span><span class="p">,</span> <span class="s">&#34;xiaowei&#34;</span><span class="p">}</span>
-<span class="nx">ret</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&#34;-&#34;</span><span class="p">)</span>
-
-<span class="c1">// 把字符串按照指定的分隔符切割成slice
-</span><span class="c1"></span><span class="nx">ret</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="s">&#34;a,b,c,d,e&#34;</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
-
-<span class="nb">string</span><span class="p">([]</span><span class="kt">byte</span><span class="p">)</span> <span class="c1">// 坑：string()只能将[]byte类型的数据转换为字符串
-</span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>sort</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 数组排序
-</span><span class="c1"></span><span class="nx">array1</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">}</span>
-<span class="nx">sort</span><span class="p">.</span><span class="nf">Ints</span><span class="p">(</span><span class="nx">array1</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="第三方库">第三方库</h3>
-<ul>
-<li>gorm</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">Insert</span> <span class="nx">时注意</span> <span class="nx">所有字段的零值</span><span class="p">,</span> <span class="nx">比如</span> <span class="mi">0</span><span class="p">,</span> <span class="err">&#39;&#39;</span><span class="p">,</span> <span class="kc">false</span> <span class="nx">或者其它零值</span><span class="err">，</span><span class="nx">都不会保存到数据库内</span><span class="err">，</span><span class="nx">但会使用他们的默认值</span><span class="err">。</span>
-<span class="nx">如果你想避免这种情况</span><span class="err">，</span><span class="nx">可以考虑使用指针或实现</span> <span class="nx">Scanner</span><span class="o">/</span><span class="nx">Valuer</span> <span class="nx">接口</span>
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>go-nsq</li>
-<li>go-redis</li>
-<li>go-admin // 后台管理系统</li>
-<li>gopkg.in/go-playground/validator.v9 // 表单校验</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// validator会自动校验struct内定义的变量的数据类型
-</span><span class="c1"></span><span class="kd">type</span> <span class="nx">createVoteRequest</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">ChatroomId</span>   <span class="kt">uint64</span>   <span class="s">`form:&#34;chatroom_id&#34; json:&#34;chatroom_id&#34; validate:&#34;required&#34;`</span>  <span class="c1">// 会自动校验uint64这个数据类型
-</span><span class="c1"></span>    <span class="nx">Title</span>        <span class="kt">string</span>   <span class="s">`form:&#34;title&#34; json:&#34;title&#34; validate:&#34;required,max=100&#34;`</span>
-    <span class="nx">IsMultiple</span>   <span class="kt">uint8</span>    <span class="s">`form:&#34;is_multiple&#34; json:&#34;is_multiple&#34; validate:&#34;oneof=0 1&#34;`</span>
-    <span class="nx">DeadlineTime</span> <span class="kt">string</span>   <span class="s">`form:&#34;deadline_time&#34; json:&#34;deadline_time&#34; validate:&#34;required,len=16&#34;`</span>
-    <span class="nx">Options</span>      <span class="p">[]</span><span class="kt">string</span> <span class="s">`form:&#34;options&#34; json:&#34;options&#34; validate:&#34;required,min=1,dive,max=200&#34;`</span>
-<span class="p">}</span>
-
-<span class="nx">dive</span><span class="p">:</span> <span class="nx">告诉验证者深入到切片</span><span class="err">，</span><span class="nx">阵列或贴图中</span><span class="err">，</span><span class="nx">并使用后面的验证标签验证切片</span><span class="err">，</span><span class="nx">阵列或贴图的级别</span><span class="p">.</span> <span class="nx">还支持多维嵌套</span><span class="err">，</span><span class="nx">您要潜水的每个级别都将需要另一个潜水标签</span><span class="p">.</span> <span class="nx">潜水有一些子标签</span><span class="err">，</span><span class="s">&#34;键&#34;</span><span class="nx">和</span><span class="s">&#34;端键&#34;</span><span class="err">。</span>
-
-<span class="nx">required</span><span class="p">:</span> <span class="nx">这可以验证该值不是数据类型默认的零值</span><span class="p">.</span> <span class="nx">对于数字</span><span class="err">，</span><span class="nx">请确保值不为零</span><span class="p">.</span> <span class="nx">对于字符串</span><span class="err">，</span><span class="nx">请确保值不是</span><span class="s">&#34;&#34;</span><span class="p">.</span> <span class="nx">对于切片</span><span class="err">，</span><span class="nx">映射</span><span class="err">，</span><span class="nx">指针</span><span class="err">，</span><span class="nx">接口</span><span class="err">，</span><span class="nx">通道和函数</span><span class="err">，</span><span class="nx">请确保该值不为nil</span><span class="p">.</span>
-
-<span class="nx">oneof</span><span class="p">:</span> <span class="nx">对于字符串</span><span class="err">，</span><span class="nx">整数和整数</span><span class="err">，</span><span class="nx">oneof将确保该值是参数中的值之一</span><span class="p">.</span> <span class="nx">该参数应该是由空格分隔的值列表</span><span class="p">.</span> <span class="nx">值可以是字符串或数字</span><span class="p">.</span>
-<span class="err">【</span><span class="nx">这个验证器可以用于onef</span><span class="p">=</span><span class="mi">0</span> <span class="mi">1</span><span class="nx">这样的判断</span><span class="err">】</span>
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li><a href="https://github.com/tidwall/gjson">https://github.com/tidwall/gjson</a> // 从 json 获取数据，设置数据</li>
-<li>github.com/dgrijalva/jwt-go</li>
-<li>&ldquo;github.com/ahmetb/go-linq&rdquo;</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// slice获取某列字段数据
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">chatroomIds</span> <span class="p">[]</span><span class="kt">uint64</span>
-<span class="nx">linq</span><span class="p">.</span><span class="nf">From</span><span class="p">(</span><span class="nx">chatrooms</span><span class="p">).</span><span class="nf">Select</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">i</span><span class="p">.(</span><span class="nx">model</span><span class="p">.</span><span class="nx">Chatroom</span><span class="p">).</span><span class="nx">Id</span>
-<span class="p">}).</span><span class="nf">ToSlice</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">chatroomIds</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>github.com/robfig/cron // 计划任务</li>
-</ul>
-<h2 id="go-基础知识">Go 基础知识</h2>
+</div><h2 id="go-基础知识">Go 基础知识</h2>
 <ol>
 <li>
 <p>GO 工作区的文件结构。</p>
@@ -1641,7 +1281,7 @@ for i := 0; i &lt; len(r); i++ {
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-05-08
+        2020-05-26
         
     </span>
   </p>

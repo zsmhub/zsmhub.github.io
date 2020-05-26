@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 26 May 2020 09:04:22 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2020 16:54:52 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go常用库</title>
+      <link>https://zsmhub.github.io/post/golang/go%E5%B8%B8%E7%94%A8%E5%BA%93/</link>
+      <pubDate>Tue, 26 May 2020 16:54:52 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/go%E5%B8%B8%E7%94%A8%E5%BA%93/</guid>
+      <description>标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 // 获取当前时间，这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4</description>
+    </item>
     
     <item>
       <title>LB 集群</title>
@@ -140,10 +149,10 @@
     
     <item>
       <title>Go Json 技巧</title>
-      <link>https://zsmhub.github.io/post/golang/go%E4%B9%8Bson%E6%8A%80%E5%B7%A7/</link>
+      <link>https://zsmhub.github.io/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Tue, 12 May 2020 21:51:25 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/golang/go%E4%B9%8Bson%E6%8A%80%E5%B7%A7/</guid>
+      <guid>https://zsmhub.github.io/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/</guid>
       <description>omitempty 忽略 struct 空字段，当字段的值为空值的时候，它不会出现在JSON数据中. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 package main import ( &amp;#34;encoding/json&amp;#34; &amp;#34;fmt&amp;#34; ) type User struct { Email string `json:&amp;#34;email&amp;#34;` Password string</description>
     </item>
     
