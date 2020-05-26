@@ -3,7 +3,42 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2020-05-24T13:46:00+08:00</lastmod>
+    <lastmod>2020-05-26T09:04:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/</loc>
+    <lastmod>2020-05-26T09:04:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/lb%E9%9B%86%E7%BE%A4/</loc>
+    <lastmod>2020-05-26T09:04:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/</loc>
+    <lastmod>2020-05-26T09:04:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/</loc>
+    <lastmod>2020-05-26T09:04:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
+    <lastmod>2020-05-26T09:04:22+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -24,20 +59,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/post/macos/macos-brew/</loc>
-    <lastmod>2020-05-24T13:46:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2020-05-24T13:46:00+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/tags/</loc>
     <lastmod>2020-05-24T13:46:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -346,13 +367,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
-    <lastmod>2020-05-04T18:15:11+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2020-05-04T18:15:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

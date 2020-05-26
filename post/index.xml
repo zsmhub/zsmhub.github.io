@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 24 May 2020 13:46:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2020 09:04:22 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>LB 集群</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Tue, 26 May 2020 09:04:22 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/</guid>
+      <description>简介 LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群. 负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。 原理 负载均衡的原理</description>
+    </item>
     
     <item>
       <title>MacOs 之 brew</title>

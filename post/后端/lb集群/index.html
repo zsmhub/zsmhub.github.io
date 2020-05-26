@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>MacOs 之 brew - ZsmHub - Blog</title>
+  <title>LB 集群 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="brew 和 brew cask 区别 brew主要是用于安装没UI的软件。 brew cask主要用于安装有UI的软件。 brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Pa" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="简介 LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群. 负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。 原理 负载均衡的原理" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/macos/macos-brew/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="MacOs 之 brew" />
-<meta property="og:description" content="brew 和 brew cask 区别 brew主要是用于安装没UI的软件。 brew cask主要用于安装有UI的软件。 brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Pa" />
+<meta property="og:title" content="LB 集群" />
+<meta property="og:description" content="简介 LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群. 负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。 原理 负载均衡的原理" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/macos/macos-brew/" />
-<meta property="article:published_time" content="2020-05-24T13:46:00+08:00" />
-<meta property="article:modified_time" content="2020-05-24T13:46:00+08:00" />
-<meta itemprop="name" content="MacOs 之 brew">
-<meta itemprop="description" content="brew 和 brew cask 区别 brew主要是用于安装没UI的软件。 brew cask主要用于安装有UI的软件。 brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Pa">
-<meta itemprop="datePublished" content="2020-05-24T13:46:00&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-24T13:46:00&#43;08:00" />
-<meta itemprop="wordCount" content="445">
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/" />
+<meta property="article:published_time" content="2020-05-26T09:04:22+08:00" />
+<meta property="article:modified_time" content="2020-05-26T09:04:22+08:00" />
+<meta itemprop="name" content="LB 集群">
+<meta itemprop="description" content="简介 LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群. 负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。 原理 负载均衡的原理">
+<meta itemprop="datePublished" content="2020-05-26T09:04:22&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-26T09:04:22&#43;08:00" />
+<meta itemprop="wordCount" content="801">
 
 
 
-<meta itemprop="keywords" content="macos," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="MacOs 之 brew"/>
-<meta name="twitter:description" content="brew 和 brew cask 区别 brew主要是用于安装没UI的软件。 brew cask主要用于安装有UI的软件。 brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Pa"/>
+<meta itemprop="keywords" content="LB集群," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LB 集群"/>
+<meta name="twitter:description" content="简介 LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群. 负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。 原理 负载均衡的原理"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,15 +126,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">MacOs 之 brew</h1>
+      <h1 class="post-title">LB 集群</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-05-24 </span>
+        <span class="post-time"> 2020-05-26 </span>
         <div class="post-category">
-            <a href="/categories/macos/"> macos </a>
+            <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 445 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 801 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -144,103 +144,74 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#brew-和-brew-cask-区别">brew 和 brew cask 区别</a></li>
-    <li><a href="#常用命令">常用命令</a></li>
-    <li><a href="#cask常用命令">cask常用命令</a></li>
-    <li><a href="#查看当前源">查看当前源</a></li>
-    <li><a href="#install-php72">install php7.2</a></li>
-    <li><a href="#install-redis">install redis</a></li>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#原理">原理</a></li>
+    <li><a href="#lb-解决方案">LB 解决方案</a></li>
+    <li><a href="#lvs">LVS</a></li>
+    <li><a href="#阿里云-slb-集群方案">阿里云 SLB 集群方案</a></li>
+    <li><a href="#tip">Tip</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="brew-和-brew-cask-区别">brew 和 brew cask 区别</h2>
+      <h2 id="简介">简介</h2>
+<p>LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群.</p>
+<p>负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。</p>
+<h2 id="原理">原理</h2>
+<p>负载均衡的原理就是当用户的请求过来时，会直接发到分发器上，然后它把用户的请求根据预先设置好的算法，均衡的分发到后端真正的服务器（Real Server）上。</p>
+<p>不同的机器，可能用户请求到的数据不一样，为了避免这样的情况发生，所以用到了共享存储，这样可以保证所有用户请求的数据是一样的。</p>
+<h2 id="lb-解决方案">LB 解决方案</h2>
+<ol>
+<li>LVS：工作于 TCP 层，性能好，但控制力差</li>
+<li>Haproxy：工作于 TCP 或 HTTP 层</li>
+<li>Nginx：较 Haproxy 性能欠佳，但缓存能力较好</li>
+</ol>
+<h2 id="lvs">LVS</h2>
+<p>LVS=Linux Virtual Server，意即 Linux 虚拟服务器，是一个虚拟的服务器集群系统。</p>
+<p>LVS 是全球最流行的四层负载均衡开源软件，可以实现LINUX平台下的负载均衡。</p>
+<p>LVS 4 大模型：DR / NAT  / TUN / FULL NAT</p>
+<p>DR: Director Routing&ndash;直接路由</p>
+<p>NAT: NetWork Address Translation - 网络地址转换</p>
+<h2 id="阿里云-slb-集群方案">阿里云 SLB 集群方案</h2>
+<p>SLB 集群是 Server Load Balancer 集群的简介。</p>
+<blockquote>
+<p>基础架构说明</p>
+</blockquote>
+<p>阿里云当前提供四层和七层的负载均衡服务。</p>
 <ul>
-<li>brew主要是用于安装没UI的软件。</li>
-<li>brew cask主要用于安装有UI的软件。</li>
-<li>brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Patch，可以方便的安装开发工具。</li>
+<li>四层负载均衡（即采用 TCP/IP 四层协议）采用开源软件 LVS（Linux Virtual Server）+ keepalived 的方式实现负载均衡，并根据云计算需求对其进行了个性化定制。</li>
+<li>七层负载均衡（即采用 OSI 七层协议）采用 Tengine 实现负载均衡。Tengine 是由淘宝网发起的Web服务器项目，它在 Nginx 的基础上，针对有大访问量的网站需求，添加了很多高级功能和特性。</li>
 </ul>
-<h2 id="常用命令">常用命令</h2>
+<blockquote>
+<p>产品优势</p>
+</blockquote>
 <ul>
-<li>brew update &ndash;verbose # 更新brew可安装包，建议每次执行一下</li>
-<li>brew search php55 # 搜索php5.5</li>
-<li>brew tap # 查看安装的扩展列表</li>
-<li>brew install php55 # 安装php5.5</li>
-<li>brew remove  php55 # 卸载php5.5</li>
-<li>brew upgrade php55 # 升级php5.5</li>
-<li>brew options php55 # 查看php5.5安装选项</li>
-<li>brew info    php55 # 查看php5.5相关信息</li>
-<li>brew home    php55 # 访问php5.5官方网站</li>
+<li>
+<p>高可用</p>
+<p>采用全冗余设计，无单点，支持同城容灾。搭配DNS可实现跨地域容灾，可用性高达99.95%。</p>
+<p>根据应用负载进行弹性扩容，在流量波动情况下不中断对外服务。</p>
+</li>
+<li>
+<p>可扩展</p>
+<p>您可以根据业务的需要，随时增加或减少后端服务器的数量，扩展应用的服务能力。</p>
+</li>
+<li>
+<p>低成本</p>
+<p>与传统硬件负载均衡系统高投入相比，成本可下降60%。</p>
+</li>
+<li>
+<p>安全</p>
+<p>结合云盾，可提供 5Gbps 的防DDoS攻击能力。</p>
+</li>
+<li>
+<p>高并发</p>
+<p>集群支持亿级并发连接，单实例提供千万级并发能力。</p>
+</li>
 </ul>
-<h2 id="cask常用命令">cask常用命令</h2>
-<ul>
-<li>brew cask search        #列出所有可以被安装的软件</li>
-<li>brew cask search php    #查找所有和php相关的应用</li>
-<li>brew cask list          #列出所有通过cask安装的软件</li>
-<li>brew cask info phpstorm #查看 phpstorm 的信息</li>
-<li>brew cask uninstall qq  #卸载 QQ</li>
-</ul>
-<h2 id="查看当前源">查看当前源</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> /usr/local/Homebrew
-git remote -v
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="install-php72">install php7.2</h2>
-<ul>
-<li>brew install <a href="mailto:php@7.2">php@7.2</a></li>
-<li>启动：</li>
-<li>To have launchd start <a href="mailto:php@7.2">php@7.2</a> now and restart at login:</li>
-<li>brew services start <a href="mailto:php@7.2">php@7.2</a></li>
-<li>Or, if you don&rsquo;t want/need a background service you can just run:</li>
-<li>php-fpm</li>
-<li>echo &lsquo;export PATH=&rdquo;/usr/local/opt/php@7.2/bin:$PATH&rdquo;&rsquo; &raquo; ~/.zshrc</li>
-<li>echo &lsquo;export PATH=&rdquo;/usr/local/opt/php@7.2/sbin:$PATH&rdquo;&rsquo; &raquo; ~/.zshrc</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># php.ini 路径</span>
-/usr/local/etc/php/7.2/php.ini
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="install-redis">install redis</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">brew services start redis
+<h2 id="tip">Tip</h2>
+<p>目前我公司采用的是阿里云 SLB 的四层负载均衡方案。</p>
 
-brew services restart redis
-
-// <span class="k">if</span> you don<span class="err">&#39;</span>t want/need a background service you can just run:
-redis-server /usr/local/etc/redis.conf
-
-// 取消redis密码登录
-vi /usr/local/etc/redis.conf
-<span class="c1"># requirepass foobared // 搜索 requirepass，注释后重启redis服务即可</span>
-</code></pre></td></tr></table>
-</div>
-</div>
     </div>
 
     <div class="post-copyright">
@@ -251,7 +222,7 @@ vi /usr/local/etc/redis.conf
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-05-24
+        2020-05-26
         
     </span>
   </p>
@@ -277,16 +248,12 @@ vi /usr/local/etc/redis.conf
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/macos/">macos</a>
+          <a href="/tags/lb%E9%9B%86%E7%BE%A4/">LB集群</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">LB 集群</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/macos/macos%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
-            <span class="next-text nav-default">MacOs 使用心得</span>
+        
+        <a class="next" href="/post/macos/macos-brew/">
+            <span class="next-text nav-default">MacOs 之 brew</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -299,8 +266,8 @@ vi /usr/local/etc/redis.conf
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-05-24 13:46:00 \x2b0800 CST',
-        title: 'MacOs 之 brew',
+        id: '2020-05-26 09:04:22 \x2b0800 CST',
+        title: 'LB 集群',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
