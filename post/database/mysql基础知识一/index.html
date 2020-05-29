@@ -49,7 +49,7 @@
 <meta itemprop="description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y年%m月%d %H:%i:%s&#39;)">
 <meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="1786">
+<meta itemprop="wordCount" content="1826">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1786 字 </span>
+          <span class="more-meta"> 约 1826 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -228,9 +228,11 @@
 </span><span class="lnt">32
 </span><span class="lnt">33
 </span><span class="lnt">34
+</span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">show</span> <span class="k">full</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示所有用户正在运行的线程
+</span><span class="c1"></span><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
 </span><span class="c1"></span>
 <span class="k">explain</span><span class="o">/</span><span class="k">desc</span> <span class="k">select</span> <span class="o">*</span>  <span class="k">from</span> <span class="k">table</span><span class="p">;</span> <span class="c1">-- 查看查询语句性能，即查看执行计划
 </span><span class="c1"></span><span class="k">desc</span> <span class="k">table_name</span><span class="p">;</span>  <span class="c1">-- 查看 table 等结构
@@ -312,9 +314,15 @@
 </span><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 分析数据表大小
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 将某列的所有值合并成一个字符
+</span><span class="c1"></span><span class="k">select</span> <span class="n">group_concat</span><span class="p">(</span><span class="n">test_column</span><span class="p">)</span> <span class="k">from</span> <span class="n">test</span><span class="p">;</span>
+
+<span class="c1">-- 分析数据表大小
 </span><span class="c1"></span><span class="k">SELECT</span>
 <span class="k">table_name</span><span class="p">,</span>
 <span class="n">table_rows</span><span class="p">,</span>
