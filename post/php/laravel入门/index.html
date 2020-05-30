@@ -49,7 +49,7 @@
 <meta itemprop="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器">
 <meta itemprop="datePublished" content="2019-08-01T13:50:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-05T13:50:49&#43;08:00" />
-<meta itemprop="wordCount" content="6394">
+<meta itemprop="wordCount" content="6560">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 6394 字 </span>
-          <span class="more-meta"> 预计阅读 13 分钟 </span>
+          <span class="more-meta"> 约 6560 字 </span>
+          <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
     </header>
@@ -321,8 +321,37 @@
 <li>
 <p>Eloquent ORM</p>
 <ul>
-<li>本地作用域：允许我们在模型中定义通用的约束集合以便在应用中复用。要定义这样的一个作用域，只需简单在对应 Eloquent 模型方法前加上一个 scope 前缀，作用域总是返回 查询构建器。一旦定义了作用域，则可以在查询模型时调用作用域方法。在进行方法调用时不需要加上 scope 前缀。</li>
-<li>模型关联：默认关联数据是懒加载，使用预加载方法：</li>
+<li>
+<p>Eloquent 模型约定</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">// $fillable 可以看作批量赋值的「白名单」, 你也可以使用 $guarded 属性来实现。 $guarded 属性包含的是不允许批量赋值的数组。也就是说， $guarded 从功能上将更像是一个「黑名单」。
+
+protected $connection = &#39;mysql_middle_office&#39;;
+protected $table = &#39;oat_customer&#39;;
+protected $guarded = [&#39;customer_id&#39;];
+protected $primaryKey = &#39;customer_id&#39;; // Eloquent 也会假设每个数据表都有一个名为 id 的主键列。你可以定义一个受保护的 $primaryKey 属性来重写约定。
+public $incrementing = false; // 如果您希望使用非递增或非数字的主键则需要设置公共的 $incrementing 属性设置为 false。
+protected $keyType = &#39;string&#39;; // 如果你的主键不是一个整数，你需要将模型上受保护的 $keyType 属性设置为 string
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>本地作用域：允许我们在模型中定义通用的约束集合以便在应用中复用。要定义这样的一个作用域，只需简单在对应 Eloquent 模型方法前加上一个 scope 前缀，作用域总是返回 查询构建器。一旦定义了作用域，则可以在查询模型时调用作用域方法。在进行方法调用时不需要加上 scope 前缀。</p>
+</li>
+<li>
+<p>模型关联：默认关联数据是懒加载，使用预加载方法：</p>
+</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -853,15 +882,7 @@ Log::info(&#39;==&gt;id=1111&#39;);
 <h3 id="词汇">词汇</h3>
 <ol>
 <li>mass assignment =&gt; 批量赋值</li>
-<li>fillable =&gt; 用户可赋值字段，guarded =&gt; 仅保护字段
-<blockquote>
-<p>设置 fillable 属性</p>
-<p>protected $fillable = [&lsquo;name&rsquo;, &lsquo;password&rsquo;, &lsquo;email&rsquo;];</p>
-<p>此时即使用户提交了 is_admin 属性也会被忽略。那么我们如何才能设置此属性呢？单独赋值，即</p>
-<p>$user-&gt;is_admin = true;</p>
-<p>$user-&gt;save();</p>
-</blockquote>
-</li>
+<li>fillable =&gt; 用户可赋值字段，guarded =&gt; 仅保护字段</li>
 <li>reguarded =&gt; 保护，unguarded =&gt; 取消保护</li>
 <li>pivot =&gt; 它代表中间表的一个模型对象</li>
 </ol>
