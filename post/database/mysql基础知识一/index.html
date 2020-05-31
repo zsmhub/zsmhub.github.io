@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Mysql基础知识一 - ZsmHub - Blog</title>
+  <title>Mysql 基础知识一 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -39,22 +39,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Mysql基础知识一" />
+<meta property="og:title" content="Mysql 基础知识一" />
 <meta property="og:description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y年%m月%d %H:%i:%s&#39;)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/" />
 <meta property="article:published_time" content="2019-01-09T22:13:42+08:00" />
 <meta property="article:modified_time" content="2020-05-12T22:13:42+08:00" />
-<meta itemprop="name" content="Mysql基础知识一">
+<meta itemprop="name" content="Mysql 基础知识一">
 <meta itemprop="description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y年%m月%d %H:%i:%s&#39;)">
 <meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="1826">
+<meta itemprop="wordCount" content="2199">
 
 
 
 <meta itemprop="keywords" content="database,入门," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mysql基础知识一"/>
+<meta name="twitter:title" content="Mysql 基础知识一"/>
 <meta name="twitter:description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y年%m月%d %H:%i:%s&#39;)"/>
 
 <!--[if lte IE 9]>
@@ -126,15 +126,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Mysql基础知识一</h1>
+      <h1 class="post-title">Mysql 基础知识一</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2019-01-09 </span>
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1826 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2199 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -148,7 +148,9 @@
     <li><a href="#常用命令">常用命令</a></li>
     <li><a href="#常用案例">常用案例</a></li>
     <li><a href="#其他">其他</a></li>
+    <li><a href="#mysql-性能">Mysql 性能</a></li>
     <li><a href="#ddl">DDL</a></li>
+    <li><a href="#数据库设计三范式">数据库设计三范式</a></li>
   </ul>
 </nav>
   </div>
@@ -303,41 +305,13 @@
 </span><span class="lnt">30
 </span><span class="lnt">31
 </span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 将某列的所有值合并成一个字符
-</span><span class="c1"></span><span class="k">select</span> <span class="n">group_concat</span><span class="p">(</span><span class="n">test_column</span><span class="p">)</span> <span class="k">from</span> <span class="n">test</span><span class="p">;</span>
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 查询 mysql 版本号
+</span><span class="c1"></span><span class="k">select</span> <span class="k">version</span><span class="p">();</span>
 
-<span class="c1">-- 分析数据表大小
-</span><span class="c1"></span><span class="k">SELECT</span>
-<span class="k">table_name</span><span class="p">,</span>
-<span class="n">table_rows</span><span class="p">,</span>
-<span class="c1">-- 数据表大小
-</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">data_length</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">data_size</span><span class="p">(</span><span class="k">G</span><span class="p">)</span><span class="o">`</span><span class="p">,</span>
-<span class="c1">-- 索引大小
-</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">index_length</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">index_size</span><span class="p">(</span><span class="k">G</span><span class="p">)</span><span class="o">`</span><span class="p">,</span>
-<span class="c1">-- 碎片大小
-</span><span class="c1"></span><span class="n">ROUND</span><span class="p">(</span><span class="o">`</span><span class="n">data_free</span><span class="o">`/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="o">`</span><span class="n">free_size</span><span class="p">(</span><span class="k">G</span><span class="p">)</span><span class="o">`</span>
-<span class="k">FROM</span> <span class="o">`</span><span class="n">information_schema</span><span class="o">`</span><span class="p">.</span><span class="o">`</span><span class="n">tables</span><span class="o">`</span>
-<span class="k">WHERE</span>
-<span class="n">ENGINE</span><span class="o">=</span><span class="s1">&#39;InnoDB&#39;</span>
-<span class="k">AND</span> <span class="k">TABLE_NAME</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">&#39;bi_mid_layer_cache&#39;</span><span class="p">,</span> <span class="s1">&#39;bi_credit_apply&#39;</span><span class="p">)</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">DATA_LENGTH</span> <span class="k">DESC</span>
-<span class="p">;</span>
+<span class="c1">-- 将某列的所有值合并成一个字符
+</span><span class="c1"></span><span class="k">select</span> <span class="n">group_concat</span><span class="p">(</span><span class="n">test_column</span><span class="p">)</span> <span class="k">from</span> <span class="n">test</span><span class="p">;</span>
 
 <span class="c1">-- 查询某张表的字段注释
 </span><span class="c1"></span><span class="k">select</span>
@@ -428,7 +402,16 @@ mysql&gt; flush privileges<span class="p">;</span>
 <p>MySql的like语句中的通配符：百分号、下划线和escape</p>
 <p><img src="/images/2020/QQ20200509-225612@2x.png" alt="图片"></p>
 </li>
+<li>
+<p>永远不要在MySQL中使用utf8，改用utf8mb4</p>
+<p>MySQL的“utf8mb4”是真正的“UTF-8”。“utf8”只支持每个字符最多三个字节，而“utf8mb4”是每个字符最多四个字节。</p>
+</li>
 </ol>
+<h2 id="mysql-性能">Mysql 性能</h2>
+<ol>
+<li>MySQL 单表数据不要超过500万行：是经验数值，还是黄金铁律？</li>
+</ol>
+<p>该理论已过时，mysql 5.7 及以上版本已经可以支持单表几十亿的数据量了，性能还是不错的。</p>
 <h2 id="ddl">DDL</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -514,7 +497,25 @@ mysql&gt; flush privileges<span class="p">;</span>
 </span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">tablename</span> <span class="n">auto_increment</span><span class="o">=</span><span class="n">num</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="数据库设计三范式">数据库设计三范式</h2>
+<ol>
+<li>
+<p>第一范式1NF</p>
+<p>定义：数据库表中的字段都是单一属性的，不可再分。</p>
+<p>简单的说，每一个属性都是原子项，不可分割。</p>
+<p>1NF是关系模式应具备的最起码的条件，如果数据库设计不能满足第一范式，就不称为关系型数据库。也就是说，只要是关系型数据库，就一定满足第一范式。</p>
+</li>
+<li>
+<p>第二范式2NF</p>
+<p>定义：数据库表中不存在非关键字段对任一候选关键字段的部分函数依赖，即符合第二范式。</p>
+<p>2NF可以减少插入异常，删除异常和修改异常。</p>
+</li>
+<li>
+<p>第三范式3NF</p>
+<p>定义：在第二范式的基础上，数据表中如果不存在非关键字段对任一候选关键字段的传递函数依赖则符合3NF。</p>
+</li>
+</ol>
+
     </div>
 
     <div class="post-copyright">
@@ -575,7 +576,7 @@ mysql&gt; flush privileges<span class="p">;</span>
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: '2019-01-09 22:13:42 \x2b0800 CST',
-        title: 'Mysql基础知识一',
+        title: 'Mysql 基础知识一',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

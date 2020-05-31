@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>缓存之雪崩、击穿、穿透 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E7%BC%93%E5%AD%98%E4%B9%8B%E9%9B%AA%E5%B4%A9%E5%87%BB%E7%A9%BF%E7%A9%BF%E9%80%8F/</link>
+    <description>Recent content in 缓存之雪崩、击穿、穿透 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 31 May 2020 16:22:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E7%BC%93%E5%AD%98%E4%B9%8B%E9%9B%AA%E5%B4%A9%E5%87%BB%E7%A9%BF%E7%A9%BF%E9%80%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>缓存之雪崩、击穿、穿透</title>
+      <link>https://zsmhub.github.io/post/database/%E7%BC%93%E5%AD%98%E4%B9%8B%E9%9B%AA%E5%B4%A9-%E5%87%BB%E7%A9%BF-%E7%A9%BF%E9%80%8F/</link>
+      <pubDate>Sun, 31 May 2020 16:22:36 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/%E7%BC%93%E5%AD%98%E4%B9%8B%E9%9B%AA%E5%B4%A9-%E5%87%BB%E7%A9%BF-%E7%A9%BF%E9%80%8F/</guid>
+      <description>缓存雪崩 缓存雪崩是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到 DB，DB 瞬时压力过重导致雪崩。 解决方案</description>
+    </item>
+    
+  </channel>
+</rss>

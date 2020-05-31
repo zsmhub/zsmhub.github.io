@@ -18,7 +18,7 @@
       <pubDate>Thu, 03 Jan 2019 22:38:49 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/redis/</guid>
-      <description>基础信息 Redis是一个基于内存的高效的非关系型数据库，占用端口：6379 配置文件路径：/usr/local/etc/redis.conf MacOs</description>
+      <description>缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &amp;gt; redis/memcache &amp;gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使</description>
     </item>
     
   </channel>

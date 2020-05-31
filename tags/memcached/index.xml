@@ -18,7 +18,7 @@
       <pubDate>Fri, 04 Jan 2019 22:43:26 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/memcached/</guid>
-      <description>基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca</description>
+      <description>基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached 在存储数组时，PHP 的 memcached 的驱动会自动进行 serialize 和 unserialize</description>
     </item>
     
   </channel>

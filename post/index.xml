@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 30 May 2020 09:02:27 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2020 16:22:36 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>缓存之雪崩、击穿、穿透</title>
+      <link>https://zsmhub.github.io/post/database/%E7%BC%93%E5%AD%98%E4%B9%8B%E9%9B%AA%E5%B4%A9-%E5%87%BB%E7%A9%BF-%E7%A9%BF%E9%80%8F/</link>
+      <pubDate>Sun, 31 May 2020 16:22:36 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/%E7%BC%93%E5%AD%98%E4%B9%8B%E9%9B%AA%E5%B4%A9-%E5%87%BB%E7%A9%BF-%E7%A9%BF%E9%80%8F/</guid>
+      <description>缓存雪崩 缓存雪崩是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到 DB，DB 瞬时压力过重导致雪崩。 解决方案</description>
+    </item>
     
     <item>
       <title>Go defer 使用</title>
@@ -22,7 +31,7 @@
     </item>
     
     <item>
-      <title>Mysql经典案例</title>
+      <title>Mysql 经典案例</title>
       <link>https://zsmhub.github.io/post/database/mysql%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/</link>
       <pubDate>Fri, 29 May 2020 19:13:07 +0800</pubDate>
       
@@ -216,7 +225,7 @@
       <pubDate>Thu, 07 May 2020 09:34:49 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/</guid>
-      <description>MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制</description>
+      <description>MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。 如果主从复制之间出现</description>
     </item>
     
     <item>
@@ -301,7 +310,7 @@
     </item>
     
     <item>
-      <title>Mysql基础知识二</title>
+      <title>Mysql 基础知识二</title>
       <link>https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/</link>
       <pubDate>Fri, 03 Apr 2020 22:45:33 +0800</pubDate>
       
@@ -481,6 +490,15 @@
     </item>
     
     <item>
+      <title>事务和锁</title>
+      <link>https://zsmhub.github.io/post/database/%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/</link>
+      <pubDate>Sun, 01 Sep 2019 17:12:23 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/</guid>
+      <description>事务是必须满足4个条件（ACID） 原子性（Autmic）：事务在执行性，要做到“要么不做，要么全做！”，就是说不允许事务部分得执行。即使因为</description>
+    </item>
+    
+    <item>
       <title>Laravel 常用组件</title>
       <link>https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Thu, 01 Aug 2019 14:15:47 +0800</pubDate>
@@ -517,6 +535,15 @@
     </item>
     
     <item>
+      <title>NoSQL 简单了解</title>
+      <link>https://zsmhub.github.io/post/database/nosql%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/</link>
+      <pubDate>Sat, 29 Jun 2019 20:02:31 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/nosql%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/</guid>
+      <description>NoSQL 数据库与传统的关系型数据库相比，它具有操作简单、完全免费、源码公开、随时下载等特点，并可以用于各种商业目的。 这使 NoSQL 产品广泛应用于各种大型门</description>
+    </item>
+    
+    <item>
       <title>Vscode</title>
       <link>https://zsmhub.github.io/post/ide/vscode/</link>
       <pubDate>Wed, 19 Jun 2019 21:04:16 +0800</pubDate>
@@ -541,6 +568,15 @@
       
       <guid>https://zsmhub.github.io/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
       <description>时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&amp;#39;PRC&amp;#39;); //默认时区 echo &amp;#34;今天:&amp;#34;,date(&amp;#34;Y-m-d&amp;#34;,time()),</description>
+    </item>
+    
+    <item>
+      <title>Mysql 优化</title>
+      <link>https://zsmhub.github.io/post/database/mysql%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Sat, 01 Jun 2019 16:54:37 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/mysql%E4%BC%98%E5%8C%96/</guid>
+      <description>实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的</description>
     </item>
     
     <item>
@@ -577,6 +613,15 @@
       
       <guid>https://zsmhub.github.io/post/php/composer/</guid>
       <description>常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解</description>
+    </item>
+    
+    <item>
+      <title>SQL Server 基础知识</title>
+      <link>https://zsmhub.github.io/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Thu, 28 Mar 2019 20:19:28 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。 SQL Server 主要是和 MySQL 和 Oracle 二者竞争。 系统数据库（System Databa</description>
     </item>
     
     <item>
@@ -670,7 +715,7 @@
     </item>
     
     <item>
-      <title>Mysql基础知识一</title>
+      <title>Mysql 基础知识一</title>
       <link>https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/</link>
       <pubDate>Wed, 09 Jan 2019 22:13:42 +0800</pubDate>
       
@@ -684,7 +729,7 @@
       <pubDate>Fri, 04 Jan 2019 22:43:26 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/memcached/</guid>
-      <description>基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached在存储数组时，PHP的memca</description>
+      <description>基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached 在存储数组时，PHP 的 memcached 的驱动会自动进行 serialize 和 unserialize</description>
     </item>
     
     <item>
@@ -693,7 +738,7 @@
       <pubDate>Thu, 03 Jan 2019 22:38:49 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/redis/</guid>
-      <description>基础信息 Redis是一个基于内存的高效的非关系型数据库，占用端口：6379 配置文件路径：/usr/local/etc/redis.conf MacOs</description>
+      <description>缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &amp;gt; redis/memcache &amp;gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使</description>
     </item>
     
     <item>

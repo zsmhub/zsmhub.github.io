@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。 如果主从复制之间出现" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="Mysql 主从复制延时案例" />
-<meta property="og:description" content="MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制" />
+<meta property="og:description" content="MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。 如果主从复制之间出现" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/" />
 <meta property="article:published_time" content="2020-05-07T09:34:49+08:00" />
 <meta property="article:modified_time" content="2020-05-07T09:34:49+08:00" />
 <meta itemprop="name" content="Mysql 主从复制延时案例">
-<meta itemprop="description" content="MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制">
+<meta itemprop="description" content="MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。 如果主从复制之间出现">
 <meta itemprop="datePublished" content="2020-05-07T09:34:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-07T09:34:49&#43;08:00" />
-<meta itemprop="wordCount" content="3683">
+<meta itemprop="wordCount" content="3679">
 
 
 
 <meta itemprop="keywords" content="Mysql 主从复制," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 主从复制延时案例"/>
-<meta name="twitter:description" content="MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。 如果主从复制"/>
+<meta name="twitter:description" content="MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。 如果主从复制之间出现"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3683 字 </span>
+          <span class="more-meta"> 约 3679 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -193,7 +193,8 @@
   </div>
 </div>
     <div class="post-content">
-      <p>MySQL主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用MySQL。</p>
+      <p><img src="/images/2020/QQ20200531-164626@2x.png" alt="Mysql之主从复制读写分离"></p>
+<p>MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。</p>
 <p>如果主从复制之间出现延时，就会影响主从数据的一致性。</p>
 <p>生产环境中延时问题的分析及解决，我们将最常见的主从复制延时案例总结为几类，以下是相关案例的现象描述、原因分析和解决方法汇总。</p>
 <h2 id="案例一主库dml请求频繁">案例一：主库DML请求频繁</h2>
@@ -211,9 +212,9 @@
 <p>如果是MySQL 5.7以上的版本，在MySQL 5.7，使用了基于逻辑时钟(Group Commit)的并行复制。而在MySQL 8.0，使用了基于Write Set的并行复制。这两种方案都能够提升回放binlog的性能，减少延时。</p>
 <h2 id="案例二主库执行大事务">案例二：主库执行大事务</h2>
 <p>大事务指一个事务的执行，耗时非常长。常见产生大事务的语句有：</p>
-<p>使用了大量速度很慢的导入数据语句，比如：INSERT INTO $tb、SELECT * FROM $tb、LOAD DATA INFILE等；
-使用了UPDATE、DELETE语句，对于一个很大的表进行全表的UPDATE和DELETE等。
-当这个事务在从库执行回放执行操作时，就有可能会产生主从复制延时。</p>
+<p>使用了大量速度很慢的导入数据语句，比如：INSERT INTO $tb、SELECT * FROM $tb、LOAD DATA INFILE等；</p>
+<p>使用了UPDATE、DELETE语句，对于一个很大的表进行全表的UPDATE和DELETE等。</p>
+<p>当这个事务在从库执行回放执行操作时，就有可能会产生主从复制延时。</p>
 <h3 id="现象描述-1">现象描述</h3>
 <p>我们从SHOW SLAVE STATUS的结果进行分析，会发现 Exec_Master_Log_Pos 字段一直未变，且second_behinds_master持续增加，而 Slave_SQL_Running_State 字段的值为”Reading event from the relay log”；同时，分析主库binlog，看主库当前执行的事务，会发现有一些大事务，这样基本可以判定是执行大事务的原因导致的主从复制延时。</p>
 <p><img src="/images/2020/6eb23f89803041f7a69f827447641617.jpeg" alt="图片"></p>

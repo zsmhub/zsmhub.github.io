@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mysql 优化 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/database/mysql%E4%BC%98%E5%8C%96/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Mysql 优化" />
+<meta property="og:description" content="实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E4%BC%98%E5%8C%96/" />
+<meta property="article:published_time" content="2019-06-01T16:54:37+08:00" />
+<meta property="article:modified_time" content="2019-06-01T16:54:37+08:00" />
+<meta itemprop="name" content="Mysql 优化">
+<meta itemprop="description" content="实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的">
+<meta itemprop="datePublished" content="2019-06-01T16:54:37&#43;08:00" />
+<meta itemprop="dateModified" content="2019-06-01T16:54:37&#43;08:00" />
+<meta itemprop="wordCount" content="1200">
+
+
+
+<meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mysql 优化"/>
+<meta name="twitter:description" content="实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mysql 优化</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-01 </span>
+        <div class="post-category">
+            <a href="/categories/database/"> database </a>
+            </div>
+          <span class="more-meta"> 约 1200 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#实用的表优化方案">实用的表优化方案</a></li>
+    <li><a href="#索引">索引</a></li>
+    <li><a href="#配置优化">配置优化</a></li>
+    <li><a href="#其他">其他</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="实用的表优化方案">实用的表优化方案</h2>
+<ol>
+<li>定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的执行计划。</li>
+<li>定期检查表【处理很慢】：check table tablename; // 本语句用于检查一个或多个表是否有错误。</li>
+<li>定期优化表【处理很慢】：optimize table tablename;</li>
+</ol>
+<p>操作前提：短时间出现大量数据删除、碎片占用足够大时才需要手动执行 optimize 命令。</p>
+<p>优点：进行碎片整理，减少磁盘占用，提高索引效率</p>
+<p>缺点：锁表，锁表会导致 insert，delete，update 语句堵住</p>
+<pre><code>```sql
+-- 分析数据表大小
+SELECT
+table_name,
+table_rows,
+-- 数据表大小
+ROUND(`data_length`/1024/1024/1024,2) AS `data_size(G)`,
+-- 索引大小
+ROUND(`index_length`/1024/1024/1024,2) AS `index_size(G)`,
+-- 碎片大小
+ROUND(`data_free`/1024/1024/1024,2) AS `free_size(G)`
+FROM `information_schema`.`tables`
+WHERE
+ENGINE='InnoDB'
+AND TABLE_NAME IN ('bi_mid_layer_cache', 'bi_credit_apply')
+ORDER BY DATA_LENGTH DESC
+;
+```
+</code></pre>
+<h2 id="索引">索引</h2>
+<p>通过索引通常可以帮助用户解决大多数的 SQL 性能问题。</p>
+<blockquote>
+<p>索引分类</p>
+</blockquote>
+<ul>
+<li>B-TREE 索引：B 树索引中的 B 不是代表二叉树（binary），而是代表平衡树（balanced）【最左匹配原则是使用索引中的最左边进行查找，是索引使用的首要原则】</li>
+<li>HASH 索引： 只有 Memory 引擎支持，使用场景简单</li>
+<li>Full-text(全文索引)：是 MyISAM 的一个特殊索引类型，InnoDB 从 MySQL 5.6 版本开始提供对全文索引的支持</li>
+</ul>
+<blockquote>
+<p>存在索引但不能使用索引的典型场景</p>
+</blockquote>
+<ul>
+<li>以 % 开头的 like 查询不能够利用 B-Tree 索引，执行计划中key的值为 NULL 表示没有使用索引</li>
+<li>数据类型出现隐式转换的时候也不会使用索引，特别是当列类型是字符串时，那么一定记得在where条件中把字符常量值用引号引起来</li>
+<li>复合索引的情况下，查询条件要满足最左匹配原则</li>
+<li>如果 MySQL 估计使用索引比全表扫描更慢，则不使用索引。如返回记录数很多</li>
+<li>用 or 分割开的条件，如果or前的条件中的列有索引，而后面的列没有索引，那么涉及的索引都不会用到</li>
+</ul>
+<blockquote>
+<p>MySQL强制索引和禁止某个索引</p>
+</blockquote>
+<ol>
+<li>
+<p>mysql强制使用索引: force index(索引名或者主键PRI)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">force</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 强制使用主键
+</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">force</span> <span class="k">index</span><span class="p">(</span><span class="n">ziduan1_index</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 强制使用索引&#34;ziduan1_index&#34;
+</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">force</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">,</span><span class="n">ziduan1_index</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 强制使用索引&#34;PRI和ziduan1_index&#34;
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>mysql禁止某个索引：ignore index(索引名或者主键PRI)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">ignore</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 禁止使用主键
+</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">ignore</span> <span class="k">index</span><span class="p">(</span><span class="n">ziduan1_index</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 禁止使用索引&#34;ziduan1_index&#34;
+</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">ignore</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">,</span><span class="n">ziduan1_index</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 禁止使用索引&#34;PRI,ziduan1_index&#34;
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>组合索引是有序的，遵循最左前缀原理</p>
+</li>
+</ol>
+<h2 id="配置优化">配置优化</h2>
+<ol>
+<li>group_concat_max_len: 聚合函数，默认1024，可以设置字符创连接允许的最大长度（eg: 使用group_concat()函数，对查询的数据进行字符串连接操作）</li>
+<li>max_length_for_sort_data: 增大该值，能够让MySQL选择更优化的Filesort排序算法</li>
+<li>sort_buffer_size: 适当增大该值，尽量让排序在内存中完成，而不是通过创建临时表放在文件中进行</li>
+</ol>
+<h2 id="其他">其他</h2>
+<ol>
+<li>通过 EXPLAIN/DESC 分析低效 SQL 的执行计划，主要是了解 SELECT 语句执行的情况。</li>
+<li>如何解决 MySQL server has gone away 问题？</li>
+</ol>
+<p>最好的方法，即检查 MySQL 的连接状态，使其重新链接。Mysql 官方提供了 mysql_ping() 方法，可用于定时检查 mysql 的连接状态。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-06-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/database/">database</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">PHP 常用函数</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+            <span class="next-text nav-default">持续集成工作流</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-06-01 16:54:37 \x2b0800 CST',
+        title: 'Mysql 优化',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
