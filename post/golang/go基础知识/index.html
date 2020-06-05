@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go">
 <meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-26T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="7131">
+<meta itemprop="wordCount" content="7452">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 7131 字 </span>
+          <span class="more-meta"> 约 7452 字 </span>
           <span class="more-meta"> 预计阅读 15 分钟 </span>
         
       </div>
@@ -650,8 +650,8 @@ ToDo Something&hellip;</li>
 <span class="nx">x</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">}</span> <span class="o">&lt;=</span><span class="p">&gt;</span> <span class="nx">x</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">}[:]</span> <span class="c1">// 切片也可以用类似数组的方式初始化，这样就创建了一个长度为 5 的数组并且创建了一个相关切片。
 </span><span class="c1"></span>
 <span class="c1">// slice追加值
-</span><span class="c1"></span><span class="nx">options</span> <span class="o">:=</span> <span class="p">[]</span><span class="nx">optionsResponse</span><span class="p">{}</span>
-<span class="nx">options</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">optionsResponse</span><span class="p">{</span><span class="nb">uint8</span><span class="p">(</span><span class="nx">k</span><span class="p">),</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Trim</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">)})</span>
+</span><span class="c1"></span><span class="nx">options</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// 定义一个空切片，等价于 var options []string
+</span><span class="c1"></span><span class="nx">options</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="s">&#34;a&#34;</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -1243,6 +1243,86 @@ ToDo Something&hellip;</li>
 </li>
 </ul>
 </li>
+<li>
+<p>golang 的 init() 函数</p>
+<blockquote>
+<p>init函数的主要作用：</p>
+</blockquote>
+<ul>
+<li>初始化不能采用初始化表达式初始化的变量。</li>
+<li>程序运行前的注册。</li>
+<li>实现sync.Once功能。</li>
+<li>其他</li>
+</ul>
+<blockquote>
+<p>init函数的主要特点：</p>
+</blockquote>
+<ul>
+<li>init函数先于main函数自动执行，不能被其他函数调用；</li>
+<li>init函数没有输入参数、返回值；</li>
+<li>每个包可以有多个init函数；</li>
+<li>包的每个源文件也可以有多个init函数，这点比较特殊；</li>
+<li>同一个包的init执行顺序，golang没有明确定义，编程时要</li>
+<li>不同包的init函数按照包导入的依赖关系决定执行顺序。</li>
+</ul>
+<blockquote>
+<p>初始化顺序：变量初始化 -&gt; init() -&gt; main()</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">T</span> <span class="kt">int64</span> <span class="p">=</span> <span class="nf">a</span><span class="p">()</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;init in main.go &#34;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">a</span><span class="p">()</span> <span class="kt">int64</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;calling a()&#34;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">2</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;calling main&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 输出结果
+</span><span class="c1">// calling a()
+</span><span class="c1">// init in main.go
+</span><span class="c1">// calling main
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
 <div class="highlight"><div class="chroma">
