@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go">
 <meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-26T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="7452">
+<meta itemprop="wordCount" content="7520">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 7452 字 </span>
-          <span class="more-meta"> 预计阅读 15 分钟 </span>
+          <span class="more-meta"> 约 7520 字 </span>
+          <span class="more-meta"> 预计阅读 16 分钟 </span>
         
       </div>
     </header>
@@ -671,6 +671,15 @@ ToDo Something&hellip;</li>
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 声明map
@@ -688,6 +697,15 @@ ToDo Something&hellip;</li>
 </span><span class="c1"></span>
 <span class="c1">// 在map中删除一个键
 </span><span class="c1"></span><span class="nb">delete</span><span class="p">(</span><span class="nx">map1</span><span class="p">,</span> <span class="nx">key1</span><span class="p">)</span>
+
+<span class="c1">// map 赋值示例
+</span><span class="c1"></span><span class="nx">myMap</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int64</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+<span class="nx">myMap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="s">&#34;value1&#34;</span>
+
+<span class="c1">// 判断key是否存在map中的方法
+</span><span class="c1"></span><span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">myMap</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span> <span class="nx">ok</span> <span class="p">{</span>
+    <span class="c1">//key存在
+</span><span class="c1"></span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1262,7 +1280,7 @@ ToDo Something&hellip;</li>
 <li>init函数没有输入参数、返回值；</li>
 <li>每个包可以有多个init函数；</li>
 <li>包的每个源文件也可以有多个init函数，这点比较特殊；</li>
-<li>同一个包的init执行顺序，golang没有明确定义，编程时要</li>
+<li>同一个包的init执行顺序，golang没有明确定义，编程时要注意程序不要依赖这个执行顺序。</li>
 <li>不同包的init函数按照包导入的依赖关系决定执行顺序。</li>
 </ul>
 <blockquote>

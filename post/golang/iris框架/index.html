@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。 Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。 Iris 为您提供构建面向服务的应用程序的结构。">
 <meta itemprop="datePublished" content="2020-04-01T22:02:25&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-01T22:02:25&#43;08:00" />
-<meta itemprop="wordCount" content="333">
+<meta itemprop="wordCount" content="460">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 333 字 </span>
+          <span class="more-meta"> 约 460 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -202,6 +202,24 @@
 </span><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// main.go
@@ -211,6 +229,24 @@
     <span class="s">&#34;github.com/kataras/iris&#34;</span>
     <span class="s">&#34;strconv&#34;</span>
 <span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// // 管理员列表-免权限判断
+</span><span class="c1"></span>    <span class="c1">// Router.Get(&#34;managers&#34;, xxx.getAnswerAuth)
+</span><span class="c1"></span>
+    <span class="c1">// // 管理员权限判断示例代码
+</span><span class="c1"></span>    <span class="c1">// Router.Use(func(ctx iris.Context) {
+</span><span class="c1"></span>    <span class="c1">//     auth := ctx.Values().Get(&#34;user&#34;).(model.User)
+</span><span class="c1"></span>
+    <span class="c1">//     managers := repository.xxx.GetAnswerManagers()
+</span><span class="c1"></span>    <span class="c1">//     if _, ok := managers[auth.Id]; !ok {
+</span><span class="c1"></span>    <span class="c1">//         ctx.JSON(response.FailCode(&#34;您没有权限访问！&#34;, http.StatusBadRequest))
+</span><span class="c1"></span>    <span class="c1">//         return
+</span><span class="c1"></span>    <span class="c1">//     }
+</span><span class="c1"></span>
+    <span class="c1">//     ctx.Next()
+</span><span class="c1"></span>    <span class="c1">// })
+</span><span class="c1"></span><span class="p">}</span>
 
 <span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">app</span> <span class="o">:=</span> <span class="nx">iris</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
