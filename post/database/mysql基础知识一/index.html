@@ -49,7 +49,7 @@
 <meta itemprop="description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y-%m-%d %H:%i:%s&#39;)">
 <meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="2199">
+<meta itemprop="wordCount" content="2228">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2199 字 </span>
+          <span class="more-meta"> 约 2228 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -229,23 +229,19 @@
 </span><span class="lnt">31
 </span><span class="lnt">32
 </span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">show</span> <span class="k">full</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示所有用户正在运行的线程
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">@@</span><span class="k">global</span><span class="p">.</span><span class="n">sql_mode</span><span class="p">;</span> <span class="c1">-- 查询 sql_mode 『sql_mode 会影响 MySQL 支持的 SQL 语法以及它执行的数据验证检查』
+</span><span class="c1"></span><span class="k">show</span> <span class="n">variables</span> <span class="k">like</span> <span class="s2">&#34;%time_zone%&#34;</span><span class="p">;</span> <span class="c1">-- 查看时区
+</span><span class="c1"></span><span class="k">SHOW</span> <span class="n">BINLOG</span> <span class="n">EVENTS</span> <span class="k">LIMIT</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">-- 查看 binlog 日志
+</span><span class="c1"></span>
+<span class="k">show</span> <span class="k">full</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示所有用户正在运行的线程
 </span><span class="c1"></span><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
 </span><span class="c1"></span>
 <span class="k">explain</span><span class="o">/</span><span class="k">desc</span> <span class="k">select</span> <span class="o">*</span>  <span class="k">from</span> <span class="k">table</span><span class="p">;</span> <span class="c1">-- 查看查询语句性能，即查看执行计划
 </span><span class="c1"></span><span class="k">desc</span> <span class="k">table_name</span><span class="p">;</span>  <span class="c1">-- 查看 table 等结构
 </span><span class="c1"></span><span class="k">show</span> <span class="k">index</span> <span class="k">from</span> <span class="k">table_name</span><span class="p">;</span>  <span class="c1">-- 查看索引信息
 </span><span class="c1"></span><span class="k">create</span> <span class="k">index</span> <span class="k">on</span> <span class="k">table</span><span class="p">(</span><span class="n">id</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>  <span class="c1">-- 增加前缀索引
-</span><span class="c1"></span>
-<span class="k">SHOW</span> <span class="n">BINLOG</span> <span class="n">EVENTS</span> <span class="k">LIMIT</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">-- 查看 binlog 日志
-</span><span class="c1"></span>
-<span class="k">select</span> <span class="o">@@</span><span class="k">global</span><span class="p">.</span><span class="n">sql_mode</span><span class="p">;</span> <span class="c1">-- 查询 时 sql_mode
-</span><span class="c1"></span>
-<span class="k">show</span> <span class="n">variables</span> <span class="k">like</span> <span class="s2">&#34;%time_zone%&#34;</span><span class="p">;</span> <span class="c1">-- 查看时区
 </span><span class="c1"></span>
 <span class="c1">-- 查询表所有字段的名称
 </span><span class="c1"></span><span class="k">select</span> <span class="k">COLUMN_NAME</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">COLUMNS</span> <span class="k">where</span> <span class="k">table_name</span> <span class="o">=</span> <span class="s1">&#39;your_table_name&#39;</span><span class="p">;</span>

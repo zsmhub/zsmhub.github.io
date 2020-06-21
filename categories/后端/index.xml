@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 26 May 2020 09:04:22 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2020 08:55:16 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ElasticStack</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/elasticstack/</link>
+      <pubDate>Tue, 16 Jun 2020 08:55:16 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/elasticstack/</guid>
+      <description>Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。 Elasticsearch 是一个搜索和分析引</description>
+    </item>
     
     <item>
       <title>LB 集群</title>

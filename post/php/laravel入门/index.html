@@ -49,7 +49,7 @@
 <meta itemprop="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器">
 <meta itemprop="datePublished" content="2019-08-01T13:50:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-05T13:50:49&#43;08:00" />
-<meta itemprop="wordCount" content="6600">
+<meta itemprop="wordCount" content="6626">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 6600 字 </span>
+          <span class="more-meta"> 约 6626 字 </span>
           <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
@@ -432,9 +432,15 @@ if ($someCondition) {
 </span><span class="lnt">20
 </span><span class="lnt">21
 </span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-php" data-lang="php">$user = App\Models\User::first();
+
+#  Laravel 5.8 查询存放反斜杠内容字段，需特殊处理
+$query-&gt;where(&#39;mall_order_infos.order_type&#39;, &#39;like&#39;, &#39;App\\Models\\Activity\\PreOrder&#39;);
 
 # 使用 isDirty() 方法确定模型或给定属性是否已被修改
 $user-&gt;name = &#39;Michael&#39;;
@@ -451,11 +457,11 @@ if( $request-&gt;name ){
 
 # 打印执行 SQL 日志
 DB::enableQueryLog();
-dd(DB::getQueryLog())
+dd(DB::getQueryLog());
 
 # 打印 SQL 语句
 $sql = User::where(&#39;age&#39;, 18)-&gt;toSql();
-dd($sql)
+dd($sql);
 </code></pre></td></tr></table>
 </div>
 </div></li>
