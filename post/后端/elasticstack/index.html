@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。 Elasticsearch 是一个搜索和分析引">
 <meta itemprop="datePublished" content="2020-06-16T08:55:16&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-16T08:55:16&#43;08:00" />
-<meta itemprop="wordCount" content="899">
+<meta itemprop="wordCount" content="841">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 899 字 </span>
+          <span class="more-meta"> 约 841 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -146,8 +146,8 @@
   <ul>
     <li><a href="#elastic-stack">Elastic Stack</a></li>
     <li><a href="#elasticsearch">Elasticsearch</a></li>
-    <li><a href="#install-on-macos-with-brew">Install on macOS with brew</a></li>
     <li><a href="#install-on-macos-with-darwin-可以指定安装版本">Install on macOS with darwin (可以指定安装版本)</a></li>
+    <li><a href="#install-on-macos-with-brew">Install on macOS with brew</a></li>
     <li><a href="#配置-kibana">配置 kibana</a></li>
     <li><a href="#版本问题">版本问题</a></li>
   </ul>
@@ -165,7 +165,30 @@
 <p>而 Elastic Stack 是 ELK Stack 的更新换代产品。</p>
 <h2 id="elasticsearch">Elasticsearch</h2>
 <p>Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。</p>
-<h2 id="install-on-macos-with-brew">Install on macOS with brew</h2>
+<h2 id="install-on-macos-with-darwin-可以指定安装版本">Install on macOS with darwin (可以指定安装版本)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">安装目录：cd ~/app
+
+tar -xzf elasticsearch-7.7.0-darwin-x86_64.tar.gz
+启动命令: ~/app/elasticsearch/bin/elasticsearch
+
+tar -xzf kibana-7.7.0-darwin-x86_64.tar.gz
+启动命令: ~/app/kibana/bin/kibana
+配置文件: ~/app/kibana/config/kibana.yml
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="install-on-macos-with-brew">Install on macOS with brew</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -246,29 +269,6 @@ http://127.0.0.1:5601/
 
 <span class="c1"># 目录路径</span>
 Config: /usr/local/etc/kibana/
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="install-on-macos-with-darwin-可以指定安装版本">Install on macOS with darwin (可以指定安装版本)</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">安装目录：cd ~/app
-
-tar -xzf elasticsearch-7.7.0-darwin-x86_64.tar.gz
-启动命令：~/app/elasticsearch/bin/elasticsearch
-
-tar -xzf kibana-7.7.0-darwin-x86_64.tar.gz
-启动命令：~/app/kibana/bin/kibana
-配置文件： ~/app/kibana/config/kibana.yml
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="配置-kibana">配置 kibana</h2>

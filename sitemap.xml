@@ -3,7 +3,7 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2020-06-16T08:55:16+08:00</lastmod>
+    <lastmod>2020-06-24T16:54:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -24,14 +24,14 @@
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2020-06-16T08:55:16+08:00</lastmod>
+    <lastmod>2020-06-24T16:54:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2020-06-16T08:55:16+08:00</lastmod>
+    <lastmod>2020-06-24T16:54:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -45,14 +45,14 @@
   
   <url>
     <loc>https://zsmhub.github.io/tags/database/</loc>
-    <lastmod>2020-05-31T16:22:36+08:00</lastmod>
+    <lastmod>2020-06-24T16:54:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/categories/database/</loc>
-    <lastmod>2020-05-31T16:22:36+08:00</lastmod>
+    <lastmod>2020-06-24T16:54:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -920,7 +920,7 @@
   
   <url>
     <loc>https://zsmhub.github.io/post/database/mysql%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2019-06-01T16:54:37+08:00</lastmod>
+    <lastmod>2020-06-24T16:54:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

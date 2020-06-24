@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="Mysql 优化" />
-<meta property="og:description" content="实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的" />
+<meta property="og:description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E4%BC%98%E5%8C%96/" />
 <meta property="article:published_time" content="2019-06-01T16:54:37+08:00" />
-<meta property="article:modified_time" content="2019-06-01T16:54:37+08:00" />
+<meta property="article:modified_time" content="2020-06-24T16:54:37+08:00" />
 <meta itemprop="name" content="Mysql 优化">
-<meta itemprop="description" content="实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的">
+<meta itemprop="description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、">
 <meta itemprop="datePublished" content="2019-06-01T16:54:37&#43;08:00" />
-<meta itemprop="dateModified" content="2019-06-01T16:54:37&#43;08:00" />
-<meta itemprop="wordCount" content="1200">
+<meta itemprop="dateModified" content="2020-06-24T16:54:37&#43;08:00" />
+<meta itemprop="wordCount" content="1374">
 
 
 
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 优化"/>
-<meta name="twitter:description" content="实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的"/>
+<meta name="twitter:description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1200 字 </span>
+          <span class="more-meta"> 约 1374 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -144,6 +144,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#慢查询优化">慢查询优化</a></li>
     <li><a href="#实用的表优化方案">实用的表优化方案</a></li>
     <li><a href="#索引">索引</a></li>
     <li><a href="#配置优化">配置优化</a></li>
@@ -153,7 +154,12 @@
   </div>
 </div>
     <div class="post-content">
-      <h2 id="实用的表优化方案">实用的表优化方案</h2>
+      <h2 id="慢查询优化">慢查询优化</h2>
+<ol>
+<li>根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』</li>
+<li>使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、rows、filtered 这三个字段，rows 越小表示扫描记录数越少，filtered 越大表示过滤效果越好。</li>
+</ol>
+<h2 id="实用的表优化方案">实用的表优化方案</h2>
 <ol>
 <li>定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的执行计划。</li>
 <li>定期检查表【处理很慢】：check table tablename; // 本语句用于检查一个或多个表是否有错误。</li>
@@ -187,7 +193,7 @@ ORDER BY DATA_LENGTH DESC
 <p>索引分类</p>
 </blockquote>
 <ul>
-<li>B-TREE 索引：B 树索引中的 B 不是代表二叉树（binary），而是代表平衡树（balanced）【最左匹配原则是使用索引中的最左边进行查找，是索引使用的首要原则】</li>
+<li>B+树 索引：B+树索引中的 B 不是代表二叉树（binary），而是代表平衡树（balanced）【最左匹配原则是使用索引中的最左边进行查找，是索引使用的首要原则】</li>
 <li>HASH 索引： 只有 Memory 引擎支持，使用场景简单</li>
 <li>Full-text(全文索引)：是 MyISAM 的一个特殊索引类型，InnoDB 从 MySQL 5.6 版本开始提供对全文索引的支持</li>
 </ul>
@@ -195,11 +201,12 @@ ORDER BY DATA_LENGTH DESC
 <p>存在索引但不能使用索引的典型场景</p>
 </blockquote>
 <ul>
-<li>以 % 开头的 like 查询不能够利用 B-Tree 索引，执行计划中key的值为 NULL 表示没有使用索引</li>
+<li>以 % 开头的 like 查询不能够利用索引，执行计划中key的值为 NULL 表示没有使用索引</li>
 <li>数据类型出现隐式转换的时候也不会使用索引，特别是当列类型是字符串时，那么一定记得在where条件中把字符常量值用引号引起来</li>
 <li>复合索引的情况下，查询条件要满足最左匹配原则</li>
 <li>如果 MySQL 估计使用索引比全表扫描更慢，则不使用索引。如返回记录数很多</li>
 <li>用 or 分割开的条件，如果or前的条件中的列有索引，而后面的列没有索引，那么涉及的索引都不会用到</li>
+<li>索引列不能参与计算，保持列“干净”，比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)。</li>
 </ul>
 <blockquote>
 <p>MySQL强制索引和禁止某个索引</p>
@@ -211,13 +218,11 @@ ORDER BY DATA_LENGTH DESC
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">force</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 强制使用主键
-</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">force</span> <span class="k">index</span><span class="p">(</span><span class="n">ziduan1_index</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 强制使用索引&#34;ziduan1_index&#34;
-</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">force</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">,</span><span class="n">ziduan1_index</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 强制使用索引&#34;PRI和ziduan1_index&#34;
-</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tablei</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">)</span>
+    <span class="k">left</span> <span class="k">join</span> <span class="n">table2</span> <span class="k">force</span> <span class="k">index</span><span class="p">(</span><span class="n">table2_index</span><span class="p">)</span> <span class="k">on</span> <span class="k">table</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">table2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -226,11 +231,9 @@ ORDER BY DATA_LENGTH DESC
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">ignore</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 禁止使用主键
-</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">ignore</span> <span class="k">index</span><span class="p">(</span><span class="n">ziduan1_index</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 禁止使用索引&#34;ziduan1_index&#34;
 </span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">table</span> <span class="k">ignore</span> <span class="k">index</span><span class="p">(</span><span class="n">PRI</span><span class="p">,</span><span class="n">ziduan1_index</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">-- 禁止使用索引&#34;PRI,ziduan1_index&#34;
 </span></code></pre></td></tr></table>
 </div>
@@ -262,7 +265,7 @@ ORDER BY DATA_LENGTH DESC
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-06-01
+        2020-06-24
         
     </span>
   </p>

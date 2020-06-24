@@ -81,7 +81,7 @@
       <pubDate>Sat, 01 Jun 2019 16:54:37 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/mysql%E4%BC%98%E5%8C%96/</guid>
-      <description>实用的表优化方案 定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的</description>
+      <description>慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、</description>
     </item>
     
     <item>
