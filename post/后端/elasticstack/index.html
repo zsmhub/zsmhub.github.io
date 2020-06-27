@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。 Elasticsearch 是一个搜索和分析引">
 <meta itemprop="datePublished" content="2020-06-16T08:55:16&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-27T08:55:16&#43;08:00" />
-<meta itemprop="wordCount" content="6005">
+<meta itemprop="wordCount" content="6511">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 6005 字 </span>
-          <span class="more-meta"> 预计阅读 12 分钟 </span>
+          <span class="more-meta"> 约 6511 字 </span>
+          <span class="more-meta"> 预计阅读 13 分钟 </span>
         
       </div>
     </header>
@@ -162,7 +162,9 @@
     <li><a href="#laravel-scout">Laravel Scout</a>
       <ul>
         <li><a href="#一laravel-scout-配置">一、Laravel Scout 配置</a></li>
-        <li><a href="#二laravel-scout-索引批量导入删除">二、Laravel Scout 索引批量导入/删除</a></li>
+        <li><a href="#二laravel-初始化-es-和创建索引">二、Laravel 初始化 es 和创建索引</a></li>
+        <li><a href="#三laravel-scout-索引批量导入删除">三、Laravel Scout 索引批量导入/删除</a></li>
+        <li><a href="#四使用">四、使用</a></li>
       </ul>
     </li>
     <li><a href="#学习文章">学习文章</a></li>
@@ -496,7 +498,7 @@ PUT /index1
 <span class="o">{</span>
   <span class="s2">&#34;settings&#34;</span>: <span class="o">{</span>
     <span class="s2">&#34;number_of_shards&#34;</span>: 1, <span class="c1"># 设置主分片数</span>
-    <span class="s2">&#34;number_of_replicas&#34;</span>: <span class="m">0</span> <span class="c1"># 设置复制数</span>
+    <span class="s2">&#34;number_of_replicas&#34;</span>: <span class="m">0</span> <span class="c1"># 设置副本数</span>
   <span class="o">}</span>,
   <span class="s2">&#34;mappings&#34;</span>: <span class="o">{</span>
     <span class="s2">&#34;properties&#34;</span>: <span class="o">{</span> <span class="c1"># 字段集合</span>
@@ -955,7 +957,245 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 </div>
 </div></li>
 </ol>
-<h3 id="二laravel-scout-索引批量导入删除">二、Laravel Scout 索引批量导入/删除</h3>
+<h3 id="二laravel-初始化-es-和创建索引">二、Laravel 初始化 es 和创建索引</h3>
+<p>php artisan make:command InitEs</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Console\Commands</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Console\Command</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">InitEs</span> <span class="k">extends</span> <span class="nx">Command</span>
+<span class="p">{</span>
+    <span class="sd">/**
+</span><span class="sd">     * The name and signature of the console command.
+</span><span class="sd">     * @var string
+</span><span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$signature</span> <span class="o">=</span> <span class="s1">&#39;es:init {index} {--f}&#39;</span><span class="p">;</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * The console command description.
+</span><span class="sd">     * @var string
+</span><span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$description</span> <span class="o">=</span> <span class="s1">&#39;初始化es和创建索引&#39;</span><span class="p">;</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * Create a new command instance.
+</span><span class="sd">     * @return void
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * Execute the console command.
+</span><span class="sd">     * @return mixed
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$index</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">argument</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">line</span><span class="p">(</span><span class="s1">&#39;请输入索引名,如 corpus_index&#39;</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createTemplate</span><span class="p">(</span><span class="nv">$client</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createIndex</span><span class="p">(</span><span class="nv">$client</span><span class="p">,</span> <span class="nv">$index</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * 创建索引
+</span><span class="sd">     * @param Client $client
+</span><span class="sd">     * @param $index
+</span><span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">createIndex</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$client</span><span class="p">,</span> <span class="nv">$index</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$url</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;scout.elasticsearch.hosts&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="nv">$index</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">option</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;json&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">&#39;settings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s1">&#39;refresh_interval&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5s&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;number_of_shards&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;number_of_replicas&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="p">],</span>
+                <span class="s1">&#39;mappings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s1">&#39;_default_&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s1">&#39;_all&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                            <span class="s1">&#39;enabled&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+                        <span class="p">]</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * 创建模板
+</span><span class="sd">     * @param Client $client
+</span><span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">createTemplate</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$client</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$url</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;scout.elasticsearch.hosts&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="s1">&#39;_template/rtf&#39;</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">option</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;json&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">&#39;template&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;settings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s1">&#39;number_of_shards&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+                <span class="p">],</span>
+                <span class="s1">&#39;mappings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s1">&#39;_default_&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s1">&#39;_all&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                            <span class="s1">&#39;enabled&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+                        <span class="p">],</span>
+                        <span class="s1">&#39;dynamic_templates&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                            <span class="p">[</span>
+                                <span class="s1">&#39;strings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                                    <span class="s1">&#39;match_mapping_type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;mapping&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                                        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;analyzer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ik_max_word&#39;</span><span class="p">,</span><span class="c1">//ik_max_word  ik_smart
+</span><span class="c1"></span>                                        <span class="s1">&#39;ignore_above&#39;</span> <span class="o">=&gt;</span> <span class="mi">256</span><span class="p">,</span>
+                                        <span class="s1">&#39;fields&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                                            <span class="s1">&#39;keyword&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                                                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;keyword&#39;</span>
+                                            <span class="p">]</span>
+                                        <span class="p">]</span>
+                                    <span class="p">]</span>
+                                <span class="p">]</span>
+                            <span class="p">]</span>
+                        <span class="p">]</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">]);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="三laravel-scout-索引批量导入删除">三、Laravel Scout 索引批量导入/删除</h3>
 <blockquote>
 <p>即 mysql 等数据库的已有数据导入 ES</p>
 </blockquote>
@@ -969,7 +1209,22 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 <p>php artisan scout:flush &ldquo;App\Models\Post&rdquo;</p>
 </li>
 </ol>
-<h2 id="学习文章">学习文章</h2>
+<h3 id="四使用">四、使用</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">php artisan init:es article_index
+php artisan scout:import &#34;App\Models\Article&#34;
+
+搜索的时候使用 Article::search(&#39;搜索词&#39;)-&gt;get();
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="学习文章">学习文章</h2>
 <p><a href="https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html">全文搜索引擎 Elasticsearch 入门教程</a></p>
 
     </div>
