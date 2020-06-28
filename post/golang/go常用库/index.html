@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E5%B8%B8%E7%94%A8%E5%BA%93/" />
 <meta property="article:published_time" content="2020-05-26T16:54:52+08:00" />
-<meta property="article:modified_time" content="2020-05-26T16:54:52+08:00" />
+<meta property="article:modified_time" content="2020-06-28T16:54:52+08:00" />
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 // 获取当前时间，这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4">
 <meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-26T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="1735">
+<meta itemprop="dateModified" content="2020-06-28T16:54:52&#43;08:00" />
+<meta itemprop="wordCount" content="2296">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1735 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2296 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -444,6 +444,109 @@
 <span class="nx">sort</span><span class="p">.</span><span class="nf">Ints</span><span class="p">(</span><span class="nx">array1</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
+</div><ul>
+<li>context</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">context是Go中广泛使用的程序包</span><span class="err">，</span><span class="nx">由Google官方开发</span><span class="err">，</span><span class="nx">在1</span><span class="mf">.7</span><span class="nx">版本引入</span><span class="err">。</span><span class="nx">它用来简化在多个</span> <span class="nx">goroutine</span> <span class="nx">传递上下文数据</span><span class="err">、</span><span class="p">(</span><span class="nx">手动</span><span class="o">/</span><span class="nx">超时</span><span class="p">)</span><span class="nx">中止</span> <span class="nx">goroutine</span> <span class="nx">等操作</span><span class="p">.</span>
+
+<span class="nx">context库中</span><span class="err">，</span><span class="nx">有4个关键方法</span><span class="err">：</span>
+<span class="nx">context</span><span class="p">.</span><span class="nf">WithCancel</span><span class="p">()</span> <span class="nx">返回一个cancel函数</span><span class="err">，</span><span class="nx">调用这个函数则可以主动停止goroutine</span><span class="err">。</span>
+<span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">()</span> <span class="nx">可以设置一个key</span><span class="o">/</span><span class="nx">value的键值对</span><span class="err">，</span><span class="nx">可以在下游任何一个嵌套的context中通过key获取value</span><span class="err">。</span><span class="nx">但是不建议使用这种来做goroutine之间的通信</span><span class="err">。</span>
+<span class="nx">context</span><span class="p">.</span><span class="nf">WithTimeout</span><span class="p">()</span> <span class="nx">函数可以设置一个time</span><span class="p">.</span><span class="nx">Duration</span><span class="err">，</span><span class="nx">到了这个时间则会cancel这个context</span><span class="err">。</span>
+<span class="nx">context</span><span class="p">.</span><span class="nf">WithDeadline</span><span class="p">()</span> <span class="nx">该函数跟WithTimeout很相近</span><span class="err">，</span><span class="nx">只是WithDeadline设置的是一个时间点</span><span class="err">。</span>
+
+<span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">():</span> <span class="nx">其返回值是一个空的context</span><span class="err">，</span><span class="nx">经常作为树的根结点</span><span class="err">，</span><span class="nx">它一般由接收请求的第一个</span> <span class="nx">goroutine</span> <span class="nx">创建</span><span class="err">，</span><span class="nx">不能被取消</span><span class="err">、</span><span class="nx">没有值</span><span class="err">、</span><span class="nx">也没有过期时间</span><span class="err">。</span>
+
+<span class="c1">// 示例
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// cancel
+</span><span class="c1"></span>    <span class="nx">ctx</span><span class="p">,</span> <span class="nx">cancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithCancel</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">())</span>
+    <span class="k">go</span> <span class="nf">work</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="s">&#34;work1&#34;</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nf">cancel</span><span class="p">()</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+
+    <span class="c1">// timeout
+</span><span class="c1"></span>    <span class="nx">ctx2</span><span class="p">,</span> <span class="nx">timeCancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithTimeout</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nf">work</span><span class="p">(</span><span class="nx">ctx2</span><span class="p">,</span> <span class="s">&#34;time cancel&#34;</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nf">timeCancel</span><span class="p">()</span> <span class="c1">// 调用此方法会提前中断 goroutine，不调用则按设置的超时时间中断 goroutine
+</span><span class="c1"></span>
+    <span class="c1">// deadline
+</span><span class="c1"></span>    <span class="nx">ctx3</span><span class="p">,</span> <span class="nx">deadlineCancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithDeadline</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Add</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">3</span><span class="p">))</span>
+    <span class="k">go</span> <span class="nf">work</span><span class="p">(</span><span class="nx">ctx3</span><span class="p">,</span> <span class="s">&#34;deadline cancel&#34;</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nf">deadlineCancel</span><span class="p">()</span> <span class="c1">// 调用此方法会提前中断 goroutine，不调用则按设置的超时时间中断 goroutine
+</span><span class="c1"></span>
+    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">work</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="k">select</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Done</span><span class="p">():</span>
+            <span class="nb">println</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="s">&#34; get message to quit&#34;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="nb">println</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="s">&#34; is running&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">String</span><span class="p">())</span>
+            <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="第三方库">第三方库</h2>
 <ul>
 <li>gorm</li>
@@ -561,7 +664,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-05-26
+        2020-06-28
         
     </span>
   </p>
