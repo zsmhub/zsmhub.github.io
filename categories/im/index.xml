@@ -30,14 +30,5 @@
       <description>IM 消息可靠性及一致性的解决方案 参考文章 对于 IM 系统消息可靠性及一致性问题，通过消息重发机制保证消息成功被服务端接收，通过会话记录检查保证收取消</description>
     </item>
     
-    <item>
-      <title>NSQ-分布式实时消息平台</title>
-      <link>https://zsmhub.github.io/post/im/nsq/</link>
-      <pubDate>Wed, 15 Apr 2020 20:50:45 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/im/nsq/</guid>
-      <description>NSQ 简介 NSQ是一个基于Go语言的分布式实时消息平台，它基于MIT开源协议发布，由bitly公司开源出来的一款简单易用的消息中间件。 NSQ 是实时的</description>
-    </item>
-    
   </channel>
 </rss>
