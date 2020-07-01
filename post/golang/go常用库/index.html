@@ -49,7 +49,7 @@
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 // 获取当前时间，这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4">
 <meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-28T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="2296">
+<meta itemprop="wordCount" content="2353">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2296 字 </span>
+          <span class="more-meta"> 约 2353 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -553,15 +553,28 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">Insert</span> <span class="nx">时注意</span> <span class="nx">所有字段的零值</span><span class="p">,</span> <span class="nx">比如</span> <span class="mi">0</span><span class="p">,</span> <span class="err">&#39;&#39;</span><span class="p">,</span> <span class="kc">false</span> <span class="nx">或者其它零值</span><span class="err">，</span><span class="nx">都不会保存到数据库内</span><span class="err">，</span><span class="nx">但会使用他们的默认值</span><span class="err">。</span>
@@ -573,6 +586,19 @@
 </span><span class="c1"></span><span class="p">)</span>
 
 <span class="nx">db</span><span class="p">.</span><span class="nf">Model</span><span class="p">():</span> <span class="nx">作用</span><span class="err">：</span><span class="mf">1.</span> <span class="nx">声明操作表名</span><span class="err">，</span><span class="mf">2.</span> <span class="nx">当做</span> <span class="nx">where</span> <span class="nx">条件并返回操作后的最新数据</span>
+
+<span class="c1">// 预加载指定列
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">answer</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">model</span><span class="p">.</span><span class="nx">IntelligentAnswer</span>
+    <span class="nx">StaffName</span>  <span class="kt">string</span> <span class="s">`json:&#34;staff_name&#34;`</span>
+    <span class="nx">EntityName</span> <span class="kt">string</span> <span class="s">`json:&#34;entity_name&#34;`</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">answerInfo</span> <span class="nx">answer</span>
+<span class="nx">model</span><span class="p">.</span><span class="nx">Answer</span><span class="p">{}.</span><span class="nf">Model</span><span class="p">().</span><span class="nf">Preload</span><span class="p">(</span><span class="s">&#34;Solutions&#34;</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">db</span> <span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span> <span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span> <span class="p">{</span>
+    <span class="c1">// 获取指定预加载表的字段
+</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="s">&#34;id,content&#34;</span><span class="p">)</span>
+<span class="p">}).</span>
+<span class="nf">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">answerInfo</span><span class="p">,</span> <span class="nx">answerId</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><ul>
