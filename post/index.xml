@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 28 Jun 2020 10:50:45 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2020 18:30:58 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Laravel 如何在预加载中指定查询的字段</title>
+      <link>https://zsmhub.github.io/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Tue, 30 Jun 2020 18:30:58 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/</guid>
+      <description>预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&amp;#39;topics:user_id,body,title&amp;#39;) -&amp;gt;where(&amp;#39;name&amp;#39;, &amp;#39;Summer&amp;#39;) -&amp;gt;get() -&amp;gt;toArray(); 注意：在使用这个</description>
+    </item>
     
     <item>
       <title>NSQ-分布式实时消息处理平台</title>
