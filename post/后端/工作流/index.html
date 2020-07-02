@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Laravel 如何在预加载中指定查询的字段 - ZsmHub - Blog</title>
+  <title>工作流 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&amp;#39;topics:user_id,body,title&amp;#39;) -&amp;gt;where(&amp;#39;name&amp;#39;, &amp;#39;Summer&amp;#39;) -&amp;gt;get() -&amp;gt;toArray(); 注意：在使用这个" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="概述 工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。 工作流[workflow]：在多个参与人" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Laravel 如何在预加载中指定查询的字段" />
-<meta property="og:description" content="预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&#39;topics:user_id,body,title&#39;) -&gt;where(&#39;name&#39;, &#39;Summer&#39;) -&gt;get() -&gt;toArray(); 注意：在使用这个" />
+<meta property="og:title" content="工作流" />
+<meta property="og:description" content="概述 工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。 工作流[workflow]：在多个参与人" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/" />
-<meta property="article:published_time" content="2020-06-30T18:30:58+08:00" />
-<meta property="article:modified_time" content="2020-06-30T18:30:58+08:00" />
-<meta itemprop="name" content="Laravel 如何在预加载中指定查询的字段">
-<meta itemprop="description" content="预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&#39;topics:user_id,body,title&#39;) -&gt;where(&#39;name&#39;, &#39;Summer&#39;) -&gt;get() -&gt;toArray(); 注意：在使用这个">
-<meta itemprop="datePublished" content="2020-06-30T18:30:58&#43;08:00" />
-<meta itemprop="dateModified" content="2020-06-30T18:30:58&#43;08:00" />
-<meta itemprop="wordCount" content="211">
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/" />
+<meta property="article:published_time" content="2020-07-02T09:09:47+08:00" />
+<meta property="article:modified_time" content="2020-07-02T09:09:47+08:00" />
+<meta itemprop="name" content="工作流">
+<meta itemprop="description" content="概述 工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。 工作流[workflow]：在多个参与人">
+<meta itemprop="datePublished" content="2020-07-02T09:09:47&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-02T09:09:47&#43;08:00" />
+<meta itemprop="wordCount" content="677">
 
 
 
-<meta itemprop="keywords" content="Laravel," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Laravel 如何在预加载中指定查询的字段"/>
-<meta name="twitter:description" content="预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&#39;topics:user_id,body,title&#39;) -&gt;where(&#39;name&#39;, &#39;Summer&#39;) -&gt;get() -&gt;toArray(); 注意：在使用这个"/>
+<meta itemprop="keywords" content="工作流," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="工作流"/>
+<meta name="twitter:description" content="概述 工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。 工作流[workflow]：在多个参与人"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,15 +126,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Laravel 如何在预加载中指定查询的字段</h1>
+      <h1 class="post-title">工作流</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-06-30 </span>
+        <span class="post-time"> 2020-07-02 </span>
         <div class="post-category">
-            <a href="/categories/php/"> php </a>
+            <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 211 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 677 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -144,84 +144,54 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#预加载指定列">预加载指定列</a></li>
-    <li><a href="#嵌套预加载指定字段的实现方法">嵌套预加载指定字段的实现方法</a></li>
-    <li><a href="#参考原文">参考原文</a></li>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#审批动作">审批动作</a></li>
+    <li><a href="#串行与并行">串行与并行</a></li>
+    <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="预加载指定列">预加载指定列</h2>
-<p>并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$result = User::with(&#39;topics:user_id,body,title&#39;)
-    -&gt;where(&#39;name&#39;, &#39;Summer&#39;)
-    -&gt;get()
-    -&gt;toArray();
-</code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>注意：在使用这个特性时，一定要在要获取的列的列表中包含 id 列。『这里的 <code>id</code> 列是指关联字段列 <code>user_id</code> 』</p>
-</blockquote>
-<p>如果要进行约束预加载，应该这样写。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$result = User::with([&#39;topics&#39; =&gt; function ($query) {
-        $query-&gt;select(&#39;id&#39;, &#39;user_id&#39;, &#39;body&#39;, &#39;title&#39;)
-            -&gt;orderBy(&#39;updated_at&#39;, &#39;desc&#39;);
-    }])
-    -&gt;where(&#39;name&#39;, &#39;Summer&#39;)
-    -&gt;get()
-    -&gt;toArray();
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="嵌套预加载指定字段的实现方法">嵌套预加载指定字段的实现方法</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$user = User::with([&#39;posts&#39;=&gt;function($query) {
-     $query-&gt;select(&#39;id&#39;,&#39;user_id&#39;,&#39;title&#39;)-&gt;orderBy(&#39;updated_at&#39;,&#39;desc&#39;);
-     $query-&gt;with([&#39;tags&#39;=&gt;function($query) {
-          $query-&gt;select(&#39;tag&#39;);
-     }]);
-}])-&gt;where(&#39;id&#39;,1)-&gt;get();
-</code></pre></td></tr></table>
-</div>
-</div><p>没有添加约束的方法</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$user = User::with([&#39;posts:user_id,title&#39;,&#39;posts.tags&#39;])-&gt;where(&#39;id&#39;,1)-&gt;get();
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="参考原文">参考原文</h2>
-<p><a href="https://learnku.com/articles/10346/remember-how-to-specify-the-fields-of-the-query-in-preloading">记如何在预加载中指定查询的字段</a></p>
+      <h2 id="概述">概述</h2>
+<p>工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。</p>
+<p>工作流[workflow]：在多个参与人员之间按照事先定义好的规则传递信息、文档或任务的过程自动执行，从而实现某个预期的业务目标，或者促使该目标的实现。</p>
+<p>工作流包含审批流程，工作流是后台系统的核心和灵魂，而审批则是工作流中的最基础的应用场景。</p>
+<ol>
+<li>
+<p>工作流的好处：</p>
+<ul>
+<li>减少了记录分配，任务指派过程中许多不必要的操作；</li>
+<li>通过标准化流程提高工作效率；</li>
+</ul>
+</li>
+<li>
+<p>工作流要解决的主要问题</p>
+<p>为实现某个业务目标，在多个参与者之间，利用计算机，按某种预定规则自动传递文档、信息或者任务。</p>
+</li>
+<li>
+<p>流程与步骤（或者节点）</p>
+<ul>
+<li>流程：工作流包含多个工作流程，处理时可任选一种流程进行处理，其包含步骤信息；</li>
+<li>步骤：流程中每一环节的名称，某一流程将包含多个步骤（其他工作流中也称为节点）。</li>
+</ul>
+<p><img src="/images/2020/2010080911165759.png" alt="流程与步骤"></p>
+</li>
+</ol>
+<h2 id="审批动作">审批动作</h2>
+<ol>
+<li>通过：当前步骤处理通过，（选择下一处理人）进入当前流程中下一步骤，若为末步骤，则流程完成；</li>
+<li>驳回：将步骤退回至上一步骤，即返回至上一处理人处，若为首步骤，则不可进行退回；</li>
+<li>否决：将步骤直接结束，不可再进行操作，或者回退至第一步骤；本系统中采用第二种方式；</li>
+<li>撤回：若当前步骤已处理，且在下一处理人未进行处理的情况下可进行撤回操作。</li>
+</ol>
+<p><img src="/images/2020/2010080911342085.png" alt="审批动作"></p>
+<h2 id="串行与并行">串行与并行</h2>
+<p>串行是指上一处理人指定某一处理人时，其他拥有此步骤权限的操作员不可进行查看和操作，必须当前处理人处理完毕后，流程才能继续；</p>
+<p>并行是由上一处理人指定固定多个处理人时，由任一员工处理即可，不分前后顺序，全部处理完成，进入下一步骤，此处理人数目由当前步骤重复次数确定。</p>
+<p><img src="/images/2020/2010080911523144.png" alt="串行与并行"></p>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="https://www.cnblogs.com/walkingp/archive/2010/08/09/1795527.html">一套完整自定义工作流的实现</a></p>
 
     </div>
 
@@ -233,7 +203,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-06-30
+        2020-07-02
         
     </span>
   </p>
@@ -259,16 +229,12 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/laravel/">Laravel</a>
+          <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">工作流</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/nsq-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0/">
-            <span class="next-text nav-default">NSQ-分布式实时消息处理平台</span>
+        
+        <a class="next" href="/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/">
+            <span class="next-text nav-default">Laravel 如何在预加载中指定查询的字段</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -281,8 +247,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-06-30 18:30:58 \x2b0800 CST',
-        title: 'Laravel 如何在预加载中指定查询的字段',
+        id: '2020-07-02 09:09:47 \x2b0800 CST',
+        title: '工作流',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

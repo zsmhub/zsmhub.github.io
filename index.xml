@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>工作流</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
+      <pubDate>Thu, 02 Jul 2020 09:09:47 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
+      <description>概述 工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。 工作流[workflow]：在多个参与人</description>
+    </item>
+    
+    <item>
       <title>Laravel 如何在预加载中指定查询的字段</title>
       <link>https://zsmhub.github.io/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/</link>
       <pubDate>Tue, 30 Jun 2020 18:30:58 +0800</pubDate>
