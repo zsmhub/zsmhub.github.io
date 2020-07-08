@@ -49,7 +49,7 @@
 <meta itemprop="description" content="大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 1 2 3 4 5 6 7 8 // 使用回调函数比较数据，计算数组">
 <meta itemprop="datePublished" content="2020-05-07T16:00:02&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-07T16:00:02&#43;08:00" />
-<meta itemprop="wordCount" content="171">
+<meta itemprop="wordCount" content="280">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 171 字 </span>
+          <span class="more-meta"> 约 280 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#大小写的坑">大小写的坑</a></li>
+    <li><a href="#json_encode函数输出数字为int型方案">json_encode函数输出数字为int型方案</a></li>
   </ul>
 </nav>
   </div>
@@ -173,6 +174,23 @@ strcasecmp ( string $str1 , string $str2 ) : int
 
 // 二进制安全比较字符串（区分大小写）
 strcmp ( string $str1 , string $str2 ) : int
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="json_encode函数输出数字为int型方案">json_encode函数输出数字为int型方案</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">$data = array(&#39;213&#39;,&#39;dasd&#39;,&#39;大声道&#39;,123);
+var_dump(json_encode($data, JSON_NUMERIC_CHECK));
+
+//输出结果：这里数字即全部为int类型
+string(37) &#34;[123,&#34;dasd&#34;,&#34;\u5927\u58f0\u9053&#34;,123]&#34;
 </code></pre></td></tr></table>
 </div>
 </div>
