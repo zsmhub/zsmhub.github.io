@@ -67,6 +67,24 @@
     </item>
     
     <item>
+      <title>Supervisor</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/</link>
+      <pubDate>Sat, 05 Oct 2019 15:15:06 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/</guid>
+      <description>常用命令 1 2 3 4 5 supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本 supervisorctl reload // 重启，每次更改了脚本代码后需要reload supervisorctl status // 查看进程启动状态 supervisor reload 后报错 Exited too quickly (process log may have details) 解</description>
+    </item>
+    
+    <item>
+      <title>Git 基础知识</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 02 Oct 2019 21:05:31 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修</description>
+    </item>
+    
+    <item>
       <title>高并发处理</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/</link>
       <pubDate>Sat, 06 Jul 2019 13:32:31 +0800</pubDate>
@@ -100,6 +118,15 @@
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/</guid>
       <description>什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个</description>
+    </item>
+    
+    <item>
+      <title>DevOps 与 NoOps</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</link>
+      <pubDate>Mon, 29 Apr 2019 21:17:55 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</guid>
+      <description>DevOps DevOps是开发和运维的融合，是开发和运维工程师共同协作，定义应用从设计到交付全生命周期过程的实践。 NoOps NoOps的意思是无须操作。它的理</description>
     </item>
     
     <item>

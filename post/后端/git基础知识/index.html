@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Git 基础知识 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Git 基础知识" />
+<meta property="og:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
+<meta property="article:published_time" content="2019-10-02T21:05:31+08:00" />
+<meta property="article:modified_time" content="2020-05-09T16:05:31+08:00" />
+<meta itemprop="name" content="Git 基础知识">
+<meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修">
+<meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
+<meta itemprop="wordCount" content="1488">
+
+
+
+<meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git 基础知识"/>
+<meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Git 基础知识</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-10-02 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+            </div>
+          <span class="more-meta"> 约 1488 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#git-简介">Git 简介</a></li>
+    <li><a href="#git-commit-注释标记">git commit 注释标记</a></li>
+    <li><a href="#git-remote">git remote</a></li>
+    <li><a href="#git-stash">git stash</a></li>
+    <li><a href="#代码回滚命令">代码回滚命令</a></li>
+    <li><a href="#忽略跟踪">忽略跟踪</a></li>
+    <li><a href="#其他常用命令">其他常用命令</a></li>
+    <li><a href="#git-文件的三种状态">Git 文件的三种状态</a></li>
+    <li><a href="#git-多帐号配置">Git 多帐号配置</a></li>
+    <li><a href="#git-常用分支">Git 常用分支</a></li>
+    <li><a href="#github上fork项目后如何同步更新原先项目的提交">github上fork项目后，如何同步更新原先项目的提交</a></li>
+    <li><a href="#配置信息">配置信息</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="git-简介">Git 简介</h2>
+<p>版本控制工具，分布式版本控制系统</p>
+<h2 id="git-commit-注释标记">git commit 注释标记</h2>
+<ul>
+<li>feat: 添加新特性</li>
+<li>fix: 修复bug</li>
+<li>refactor: 代码重构，没有加新功能或者修复bug</li>
+<li>merge: 分支合并，解决冲突</li>
+<li>docs: 仅仅修改了文档</li>
+<li>style: 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑</li>
+<li>test: 增加测试用例</li>
+</ul>
+<h2 id="git-remote">git remote</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git init <span class="c1"># 要对现有的某个项目开始用 Git 管理，只需到此项目所在的目录</span>
+git remote <span class="c1"># 查看远程库信息</span>
+git remote -v   <span class="c1"># 查看远程库详细信息</span>
+git remote add origin git@github.com:&lt;username&gt;/weibo.git  <span class="c1"># 本地 git 项目新增远程仓库地址，如github</span>
+git remote set-url origin git@url.here  <span class="c1"># 修改远程仓库地址</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="git-stash">git stash</h2>
+<p>当开发一个功能未完成突然要修复bug时，Git提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git stash  <span class="c1"># 隔离当前工作现场</span>
+git stash list  <span class="c1"># 查看储藏的工作现场</span>
+git stash pop  <span class="c1"># 恢复工作现场并删除stash内容</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="代码回滚命令">代码回滚命令</h2>
+<ol>
+<li>
+<p>git reset</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard HEAD^  <span class="c1">#回退到上一个版本，HEAD^可以更改为版本号</span>
+git reset . <span class="c1"># 取消已贮存文件</span>
+git reset HEAD &lt;file&gt;  <span class="c1">#git暂存区add的file文件回退工作区</span>
+git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码仍然保留</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>git checkout <!-- raw HTML omitted --> # 丢弃该file文件在工作区的修改</p>
+</li>
+<li>
+<p>git clean -f -d # 清理新建的新增且未提交项目，-f 是强制清理文件的设置，-d 选项命令连文件夹一并清除</p>
+</li>
+<li>
+<p>本地版本回退时，GitLab 上代码库回退方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard &lt;old-commit-id&gt;
+git push -f &lt;remote-name&gt; &lt;branch-name&gt;  <span class="c1">#主要是加个-f参数</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="忽略跟踪">忽略跟踪</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 忽略已经被提交或跟踪的具体文件，不能是文件夹</span>
+
+$ git update-index --assume-unchanged /path/to/file <span class="c1"># 忽略跟踪某个文件</span>
+
+$ git update-index --no-assume-unchanged /path/to/file <span class="c1"># 恢复跟踪某个文件</span>
+
+git ls-files -v <span class="p">|</span> grep <span class="s1">&#39;^h&#39;</span>  <span class="c1"># 查看所有被 update-index 忽略跟踪的文件</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="其他常用命令">其他常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git log  <span class="c1"># 回顾下提交历史</span>
+git reflog  <span class="c1"># 用来记录你的每一次的提交版本命令</span>
+git commit --amend <span class="c1"># 重新编辑提交说明 或 在上一个commit中添加新更改的文件</span>
+git pull  <span class="c1"># 拉取所有分支代码</span>
+git pull origin develop <span class="c1"># 拉取远程分支代码到当前分支</span>
+git checkout -b test_branch develop <span class="c1"># 在develop分支下创建新分支并切换分支</span>
+
+git branch -d test_branch <span class="c1"># 删除已合并的分支</span>
+git branch -D test_branch <span class="c1"># 删除任意分支</span>
+git branch <span class="p">|</span> grep <span class="s1">&#39;zsm_&#39;</span> <span class="p">|</span> xargs git branch -d <span class="c1"># 批量删除已合并分支</span>
+
+<span class="c1"># 拉取远程分支的 2 种方式</span>
+git fetch origin develop <span class="c1"># 拉取develop远程分支到本地</span>
+git checkout -b develop origin/develop <span class="c1"># 本地创建并切换到 develop 分支</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="git-文件的三种状态">Git 文件的三种状态</h2>
+<p>在Git中，文件只有三种状态，已修改，已暂存和已提交。</p>
+<p>这三个文件分别放在工作目录，暂存区域和git目录。当一个文件修改完毕之后，它仍然在工作目录；只有当它被add之后，才会进入暂存区域，文件状态变为已暂存；最后，当文件被 commit之后，它就会进去git目录区域。</p>
+<h2 id="git-多帐号配置">Git 多帐号配置</h2>
+<ol>
+<li>生成多个ssh秘钥，关联不同的git账号</li>
+<li>然后进入项目文件夹下，执行命令git config user.email &ldquo;your_email&rdquo;</li>
+</ol>
+<h2 id="git-常用分支">Git 常用分支</h2>
+<ul>
+<li>master：生产环境分支，不允许直接提交代码，只能从uat和hotfix分支合并</li>
+<li>uat：预生产环境分支,不允许直接提交代码，只能从feature和hotfix分支合并，提交到这个分支意味着随时能合并到master并发布</li>
+<li>develop：开发测试环境分支，不允许直接提交代码，从uat和master分支fork代码 只能从feature和hotfix分支合并</li>
+<li>feature：新功能开发分支，从uat分支fork代码，开发完成后合并到develop测试，测试通过后合并到uat分支，然后删除重新fork</li>
+<li>hotfix：生产环境修复分支，从master分支fork代码，开发完成后合并到master，酌情合并到其它分支，然后删除重新fork</li>
+</ul>
+<h2 id="github上fork项目后如何同步更新原先项目的提交">github上fork项目后，如何同步更新原先项目的提交</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git remote -v
+git remote add upstream git@github.com:xxx/xxx.git
+git fetch upstream
+git merge upstream/master
+git push
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="配置信息">配置信息</h2>
+<ol>
+<li>
+<p>用户名设置</p>
+<ul>
+<li>git config &ndash;system user.name &ldquo;hic&rdquo;</li>
+<li>git config &ndash;global user.name &ldquo;hic&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>电子邮件</p>
+<p>git config &ndash;global user.email &ldquo;<a href="mailto:hic@gmail.com">hic@gmail.com</a>&rdquo;</p>
+</li>
+<li>
+<p>查看配置信息</p>
+<p>git config &ndash;list</p>
+</li>
+<li>
+<p>如果要查看某个特定的环境变量，只要把它的名字放到最后即可</p>
+<p>git config user.name</p>
+</li>
+<li>
+<p>配置git 使其对文件名大小写敏感</p>
+<p>git config core.ignorecase false</p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-09
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/git/">git</a>
+          <a href="/tags/%E5%85%A5%E9%97%A8/">入门</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E5%90%8E%E7%AB%AF/supervisor/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Supervisor</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/">
+            <span class="next-text nav-default">Laravel 定时任务与常驻进程</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-10-02 21:05:31 \x2b0800 CST',
+        title: 'Git 基础知识',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

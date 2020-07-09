@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>经典案例 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="php递归实现无限极分类树 参考文章 设计一个商城购物返积分流程 分3个流程，第一是浏览并加入购物车，第二是下单结算，第三是异步判断是否符合购物送" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="经典案例" />
+<meta property="og:description" content="php递归实现无限极分类树 参考文章 设计一个商城购物返积分流程 分3个流程，第一是浏览并加入购物车，第二是下单结算，第三是异步判断是否符合购物送" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/" />
+<meta property="article:published_time" content="2020-02-21T22:28:05+08:00" />
+<meta property="article:modified_time" content="2020-02-21T22:28:05+08:00" />
+<meta itemprop="name" content="经典案例">
+<meta itemprop="description" content="php递归实现无限极分类树 参考文章 设计一个商城购物返积分流程 分3个流程，第一是浏览并加入购物车，第二是下单结算，第三是异步判断是否符合购物送">
+<meta itemprop="datePublished" content="2020-02-21T22:28:05&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-21T22:28:05&#43;08:00" />
+<meta itemprop="wordCount" content="3013">
+
+
+
+<meta itemprop="keywords" content="面试题," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="经典案例"/>
+<meta name="twitter:description" content="php递归实现无限极分类树 参考文章 设计一个商城购物返积分流程 分3个流程，第一是浏览并加入购物车，第二是下单结算，第三是异步判断是否符合购物送"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">经典案例</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-02-21 </span>
+        <div class="post-category">
+            <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
+            </div>
+          <span class="more-meta"> 约 3013 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#php递归实现无限极分类树">php递归实现无限极分类树</a></li>
+    <li><a href="#设计一个商城购物返积分流程">设计一个商城购物返积分流程</a></li>
+    <li><a href="#高并发之抢红包案例">高并发之抢红包案例</a></li>
+    <li><a href="#高并发之电商抢购秒杀案例">高并发之电商抢购/秒杀案例</a></li>
+    <li><a href="#高并发之流量削峰">高并发之流量削峰</a></li>
+    <li><a href="#消息队列生产者消费者">消息队列（生产者、消费者）</a></li>
+    <li><a href="#mysql之乐观锁悲观锁共享锁排他锁">mysql之乐观锁、悲观锁、共享锁、排他锁</a></li>
+    <li><a href="#简单实现一个聊天app-过程是怎样的">简单实现一个聊天app, 过程是怎样的</a></li>
+    <li><a href="#mq-出现数据堆积如何处理">mq 出现数据堆积，如何处理？</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="php递归实现无限极分类树">php递归实现无限极分类树</h2>
+<p><a href="https://blog.csdn.net/qq_29058883/article/details/78742170">参考文章</a></p>
+<h2 id="设计一个商城购物返积分流程">设计一个商城购物返积分流程</h2>
+<p>分3个流程，第一是浏览并加入购物车，第二是下单结算，第三是异步判断是否符合购物送积分等情况。</p>
+<h2 id="高并发之抢红包案例">高并发之抢红包案例</h2>
+<ul>
+<li>抢红包的逻辑是，先查询红包的信息，看其是否拥有存量可以扣减。如果有存量，那么可以扣减它，否则就不扣减。</li>
+<li>抢红包案例：可以当做电商抢购去处理。发送红包后，就确认了红包个数和总金额，红包个数类似于抢购商品库存。</li>
+</ul>
+<h2 id="高并发之电商抢购秒杀案例">高并发之电商抢购/秒杀案例</h2>
+<ul>
+<li>
+<p>对于秒杀这样的高并发场景业务，最基本的原则就是将请求拦截在系统上游，降低下游压力。如果不在进入数据库前拦截很可能造成数据库(mysql、oracle等)读写锁冲突，甚至导致死锁，最终还有可能出现雪崩等场景。</p>
+</li>
+<li>
+<p>抢购、秒杀是如今很常见的一个应用场景，主要需要解决的问题有两个：</p>
+<blockquote>
+<p>1 高并发对数据库产生的压力</p>
+<p>2 竞争状态下如何解决库存的正确减少（&ldquo;超卖&quot;问题）</p>
+<p>对于第一个问题，已经很容易想到用缓存来处理抢购，避免直接操作数据库，例如使用Redis。</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>
+<p>先将商品库存入队列</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$store</span><span class="o">=</span><span class="mi">1000</span><span class="p">;</span>
+<span class="nv">$goods_id</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>  <span class="c1">// 商品 id
+</span><span class="c1"></span><span class="nv">$redis_goods_store_name</span> <span class="o">=</span> <span class="s1">&#39;goods_store_&#39;</span> <span class="o">.</span> <span class="nv">$goods_id</span><span class="p">;</span>  <span class="c1">// 商品库存 redis key 值
+</span><span class="c1"></span><span class="nv">$redis</span><span class="o">=</span><span class="k">new</span> <span class="nx">Redis</span><span class="p">();</span>
+<span class="nv">$result</span><span class="o">=</span><span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span><span class="mi">6379</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nx">store</span><span class="p">;</span><span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+    <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">lpush</span><span class="p">(</span><span class="nv">$redis_goods_store_name</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">llen</span><span class="p">(</span><span class="nv">$redis_goods_store_name</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>开始抢购/秒杀操作</p>
+<blockquote>
+<p>注意超卖问题、同一用户抢购多次问题、 流量削峰问题</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">
+<span class="cp">&lt;?php</span>
+<span class="nv">$conn</span><span class="o">=</span><span class="nx">mysql_connect</span><span class="p">(</span><span class="s2">&#34;localhost&#34;</span><span class="p">,</span><span class="s2">&#34;big&#34;</span><span class="p">,</span><span class="s2">&#34;123456&#34;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$conn</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s2">&#34;connect failed&#34;</span><span class="p">;</span>
+    <span class="k">exit</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">mysql_select_db</span><span class="p">(</span><span class="s2">&#34;big&#34;</span><span class="p">,</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="nx">mysql_query</span><span class="p">(</span><span class="s2">&#34;set names utf8&#34;</span><span class="p">);</span>
+
+<span class="nv">$user_id</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">];</span>  <span class="c1">// 抢购用户 id
+</span><span class="c1"></span><span class="nv">$goods_id</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;goods_id&#39;</span><span class="p">];</span>  <span class="c1">// 商品 id
+</span><span class="c1"></span><span class="nv">$redis_goods_store_name</span> <span class="o">=</span> <span class="s1">&#39;goods_store_&#39;</span> <span class="o">.</span> <span class="nv">$goods_id</span><span class="p">;</span>  <span class="c1">// 商品库存 redis key 值
+</span><span class="c1"></span>
+<span class="nv">$price</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="nv">$user_id</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="nv">$goods_id</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="nv">$sku_id</span><span class="o">=</span><span class="mi">11</span><span class="p">;</span>
+<span class="nv">$number</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">// 生成唯一订单号
+</span><span class="c1"></span><span class="k">function</span> <span class="nf">build_order_no</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="nx">date</span><span class="p">(</span><span class="s1">&#39;ymd&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">substr</span><span class="p">(</span><span class="nx">implode</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="nx">array_map</span><span class="p">(</span><span class="s1">&#39;ord&#39;</span><span class="p">,</span> <span class="nx">str_split</span><span class="p">(</span><span class="nx">substr</span><span class="p">(</span><span class="nx">uniqid</span><span class="p">(),</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="mi">1</span><span class="p">))),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 记录日志
+</span><span class="c1"></span><span class="k">function</span> <span class="nf">insertLog</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span><span class="nv">$type</span><span class="o">=</span><span class="mi">0</span><span class="p">){</span>
+    <span class="k">global</span> <span class="nv">$conn</span><span class="p">;</span>
+    <span class="nv">$sql</span><span class="o">=</span><span class="s2">&#34;insert into ih_log(event,type)
+</span><span class="s2">    values(&#39;</span><span class="si">$event</span><span class="s2">&#39;,&#39;</span><span class="si">$type</span><span class="s2">&#39;)&#34;</span><span class="p">;</span>
+    <span class="nx">mysql_query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 模拟下单操作
+</span><span class="c1"></span>
+<span class="nv">$redis</span><span class="o">=</span><span class="k">new</span> <span class="nx">Redis</span><span class="p">();</span>
+<span class="nv">$result</span><span class="o">=</span><span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span><span class="mi">6379</span><span class="p">);</span>
+
+<span class="c1">// 防止同一个用户抢多次的情况
+</span><span class="c1"></span><span class="nv">$user_list</span> <span class="o">=</span> <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;user_list&#39;</span><span class="p">);</span>
+<span class="nv">$user_list</span> <span class="o">=</span> <span class="nx">emplode</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$user_list</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$user_id</span><span class="p">,</span> <span class="nv">$user_list</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">insertLog</span><span class="p">(</span><span class="s1">&#39;error: 您已抢购成功，请勿重复抢购！&#39;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 下单前判断 redis 队列库存量
+</span><span class="c1"></span><span class="nv">$count</span><span class="o">=</span><span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">lpop</span><span class="p">(</span><span class="nv">$redis_goods_store_name</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$count</span><span class="p">){</span>
+    <span class="nx">insertLog</span><span class="p">(</span><span class="s1">&#39;error:no store redis&#39;</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 抢购结果队列
+</span><span class="c1"></span><span class="nv">$user_list</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$user_id</span><span class="p">;</span>
+<span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;user_list&#39;</span><span class="p">,</span> <span class="nv">$user_list</span><span class="p">);</span>
+
+<span class="nx">mysql_query</span><span class="p">(</span><span class="s2">&#34;BEGIN&#34;</span><span class="p">);</span>  <span class="c1">//开始事务
+</span><span class="c1"></span>
+<span class="c1">// 生成订单
+</span><span class="c1"></span><span class="nv">$order_sn</span><span class="o">=</span><span class="nx">build_order_no</span><span class="p">();</span>
+<span class="nv">$sql</span><span class="o">=</span><span class="s2">&#34;insert into ih_order(order_sn,user_id,goods_id,sku_id,price)
+</span><span class="s2">values(&#39;</span><span class="si">$order_sn</span><span class="s2">&#39;,&#39;</span><span class="si">$user_id</span><span class="s2">&#39;,&#39;</span><span class="si">$goods_id</span><span class="s2">&#39;,&#39;</span><span class="si">$sku_id</span><span class="s2">&#39;,&#39;</span><span class="si">$price</span><span class="s2">&#39;)&#34;</span><span class="p">;</span>
+<span class="nv">$order_rs</span><span class="o">=</span><span class="nx">mysql_query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span><span class="nv">$conn</span><span class="p">);</span>
+
+<span class="c1">// 库存减少
+</span><span class="c1"></span><span class="nv">$sql</span><span class="o">=</span><span class="s2">&#34;update ih_store set number=number-</span><span class="si">{</span>$number<span class="si">}</span><span class="s2"> where sku_id=&#39;</span><span class="si">$sku_id</span><span class="s2">&#39;&#34;</span><span class="p">;</span>
+<span class="nv">$store_rs</span><span class="o">=</span><span class="nx">mysql_query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">mysql_affected_rows</span><span class="p">()){</span>
+    <span class="nx">insertLog</span><span class="p">(</span><span class="s1">&#39;库存减少成功&#39;</span><span class="p">);</span>
+    <span class="nx">mysql_query</span><span class="p">(</span><span class="s2">&#34;COMMIT&#34;</span><span class="p">);</span>  <span class="c1">// 事务提交即解锁
+</span><span class="c1"></span><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    <span class="nx">insertLog</span><span class="p">(</span><span class="s1">&#39;库存减少失败&#39;</span><span class="p">);</span>
+    <span class="nx">mysql_query</span><span class="p">(</span><span class="s2">&#34;ROLLBACK&#34;</span><span class="p">);</span>
+    <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">lpush</span><span class="p">(</span><span class="nv">$redis_goods_store_name</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>  <span class="c1">// 库存队列回滚
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="高并发之流量削峰">高并发之流量削峰</h2>
+<p><a href="https://blog.csdn.net/m0_37125796/article/details/88833419">参考文章</a></p>
+<ol>
+<li>
+<p>怎样来实现流量削峰方案</p>
+<p>削峰从本质上来说就是更多地延缓用户请求，以及层层过滤用户的访问需求，遵从“最后落地到数据库的请求数要尽量少”的原则。</p>
+</li>
+</ol>
+<h2 id="消息队列生产者消费者">消息队列（生产者、消费者）</h2>
+<blockquote>
+<p>常用消息队列系统：目前在生产环境，使用较多的消息队列有 ActiveMQ、RabbitMQ、 ZeroMQ、Kafka、MetaMQ、RocketMQ 等。</p>
+</blockquote>
+<ol>
+<li>
+<p>为什么使用消息队列</p>
+<blockquote>
+<p>异步, 解耦, 削峰.</p>
+</blockquote>
+<ul>
+<li>异步. A系统需要发送个请求给B系统处理,由于B系统需要查询更新数据库花费时间较长,以至于A系统要等待B系统处理完毕后再发送下个请求,造成A系统资源浪费.使用消息队列后,A系统生产完消息后直接丢进消息消息队列,就完成一次请求,继续处理下个请求.</li>
+<li>解耦. A系统发送个数据到BCD三个系统，接口调用发送，那如果E系统也要这个数据呢？那如果C系统现在不需要了呢？现在A系统又要发送第二种数据了呢？A系统负责人濒临崩溃中。。。再来点更加崩溃的事儿，A系统要时时刻刻考虑BCDE四个系统如果挂了咋办？我要不要重发？我要不要把消息存起来？使用消息队列就能解决这个问题,A系统只负责生产数据,不需要考虑消息被哪个系统来消费.</li>
+<li>削峰（如秒杀场景）. A系统调用B系统处理数据,每天0点到11点，A系统风平浪静，每秒并发请求数量就100个。结果每次一到11点~1点，每秒并发请求数量突然会暴增到1万条。但是B系统最大的处理能力就只能是每秒钟处理1000个请求啊。。。尴尬了，系统会崩掉。。。引入消息队列,把请求数据先存入消息中间件系统中,消费系统慢慢拉取消费.</li>
+</ul>
+</li>
+<li>
+<p>消息队列有什么优点和缺点啊？</p>
+<ul>
+<li>优点就是异步,解耦 ,削峰（处理高并发）</li>
+<li>缺点：系统可用性降低、系统复杂性提高</li>
+</ul>
+</li>
+<li>
+<p>如何保证消费的可靠性传输?</p>
+<ul>
+<li>其实这个可靠性传输，每种MQ都要从三个角度来分析:生产者弄丢数据、消息队列弄丢数据、消费者弄丢数据</li>
+<li>(1)生产者丢数据：开启事务</li>
+<li>(2)消息队列丢数据：一般是开启持久化磁盘的配置</li>
+<li>(3)消费者丢数据：消费者丢数据一般是因为采用了自动确认消息模式。至于解决方案，采用手动确认消息即可</li>
+</ul>
+</li>
+</ol>
+<h2 id="mysql之乐观锁悲观锁共享锁排他锁">mysql之乐观锁、悲观锁、共享锁、排他锁</h2>
+<p><em><strong>相关名词</strong></em></p>
+<p>|&ndash;表级锁（锁定整个表）</p>
+<p>|&ndash;页级锁（锁定一页）</p>
+<p>|&ndash;行级锁（锁定一行）</p>
+<p>|&ndash;共享锁（S锁，MyISAM 叫做读锁）</p>
+<p>|&ndash;排他锁（X锁，MyISAM 叫做写锁）</p>
+<p>|&ndash;间隙锁（NEXT-KEY锁）</p>
+<p>|&ndash;悲观锁（抽象性，不真实存在这个锁）</p>
+<p>|&ndash;乐观锁（抽象性，不真实存在这个锁）</p>
+<ol>
+<li>
+<p>首先说明：数据库的增删改操作默认都会加排他锁，而查询不会加任何锁。</p>
+</li>
+<li>
+<p>共享锁(S): <code>select * from table_name where ... lock in share mode;</code></p>
+<blockquote>
+<p>共享锁：对某一资源加共享锁，自身可以读该资源，其他人也可以读该资源（也可以再继续加共享锁，即 共享锁可多个共存），但无法修改。要想修改就必须等所有共享锁都释放完之后。</p>
+</blockquote>
+</li>
+<li>
+<p>排他锁(X): <code>select * from table_name where ... for update;</code></p>
+<blockquote>
+<p>对某一资源加排他锁，自身可以进行增删改查，其他人无法进行任何操作。</p>
+</blockquote>
+</li>
+<li>
+<p>首先说明，乐观锁和悲观锁都是针对读（select）来说的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">案例：
+　　某商品，用户购买后库存数应-1，而某两个或多个用户同时购买，此时三个执行程序均同时读得库存为“n”，之后进行了一些操作，最后将均执行update table <span class="nb">set</span> <span class="nv">库存数</span><span class="o">=</span>n-1，那么，很显然这是错误的。
+
+解决：
+　使用悲观锁（其实说白了也就是排他锁）
+
+　　<span class="p">|</span>-- 程序A在查询库存数时使用排他锁（select * from table where <span class="nv">id</span><span class="o">=</span><span class="m">10</span> <span class="k">for</span> update）
+
+　　<span class="p">|</span>-- 然后进行后续的操作，包括更新库存数，最后提交事务。
+
+　　<span class="p">|</span>-- 程序B在查询库存数时，如果A还未释放排他锁，它将等待……
+
+　　<span class="p">|</span>-- 程序C同B……
+　
+　使用乐观锁（靠表设计和代码来实现）
+
+　　<span class="p">|</span>-- 一般是在该商品表添加version版本字段或者timestamp时间戳字段
+
+　　<span class="p">|</span>-- 程序A查询后，执行更新变成了： update table <span class="nb">set</span> <span class="nv">num</span><span class="o">=</span>num-1 where <span class="nv">id</span><span class="o">=</span><span class="m">10</span> and <span class="nv">version</span><span class="o">=</span><span class="m">23</span>
+　　
+　　这样，保证了修改的数据是和它查询出来的数据是一致的（其他执行程序肯定未进行修改）。当然，如果更新失败，表示在更新操作之前，有其他执行程序已经更新了该库存数，那么就可以尝试重试来保证更新成功。为了尽可能避免更新失败，可以合理调整重试次数（阿里巴巴开发手册规定重试次数不低于三次）。
+　　
+    总结：对于以上，可以看得出来乐观锁和悲观锁的区别：
+
+　　悲观锁实际使用了排他锁来实现（select **** <span class="k">for</span> update）。文章开头说到，innodb加行锁的前提是：必须是通过索引条件来检索数据，否则会切换为表锁。
+　　
+　　因此，悲观锁在未通过索引条件检索数据时，会锁定整张表。导致其他程序不允许“加锁的查询操作”，影响吞吐。故如果在查询居多的情况下，推荐使用乐观锁。
+　　
+　　“加锁的查询操作”：加过排他锁的数据行在其他事务中是不能修改的，也不能通过for update或lock in share mode的加锁方式查询，但可以直接通过select ...from...查询数据，因为普通查询没有任何锁机制。
+　　
+　　乐观锁更新有可能会失败，甚至是更新几次都失败，这是有风险的。所以如果写入居多，对吞吐要求不高，可使用悲观锁。
+　　
+　　也就是一句话：读用乐观锁，写用悲观锁。
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="简单实现一个聊天app-过程是怎样的">简单实现一个聊天app, 过程是怎样的</h2>
+<p>通过 workerman 框架或 golang 可以轻松实现聊天 app，其它有心情再补充。</p>
+<h2 id="mq-出现数据堆积如何处理">mq 出现数据堆积，如何处理？</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/59544581">参考文章</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-02-21
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">队列与栈</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/">
+            <span class="next-text nav-default">SQL 面试题</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-02-21 22:28:05 \x2b0800 CST',
+        title: '经典案例',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

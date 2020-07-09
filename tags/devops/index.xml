@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/devops/</link>
+    <description>Recent content in DevOps on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Mon, 29 Apr 2019 21:17:55 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DevOps 与 NoOps</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</link>
+      <pubDate>Mon, 29 Apr 2019 21:17:55 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</guid>
+      <description>DevOps DevOps是开发和运维的融合，是开发和运维工程师共同协作，定义应用从设计到交付全生命周期过程的实践。 NoOps NoOps的意思是无须操作。它的理</description>
+    </item>
+    
+  </channel>
+</rss>

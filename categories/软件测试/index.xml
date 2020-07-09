@@ -30,5 +30,14 @@
       <description>在软件测试中UT，IT，ST，UAT指单元测试，集成测试，系统测试 ，用户接受测试。 UT-单元测试 Unit Test 单元测试任务包括： 1、模块接口测试； 2、</description>
     </item>
     
+    <item>
+      <title>黑白灰盒测试简介</title>
+      <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E9%BB%91%E7%99%BD%E7%81%B0%E7%9B%92%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Wed, 30 Jan 2019 22:02:20 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E9%BB%91%E7%99%BD%E7%81%B0%E7%9B%92%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/</guid>
+      <description>黑盒测试 黑盒测试也称功能测试或数据驱动测试，它是在已知产品所应具有的功能，通过测试来检测每个功能是否都能正常使用，在测试时，把程序看作一个不</description>
+    </item>
+    
   </channel>
 </rss>
