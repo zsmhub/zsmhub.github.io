@@ -49,7 +49,7 @@
 <meta itemprop="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器">
 <meta itemprop="datePublished" content="2019-08-01T13:50:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-05T13:50:49&#43;08:00" />
-<meta itemprop="wordCount" content="6670">
+<meta itemprop="wordCount" content="6673">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 6670 字 </span>
+          <span class="more-meta"> 约 6673 字 </span>
           <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
@@ -220,7 +220,7 @@
 <pre class="chroma"><code class="language-sh" data-lang="sh">&gt; php artisan optimize <span class="c1"># 重置配置和路由的缓存文件，使用了此命令后不要在config目录外使用env()函数</span>
 &gt; php artisan list  <span class="c1"># 查看所有artisan命令&lt;br/&gt;</span>
 &gt; php artisan make:model Models/User --migration <span class="c1"># 创建 Eloquent 模型类和迁移类</span>
-&gt; php artisan make:migration create_categories_table <span class="c1"># 生成迁移类，常用规则：create_(数据表名称)_table, add_(字段名称)_column, seed_(数据表名称)_table</span>
+&gt; php artisan make:migration create_categories_table <span class="c1"># 生成迁移类，常用规则：create_(数据表名称)_table, add_字段名称_to_xx_table, seed_(数据表名称)_table</span>
 &gt; php artisan make:seeder seed_categories_data <span class="c1"># 生成数据填充类[一般是用来生成假数据，开发测试时使用的]</span>
 &gt; php artisan migrate <span class="c1"># 数据库迁移</span>
 &gt; php artisan db:seed <span class="c1"># 往数据库填充假数据</span>

@@ -3,27 +3,48 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2020-07-09T21:33:12+08:00</lastmod>
+    <lastmod>2020-07-12T13:51:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/categories/other/</loc>
-    <lastmod>2020-07-09T21:33:12+08:00</lastmod>
+    <loc>https://zsmhub.github.io/tags/database/</loc>
+    <lastmod>2020-07-12T13:51:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/database/</loc>
+    <lastmod>2020-07-12T13:51:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/database/mysql%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2020-07-12T13:51:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2020-07-09T21:33:12+08:00</lastmod>
+    <lastmod>2020-07-12T13:51:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
+    <lastmod>2020-07-12T13:51:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/other/</loc>
     <lastmod>2020-07-09T21:33:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -130,20 +151,6 @@
   <url>
     <loc>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/elasticstack/</loc>
     <lastmod>2020-06-27T08:55:16+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/tags/database/</loc>
-    <lastmod>2020-06-24T16:54:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/database/</loc>
-    <lastmod>2020-06-24T16:54:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -877,7 +884,7 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/post/database/%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/</loc>
+    <loc>https://zsmhub.github.io/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/</loc>
     <lastmod>2019-09-01T17:12:23+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

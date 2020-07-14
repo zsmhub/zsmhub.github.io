@@ -49,7 +49,7 @@
 <meta itemprop="description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此">
 <meta itemprop="datePublished" content="2020-07-08T09:40:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-08T09:40:36&#43;08:00" />
-<meta itemprop="wordCount" content="3047">
+<meta itemprop="wordCount" content="3251">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3047 字 </span>
+          <span class="more-meta"> 约 3251 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -159,6 +159,7 @@
     </li>
     <li><a href="#迭代切片">迭代切片</a></li>
     <li><a href="#函数间传递切片">函数间传递切片</a></li>
+    <li><a href="#函数间传递切片如何避免引用传值">函数间传递切片：如何避免引用传值</a></li>
     <li><a href="#总结">总结</a></li>
     <li><a href="#转载声明">转载声明</a></li>
   </ul>
@@ -672,6 +673,49 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="p">[</span><span class="mi">100</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="函数间传递切片如何避免引用传值">函数间传递切片：如何避免引用传值</h2>
+<p>采用深拷贝方案： 使用 copy 方法得到新的切片后再传值。</p>
+<p>copy 复制会比等号复制慢。但是 copy 复制为值复制，改变原切片的值不会影响新切片。而等号复制为指针复制，改变原切片或新切片都会对另一个产生影响。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 切片深拷贝示例
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">i</span>
+    <span class="p">}</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">22</span> <span class="c1">// 浅拷贝：值变化会影响到切片a
+</span><span class="c1"></span>
+    <span class="kd">var</span> <span class="nx">c</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nb">copy</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+    <span class="nx">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">222</span> <span class="c1">// 深拷贝: 值变化会影响到切片a、b
+</span><span class="c1"></span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="总结">总结</h2>
