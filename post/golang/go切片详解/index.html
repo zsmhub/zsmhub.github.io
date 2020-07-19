@@ -49,7 +49,7 @@
 <meta itemprop="description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此">
 <meta itemprop="datePublished" content="2020-07-08T09:40:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-08T09:40:36&#43;08:00" />
-<meta itemprop="wordCount" content="3251">
+<meta itemprop="wordCount" content="3252">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3251 字 </span>
+          <span class="more-meta"> 约 3252 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -710,7 +710,7 @@
 </span><span class="c1"></span>
     <span class="kd">var</span> <span class="nx">c</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="nb">copy</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
-    <span class="nx">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">222</span> <span class="c1">// 深拷贝: 值变化会影响到切片a、b
+    <span class="nx">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">222</span> <span class="c1">// 深拷贝: 值变化不会影响到切片a、b
 </span><span class="c1"></span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>

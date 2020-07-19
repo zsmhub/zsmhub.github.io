@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>NSQ-分布式实时消息处理平台 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/golang/nsq-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="NSQ-分布式实时消息处理平台" />
+<meta property="og:description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/nsq-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0/" />
+<meta property="article:published_time" content="2020-06-28T10:50:45+08:00" />
+<meta property="article:modified_time" content="2020-06-28T10:50:45+08:00" />
+<meta itemprop="name" content="NSQ-分布式实时消息处理平台">
+<meta itemprop="description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模">
+<meta itemprop="datePublished" content="2020-06-28T10:50:45&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-28T10:50:45&#43;08:00" />
+<meta itemprop="wordCount" content="1943">
+
+
+
+<meta itemprop="keywords" content="nsq," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="NSQ-分布式实时消息处理平台"/>
+<meta name="twitter:description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">NSQ-分布式实时消息处理平台</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-06-28 </span>
+        <div class="post-category">
+            <a href="/categories/golang/"> golang </a>
+            </div>
+          <span class="more-meta"> 约 1943 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#nsq-简介">NSQ 简介</a></li>
+    <li><a href="#nsq-运行流程">NSQ 运行流程</a></li>
+    <li><a href="#quick-start">Quick Start</a></li>
+    <li><a href="#参考文章">参考文章</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><img src="/images/2020/v2-b266260a17702af4509f6c7d2ba40d4a_r.jpg" alt="NSQ 架构"></p>
+<h2 id="nsq-简介">NSQ 简介</h2>
+<p>NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模地处理每天数以十亿计级别的消息。</p>
+<p>NSQ 具有分布式和去中心化拓扑结构，该结构具有无单点故障、故障容错、高可用性以及能够保证消息的可靠传递的特征。</p>
+<blockquote>
+<p>基本组件</p>
+</blockquote>
+<p>nsq 有三个必要的组件：nsqd、nsqlookupd、nsqadmin。</p>
+<blockquote>
+<p>nsqd</p>
+</blockquote>
+<p>负责接收消息，存储队列和将消息发送给客户端。</p>
+<p>nsqd 可以多机器部署，当客户端向指定 topic 发送消息时，可以配置多个 nsqd 地址，消息会随机的分配到各个 nsqd 上，nsqd 优先把消息存储到内存 channel 中，当内存 channel 满了之后，则把消息写到磁盘文件中。</p>
+<blockquote>
+<p>nsqlookupd</p>
+</blockquote>
+<p>主要负责管理拓扑信息、nsqd 的心跳、状态监测，给客户端、nsqadmin 提供 topic 所在的 nsqd 地址与状态。</p>
+<blockquote>
+<p>nsqadmin</p>
+</blockquote>
+<p>nsqadmin 是一个 web 管理界面，用来汇集集群的实时统计，并执行不同的管理任务。</p>
+<blockquote>
+<p>topic</p>
+</blockquote>
+<p>topic 是 NSQ 消息发布的『逻辑关键词』，可以理解为人为定义的一种消息类型。当程序初次发布带 topic 的消息时，如果 topic 不存在，则会在 nsqd 中创建。</p>
+<p>生产者和 Topic 是一对一的关系。生产者不需要指定 channel，一个消息直接发布到所有消费者创建的 channel 中。</p>
+<blockquote>
+<p>channel</p>
+</blockquote>
+<p>消费者在消费 message 的时候，需要指定 topic 和 channel。一个 topic 下可以有多个 channel。channel 会在消费者第一次订阅相应 topic 的时候就创建。</p>
+<p>channel与消费者相关，是消费者之间的负载均衡，channel在某种意义上来说是一个“队列”。每当一个发布者发送一条消息到一个topic，消息会被复制到所有消费者连接的channel上，消费者通过这个特殊的channel读取消息，实际上，在消费者第一次订阅时就会创建channel。Channel会将消息进行排列，如果没有消费者读取消息，消息首先会在内存中排队，当量太大时就会被保存到磁盘中。</p>
+<ul>
+<li>同一 topic、同一 channel 下的多个消费者，不会消费到同一 message。可以理解为多个消费者之间进行了负载均衡。</li>
+<li>同一 topic、不同 channel 下的两个消费者，可以消费到一模一样的 message。 多个消费者之间相互独立，完全没有影响。</li>
+</ul>
+<blockquote>
+<p>message</p>
+</blockquote>
+<p>消息，生产者与消费者之间传递的数据，在 nsq 中统一称为 message。</p>
+<blockquote>
+<p>Topic、Channel、Message</p>
+</blockquote>
+<p>一个 Topic -&gt; 多个 Channel -&gt; 多个 Message</p>
+<blockquote>
+<p>常用工具类：</p>
+</blockquote>
+<ul>
+<li>nsq_to _file：消费指定的话题（topic）/通道（channel），并写到文件中，有选择的滚动和/或压缩文件。</li>
+<li>nsq_to _http：消费指定的话题（topic）/通道（channel）和执行 HTTP requests (GET/POST) 到指定的端点。</li>
+<li>nsq_to _nsq：消费者指定的话题/通道和重发布消息到目的地 nsqd 通过 TCP。</li>
+</ul>
+<h2 id="nsq-运行流程">NSQ 运行流程</h2>
+<ol>
+<li>
+<p>NSQ 推荐通过 nsqd 实例使用协同定位 producer，这意味着即使面对网络分区，消息也会被保存在本地，直到它们被一个 consumer 读取。更重要的是， producer 不必去发现其他的 nsqd 节点，他们总是可以向本地 nsqd 实例发布消息。</p>
+</li>
+<li>
+<p>一个 producer 向它的本地 nsqd 发送消息，要做到这点，首先要先打开一个连接( NSQ 提供 HTTP API 和 TCP 客户端 等2种方式连接到 nsqd)，然后发送一个包含 topic 和消息主体的发布命令(pub/mpub/publish)，在这种情况下，我们将消息发布到 topic 上，消息会采用「多播」的方式被拷贝到各个 channel 中, 然后通过多个 channel 以分散到我们不同需求的 consumer 中。</p>
+</li>
+<li>
+<p>channel 起到队列的作用。 多个 producer 产生的 topic 消息在每一个连接 topic 的 channel 上进行排队。</p>
+</li>
+<li>
+<p>每个 channel 的消息都会进行排队，直到一个 consumer 把他们消费，如果此队列超出了内存限制，消息将会被写入到磁盘中。 nsqd节点首先会向 nsqlookup 广播他们的位置信息，一旦它们注册成功， consumer将会从 nsqlookup 服务器节点上发现所有包含事件 topic 的 nsqd 节点。</p>
+</li>
+<li>
+<p>每个 consumer 向每个 nsqd 主机进行订阅操作，用于表明 consumer 已经准备好接受消息了。这里我们不需要一个完整的连通图，但我们必须要保证每个单独的 nsqd 实例拥有足够的消费者去消费它们的消息，否则 channel 会被队列堆着。</p>
+</li>
+</ol>
+<h2 id="quick-start">Quick Start</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">brew install nsq
+
+<span class="c1"># 1. nsqlookupd 启动</span>
+nsqlookupd
+
+<span class="c1"># 2. nsqd 启动</span>
+nsqd --lookupd-tcp-address<span class="o">=</span>127.0.0.1:4160
+
+<span class="c1"># 3. nsqadmin 启动</span>
+nsqadmin --lookupd-http-address<span class="o">=</span>127.0.0.1:4161
+
+<span class="c1"># 4. 发布初始化消息</span>
+curl -d <span class="s1">&#39;hello world 1&#39;</span> <span class="s1">&#39;http://127.0.0.1:4151/pub?topic=test&#39;</span>
+
+<span class="c1"># 5. 客户端启动，连接 channel「nsq_to_file」</span>
+nsq_to_file --topic<span class="o">=</span><span class="nb">test</span> --output-dir<span class="o">=</span>/tmp --lookupd-http-address<span class="o">=</span>127.0.0.1:4161
+
+<span class="c1"># 6. 发送更多消息</span>
+$ curl -d <span class="s1">&#39;hello world 2&#39;</span> <span class="s1">&#39;http://127.0.0.1:4151/pub?topic=test&#39;</span>
+$ curl -d <span class="s1">&#39;hello world 3&#39;</span> <span class="s1">&#39;http://127.0.0.1:4151/pub?topic=test&#39;</span>
+
+<span class="c1"># 7. in a web browser open http://127.0.0.1:4171/ to view the nsqadmin UI and see statistics.</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="err">#</span> <span class="nx">代码示例</span>
+<span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;github.com/nsqio/go-nsq&#34;</span>
+    <span class="s">&#34;log&#34;</span>
+    <span class="s">&#34;strconv&#34;</span>
+    <span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">listenIP</span> <span class="p">=</span> <span class="s">&#34;127.0.0.1:4150&#34;</span>
+    <span class="nx">topic</span> <span class="p">=</span> <span class="s">&#34;test&#34;</span>
+    <span class="nx">channel</span> <span class="p">=</span> <span class="s">&#34;1&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="nf">startConsumer</span><span class="p">()</span>
+    <span class="nf">startProducer</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// 生产者
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">startProducer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">cfg</span> <span class="o">:=</span> <span class="nx">nsq</span><span class="p">.</span><span class="nf">NewConfig</span><span class="p">()</span>
+
+    <span class="nx">producer</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">nsq</span><span class="p">.</span><span class="nf">NewProducer</span><span class="p">(</span><span class="nx">listenIP</span><span class="p">,</span> <span class="nx">cfg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 发布消息
+</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">i</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">producer</span><span class="p">.</span><span class="nf">Publish</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;test message: &#34;</span> <span class="o">+</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatUint</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">10</span><span class="p">)));</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="s">&#34;publish error:&#34;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+        <span class="p">}</span>
+
+        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+        <span class="nx">i</span><span class="o">++</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 消费者
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">startConsumer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">cfg</span> <span class="o">:=</span> <span class="nx">nsq</span><span class="p">.</span><span class="nf">NewConfig</span><span class="p">()</span>
+
+    <span class="nx">consumer</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">nsq</span><span class="p">.</span><span class="nf">NewConsumer</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">channel</span><span class="p">,</span> <span class="nx">cfg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 设置消息处理函数
+</span><span class="c1"></span>    <span class="nx">consumer</span><span class="p">.</span><span class="nf">AddHandler</span><span class="p">(</span><span class="nx">nsq</span><span class="p">.</span><span class="nf">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">message</span> <span class="o">*</span><span class="nx">nsq</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;消费信息：&#34;</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">Body</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}))</span>
+
+    <span class="c1">// 连接到单例nsqd
+</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">consumer</span><span class="p">.</span><span class="nf">ConnectToNSQD</span><span class="p">(</span><span class="nx">listenIP</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="o">&lt;-</span><span class="nx">consumer</span><span class="p">.</span><span class="nx">StopChan</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考文章">参考文章</h2>
+<p><a href="https://nsq.io/">nsq 官网</a>
+<a href="https://godoc.org/github.com/nsqio/go-nsq">go-nsq 文档</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-06-28
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/nsq/">nsq</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Laravel 如何在预加载中指定查询的字段</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/elasticstack/">
+            <span class="next-text nav-default">ElasticStack</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-06-28 10:50:45 \x2b0800 CST',
+        title: 'NSQ-分布式实时消息处理平台',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

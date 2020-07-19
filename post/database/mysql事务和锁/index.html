@@ -49,7 +49,7 @@
 <meta itemprop="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中">
 <meta itemprop="datePublished" content="2019-09-01T17:12:23&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-01T17:12:23&#43;08:00" />
-<meta itemprop="wordCount" content="1996">
+<meta itemprop="wordCount" content="3317">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1996 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 3317 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -147,6 +147,8 @@
     <li><a href="#事务是必须满足4个条件acid">事务是必须满足4个条件（ACID）</a></li>
     <li><a href="#并发事务处理带来的问题">并发事务处理带来的问题</a></li>
     <li><a href="#事务的隔离级别">事务的隔离级别</a></li>
+    <li><a href="#乐观锁与悲观锁">乐观锁与悲观锁</a></li>
+    <li><a href="#锁模式innodb-有三种行锁的算法">锁模式(InnoDB 有三种行锁的算法)</a></li>
     <li><a href="#行锁和表锁">行锁和表锁</a></li>
     <li><a href="#死锁">死锁</a></li>
   </ul>
@@ -214,22 +216,56 @@
 </tbody>
 </table>
 <ul>
-<li>Oracle 默认级别是 RC『已提交读』；InnoDB 默认级别是：RR『可重复度』。【TIP: InnoDB 的 RR 级别利用 Next-key 锁解决了幻读问题，相当于 Serializable 级别了】</li>
+<li>Oracle 默认级别是 RC『已提交读』；InnoDB 默认级别是：RR『可重复读』。【TIP: InnoDB 的 RR 级别利用 Next-key 锁解决了幻读问题，相当于 Serializable 级别了】</li>
 <li>select @@tx_isolation;  // 查询当前数据库的事务隔离级别</li>
 <li>set global tx_isolation='read-committed&rsquo;;  // 设置数据库默认的事务隔离级别</li>
 <li>通过优化事务逻辑，大部分应用使用 Read Commited 隔离级别就足够了。</li>
 <li>set autocommit=0;  //设置不自动提交事务</li>
 </ul>
+<h2 id="乐观锁与悲观锁">乐观锁与悲观锁</h2>
+<p>乐观锁与悲观锁是两种并发控制的思想，可用于解决丢失更新问题</p>
+<p>乐观锁会“乐观地”假定大概率不会发生并发更新冲突，访问、处理数据过程中不加锁，只在更新数据时再根据版本号或时间戳判断是否有冲突，有则处理，无则提交事务。用数据版本（Version）记录机制实现，这是乐观锁最常用的一种实现方式</p>
+<p>悲观锁会“悲观地”假定大概率会发生并发更新冲突，访问、处理数据前就加排他锁，在整个数据处理过程中锁定数据，事务提交或回滚后才释放锁。另外与乐观锁相对应的，悲观锁是由数据库自己实现了的，要用的时候，我们直接调用数据库的相关语句就可以了。</p>
+<h2 id="锁模式innodb-有三种行锁的算法">锁模式(InnoDB 有三种行锁的算法)</h2>
+<ol>
+<li>
+<p>记录锁(Record Locks)</p>
+<p>单个行记录上的锁。对索引项加锁，锁定符合条件的行。其他事务不能修改和删除加锁项；</p>
+<p><code>SELECT * FROM table WHERE id = 1 FOR UPDATE;</code></p>
+<p>它会在 id=1 的记录上加上记录锁，以阻止其他事务插入，更新，删除 id=1 这一行</p>
+<p>在通过 主键索引 与 唯一索引 对数据行进行 UPDATE 操作时，也会对该行数据加记录锁：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- id 列为主键列或唯一索引列
+</span><span class="c1"></span><span class="k">UPDATE</span> <span class="k">SET</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">50</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>间隙锁（Gap Locks）</p>
+<p>当我们使用范围条件而不是相等条件检索数据，并请求共享或排他锁时，InnoDB会给符合条件的已有数据记录的索引项加锁。对于键值在条件范围内但并不存在的记录，叫做“间隙”。</p>
+<p>InnoDB 也会对这个“间隙”加锁，这种锁机制就是所谓的间隙锁。</p>
+<p>对索引项之间的“间隙”加锁，锁定记录的范围（对第一条记录前的间隙或最后一条将记录后的间隙加锁），不包含索引项本身。其他事务不能在锁范围内插入数据，这样就防止了别的事务新增幻影行。</p>
+<p>间隙锁基于非唯一索引，它锁定一段范围内的索引记录。间隙锁基于下面将会提到的Next-Key Locking 算法，请务必牢记：使用间隙锁锁住的是一个区间，而不仅仅是这个区间中的每一条数据。</p>
+<p><code>SELECT * FROM table WHERE id BETWEN 1 AND 10 FOR UPDATE;</code></p>
+<p>即所有在（1，10）区间内的记录行都会被锁住，所有id 为 2、3、4、5、6、7、8、9 的数据行的插入会被阻塞，但是 1 和 10 两条记录行并不会被锁住。</p>
+<p>GAP锁的目的，是为了防止同一事务的两次当前读，出现幻读的情况</p>
+</li>
+<li>
+<p>临键锁（Next-key Locks）</p>
+<p>临键锁，是记录锁与间隙锁的组合，它的封锁范围，既包含索引记录，又包含索引区间。(临键锁的主要目的，也是为了避免幻读(Phantom Read)。如果把事务的隔离级别降级为RC，临键锁则也会失效。)</p>
+<p>Next-Key 可以理解为一种特殊的间隙锁，也可以理解为一种特殊的算法。通过临建锁可以解决幻读的问题。每个数据行上的非唯一索引列上都会存在一把临键锁，当某个事务持有该数据行的临键锁时，会锁住一段左开右闭区间的数据。需要强调的一点是，InnoDB 中行级锁是基于索引实现的，临键锁只与非唯一索引列有关，在唯一索引列（包括主键列）上不存在临键锁。</p>
+<p>对于行的查询，都是采用该方法，主要目的是解决幻读的问题。</p>
+</li>
+</ol>
 <h2 id="行锁和表锁">行锁和表锁</h2>
 <blockquote>
 <p>InnoDB 行锁是通过给索引上的索引项加锁来实现的，不是针对记录加的锁。</p>
 </blockquote>
-<p>加锁方式分三种：</p>
-<ul>
-<li>Record lock(对索引项加锁)</li>
-<li>Gap lock(对索引项之间的“间隙”、第一条记录前的“间隙”或最后一条记录后的“间隙”加锁)</li>
-<li>Next-key lock(间隙锁：对记录及其前面的间隙加锁，可以解决幻读的问题)。【间隙是指不存在的记录】</li>
-</ul>
 <p>在没有索引的情况下，InnoDB会对所有记录都加锁。</p>
 <p>意向锁是InnoDB自动加的，不需用户干预。对于UPDATE、DELETE、INSERT语句，InnoDB会自动给设计数据集加排他锁(X)；对于普通SELECT语句，InnoDB不会加任何锁，事务可以通过以下语句显示给记录集加共享锁或排他锁。</p>
 <p>共享锁(S，读锁): select * from table_name where &hellip; lock in share mode;
@@ -248,6 +284,14 @@
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="死锁">死锁</h2>
+<blockquote>
+<p>死锁产生：</p>
+<ul>
+<li>死锁是指两个或多个事务在同一资源上相互占用，并请求锁定对方占用的资源，从而导致恶性循环</li>
+<li>当事务试图以不同的顺序锁定资源时，就可能产生死锁。多个事务同时锁定同一个资源时也可能会产生死锁</li>
+<li>锁的行为和顺序和存储引擎相关。以同样的顺序执行语句，有些存储引擎会产生死锁有些不会——死锁有双重原因：真正的数据冲突；存储引擎的实现方式。</li>
+</ul>
+</blockquote>
 <ul>
 <li>两个事务都需要获得对方持有的排他锁才能继续完成事务，这种循环锁等待就是典型的死锁。</li>
 <li>发生死锁后，InnoDB一般都能自动检测到，并使一个事务释放并回退，另一个事务获得锁，继续完成事务。</li>
@@ -257,6 +301,7 @@
 <blockquote>
 <p>同一事务中，mysql在insert后，可以直接select到刚插入的数据。</p>
 </blockquote>
+<p>如果出现死锁，可以用 show engine innodb status;命令来确定最后一个死锁产生的原因。返回结果中包括死锁相关事务的详细信息，如引发死锁的 SQL 语句，事务已经获得的锁，正在等待什么锁，以及被回滚的事务等。据此可以分析死锁产生的原因和改进措施。</p>
 
     </div>
 

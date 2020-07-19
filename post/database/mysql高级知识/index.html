@@ -49,7 +49,7 @@
 <meta itemprop="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安">
 <meta itemprop="datePublished" content="2020-07-12T13:51:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-12T13:51:13&#43;08:00" />
-<meta itemprop="wordCount" content="2647">
+<meta itemprop="wordCount" content="4540">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2647 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 4540 字 </span>
+          <span class="more-meta"> 预计阅读 10 分钟 </span>
         
       </div>
     </header>
@@ -145,10 +145,13 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#mysql-架构">MySQL 架构</a></li>
+    <li><a href="#mysql-多表连接执行顺序">MySQL 多表连接执行顺序</a></li>
     <li><a href="#存储引擎">存储引擎</a></li>
     <li><a href="#数据类型">数据类型</a></li>
     <li><a href="#索引">索引</a></li>
     <li><a href="#mysql-查询">MySQL 查询</a></li>
+    <li><a href="#性能分析">性能分析</a></li>
+    <li><a href="#索引优化">索引优化</a></li>
     <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
@@ -165,6 +168,17 @@
 </blockquote>
 <p>客户端请求 &mdash;&gt; 连接器（验证用户身份，给予权限）  &mdash;&gt; 查询缓存（存在缓存则直接返回，不存在则执行后续操作） &mdash;&gt; 分析器（对SQL进行词法分析和语法分析操作）  &mdash;&gt; 优化器（主要对执行的sql优化选择最优的执行方案方法）  &mdash;&gt; 执行器（执行时会先看用户是否有执行权限，有才去使用这个引擎提供的接口） &mdash;&gt; 去引擎层获取数据返回（如果开启查询缓存则会缓存查询结果）</p>
 <p><img src="/images/2020/QQ20200712-135810@2x.png" alt="Mysql 架构图"></p>
+<h2 id="mysql-多表连接执行顺序">MySQL 多表连接执行顺序</h2>
+<p><img src="/images/2020/v2-3c189f9a181ec11ab42f8a94f3ca1e28_r.jpg" alt="MySQL 执行顺序"></p>
+<p>多表连接采用『驱动表』策略：</p>
+<p>何谓驱动表，指多表关联查询时，第一个被处理的表，亦可称之为基表，然后再使用此表的记录去关联其他表。</p>
+<p>驱动表的选择遵循一个原则：在对最终结果集没影响的前提下，优先选择结果集最少的那张表作为驱动表。</p>
+<p>连表顺序，不是两两联合之后，再去联合第三张表，而是驱动表的一条记录穿到底，匹配完所有关连表之后，再取驱动表的下一条记录重复连表操作。</p>
+<p>多表连接并过滤条件完毕后，再执行 order by 、limit 等操作。</p>
+<blockquote>
+<p>Mysql 执行顺序</p>
+</blockquote>
+<p><img src="/images/2020/mysql4.jpeg" alt="sql执行顺序"></p>
 <h2 id="存储引擎">存储引擎</h2>
 <blockquote>
 <p>InnoDB 对比 MyISAM</p>
@@ -324,13 +338,119 @@
 </ol>
 <p>总结：count(主键) 优于 count(1) 优于 count(*)</p>
 <blockquote>
-<p>Mysql执行顺序</p>
-</blockquote>
-<p><img src="/images/2020/mysql4.jpeg" alt="sql执行顺序"></p>
-<blockquote>
 <p>mysql 的内连接、左连接、右连接有什么区别？什么是内连接、外连接、交叉连接、笛卡尔积呢？</p>
 </blockquote>
 <p><img src="/images/2020/mysql5.jpeg" alt="join 图"></p>
+<h2 id="性能分析">性能分析</h2>
+<blockquote>
+<p>MySQL常见性能分析手段</p>
+</blockquote>
+<p>在优化MySQL时，通常需要对数据库进行分析，常见的分析手段有慢查询日志，EXPLAIN 分析查询，profiling分析以及show命令查询系统状态及系统变量，通过定位分析性能的瓶颈，才能更好的优化数据库系统的性能。</p>
+<blockquote>
+<p>性能下降SQL慢 执行时间长 等待时间长 原因分析</p>
+</blockquote>
+<ol>
+<li>查询语句写的烂</li>
+<li>索引失效（单值、复合）</li>
+<li>关联查询太多join（设计缺陷或不得已的需求）</li>
+<li>服务器调优及各个参数设置（缓冲、线程数等）</li>
+</ol>
+<blockquote>
+<p>性能瓶颈定位</p>
+</blockquote>
+<p>我们可以通过 show 命令查看 MySQL 状态及变量，找到系统的瓶颈：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">Mysql&gt; show status ——显示状态信息（扩展show status like ‘XXX’）
+
+Mysql&gt; show variables ——显示系统变量（扩展show variables like ‘XXX’）
+
+Mysql&gt; show innodb status ——显示InnoDB存储引擎的状态
+
+Mysql&gt; show processlist ——查看当前SQL执行，包括执行状态、是否锁表等
+
+Shell&gt; mysqladmin variables -u username -p password——显示系统变量
+
+Shell&gt; mysqladmin extended-status -u username -p password——显示状态信息
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Explain(执行计划)</p>
+</blockquote>
+<p>是什么：使用 Explain 关键字可以模拟优化器执行SQL查询语句，从而知道 MySQL 是如何处理你的 SQL 语句的。分析你的查询语句或是表结构的性能瓶颈</p>
+<p>能干吗：</p>
+<ul>
+<li>表的读取顺序</li>
+<li>数据读取操作的操作类型</li>
+<li>哪些索引可以使用</li>
+<li>哪些索引被实际使用</li>
+<li>表之间的引用</li>
+<li>每张表有多少行被优化器查询</li>
+</ul>
+<p>怎么玩：</p>
+<ul>
+<li>Explain + SQL语句</li>
+<li>执行计划包含的信息（如果有分区表的话还会有partitions）</li>
+</ul>
+<p><img src="/images/2020/mysql6.jpeg" alt="mysql"></p>
+<p>type 字段解释：</p>
+<p>（显示查询使用了哪种查询类型，从最好到最差依次排列 system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL ）</p>
+<p>tip: 一般来说，得保证查询至少达到range级别，最好到达ref</p>
+<ul>
+<li>system：表只有一行记录（等于系统表），是 const 类型的特例，平时不会出现</li>
+<li>const：表示通过索引一次就找到了，const 用于比较 primary key 或 unique 索引，因为只要匹配一行数据，所以很快，如将主键置于 where 列表中，mysql 就能将该查询转换为一个常量</li>
+<li>eq_ref：唯一性索引扫描，对于每个索引键，表中只有一条记录与之匹配，常见于主键或唯一索引扫描</li>
+<li>ref：非唯一性索引扫描，范围匹配某个单独值得所有行。本质上也是一种索引访问，他返回所有匹配某个单独值的行，然而，它可能也会找到多个符合条件的行，多以他应该属于查找和扫描的混合体</li>
+<li>range：只检索给定范围的行，使用一个索引来选择行。key列显示使用了哪个索引，一般就是在你的where语句中出现了between、&lt;、&gt;、in等的查询，这种范围扫描索引比全表扫描要好，因为它只需开始于索引的某一点，而结束于另一点，不用扫描全部索引</li>
+<li>index：Full Index Scan，index于ALL区别为index类型只遍历索引树。通常比ALL快，因为索引文件通常比数据文件小。（也就是说虽然all和index都是读全表，但index是从索引中读取的，而all是从硬盘中读的）</li>
+<li>ALL：Full Table Scan，将遍历全表找到匹配的行</li>
+</ul>
+<h2 id="索引优化">索引优化</h2>
+<ul>
+<li>全值匹配我最爱</li>
+<li>最佳左前缀法则，比如建立了一个联合索引(a,b,c)，那么其实我们可利用的索引就有(a), (a,b), (a,b,c)</li>
+<li>不在索引列上做任何操作（计算、函数、(自动or手动)类型转换），会导致索引失效而转向全表扫描</li>
+<li>存储引擎不能使用索引中范围条件右边的列</li>
+<li>尽量使用覆盖索引(只访问索引的查询(索引列和查询列一致))，减少select
+i- s null ,is not null 也无法使用索引</li>
+<li>like &ldquo;xxxx%&rdquo; 是可以用到索引的，like &ldquo;%xxxx&rdquo; 则不行(like &ldquo;%xxx%&rdquo; 同理)。like以通配符开头('%abc&hellip;')索引失效会变成全表扫描的操作，</li>
+<li>字符串不加单引号索引失效</li>
+<li>少用or，用它来连接时会索引失效</li>
+<li>&lt;，&lt;=，=，&gt;，&gt;=，BETWEEN，IN 可用到索引，&lt;&gt;，not in ，!= 则不行，会导致全表扫描</li>
+</ul>
+<blockquote>
+<p>一般性建议</p>
+</blockquote>
+<ul>
+<li>
+<p>对于单键索引，尽量选择针对当前query过滤性更好的索引</p>
+</li>
+<li>
+<p>在选择组合索引的时候，当前Query中过滤性最好的字段在索引字段顺序中，位置越靠前越好。</p>
+</li>
+<li>
+<p>在选择组合索引的时候，尽量选择可以能够包含当前query中的where字句中更多字段的索引</p>
+</li>
+<li>
+<p>尽可能通过分析统计信息和调整query的写法来达到选择合适索引的目的</p>
+</li>
+<li>
+<p>少用Hint强制索引</p>
+</li>
+</ul>
 <h2 id="参考文章">参考文章</h2>
 <p><a href="https://mp.weixin.qq.com/s/MCFHNOQnTtJ6MGVjM3DP4A">MySQL 三万字精华总结 + 面试100 问，吊打面试官绰绰有余</a></p>
 
@@ -373,7 +493,11 @@
           <a href="/tags/database/">database</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%BE%BD%E6%AF%9B%E7%90%83%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">羽毛球学习之路</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/post/other/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/">
             <span class="next-text nav-default">正反向代理简介</span>
             <span class="next-text nav-mobile">下一篇</span>
