@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。 Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。 Iris 为您提供构建面向服务的应用程序的结构。">
 <meta itemprop="datePublished" content="2020-04-01T22:02:25&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-01T22:02:25&#43;08:00" />
-<meta itemprop="wordCount" content="502">
+<meta itemprop="wordCount" content="540">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 502 字 </span>
+          <span class="more-meta"> 约 540 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -147,6 +147,7 @@
     <li><a href="#iris-简介">Iris 简介</a></li>
     <li><a href="#iris-入门示例">Iris 入门示例</a></li>
     <li><a href="#iris-的一些坑">Iris 的一些坑</a></li>
+    <li><a href="#iris-缺点">Iris 缺点</a></li>
     <li><a href="#学习资料">学习资料</a></li>
   </ul>
 </nav>
@@ -303,7 +304,25 @@
 <p><a href="https://learnku.com/go/t/45758">提问问题链接</a></p>
 </li>
 </ol>
-<h2 id="学习资料">学习资料</h2>
+<h2 id="iris-缺点">Iris 缺点</h2>
+<p>代码不够简洁，一个报错代码竟然要 3 行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nf">StatusCode</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">)</span>
+    <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">JSON</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nf">Fail</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()))</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="学习资料">学习资料</h2>
 <p><a href="https://learnku.com/docs/iris-go/10">Iris 框架中文文档</a></p>
 <p><a href="https://tlog.cc/posts/golang/iris-learning-notes-1/">Iris 学习笔记</a></p>
 <p><a href="https://www.snowlyg.com/posts/iris_go_api/">iris-go 框架构建登陆 api 项目开发过程</a></p>
