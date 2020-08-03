@@ -3,21 +3,77 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2020-07-19T21:26:28+08:00</lastmod>
+    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/database/</loc>
+    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2020-07-19T21:26:28+08:00</lastmod>
+    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/tablestore/</loc>
+    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/database/tablestore/</loc>
+    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2020-07-19T21:26:28+08:00</lastmod>
+    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/mariadb/</loc>
+    <lastmod>2020-07-27T15:13:43+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/database/mysql%E5%92%8Cmariadb/</loc>
+    <lastmod>2020-07-27T15:13:43+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/golang/echo%E6%A1%86%E6%9E%B6/</loc>
+    <lastmod>2020-07-26T09:17:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/golang/</loc>
+    <lastmod>2020-07-26T09:17:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/golang/</loc>
+    <lastmod>2020-07-26T09:17:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -51,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/categories/database/</loc>
-    <lastmod>2020-07-12T13:51:13+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://zsmhub.github.io/post/database/mysql%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2020-07-12T13:51:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -81,13 +130,6 @@
   <url>
     <loc>https://zsmhub.github.io/post/other/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/</loc>
     <lastmod>2020-07-09T21:33:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/golang/</loc>
-    <lastmod>2020-07-14T17:46:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -193,13 +235,6 @@
   <url>
     <loc>https://zsmhub.github.io/post/golang/go%E4%B9%8Bdefer%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2020-05-30T09:02:27+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/tags/golang/</loc>
-    <lastmod>2020-06-28T16:54:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

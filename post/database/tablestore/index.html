@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>TableStore - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/database/tablestore/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="TableStore" />
+<meta property="og:description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/tablestore/" />
+<meta property="article:published_time" content="2020-08-02T10:13:11+08:00" />
+<meta property="article:modified_time" content="2020-08-02T10:13:11+08:00" />
+<meta itemprop="name" content="TableStore">
+<meta itemprop="description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存">
+<meta itemprop="datePublished" content="2020-08-02T10:13:11&#43;08:00" />
+<meta itemprop="dateModified" content="2020-08-02T10:13:11&#43;08:00" />
+<meta itemprop="wordCount" content="2179">
+
+
+
+<meta itemprop="keywords" content="TableStore," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TableStore"/>
+<meta name="twitter:description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">TableStore</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-08-02 </span>
+        <div class="post-category">
+            <a href="/categories/database/"> database </a>
+            </div>
+          <span class="more-meta"> 约 2179 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#支持多种数据库模型">支持多种数据库模型</a></li>
+    <li><a href="#tablestore-优点">TableStore 优点</a></li>
+    <li><a href="#高级配置">高级配置</a></li>
+    <li><a href="#timeline模型结构">Timeline模型结构</a>
+      <ul>
+        <li><a href="#go-sdk">Go SDK</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="简介">简介</h2>
+<p>表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存储和强大的索引引擎能够支持PB级存储、千万TPS以及毫秒级延迟的服务能力。</p>
+<h2 id="支持多种数据库模型">支持多种数据库模型</h2>
+<p>包括Wide column、Timeline、Timestream、Grid。</p>
+<ul>
+<li>Wide column模型：一款经典模型，目前绝大部分半结构化、结构化数据都存储在Wide column模型系统中。</li>
+<li>Timeline模型：表格存储自研模型，主要用于消息数据，适用于IM、Feed和物联网设备消息下推等消息系统中消息的存储和同步，目前已被广泛使用。</li>
+<li>Timestream模型：可应用于时序数据、时空数据等核心数据场景。</li>
+<li>Grid模型：可用于科学大数据的存储和查询场景。</li>
+</ul>
+<h2 id="tablestore-优点">TableStore 优点</h2>
+<ol>
+<li>
+<p>无缝扩展「单表存储能力超强！！！」</p>
+<p>表格存储通过数据分片和负载均衡技术，实现了存储无缝扩展。随着表数据量的不断增大，表格存储会进行数据分区的调整从而为该表配置更多的存储。表格存储可支持不少于10 PB数据存储量，单表可支持不少于1 PB数据存储量或1万亿条记录。</p>
+</li>
+<li>
+<p>查询能力强</p>
+<p>除了支持主键查询，表格存储还支持多元索引、全局二级索引。</p>
+<ul>
+<li>全局二级索引：相当于给主表提供了另外一种排序方式，即对查询条件预先设计了一种数据分布，可加快数据查询的效率。</li>
+<li>多元索引：基于倒排索引和列式存储，支持多字段自由组合查询、模糊查询、地理位置查询、全文检索等，可解决大数据的复杂查询难题。</li>
+</ul>
+</li>
+<li>
+<p>高可靠</p>
+<p>表格存储将数据的多个备份存储在不同机架的不同机器上，并会在备份失效时进行快速恢复，提供99.99999999%（10个9）的可靠性。</p>
+</li>
+<li>
+<p>数据强一致</p>
+<p>表格存储保证数据写入强一致，并保证数据3副本均写入磁盘，且所有数据保持一致。写操作一旦返回成功，应用程序就能立即读到最新的数据。</p>
+</li>
+<li>
+<p>高并发读写</p>
+<p>表格存储支持千万级并发读写能力。</p>
+</li>
+</ol>
+<h2 id="高级配置">高级配置</h2>
+<ol>
+<li>
+<p>数据生命周期</p>
+<p>数据表中数据的保存时间，当数据的保存时间超过设置的数据生命周期时，系统会自动清理超过数据生命周期的数据。
+数据生命周期至少为86400秒（一天）或-1（数据永不过期）。</p>
+<p>单位为秒</p>
+</li>
+<li>
+<p>最大版本数</p>
+<p>数据表中的属性列能够保留数据的最大版本个数。当属性列数据的版本个数超过设置的最大版本数时，系统会自动删除较早版本的数据。</p>
+<p>取值必须为非0整数。</p>
+</li>
+<li>
+<p>二级索引</p>
+</li>
+<li>
+<p>多级索引</p>
+<p>表格存储多元索引（Search Index）基于倒排索引和列式存储，可以解决多种大数据复杂的查询问题。在控制台创建多元索引后，可以使用多元索引进行数据查询。</p>
+</li>
+</ol>
+<h2 id="timeline模型结构">Timeline模型结构</h2>
+<blockquote>
+<p>todo: 这些知识点还没看懂?=_=?</p>
+</blockquote>
+<p>Timeline模型以简单为设计目标，核心模块构成比较清晰明了。模型尽量提升使用的自由度，让您能够根据自身场景需求选择更为合适的实现。模型的架构主要包括：</p>
+<ul>
+<li>Store：Timeline存储库，类似数据库的表的概念。</li>
+<li>Identifier：用于区分Timeline的唯一标识。『即 Timeline ID』</li>
+<li>Meta：用于描述Timeline的元数据，元数据描述采用free-schema结构，可自由包含任意列。『可包含任意键值对属性』</li>
+<li>Queue：消息队列，一个Timeline内所有Message存储在Queue内。</li>
+<li>SequenceId：Queue中消息体的序列号，需保证递增、唯一。模型支持自增列、自定义两种实现模式。</li>
+<li>Message：Timeline内传递的消息体，是一个free-schema的结构，可自由包含任意列。『可包含任意键值对』</li>
+<li>Index：包含Meta Index和Message Index，可对Meta或Message内的任意列自定义索引，提供灵活的多条件组合查询和搜索。</li>
+</ul>
+<p><img src="/images/2020/539729897-5b63ca6cc84a1_articlex.png" alt="Timeline的模型图"></p>
+<p>如上图是Timeline的模型图，将一张大表内的数据抽象为多个Timeline，一个大表能够承载的Timeline个数无上限。</p>
+<h3 id="go-sdk">Go SDK</h3>
+<ol>
+<li>
+<p>创建表</p>
+<p>创建表时需要指定表的结构信息（TableMeta）和配置信息（TableOptions），也可以根据需求设置表的预留读/写吞吐量（ReservedThroughput）。</p>
+<blockquote>
+<p>参数说明</p>
+</blockquote>
+<ul>
+<li>
+<p>TableMeta</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-text" data-lang="text">TableMeta包含TableName和List。
+
+# TableName
+数据表名称。
+
+# List
+表的主键定义。
+1. 表格存储可包含1个~4个主键列。主键列是有顺序的，与用户添加的顺序相同，例如PRIMARY KEY（A, B, C）与PRIMARY KEY（A, C, B）是不同的两个主键结构。表格存储会按照主键的大小为行排序，具体参见表格存储数据模型和查询操作。
+2. 第一列主键作为分片键。分片键相同的数据会存放在同一个分片内，所以相同分片键下最好不要超过10 GB以上数据，否则会导致单分片过大，无法分裂。另外，数据的读/写访问最好在不同的分片键上均匀分布，有利于负载均衡。
+3. 属性列（即非主键列）不需要定义。表格存储每行的数据列都可以不同，属性列的列名在写入时指定。
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>TableOptions</p>
+<p>TableOptions包含表的TTL、MaxVersions和MaxTimeDeviation。</p>
+</li>
+<li>
+<p>ReservedThroughtput</p>
+<p>表的预留读/写吞吐量配置</p>
+</li>
+<li>
+<p>IndexMetas</p>
+<p>索引表的Meta信息。使用表格存储创建一张数据表时，可以同时为其创建多张索引表。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>多元索引</p>
+<p>多元索引主要用于表字段的搜索。</p>
+<p>您可以使用CreateSearchIndex接口为主表创建一个多元索引（SearchIndex）。一张主表上可以创建多个多元索引，在创建多元索引时可以指定索引名和索引结构。</p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-08-02
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/tablestore/">TableStore</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/database/mysql%E5%92%8Cmariadb/">
+            <span class="next-text nav-default">Mysql 和 MariaDB</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-08-02 10:13:11 \x2b0800 CST',
+        title: 'TableStore',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
