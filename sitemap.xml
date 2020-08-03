@@ -3,20 +3,48 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/database/</loc>
-    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
+    <lastmod>2020-08-03T22:19:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
+    <lastmod>2020-08-03T22:19:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/</loc>
+    <lastmod>2020-08-03T22:19:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/%E5%90%8E%E7%9B%BE/</loc>
+    <lastmod>2020-08-03T22:19:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2020-08-03T22:19:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2020-08-03T22:19:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/database/</loc>
     <lastmod>2020-08-02T10:13:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -31,13 +59,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/post/database/tablestore/</loc>
-    <lastmod>2020-08-02T10:13:11+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/tags/</loc>
     <lastmod>2020-08-02T10:13:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
