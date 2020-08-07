@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 04 Aug 2020 12:33:18 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2020 09:21:45 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>开发案例总结</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 06 Aug 2020 09:21:45 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/</guid>
+      <description>根据nginx的access_log分析接口请求 access_log：指的是访问日志，我们通过访问日志可以获取用户的 IP、请求处理的时间、接</description>
+    </item>
     
     <item>
       <title>孕妇相关</title>
@@ -58,12 +67,12 @@
     </item>
     
     <item>
-      <title>羽毛球学习之路</title>
-      <link>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%BE%BD%E6%AF%9B%E7%90%83%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</link>
+      <title>运动之路</title>
+      <link>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%BF%90%E5%8A%A8%E4%B9%8B%E8%B7%AF/</link>
       <pubDate>Sun, 19 Jul 2020 21:26:28 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%BE%BD%E6%AF%9B%E7%90%83%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</guid>
-      <description>打羽毛球技巧 打前场时不要往后看或者往后退，身体后面的球留给后场的队友处理 无论哪边抛高球时，立刻退回两边守球 打球时，要往下打球，不要往上抛球 高</description>
+      <guid>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%BF%90%E5%8A%A8%E4%B9%8B%E8%B7%AF/</guid>
+      <description>游泳 游泳时不要同手同脚 打羽毛球 技巧 没事多看看女双或混双的比赛，多学习下 打前场时不要往后看或者往后退，身体后面的球留给后场的队友处理 无论哪边抛</description>
     </item>
     
     <item>
@@ -914,10 +923,10 @@
     
     <item>
       <title>Linux 基础知识</title>
-      <link>https://zsmhub.github.io/post/linux/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <link>https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Jan 2019 17:32:56 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/linux/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>基本命令 find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $</description>
     </item>
     

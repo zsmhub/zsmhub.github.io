@@ -49,7 +49,7 @@
 <meta itemprop="description" content="开发过程：SOLID五大设计原则 S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Pricipl">
 <meta itemprop="datePublished" content="2019-01-25T15:42:14&#43;08:00" />
 <meta itemprop="dateModified" content="2019-05-10T15:42:14&#43;08:00" />
-<meta itemprop="wordCount" content="431">
+<meta itemprop="wordCount" content="460">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 431 字 </span>
+          <span class="more-meta"> 约 460 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -145,8 +145,9 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#开发过程solid五大设计原则">开发过程：SOLID五大设计原则</a></li>
-    <li><a href="#编码规范">编码规范</a></li>
     <li><a href="#解耦思想">解耦思想</a></li>
+    <li><a href="#编码规范标准">编码规范标准</a></li>
+    <li><a href="#编码规范总结">编码规范总结</a></li>
   </ul>
 </nav>
   </div>
@@ -160,19 +161,23 @@
 <p>ISP: The Interface Segregation Principle 接口分离原则</p>
 <p>DIP: The Dependency Inversion Principle 依赖倒置原则</p>
 <p><a href="https://www.cnblogs.com/JerryChan31/p/9863060.html">参考文章</a></p>
-<h2 id="编码规范">编码规范</h2>
-<p><a href="https://www.php-fig.org/psr/">PSR 官网</a></p>
-<p>PSR-0 (Autoloading Standard) 自动加载标准『已废弃』</p>
-<p>PSR-1 (Basic Coding Standard) 基础编码标准</p>
-<p>PSR-2 (Coding Style Guide) 编码风格向导『已废弃』</p>
-<p>PSR-3 (Logger Interface) 日志接口</p>
-<p>PSR-4 (Improved Autoloading) 自动加载的增强版，可以替换掉PSR-0了。</p>
 <h2 id="解耦思想">解耦思想</h2>
 <p>解耦通俗地说就是两个东西原来互相影响，现在让他们独立发展；</p>
 <p>核心思想还是最小职责，每个地方都只做一件事情；</p>
 <p>只要一个地方负责了多项事情，就存在解耦的可能。</p>
 <p>在系统每个层次都可以体现解耦的思想，比如在架构层面把存储和业务逻辑解耦，把动态页面和静态页面解耦；在模块层面把业务模块和统计模块解耦；在代码层面把多个功能解耦等等。</p>
 <p>解耦的思想很好，但是没必要为了解耦而解耦，还是要从业务需求以及系统定位出发，满足一段时间内系统发展的需要即可。</p>
+<h2 id="编码规范标准">编码规范标准</h2>
+<p><a href="https://www.php-fig.org/psr/">PSR 官网</a></p>
+<p>PSR-0 (Autoloading Standard) 自动加载标准『已废弃』</p>
+<p>PSR-1 (Basic Coding Standard) 基础编码标准</p>
+<p>PSR-2 (Coding Style Guide) 编码风格向导『已废弃』</p>
+<p>PSR-3 (Logger Interface) 日志接口</p>
+<p>PSR-4 (Improved Autoloading) 自动加载的增强版，可以替换掉PSR-0了。</p>
+<h2 id="编码规范总结">编码规范总结</h2>
+<ul>
+<li>路由命名：一般以小写+中划线命名，比较易读</li>
+</ul>
 
     </div>
 
