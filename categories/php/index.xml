@@ -104,10 +104,10 @@
     
     <item>
       <title>PHP 开发环境之 Lnmp</title>
-      <link>https://zsmhub.github.io/post/php/lnmp/</link>
+      <link>https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Jan 2019 13:55:39 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/php/lnmp/</guid>
+      <guid>https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/</guid>
       <description>Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且</description>
     </item>
     

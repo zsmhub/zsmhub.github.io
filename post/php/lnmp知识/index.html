@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>PHP 开发环境之 Lnmp - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="PHP 开发环境之 Lnmp" />
+<meta property="og:description" content="Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/" />
+<meta property="article:published_time" content="2019-01-01T13:55:39+08:00" />
+<meta property="article:modified_time" content="2019-01-01T13:55:39+08:00" />
+<meta itemprop="name" content="PHP 开发环境之 Lnmp">
+<meta itemprop="description" content="Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且">
+<meta itemprop="datePublished" content="2019-01-01T13:55:39&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-01T13:55:39&#43;08:00" />
+<meta itemprop="wordCount" content="1234">
+
+
+
+<meta itemprop="keywords" content="lnmp,php," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PHP 开发环境之 Lnmp"/>
+<meta name="twitter:description" content="Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">PHP 开发环境之 Lnmp</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-01 </span>
+        <div class="post-category">
+            <a href="/categories/php/"> php </a>
+            </div>
+          <span class="more-meta"> 约 1234 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#install">Install</a></li>
+    <li><a href="#配置文件">配置文件</a></li>
+    <li><a href="#lnmp-日志文件">LNMP 日志文件</a></li>
+    <li><a href="#other">Other</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="install">Install</h2>
+<ul>
+<li>
+<p>Linux 一键搭建 Lnmp 环境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 教程</span>
+https://github.com/licess/lnmp OR https://lnmp.org
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>MacOs 一键搭建 Lnmp 环境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 教程</span>
+https://github.com/yeszao/dnmp
+
+<span class="c1"># 常用命令</span>
+$ <span class="nb">cd</span> ~/dnmp
+$ docker-compose build <span class="c1"># 镜像构建</span>
+$ docker-compose up -d                      <span class="c1"># 创建并且后台运行方式启动所有容器</span>
+$ docker-compose up -d nginx php  mysql     <span class="c1"># 创建并且已后台运行的方式启动nginx、php、mysql容器</span>
+
+$ docker-compose start php                  <span class="c1"># 启动服务</span>
+$ docker-compose stop php                   <span class="c1"># 停止服务</span>
+$ docker-compose restart php                <span class="c1"># 重启服务</span>
+$ docker-compose build php                  <span class="c1"># 构建或者重新构建服务</span>
+
+$ docker-compose rm php                     <span class="c1"># 删除并且停止php容器</span>
+$ docker-compose down                       <span class="c1"># 停止并删除容器，网络，图像和挂载卷</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="配置文件">配置文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">nginx 配置文件路径：
+<span class="nb">cd</span> /usr/local/nginx/conf/vhost
+
+mysql 安装路径
+<span class="nb">cd</span> /etc/mysql/
+
+php配置文件路径：php --ini <span class="o">[</span>disable_functions: 禁用函数配置<span class="o">]</span>
+
+php-fpm配置文件：/usr/local/php/etc/php-fpm.conf
+
+Redis 配置文件：/usr/local/redis/etc/redis.conf
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="lnmp-日志文件">LNMP 日志文件</h2>
+<ol>
+<li>
+<p>Nginx</p>
+<ul>
+<li>access log -&gt; 记录用户、IP、访问页面以及其他信息</li>
+<li>error log -&gt; 记录服务器错误信息</li>
+</ul>
+</li>
+<li>
+<p>PHP</p>
+<p>错误日志：/usr/local/error.log</p>
+</li>
+<li>
+<p>MySQL</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 记录Mysql运行过程中的Error、Warning、Note等信息，系统出错或者某条记录出问题可以查看Error日志。</span>
+&gt; show variables like <span class="s2">&#34;log_error&#34;</span><span class="p">;</span>
+
+<span class="c1"># 记录mysql的日常日志，包括查询、修改、更新等的每条sql。</span>
+&gt; show global variables like <span class="s2">&#34;%genera%&#34;</span>
+
+<span class="c1"># Binary Log：每一条会修改数据的sql都会记录到master的binlog中，slave在复制的时候sql进程会解析成和原来master端执行多相同的sql再执行。</span>
+&gt; show variables like <span class="s2">&#34;%log_bin%&#34;</span><span class="p">;</span>
+
+<span class="c1"># Mysql 慢查询日志</span>
+&gt; show variables like <span class="s2">&#34;%slow%&#34;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="other">Other</h2>
+<ol>
+<li>
+<p>linux下apache获取root权限方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">php中的exec函数可以执行很多命令（脚本）使用比较方便，但是在linux下需要给与权限。修改/etc/sudoers文件，做两处改动：
+
+&lt;1&gt;在文件中添加apache的用户，我用的apache2的用户名是www-data，有的是daemon、httpd等（查看一下自己的apache的配置文件即可）。添加的格式：
+www-data  <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span>  NOPASSWD:  ALL（格式在/etc/sudoer文件中有）。
+
+&lt;2&gt;在exec<span class="o">()</span>等系统命令调用函数中加入“sudo“（不需要密码）
+exec<span class="o">(</span><span class="s1">&#39;sudo chmod 777 -R /var/spool/cron/crontabs/www-data&#39;</span><span class="o">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>nginx 只能处理静态页面，fastcgi 是 nginx 用来处理动态页面的，fpm 是处理 php 进程的。</p>
+</li>
+<li>
+<p>php 操作命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">查看php进程： ps aux <span class="p">|</span> grep php
+启动命令：nohup /usr/local/php/sbin/php-fpm <span class="p">&amp;</span>
+php-fpm 关闭：
+方案一： <span class="nb">kill</span> -INT <span class="sb">`</span>cat /usr/local/php/var/run/php-fpm.pid<span class="sb">`</span>  <span class="o">[</span>php-fpm.pid路径在php-fpm.conf配置文件中查看<span class="o">]</span>
+方案二： killall php-fpm
+php-fpm 重启：
+<span class="nb">kill</span> -USR2 <span class="sb">`</span>cat /usr/local/php/var/run/php-fpm.pid<span class="sb">`</span>
+
+<span class="c1"># 查找配置文件路径</span>
+locate php.ini
+
+<span class="c1"># 查找 php 扩展</span>
+php -m <span class="p">|</span> grep swoole
+
+<span class="c1"># 查看 php 扩展版本</span>
+php --ri swoole
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>nginx 操作命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">启动命令：
+/usr/local/nginx/sbin/nginx
+关闭命令：
+/usr/local/nginx/sbin/nginx -s stop
+
+重启命令：
+/usr/local/nginx/sbin/nginx -t -- 检查修改后的配置是否正常运行
+/usr/local/nginx/sbin/nginx -s reload  -- 平滑重启
+</code></pre></td></tr></table>
+</div>
+</div><p>Nginx 是一款非常高性能的 HTTP 代理/反向代理服务器，服务开发中也经常使用它来做负载均衡。</p>
+<blockquote>
+<p>Nginx 实现负载均衡的方式主要有三种（Nginx 通过 Upstream 模块实现负载均衡）</p>
+</blockquote>
+<ul>
+<li>轮询</li>
+<li>加权轮询</li>
+<li>IP Hash 轮询</li>
+</ul>
+</li>
+<li>
+<p>mysql 操作命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">启动：service mysql start 或 /etc/init.d/mysql start
+关闭：service mysql stop
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-01-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/lnmp/">lnmp</a>
+          <a href="/tags/php/">php</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux 基础知识</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+            <span class="next-text nav-default">PHP 基础知识</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-01-01 13:55:39 \x2b0800 CST',
+        title: 'PHP 开发环境之 Lnmp',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
