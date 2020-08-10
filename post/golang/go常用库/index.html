@@ -49,7 +49,7 @@
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 // 获取当前时间，这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1">
 <meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="2590">
+<meta itemprop="wordCount" content="2700">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2590 字 </span>
+          <span class="more-meta"> 约 2700 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -559,7 +559,24 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="第三方库">第三方库</h2>
+</div><ul>
+<li>
+<p>os/signal： 包含两个方法：一个是notify方法用来监听收到的信号；一个是 stop方法用来取消监听。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="err">#</span> <span class="nx">优雅退出go守护进程</span>
+<span class="nx">done</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Signal</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nx">signal</span><span class="p">.</span><span class="nf">Notify</span><span class="p">(</span><span class="nx">done</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGINT</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">,</span> <span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGKILL</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="第三方库">第三方库</h2>
 <ul>
 <li>gorm</li>
 </ul>
@@ -736,8 +753,6 @@
 </li>
 <li>
 <p>github.com/ahmetb/go-linq</p>
-</li>
-</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -754,9 +769,16 @@
 <span class="p">}).</span><span class="nf">ToSlice</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">chatroomIds</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>github.com/robfig/cron // 计划任务</li>
-<li>github.com/valyala/fasthttp // 模拟 http 客户端请求</li>
+</div></li>
+<li>
+<p>github.com/robfig/cron // 计划任务</p>
+</li>
+<li>
+<p>github.com/valyala/fasthttp // 模拟 http 客户端请求</p>
+</li>
+<li>
+<p>go.uber.org/zap // uber开源的日志库zap，对性能和内存分配做了极致的优化。</p>
+</li>
 </ul>
 
     </div>
