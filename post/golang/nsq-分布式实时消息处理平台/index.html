@@ -49,7 +49,7 @@
 <meta itemprop="description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模">
 <meta itemprop="datePublished" content="2020-06-28T10:50:45&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-28T10:50:45&#43;08:00" />
-<meta itemprop="wordCount" content="1943">
+<meta itemprop="wordCount" content="1995">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1943 字 </span>
+          <span class="more-meta"> 约 1995 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -147,6 +147,7 @@
     <li><a href="#nsq-简介">NSQ 简介</a></li>
     <li><a href="#nsq-运行流程">NSQ 运行流程</a></li>
     <li><a href="#quick-start">Quick Start</a></li>
+    <li><a href="#好文推荐">好文推荐</a></li>
     <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
@@ -175,7 +176,7 @@
 </blockquote>
 <p>nsqadmin 是一个 web 管理界面，用来汇集集群的实时统计，并执行不同的管理任务。</p>
 <blockquote>
-<p>topic</p>
+<p>topic『类似数据库中的表』</p>
 </blockquote>
 <p>topic 是 NSQ 消息发布的『逻辑关键词』，可以理解为人为定义的一种消息类型。当程序初次发布带 topic 的消息时，如果 topic 不存在，则会在 nsqd 中创建。</p>
 <p>生产者和 Topic 是一对一的关系。生产者不需要指定 channel，一个消息直接发布到所有消费者创建的 channel 中。</p>
@@ -189,7 +190,7 @@
 <li>同一 topic、不同 channel 下的两个消费者，可以消费到一模一样的 message。 多个消费者之间相互独立，完全没有影响。</li>
 </ul>
 <blockquote>
-<p>message</p>
+<p>message『类似数据库中的记录』</p>
 </blockquote>
 <p>消息，生产者与消费者之间传递的数据，在 nsq 中统一称为 message。</p>
 <blockquote>
@@ -407,9 +408,11 @@ $ curl -d <span class="s1">&#39;hello world 3&#39;</span> <span class="s1">&#39;
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="参考文章">参考文章</h2>
-<p><a href="https://nsq.io/">nsq 官网</a>
-<a href="https://godoc.org/github.com/nsqio/go-nsq">go-nsq 文档</a></p>
+</div><h2 id="好文推荐">好文推荐</h2>
+<p><a href="https://www.wangjunfeng.com.cn/2019/07/14/nsq-vs-kafka/">为何要抛弃Kafka，选择NSQ！</a></p>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="https://nsq.io/">nsq 官网</a></p>
+<p><a href="https://godoc.org/github.com/nsqio/go-nsq">go-nsq 文档</a></p>
 
     </div>
 
