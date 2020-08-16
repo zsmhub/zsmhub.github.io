@@ -49,7 +49,7 @@
 <meta itemprop="description" content="常用快捷键 GoLand快捷键说明文章 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 Double shift: 查找任何东西 Command &#43; , : 打开ide配置 Command &#43; option &#43; L: 代码格式">
 <meta itemprop="datePublished" content="2020-05-19T21:09:40&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-19T21:09:40&#43;08:00" />
-<meta itemprop="wordCount" content="677">
+<meta itemprop="wordCount" content="618">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/ide/"> ide </a>
             </div>
-          <span class="more-meta"> 约 677 字 </span>
+          <span class="more-meta"> 约 618 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -149,8 +149,12 @@
     <li><a href="#goland-常用插件">GoLand 常用插件</a></li>
     <li><a href="#常用配置">常用配置</a></li>
     <li><a href="#go-开发的坑">Go 开发的坑</a></li>
-    <li><a href="#tools---fiel-watchers">Tools -&gt; Fiel Watchers</a></li>
-    <li><a href="#激活教程">激活教程</a></li>
+    <li><a href="#ide-配置">IDE 配置</a>
+      <ul>
+        <li><a href="#tools---file-watchers">Tools -&gt; File Watchers</a></li>
+        <li><a href="#editor---live-templates">Editor -&gt; Live Templates</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -264,7 +268,8 @@ option + L: 选中当前行 <span class="o">[</span>setting-kaymap -&gt; <span c
 <p>取消拖拽代码的功能：在 Editor –&gt; General 中看到一项叫 Enable Drag’n’Drop functionality in Editor，取消勾选</p>
 </li>
 </ul>
-<h2 id="tools---fiel-watchers">Tools -&gt; Fiel Watchers</h2>
+<h2 id="ide-配置">IDE 配置</h2>
+<h3 id="tools---file-watchers">Tools -&gt; File Watchers</h3>
 <blockquote>
 <p>注意：每次添加新项目时，都需要手动重新设置</p>
 </blockquote>
@@ -272,26 +277,10 @@ option + L: 选中当前行 <span class="o">[</span>setting-kaymap -&gt; <span c
 <li>添加 go fmt // 文件保存时代码自动格式化【暂不使用】</li>
 <li>添加 golangci-lint // 常用的静态检查工具，官方自带的是 golint，二者都安装代码检查效果更好</li>
 </ul>
-<h2 id="激活教程">激活教程</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-text" data-lang="text">一:在安装目录bin下放  jetbrains-agent.jar
-二:help-&gt;edit Custom VM Options...  最后添加  然后关闭重启
--javaagent:/Applications/GoLand.app/Contents/bin/jetbrains-agent.jar
-三:help-&gt;Register 注册
-https://fls.jetbrains-agent.com
-如果不行 使用激活码.
-</code></pre></td></tr></table>
-</div>
-</div>
+<h3 id="editor---live-templates">Editor -&gt; Live Templates</h3>
+<p>添加代码模板，快捷键输出对应代码模板</p>
+<p><img src="/images/2020/QQ20200812-114004@2x.png" alt="示例"></p>
+
     </div>
 
     <div class="post-copyright">

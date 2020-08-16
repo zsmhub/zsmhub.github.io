@@ -18,7 +18,7 @@
       <pubDate>Tue, 11 Aug 2020 22:10:42 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A4%87%E5%BF%98%E5%BD%95/</guid>
-      <description>iPad mini 蓝牙键盘操作技巧 每次使用键盘时需要手动开机，使用完毕则需要手动关机 fn + caps: 可以切换中英文 fn + =: 可以按出等于号 fn + shift + 加号: 可以按出加号键 cmd</description>
+      <description>iPad mini 蓝牙键盘操作技巧 每次使用键盘时需要手动开机，使用完毕则需要手动关机 开关机按钮：长按开机，长按关机 fn + caps: 可以切换中英文 fn + =: 可以按出等于号</description>
     </item>
     
     <item>
@@ -820,6 +820,15 @@
       
       <guid>https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/</guid>
       <description>基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自</description>
+    </item>
+    
+    <item>
+      <title>前端开发</title>
+      <link>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Fri, 01 Mar 2019 11:01:18 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</guid>
+      <description>Sass 与 Less Sass背景 CSS 不是编程语言，虽然可以用它来开发网页样式，但是没有办法用它编程。SASS 的出现，让 CSS 实现了通过代码编程的方式来实现。 SASS 是</description>
     </item>
     
     <item>
