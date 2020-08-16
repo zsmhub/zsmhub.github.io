@@ -58,15 +58,6 @@
     </item>
     
     <item>
-      <title>理解并发与并行</title>
-      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C/</link>
-      <pubDate>Mon, 04 May 2020 18:15:11 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C/</guid>
-      <description>并发与并行 例子 你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。 你吃饭吃到一半，电话来了，你停了下来接了</description>
-    </item>
-    
-    <item>
       <title>动态追踪技术</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Sun, 10 Nov 2019 16:06:01 +0800</pubDate>

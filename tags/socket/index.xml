@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>socket on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/socket/</link>
+    <description>Recent content in socket on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sun, 28 Apr 2019 16:22:13 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/socket/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Socket</title>
+      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket/</link>
+      <pubDate>Sun, 28 Apr 2019 16:22:13 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket/</guid>
+      <description>socket 简介 Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket 其实就是一个门面模式，它把复杂的 TCP/IP 协议族隐藏在 Socket 接口</description>
+    </item>
+    
+  </channel>
+</rss>
