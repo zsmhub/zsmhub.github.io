@@ -13,6 +13,33 @@
     
     
     <item>
+      <title>Go之并发安全</title>
+      <link>https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/</link>
+      <pubDate>Sun, 23 Aug 2020 20:57:43 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/</guid>
+      <description>分段锁ConcurrentMap，map+读写锁，sync.map的效率测试 go 分段锁ConcurrentMap，map+读写锁，sync.m</description>
+    </item>
+    
+    <item>
+      <title>GoAdmin</title>
+      <link>https://zsmhub.github.io/post/golang/goadmin/</link>
+      <pubDate>Tue, 18 Aug 2020 16:40:37 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/goadmin/</guid>
+      <description>准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 用命令安装扩展 go get github.com/GoAdminGroup/go-admin/adm # 根据指示填写就可以初始化一个项目模板 adm init -l cn # 执行以下命令运行： &amp;gt; make serve # 访问</description>
+    </item>
+    
+    <item>
+      <title>程序员必备的代码审查清单</title>
+      <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/</link>
+      <pubDate>Mon, 17 Aug 2020 16:38:01 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/</guid>
+      <description>编码规范 编程思想由 MVC模式 转向 MBC模式，M：模型层，B: 业务逻辑层，C：控制器层 路由命名：一般以 纯小写 或 小写+中划线 命名，比较易读 变量名</description>
+    </item>
+    
+    <item>
       <title>IO - 同步异步，阻塞非阻塞</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%92%8C%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E/</link>
       <pubDate>Sun, 16 Aug 2020 14:54:25 +0800</pubDate>
@@ -108,7 +135,7 @@
       <pubDate>Sun, 26 Jul 2020 09:17:00 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/echo%E6%A1%86%E6%9E%B6/</guid>
-      <description>Echo 入门示例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 package main import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/labstack/echo/v4&amp;#34; &amp;#34;github.com/labstack/echo/v4/middleware&amp;#34; ) func main() { // Echo instance e := echo.New() // Middleware e.Use(middleware.Logger()) e.Use(middleware.Recover()) // Routes e.GET(&amp;#34;/&amp;#34;, hello) // Start server e.Logger.Fatal(e.Start(&amp;#34;:1323&amp;#34;)) } // Handler func hello(c echo.Context) error { return</description>
+      <description>Echo 入门示例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 package main import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/labstack/echo/v4&amp;#34; &amp;#34;github.com/labstack/echo/v4/middleware&amp;#34; ) func main() { // Echo instance e := echo.New() // Middleware e.Use(middleware.Logger()) e.Use(middleware.Recover()) // Routes e.GET(&amp;#34;/&amp;#34;, hello) // Start server e.Logger.Fatal(e.Start(&amp;#34;:1323&amp;#34;)) } // Handler func hello(c echo.Context) error {</description>
     </item>
     
     <item>
@@ -941,10 +968,10 @@
     
     <item>
       <title>开发者须知</title>
-      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</link>
+      <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</link>
       <pubDate>Fri, 25 Jan 2019 15:42:14 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</guid>
+      <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</guid>
       <description>开发过程：SOLID五大设计原则 S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Pricipl</description>
     </item>
     
@@ -963,7 +990,7 @@
       <pubDate>Fri, 04 Jan 2019 22:43:26 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/memcached/</guid>
-      <description>基础信息 telnet memcached 11211 // 连接memcached服务器 flush_all // 清除全部缓存 delete key // 清除某个key的缓存 注意 memcached 在存储数组时，PHP 的 memcached 的驱动会自动进行 serialize 和 unserialize</description>
+      <description>Memcached 是一个自由开源的，高性能，分布式内存对象缓存系统。 Memcached 是一种基于内存的 key-value 存储，用来存储小块的任意数据（字符串、对象）。 基础信息 telnet memcached 11211 // 连接m</description>
     </item>
     
     <item>

@@ -138,14 +138,5 @@
       <description>概念 开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用</description>
     </item>
     
-    <item>
-      <title>开发者须知</title>
-      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</link>
-      <pubDate>Fri, 25 Jan 2019 15:42:14 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</guid>
-      <description>开发过程：SOLID五大设计原则 S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Pricipl</description>
-    </item>
-    
   </channel>
 </rss>

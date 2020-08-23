@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go">
 <meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="7952">
+<meta itemprop="wordCount" content="7912">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 7952 字 </span>
+          <span class="more-meta"> 约 7912 字 </span>
           <span class="more-meta"> 预计阅读 16 分钟 </span>
         
       </div>
@@ -237,26 +237,22 @@
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">env</span> <span class="c1">// 用于打印Go语言环境信息
 </span><span class="c1"></span><span class="k">go</span> <span class="nx">env</span> <span class="o">-</span><span class="nx">w</span> <span class="nx">GO111MODULE</span><span class="p">=</span><span class="nx">on</span>  <span class="c1">// 启用 GO111MODULE
 </span><span class="c1"></span><span class="k">go</span> <span class="nx">run</span> <span class="nx">src</span><span class="o">/</span><span class="p">.</span><span class="k">go</span> <span class="c1">// 运行命令
 </span><span class="c1"></span><span class="k">go</span> <span class="nx">build</span> <span class="nx">hello</span><span class="p">.</span><span class="k">go</span> <span class="c1">// 编译并安装自身包和依赖包
-</span><span class="c1"></span><span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span> <span class="c1">// 用来下载指定版本的远程代码包，不同版本会共存[go get本质上可以理解为首先第一步是通过源码工具clone代码到src下面，然后执行go install]
-</span><span class="c1"></span><span class="k">go</span> <span class="nx">install</span> <span class="c1">// 编译自己写的包文件并编译整个程序到GOPATH下
-</span><span class="c1"></span><span class="k">go</span> <span class="nx">clean</span> <span class="c1">// 用于清除执行其他go命令后遗留的目录和文件。
+</span><span class="c1"></span><span class="k">go</span> <span class="nx">get</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span> <span class="c1">// 用来下载指定版本的远程代码包，不同版本会共存[go get本质上可以理解为首先第一步是通过源码工具clone代码到src下面，然后执行go install]
 </span><span class="c1"></span>
 <span class="err">#</span> <span class="nx">包管理器</span> <span class="nx">Go</span> <span class="nx">Modules</span><span class="err">，</span><span class="nx">旨在取代工作区和</span> <span class="nx">GOPATH</span><span class="err">。</span>
 <span class="k">go</span> <span class="nx">mod</span> <span class="nx">init</span> <span class="nf">xxx</span><span class="p">(</span><span class="nx">项目名</span><span class="p">)</span> <span class="c1">// 初始化go.mod
-</span><span class="c1"></span><span class="k">go</span> <span class="nx">mod</span> <span class="nx">tidy</span> <span class="c1">// add missing and remove unused modules
 </span><span class="c1"></span><span class="k">go</span> <span class="nx">mod</span> <span class="nx">vendor</span> <span class="c1">// go get 新依赖包后，将依赖包复制到项目下的 vendor 目录。
+</span><span class="c1"></span><span class="k">go</span> <span class="nx">mod</span> <span class="nx">tidy</span> <span class="c1">// 删除缺失或者未使用的扩展包
 </span><span class="c1"></span>
-<span class="err">###</span> <span class="nx">project</span> <span class="nx">依赖包升级方案</span>
-<span class="mf">1.</span> <span class="nx">修改</span> <span class="k">go</span><span class="p">.</span><span class="nx">mod</span> <span class="nx">文件下的相关依赖包的版本号</span>
-<span class="mf">2.</span> <span class="nx">再执行</span> <span class="k">go</span> <span class="nx">mod</span> <span class="nx">vendor</span> <span class="nx">即可完成依赖包的升级</span>
+<span class="err">###</span> <span class="nx">project</span> <span class="nx">依赖包升级的两种方案</span>
+<span class="mf">1.</span> <span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span>
+<span class="mf">2.</span> <span class="nx">修改</span> <span class="k">go</span><span class="p">.</span><span class="nx">mod</span> <span class="nx">文件下的相关依赖包的版本号</span><span class="err">；</span><span class="nx">再执行</span> <span class="k">go</span> <span class="nx">mod</span> <span class="nx">vendor</span> <span class="nx">即可完成依赖包的升级</span>
 
 <span class="err">#</span> <span class="nx">格式化</span>
 <span class="nx">gofmt</span> <span class="err">–</span><span class="nx">w</span> <span class="nx">program</span><span class="p">.</span><span class="k">go</span>  <span class="c1">//会格式化该源文件的代码然后将格式化后的代码覆盖原始内容
