@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 go 分段锁ConcurrentMap，map&#43;读写锁，sync.m" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="Go之并发安全" />
-<meta property="og:description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 go 分段锁ConcurrentMap，map&#43;读写锁，sync.m" />
+<meta property="og:description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/" />
 <meta property="article:published_time" content="2020-08-23T20:57:43+08:00" />
 <meta property="article:modified_time" content="2020-08-23T20:57:43+08:00" />
 <meta itemprop="name" content="Go之并发安全">
-<meta itemprop="description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 go 分段锁ConcurrentMap，map&#43;读写锁，sync.m">
+<meta itemprop="description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy">
 <meta itemprop="datePublished" content="2020-08-23T20:57:43&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-23T20:57:43&#43;08:00" />
-<meta itemprop="wordCount" content="206">
+<meta itemprop="wordCount" content="833">
 
 
 
 <meta itemprop="keywords" content="并发安全," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go之并发安全"/>
-<meta name="twitter:description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 go 分段锁ConcurrentMap，map&#43;读写锁，sync.m"/>
+<meta name="twitter:description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 206 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 833 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -147,13 +147,14 @@
     <li><a href="#分段锁concurrentmapmap读写锁syncmap的效率测试">分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</a></li>
     <li><a href="#go-syncmap-源码分析">go sync.map 源码分析</a></li>
     <li><a href="#go-并发安全map-分段锁实现">go 并发安全map 分段锁实现</a></li>
+    <li><a href="#并行计算并指定key存储结果案例">并行计算并指定key存储结果案例</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
       <h2 id="分段锁concurrentmapmap读写锁syncmap的效率测试">分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</h2>
-<p><a href="https://blog.csdn.net/yzf279533105/article/details/98636679">go 分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</a></p>
+<p><a href="https://blog.csdn.net/yzf279533105/article/details/98636679">原文：go 分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</a></p>
 <blockquote>
 <p>效率测试结论：</p>
 </blockquote>
@@ -163,10 +164,159 @@
 <li>ConcurrentMap 中锁的个数越多，效率越高，因为争夺同一把锁的概率降低了</li>
 </ol>
 <h2 id="go-syncmap-源码分析">go sync.map 源码分析</h2>
-<p><a href="https://blog.csdn.net/yzf279533105/article/details/98108367">go sync.map 源码分析</a></p>
+<p><a href="https://blog.csdn.net/yzf279533105/article/details/98108367">原文：go sync.map 源码分析</a></p>
 <h2 id="go-并发安全map-分段锁实现">go 并发安全map 分段锁实现</h2>
-<p><a href="https://blog.csdn.net/yzf279533105/article/details/98502453">go 并发安全map 分段锁实现</a></p>
+<p><a href="https://blog.csdn.net/yzf279533105/article/details/98502453">原文：go 并发安全map 分段锁实现</a></p>
+<h2 id="并行计算并指定key存储结果案例">并行计算并指定key存储结果案例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;sync&#34;</span>
+    <span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">//题目
+</span><span class="c1">//如果我们列出10以下所有能够被3或者5整除的自然数，那么我们得到的是3，5，6和9。这四个数的和是23。
+</span><span class="c1">//那么请计算1000以下（不包括1000）的所有能够被3或者5整除的自然数的和。
+</span><span class="c1">//
+</span><span class="c1">//这个题目的一个思路就是：
+</span><span class="c1">//
+</span><span class="c1">//(1) 先计算1000以下所有能够被3整除的整数的和A，
+</span><span class="c1">//(2) 然后计算1000以下所有能够被5整除的整数和B，
+</span><span class="c1">//(3) 然后再计算1000以下所有能够被3和5整除的整数和C，
+</span><span class="c1">//(4) 使用A+B-C就得到了最后的结果。
+</span><span class="c1"></span>
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sum</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
+    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
+
+    <span class="nx">limit</span> <span class="o">:=</span> <span class="mi">1000</span> <span class="c1">// 最大数
+</span><span class="c1"></span>    <span class="nx">startTime</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+
+    <span class="nx">divider3</span> <span class="o">:=</span> <span class="mi">3</span>
+    <span class="nx">divider5</span> <span class="o">:=</span> <span class="mi">5</span>
+    <span class="nx">divider15</span> <span class="o">:=</span> <span class="mi">15</span>
+
+    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider3</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider5</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider15</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
+    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span> <span class="c1">// 此处阻塞，等所有协程跑完才会执行下面的代码
+</span><span class="c1"></span>
+    <span class="nx">sum3</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider3</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="nx">sum5</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider5</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="nx">sum15</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider15</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider15</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="nx">total</span> <span class="o">:=</span> <span class="nx">sum3</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="nx">sum5</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span> <span class="o">-</span> <span class="nx">sum15</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span>
+
+    <span class="nx">endTime</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;耗时：&#34;</span><span class="p">,</span> <span class="nx">endTime</span><span class="p">.</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">startTime</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;计算结果：&#34;</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">num</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">divider</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">sum</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+    <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="nx">value</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">value</span> <span class="p">&lt;</span> <span class="nx">num</span><span class="p">;</span> <span class="nx">value</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">value</span><span class="o">%</span><span class="nx">divider</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="nx">total</span> <span class="o">+=</span> <span class="nx">value</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">sum</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="nx">divider</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
