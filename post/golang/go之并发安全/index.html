@@ -49,7 +49,7 @@
 <meta itemprop="description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy">
 <meta itemprop="datePublished" content="2020-08-23T20:57:43&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-23T20:57:43&#43;08:00" />
-<meta itemprop="wordCount" content="833">
+<meta itemprop="wordCount" content="877">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 833 字 </span>
+          <span class="more-meta"> 约 877 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -168,6 +168,7 @@
 <h2 id="go-并发安全map-分段锁实现">go 并发安全map 分段锁实现</h2>
 <p><a href="https://blog.csdn.net/yzf279533105/article/details/98502453">原文：go 并发安全map 分段锁实现</a></p>
 <h2 id="并行计算并指定key存储结果案例">并行计算并指定key存储结果案例</h2>
+<p>Golang 在运行时会在 map 的增改删查过程中检测是否有并发读写的情况，当发现并发读写时直接异常退出。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -356,7 +357,11 @@
           <a href="/tags/%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/">并发安全</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">系统事故记录</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/post/golang/goadmin/">
             <span class="next-text nav-default">GoAdmin</span>
             <span class="next-text nav-mobile">下一篇</span>
