@@ -18,7 +18,7 @@
       <pubDate>Wed, 26 Aug 2020 10:27:51 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/</guid>
-      <description>数据库宕机 事故时间： 2020-08-25 事故描述： 阿里云数据库RDS，一主三从，主库宕机，主从读写分离失效。 3 个从库失效后，大量请求涌入主库，主库承受不住请求</description>
+      <description>数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承</description>
     </item>
     
     <item>
