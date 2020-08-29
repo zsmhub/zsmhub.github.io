@@ -49,7 +49,7 @@
 <meta itemprop="description" content="数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承">
 <meta itemprop="datePublished" content="2020-08-26T10:27:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-26T10:27:51&#43;08:00" />
-<meta itemprop="wordCount" content="271">
+<meta itemprop="wordCount" content="382">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
             </div>
-          <span class="more-meta"> 约 271 字 </span>
+          <span class="more-meta"> 约 382 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -173,6 +173,8 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class="o">[</span>2812<span class="o">]</span> Connect Failed For Mysql Server No Response fields.index
@@ -180,15 +182,26 @@
 The MySQL server is running with the --read-only option so it cannot execute this statement
 
 handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class="o">[</span>2831<span class="o">]</span> Failed For Wait Mysql Server Handshake, please check the health of db input.type:log fields.index:ydy-laravel
+
+从库同步主库时，出现主键冲突的 bug
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
+<p>事故可能原因分析</p>
+</blockquote>
+<ul>
+<li><a href="https://bugs.mysql.com/bug.php?id=86641">mysql5.7主从同步存在bug：会出现主键冲突异常情况</a></li>
+<li>阿里云数据库 RDS 从库失效，一个主库扛不住压力，直接宕机</li>
+<li>业务系统本身上存在大量慢查询，占用了数据库大量连接数</li>
+</ul>
+<blockquote>
 <p>事故解决方案：</p>
 </blockquote>
 <ol>
 <li>减少请求量</li>
 <li>在阿里云提工单，让他们解决失效从库失效和备胎主库问题。</li>
 <li>避免在系统使用高峰期，大量增删改数据。</li>
+<li>优化慢 SQL</li>
 </ol>
 <blockquote>
 <p>为什么备胎主库和 3 个从库会失效呢？</p>
