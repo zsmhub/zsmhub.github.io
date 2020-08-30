@@ -3,21 +3,49 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2020-08-26T10:27:51+08:00</lastmod>
+    <lastmod>2020-08-30T15:57:50+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/golang/</loc>
+    <lastmod>2020-08-30T15:57:50+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/golang/</loc>
+    <lastmod>2020-08-30T15:57:50+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2020-08-30T15:57:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2020-08-26T10:27:51+08:00</lastmod>
+    <lastmod>2020-08-30T15:57:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2020-08-26T10:27:51+08:00</lastmod>
+    <lastmod>2020-08-30T15:57:50+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/golang/go%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</loc>
+    <lastmod>2020-08-30T15:44:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -44,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/categories/golang/</loc>
-    <lastmod>2020-08-23T20:57:43+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2020-08-23T20:57:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -66,13 +87,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/post/golang/goadmin/</loc>
-    <lastmod>2020-08-18T16:40:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/tags/golang/</loc>
     <lastmod>2020-08-18T16:40:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

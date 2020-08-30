@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 26 Aug 2020 10:27:51 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2020 15:57:50 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go高级知识</title>
+      <link>https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Sun, 30 Aug 2020 15:57:50 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/</guid>
+      <description>扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者</description>
+    </item>
+    
+    <item>
+      <title>Go学习之路</title>
+      <link>https://zsmhub.github.io/post/golang/go%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</link>
+      <pubDate>Sun, 30 Aug 2020 15:44:06 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/go%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</guid>
+      <description>学习文档 Go学习手册 The Way to Go</description>
+    </item>
     
     <item>
       <title>系统事故记录</title>
@@ -828,7 +846,7 @@
       <pubDate>Sun, 28 Apr 2019 16:22:13 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket/</guid>
-      <description>socket 简介 Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket 其实就是一个门面模式，它把复杂的 TCP/IP 协议族隐藏在 Socket 接口</description>
+      <description>一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 socket 简介 Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接</description>
     </item>
     
     <item>

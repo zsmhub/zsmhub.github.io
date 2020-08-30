@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Socket - ZsmHub - Blog</title>
+  <title>Go高级知识 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 socket 简介 Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Socket" />
-<meta property="og:description" content="一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 socket 简介 Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接" />
+<meta property="og:title" content="Go高级知识" />
+<meta property="og:description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket/" />
-<meta property="article:published_time" content="2019-04-28T16:22:13+08:00" />
-<meta property="article:modified_time" content="2020-08-16T16:22:13+08:00" />
-<meta itemprop="name" content="Socket">
-<meta itemprop="description" content="一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 socket 简介 Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接">
-<meta itemprop="datePublished" content="2019-04-28T16:22:13&#43;08:00" />
-<meta itemprop="dateModified" content="2020-08-16T16:22:13&#43;08:00" />
-<meta itemprop="wordCount" content="388">
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" />
+<meta property="article:published_time" content="2020-08-30T15:57:50+08:00" />
+<meta property="article:modified_time" content="2020-08-30T15:57:50+08:00" />
+<meta itemprop="name" content="Go高级知识">
+<meta itemprop="description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者">
+<meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
+<meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
+<meta itemprop="wordCount" content="177">
 
 
 
-<meta itemprop="keywords" content="socket," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Socket"/>
-<meta name="twitter:description" content="一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 socket 简介 Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接"/>
+<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go高级知识"/>
+<meta name="twitter:description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,14 +126,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Socket</h1>
+      <h1 class="post-title">Go高级知识</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-04-28 </span>
+        <span class="post-time"> 2020-08-30 </span>
         <div class="post-category">
-            <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
+            <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 388 字 </span>
+          <span class="more-meta"> 约 177 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -144,29 +144,16 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#socket-简介">socket 简介</a></li>
-    <li><a href="#socket-类型">socket 类型</a></li>
-    <li><a href="#socket-通讯原理">socket 通讯原理</a></li>
+    <li><a href="#扇出和扇入">扇出和扇入</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。</p>
-<h2 id="socket-简介">socket 简介</h2>
-<p>Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket 其实就是一个门面模式，它把复杂的 TCP/IP 协议族隐藏在 Socket 接口后面，对用户来说，一组简单的接口就是全部，让 Socket 去组织数据，以符合指定的协议。</p>
-<p>套接字（socket）是一个抽象层，应用程序可以通过它发送或接收数据，可对其进行像对文件一样的打开、读写和关闭等操作。 套接字允许应用程序将I/O插入到网络中，并与网络中的其他应用程序进行通信。 网络套接字是IP地址与端口的组合。</p>
-<p><img src="/images/2020/socket1.png" alt="socket"></p>
-<h2 id="socket-类型">socket 类型</h2>
-<blockquote>
-<p>常用的 Socket 类型有两种：流式 Socket（SOCK_STREAM）和数据报式Socket（SOCK_DGRAM）。</p>
-</blockquote>
-<ul>
-<li>流式是一种面向连接的 Socket，针对于面向连接的 TCP 服务应用；</li>
-<li>数据报式 Socket 是一种无连接的 Socket，对应于无连接的 UDP 服务应用。</li>
-</ul>
-<h2 id="socket-通讯原理">socket 通讯原理</h2>
-<p><img src="/images/2020/socket2.png" alt="socket通讯原理"></p>
+      <h2 id="扇出和扇入">扇出和扇入</h2>
+<p>通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者的方法，目的是并行使用CPU和I/O。</p>
+<p>如果一个函数同时接收并处理多个channel输入并转化为一个输出channel，直到所有的输入channel都关闭后，关闭输出channel，这种情况就被称作扇入。</p>
+<p><a href="https://www.bookstack.cn/read/For-learning-Go-Tutorial/spilt.3.src-chapter09-01.0.md">相关文章链接</a></p>
 
     </div>
 
@@ -178,7 +165,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-08-16
+        2020-08-30
         
     </span>
   </p>
@@ -204,16 +191,12 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/socket/">socket</a>
+          <a href="/tags/golang/">golang</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">DevOps 与 NoOps</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/websocket%E5%8D%8F%E8%AE%AE/">
-            <span class="next-text nav-default">WebSocket协议</span>
+        
+        <a class="next" href="/post/golang/go%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
+            <span class="next-text nav-default">Go学习之路</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -226,8 +209,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-04-28 16:22:13 \x2b0800 CST',
-        title: 'Socket',
+        id: '2020-08-30 15:57:50 \x2b0800 CST',
+        title: 'Go高级知识',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
