@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 30 Jun 2020 18:30:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2020 16:04:33 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/php/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PHP-FPM</title>
+      <link>https://zsmhub.github.io/post/php/php-fpm/</link>
+      <pubDate>Wed, 02 Sep 2020 16:04:33 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/php-fpm/</guid>
+      <description>最大进程数 如何控制子进程，为了高性能建议使用 pm static pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers pm = ondemand: 进程在请求时按需创建，而不是动态的，其中</description>
+    </item>
     
     <item>
       <title>Laravel 如何在预加载中指定查询的字段</title>

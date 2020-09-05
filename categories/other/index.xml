@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 09 Jul 2020 21:33:12 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2020 09:07:09 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/other/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>可视化工具</title>
+      <link>https://zsmhub.github.io/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sat, 05 Sep 2020 09:07:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/</guid>
+      <description>Metabase 概述 Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Questio</description>
+    </item>
     
     <item>
       <title>正反向代理简介</title>

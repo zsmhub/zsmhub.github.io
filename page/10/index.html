@@ -120,6 +120,52 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/">Go Json 技巧</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-12 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 489 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      omitempty 忽略 struct 空字段，当字段的值为空值的时候，它不会出现在JSON数据中. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 package main import ( &#34;encoding/json&#34; &#34;fmt&#34; ) type User struct { Email string `json:&#34;email&#34;` Password string
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/">Go 开发遇到的性能问题</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-09 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 653 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。 代码分析 测试环境：macbook pro macos Go 版本:
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/golang/go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7pprof/">Go 性能分析工具 PProf</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-05-08 </span>
@@ -183,52 +229,6 @@
     </div>
     <div class="read-more">
       <a href="/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/">Mysql 主从复制延时案例</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-07 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> database </a>
-          </div>
-        <span class="more-meta"> 约 3679 字 </span>
-        <span class="more-meta"> 预计阅读 8 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。 如果主从复制之间出现
-    </div>
-    <div class="read-more">
-      <a href="/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/">Go 数组指针和指针数组的区别</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-05 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 2370 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Golang中数组指针和指针数组区别 区别二者，字面上只看后两个字即可： 数组指针 ：它是一个指针，但是数据类型为数组，或者说指向数组 指针数组 ：它
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/go%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

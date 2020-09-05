@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Go高级知识 - ZsmHub - Blog</title>
+  <title>可视化工具 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="Metabase 概述 Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Questio" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Go高级知识" />
-<meta property="og:description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者" />
+<meta property="og:title" content="可视化工具" />
+<meta property="og:description" content="Metabase 概述 Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Questio" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" />
-<meta property="article:published_time" content="2020-08-30T15:57:50+08:00" />
-<meta property="article:modified_time" content="2020-08-30T15:57:50+08:00" />
-<meta itemprop="name" content="Go高级知识">
-<meta itemprop="description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者">
-<meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="177">
+<meta property="og:url" content="https://zsmhub.github.io/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/" />
+<meta property="article:published_time" content="2020-09-05T09:07:09+08:00" />
+<meta property="article:modified_time" content="2020-09-05T09:07:09+08:00" />
+<meta itemprop="name" content="可视化工具">
+<meta itemprop="description" content="Metabase 概述 Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Questio">
+<meta itemprop="datePublished" content="2020-09-05T09:07:09&#43;08:00" />
+<meta itemprop="dateModified" content="2020-09-05T09:07:09&#43;08:00" />
+<meta itemprop="wordCount" content="201">
 
 
 
-<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go高级知识"/>
-<meta name="twitter:description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者"/>
+<meta itemprop="keywords" content="可视化," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="可视化工具"/>
+<meta name="twitter:description" content="Metabase 概述 Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Questio"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,14 +126,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Go高级知识</h1>
+      <h1 class="post-title">可视化工具</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-08-30 </span>
+        <span class="post-time"> 2020-09-05 </span>
         <div class="post-category">
-            <a href="/categories/golang/"> golang </a>
+            <a href="/categories/other/"> other </a>
             </div>
-          <span class="more-meta"> 约 177 字 </span>
+          <span class="more-meta"> 约 201 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -144,16 +144,27 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#扇出和扇入">扇出和扇入</a></li>
+    <li><a href="#metabase">Metabase</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="扇出和扇入">扇出和扇入</h2>
-<p>通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者的方法，目的是并行使用CPU和I/O。</p>
-<p>如果一个函数同时接收并处理多个channel输入并转化为一个输出channel，直到所有的输入channel都关闭后，关闭输出channel，这种情况就被称作扇入。</p>
-<p><a href="https://www.bookstack.cn/read/For-learning-Go-Tutorial/spilt.3.src-chapter09-01.0.md">相关文章链接</a></p>
+      <h2 id="metabase">Metabase</h2>
+<blockquote>
+<p>概述</p>
+</blockquote>
+<p>Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Question）来提炼数据，再通过仪表盘（Dashboards）来组合展示给公司成员</p>
+<blockquote>
+<p>优点：</p>
+</blockquote>
+<ol>
+<li>开源免费</li>
+<li>工具轻量、安装依赖的环境简单、配置简单清楚</li>
+<li>容易上手，操作门槛低，不会sql语句也能使用</li>
+<li>支持对外共享，权限控制</li>
+<li>Question可以便捷地创建图表，Dashboards界面整洁美观</li>
+</ol>
 
     </div>
 
@@ -165,7 +176,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-08-30
+        2020-09-05
         
     </span>
   </p>
@@ -191,16 +202,12 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/golang/">golang</a>
+          <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/php/php-fpm/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">PHP-FPM</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/golang/go%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
-            <span class="next-text nav-default">Go学习之路</span>
+        
+        <a class="next" href="/post/php/php-fpm/">
+            <span class="next-text nav-default">PHP-FPM</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -213,8 +220,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-08-30 15:57:50 \x2b0800 CST',
-        title: 'Go高级知识',
+        id: '2020-09-05 09:07:09 \x2b0800 CST',
+        title: '可视化工具',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

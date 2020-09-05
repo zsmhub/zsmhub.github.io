@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>可视化 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
+    <description>Recent content in 可视化 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Sat, 05 Sep 2020 09:07:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://zsmhub.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>可视化工具</title>
+      <link>https://zsmhub.github.io/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sat, 05 Sep 2020 09:07:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/</guid>
+      <description>Metabase 概述 Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Questio</description>
+    </item>
+    
+  </channel>
+</rss>

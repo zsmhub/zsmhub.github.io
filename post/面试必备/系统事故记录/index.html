@@ -49,7 +49,7 @@
 <meta itemprop="description" content="数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承">
 <meta itemprop="datePublished" content="2020-08-26T10:27:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-26T10:27:51&#43;08:00" />
-<meta itemprop="wordCount" content="382">
+<meta itemprop="wordCount" content="457">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
             </div>
-          <span class="more-meta"> 约 382 字 </span>
+          <span class="more-meta"> 约 457 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#数据库宕机">数据库宕机</a></li>
+    <li><a href="#数据库堆积">数据库堆积</a></li>
   </ul>
 </nav>
   </div>
@@ -207,6 +208,16 @@ handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class=
 <p>为什么备胎主库和 3 个从库会失效呢？</p>
 </blockquote>
 <p><img src="/images/2020/syncCopiedImage_1598490124885.png" alt="阿里售后回复"></p>
+<h2 id="数据库堆积">数据库堆积</h2>
+<p>数据库 SQL 堆积，往往来自接口请求的堆积，接口请求的堆积, 往往是因为短时间内的请求处理速度慢。</p>
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<ol>
+<li>减少数据库慢查询</li>
+<li>增加缓存代码</li>
+<li>提高服务器配置</li>
+</ol>
 
     </div>
 

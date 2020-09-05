@@ -13,6 +13,24 @@
     
     
     <item>
+      <title>可视化工具</title>
+      <link>https://zsmhub.github.io/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sat, 05 Sep 2020 09:07:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/</guid>
+      <description>Metabase 概述 Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Questio</description>
+    </item>
+    
+    <item>
+      <title>PHP-FPM</title>
+      <link>https://zsmhub.github.io/post/php/php-fpm/</link>
+      <pubDate>Wed, 02 Sep 2020 16:04:33 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/php/php-fpm/</guid>
+      <description>最大进程数 如何控制子进程，为了高性能建议使用 pm static pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers pm = ondemand: 进程在请求时按需创建，而不是动态的，其中</description>
+    </item>
+    
+    <item>
       <title>Go高级知识</title>
       <link>https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sun, 30 Aug 2020 15:57:50 +0800</pubDate>
@@ -639,7 +657,7 @@
       <pubDate>Wed, 01 Jan 2020 16:30:02 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/navigation/</guid>
-      <description>学习ing 学习 socket 编程相关知识 Swoole 从入门到实战 Swoole入门教程 如何成为黑客 RPC框架 熟悉 PHP 多进程 TableStore-Timeline模型 Go</description>
+      <description>学习ing 学习 socket 编程相关知识 goim 项目源码查查看 Swoole 从入门到实战 Swoole入门教程 如何成为黑客 RPC框架 熟悉 PHP 多进程 TableStore-Tim</description>
     </item>
     
     <item>

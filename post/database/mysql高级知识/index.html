@@ -49,7 +49,7 @@
 <meta itemprop="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安">
 <meta itemprop="datePublished" content="2020-07-12T13:51:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-12T13:51:13&#43;08:00" />
-<meta itemprop="wordCount" content="4540">
+<meta itemprop="wordCount" content="4559">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 4540 字 </span>
+          <span class="more-meta"> 约 4559 字 </span>
           <span class="more-meta"> 预计阅读 10 分钟 </span>
         
       </div>
@@ -292,7 +292,7 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">&gt; - 主键索引：主键索引是一种特殊的唯一索引，不允许有空值
 &gt; - 普通索引或者单列索引：每个索引只包含单个列，一个表可以有多个单列索引
-&gt; - 多列索引（复合索引、联合索引）：复合索引指多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用复合索引时遵循最左前缀集合
+&gt; - 多列索引（复合索引、联合索引）：复合索引指多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用复合索引时遵循最左前缀原则，* 且联合索引的字段可以是任意顺序的 *
 &gt; - 唯一索引或者非唯一索引
 &gt; - 空间索引：空间索引是对空间数据类型的字段建立的索引，MYSQL中的空间数据类型有4种，分别是GEOMETRY、POINT、LINESTRING、POLYGON。MYSQL使用SPATIAL关键字进行扩展，使得能够用于创建正规索引类型的语法创建空间索引。创建空间索引的列，必须将其声明为NOT NULL，空间索引只能在存储引擎为MYISAM的表中创建
 </code></pre></td></tr></table>

@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 15:57:50 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2020 09:07:09 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>other</title>
+      <link>https://zsmhub.github.io/categories/other/</link>
+      <pubDate>Sat, 05 Sep 2020 09:07:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/other/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://zsmhub.github.io/categories/php/</link>
+      <pubDate>Wed, 02 Sep 2020 16:04:33 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/php/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>golang</title>
@@ -81,24 +99,6 @@
       <pubDate>Sat, 08 Aug 2020 18:02:57 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>other</title>
-      <link>https://zsmhub.github.io/categories/other/</link>
-      <pubDate>Thu, 09 Jul 2020 21:33:12 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/other/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>php</title>
-      <link>https://zsmhub.github.io/categories/php/</link>
-      <pubDate>Tue, 30 Jun 2020 18:30:58 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/php/</guid>
       <description></description>
     </item>
     
