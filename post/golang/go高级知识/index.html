@@ -49,7 +49,7 @@
 <meta itemprop="description" content="扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者">
 <meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="177">
+<meta itemprop="wordCount" content="444">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 177 字 </span>
+          <span class="more-meta"> 约 444 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#扇出和扇入">扇出和扇入</a></li>
+    <li><a href="#死锁活锁和饥饿">死锁、活锁和饥饿</a></li>
   </ul>
 </nav>
   </div>
@@ -154,6 +155,21 @@
 <p>通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者的方法，目的是并行使用CPU和I/O。</p>
 <p>如果一个函数同时接收并处理多个channel输入并转化为一个输出channel，直到所有的输入channel都关闭后，关闭输出channel，这种情况就被称作扇入。</p>
 <p><a href="https://www.bookstack.cn/read/For-learning-Go-Tutorial/spilt.3.src-chapter09-01.0.md">相关文章链接</a></p>
+<h2 id="死锁活锁和饥饿">死锁、活锁和饥饿</h2>
+<blockquote>
+<p>死锁</p>
+</blockquote>
+<p>死锁程序是所有并发进程 <em>彼此等待</em> 的程序。在这种情况下，如果没有外界的干预，这个程序将永远无陆恢复。</p>
+<blockquote>
+<p>活锁</p>
+</blockquote>
+<p>活锁是正在 <em>主动执行</em> 并发操作的程序，但是这些操作无战向前推进程序的状态。</p>
+<p>你曾经在走廊走向另一个人吗？她移动到一边让你通过，但你也做了同样的事情。所以你转到另一边，但她也是这样做的。想象一下这个情形永远持续下去，你就明白了活锁。</p>
+<blockquote>
+<p>饥饿</p>
+</blockquote>
+<p>饥饿是在任何情况下，并发进程都无法获得执行工作所需的所有资源。</p>
+<p>饥饿通常意味着有一个或多个贪婪的并发进程，它们不公平地阻止一个或多个井发进程，以尽可能有效地完成工作，或者阻止全部并发进程。</p>
 
     </div>
 

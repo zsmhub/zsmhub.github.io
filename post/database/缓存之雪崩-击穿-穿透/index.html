@@ -49,7 +49,7 @@
 <meta itemprop="description" content="缓存雪崩 缓存雪崩是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到 DB，DB 瞬时压力过重导致雪崩。 解决方案">
 <meta itemprop="datePublished" content="2020-05-31T16:22:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-31T16:22:36&#43;08:00" />
-<meta itemprop="wordCount" content="965">
+<meta itemprop="wordCount" content="998">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 965 字 </span>
+          <span class="more-meta"> 约 998 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -212,6 +212,9 @@ String get<span class="o">(</span>String key<span class="o">)</span> <span class
 </div></li>
 <li>
 <p>设置热点数据永不过期</p>
+</li>
+<li>
+<p>通过计划任务来更新缓存，保证从前端过来的所有请求都是从缓存读取数据</p>
 </li>
 </ol>
 <h2 id="缓存穿透">缓存穿透</h2>
