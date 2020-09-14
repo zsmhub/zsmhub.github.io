@@ -49,7 +49,7 @@
 <meta itemprop="description" content="任务调度功能 Laravel 命令行调度器允许你在 Laravel 中对命令调度进行清晰流畅的定义。且使用这个任务调度器时，你只需要在你的服务器上创建单个 Cron 入口接口。你的任">
 <meta itemprop="datePublished" content="2019-09-04T14:28:22&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-22T14:28:22&#43;08:00" />
-<meta itemprop="wordCount" content="1514">
+<meta itemprop="wordCount" content="1819">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 1514 字 </span>
+          <span class="more-meta"> 约 1819 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -229,6 +229,7 @@
 </span><span class="lnt">25
 </span><span class="lnt">26
 </span><span class="lnt">27
+</span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">php artisan make:job TestJob
@@ -237,15 +238,16 @@
 php artisan horizon <span class="c1"># 队列监控，用来代替 Laravel 自带的 artisan queue:listen/work，需要常驻运行</span>
 
 <span class="c1"># 将作业推送到特定的队列的几种方式</span>
-dispatch<span class="o">(</span>new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">))</span>-&gt;onQueue<span class="o">(</span><span class="s1">&#39;队列名称&#39;</span><span class="o">)</span><span class="p">;</span>
+dispatch<span class="o">(</span>new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">))</span>-&gt;onConnection<span class="o">(</span><span class="s1">&#39;连接名称&#39;</span><span class="o">)</span>-&gt;onQueue<span class="o">(</span><span class="s1">&#39;队列名称&#39;</span><span class="o">)</span><span class="p">;</span>
 InvoiceEmail::dispatch<span class="o">(</span><span class="nv">$order</span><span class="o">)</span>-&gt;onQueue<span class="o">(</span><span class="s1">&#39;队列名称&#39;</span><span class="o">)</span><span class="p">;</span>
-Queue::pushOn<span class="o">(</span><span class="s1">&#39;队列名称&#39;</span>, new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">))</span><span class="p">;</span> // Laravel 5.0 及之前旧版本的用法
+dispatchNow<span class="o">(</span>new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">))</span>-&gt;onQueue<span class="o">(</span><span class="s1">&#39;队列名称&#39;</span><span class="o">)</span><span class="p">;</span> // 使用此方法时，队列任务将不会排队，并立即在当前进程中运行
+Queue::connection<span class="o">(</span><span class="s1">&#39;连接名称&#39;</span><span class="o">)</span>-&gt;pushOn<span class="o">(</span><span class="s1">&#39;队列名称&#39;</span>, new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">))</span><span class="p">;</span> // Laravel 5.0 及之前旧版本的用法
 Queue::push<span class="o">(</span>new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">)</span>, <span class="s1">&#39;&#39;</span>, <span class="s1">&#39;队列名称&#39;</span><span class="o">)</span><span class="p">;</span> // Laravel 5.0 及之前旧版本的用法
 
 // 在给定的秒数之后推送作业的几种方式
 dispatch<span class="o">(</span>new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">))</span>-&gt;onQueue<span class="o">(</span><span class="s1">&#39;emails&#39;</span><span class="o">)</span>-&gt;delay<span class="o">(</span>60<span class="o">)</span><span class="p">;</span>
-Queue::later<span class="o">(</span>60, new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">)</span>, <span class="s1">&#39;&#39;</span>, <span class="s1">&#39;队列名称&#39;</span><span class="o">)</span><span class="p">;</span>
-Queue::laterOn<span class="o">(</span><span class="s1">&#39;队列名称&#39;</span>, 60, new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">))</span><span class="p">;</span>
+Queue::later<span class="o">(</span>60, new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">)</span>, <span class="s1">&#39;&#39;</span>, <span class="s1">&#39;队列名称&#39;</span><span class="o">)</span><span class="p">;</span> // Laravel 5.0 及之前旧版本的用法
+Queue::laterOn<span class="o">(</span><span class="s1">&#39;队列名称&#39;</span>, 60, new InvoiceEmail<span class="o">(</span><span class="nv">$order</span><span class="o">))</span><span class="p">;</span> // Laravel 5.0 及之前旧版本的用法
 
 // 推送多个作业
 Queue::bulk<span class="o">([</span>
@@ -368,6 +370,11 @@ php artisan schedule:run <span class="c1"># 定时任务，这里也可以直接
 </span><span class="lnt">62
 </span><span class="lnt">63
 </span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">// config/queue.php: 队列驱动类型
@@ -389,7 +396,7 @@ php artisan schedule:run <span class="c1"># 定时任务，这里也可以直接
         <span class="s1">&#39;port&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;REDIS_PORT&#39;</span>, 6379<span class="o">)</span>,
         <span class="s1">&#39;database&#39;</span> <span class="o">=</span>&gt; 0,
     <span class="o">]</span>,
-    <span class="s1">&#39;queue&#39;</span> <span class="o">=</span>&gt; <span class="o">[</span>
+    <span class="s1">&#39;horizon-task&#39;</span> <span class="o">=</span>&gt; <span class="o">[</span>
         <span class="s1">&#39;host&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;REDIS_HOST&#39;</span>, <span class="s1">&#39;redis&#39;</span><span class="o">)</span>,
         <span class="s1">&#39;password&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;REDIS_PASSWORD_QUEUE&#39;</span>, null<span class="o">)</span>,
         <span class="s1">&#39;port&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;REDIS_PORT_QUEUE&#39;</span>, 6379<span class="o">)</span>,
@@ -398,7 +405,7 @@ php artisan schedule:run <span class="c1"># 定时任务，这里也可以直接
 <span class="o">]</span>
 
 // config/horizon.php: Queue Worker Configuration
-<span class="s1">&#39;use&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;horizon-task&#39;</span>, // 配置 horizon 监控台相关信息存储的 redis 库
+<span class="s1">&#39;use&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;horizon-task&#39;</span>, // 配置 horizon 监控台相关信息存储的 redis 库，请看上面 database.php 的 redis 配置
 <span class="s1">&#39;environments&#39;</span> <span class="o">=</span>&gt; <span class="o">[</span>
     <span class="s1">&#39;production&#39;</span> <span class="o">=</span>&gt; <span class="o">[</span>
         <span class="s1">&#39;supervisor-1&#39;</span> <span class="o">=</span>&gt; <span class="o">[</span>
@@ -434,6 +441,11 @@ php artisan schedule:run <span class="c1"># 定时任务，这里也可以直接
 </span><span class="s1">{
 </span><span class="s1">    $schedule-&gt;command(&#39;</span>horizon:snapshot<span class="err">&#39;</span><span class="o">)</span>-&gt;everyFiveMinutes<span class="o">()</span><span class="p">;</span>
 <span class="o">}</span>
+
+// 默认情况下，你只能在 <span class="nb">local</span> 环境下访问这个后台。如果想要为后台定义更多的特定访问策略，需要使用 Horizon:auth 方法。auth 方法接收一个返回 <span class="nb">true</span> 或 <span class="nb">false</span> 的回调，从而决定用户是否可以访问 Horizon 后台。通常，我们会在 AppServiceProvider 的 boot 方法中调用 Horizon:auth：
+Horizon::auth<span class="o">(</span><span class="k">function</span> <span class="o">(</span><span class="nv">$request</span><span class="o">)</span> <span class="o">{</span>
+    // <span class="k">return</span> <span class="nb">true</span> / false<span class="p">;</span>
+<span class="o">})</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="好文推荐">好文推荐</h2>

@@ -49,7 +49,7 @@
 <meta itemprop="description" content="too many connection 报错可能原因 机器负载飙升，导致SQL执行效率下降，导致连接堆积 业务访问量突增（或者有SQL注入现象），导致连接数打满 出现“死锁”或者锁">
 <meta itemprop="datePublished" content="2020-05-29T19:13:07&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-29T19:13:07&#43;08:00" />
-<meta itemprop="wordCount" content="95">
+<meta itemprop="wordCount" content="342">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 95 字 </span>
+          <span class="more-meta"> 约 342 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#too-many-connection-报错可能原因">too many connection 报错可能原因</a></li>
+    <li><a href="#大表数据删除方案">大表数据删除方案</a></li>
   </ul>
 </nav>
   </div>
@@ -160,6 +161,34 @@
 </li>
 <li>
 <p>出现“死锁”或者锁竞争严重，导致大量SQL堆积【事务没有正确关闭等】</p>
+</li>
+</ol>
+<h2 id="大表数据删除方案">大表数据删除方案</h2>
+<p>原始表：friend_record</p>
+<p>新建表：friend_record_2</p>
+<blockquote>
+<p>思路：先将原始表需要保留的数据迁移到新建的表，然后再改表名。这样可以避免锁表，不影响正常业务。</p>
+</blockquote>
+<ol>
+<li>
+<p>create table <code>friend_record_2</code> like <code>friend_record</code>;</p>
+</li>
+<li>
+<p>ALTER TABLE <code>friend_record_2</code> CHANGE <code>type</code> <code>type</code> TINYINT(3)  UNSIGNED  NOT NULL  DEFAULT &lsquo;0&rsquo;  COMMENT &lsquo;0陌生添加、1推广推介、2被动添加、3主动添加&rsquo;;</p>
+</li>
+<li>
+<p>这里需要加上旧表当前最大 id
+insert ignore into <code>friend_record_2</code>(owner_account_id, account_id, remark, add_time, type, created_at, updated_at, deleted_at) (select owner_account_id, account_id, remark, add_time, type, created_at, updated_at, deleted_at from <code>friend_record</code> where id &lt;= ? and created_at &gt;= &lsquo;2020-01-01&rsquo; and <code>deleted_at</code> is null);</p>
+</li>
+<li>
+<p>rename table <code>friend_record</code> to <code>friend_record_202009</code>;</p>
+</li>
+<li>
+<p>rename table <code>friend_record_2</code> to <code>friend_record</code>;</p>
+</li>
+<li>
+<p>这里需要加上旧表当前最大 id
+insert ignore into <code>friend_record</code>(owner_account_id, account_id, remark, add_time, type, created_at, updated_at, deleted_at) (select owner_account_id, account_id, remark, add_time, type, created_at, updated_at, deleted_at from <code>friend_record_202009</code> where id &gt; ? and <code>deleted_at</code> is null);</p>
 </li>
 </ol>
 
