@@ -49,7 +49,7 @@
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 // 获取当前时间，这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法">
 <meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="4423">
+<meta itemprop="wordCount" content="4451">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 4423 字 </span>
+          <span class="more-meta"> 约 4451 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -1001,10 +1001,11 @@
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
+</span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">Insert</span> <span class="nx">时注意</span> <span class="nx">所有字段的零值</span><span class="p">,</span> <span class="nx">比如</span> <span class="mi">0</span><span class="p">,</span> <span class="err">&#39;&#39;</span><span class="p">,</span> <span class="kc">false</span> <span class="nx">或者其它零值</span><span class="err">，</span><span class="nx">都不会保存到数据库内</span><span class="err">，</span><span class="nx">但会使用他们的默认值</span><span class="err">。</span>
-<span class="nx">如果你想避免这种情况</span><span class="err">，</span><span class="nx">可以考虑使用指针或实现</span> <span class="nx">Scanner</span><span class="o">/</span><span class="nx">Valuer</span> <span class="nx">接口</span>
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">Insert</span><span class="o">/</span><span class="nx">Update</span> <span class="nx">时注意</span> <span class="nx">所有字段的零值</span><span class="p">,</span> <span class="nx">比如</span> <span class="mi">0</span><span class="p">,</span> <span class="err">&#39;&#39;</span><span class="p">,</span> <span class="kc">false</span> <span class="nx">或者其它零值</span><span class="err">，</span><span class="nx">都不会保存到数据库内</span><span class="err">，</span><span class="nx">但会使用他们的默认值</span><span class="err">。</span>
+<span class="nx">如果你想避免这种情况</span><span class="err">，</span><span class="nx">可以考虑使用</span> <span class="kd">map</span> <span class="nx">或</span> <span class="nx">指针</span> <span class="nx">或</span> <span class="nx">实现</span> <span class="nx">Scanner</span><span class="o">/</span><span class="nx">Valuer</span> <span class="nx">接口</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s">&#34;github.com/jinzhu/gorm&#34;</span>
@@ -1013,7 +1014,8 @@
 
 <span class="nx">db</span><span class="p">.</span><span class="nf">Model</span><span class="p">():</span> <span class="nx">作用</span><span class="err">：</span><span class="mf">1.</span> <span class="nx">声明操作表名</span><span class="err">，</span><span class="mf">2.</span> <span class="nx">当做</span> <span class="nx">where</span> <span class="nx">条件并返回操作后的最新数据</span>
 <span class="nx">db</span><span class="p">.</span><span class="nf">Table</span><span class="p">(</span><span class="s">&#34;table_name&#34;</span><span class="p">):</span> <span class="nx">指定表名</span><span class="err">，</span><span class="nx">方便使用其他结构体</span>
-
+<span class="nx">db</span><span class="p">.</span><span class="nf">Assign</span><span class="p">(</span><span class="nx">Role</span><span class="p">{</span><span class="nx">UserId</span><span class="p">:</span> <span class="s">&#34;15&#34;</span><span class="p">}).</span><span class="nf">First</span><span class="p">()</span> <span class="c1">// 不管是否找到对应记录，使用 Assign 值替代查询到的值
+</span><span class="c1"></span>
 <span class="c1">// 预加载指定列
 </span><span class="c1"></span><span class="kd">type</span> <span class="nx">answer</span> <span class="kd">struct</span> <span class="p">{</span>
     <span class="nx">model</span><span class="p">.</span><span class="nx">IntelligentAnswer</span>
