@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 12 Jul 2020 13:51:13 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2020 09:13:08 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OLTP和OLAP</title>
+      <link>https://zsmhub.github.io/post/database/oltp%E5%92%8Colap/</link>
+      <pubDate>Sat, 10 Oct 2020 09:13:08 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/database/oltp%E5%92%8Colap/</guid>
+      <description>根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型</description>
+    </item>
     
     <item>
       <title>Mysql高级知识</title>
