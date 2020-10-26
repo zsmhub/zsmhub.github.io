@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="Composer" />
-<meta property="og:description" content="常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解" />
+<meta property="og:description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/php/composer/" />
 <meta property="article:published_time" content="2019-04-03T21:50:58+08:00" />
 <meta property="article:modified_time" content="2019-04-03T22:45:33+08:00" />
 <meta itemprop="name" content="Composer">
-<meta itemprop="description" content="常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解">
+<meta itemprop="description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理">
 <meta itemprop="datePublished" content="2019-04-03T21:50:58&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-03T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="1349">
+<meta itemprop="wordCount" content="1365">
 
 
 
 <meta itemprop="keywords" content="php," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Composer"/>
-<meta name="twitter:description" content="常用 composer 扩展包 常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解"/>
+<meta name="twitter:description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 1349 字 </span>
+          <span class="more-meta"> 约 1365 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -144,33 +144,19 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#常用-composer-扩展包">常用 composer 扩展包</a></li>
-    <li><a href="#通常引入的-package-有这么些特征">通常引入的 package 有这么些特征</a></li>
     <li><a href="#pear">pear</a></li>
     <li><a href="#composer">Composer</a></li>
     <li><a href="#基本命令">基本命令</a></li>
     <li><a href="#require-dev-和-require">require-dev 和 require</a></li>
     <li><a href="#autoload-dev-和-autoload">autoload-dev 和 autoload</a></li>
+    <li><a href="#常用-composer-扩展包">常用 composer 扩展包</a></li>
+    <li><a href="#通常引入的-package-有这么些特征">通常引入的 package 有这么些特征</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="常用-composer-扩展包">常用 composer 扩展包</h2>
-<ul>
-<li>常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解密即可，不需要查库即可获得类似存储于 Session 的数据（Payload），并且可信赖。</li>
-</ul>
-<h2 id="通常引入的-package-有这么些特征">通常引入的 package 有这么些特征</h2>
-<blockquote>
-<p>不要随意引入过多的 package，简单的功能自己写即可。</p>
-</blockquote>
-<ol>
-<li>通用类库，比如 jwt 、predis</li>
-<li>非常复杂的功能，比如 oauth（即 Laravel 的 passport）</li>
-<li>各种 sdk，比如 easywechat</li>
-<li>辅助开发的包，如 laravel-ide-helper、tinker</li>
-</ol>
-<h2 id="pear">pear</h2>
+      <h2 id="pear">pear</h2>
 <ul>
 <li>pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具</li>
 <li>phar: php档案包</li>
@@ -188,6 +174,12 @@
 </ol>
 <h2 id="基本命令">基本命令</h2>
 <ul>
+<li>
+<p>composer show encore/laravel-admin // 查看当前版本</p>
+</li>
+<li>
+<p>composer self-update // composer 升级</p>
+</li>
 <li>
 <p>composer config -gl -&gt; composer查看全局设置</p>
 </li>
@@ -294,6 +286,20 @@ composer require hashids/hashids:2.0.4
 <li>autoload-dev自动加载映射，一般多用于测试和开发；</li>
 <li>执行composer dump-autoload命令式可通过&ndash;no-dev参数来忽略autoload-dev指定的命名空间；</li>
 </ul>
+<h2 id="常用-composer-扩展包">常用 composer 扩展包</h2>
+<ul>
+<li>常见的 Token 是存储在数据库中的，在服务器端进行数据库查询，并比对 Token 是否合法。JWT 的意义是让 Token 和 Payload 加密后存储于用户端，服务端只需要解密即可，不需要查库即可获得类似存储于 Session 的数据（Payload），并且可信赖。</li>
+</ul>
+<h2 id="通常引入的-package-有这么些特征">通常引入的 package 有这么些特征</h2>
+<blockquote>
+<p>不要随意引入过多的 package，简单的功能自己写即可。</p>
+</blockquote>
+<ol>
+<li>通用类库，比如 jwt 、predis</li>
+<li>非常复杂的功能，比如 oauth（即 Laravel 的 passport）</li>
+<li>各种 sdk，比如 easywechat</li>
+<li>辅助开发的包，如 laravel-ide-helper、tinker</li>
+</ol>
 
     </div>
 

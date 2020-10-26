@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 19 Oct 2020 10:02:48 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2020 11:30:44 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>网络编程</title>
+      <link>https://zsmhub.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Tue, 20 Oct 2020 11:30:44 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>教育</title>
@@ -22,11 +31,11 @@
     </item>
     
     <item>
-      <title>素描</title>
-      <link>https://zsmhub.github.io/tags/%E7%B4%A0%E6%8F%8F/</link>
+      <title>绘画</title>
+      <link>https://zsmhub.github.io/tags/%E7%BB%98%E7%94%BB/</link>
       <pubDate>Sun, 18 Oct 2020 20:17:22 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/tags/%E7%B4%A0%E6%8F%8F/</guid>
+      <guid>https://zsmhub.github.io/tags/%E7%BB%98%E7%94%BB/</guid>
       <description></description>
     </item>
     
@@ -117,15 +126,6 @@
       <pubDate>Mon, 17 Aug 2020 16:38:01 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>网络编程</title>
-      <link>https://zsmhub.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
-      <pubDate>Sun, 16 Aug 2020 14:54:25 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
     
@@ -409,15 +409,6 @@
     </item>
     
     <item>
-      <title>tcp</title>
-      <link>https://zsmhub.github.io/tags/tcp/</link>
-      <pubDate>Fri, 01 May 2020 16:20:58 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/tags/tcp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>大数据</title>
       <link>https://zsmhub.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Sat, 25 Apr 2020 23:06:53 +0800</pubDate>
@@ -630,15 +621,6 @@
       <pubDate>Sun, 28 Apr 2019 16:22:13 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/tags/socket/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>websocket</title>
-      <link>https://zsmhub.github.io/tags/websocket/</link>
-      <pubDate>Sun, 28 Apr 2019 15:54:05 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/tags/websocket/</guid>
       <description></description>
     </item>
     

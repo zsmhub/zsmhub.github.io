@@ -49,7 +49,7 @@
 <meta itemprop="description" content="golang defer 这个使用的执行流程一直很绕，所以决定写一篇文记录一下。 规则一：当defer被声明时，其参数就会被实时解析 案例一 1 2 3 4 5 6 7 8 9 10 11 12 13">
 <meta itemprop="datePublished" content="2020-05-30T09:02:27&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-30T09:02:27&#43;08:00" />
-<meta itemprop="wordCount" content="591">
+<meta itemprop="wordCount" content="762">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 591 字 </span>
+          <span class="more-meta"> 约 762 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -153,6 +153,7 @@
     <li><a href="#规则二defer执行顺序为先进后出">规则二：defer执行顺序为先进后出</a></li>
     <li><a href="#规则三defer可以读取有名返回值">规则三：defer可以读取有名返回值</a></li>
     <li><a href="#所有规则复合体">所有规则复合体</a></li>
+    <li><a href="#可用于异常捕获">可用于异常捕获</a></li>
     <li><a href="#转载声明">转载声明</a></li>
   </ul>
 </nav>
@@ -472,7 +473,26 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>输出：12</p>
-<h2 id="转载声明">转载声明</h2>
+<h2 id="可用于异常捕获">可用于异常捕获</h2>
+<p>golang中 defer,panic,recover 是很常用的三个特性，三者一起使用可以充当其他语言中 try…catch… 的角色，而defer本身又像其他语言的析构函数。</p>
+<p>可以在具体实现层 defer,panic,recover 也可以同时在最外层再 defer,panic,recover。异常捕获，按栈式，后入先出，一次性捕获，具体实现层捕获后，外层就不会再次捕获的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">r</span> <span class="o">!=</span><span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="转载声明">转载声明</h2>
 <blockquote>
 <p>作者：DukeAnn</p>
 <p>链接：https://learnku.com/articles/43494#reply138836</p>
