@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>面试汇总 - ZsmHub - Blog</title>
+  <title>Http - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总 参考原文 如何避坑公司 话说正规的公司是怎么样的？ 入" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="面试汇总" />
-<meta property="og:description" content="2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总 参考原文 如何避坑公司 话说正规的公司是怎么样的？ 入" />
+<meta property="og:title" content="Http" />
+<meta property="og:description" content="网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/" />
-<meta property="article:published_time" content="2020-02-09T09:43:27+08:00" />
-<meta property="article:modified_time" content="2020-02-09T09:43:27+08:00" />
-<meta itemprop="name" content="面试汇总">
-<meta itemprop="description" content="2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总 参考原文 如何避坑公司 话说正规的公司是怎么样的？ 入">
-<meta itemprop="datePublished" content="2020-02-09T09:43:27&#43;08:00" />
-<meta itemprop="dateModified" content="2020-02-09T09:43:27&#43;08:00" />
-<meta itemprop="wordCount" content="117">
+<meta property="og:url" content="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http/" />
+<meta property="article:published_time" content="2020-10-29T09:36:54+08:00" />
+<meta property="article:modified_time" content="2020-10-29T09:36:54+08:00" />
+<meta itemprop="name" content="Http">
+<meta itemprop="description" content="网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一">
+<meta itemprop="datePublished" content="2020-10-29T09:36:54&#43;08:00" />
+<meta itemprop="dateModified" content="2020-10-29T09:36:54&#43;08:00" />
+<meta itemprop="wordCount" content="268">
 
 
 
-<meta itemprop="keywords" content="面试题," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="面试汇总"/>
-<meta name="twitter:description" content="2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总 参考原文 如何避坑公司 话说正规的公司是怎么样的？ 入"/>
+<meta itemprop="keywords" content="http," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Http"/>
+<meta name="twitter:description" content="网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,14 +126,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">面试汇总</h1>
+      <h1 class="post-title">Http</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-02-09 </span>
+        <span class="post-time"> 2020-10-29 </span>
         <div class="post-category">
-            <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
+            <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
             </div>
-          <span class="more-meta"> 约 117 字 </span>
+          <span class="more-meta"> 约 268 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -144,28 +144,28 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#如何避坑公司">如何避坑公司</a></li>
+    <li><a href="#网络传输">网络传输</a></li>
+    <li><a href="#quic-概述">QUIC 概述</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <ol>
-<li>
-<p>2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总</p>
-<p><a href="https://github.com/0voice/interview_internal_reference">参考原文</a></p>
-</li>
-</ol>
-<h2 id="如何避坑公司">如何避坑公司</h2>
-<blockquote>
-<p>话说正规的公司是怎么样的？</p>
-</blockquote>
-<ol>
-<li>入职前必须有发 offer 邮件</li>
-<li>入职当天办理入职相关手续</li>
-<li>入职后必须有考勤记录</li>
-</ol>
-<p><a href="https://zhuanlan.zhihu.com/p/57298422">跳槽找工作避坑指南（2019版）</a></p>
+      <p><img src="/images/2020/QQ20201029-093740.png" alt="HTTP的通信技术发展史"></p>
+<h2 id="网络传输">网络传输</h2>
+<p>互联网传输的三个非常重要的特点：延时、丢包、抖动。</p>
+<p>延时和抖动天生就紧密相连，但它们其实并不同。延时是 <em>数据</em> 从网络上的一个端点移动到另一个端点所花费的时间，这是一个受多种因素影响的复杂的值。另一方面，抖动是两个 <em>数据包</em> 之间的延时差异。</p>
+<h2 id="quic-概述">QUIC 概述</h2>
+<p>Quic 全称 quick udp internet connection，“快速 UDP 互联网连接”，（和英文 quick 谐音，简称“快”）是由 google 提出的使用 udp 进行多路并发传输的协议。</p>
+<p>Quic 相比现在广泛应用的 http2+tcp+tls 协议有如下优势：</p>
+<ul>
+<li>减少了 TCP 三次握手及 TLS 握手时间。</li>
+<li>改进的拥塞控制。</li>
+<li>避免队头阻塞的多路复用。</li>
+<li>连接迁移。</li>
+<li>前向冗余纠错。</li>
+</ul>
+<p>优势概述：高可靠性、低延时的网络通信</p>
 
     </div>
 
@@ -177,7 +177,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-02-09
+        2020-10-29
         
     </span>
   </p>
@@ -203,16 +203,12 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+          <a href="/tags/http/">http</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">设计模式</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/">
-            <span class="next-text nav-default">中高级PHP面试题</span>
+        
+        <a class="next" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E5%9B%BE%E8%A7%A3tcp-ip/">
+            <span class="next-text nav-default">图解TCP IP</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -225,8 +221,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-02-09 09:43:27 \x2b0800 CST',
-        title: '面试汇总',
+        id: '2020-10-29 09:36:54 \x2b0800 CST',
+        title: 'Http',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

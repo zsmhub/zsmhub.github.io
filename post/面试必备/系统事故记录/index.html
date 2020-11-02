@@ -49,7 +49,7 @@
 <meta itemprop="description" content="数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承">
 <meta itemprop="datePublished" content="2020-08-26T10:27:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-26T10:27:51&#43;08:00" />
-<meta itemprop="wordCount" content="457">
+<meta itemprop="wordCount" content="463">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
             </div>
-          <span class="more-meta"> 约 457 字 </span>
+          <span class="more-meta"> 约 463 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -199,7 +199,7 @@ handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class=
 <p>事故解决方案：</p>
 </blockquote>
 <ol>
-<li>减少请求量</li>
+<li>做削峰处理，减少请求量</li>
 <li>在阿里云提工单，让他们解决失效从库失效和备胎主库问题。</li>
 <li>避免在系统使用高峰期，大量增删改数据。</li>
 <li>优化慢 SQL</li>

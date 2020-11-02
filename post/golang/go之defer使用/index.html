@@ -49,7 +49,7 @@
 <meta itemprop="description" content="golang defer 这个使用的执行流程一直很绕，所以决定写一篇文记录一下。 规则一：当defer被声明时，其参数就会被实时解析 案例一 1 2 3 4 5 6 7 8 9 10 11 12 13">
 <meta itemprop="datePublished" content="2020-05-30T09:02:27&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-30T09:02:27&#43;08:00" />
-<meta itemprop="wordCount" content="762">
+<meta itemprop="wordCount" content="987">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 762 字 </span>
+          <span class="more-meta"> 约 987 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -476,6 +476,15 @@
 <h2 id="可用于异常捕获">可用于异常捕获</h2>
 <p>golang中 defer,panic,recover 是很常用的三个特性，三者一起使用可以充当其他语言中 try…catch… 的角色，而defer本身又像其他语言的析构函数。</p>
 <p>可以在具体实现层 defer,panic,recover 也可以同时在最外层再 defer,panic,recover。异常捕获，按栈式，后入先出，一次性捕获，具体实现层捕获后，外层就不会再次捕获的。</p>
+<blockquote>
+<p>panic其实就是c++中的throw exception</p>
+<p>recover也是一个内建函数. recover就是c++中的catch.</p>
+</blockquote>
+<ul>
+<li>recover如果想起作用的话, 必须在defered函数中使用.</li>
+<li>在正常函数执行过程中, 调用recover没有任何作用, 他会返回nil. 如这样:fmt.Println(recover()) // 输出 nil</li>
+<li>如果当前的goroutine panic了, 那么recover将会捕获这个panic的值, 并且让程序正常执行下去, 不会让程序crash.</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -483,11 +492,13 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">r</span> <span class="o">!=</span><span class="kc">nil</span> <span class="p">{</span>
         <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Recovered in f&#34;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>

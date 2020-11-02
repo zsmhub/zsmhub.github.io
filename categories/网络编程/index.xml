@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 20 Oct 2020 11:30:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2020 09:36:54 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Http</title>
+      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http/</link>
+      <pubDate>Thu, 29 Oct 2020 09:36:54 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http/</guid>
+      <description>网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一</description>
+    </item>
     
     <item>
       <title>图解TCP IP</title>
