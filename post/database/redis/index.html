@@ -49,7 +49,7 @@
 <meta itemprop="description" content="缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使">
 <meta itemprop="datePublished" content="2019-01-03T22:38:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T22:38:49&#43;08:00" />
-<meta itemprop="wordCount" content="1893">
+<meta itemprop="wordCount" content="2023">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1893 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2023 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -227,6 +227,20 @@ function setTTLKey($key, $timeout = 300)
     }
     return false;
 }
+
+// 使用 sexnx 做互斥锁需注意：由于 setnx 和 expire 是分开两步进行的操作，不具有原子性。如果客户端在执行完 setnx 后崩溃了，那么就没有机会执行 expire 了，导致它一直持有该锁。
+$redis = Redis::connection();
+$currentTime = time();
+$cacheKey = 'subject:activate:more:' . \Auth::id();
+$ttl = 60;
+$errorMsg = '一分钟内只能发一次，请稍后再试';
+if (($lockTime = $redis-&gt;get($cacheKey)) &amp;&amp; ($currentTime - $lockTime &gt;= $ttl)) {
+    $redis-&gt;del([$cacheKey]);
+}
+if ($redis-&gt;setnx($cacheKey, $currentTime) == 0) {
+    return $this-&gt;message($errorMsg);
+}
+$redis-&gt;expire($cacheKey, $ttl);
 ```
 </code></pre>
 <h2 id="redis的持久化">redis的持久化</h2>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>数据传输方式汇总 - ZsmHub - Blog</title>
+  <title>Grpc - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="gRPC 官方文档中文版 gRPC 一开始由 google 开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。 gRPC 是什么 在 gRPC 里客户端应用可以像调用本地对象一样" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.69.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/grpc/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="数据传输方式汇总" />
-<meta property="og:description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人" />
+<meta property="og:title" content="Grpc" />
+<meta property="og:description" content="gRPC 官方文档中文版 gRPC 一开始由 google 开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。 gRPC 是什么 在 gRPC 里客户端应用可以像调用本地对象一样" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/" />
-<meta property="article:published_time" content="2020-04-10T15:02:25+08:00" />
-<meta property="article:modified_time" content="2020-04-10T15:02:25+08:00" />
-<meta itemprop="name" content="数据传输方式汇总">
-<meta itemprop="description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人">
-<meta itemprop="datePublished" content="2020-04-10T15:02:25&#43;08:00" />
-<meta itemprop="dateModified" content="2020-04-10T15:02:25&#43;08:00" />
-<meta itemprop="wordCount" content="557">
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/grpc/" />
+<meta property="article:published_time" content="2020-11-08T21:59:18+08:00" />
+<meta property="article:modified_time" content="2020-11-08T21:59:18+08:00" />
+<meta itemprop="name" content="Grpc">
+<meta itemprop="description" content="gRPC 官方文档中文版 gRPC 一开始由 google 开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。 gRPC 是什么 在 gRPC 里客户端应用可以像调用本地对象一样">
+<meta itemprop="datePublished" content="2020-11-08T21:59:18&#43;08:00" />
+<meta itemprop="dateModified" content="2020-11-08T21:59:18&#43;08:00" />
+<meta itemprop="wordCount" content="217">
 
 
 
-<meta itemprop="keywords" content="数据传输方式," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="数据传输方式汇总"/>
-<meta name="twitter:description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"/>
+<meta itemprop="keywords" content="grpc," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Grpc"/>
+<meta name="twitter:description" content="gRPC 官方文档中文版 gRPC 一开始由 google 开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。 gRPC 是什么 在 gRPC 里客户端应用可以像调用本地对象一样"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -126,15 +126,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">数据传输方式汇总</h1>
+      <h1 class="post-title">Grpc</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-04-10 </span>
+        <span class="post-time"> 2020-11-08 </span>
         <div class="post-category">
-            <a href="/categories/web-%E5%AE%89%E5%85%A8/"> Web 安全 </a>
+            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/"> 微服务架构 </a>
             </div>
-          <span class="more-meta"> 约 557 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 217 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
     </header>
@@ -144,68 +144,17 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#json">json</a></li>
-    <li><a href="#yaml">yaml</a></li>
-    <li><a href="#protobuf">protobuf</a></li>
+    <li><a href="#grpc-是什么">gRPC 是什么</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="json">json</h2>
-<p>JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。</p>
-<h2 id="yaml">yaml</h2>
-<p>YAML类似JSON，新的特性更强大，更适合人类阅读，也更紧凑。</p>
-<p>yaml支持的数据结构有三种：</p>
-<ol>
-<li>对象：键值对的集合，又称为映射（mapping）/ 哈希（hashes） / 字典（dictionary）</li>
-<li>数组：一组按次序排列的值，又称为序列（sequence） / 列表（list）</li>
-<li>纯量（scalars）：单个的、不可再分的值。字符串、布尔值、整数、浮点数、Null、时间、日期</li>
-</ol>
-<h2 id="protobuf">protobuf</h2>
-<p><a href="https://colobu.com/2019/10/03/protobuf-ultimate-tutorial-in-go/">Protobuf终极教程</a></p>
-<blockquote>
-<p>protoc 是工具</p>
-<p>protoc-gen-go 是生成.go文件的插件 配合protoc &ndash;go_out=XXX  使用  其他语言可能是 protoc-gen-java protoc &ndash;java_out=XXX</p>
-<p>golang/protobuf，是结构体的编译/转义，等于json包编译/转义的使用</p>
-</blockquote>
-<p>最近的项目中，一直使用Json做数据传输。Json用起来的确很方便。但相对于protobuf数据量更大些。做一个移动端应用，为用户省点流量还是很有必要的。</p>
-<blockquote>
-<p>protobuf优点</p>
-</blockquote>
-<ul>
-<li>性能更高，更加规范</li>
-<li>编解码速度快，数据体积小</li>
-<li>使用统一的规范，不用再担心大小写不同导致解析失败等蛋疼的问题了</li>
-</ul>
-<blockquote>
-<p>protobuf缺点</p>
-</blockquote>
-<ul>
-<li>改动协议字段，需要重新生成文件。</li>
-<li>数据没有可读性</li>
-</ul>
-<blockquote>
-<p>安装protoc</p>
-</blockquote>
-<ul>
-<li>macos可以用命令安装：brew install protobuf</li>
-<li>将proto文件转换成go文件：protoc &ndash;go_out=. project/proto/*.proto</li>
-</ul>
-<blockquote>
-<p>安装依赖包</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">go get github.com/golang/protobuf/proto
-go get github.com/golang/protobuf/protoc-gen-go
-</code></pre></td></tr></table>
-</div>
-</div>
+      <p><a href="https://doc.oschina.net/grpc?t=58008">gRPC 官方文档中文版</a></p>
+<p>gRPC 一开始由 google 开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。</p>
+<h2 id="grpc-是什么">gRPC 是什么</h2>
+<p>在 gRPC 里客户端应用可以像调用本地对象一样直接调用另一台不同的机器上服务端应用的方法，使得您能够更容易地创建分布式应用和服务。与许多 RPC 系统类似，gRPC 也是基于以下理念：定义一个服务，指定其能够被远程调用的方法（包含参数和返回类型）。在服务端实现这个接口，并运行一个 gRPC 服务器来处理客户端调用。在客户端拥有一个存根能够像服务端一样的方法。</p>
+
     </div>
 
     <div class="post-copyright">
@@ -216,7 +165,7 @@ go get github.com/golang/protobuf/protoc-gen-go
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-04-10
+        2020-11-08
         
     </span>
   </p>
@@ -242,16 +191,12 @@ go get github.com/golang/protobuf/protoc-gen-go
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F/">数据传输方式</a>
+          <a href="/tags/grpc/">grpc</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/im/im%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">IM 基础知识</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/">
-            <span class="next-text nav-default">Mysql 基础知识二</span>
+        
+        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E4%B8%A4%E5%88%86%E9%92%9F%E8%A7%84%E5%88%99/">
+            <span class="next-text nav-default">两分钟规则</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -264,8 +209,8 @@ go get github.com/golang/protobuf/protoc-gen-go
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-04-10 15:02:25 \x2b0800 CST',
-        title: '数据传输方式汇总',
+        id: '2020-11-08 21:59:18 \x2b0800 CST',
+        title: 'Grpc',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
