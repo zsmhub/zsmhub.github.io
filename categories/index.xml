@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 08 Nov 2020 21:59:18 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2020 09:49:41 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>后端</title>
+      <link>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</link>
+      <pubDate>Thu, 12 Nov 2020 09:49:41 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>微服务架构</title>
@@ -108,15 +117,6 @@
       <pubDate>Mon, 17 Aug 2020 16:38:01 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>后端</title>
-      <link>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</link>
-      <pubDate>Mon, 10 Aug 2020 09:22:30 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</guid>
       <description></description>
     </item>
     

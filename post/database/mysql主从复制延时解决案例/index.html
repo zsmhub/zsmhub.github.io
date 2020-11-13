@@ -49,7 +49,7 @@
 <meta itemprop="description" content="MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。 如果主从复制之间出现">
 <meta itemprop="datePublished" content="2020-05-07T09:34:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-07T09:34:49&#43;08:00" />
-<meta itemprop="wordCount" content="3679">
+<meta itemprop="wordCount" content="4314">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3679 字 </span>
-          <span class="more-meta"> 预计阅读 8 分钟 </span>
+          <span class="more-meta"> 约 4314 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
     </header>
@@ -186,6 +186,7 @@
         <li><a href="#解决思路-5">解决思路</a></li>
       </ul>
     </li>
+    <li><a href="#案例七mysql-主从同步延时问题">案例七：MySQL 主从同步延时问题</a></li>
     <li><a href="#总结">总结</a></li>
     <li><a href="#转载声明">转载声明</a></li>
   </ul>
@@ -272,6 +273,33 @@ set sql_log_bin=0后，分别在主从库上手动执行DDL（此操作对于某
 <p>部分UCloud用户对于数据库的主从会使用读写分离模式，读请求大部分在从库上执行。在业务有大量读请求的场景下，从库会产生比主库大得多的性能压力。有的用户甚至会在从库运行十分耗费计算资源的OLAP业务，这也对从库造成了更高的性能挑战，这些都会造成主从复制的延时。</p>
 <h3 id="解决思路-5">解决思路</h3>
 <p>这种情况下，我们会建议用户建立更多从库，打散读请求，降低现有从库实例的压力。对于OLAP业务来说，可以专门建立一个从库来做OLAP业务，并对这个从库，允许适当的主从复制延时。</p>
+<h2 id="案例七mysql-主从同步延时问题">案例七：MySQL 主从同步延时问题</h2>
+<p>以前线上确实处理过因为主从同步延时问题而导致的线上的 bug，属于小型的生产事故。</p>
+<p>是这个么场景。有个同学是这样写代码逻辑的。先插入一条数据，再把它查出来，然后更新这条数据。在生产环境高峰期，写并发达到了 2000/s，这个时候，主从复制延时大概是在小几十毫秒。线上会发现，每天总有那么一些数据，我们期望更新一些重要的数据状态，但在高峰期时候却没更新。用户跟客服反馈，而客服就会反馈给我们。</p>
+<p>我们通过 MySQL 命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">show status
+</code></pre></td></tr></table>
+</div>
+</div><p>查看 Seconds_Behind_Master，可以看到从库复制主库的数据落后了几 ms。</p>
+<p>一般来说，如果主从延迟较为严重，有以下解决方案：</p>
+<ul>
+<li>分库，将一个主库拆分为多个主库，每个主库的写并发就减少了几倍，此时主从延迟可以忽略不计。</li>
+<li>打开 MySQL 支持的并行复制，多个库并行复制。如果说某个库的写入并发就是特别高，单库写并发达到了 2000/s，并行复制还是没意义。</li>
+<li>重写代码，写代码的同学，要慎重，插入数据时立马查询可能查不到。</li>
+<li>如果确实是存在必须先插入，立马要求就查询到，然后立马就要反过来执行一些操作，对这个查询设置直连主库。不推荐这种方法，你要是这么搞，读写分离的意义就丧失了。</li>
+</ul>
+<blockquote>
+<p>阿里数据库：有 2 个方案可以让读请求路由到主库：『发红包场景可能需要用到，为了避免主从延迟问题，让红包查询 sql 只读主库』</p>
+</blockquote>
+<ol>
+<li>包含了事务的所有请求只会路由到主库（包括事务读）。</li>
+<li>所有被分配读权重的只读实例处于不可用状态或其延迟时间超过了您所设置的延迟阈值，系统将其判定为不可用状态</li>
+</ol>
 <h2 id="总结">总结</h2>
 <p>在使用MySQL的主从复制模式进行数据复制时，主从复制延时是一个需要考量的关键因素。它会影响数据的一致性，进而影响数据库高可用的容灾切换。</p>
 <p>在遇到数据库之间出现主从复制延时的情况下，我们团队基于过往经验，归纳出以下方法与流程来协助排查问题：</p>
