@@ -27,7 +27,7 @@
       <pubDate>Sun, 30 Aug 2020 15:57:50 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/</guid>
-      <description>扇出和扇入 通常情况下多个函数可以同时从一个channel接收数据，直到channel关闭，这种情况被称作扇出。这是一种将工作分布给一组工作者</description>
+      <description>代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可</description>
     </item>
     
     <item>
