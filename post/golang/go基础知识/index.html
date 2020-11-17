@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go">
 <meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="8019">
+<meta itemprop="wordCount" content="7933">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8019 字 </span>
-          <span class="more-meta"> 预计阅读 17 分钟 </span>
+          <span class="more-meta"> 约 7933 字 </span>
+          <span class="more-meta"> 预计阅读 16 分钟 </span>
         
       </div>
     </header>
@@ -1341,20 +1341,37 @@ ToDo Something&hellip;</li>
 </div>
 </div></li>
 <li>
-<p>计算字符串长度</p>
-<p>len()和RuneCountInString()</p>
-<p>Go 语言的字符串都以 UTF-8 格式保存，每个中文占用 3 个字节，因此使用 len() 获得 1 个中文文字对应为 3 个字节。</p>
-<p>如果想计算中文的个数，就需要使用 Go 语言中 UTF-8 包提供的 RuneCountInString() 函数，统计 Unicode 字符数量。</p>
+<p>switch 语句中的 case 代码块会默认带上 break；也可以改写 case 为多条件判断</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">utf8</span><span class="p">.</span><span class="nf">RuneCountInString</span><span class="p">(</span><span class="s">&#34;忍者&#34;</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">isSpace</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">char</span> <span class="kt">byte</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="nx">char</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="sc">&#39; &#39;</span><span class="p">,</span> <span class="sc">&#39;\t&#39;</span><span class="p">:</span> <span class="c1">// 多 case 条件判断
+</span><span class="c1"></span>        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">isSpace</span><span class="p">(</span><span class="sc">&#39;\t&#39;</span><span class="p">))</span>    <span class="c1">// true
+</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">isSpace</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">))</span>    <span class="c1">// true
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
+<p>}
+```</p>
 <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

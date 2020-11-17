@@ -49,7 +49,7 @@
 <meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想">
 <meta itemprop="datePublished" content="2020-11-13T11:17:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="wordCount" content="539">
+<meta itemprop="wordCount" content="843">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 539 字 </span>
+          <span class="more-meta"> 约 843 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -147,6 +147,9 @@
     <li><a href="#代码格式化">代码格式化</a></li>
     <li><a href="#json的坑">json的坑</a></li>
     <li><a href="#slice本身就是引用类型">slice本身就是引用类型</a></li>
+    <li><a href="#单引号">单引号</a></li>
+    <li><a href="#len--utf8runecountinstring">len &amp; utf8.RuneCountInString</a></li>
+    <li><a href="#在一个值为-nil-的-channel-上发送和接收数据将永久阻塞">在一个值为 nil 的 channel 上发送和接收数据将永久阻塞</a></li>
   </ul>
 </nav>
   </div>
@@ -274,6 +277,64 @@
 </span><span class="c1"></span>    <span class="p">}(</span><span class="nx">x</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// [7 2 3]
 </span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="单引号">单引号</h2>
+<p>单引号则用于表示Golang的一个特殊类型：rune，类似其他语言的byte但又不完全一样，是指：码点字面量（Unicode code point），不做任何转义的原始内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="o">:=</span> <span class="s">&#34;text&#34;</span>
+    <span class="nx">xRunes</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+    <span class="nx">xRunes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;我&#39;</span> <span class="c1">// 此处使用单引号
+</span><span class="c1"></span>    <span class="nx">x</span> <span class="p">=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">xRunes</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 我ext
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="len--utf8runecountinstring">len &amp; utf8.RuneCountInString</h2>
+<p>Go 的内建函数 len() 返回的是字符串的 byte 数量(或unicode编码数量)；如果要得到字符串的字符数，可使用 &ldquo;unicode/utf8&rdquo; 包中的 RuneCountInString(str string) (n int)</p>
+<p>func main() {
+x := &ldquo;abc中国人&rdquo;
+fmt.Println(len(x)) // 输出：12
+fmt.Println(utf8.RuneCountInString(x)) // 输出：6
+}</p>
+<h2 id="在一个值为-nil-的-channel-上发送和接收数据将永久阻塞">在一个值为 nil 的 channel 上发送和接收数据将永久阻塞</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span> <span class="kt">int</span> <span class="c1">// 未初始化，值为 nil
+</span><span class="c1"></span>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="nx">i</span>
+        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Result: &#34;</span><span class="p">,</span> <span class="o">&lt;-</span><span class="nx">ch</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div>
