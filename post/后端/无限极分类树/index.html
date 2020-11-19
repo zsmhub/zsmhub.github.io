@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>无限极分类树 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这中形式。 另一种是nested set，" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="无限极分类树" />
+<meta property="og:description" content="分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这中形式。 另一种是nested set，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/" />
+<meta property="article:published_time" content="2020-11-19T09:33:51+08:00" />
+<meta property="article:modified_time" content="2020-11-19T09:33:51+08:00" />
+<meta itemprop="name" content="无限极分类树">
+<meta itemprop="description" content="分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这中形式。 另一种是nested set，">
+<meta itemprop="datePublished" content="2020-11-19T09:33:51&#43;08:00" />
+<meta itemprop="dateModified" content="2020-11-19T09:33:51&#43;08:00" />
+<meta itemprop="wordCount" content="1233">
+
+
+
+<meta itemprop="keywords" content="后端," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="无限极分类树"/>
+<meta name="twitter:description" content="分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这中形式。 另一种是nested set，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">无限极分类树</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-11-19 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+            </div>
+          <span class="more-meta"> 约 1233 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#分类树">分类树</a></li>
+    <li><a href="#php递归实现无限极分类树">php递归实现无限极分类树</a></li>
+    <li><a href="#另类的无限极分类树设计">另类的无限极分类树设计</a></li>
+    <li><a href="#左右值无限极分类">左右值无限极分类</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="分类树">分类树</h2>
+<p>一般的分类树状结构有两种方式：</p>
+<ul>
+<li>一种是adjacency list，也就是是id，parent_id这中形式。</li>
+<li>另一种是nested set，即左右值的形式。</li>
+</ul>
+<p>左右值形式查询起来比较高效，无需递归等，推荐使用，但是没有pid形式简单直观。</p>
+<p>无限极分类树的使用场景：菜单、组织架构等</p>
+<p>效率对比：递归效率低，引用方式效率高。</p>
+<h2 id="php递归实现无限极分类树">php递归实现无限极分类树</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="c1">// 采用引用方式：生成无限极分类树『tip：仅可用于数据量少的场景』
+</span><span class="c1"></span>
+<span class="nv">$arr</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目一&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目二&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目三&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">4</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目四&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">5</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目五&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">6</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">5</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目六&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">7</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">5</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目七&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">8</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">6</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目八&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">9</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目九&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">10</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目十&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">11</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">10</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目十一&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">12</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">11</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目十二&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">13</span> <span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目十三&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&#34;id&#34;</span> <span class="o">=&gt;</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&#34;pid&#34;</span> <span class="o">=&gt;</span> <span class="mi">13</span> <span class="p">,</span> <span class="s1">&#39;cat&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;栏目十四&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">function</span> <span class="nf">make_tree</span><span class="p">(</span><span class="nv">$arr</span><span class="p">,</span> <span class="nv">$pidInit</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$refer</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="nv">$tree</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$arr</span> <span class="k">as</span> <span class="nv">$k</span> <span class="o">=&gt;</span> <span class="nv">$v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$refer</span><span class="p">[</span><span class="nv">$v</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$arr</span><span class="p">[</span><span class="nv">$k</span><span class="p">];</span>  <span class="c1">// 创建主键的数组引用
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$arr</span> <span class="k">as</span> <span class="nv">$k</span> <span class="o">=&gt;</span> <span class="nv">$v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$pid</span> <span class="o">=</span> <span class="nv">$v</span><span class="p">[</span><span class="s1">&#39;pid&#39;</span><span class="p">];</span>   <span class="c1">// 获取当前分类的父级id
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="nv">$pid</span> <span class="o">==</span> <span class="nv">$pidInit</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$tree</span><span class="p">[]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$arr</span><span class="p">[</span><span class="nv">$k</span><span class="p">];</span>   <span class="c1">// 获取规定的栏目及子栏目{$pidInit}
+</span><span class="c1"></span>        <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$refer</span><span class="p">[</span><span class="nv">$pid</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$refer</span><span class="p">[</span><span class="nv">$pid</span><span class="p">][</span><span class="s1">&#39;subcat&#39;</span><span class="p">][]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$arr</span><span class="p">[</span><span class="nv">$k</span><span class="p">];</span>  <span class="c1">// 如果存在父级栏目，则添加进父级栏目的子栏目数组中
+</span><span class="c1"></span>        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$tree</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$cat</span> <span class="o">=</span> <span class="nx">make_tree</span><span class="p">(</span><span class="nv">$arr</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nx">print_r</span><span class="p">(</span><span class="nv">$cat</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="另类的无限极分类树设计">另类的无限极分类树设计</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">部门无限极分类案例的建表</span><span class="k">sql</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">t_department</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">smallint</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;部门ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#34;&#34;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;部门名称&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_time</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">updated_time</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="o">`</span><span class="n">name_UNIQUE</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;部门信息表&#39;</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">t_department_tree</span><span class="o">`</span> <span class="p">(</span>
+    <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">INT</span> <span class="n">UNSIGNED</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">children_id</span><span class="o">`</span> <span class="nb">SMALLINT</span> <span class="n">UNSIGNED</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span> <span class="k">COMMENT</span> <span class="s1">&#39;子节点ID&#39;</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">parent_id</span><span class="o">`</span> <span class="nb">SMALLINT</span> <span class="n">UNSIGNED</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span> <span class="k">COMMENT</span> <span class="s1">&#39;父节点ID&#39;</span><span class="p">,</span>
+    <span class="o">`</span><span class="n">depth</span><span class="o">`</span><span class="nb">SMALLINT</span> <span class="n">UNSIGNED</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="mi">0</span> <span class="k">COMMENT</span> <span class="s1">&#39;深度&#39;</span><span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;部门关系树，children_id=parent_id则为初始节点&#39;</span><span class="p">;</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">t_department</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">created_time</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">updated_time</span><span class="o">`</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;拓展与加盟中心&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:16:10&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:17:01&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;产品中心&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:16:10&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:17:02&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;运营中心&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:16:10&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:17:03&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;增值与服务中心&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:16:10&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:17:04&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;后端支持&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:16:10&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-12-19 18:17:04&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;运营管理部&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-06-14 12:38:58.000&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-06-14 12:38:58.000&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;客服管理部&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-06-14 12:39:11.000&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-06-14 12:39:11.000&#39;</span><span class="p">);</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">t_department_tree</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">children_id</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">parent_id</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">depth</span><span class="o">`</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="左右值无限极分类">左右值无限极分类</h2>
+<p><a href="https://blog.csdn.net/falcom_fans/article/details/75675014">参考文章</a></p>
+<ul>
+<li>优点：查询效率高，排序也很方便</li>
+<li>缺点：编辑是个麻烦</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-11-19
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">
+            <span class="next-text nav-default">Go的一些坑</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2020-11-19 09:33:51 \x2b0800 CST',
+        title: '无限极分类树',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
