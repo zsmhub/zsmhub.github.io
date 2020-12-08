@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 总体来说，设计模式分" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="设计模式" />
-<meta property="og:description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 总体来说，设计模式分" />
+<meta property="og:description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" />
 <meta property="article:published_time" content="2020-02-15T21:05:40+08:00" />
 <meta property="article:modified_time" content="2020-02-15T21:05:40+08:00" />
 <meta itemprop="name" content="设计模式">
-<meta itemprop="description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 总体来说，设计模式分">
+<meta itemprop="description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接">
 <meta itemprop="datePublished" content="2020-02-15T21:05:40&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-15T21:05:40&#43;08:00" />
-<meta itemprop="wordCount" content="1720">
+<meta itemprop="wordCount" content="1496">
 
 
 
 <meta itemprop="keywords" content="设计模式," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="设计模式"/>
-<meta name="twitter:description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 总体来说，设计模式分"/>
+<meta name="twitter:description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
             </div>
-          <span class="more-meta"> 约 1720 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 1496 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -147,6 +147,7 @@
     <li><a href="#设计模式简介">设计模式简介</a></li>
     <li><a href="#常见的设计模式">常见的设计模式</a></li>
     <li><a href="#工作案例">工作案例</a></li>
+    <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
   </div>
@@ -154,54 +155,200 @@
     <div class="post-content">
       <h2 id="设计模式简介">设计模式简介</h2>
 <p>设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。</p>
+<p><a href="http://wen.topgoer.com/docs/golang-design-pattern/golang-design-pattern-1cbgha2ltg796">Go设计模式学习链接</a></p>
 <p>总体来说，设计模式分为三大类：</p>
 <ul>
-<li>创建型模式（五种）：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式</li>
-<li>结构型模式（七种）：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式</li>
-<li>行为型模式（十一种）：策策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</li>
+<li>创建型模式（五种）：单例模式、工厂模式、抽象工厂模式、创建者模式、原型模式</li>
+<li>结构型模式（七种）：适配器模式、代理模式、装饰器模式、外观模式、桥接模式、组合模式、享元模式</li>
+<li>行为型模式（十一种）：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</li>
 </ul>
 <h2 id="常见的设计模式">常见的设计模式</h2>
 <ol>
 <li>
-<p>单例模式</p>
-<p>意图：保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
-<p>主要解决：一个全局使用的类频繁地创建与销毁。</p>
-<p>何时使用：当您想控制实例数目，节省系统资源的时候。</p>
-<p>如何解决：判断系统是否已经有这个单例，如果有则返回，如果没有则创建。</p>
-<p>关键代码：构造函数是私有的。</p>
-<p>应用实例： 1、一个国家只能有一个总统。 2、Windows 是多进程多线程的，在操作一个文件的时候，就不可避免地出现多个进程或线程同时操作一个文件的现象，所以所有文件的处理必须通过唯一的实例来进行。 3、一些设备管理器常常设计为单例模式，比如一个电脑有两台打印机，在输出的时候就要处理不能两台打印机打印同一个文件。</p>
-<p>优点： 1、在内存里只有一个实例，减少了内存的开销，尤其是频繁的创建和销毁实例（比如管理学院首页页面缓存）。 2、避免对资源的多重占用（比如写文件操作）。</p>
-<p>缺点：没有接口，不能继承，与单一职责原则冲突，一个类应该只关心内部逻辑，而不关心外面怎么样来实例化。</p>
-<p>使用场景： 1、要求生产唯一序列号。 2、WEB 中的计数器，不用每次刷新都在数据库里加一次，用单例先缓存起来。 3、创建的一个对象需要消耗的资源过多，比如 I/O 与数据库的连接等。</p>
-<p>注意事项：getInstance() 方法中需要使用同步锁 synchronized (Singleton.class) 防止多线程同时进入造成 instance 被多次实例化。</p>
+<p>单例模式（最简单的一种设计模式）</p>
+<p>使用懒惰模式的单例模式，使用双重检查加锁保证线程安全『对象仅实例化一次』</p>
 </li>
 <li>
-<p>工厂模式</p>
-<p>在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
-<p>意图：定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。</p>
-<p>主要解决：主要解决接口选择的问题。</p>
-<p>何时使用：我们明确地计划不同条件下创建不同实例时。</p>
-<p>如何解决：让其子类实现工厂接口，返回的也是一个抽象的产品。</p>
-<p>关键代码：创建过程在其子类执行。</p>
+<p>工厂模式 vs 抽象工厂模式</p>
+<blockquote>
+<p>定义</p>
+</blockquote>
+<ul>
+<li>工厂模式 定义一个用于创建对象的接口，让子类决定实例化哪一个类</li>
+<li>抽象工厂模式 为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类</li>
+</ul>
+<blockquote>
+<p>区别</p>
+</blockquote>
+<p>工厂模式针对的是一个产品等级结构 ，抽象工厂模式针对的是面向多个产品等级结构的。『示例：在每一个层次，种菜工人所关心的对象也不一样，在简单工厂模式下，工人要想到种植萝卜还是白菜，在工厂模式下，工人想到是种植根菜还是茎菜，而在抽象工厂模式下，则关心种植基因菜还是非基因菜。』</p>
+<p><img src="/images/2020/QQ20201130-174630.png" alt="工厂模式和抽象工厂模式的区别"></p>
+<p><img src="/images/2020/QQ20201130-175923.png" alt="示例1"></p>
+<p><img src="/images/2020/QQ20201130-175958.png" alt="示例2">)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//Operator 是被封装的实际类接口
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Operator</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">SetA</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+    <span class="nf">Result</span><span class="p">()</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">OperatorB</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">SetB</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+    <span class="nf">Result</span><span class="p">()</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="c1">//OperatorFactory 采用了工厂模式
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">OperatorFactory</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">Create</span><span class="p">()</span> <span class="nx">Operator</span> <span class="c1">// 种菜
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="c1">//OperatorFactory 采用了抽象工厂模式
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">OperatorFactory2</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">CreateA</span><span class="p">()</span> <span class="nx">Operator</span>  <span class="c1">// 种根菜
+</span><span class="c1"></span>    <span class="nf">CreateB</span><span class="p">()</span> <span class="nx">OperatorB</span> <span class="c1">// 种芹菜
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建者模式</p>
+<p>应用场景：一些基本组件不会变，而其组合经常变化的时候。『有相同的接口方法，但各自拥有特殊的接口方法』</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Builder</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">Part1</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Director</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">builder</span> <span class="nx">Builder</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">d</span> <span class="o">*</span><span class="nx">Director</span><span class="p">)</span> <span class="nf">Construct</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">d</span><span class="p">.</span><span class="nx">builder</span><span class="p">.</span><span class="nf">Part1</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">NewDirector</span><span class="p">(</span><span class="nx">builder</span> <span class="nx">Builder</span><span class="p">)</span> <span class="o">*</span><span class="nx">Director</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">Director</span><span class="p">{</span>
+        <span class="nx">builder</span><span class="p">:</span> <span class="nx">builder</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Builder1</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="kt">string</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder1</span><span class="p">)</span> <span class="nf">Part1</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">result</span> <span class="o">+=</span> <span class="s">&#34;1&#34;</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder1</span><span class="p">)</span> <span class="nf">GetResult</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span> <span class="c1">// Builder1 特殊方法
+</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nx">result</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Builder2</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="kt">int</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder2</span><span class="p">)</span> <span class="nf">Part1</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">result</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder2</span><span class="p">)</span> <span class="nf">GetResult2</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span> <span class="c1">// Builder2 特殊方法
+</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nx">result</span>
+<span class="p">}</span>
+
+<span class="c1">// 测试用例
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">TestBuilder1</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">builder</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Builder1</span><span class="p">{}</span>
+    <span class="nx">director</span> <span class="o">:=</span> <span class="nf">NewDirector</span><span class="p">(</span><span class="nx">builder</span><span class="p">)</span>
+    <span class="nx">director</span><span class="p">.</span><span class="nf">Construct</span><span class="p">()</span>
+    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">builder</span><span class="p">.</span><span class="nf">GetResult</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nx">res</span> <span class="o">!=</span> <span class="s">&#34;1&#34;</span> <span class="p">{</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Builder1 fail expect 123 acture %s&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>适配器模式</p>
+<p>意图：将一个类的接口转换成客户希望的另外一个接口。适配器模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
+<p>主要解决：主要解决在软件系统中，常常要将一些&quot;现存的对象&quot;放到新的环境中，而新环境要求的接口是现对象不能满足的。</p>
+<p>优点： 1、可以让任何两个没有关联的类一起运行。 2、提高了类的复用。 3、增加了类的透明度。 4、灵活性好。</p>
+<p>缺点： 过多地使用适配器，会让系统非常零乱，不易整体进行把握。比如，明明看到调用的是 A 接口，其实内部被适配成了 B 接口的实现，一个系统如果太多出现这种情况，无异于一场灾难。因此如果不是很有必要，可以不使用适配器，而是直接对系统进行重构。</p>
+<p>使用场景：有动机地修改一个正常运行的系统的接口，这时应该考虑使用适配器模式。</p>
 </li>
 <li>
-<p>抽象工厂模式</p>
-<p>抽象工厂模式（Abstract Factory Pattern）是围绕一个超级工厂创建其他工厂。该超级工厂又称为其他工厂的工厂。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
-<p>在抽象工厂模式中，接口是负责创建一个相关对象的工厂，不需要显式指定它们的类。每个生成的工厂都能按照工厂模式提供对象。</p>
-<p>意图：提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</p>
-<p>主要解决：主要解决接口选择的问题。</p>
-<p>何时使用：系统的产品有多于一个的产品族，而系统只消费其中某一族的产品。</p>
-<p>如何解决：在一个产品族里面，定义多个产品。</p>
-<p>关键代码：在一个工厂里聚合多个同类产品。</p>
-</li>
-<li>
-<p>观察者模式</p>
-<p>当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。</p>
-<p>意图：定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
-<p>主要解决：一个对象状态改变给其他对象通知的问题，而且要考虑到易用和低耦合，保证高度的协作。</p>
-<p>何时使用：一个对象（目标对象）的状态发生改变，所有的依赖对象（观察者对象）都将得到通知，进行广播通知。</p>
-<p>如何解决：使用面向对象技术，可以将这种依赖关系弱化。</p>
-<p>关键代码：在抽象类里有一个 ArrayList 存放观察者们。</p>
+<p>代理模式</p>
+<p>代理模式用于延迟处理操作或者在进行实际操作前后进行其它处理。</p>
+<p>实际案例：如控制器层调用业务层的方法前，可以做一些参数验证等，调用业务层的方法后，再做一些数据封装等，最终输出结果。整理流程来看，控制器层的用法就是代理模式。</p>
 </li>
 </ol>
 <h2 id="工作案例">工作案例</h2>
@@ -215,6 +362,8 @@
 <p>典型的客户端 - 服务端模式</p>
 </li>
 </ol>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="https://cloud.tencent.com/developer/article/1523363">设计模式中工厂方法与抽象工厂之间的区别联系</a></p>
 
     </div>
 

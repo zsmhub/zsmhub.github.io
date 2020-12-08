@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go">
 <meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="7933">
+<meta itemprop="wordCount" content="8018">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 7933 字 </span>
-          <span class="more-meta"> 预计阅读 16 分钟 </span>
+          <span class="more-meta"> 约 8018 字 </span>
+          <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
     </header>
@@ -237,6 +237,8 @@
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">env</span> <span class="c1">// 用于打印Go语言环境信息
@@ -266,7 +268,9 @@
 </span><span class="c1"></span>
 <span class="k">go</span> <span class="nx">fix</span>  <span class="c1">// 用于将你的 Go 代码从旧的发行版迁移到最新的发行版，它主要负责简单的、重复的、枯燥无味的修改工作，如果像 API 等复杂的函数修改，工具则会给出文件名和代码行数的提示以便让开发人员快速定位并升级代码。
 </span><span class="c1"></span>
-<span class="k">go</span> <span class="nx">test</span> <span class="c1">// 这是一个轻量级的单元测试框架
+<span class="err">#</span> <span class="nx">单元测试</span>
+<span class="k">go</span> <span class="nx">test</span> <span class="p">.</span> <span class="c1">// 这是一个轻量级的单元测试框架
+</span><span class="c1"></span><span class="k">go</span> <span class="nx">test</span> <span class="o">-</span><span class="nx">v</span> <span class="p">.</span><span class="o">/</span><span class="nx">local_test</span><span class="p">.</span><span class="k">go</span> <span class="nx">local</span><span class="p">.</span><span class="k">go</span> <span class="nx">local2</span><span class="p">.</span><span class="k">go</span> <span class="c1">// 测试单个文件，一定要带上被测试的原文件，如果原文件有其他引用，也需一并带上。
 </span></code></pre></td></tr></table>
 </div>
 </div><h2 id="go-基础知识">Go 基础知识</h2>
@@ -786,9 +790,9 @@ ToDo Something&hellip;</li>
 </div></li>
 <li>
 <p>interface</p>
-<p>泛型编程: 如interface{}，
+<p>泛型编程: 如interface{}『定义一个通用的数据类型』，
 不依赖于具体的数据类型的编程方式，即函数传参不限制数据类型。</p>
-<p>接口定义了一组方法（方法集），但是这些方法不包含（实现）代码：它们没有被实现（它们是抽象的）。接口里也不能包含变量。</p>
+<p>接口定义了一组方法（方法集），但是这些方法不包含（实现）代码：它们没有被实现（它们是抽象的）。接口里也不能包含变量。『适用场景：定时任务』</p>
 <p>接口的名字由方法名加 [e]r 后缀组成，例如 Printer、Reader、Writer、Logger、Converter 等等。还有一些不常用的方式（当后缀 er 不合适时），比如 Recoverable，此时接口名以 able 结尾，或者以 I 开头（像 .NET 或 Java 中那样）。</p>
 <p>用 类型断言 来测试在某个接口 varI 是否包含某个结构体类型 T 的值</p>
 <div class="highlight"><div class="chroma">
@@ -1354,6 +1358,7 @@ ToDo Something&hellip;</li>
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1366,12 +1371,15 @@ ToDo Something&hellip;</li>
 <span class="p">}</span>
 <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">isSpace</span><span class="p">(</span><span class="sc">&#39;\t&#39;</span><span class="p">))</span>    <span class="c1">// true
 </span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">isSpace</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">))</span>    <span class="c1">// true
-</span></code></pre></td></tr></table>
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
+<li>
+<p>type 关键字</p>
+<p><a href="https://studygolang.com/articles/17179">使用案例</a></p>
+</li>
 </ol>
-<p>}
-```</p>
 <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
