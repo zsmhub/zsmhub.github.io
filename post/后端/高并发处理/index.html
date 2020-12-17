@@ -49,7 +49,7 @@
 <meta itemprop="description" content="高并发之问题描述 某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种">
 <meta itemprop="datePublished" content="2019-07-06T13:32:31&#43;08:00" />
 <meta itemprop="dateModified" content="2019-07-06T13:32:31&#43;08:00" />
-<meta itemprop="wordCount" content="1085">
+<meta itemprop="wordCount" content="1242">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1085 字 </span>
+          <span class="more-meta"> 约 1242 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -166,8 +166,55 @@
 <blockquote>
 <p>最优方案</p>
 </blockquote>
-<p>乐观锁思路：观锁，大多是基于数据版本   Version ）记录机制实现。何谓数据版本？即为数据增加一个版本标识，在基于数据库表的版本解决方案中，一般是通过为数据库表增加一个 “version”字段来实现。读取出数据时，将此版本号一同读出并存储在redis中，之后更新时，对此版本号加一。此时，将提交数据的版本数据与数据库表对应记录的当前版本信息进行比对，如果提交的数据版本号大于数据库表当前版本号，则予以更新并更新数据库表和redis的版本号，否则认为是过期数据并重新循环读取redis中的版本号继续操作。</p>
-<blockquote>
+<p>乐观锁思路：观锁，大多是基于数据版本  Version 记录机制实现。何谓数据版本？即为数据增加一个版本标识，在基于数据库表的版本解决方案中，一般是通过为数据库表增加一个 “version”字段来实现。读取出数据时，将此版本号一同读出并存储在redis中，之后更新时，对此版本号加一。此时，将提交数据的版本数据与数据库表对应记录的当前版本信息进行比对，如果提交的数据版本号大于数据库表当前版本号，则予以更新并更新数据库表和redis的版本号，否则认为是过期数据并重新循环读取redis中的版本号继续操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">update</span> <span class="n">t_goods</span>
+<span class="k">set</span> <span class="n">status</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="k">version</span><span class="o">=</span><span class="k">version</span><span class="o">+</span><span class="mi">1</span>
+<span class="k">where</span> <span class="n">id</span><span class="o">=#</span><span class="err">{</span><span class="n">id</span><span class="err">}</span> <span class="k">and</span> <span class="k">version</span><span class="o">=#</span><span class="err">{</span><span class="k">version</span><span class="err">}</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>悲观锁会“悲观地”假定大概率会发生并发更新冲突，<em>访问、处理数据前就加排他锁</em>（如 redis 排他锁），在整个数据处理过程中锁定数据，事务提交或回滚后才释放锁。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">/**
+ * redis排他锁：拒绝并发相同的请求
+ * @param string $key
+ * @param $value
+ * @param int $ttl
+ * @return bool
+ */
+public static function setNxWithTTL(string $key, $value, int $ttl = 300): bool
+{
+    if ((Redis::connection(&#39;default&#39;))-&gt;set($key, $value, &#39;ex&#39;, $ttl, &#39;nx&#39;)) {
+        return true;
+    }
+    return false;
+}
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <p>在开发高并发系统时有三把利器用来保护系统：缓存、降级和限流。</p>
 </blockquote>
 <p><a href="https://www.ymq.io/2018/08/11/RateLimiter/">接口限流算法：漏桶算法&amp;令牌桶算法</a></p>

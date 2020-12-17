@@ -49,7 +49,7 @@
 <meta itemprop="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中">
 <meta itemprop="datePublished" content="2019-09-01T17:12:23&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-01T17:12:23&#43;08:00" />
-<meta itemprop="wordCount" content="3334">
+<meta itemprop="wordCount" content="3290">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3334 字 </span>
+          <span class="more-meta"> 约 3290 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -225,7 +225,7 @@
 <h2 id="乐观锁与悲观锁">乐观锁与悲观锁</h2>
 <p>乐观锁与悲观锁是两种并发控制的思想，可用于解决丢失更新问题</p>
 <p>乐观锁会“乐观地”假定大概率不会发生并发更新冲突，访问、处理数据过程中不加锁，只在更新数据时再根据版本号或时间戳判断是否有冲突，有则处理，无则提交事务。用数据版本（Version）记录机制实现，这是乐观锁最常用的一种实现方式</p>
-<p>悲观锁会“悲观地”假定大概率会发生并发更新冲突，访问、处理数据前就加排他锁，在整个数据处理过程中锁定数据，事务提交或回滚后才释放锁。另外与乐观锁相对应的，悲观锁是由数据库自己实现了的，要用的时候，我们直接调用数据库的相关语句就可以了。</p>
+<p>悲观锁会“悲观地”假定大概率会发生并发更新冲突，<em>访问、处理数据前就加排他锁</em>（如 redis 排他锁），在整个数据处理过程中锁定数据，事务提交或回滚后才释放锁。</p>
 <h2 id="锁模式innodb-有三种行锁的算法">锁模式(InnoDB 有三种行锁的算法)</h2>
 <ol>
 <li>

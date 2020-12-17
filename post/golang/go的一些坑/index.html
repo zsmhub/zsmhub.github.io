@@ -49,7 +49,7 @@
 <meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想">
 <meta itemprop="datePublished" content="2020-11-13T11:17:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="wordCount" content="843">
+<meta itemprop="wordCount" content="917">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 843 字 </span>
+          <span class="more-meta"> 约 917 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -150,6 +150,7 @@
     <li><a href="#单引号">单引号</a></li>
     <li><a href="#len--utf8runecountinstring">len &amp; utf8.RuneCountInString</a></li>
     <li><a href="#在一个值为-nil-的-channel-上发送和接收数据将永久阻塞">在一个值为 nil 的 channel 上发送和接收数据将永久阻塞</a></li>
+    <li><a href="#golang-没有全局异常捕获">golang 没有全局异常捕获</a></li>
   </ul>
 </nav>
   </div>
@@ -337,7 +338,14 @@ fmt.Println(utf8.RuneCountInString(x)) // 输出：6
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="golang-没有全局异常捕获">golang 没有全局异常捕获</h2>
+<p>不能像其他语言那样，在最上层就可以捕获所有 exception</p>
+<ul>
+<li>golang 所有的 goroutine 都有可能异常 panic,</li>
+<li>每个 goroutine 的 异常都需要分别捕获，</li>
+<li>每个 goroutine 的子 goroutine 的异常也都需要分别捕获</li>
+</ul>
+
     </div>
 
     <div class="post-copyright">

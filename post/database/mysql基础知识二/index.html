@@ -49,7 +49,7 @@
 <meta itemprop="description" content="一、基础知识 表存储引擎必须用InnoDB 字符集必须使用utf8mb4 （utf8不是真utf8） 禁止使用存储过程、视图、触发器、Event 命名">
 <meta itemprop="datePublished" content="2020-04-03T22:45:33&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-03T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="1797">
+<meta itemprop="wordCount" content="1579">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1797 字 </span>
+          <span class="more-meta"> 约 1579 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -185,20 +185,6 @@
 </li>
 </ol>
 <p>B. 锁</p>
-<ol>
-<li>表级锁（MyISAM）</li>
-<li>行级锁（InnoDB），记录加锁，可同时读不可同时写；粒度小、并发度高；会出现死锁</li>
-<li>InnoDB行锁，用不到索引会变成表锁</li>
-<li>四类锁
-<ul>
-<li>乐观锁：更新时认为不会冲突，不特殊处理，通过代码判断冲突</li>
-<li>悲观锁：认为更新时会冲突，加锁</li>
-<li>共享锁： lock in share mode，数据库内置实现，多个事务同时操作，但必须等待其他事务完成才能继续</li>
-<li>排他锁：for update，同时只能一个事务获得锁</li>
-</ul>
-</li>
-<li>默认已经是共享锁，一般我们只关注使用排他锁（for update）</li>
-</ol>
 <p>C. 索引</p>
 <ol>
 <li>索引类型：

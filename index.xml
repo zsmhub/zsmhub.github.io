@@ -518,10 +518,10 @@
     
     <item>
       <title>记一下互联网术语</title>
-      <link>https://zsmhub.github.io/post/other/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</link>
+      <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</link>
       <pubDate>Thu, 14 May 2020 09:12:26 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/other/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</guid>
+      <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</guid>
       <description>职位 PM(Product Manager): 产品经理 AM(Account Manager): 客户经理 RD(Research &amp;amp; Develop): 研发 FE(Front End): 前端 用户指标 DAU(Daily Active Users): 日活跃数 微服务 RPC(Remote Procedure Call): 远程过程调用，是一个计算机通信协议。该协议允许运行于一台计算</description>
     </item>
     
@@ -770,10 +770,10 @@
     
     <item>
       <title>了解版本号</title>
-      <link>https://zsmhub.github.io/post/other/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</link>
+      <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</link>
       <pubDate>Wed, 01 Jan 2020 15:59:09 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/other/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</guid>
+      <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</guid>
       <description>版本号迭代规则 系统重构：主版本号+1 新增功能：次版本号+1 BUG修复：修订号+1 常见案例 版本号的规范可采用很多公司采用的这套：http://</description>
     </item>
     

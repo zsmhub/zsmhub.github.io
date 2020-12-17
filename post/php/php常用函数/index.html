@@ -49,7 +49,7 @@
 <meta itemprop="description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),">
 <meta itemprop="datePublished" content="2019-06-03T19:02:58&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-06T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="2355">
+<meta itemprop="wordCount" content="2357">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 2355 字 </span>
+          <span class="more-meta"> 约 2357 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -198,12 +198,20 @@ echo &#34;十年后:&#34;.date(&#34;Y-m-d&#34;,strtotime(&#34;+10 year&#34;)).&#
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">// 毫秒级时间戳
-list($msec, $sec) = explode(&#39; &#39;, microtime());
-$timeStamp = (int) sprintf(&#39;%.0f&#39;, (floatval($msec) + floatval($sec)) * 1000);
-echo $timeStamp;
+<pre class="chroma"><code class="language-php" data-lang="php">/**
+ * 获取毫秒级时间戳
+ * @return string
+ */
+function getMicroTime(): string
+{
+    return bcmul(microtime(true), 1000);
+}
 </code></pre></td></tr></table>
 </div>
 </div></li>
