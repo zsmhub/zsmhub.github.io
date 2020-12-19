@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go">
 <meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="8018">
+<meta itemprop="wordCount" content="8346">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8018 字 </span>
+          <span class="more-meta"> 约 8346 字 </span>
           <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
@@ -1379,6 +1379,52 @@ ToDo Something&hellip;</li>
 <p>type 关键字</p>
 <p><a href="https://studygolang.com/articles/17179">使用案例</a></p>
 </li>
+<li>
+<p>panic</p>
+<blockquote>
+<p>什么时候使用 panic 呢？对于真正意外的情况，那些表示不可恢复的程序错误，例如索引越界、不可恢复的环境问题、栈溢出，我们才使用 panic</p>
+</blockquote>
+<ul>
+<li>在程序启动的时候，如果有强依赖的服务出现故障时 panic 退出</li>
+<li>在程序启动的时候，如果发现有配置明显不符合要求， 可以 panic 退出（防御编程）</li>
+<li>其他情况下只要不是不可恢复的程序错误，都不应该直接 panic 应该返回 error</li>
+<li>在程序入口处，例如 gin 中间件需要使用 recovery 预防 panic 程序退出</li>
+<li>在程序中我们应该避免使用野生的 goroutine
+<ol>
+<li>如果是在请求中需要执行异步任务，应该使用异步 worker ，消息通知的方式进行处理，避免请求量大时大量 goroutine 创建</li>
+<li>如果需要使用 goroutine 时，应该使用同一的 Go 函数进行创建，这个函数中会进行 recovery ，避免因为野生 goroutine panic 导致主进程退出</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">Go</span><span class="p">(</span><span class="nx">f</span> <span class="kd">func</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">recovery</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;panic: %+v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}()</span>
+
+        <span class="nf">f</span><span class="p">()</span>
+    <span class="p">}()</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
 <div class="highlight"><div class="chroma">
