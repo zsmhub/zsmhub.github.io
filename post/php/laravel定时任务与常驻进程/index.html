@@ -49,7 +49,7 @@
 <meta itemprop="description" content="任务调度功能 Laravel 命令行调度器允许你在 Laravel 中对命令调度进行清晰流畅的定义。且使用这个任务调度器时，你只需要在你的服务器上创建单个 Cron 入口接口。你的任">
 <meta itemprop="datePublished" content="2019-09-04T14:28:22&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-22T14:28:22&#43;08:00" />
-<meta itemprop="wordCount" content="1862">
+<meta itemprop="wordCount" content="2036">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 1862 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2036 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -150,6 +150,7 @@
     <li><a href="#运行队列处理器">运行队列处理器</a></li>
     <li><a href="#docker-如何启动-horizon">docker 如何启动 horizon</a></li>
     <li><a href="#supervisor-部署">supervisor 部署</a></li>
+    <li><a href="#laravel-日志拥有者经常变更为-root">Laravel 日志拥有者经常变更为 root</a></li>
     <li><a href="#配置文件解读">配置文件解读</a></li>
     <li><a href="#好文推荐">好文推荐</a></li>
   </ul>
@@ -175,7 +176,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 启动调度器</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 启动调度器，一般配置在 www 用户下</span>
 * * * * * <span class="nb">cd</span> /path-to-your-project <span class="o">&amp;&amp;</span> php artisan schedule:run &gt;&gt; /dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span>
 
 <span class="c1"># 使用闭包来定义任务调度</span>
@@ -235,7 +236,7 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">php artisan make:job TestJob
 
-<span class="c1"># 需启动 horizon，访问路由：http://xxx/horizon/</span>
+<span class="c1"># 需启动 horizon，访问路由：http://xxx/horizon/，一般使用 supervisor 配置</span>
 php artisan horizon <span class="c1"># 队列监控，用来代替 Laravel 自带的 artisan queue:listen/work，需要常驻运行</span>
 
 <span class="c1"># 将作业推送到特定的队列的几种方式</span>
@@ -295,11 +296,32 @@ php artisan horizon
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">php artisan horizon <span class="c1"># 常驻进程</span>
-php artisan schedule:run <span class="c1"># 定时任务，这里也可以直接使用 crontab 配置</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh">php artisan horizon <span class="c1"># 常驻进程，user 需指定为 www 用户</span>
+php artisan schedule:run <span class="c1"># 定时任务，这里也可以直接使用 crontab -e -u www 配置，</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="配置文件解读">配置文件解读</h2>
+</div><h2 id="laravel-日志拥有者经常变更为-root">Laravel 日志拥有者经常变更为 root</h2>
+<ol>
+<li>
+<p>起因：一、在服务器上使用了 root crontab，致使生成的日志文件的所属者全为 root 用户，导致程序在写入日志显示没有权限写入；二、也可能是 supervisor 配置的常驻任务没有配置在 www 下</p>
+</li>
+<li>
+<p>解决方法。再执行定时器时，用在 www 用户下进行定时设置：命令为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">crontab -e -u www
+
+supervisor 配置：user<span class="o">=</span>www
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="配置文件解读">配置文件解读</h2>
 <ul>
 <li>config/database.php: redis 数据库及其他类型数据库的配置</li>
 <li>config/queue.php: 队列驱动配置</li>

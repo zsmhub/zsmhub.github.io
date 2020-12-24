@@ -49,7 +49,7 @@
 <meta itemprop="description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接">
 <meta itemprop="datePublished" content="2020-02-15T21:05:40&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-15T21:05:40&#43;08:00" />
-<meta itemprop="wordCount" content="1496">
+<meta itemprop="wordCount" content="1655">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
             </div>
-          <span class="more-meta"> 约 1496 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1655 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -285,6 +285,22 @@
 </span><span class="lnt">45
 </span><span class="lnt">46
 </span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Builder</span> <span class="kd">interface</span> <span class="p">{</span>
@@ -296,6 +312,7 @@
 <span class="p">}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">d</span> <span class="o">*</span><span class="nx">Director</span><span class="p">)</span> <span class="nf">Construct</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">d</span><span class="p">.</span><span class="nx">builder</span><span class="p">.</span><span class="nf">Part1</span><span class="p">()</span>
+    <span class="nx">d</span><span class="p">.</span><span class="nx">builder</span><span class="p">.</span><span class="nf">Part2</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="kd">func</span> <span class="nf">NewDirector</span><span class="p">(</span><span class="nx">builder</span> <span class="nx">Builder</span><span class="p">)</span> <span class="o">*</span><span class="nx">Director</span> <span class="p">{</span>
@@ -310,6 +327,9 @@
 <span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder1</span><span class="p">)</span> <span class="nf">Part1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">b</span><span class="p">.</span><span class="nx">result</span> <span class="o">+=</span> <span class="s">&#34;1&#34;</span>
 <span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder1</span><span class="p">)</span> <span class="nf">Part2</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">result</span> <span class="o">+=</span> <span class="s">&#34;2&#34;</span>
+<span class="p">}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder1</span><span class="p">)</span> <span class="nf">GetResult</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span> <span class="c1">// Builder1 特殊方法
 </span><span class="c1"></span>    <span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nx">result</span>
 <span class="p">}</span>
@@ -319,6 +339,9 @@
 <span class="p">}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder2</span><span class="p">)</span> <span class="nf">Part1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">b</span><span class="p">.</span><span class="nx">result</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder2</span><span class="p">)</span> <span class="nf">Part2</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">result</span> <span class="o">+=</span> <span class="mi">2</span>
 <span class="p">}</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Builder2</span><span class="p">)</span> <span class="nf">GetResult2</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span> <span class="c1">// Builder2 特殊方法
 </span><span class="c1"></span>    <span class="k">return</span> <span class="nx">b</span><span class="p">.</span><span class="nx">result</span>
@@ -330,20 +353,36 @@
     <span class="nx">director</span> <span class="o">:=</span> <span class="nf">NewDirector</span><span class="p">(</span><span class="nx">builder</span><span class="p">)</span>
     <span class="nx">director</span><span class="p">.</span><span class="nf">Construct</span><span class="p">()</span>
     <span class="nx">res</span> <span class="o">:=</span> <span class="nx">builder</span><span class="p">.</span><span class="nf">GetResult</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nx">res</span> <span class="o">!=</span> <span class="s">&#34;1&#34;</span> <span class="p">{</span>
-        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Builder1 fail expect 123 acture %s&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">res</span> <span class="o">!=</span> <span class="s">&#34;12&#34;</span> <span class="p">{</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Builder1 fail expect 12 acture %s&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">TestBuilder2</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">builder</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Builder2</span><span class="p">{}</span>
+    <span class="nx">director</span> <span class="o">:=</span> <span class="nf">NewDirector</span><span class="p">(</span><span class="nx">builder</span><span class="p">)</span>
+    <span class="nx">director</span><span class="p">.</span><span class="nf">Construct</span><span class="p">()</span>
+    <span class="nx">res</span> <span class="o">:=</span> <span class="nx">builder</span><span class="p">.</span><span class="nf">GetResult</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nx">res</span> <span class="o">!=</span> <span class="mi">3</span> <span class="p">{</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Builder2 fail expect 3 acture %d&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
-<p>适配器模式</p>
-<p>意图：将一个类的接口转换成客户希望的另外一个接口。适配器模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
-<p>主要解决：主要解决在软件系统中，常常要将一些&quot;现存的对象&quot;放到新的环境中，而新环境要求的接口是现对象不能满足的。</p>
+<p>适配器模式 vs 装饰器模式</p>
+<blockquote>
+<p>适配器模式：抛弃旧接口逻辑，访问旧接口时直接调转到请求新接口</p>
+</blockquote>
+<p>意图：将一个类的接口转换成客户希望的另外一个接口。适配器模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
+主要解决：主要解决在软件系统中，常常要将一些&quot;现存的对象&quot;放到新的环境中，而新环境要求的接口是现对象不能满足的。</p>
 <p>优点： 1、可以让任何两个没有关联的类一起运行。 2、提高了类的复用。 3、增加了类的透明度。 4、灵活性好。</p>
 <p>缺点： 过多地使用适配器，会让系统非常零乱，不易整体进行把握。比如，明明看到调用的是 A 接口，其实内部被适配成了 B 接口的实现，一个系统如果太多出现这种情况，无异于一场灾难。因此如果不是很有必要，可以不使用适配器，而是直接对系统进行重构。</p>
 <p>使用场景：有动机地修改一个正常运行的系统的接口，这时应该考虑使用适配器模式。</p>
+<blockquote>
+<p>装饰器模式：继承旧接口逻辑，新接口获取旧接口返回值后，增加新的补充逻辑</p>
+</blockquote>
+<p>装饰模式使用对象组合的方式动态改变或增加对象行为。</p>
 </li>
 <li>
 <p>代理模式</p>
