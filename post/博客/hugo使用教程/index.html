@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的">
 <meta itemprop="datePublished" content="2020-05-03T20:45:07&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-03T20:45:07&#43;08:00" />
-<meta itemprop="wordCount" content="568">
+<meta itemprop="wordCount" content="697">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E5%8D%9A%E5%AE%A2/"> 博客 </a>
             </div>
-          <span class="more-meta"> 约 568 字 </span>
+          <span class="more-meta"> 约 697 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -151,6 +151,7 @@
     <li><a href="#如何修改主题">如何修改主题</a></li>
     <li><a href="#如何添加分类和标签">如何添加分类和标签</a></li>
     <li><a href="#markdown-模板示例">Markdown 模板示例</a></li>
+    <li><a href="#github-pages-适配">Github Pages 适配</a></li>
   </ul>
 </nav>
   </div>
@@ -175,10 +176,11 @@
 <ul>
 <li>config.toml是网站的配置文件，这是一个TOML文件，全称是Tom’s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。</li>
 <li>theme 目录里放的是主题皮肤</li>
-<li>content目录里放的是你写的markdown文章</li>
+<li>content 目录里放的是你写的markdown文章</li>
 <li>archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。</li>
 <li>static目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png</li>
 <li>layouts目录里放的是网站的模板文件</li>
+<li>publicz</li>
 </ul>
 <h2 id="主题推荐">主题推荐</h2>
 <ul>
@@ -236,7 +238,43 @@ comment: <span class="nb">true</span>
 ---
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="github-pages-适配">Github Pages 适配</h2>
+<ol>
+<li>
+<p>建立两个 Github 仓库，其中一个是私有库、一个是公有库，分别存放 markdown 原始文章 和 hugo 生成的博客静态页面</p>
+</li>
+<li>
+<p>.gitignore 配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># markdown 原始文章仓库</span>
+
+.DS_Store
+/public
+</code></pre></td></tr></table>
 </div>
+</div></li>
+<li>
+<p>提交到 github 仓库的常用命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;feat: 博客文章提交&#39;</span> <span class="o">&amp;&amp;</span> git push origin master
+hugo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ./public <span class="o">&amp;&amp;</span> git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;feat: 博客文章提交&#39;</span> <span class="o">&amp;&amp;</span> git push origin master <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ../
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
     </div>
 
     <div class="post-copyright">
