@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 19 Nov 2020 09:33:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 09:55:21 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>位运算使用技巧</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Thu, 31 Dec 2020 09:55:21 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+      <description>位运算概览 符号 描述 运算规则 &amp;amp; 与 两个位都为1时，结果才为1 | 或 两个位都为0时，结果才为0 ^ 异或 两个位相同为0，相异为1 ~ 取反 0变1，1变0 &amp;laquo; 左</description>
+    </item>
     
     <item>
       <title>无限极分类树</title>

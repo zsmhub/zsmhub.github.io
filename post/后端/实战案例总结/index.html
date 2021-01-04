@@ -49,7 +49,7 @@
 <meta itemprop="description" content="根据nginx的access_log分析接口请求 access_log：指的是访问日志，我们通过访问日志可以获取用户的 IP、请求处理的时间、接">
 <meta itemprop="datePublished" content="2020-08-06T09:21:45&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-06T09:21:45&#43;08:00" />
-<meta itemprop="wordCount" content="764">
+<meta itemprop="wordCount" content="887">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 764 字 </span>
+          <span class="more-meta"> 约 887 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -148,6 +148,7 @@
     <li><a href="#报错-503-service-temporarily-unavailable">报错-503 service temporarily unavailable</a></li>
     <li><a href="#并发环境下执行-sql-导致死锁">并发环境下，执行 sql 导致死锁</a></li>
     <li><a href="#根据支付宝-userid-调出付款界面">根据支付宝 userId 调出付款界面</a></li>
+    <li><a href="#抽奖功能">抽奖功能</a></li>
   </ul>
 </nav>
   </div>
@@ -197,6 +198,34 @@
 </div><p><img src="/images/2020/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%BB%98%E6%AC%BE%E4%BA%8C%E7%BB%B4%E7%A0%81.png" alt="二维码"></p>
 <p>使用上述字符串生成一个二维码，然后使用支付宝扫码，即可调出付款界面。</p>
 <p>关键信息：userId、amount</p>
+<h2 id="抽奖功能">抽奖功能</h2>
+<blockquote>
+<p>抽奖五要素</p>
+</blockquote>
+<ol>
+<li>活动</li>
+<li>场次</li>
+<li>奖品</li>
+<li>中奖概率</li>
+<li>均匀投奖（即让用户均匀的抽走奖品）</li>
+</ol>
+<blockquote>
+<p>通过抽奖五要素也得到了通用抽奖工具配置一场抽奖活动的5个基本步骤：</p>
+</blockquote>
+<ol>
+<li>活动配置</li>
+<li>场次配置</li>
+<li>奖品配置</li>
+<li>奖品中奖概率配置</li>
+<li>奖品投奖配置</li>
+</ol>
+<blockquote>
+<p>抽奖相关文章</p>
+</blockquote>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1581369">通用抽奖工具之需求分析</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1581370">通用抽奖工具之系统设计</a></li>
+</ul>
 
     </div>
 
@@ -298,7 +327,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
+    2021
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

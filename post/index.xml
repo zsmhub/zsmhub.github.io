@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 18 Dec 2020 09:30:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 09:55:21 +0800</lastBuildDate>
     
 	<atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>位运算使用技巧</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Thu, 31 Dec 2020 09:55:21 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+      <description>位运算概览 符号 描述 运算规则 &amp;amp; 与 两个位都为1时，结果才为1 | 或 两个位都为0时，结果才为0 ^ 异或 两个位相同为0，相异为1 ~ 取反 0变1，1变0 &amp;laquo; 左</description>
+    </item>
     
     <item>
       <title>Micro</title>
@@ -90,7 +99,7 @@
       <pubDate>Mon, 19 Oct 2020 10:02:48 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AD%A9%E5%AD%90%E6%95%99%E8%82%B2%E8%AE%B0%E5%BD%95/</guid>
-      <description>兴趣班学习时间 三年级之前都是以启蒙为主，三年级后才能真正开始入门学习</description>
+      <description>兴趣班学习时间 三年级之前都是以启蒙为主，三年级后才能真正开始入门学习 注意事项 电视等电子产品使用注意 2 岁以下儿童：不应该接触任何屏幕时间，包括</description>
     </item>
     
     <item>
@@ -729,7 +738,7 @@
       <pubDate>Sat, 15 Feb 2020 21:05:40 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
-      <description>设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接</description>
+      <description>学习文章 Go语言设计模式 Go设计模式实战 设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理</description>
     </item>
     
     <item>

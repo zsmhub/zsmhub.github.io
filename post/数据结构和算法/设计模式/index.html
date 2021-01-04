@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="学习文章 Go语言设计模式 Go设计模式实战 设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="设计模式" />
-<meta property="og:description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接" />
+<meta property="og:description" content="学习文章 Go语言设计模式 Go设计模式实战 设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" />
 <meta property="article:published_time" content="2020-02-15T21:05:40+08:00" />
 <meta property="article:modified_time" content="2020-02-15T21:05:40+08:00" />
 <meta itemprop="name" content="设计模式">
-<meta itemprop="description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接">
+<meta itemprop="description" content="学习文章 Go语言设计模式 Go设计模式实战 设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理">
 <meta itemprop="datePublished" content="2020-02-15T21:05:40&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-15T21:05:40&#43;08:00" />
-<meta itemprop="wordCount" content="1708">
+<meta itemprop="wordCount" content="1913">
 
 
 
 <meta itemprop="keywords" content="设计模式," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="设计模式"/>
-<meta name="twitter:description" content="设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。 Go设计模式学习链接"/>
+<meta name="twitter:description" content="学习文章 Go语言设计模式 Go设计模式实战 设计模式简介 设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
             </div>
-          <span class="more-meta"> 约 1708 字 </span>
+          <span class="more-meta"> 约 1913 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -144,6 +144,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#学习文章">学习文章</a></li>
     <li><a href="#设计模式简介">设计模式简介</a></li>
     <li><a href="#常见的设计模式">常见的设计模式</a></li>
     <li><a href="#工作案例">工作案例</a></li>
@@ -153,14 +154,28 @@
   </div>
 </div>
     <div class="post-content">
-      <h2 id="设计模式简介">设计模式简介</h2>
+      <h2 id="学习文章">学习文章</h2>
+<ul>
+<li><a href="http://wen.topgoer.com/docs/golang-design-pattern/golang-design-pattern-1cbgha2ltg796">Go语言设计模式</a></li>
+<li><a href="http://tigerb.cn/go-patterns/#/">Go设计模式实战</a></li>
+</ul>
+<h2 id="设计模式简介">设计模式简介</h2>
 <p>设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。</p>
-<p><a href="http://wen.topgoer.com/docs/golang-design-pattern/golang-design-pattern-1cbgha2ltg796">Go设计模式学习链接</a></p>
+<blockquote>
 <p>总体来说，设计模式分为三大类：</p>
+</blockquote>
 <ul>
 <li>创建型模式（五种）：单例模式、工厂模式、抽象工厂模式、创建者模式、原型模式</li>
 <li>结构型模式（七种）：适配器模式、代理模式、装饰器模式、外观模式、桥接模式、组合模式、享元模式</li>
 <li>行为型模式（十一种）：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</li>
+</ul>
+<blockquote>
+<p>算法执行的步骤是稳定不变的，但是具体的某些算法可能存在变化的场景。</p>
+</blockquote>
+<p>怎么理解，举个例子：比如说你煮个面，必然需要先烧水，水烧开之后再放面进去，以上的流程我们称之为煮面过程。可知：这个煮面过程的步骤是稳定不变的，但是在不同的环境烧水的方式可能不尽相同，也许有的人用天然气烧水、有的人用电磁炉烧水、有的人用柴火烧水，等等。我们可以得到以下结论：</p>
+<ul>
+<li>煮面过程的步骤是稳定不变的</li>
+<li>煮面过程的烧水方式是可变的</li>
 </ul>
 <h2 id="常见的设计模式">常见的设计模式</h2>
 <ol>
@@ -538,7 +553,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
+    2021
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
