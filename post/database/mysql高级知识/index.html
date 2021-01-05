@@ -49,7 +49,7 @@
 <meta itemprop="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安">
 <meta itemprop="datePublished" content="2020-07-12T13:51:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-12T13:51:13&#43;08:00" />
-<meta itemprop="wordCount" content="5368">
+<meta itemprop="wordCount" content="6446">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 5368 字 </span>
-          <span class="more-meta"> 预计阅读 11 分钟 </span>
+          <span class="more-meta"> 约 6446 字 </span>
+          <span class="more-meta"> 预计阅读 13 分钟 </span>
         
       </div>
     </header>
@@ -155,6 +155,7 @@
     <li><a href="#sql长度限制与占位符限制问题区分">sql长度限制与占位符限制问题区分</a></li>
     <li><a href="#mysql578-开始支持-json-字段查询">mysql5.7.8 开始支持 json 字段查询</a></li>
     <li><a href="#mysql-配置">Mysql 配置</a></li>
+    <li><a href="#窗口函数">窗口函数</a></li>
     <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
@@ -527,6 +528,91 @@ i- s null ,is not null 也无法使用索引</li>
 </div>
 </div></li>
 </ol>
+<h2 id="窗口函数">窗口函数</h2>
+<p>MySQL从8.0开始支持窗口函数，这个功能在大多商业数据库中早已支持，也叫分析函数。</p>
+<blockquote>
+<p>语法简介</p>
+</blockquote>
+<p>语法：函数名([参数]) over(partition by [分组字段] order by [排序字段] asc/desc rows/range between 起始位置 and 结束位置)</p>
+<p>函数解读：函数分为两个部分，</p>
+<p>第一部分是函数名称，开窗函数的数量较少，只有11个窗口函数+聚合函数（所有聚合函数都可以用作开窗函数），根据函数性质，有的要写参数，有的不需要写参数；</p>
+<p>第二部分是over语句，over()是必须要写的，里面有三个参数，都是非必须参数，根据需求选写：</p>
+<p>1.第一个参数是 partition by +分组字段，将数据根据此字段分成多份，如果不加partition by参数，那会把整个数据当做一个窗口。</p>
+<p>2.第二个参数是 order by +排序字段，每个窗口的数据要不要进行排序。</p>
+<p>3.第三个参数 rows/range between 起始位置 and 结束位置，这个参数仅针对滑动窗口函数有用，是在当前窗口下分出更小的子窗口。其中起始位置和结束位置可写：current row 边界是当前行，unbounded preceding 边界是分区中的第一行，unbounded following 边界是分区中的最后一行，expr preceding 边界是当前行减去expr的值，expr following 边界是当前行加上expr的值。rows是基于行数，range是基于值的大小，到讲解到滑动窗口函数时再详细介绍。</p>
+<blockquote>
+<p>窗口函数小结</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>排序</td>
+<td>ROW_NUMBER</td>
+<td>为表中的每一行分配一个序号，可以指定分组（也可以不指定）及排序字段</td>
+</tr>
+<tr>
+<td>/</td>
+<td>DENSE_RANK</td>
+<td>根据排序字段为每个分组中的每一行分配一个序号。 排名值相同时，序号相同，序号中没有间隙（1,1,2,3这种）</td>
+</tr>
+<tr>
+<td>/</td>
+<td>RANK</td>
+<td>根据排序字段为每个分组中的每一行分配一个序号。 排名值相同时，序号相同，但序号中存在间隙（1,1,3,4这种）</td>
+</tr>
+<tr>
+<td>/</td>
+<td>NTILE</td>
+<td>根据排序字段为每个分组中根据指定字段的排序再分成对应的组</td>
+</tr>
+<tr>
+<td>分布</td>
+<td>PERCENT_RANK</td>
+<td>计算各分组或结果集中行的百分数等级</td>
+</tr>
+<tr>
+<td>/</td>
+<td>CUME_DIST</td>
+<td>计算某个值在一组有序的数据中累计的分布</td>
+</tr>
+<tr>
+<td>前后</td>
+<td>LEAD</td>
+<td>返回分组中当前行之后的第N行的值。如果不存在对应行，则返回NULL。比如N=1时，第一名对应的值是第二名的，最后一名结果是NULL</td>
+</tr>
+<tr>
+<td>/</td>
+<td>LAG</td>
+<td>返回分组中当前行之前的第N行的值。如果不存在对应行，则返回NULL。比如N=1时，第一名对应的值是是NUL，最后一名结果是倒数第2的值</td>
+</tr>
+<tr>
+<td>首尾中</td>
+<td>FIRST_VALUE</td>
+<td>返回每个分组中第一名对应的字段（或表达式）的值，例如本文中可以是第一名的分数、学号等任意字段的值</td>
+</tr>
+<tr>
+<td>/</td>
+<td>LAST_VALUE</td>
+<td>返回每个分组中最后一名对应的字段（或表达式）的值，例如本文中可以是最后一名的分数、学号等任意字段的值</td>
+</tr>
+<tr>
+<td>/</td>
+<td>NTH_VALUE</td>
+<td>返回每个分组中排名第N的对应字段（或表达式）的值，但小于N的行对应的值是NULL</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>参考文章</p>
+</blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/137908870">MySQL8.0窗口函数之排名函数（rank、dense_rank）的使用</a></p>
 <h2 id="参考文章">参考文章</h2>
 <p><a href="https://mp.weixin.qq.com/s/MCFHNOQnTtJ6MGVjM3DP4A">MySQL 三万字精华总结 + 面试100 问，吊打面试官绰绰有余</a></p>
 
