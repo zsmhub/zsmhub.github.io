@@ -49,7 +49,7 @@
 <meta itemprop="description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存">
 <meta itemprop="datePublished" content="2019-08-01T14:15:47&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-04T14:15:47&#43;08:00" />
-<meta itemprop="wordCount" content="1705">
+<meta itemprop="wordCount" content="1780">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 1705 字 </span>
+          <span class="more-meta"> 约 1780 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -366,6 +366,10 @@ JWT 前后端 token 过期时的交互流程：
 <p>解决跨域问题</p>
 <h2 id="encorelaravel-admin">encore/laravel-admin</h2>
 <p>后台管理系统</p>
+<blockquote>
+<p>app/Http/Kernel.php</p>
+</blockquote>
+<p>需要注释掉中间件：ConvertEmptyStringsToNull::class，否则选填字段为空且字段设置为 not null 时，会报错：<code>Column 'xxx' cannot be null</code></p>
 <h2 id="guzzlehttpguzzle">guzzlehttp/guzzle</h2>
 <p>Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services.</p>
 <h2 id="opisclosure">opis/closure</h2>

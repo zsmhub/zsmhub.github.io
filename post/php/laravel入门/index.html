@@ -49,7 +49,7 @@
 <meta itemprop="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器">
 <meta itemprop="datePublished" content="2019-08-01T13:50:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-05T13:50:49&#43;08:00" />
-<meta itemprop="wordCount" content="6618">
+<meta itemprop="wordCount" content="6660">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 6618 字 </span>
+          <span class="more-meta"> 约 6660 字 </span>
           <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
@@ -215,9 +215,11 @@
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">&gt; php artisan optimize <span class="c1"># 重置配置和路由的缓存文件，使用了此命令后不要在config目录外使用env()函数</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh">&gt; php artisan optimize <span class="c1"># 重置配置和路由的缓存文件，使用了此命令后不要在config目录外使用env()函数『众所周知，Laravel 的路由组件是出了名的慢』</span>
+&gt; php artisan optimize:clear <span class="c1"># 清空本地路由和配置缓存</span>
 &gt; php artisan list  <span class="c1"># 查看所有artisan命令&lt;br/&gt;</span>
 &gt; php artisan make:model Models/User --migration <span class="c1"># 创建 Eloquent 模型类和迁移类</span>
 &gt; php artisan make:migration create_categories_table <span class="c1"># 生成迁移类，常用规则：create_(数据表名称)_table, add_字段名称_to_xx_table, seed_(数据表名称)_table</span>

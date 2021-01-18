@@ -153,7 +153,7 @@
       <pubDate>Fri, 04 Jan 2019 22:43:26 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/memcached/</guid>
-      <description>Memcached 是一个自由开源的，高性能，分布式内存对象缓存系统。 Memcached 是一种基于内存的 key-value 存储，用来存储小块的任意数据（字符串、对象）。 基础信息 telnet memcached 11211 // 连接m</description>
+      <description>Memcached 是一个自由开源的，高性能，分布式内存对象缓存系统。 Memcached 是一种基于内存的 key-value 存储，用来存储小块的任意数据（字符串、对象）。 Memcached 官方网站：http:</description>
     </item>
     
     <item>
