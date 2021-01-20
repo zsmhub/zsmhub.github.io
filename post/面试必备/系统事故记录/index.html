@@ -49,7 +49,7 @@
 <meta itemprop="description" content="数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承">
 <meta itemprop="datePublished" content="2020-08-26T10:27:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-26T10:27:51&#43;08:00" />
-<meta itemprop="wordCount" content="806">
+<meta itemprop="wordCount" content="812">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
             </div>
-          <span class="more-meta"> 约 806 字 </span>
+          <span class="more-meta"> 约 812 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -238,7 +238,7 @@ handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class=
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">自媒体-全平台：
+<pre class="chroma"><code class="language-sh" data-lang="sh">某系统：
 最大连接数/最大空闲连接数
 空闲连接存活时间2分钟
 logic: 256/128
@@ -251,7 +251,8 @@ db.DB<span class="o">()</span>.SetMaxOpenConns<span class="o">(</span>xx<span cl
 db.DB<span class="o">()</span>.SetConnMaxLifetime<span class="o">(</span>xx<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="object-too-large-for-cache">object too large for cache</h2>
+</div><p><a href="https://colobu.com/2020/05/18/configuring-sql-DB-for-better-performance-2020/">配置 sql.DB 获得更好的性能</a></p>
+<h2 id="object-too-large-for-cache">object too large for cache</h2>
 <p>内存空间和数据量大小：</p>
 <ul>
 <li>MemCached可以修改最大内存，采用LRU算法。Redis增加了VM的特性，突破了物理内存的限制。</li>
