@@ -49,7 +49,7 @@
 <meta itemprop="description" content="too many connection 报错可能原因 机器负载飙升，导致SQL执行效率下降，导致连接堆积 业务访问量突增（或者有SQL注入现象），导致连接数打满 出现“死锁”或者锁">
 <meta itemprop="datePublished" content="2020-05-29T19:13:07&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-29T19:13:07&#43;08:00" />
-<meta itemprop="wordCount" content="342">
+<meta itemprop="wordCount" content="381">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 342 字 </span>
+          <span class="more-meta"> 约 381 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -146,6 +146,7 @@
   <ul>
     <li><a href="#too-many-connection-报错可能原因">too many connection 报错可能原因</a></li>
     <li><a href="#大表数据删除方案">大表数据删除方案</a></li>
+    <li><a href="#权重排序">权重排序</a></li>
   </ul>
 </nav>
   </div>
@@ -191,6 +192,9 @@ insert ignore into <code>friend_record_2</code>(owner_account_id, account_id, re
 insert ignore into <code>friend_record</code>(owner_account_id, account_id, remark, add_time, type, created_at, updated_at, deleted_at) (select owner_account_id, account_id, remark, add_time, type, created_at, updated_at, deleted_at from <code>friend_record_202009</code> where id &gt; ? and <code>deleted_at</code> is null);</p>
 </li>
 </ol>
+<h2 id="权重排序">权重排序</h2>
+<p>假定表 table 包含 A B C 三个字段，需要按照 50 30 20 的权重排序：</p>
+<p>select * from table order by A<em>0.5+B</em>0.3+C*0.2 desc;XX</p>
 
     </div>
 
