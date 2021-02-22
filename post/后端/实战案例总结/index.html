@@ -49,7 +49,7 @@
 <meta itemprop="description" content="根据nginx的access_log分析接口请求 access_log：指的是访问日志，我们通过访问日志可以获取用户的 IP、请求处理的时间、接">
 <meta itemprop="datePublished" content="2020-08-06T09:21:45&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-06T09:21:45&#43;08:00" />
-<meta itemprop="wordCount" content="887">
+<meta itemprop="wordCount" content="943">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 887 字 </span>
+          <span class="more-meta"> 约 943 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -149,6 +149,7 @@
     <li><a href="#并发环境下执行-sql-导致死锁">并发环境下，执行 sql 导致死锁</a></li>
     <li><a href="#根据支付宝-userid-调出付款界面">根据支付宝 userId 调出付款界面</a></li>
     <li><a href="#抽奖功能">抽奖功能</a></li>
+    <li><a href="#接口偶尔出现请求超时问题">接口偶尔出现请求超时问题</a></li>
   </ul>
 </nav>
   </div>
@@ -226,6 +227,13 @@
 <li><a href="https://cloud.tencent.com/developer/article/1581369">通用抽奖工具之需求分析</a></li>
 <li><a href="https://cloud.tencent.com/developer/article/1581370">通用抽奖工具之系统设计</a></li>
 </ul>
+<h2 id="接口偶尔出现请求超时问题">接口偶尔出现请求超时问题</h2>
+<p>可能原因如下：</p>
+<ol>
+<li>并发请求量大，服务器处理不过来</li>
+<li>资源被其他功能占用，服务器处理不过来</li>
+<li>网络延迟</li>
+</ol>
 
     </div>
 
