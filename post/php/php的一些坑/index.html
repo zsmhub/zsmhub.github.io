@@ -49,7 +49,7 @@
 <meta itemprop="description" content="大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 示例：array_udiff([&lsquo;a">
 <meta itemprop="datePublished" content="2020-05-07T16:00:02&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-07T16:00:02&#43;08:00" />
-<meta itemprop="wordCount" content="523">
+<meta itemprop="wordCount" content="612">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 523 字 </span>
+          <span class="more-meta"> 约 612 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -210,7 +210,27 @@ string(37) &#34;[123,&#34;dasd&#34;,&#34;\u5927\u58f0\u9053&#34;,123]&#34;
 <p>Carbon 是 PHP 知名的日期和时间操作扩展，Laravel 框架中使用此扩展来处理时间、日期相关的操作。在 Laravel 中，时间戳 created_at 和 updated_at 作为模型属性被调用时，都会自动转换为 Carbon 对象。</p>
 <p>carbon 的 subMonth 和 addMonth 会有月溢出问题，而使用 subMonthNoOverflow 和 addMonthNoOverflow 就不会出现月溢出问题，如下图所示：</p>
 <p><img src="/images/2020/syncCopiedImage_1604114301351.png" alt="月溢出问题"></p>
-<h2 id="取差集">取差集</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">// strtotime() 也会出现月溢出问题
+$t = strtotime(&#39;2020-10-30&#39;);
+$a = date(&#39;Y-m-d&#39;, strtotime(&#39;-1 month&#39;, $t));
+echo $a . &#34;\n&#34;; // 输出2020-10-01
+
+// 因为每月都有1号，如果需要获取上一个月的月份，可以使用以下的方式获取：
+echo date(&#39;Y-m&#39;, strtotime(date(&#39;Y-m-01&#39;) . &#34; -1 month&#34;)) . &#34;\n&#34;;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="取差集">取差集</h2>
 <p>mysql查询不区分大小写， php array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff 和 strcasecmp 处理</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
