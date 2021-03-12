@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>TableStore - ZsmHub - Blog</title>
+  <title>大数据表设计-TableStore - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -39,22 +39,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="TableStore" />
+<meta property="og:title" content="大数据表设计-TableStore" />
 <meta property="og:description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/database/tablestore/" />
 <meta property="article:published_time" content="2020-08-02T10:13:11+08:00" />
 <meta property="article:modified_time" content="2020-08-02T10:13:11+08:00" />
-<meta itemprop="name" content="TableStore">
+<meta itemprop="name" content="大数据表设计-TableStore">
 <meta itemprop="description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存">
 <meta itemprop="datePublished" content="2020-08-02T10:13:11&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-02T10:13:11&#43;08:00" />
-<meta itemprop="wordCount" content="2179">
+<meta itemprop="wordCount" content="2613">
 
 
 
 <meta itemprop="keywords" content="TableStore," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="TableStore"/>
+<meta name="twitter:title" content="大数据表设计-TableStore"/>
 <meta name="twitter:description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存"/>
 
 <!--[if lte IE 9]>
@@ -126,15 +126,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">TableStore</h1>
+      <h1 class="post-title">大数据表设计-TableStore</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2020-08-02 </span>
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2179 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2613 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -160,6 +160,9 @@
     <div class="post-content">
       <h2 id="简介">简介</h2>
 <p>表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存储和强大的索引引擎能够支持PB级存储、千万TPS以及毫秒级延迟的服务能力。</p>
+<p><a href="https://help.aliyun.com/document_detail/27280.html?spm=5176.54465.905680.docots.715c6184i7chS3">TableStore 官方说明</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/74867813">Tablestore存储和索引引擎详解</a></p>
+<p><a href="https://help.aliyun.com/document_detail/89885.html?spm=a2c4g.11186623.6.588.430c2aaczDj3Fx">Timeline 模型官方说明</a></p>
 <h2 id="支持多种数据库模型">支持多种数据库模型</h2>
 <p>包括Wide column、Timeline、Timestream、Grid。</p>
 <ul>
@@ -167,6 +170,15 @@
 <li>Timeline模型：表格存储自研模型，主要用于消息数据，适用于IM、Feed和物联网设备消息下推等消息系统中消息的存储和同步，目前已被广泛使用。</li>
 <li>Timestream模型：可应用于时序数据、时空数据等核心数据场景。</li>
 <li>Grid模型：可用于科学大数据的存储和查询场景。</li>
+</ul>
+<blockquote>
+<p>首先说明一下为什么Tablestore的主键可以包含多个主键列，这里有几点：</p>
+</blockquote>
+<ul>
+<li>多列主键列按照顺序共同构成一个联合主键，类似MySQL的联合『唯一索引』。如果使用过HBase，可以把这里的多列主键列，拼接起来看作一个RowKey，每一列其实都只是整体主键的一部分。</li>
+<li>第一列主键列是分区键，使用分区键的范围进行分区划分，保证了分区键相同的行，一定在同一个分区(Partition)上。一些功能依赖这一特性，比如分区内事务(Transection)，本地二级索引(LocalIndex, 待发布)，分区内自增列等。</li>
+<li>业务上常需要多个字段来构成主键，如果只支持一个主键列，业务需要进行拼接，多列主键列避免了业务层做主键拼接和拆解。</li>
+<li>许多用户第一次看到多列主键列时，常会有误解，认为主键的范围查询(GetRange接口)可以针对每一列单独进行，实际上这里的主键范围指的是整体主键的范围，而非单独某一列的范围。</li>
 </ul>
 <h2 id="tablestore-优点">TableStore 优点</h2>
 <ol>
@@ -193,6 +205,9 @@
 <li>
 <p>高并发读写</p>
 <p>表格存储支持千万级并发读写能力。</p>
+</li>
+<li>
+<p>自带主键列递增功能</p>
 </li>
 </ol>
 <h2 id="高级配置">高级配置</h2>
@@ -350,7 +365,7 @@
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: '2020-08-02 10:13:11 \x2b0800 CST',
-        title: 'TableStore',
+        title: '大数据表设计-TableStore',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
