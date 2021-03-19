@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="一、即时效能分析工具 Pyroscope 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 // 主进程启用即時效能分析工具 helper.SafeGo(func() { metric.PyroScopeMetric.Start(metric.PyroscopeOpts{ApplicationName: &amp;#34;xxx.logic&amp;#34;}) }) defer metric.PyroScopeMetric.Stop() 二、PProf 简介 pprof 是用" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="一、即时效能分析工具 Pyroscope 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="Go 性能分析工具" />
-<meta property="og:description" content="一、即时效能分析工具 Pyroscope 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 // 主进程启用即時效能分析工具 helper.SafeGo(func() { metric.PyroScopeMetric.Start(metric.PyroscopeOpts{ApplicationName: &#34;xxx.logic&#34;}) }) defer metric.PyroScopeMetric.Stop() 二、PProf 简介 pprof 是用" />
+<meta property="og:description" content="一、即时效能分析工具 Pyroscope 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/" />
 <meta property="article:published_time" content="2020-05-08T14:26:32+08:00" />
 <meta property="article:modified_time" content="2020-05-08T14:26:32+08:00" />
 <meta itemprop="name" content="Go 性能分析工具">
-<meta itemprop="description" content="一、即时效能分析工具 Pyroscope 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 // 主进程启用即時效能分析工具 helper.SafeGo(func() { metric.PyroScopeMetric.Start(metric.PyroscopeOpts{ApplicationName: &#34;xxx.logic&#34;}) }) defer metric.PyroScopeMetric.Stop() 二、PProf 简介 pprof 是用">
+<meta itemprop="description" content="一、即时效能分析工具 Pyroscope 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39">
 <meta itemprop="datePublished" content="2020-05-08T14:26:32&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-08T14:26:32&#43;08:00" />
-<meta itemprop="wordCount" content="346">
+<meta itemprop="wordCount" content="480">
 
 
 
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 性能分析工具"/>
-<meta name="twitter:description" content="一、即时效能分析工具 Pyroscope 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 // 主进程启用即時效能分析工具 helper.SafeGo(func() { metric.PyroScopeMetric.Start(metric.PyroscopeOpts{ApplicationName: &#34;xxx.logic&#34;}) }) defer metric.PyroScopeMetric.Stop() 二、PProf 简介 pprof 是用"/>
+<meta name="twitter:description" content="一、即时效能分析工具 Pyroscope 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 346 字 </span>
+          <span class="more-meta"> 约 480 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -162,20 +162,110 @@
 <p><a href="https://pyroscope.io/docs/docker-compose/">Pyroscope文档</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 主进程启用即時效能分析工具
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">metric</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;github.com/pyroscope-io/pyroscope/pkg/agent/profiler&#34;</span>
+    <span class="s">&#34;github.com/sirupsen/logrus&#34;</span>
+    <span class="s">&#34;sync&#34;</span>
+    <span class="s">&#34;xxx/config&#34;</span>
+    <span class="s">&#34;xxx/lib/logger&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">pyroscopeMetric</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">po</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
+    <span class="nx">p</span>  <span class="o">*</span><span class="nx">profiler</span><span class="p">.</span><span class="nx">Profiler</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">PyroScopeMetric</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">pyroscopeMetric</span><span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">PyroscopeOpts</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">ApplicationName</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">pyroscopeMetric</span><span class="p">)</span> <span class="nf">Start</span><span class="p">(</span><span class="nx">opts</span> <span class="nx">PyroscopeOpts</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">m</span><span class="p">.</span><span class="nx">po</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">logrus</span><span class="p">.</span><span class="nf">SetLevel</span><span class="p">(</span><span class="nx">logrus</span><span class="p">.</span><span class="nx">PanicLevel</span><span class="p">)</span>
+        <span class="nx">pyroscope</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">profiler</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="nx">profiler</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+            <span class="nx">ApplicationName</span><span class="p">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">ApplicationName</span><span class="p">,</span>
+            <span class="nx">ServerAddress</span><span class="p">:</span>   <span class="nx">config</span><span class="p">.</span><span class="nx">PyAddress</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+        <span class="nx">m</span><span class="p">.</span><span class="nx">p</span> <span class="p">=</span> <span class="nx">pyroscope</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">pyroscopeMetric</span><span class="p">)</span> <span class="nf">Stop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">m</span><span class="p">.</span><span class="nx">p</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// logic等进程启用即時效能分析工具
 </span><span class="c1"></span><span class="nx">helper</span><span class="p">.</span><span class="nf">SafeGo</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">metric</span><span class="p">.</span><span class="nx">PyroScopeMetric</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="nx">metric</span><span class="p">.</span><span class="nx">PyroscopeOpts</span><span class="p">{</span><span class="nx">ApplicationName</span><span class="p">:</span> <span class="s">&#34;xxx.logic&#34;</span><span class="p">})</span>
 <span class="p">})</span>
 <span class="k">defer</span> <span class="nx">metric</span><span class="p">.</span><span class="nx">PyroScopeMetric</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
-
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="二pprof-简介">二、PProf 简介</h2>
