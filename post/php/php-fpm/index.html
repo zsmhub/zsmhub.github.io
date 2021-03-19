@@ -49,7 +49,7 @@
 <meta itemprop="description" content="最大进程数 如何控制子进程，为了高性能建议使用 pm static pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers pm = ondemand: 进程在请求时按需创建，而不是动态的，其中">
 <meta itemprop="datePublished" content="2020-09-02T16:04:33&#43;08:00" />
 <meta itemprop="dateModified" content="2020-09-02T16:04:33&#43;08:00" />
-<meta itemprop="wordCount" content="260">
+<meta itemprop="wordCount" content="297">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 260 字 </span>
+          <span class="more-meta"> 约 297 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#最大进程数">最大进程数</a></li>
+    <li><a href="#最大活跃进程数">最大活跃进程数</a></li>
     <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
@@ -164,6 +165,8 @@
 <li>pm.min_spare_servers：动态方式下的最小php-fpm进程数</li>
 <li>pm.max_spare_servers：动态方式下的最大php-fpm进程数量</li>
 </ul>
+<h2 id="最大活跃进程数">最大活跃进程数</h2>
+<p>Active Processes: 设定为 256, 设置过高的话，很容易造成 web 服务器 CPU 占用过高等情况</p>
 <h2 id="参考文章">参考文章</h2>
 <p><a href="https://segmentfault.com/a/1190000014735855">PHP-FPM 调优：为了高性能使用 pm static</a></p>
 
