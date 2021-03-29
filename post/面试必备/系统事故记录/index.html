@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="一、数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="系统事故记录" />
-<meta property="og:description" content="数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承" />
+<meta property="og:description" content="一、数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/" />
 <meta property="article:published_time" content="2020-08-26T10:27:51+08:00" />
 <meta property="article:modified_time" content="2020-08-26T10:27:51+08:00" />
 <meta itemprop="name" content="系统事故记录">
-<meta itemprop="description" content="数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承">
+<meta itemprop="description" content="一、数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主">
 <meta itemprop="datePublished" content="2020-08-26T10:27:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-26T10:27:51&#43;08:00" />
-<meta itemprop="wordCount" content="812">
+<meta itemprop="wordCount" content="874">
 
 
 
 <meta itemprop="keywords" content="事故记录," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="系统事故记录"/>
-<meta name="twitter:description" content="数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承"/>
+<meta name="twitter:description" content="一、数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
             </div>
-          <span class="more-meta"> 约 812 字 </span>
+          <span class="more-meta"> 约 874 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -144,16 +144,17 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#数据库宕机">数据库宕机</a></li>
-    <li><a href="#数据库堆积">数据库堆积</a></li>
-    <li><a href="#mysql连接数暴增服务器cpu爆满">mysql连接数暴增，服务器cpu爆满</a></li>
-    <li><a href="#object-too-large-for-cache">object too large for cache</a></li>
+    <li><a href="#一数据库宕机">一、数据库宕机</a></li>
+    <li><a href="#二数据库堆积">二、数据库堆积</a></li>
+    <li><a href="#三mysql连接数暴增服务器cpu爆满">三、mysql连接数暴增，服务器cpu爆满</a></li>
+    <li><a href="#四object-too-large-for-cache">四、object too large for cache</a></li>
+    <li><a href="#五go-源码构建失败却以为构建成功">五、go 源码构建失败却以为构建成功</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="数据库宕机">数据库宕机</h2>
+      <h2 id="一数据库宕机">一、数据库宕机</h2>
 <blockquote>
 <p>事故时间：</p>
 </blockquote>
@@ -210,7 +211,7 @@ handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class=
 <p>为什么备胎主库和 3 个从库会失效呢？</p>
 </blockquote>
 <p><img src="/images/2020/syncCopiedImage_1598490124885.png" alt="阿里售后回复"></p>
-<h2 id="数据库堆积">数据库堆积</h2>
+<h2 id="二数据库堆积">二、数据库堆积</h2>
 <p>数据库 SQL 堆积，往往来自接口请求的堆积，接口请求的堆积, 往往是因为短时间内的请求处理速度慢。</p>
 <blockquote>
 <p>解决方案</p>
@@ -220,8 +221,7 @@ handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class=
 <li>增加缓存代码</li>
 <li>提高服务器配置</li>
 </ol>
-<h2 id="mysql连接数暴增服务器cpu爆满">mysql连接数暴增，服务器cpu爆满</h2>
-<p>纠其原因，Golang作为常驻进程，请求第三方服务或者资源完毕后，需要手动关闭连接，否则连接会一直存在。而很多时候，开发者不一定记得关闭这个连接。</p>
+<h2 id="三mysql连接数暴增服务器cpu爆满">三、mysql连接数暴增，服务器cpu爆满</h2>
 <p>纠其原因，Golang作为常驻进程，请求第三方服务或者资源完毕后，需要手动关闭连接，否则连接会一直存在。而很多时候，开发者不一定记得关闭这个连接。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -252,12 +252,16 @@ db.DB<span class="o">()</span>.SetConnMaxLifetime<span class="o">(</span>xx<span
 </code></pre></td></tr></table>
 </div>
 </div><p><a href="https://colobu.com/2020/05/18/configuring-sql-DB-for-better-performance-2020/">配置 sql.DB 获得更好的性能</a></p>
-<h2 id="object-too-large-for-cache">object too large for cache</h2>
+<h2 id="四object-too-large-for-cache">四、object too large for cache</h2>
 <p>内存空间和数据量大小：</p>
 <ul>
 <li>MemCached可以修改最大内存，采用LRU算法。Redis增加了VM的特性，突破了物理内存的限制。</li>
 <li>Memcached单个key-value大小有限，一个value最大只支持1MB，而Redis最大支持512MB。</li>
 </ul>
+<h2 id="五go-源码构建失败却以为构建成功">五、go 源码构建失败却以为构建成功</h2>
+<p>某个进程代码报错，导致其他进程构建失败，但我们却未看发版结果，误以为构建成功，</p>
+<p>然后发现发版后有一些报错，却一直找不出问题！</p>
+<p>修改历史代码后，要全局搜索下该方法影响到哪些进程，一定要注意多个进程都要能正常编译运行。</p>
 
     </div>
 

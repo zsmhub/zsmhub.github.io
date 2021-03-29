@@ -18,7 +18,7 @@
       <pubDate>Wed, 17 Mar 2021 11:21:41 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/php%E5%92%8Cgo%E5%AF%B9%E6%AF%94/</guid>
-      <description>php 优缺点 优点 支持泛型 支持 in_array 缺点 数据类型没有强制要求提前声明，同个变量可以支持多种数据类型的值，比较乱 关联数组字段没有声明，不清楚该关联数组有</description>
+      <description>php 优缺点 优点 php 支持泛型 php 支持 in_array php 同个函数的数组返回值，key可以随意变化 缺点 数据类型没有强制要求提前声明，同个变量可以支持多种数据类型的值，</description>
     </item>
     
   </channel>

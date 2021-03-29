@@ -49,7 +49,7 @@
 <meta itemprop="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安">
 <meta itemprop="datePublished" content="2020-07-12T13:51:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-12T13:51:13&#43;08:00" />
-<meta itemprop="wordCount" content="6446">
+<meta itemprop="wordCount" content="6522">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 6446 字 </span>
-          <span class="more-meta"> 预计阅读 13 分钟 </span>
+          <span class="more-meta"> 约 6522 字 </span>
+          <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
     </header>
@@ -260,7 +260,7 @@
 </blockquote>
 <p>BLOB是一个二进制对象，可以容纳可变数量的数据。有四种类型的BLOB：TINYBLOB、BLOB、MEDIUMBLO和 LONGBLOB</p>
 <p>TEXT是一个不区分大小写的BLOB。四种TEXT类型：TINYTEXT、TEXT、MEDIUMTEXT 和 LONGTEXT。</p>
-<p>BLOB 保存二进制数据，TEXT 保存字符数据。</p>
+<p>BLOB 保存二进制数据（如图片、声音），TEXT 保存字符数据。</p>
 <h2 id="索引">索引</h2>
 <blockquote>
 <p>优势</p>
@@ -540,7 +540,23 @@ i- s null ,is not null 也无法使用索引</li>
 <p>1.第一个参数是 partition by +分组字段，将数据根据此字段分成多份，如果不加partition by参数，那会把整个数据当做一个窗口。</p>
 <p>2.第二个参数是 order by +排序字段，每个窗口的数据要不要进行排序。</p>
 <p>3.第三个参数 rows/range between 起始位置 and 结束位置，这个参数仅针对滑动窗口函数有用，是在当前窗口下分出更小的子窗口。其中起始位置和结束位置可写：current row 边界是当前行，unbounded preceding 边界是分区中的第一行，unbounded following 边界是分区中的最后一行，expr preceding 边界是当前行减去expr的值，expr following 边界是当前行加上expr的值。rows是基于行数，range是基于值的大小，到讲解到滑动窗口函数时再详细介绍。</p>
-<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">//</span> <span class="err">示例</span>
+<span class="k">SELECT</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">RANK</span><span class="p">()</span> <span class="n">OVER</span><span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">cid</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">score</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="s1">&#39;rank&#39;</span>
+<span class="k">FROM</span>
+    <span class="n">scores</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <p>窗口函数小结</p>
 </blockquote>
 <table>
@@ -554,17 +570,17 @@ i- s null ,is not null 也无法使用索引</li>
 <tbody>
 <tr>
 <td>排序</td>
-<td>ROW_NUMBER</td>
+<td>ROW_NUMBER（连续排名）</td>
 <td>为表中的每一行分配一个序号，可以指定分组（也可以不指定）及排序字段</td>
 </tr>
 <tr>
 <td>/</td>
-<td>DENSE_RANK</td>
+<td>DENSE_RANK（同分同名，不跳级）</td>
 <td>根据排序字段为每个分组中的每一行分配一个序号。 排名值相同时，序号相同，序号中没有间隙（1,1,2,3这种）</td>
 </tr>
 <tr>
 <td>/</td>
-<td>RANK</td>
+<td>RANK（同分同名，跳级）</td>
 <td>根据排序字段为每个分组中的每一行分配一个序号。 排名值相同时，序号相同，但序号中存在间隙（1,1,3,4这种）</td>
 </tr>
 <tr>
