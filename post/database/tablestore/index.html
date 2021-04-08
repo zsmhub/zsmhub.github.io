@@ -49,7 +49,7 @@
 <meta itemprop="description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存">
 <meta itemprop="datePublished" content="2020-08-02T10:13:11&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-02T10:13:11&#43;08:00" />
-<meta itemprop="wordCount" content="2613">
+<meta itemprop="wordCount" content="2647">
 
 
 
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2613 字 </span>
+          <span class="more-meta"> 约 2647 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -146,7 +146,7 @@
   <ul>
     <li><a href="#简介">简介</a></li>
     <li><a href="#支持多种数据库模型">支持多种数据库模型</a></li>
-    <li><a href="#tablestore-优点">TableStore 优点</a></li>
+    <li><a href="#tablestore-优缺点">TableStore 优缺点</a></li>
     <li><a href="#高级配置">高级配置</a></li>
     <li><a href="#timeline模型结构">Timeline模型结构</a>
       <ul>
@@ -180,7 +180,10 @@
 <li>业务上常需要多个字段来构成主键，如果只支持一个主键列，业务需要进行拼接，多列主键列避免了业务层做主键拼接和拆解。</li>
 <li>许多用户第一次看到多列主键列时，常会有误解，认为主键的范围查询(GetRange接口)可以针对每一列单独进行，实际上这里的主键范围指的是整体主键的范围，而非单独某一列的范围。</li>
 </ul>
-<h2 id="tablestore-优点">TableStore 优点</h2>
+<h2 id="tablestore-优缺点">TableStore 优缺点</h2>
+<blockquote>
+<p>优点</p>
+</blockquote>
 <ol>
 <li>
 <p>无缝扩展「单表存储能力超强！！！」</p>
@@ -208,6 +211,17 @@
 </li>
 <li>
 <p>自带主键列递增功能</p>
+</li>
+</ol>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<ol>
+<li>
+<p>自带递增ID是用微秒时间生成的，不能保证唯一</p>
+</li>
+<li>
+<p>搜索功能不精准</p>
 </li>
 </ol>
 <h2 id="高级配置">高级配置</h2>

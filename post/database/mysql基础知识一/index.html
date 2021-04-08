@@ -49,7 +49,7 @@
 <meta itemprop="description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y-%">
 <meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="2477">
+<meta itemprop="wordCount" content="2602">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2477 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2602 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -311,6 +311,25 @@
 </span><span class="lnt">30
 </span><span class="lnt">31
 </span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 查询 mysql 版本号
@@ -328,12 +347,31 @@
 <span class="k">where</span> <span class="n">table_schema</span> <span class="o">=</span> <span class="s1">&#39;数据库名&#39;</span>
 <span class="k">and</span> <span class="k">table_name</span> <span class="o">=</span> <span class="s1">&#39;表名&#39;</span><span class="p">;</span>
 
-<span class="c1">-- MySQL UPDATE JOIN 示例，可同时 update 多张表的字段
+<span class="c1">-- MySQL UPDATE JOIN 示例，可同时 update 多张表的字段 和 同时 update 多条记录
 </span><span class="c1"></span><span class="k">UPDATE</span> <span class="n">employees</span>
     <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">merits</span> <span class="k">ON</span> <span class="n">employees</span><span class="p">.</span><span class="n">performance</span> <span class="o">=</span> <span class="n">merits</span><span class="p">.</span><span class="n">performance</span>
 <span class="k">SET</span>
     <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">+</span> <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">*</span> <span class="n">merits</span><span class="p">.</span><span class="n">percentage</span><span class="p">,</span>
     <span class="n">merits</span><span class="p">.</span><span class="n">test</span> <span class="o">=</span> <span class="s2">&#34;666&#34;</span><span class="p">;</span>
+
+<span class="c1">-- mysql 5.7  自身表排名 update join 示例
+</span><span class="c1"></span><span class="k">UPDATE</span> <span class="n">rank_test</span>
+<span class="k">JOIN</span>  <span class="p">(</span><span class="k">select</span> <span class="n">id</span><span class="p">,</span> <span class="n">rank</span> <span class="k">from</span>
+	<span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="o">@</span><span class="n">curRank</span> <span class="p">:</span><span class="o">=</span> <span class="o">@</span><span class="n">curRank</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">AS</span> <span class="n">rank</span>
+    <span class="k">FROM</span> <span class="n">rank_test</span><span class="p">,</span>
+        <span class="p">(</span><span class="k">SELECT</span> <span class="o">@</span><span class="n">curRank</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">r</span>
+        <span class="k">WHERE</span> <span class="nb">date</span><span class="o">=</span><span class="s2">&#34;2021-03-30&#34;</span> <span class="k">AND</span> <span class="n">material_type</span> <span class="o">=</span> <span class="mi">22</span>
+        <span class="k">ORDER</span> <span class="k">BY</span>  <span class="n">score_delta</span> <span class="k">desc</span><span class="p">)</span> <span class="n">temp2</span>
+        <span class="p">)</span> <span class="n">temp</span> <span class="k">ON</span> <span class="n">rank_test</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">id</span>
+<span class="k">SET</span> <span class="n">rank_test</span><span class="p">.</span><span class="n">rank</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">rank</span><span class="p">;</span>
+
+<span class="c1">-- mysql 8.0  自身表排名 update join 示例
+</span><span class="c1"></span><span class="k">update</span> <span class="n">rank_test</span>
+<span class="k">join</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">rank</span><span class="p">()</span> <span class="n">over</span> <span class="p">(</span><span class="k">order</span> <span class="k">by</span> <span class="n">score_delta</span> <span class="k">desc</span><span class="p">)</span> <span class="k">as</span> <span class="n">rank2</span>
+	<span class="k">FROM</span> <span class="n">rank_test</span>
+	<span class="k">where</span> <span class="nb">date</span><span class="o">=</span><span class="s2">&#34;2021-03-29&#34;</span> <span class="k">and</span> <span class="n">material_type</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">temp</span>
+<span class="k">on</span> <span class="n">rank_test</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">id</span>
+<span class="k">set</span> <span class="n">rank_test</span><span class="p">.</span><span class="n">rank</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">rank2</span><span class="p">;</span>
 
 <span class="c1">-- 查询某个数据库内哪些表包含个字段
 </span><span class="c1"></span><span class="k">select</span> <span class="n">tables</span><span class="p">.</span><span class="k">table_name</span><span class="p">,</span> <span class="n">group_concat</span><span class="p">(</span><span class="k">column_name</span> <span class="n">separator</span> <span class="s2">&#34;,&#34;</span><span class="p">),</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">table_rows</span>
