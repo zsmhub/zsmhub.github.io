@@ -227,7 +227,7 @@ $a = date(&#39;Y-m-d&#39;, strtotime(&#39;-1 month&#39;, $t));
 echo $a . &#34;\n&#34;; // 输出2020-10-01
 
 // 因为每月都有1号，如果需要获取上一个月的月份，可以使用以下的方式获取：
-echo date(&#39;Y-m&#39;, strtotime(date(&#39;Y-m-01&#39;) . &#34; -1 month&#34;)) . &#34;\n&#34;;
+echo date(&#39;Y-m&#39;, strtotime(date(&#39;Y-m-01&#39;) . &#39; -1 month&#39;)) . &#34;\n&#34;;
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="取差集">取差集</h2>
