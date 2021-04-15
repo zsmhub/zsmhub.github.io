@@ -49,7 +49,7 @@
 <meta itemprop="name" content="APP接入收发红包功能">
 <meta itemprop="description" content="APP 如何接入收发红包功能 使用支付宝的现金红包方案 现金红包简介 现金红包- 开发入门 现金红包是基于支付宝的支付能力推出的一款针对收发红包场景的产品，"><meta itemprop="datePublished" content="2021-04-08T15:59:35&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-08T15:59:35&#43;08:00" />
-<meta itemprop="wordCount" content="1937">
+<meta itemprop="wordCount" content="2167">
 <meta itemprop="keywords" content="支付," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="APP接入收发红包功能"/>
 <meta name="twitter:description" content="APP 如何接入收发红包功能 使用支付宝的现金红包方案 现金红包简介 现金红包- 开发入门 现金红包是基于支付宝的支付能力推出的一款针对收发红包场景的产品，"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1937 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2167 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -477,6 +477,47 @@
 </span><span class="lnt">133
 </span><span class="lnt">134
 </span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
@@ -488,6 +529,10 @@
     <span class="s">&#34;sort&#34;</span>
     <span class="s">&#34;time&#34;</span>
 <span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">init</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
+<span class="p">}</span>
 
 <span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">amount</span> <span class="o">:=</span> <span class="mi">100000</span>
@@ -560,8 +605,6 @@
 
         <span class="nx">luck</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">leftCount</span><span class="p">)</span>
 
-        <span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
-
         <span class="c1">// 方案一：随机范围不断缩小，不可用，因为红包数越多，越容易出现一堆 1 分钱的情况
 </span><span class="c1"></span>        <span class="cm">/*for k := range luck {
 </span><span class="cm">            // 最后一个红包直接承包最后剩余的金额，确保总金额正确
@@ -579,7 +622,7 @@
 </span><span class="cm">            }
 </span><span class="cm">        }*/</span>
 
-        <span class="c1">// 方案二：1. 在 0 ~ leftAmount 的线段中，插入 n 个节点；2. 根据节点，将线段裁成 n 个小线段
+        <span class="c1">// 方案二：线段法，1. 在 0 ~ leftAmount 的线段中，插入 n 个节点；2. 根据节点，将线段裁成 n 个小线段
 </span><span class="c1"></span>        <span class="k">for</span> <span class="nx">k</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">luck</span> <span class="p">{</span>
             <span class="nx">luck</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="p">=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="nx">leftAmount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="p">}</span>
@@ -588,6 +631,45 @@
         <span class="k">for</span> <span class="nx">k</span> <span class="o">:=</span> <span class="nx">leftCount</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">k</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">k</span><span class="o">--</span> <span class="p">{</span>
             <span class="nx">luck</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="p">=</span> <span class="nx">luck</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">-</span> <span class="nx">luck</span><span class="p">[</span><span class="nx">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="p">}</span>
+
+        <span class="c1">// 方案三：按权重分配法
+</span><span class="c1"></span>        <span class="cm">/*randAmountSum := 0 // 随机金额总和
+</span><span class="cm">        randAmountMax := leftAmount / leftCount * 2 // 最大可领金额 = 剩余金额的平均值x2 = (剩余金额 / 剩余数量) * 2
+</span><span class="cm">        for k := range luck {
+</span><span class="cm">            luck[k] = rand.Intn(randAmountMax)
+</span><span class="cm">            randAmountSum += luck[k]
+</span><span class="cm">        }
+</span><span class="cm">
+</span><span class="cm">        weightAmountSum := 0 // 按权重分配的金额总和
+</span><span class="cm">        for k := range luck {
+</span><span class="cm">            luck[k] = int(float32(luck[k]) / float32(randAmountSum) * float32(leftAmount))
+</span><span class="cm">            weightAmountSum += luck[k]
+</span><span class="cm">        }
+</span><span class="cm">
+</span><span class="cm">        // 剩余金额继续分配
+</span><span class="cm">        if weightAmountSum &lt; leftAmount {
+</span><span class="cm">            randAmountSum := leftAmount - weightAmountSum
+</span><span class="cm">
+</span><span class="cm">            randAmountMax = randAmountSum / leftCount * 2
+</span><span class="cm">            if randAmountMax == 0 {
+</span><span class="cm">                randAmountMax = randAmountSum
+</span><span class="cm">            }
+</span><span class="cm">
+</span><span class="cm">            var temp int
+</span><span class="cm">            for k := range luck {
+</span><span class="cm">                if k == (leftCount - 1) {
+</span><span class="cm">                    temp = randAmountSum
+</span><span class="cm">                } else {
+</span><span class="cm">                    temp = rand.Intn(randAmountMax)
+</span><span class="cm">                }
+</span><span class="cm">
+</span><span class="cm">                luck[k] += temp
+</span><span class="cm">                randAmountSum -= temp
+</span><span class="cm">                if randAmountSum == 0 {
+</span><span class="cm">                    break
+</span><span class="cm">                }
+</span><span class="cm">            }
+</span><span class="cm">        }*/</span>
 
         <span class="c1">// 再次调整分配金额，使得更平均，否则部分人拿到很高金额，部分人拿到很低金额，有些人心境会崩溃，导致影响上班心情的哈
 </span><span class="c1"></span>        <span class="nx">sort</span><span class="p">.</span><span class="nf">Ints</span><span class="p">(</span><span class="nx">luck</span><span class="p">)</span>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="8444">
+<meta itemprop="wordCount" content="8480">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8444 字 </span>
+          <span class="more-meta"> 约 8480 字 </span>
           <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
@@ -354,6 +354,14 @@ ToDo Something&hellip;</li>
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// int和string互转，Atoi代表什么意思, A 就是ASCII, i就是integer,所以Atoi= ASCII to integer. ItoA= Integer to ASCII.
@@ -377,7 +385,15 @@ ToDo Something&hellip;</li>
 </span><span class="c1"></span><span class="nx">s</span> <span class="o">:=</span> <span class="s">&#34;3.1415926535&#34;</span>
 <span class="nx">v1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseFloat</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">// string转float32
 </span><span class="c1"></span><span class="nx">v2</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseFloat</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="c1">// string转float64
-</span></code></pre></td></tr></table>
+</span><span class="c1"></span>
+<span class="c1">// float和int互转
+</span><span class="c1"></span><span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">luck</span> <span class="p">[]</span><span class="kt">int</span>
+    <span class="nx">leftAmountSum</span> <span class="kt">int</span>
+    <span class="nx">leftAmount</span> <span class="kt">int</span>
+<span class="p">)</span>
+<span class="nx">num</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float32</span><span class="p">(</span><span class="nx">luck</span><span class="p">[</span><span class="nx">k</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float32</span><span class="p">(</span><span class="nx">leftAmountSum</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float32</span><span class="p">(</span><span class="nx">leftAmount</span><span class="p">))</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
