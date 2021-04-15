@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/" />
@@ -35,24 +35,21 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Laravel 如何在预加载中指定查询的字段" />
 <meta property="og:description" content="预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&#39;topics:user_id,body,title&#39;) -&gt;where(&#39;name&#39;, &#39;Summer&#39;) -&gt;get() -&gt;toArray(); 注意：在使用这个" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/" />
-<meta property="article:published_time" content="2020-06-30T18:30:58+08:00" />
-<meta property="article:modified_time" content="2020-06-30T18:30:58+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-06-30T18:30:58&#43;08:00" />
+<meta property="article:modified_time" content="2020-06-30T18:30:58&#43;08:00" />
+
 <meta itemprop="name" content="Laravel 如何在预加载中指定查询的字段">
-<meta itemprop="description" content="预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&#39;topics:user_id,body,title&#39;) -&gt;where(&#39;name&#39;, &#39;Summer&#39;) -&gt;get() -&gt;toArray(); 注意：在使用这个">
-<meta itemprop="datePublished" content="2020-06-30T18:30:58&#43;08:00" />
+<meta itemprop="description" content="预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&#39;topics:user_id,body,title&#39;) -&gt;where(&#39;name&#39;, &#39;Summer&#39;) -&gt;get() -&gt;toArray(); 注意：在使用这个"><meta itemprop="datePublished" content="2020-06-30T18:30:58&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-30T18:30:58&#43;08:00" />
 <meta itemprop="wordCount" content="211">
-
-
-
 <meta itemprop="keywords" content="Laravel," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Laravel 如何在预加载中指定查询的字段"/>
 <meta name="twitter:description" content="预加载指定列 并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列： 1 2 3 4 $result = User::with(&#39;topics:user_id,body,title&#39;) -&gt;where(&#39;name&#39;, &#39;Summer&#39;) -&gt;get() -&gt;toArray(); 注意：在使用这个"/>
@@ -162,10 +159,10 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$result = User::with(&#39;topics:user_id,body,title&#39;)
-    -&gt;where(&#39;name&#39;, &#39;Summer&#39;)
-    -&gt;get()
-    -&gt;toArray();
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$result</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;topics:user_id,body,title&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -183,13 +180,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$result = User::with([&#39;topics&#39; =&gt; function ($query) {
-        $query-&gt;select(&#39;id&#39;, &#39;user_id&#39;, &#39;body&#39;, &#39;title&#39;)
-            -&gt;orderBy(&#39;updated_at&#39;, &#39;desc&#39;);
-    }])
-    -&gt;where(&#39;name&#39;, &#39;Summer&#39;)
-    -&gt;get()
-    -&gt;toArray();
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$result</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">with</span><span class="p">([</span><span class="s1">&#39;topics&#39;</span> <span class="o">=&gt;</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;updated_at&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">);</span>
+    <span class="p">}])</span>
+    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="嵌套预加载指定字段的实现方法">嵌套预加载指定字段的实现方法</h2>
@@ -203,12 +200,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$user = User::with([&#39;posts&#39;=&gt;function($query) {
-     $query-&gt;select(&#39;id&#39;,&#39;user_id&#39;,&#39;title&#39;)-&gt;orderBy(&#39;updated_at&#39;,&#39;desc&#39;);
-     $query-&gt;with([&#39;tags&#39;=&gt;function($query) {
-          $query-&gt;select(&#39;tag&#39;);
-     }]);
-}])-&gt;where(&#39;id&#39;,1)-&gt;get();
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">with</span><span class="p">([</span><span class="s1">&#39;posts&#39;</span><span class="o">=&gt;</span><span class="k">function</span><span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span><span class="s1">&#39;title&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;updated_at&#39;</span><span class="p">,</span><span class="s1">&#39;desc&#39;</span><span class="p">);</span>
+     <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">([</span><span class="s1">&#39;tags&#39;</span><span class="o">=&gt;</span><span class="k">function</span><span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
+     <span class="p">}]);</span>
+<span class="p">}])</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>没有添加约束的方法</p>
@@ -217,7 +214,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$user = User::with([&#39;posts:user_id,title&#39;,&#39;posts.tags&#39;])-&gt;where(&#39;id&#39;,1)-&gt;get();
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">with</span><span class="p">([</span><span class="s1">&#39;posts:user_id,title&#39;</span><span class="p">,</span><span class="s1">&#39;posts.tags&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="参考原文">参考原文</h2>
@@ -281,7 +278,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-06-30 18:30:58 \x2b0800 CST',
+        id: '2020-06-30 18:30:58 \u002b0800 CST',
         title: 'Laravel 如何在预加载中指定查询的字段',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',

@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 18 Dec 2020 09:30:23 +0800</lastBuildDate>
-    
-	<atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 18 Dec 2020 09:30:23 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Micro</title>
       <link>https://zsmhub.github.io/post/golang/micro/</link>

@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/" />
@@ -35,24 +35,21 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="经典案例" />
 <meta property="og:description" content="php vs go php 优点 array 结构无所不能，很强大 php 缺点 弱类型语言，同样的逻辑，写法过于多样，导致后期维护成本高。比如参数可定义可不定义，返回值可定义可不定" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/" />
-<meta property="article:published_time" content="2020-02-21T22:28:05+08:00" />
-<meta property="article:modified_time" content="2020-02-21T22:28:05+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-02-21T22:28:05&#43;08:00" />
+<meta property="article:modified_time" content="2020-02-21T22:28:05&#43;08:00" />
+
 <meta itemprop="name" content="经典案例">
-<meta itemprop="description" content="php vs go php 优点 array 结构无所不能，很强大 php 缺点 弱类型语言，同样的逻辑，写法过于多样，导致后期维护成本高。比如参数可定义可不定义，返回值可定义可不定">
-<meta itemprop="datePublished" content="2020-02-21T22:28:05&#43;08:00" />
+<meta itemprop="description" content="php vs go php 优点 array 结构无所不能，很强大 php 缺点 弱类型语言，同样的逻辑，写法过于多样，导致后期维护成本高。比如参数可定义可不定义，返回值可定义可不定"><meta itemprop="datePublished" content="2020-02-21T22:28:05&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-21T22:28:05&#43;08:00" />
 <meta itemprop="wordCount" content="3317">
-
-
-
 <meta itemprop="keywords" content="面试题," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="经典案例"/>
 <meta name="twitter:description" content="php vs go php 优点 array 结构无所不能，很强大 php 缺点 弱类型语言，同样的逻辑，写法过于多样，导致后期维护成本高。比如参数可定义可不定义，返回值可定义可不定"/>
@@ -228,7 +225,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$store</span><span class="o">=</span><span class="mi">1000</span><span class="p">;</span>
 <span class="nv">$goods_id</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>  <span class="c1">// 商品 id
 </span><span class="c1"></span><span class="nv">$redis_goods_store_name</span> <span class="o">=</span> <span class="s1">&#39;goods_store_&#39;</span> <span class="o">.</span> <span class="nv">$goods_id</span><span class="p">;</span>  <span class="c1">// 商品库存 redis key 值
@@ -238,8 +235,8 @@
     <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">lpush</span><span class="p">(</span><span class="nv">$redis_goods_store_name</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="k">echo</span> <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">llen</span><span class="p">(</span><span class="nv">$redis_goods_store_name</span><span class="p">);</span>
-<span class="cp">?&gt;</span>
-</code></pre></td></tr></table>
+<span class="cp">?&gt;</span><span class="err">
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -327,7 +324,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-php" data-lang="php">
-<span class="cp">&lt;?php</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$conn</span><span class="o">=</span><span class="nx">mysql_connect</span><span class="p">(</span><span class="s2">&#34;localhost&#34;</span><span class="p">,</span><span class="s2">&#34;big&#34;</span><span class="p">,</span><span class="s2">&#34;123456&#34;</span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$conn</span><span class="p">){</span>
     <span class="k">echo</span> <span class="s2">&#34;connect failed&#34;</span><span class="p">;</span>
@@ -391,7 +388,7 @@
 <span class="nv">$order_rs</span><span class="o">=</span><span class="nx">mysql_query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span><span class="nv">$conn</span><span class="p">);</span>
 
 <span class="c1">// 库存减少
-</span><span class="c1"></span><span class="nv">$sql</span><span class="o">=</span><span class="s2">&#34;update ih_store set number=number-</span><span class="si">{</span>$number<span class="si">}</span><span class="s2"> where sku_id=&#39;</span><span class="si">$sku_id</span><span class="s2">&#39;&#34;</span><span class="p">;</span>
+</span><span class="c1"></span><span class="nv">$sql</span><span class="o">=</span><span class="s2">&#34;update ih_store set number=number-</span><span class="si">{</span><span class="nv">$number</span><span class="si">}</span><span class="s2"> where sku_id=&#39;</span><span class="si">$sku_id</span><span class="s2">&#39;&#34;</span><span class="p">;</span>
 <span class="nv">$store_rs</span><span class="o">=</span><span class="nx">mysql_query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span><span class="nv">$conn</span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="nx">mysql_affected_rows</span><span class="p">()){</span>
     <span class="nx">insertLog</span><span class="p">(</span><span class="s1">&#39;库存减少成功&#39;</span><span class="p">);</span>
@@ -611,7 +608,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-02-21 22:28:05 \x2b0800 CST',
+        id: '2020-02-21 22:28:05 \u002b0800 CST',
         title: '经典案例',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',

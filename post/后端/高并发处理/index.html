@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/" />
@@ -35,24 +35,21 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="高并发处理" />
 <meta property="og:description" content="高并发之问题描述 某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/" />
-<meta property="article:published_time" content="2019-07-06T13:32:31+08:00" />
-<meta property="article:modified_time" content="2019-07-06T13:32:31+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-07-06T13:32:31&#43;08:00" />
+<meta property="article:modified_time" content="2019-07-06T13:32:31&#43;08:00" />
+
 <meta itemprop="name" content="高并发处理">
-<meta itemprop="description" content="高并发之问题描述 某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种">
-<meta itemprop="datePublished" content="2019-07-06T13:32:31&#43;08:00" />
+<meta itemprop="description" content="高并发之问题描述 某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种"><meta itemprop="datePublished" content="2019-07-06T13:32:31&#43;08:00" />
 <meta itemprop="dateModified" content="2019-07-06T13:32:31&#43;08:00" />
 <meta itemprop="wordCount" content="1242">
-
-
-
 <meta itemprop="keywords" content="高并发," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="高并发处理"/>
 <meta name="twitter:description" content="高并发之问题描述 某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种"/>
@@ -198,20 +195,20 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">/**
- * redis排他锁：拒绝并发相同的请求
- * @param string $key
- * @param $value
- * @param int $ttl
- * @return bool
- */
-public static function setNxWithTTL(string $key, $value, int $ttl = 300): bool
-{
-    if ((Redis::connection(&#39;default&#39;))-&gt;set($key, $value, &#39;ex&#39;, $ttl, &#39;nx&#39;)) {
-        return true;
-    }
-    return false;
-}
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="sd">/**
+</span><span class="sd"> * redis排他锁：拒绝并发相同的请求
+</span><span class="sd"> * @param string $key
+</span><span class="sd"> * @param $value
+</span><span class="sd"> * @param int $ttl
+</span><span class="sd"> * @return bool
+</span><span class="sd"> */</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">setNxWithTTL</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">((</span><span class="nx">Redis</span><span class="o">::</span><span class="na">connection</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="s1">&#39;ex&#39;</span><span class="p">,</span> <span class="nv">$ttl</span><span class="p">,</span> <span class="s1">&#39;nx&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -294,7 +291,7 @@ public static function setNxWithTTL(string $key, $value, int $ttl = 300): bool
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-07-06 13:32:31 \x2b0800 CST',
+        id: '2019-07-06 13:32:31 \u002b0800 CST',
         title: '高并发处理',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',

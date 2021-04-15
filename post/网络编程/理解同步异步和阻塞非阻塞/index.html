@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%92%8C%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E/" />
@@ -35,24 +35,21 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="IO - 同步异步，阻塞非阻塞" />
 <meta property="og:description" content="同步(Sync)/异步(Async)，阻塞(Block)/非阻塞(Unblock) 两者定义的针对目标不同，异步同步是针对 响应 本身的，阻塞非阻" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%92%8C%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E/" />
-<meta property="article:published_time" content="2020-08-16T14:54:25+08:00" />
-<meta property="article:modified_time" content="2020-08-16T14:54:25+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%92%8C%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-08-16T14:54:25&#43;08:00" />
+<meta property="article:modified_time" content="2020-08-16T14:54:25&#43;08:00" />
+
 <meta itemprop="name" content="IO - 同步异步，阻塞非阻塞">
-<meta itemprop="description" content="同步(Sync)/异步(Async)，阻塞(Block)/非阻塞(Unblock) 两者定义的针对目标不同，异步同步是针对 响应 本身的，阻塞非阻">
-<meta itemprop="datePublished" content="2020-08-16T14:54:25&#43;08:00" />
+<meta itemprop="description" content="同步(Sync)/异步(Async)，阻塞(Block)/非阻塞(Unblock) 两者定义的针对目标不同，异步同步是针对 响应 本身的，阻塞非阻"><meta itemprop="datePublished" content="2020-08-16T14:54:25&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-16T14:54:25&#43;08:00" />
-<meta itemprop="wordCount" content="665">
-
-
-
+<meta itemprop="wordCount" content="664">
 <meta itemprop="keywords" content="网络编程," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="IO - 同步异步，阻塞非阻塞"/>
 <meta name="twitter:description" content="同步(Sync)/异步(Async)，阻塞(Block)/非阻塞(Unblock) 两者定义的针对目标不同，异步同步是针对 响应 本身的，阻塞非阻"/>
@@ -133,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
             </div>
-          <span class="more-meta"> 约 665 字 </span>
+          <span class="more-meta"> 约 664 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -170,7 +167,7 @@
 <p>举个通俗的例子：</p>
 </blockquote>
 <ul>
-<li>你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下&rdquo;，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。</li>
+<li>你打电话问书店老板有没有《分布式系统》这本书，如果是同步通信机制，书店老板会说，你稍等，”我查一下&quot;，然后开始查啊查，等查好了（可能是5秒，也可能是一天）告诉你结果（返回结果）。</li>
 <li>而异步通信机制，书店老板直接告诉你我查一下啊，查好了打电话给你，然后直接挂电话了（不返回结果）。然后查好了，他会主动打电话给你。在这里老板通过“回电”这种方式来回调。</li>
 </ul>
 <h2 id="阻塞与非阻塞">阻塞与非阻塞</h2>
@@ -246,7 +243,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-08-16 14:54:25 \x2b0800 CST',
+        id: '2020-08-16 14:54:25 \u002b0800 CST',
         title: 'IO - 同步异步，阻塞非阻塞',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',

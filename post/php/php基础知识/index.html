@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
@@ -35,24 +35,21 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="PHP 基础知识" />
 <meta property="og:description" content="操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&#39;display_errors&#39;, 1); //打" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
-<meta property="article:published_time" content="2019-01-01T10:37:43+08:00" />
-<meta property="article:modified_time" content="2020-05-04T10:37:43+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-01-01T10:37:43&#43;08:00" />
+<meta property="article:modified_time" content="2020-05-04T10:37:43&#43;08:00" />
+
 <meta itemprop="name" content="PHP 基础知识">
-<meta itemprop="description" content="操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&#39;display_errors&#39;, 1); //打">
-<meta itemprop="datePublished" content="2019-01-01T10:37:43&#43;08:00" />
+<meta itemprop="description" content="操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&#39;display_errors&#39;, 1); //打"><meta itemprop="datePublished" content="2019-01-01T10:37:43&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-04T10:37:43&#43;08:00" />
-<meta itemprop="wordCount" content="2093">
-
-
-
+<meta itemprop="wordCount" content="2089">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PHP 基础知识"/>
 <meta name="twitter:description" content="操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&#39;display_errors&#39;, 1); //打"/>
@@ -133,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 2093 字 </span>
+          <span class="more-meta"> 约 2089 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -159,9 +156,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">error_reporting(-1);  //报告所有 PHP 错误
-ini_set(&#39;display_errors&#39;, 1);    //打开错误信息输出
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">error_reporting</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>  <span class="c1">//报告所有 PHP 错误
+</span><span class="c1"></span><span class="nx">ini_set</span><span class="p">(</span><span class="s1">&#39;display_errors&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>    <span class="c1">//打开错误信息输出
+</span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>array</li>
@@ -173,10 +170,10 @@ ini_set(&#39;display_errors&#39;, 1);    //打开错误信息输出
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">in_array($value, $array);  //在$array中查找$value值，若存在则返回true
-array_search($value, $array);  //在$array中查找$value值，若存在则返回对象key值
-array_walk() // 二维数组新增一列
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">in_array</span><span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span>  <span class="c1">//在$array中查找$value值，若存在则返回true
+</span><span class="c1"></span><span class="nx">array_search</span><span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span>  <span class="c1">//在$array中查找$value值，若存在则返回对象key值
+</span><span class="c1"></span><span class="nx">array_walk</span><span class="p">()</span> <span class="c1">// 二维数组新增一列
+</span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>php 编码转换函数</li>
@@ -187,8 +184,8 @@ array_walk() // 二维数组新增一列
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$string = iconv(&#34;gb2312&#34;, &#34;utf-8//IGNORE&#34;, $string);
-$string = mb_convert_encoding($string, &#34;UTF-8&#34;, &#34;gb2312&#34;);
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$string</span> <span class="o">=</span> <span class="nx">iconv</span><span class="p">(</span><span class="s2">&#34;gb2312&#34;</span><span class="p">,</span> <span class="s2">&#34;utf-8//IGNORE&#34;</span><span class="p">,</span> <span class="nv">$string</span><span class="p">);</span>
+<span class="nv">$string</span> <span class="o">=</span> <span class="nx">mb_convert_encoding</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="s2">&#34;UTF-8&#34;</span><span class="p">,</span> <span class="s2">&#34;gb2312&#34;</span><span class="p">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -218,26 +215,26 @@ $string = mb_convert_encoding($string, &#34;UTF-8&#34;, &#34;gb2312&#34;);
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">printf(format,arg1,arg2,arg++)： 输出格式化的字符串
-sprintf(format,arg1,arg2,arg++):  把格式化的字符串写入变量中
-fprintf(stream,format,arg1,arg2,arg++):  把格式化的字符串写入指定的输出流（例如：文件或数据库）
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">printf</span><span class="p">(</span><span class="nx">format</span><span class="p">,</span><span class="nx">arg1</span><span class="p">,</span><span class="nx">arg2</span><span class="p">,</span><span class="nx">arg</span><span class="o">++</span><span class="p">)</span><span class="nx">：</span> <span class="nx">输出格式化的字符串</span>
+<span class="nx">sprintf</span><span class="p">(</span><span class="nx">format</span><span class="p">,</span><span class="nx">arg1</span><span class="p">,</span><span class="nx">arg2</span><span class="p">,</span><span class="nx">arg</span><span class="o">++</span><span class="p">)</span><span class="o">:</span>  <span class="nx">把格式化的字符串写入变量中</span>
+<span class="nx">fprintf</span><span class="p">(</span><span class="nx">stream</span><span class="p">,</span><span class="nx">format</span><span class="p">,</span><span class="nx">arg1</span><span class="p">,</span><span class="nx">arg2</span><span class="p">,</span><span class="nx">arg</span><span class="o">++</span><span class="p">)</span><span class="o">:</span>  <span class="nx">把格式化的字符串写入指定的输出流（例如：文件或数据库）</span>
 
-// format: 必需。规定字符串以及如何格式化其中的变量，可能的格式值：
-%% - 返回一个百分号 %
-%b - 二进制数
-%c - ASCII 值对应的字符
-%d - 包含正负号的十进制数（负数、0、正数）
-%e - 使用小写的科学计数法（例如 1.2e+2）
-%E - 使用大写的科学计数法（例如 1.2E+2）
-%u - 不包含正负号的十进制数（大于等于 0）
-%f - 浮点数（本地设置）
-%F - 浮点数（非本地设置）
-%g - 较短的 %e 和 %f
-%G - 较短的 %E 和 %f
-%o - 八进制数
-%s - 字符串
-%x - 十六进制数（小写字母）
-%X - 十六进制数（大写字母）
+<span class="c1">// format: 必需。规定字符串以及如何格式化其中的变量，可能的格式值：
+</span><span class="c1"></span><span class="o">%%</span> <span class="o">-</span> <span class="nx">返回一个百分号</span> <span class="o">%</span>
+<span class="o">%</span><span class="nx">b</span> <span class="o">-</span> <span class="nx">二进制数</span>
+<span class="o">%</span><span class="nx">c</span> <span class="o">-</span> <span class="nx">ASCII</span> <span class="nx">值对应的字符</span>
+<span class="o">%</span><span class="nx">d</span> <span class="o">-</span> <span class="nx">包含正负号的十进制数（负数、0、正数）</span>
+<span class="o">%</span><span class="nx">e</span> <span class="o">-</span> <span class="nx">使用小写的科学计数法（例如</span> <span class="mf">1.2e+2</span><span class="nx">）</span>
+<span class="o">%</span><span class="nx">E</span> <span class="o">-</span> <span class="nx">使用大写的科学计数法（例如</span> <span class="mf">1.2E+2</span><span class="nx">）</span>
+<span class="o">%</span><span class="nx">u</span> <span class="o">-</span> <span class="nx">不包含正负号的十进制数（大于等于</span> <span class="mi">0</span><span class="nx">）</span>
+<span class="o">%</span><span class="nx">f</span> <span class="o">-</span> <span class="nx">浮点数（本地设置）</span>
+<span class="o">%</span><span class="nx">F</span> <span class="o">-</span> <span class="nx">浮点数（非本地设置）</span>
+<span class="o">%</span><span class="nx">g</span> <span class="o">-</span> <span class="nx">较短的</span> <span class="o">%</span><span class="nx">e</span> <span class="nx">和</span> <span class="o">%</span><span class="nx">f</span>
+<span class="o">%</span><span class="nx">G</span> <span class="o">-</span> <span class="nx">较短的</span> <span class="o">%</span><span class="nx">E</span> <span class="nx">和</span> <span class="o">%</span><span class="nx">f</span>
+<span class="o">%</span><span class="nx">o</span> <span class="o">-</span> <span class="nx">八进制数</span>
+<span class="o">%</span><span class="nx">s</span> <span class="o">-</span> <span class="nx">字符串</span>
+<span class="o">%</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">十六进制数（小写字母）</span>
+<span class="o">%</span><span class="nx">X</span> <span class="o">-</span> <span class="nx">十六进制数（大写字母）</span>
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -251,11 +248,11 @@ fprintf(stream,format,arg1,arg2,arg++):  把格式化的字符串写入指定的
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">$_SERVER[&#39;HTTP_ACCEPT_LANGUAGE&#39;]//浏览器语言
-$_SERVER[&#39;REMOTE_ADDR&#39;] //当前用户 IP 。
-$_SERVER[&#39;REMOTE_HOST&#39;] //当前用户主机名
-$_SERVER[&#39;REQUEST_URI&#39;] //注意是uri: URL
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_ACCEPT_LANGUAGE&#39;</span><span class="p">]</span><span class="c1">//浏览器语言
+</span><span class="c1"></span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span> <span class="c1">//当前用户 IP 。
+</span><span class="c1"></span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_HOST&#39;</span><span class="p">]</span> <span class="c1">//当前用户主机名
+</span><span class="c1"></span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="p">]</span> <span class="c1">//注意是uri: URL
+</span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>php变量定义特殊之处</li>
@@ -271,14 +268,14 @@ $_SERVER[&#39;REQUEST_URI&#39;] //注意是uri: URL
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;shi&#39;</span><span class="p">;</span>
 <span class="nv">$$a</span> <span class="o">=</span> <span class="s1">&#39;mian&#39;</span><span class="p">;</span>  <span class="c1">//相当于$($a),即$shi
 </span><span class="c1"></span><span class="nv">$$$a</span> <span class="o">=</span> <span class="s1">&#39;de&#39;</span><span class="p">;</span>  <span class="c1">//相当于$($($a)),即$mian
 </span><span class="c1"></span><span class="k">echo</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$$a</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$$$a</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
-echo ‘shi mian de&#39;;
-</code></pre></td></tr></table>
+<span class="cp">?&gt;</span><span class="err">
+</span><span class="err">echo ‘shi mian de&#39;;
+</span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>exec与shell_exec区别：</li>
@@ -293,7 +290,7 @@ echo ‘shi mian de&#39;;
 <ol>
 <li>Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，Base64要求把每三个8Bit的字节转换为四个6Bit的字节（3<em>8 = 4</em>6 = 24），然后把6Bit再添两位高位0，组成四个8Bit的字节，也就是说，转换后的字符串理论上将要比原来的长1/3。</li>
 <li>php 用base64_encode() 编码的数据要比原始数据多占用 33% 左右的空间。</li>
-<li>base64编码中的符号&quot;=&rdquo;、&ldquo;+&rdquo;、&quot;/&ldquo;不适合在URL里传输，所以要替换为 &lsquo;,', &lsquo;_', &lsquo;('，这样就免去了在URL编解码和数据库存储时所要作的转换。</li>
+<li>base64编码中的符号&quot;=&quot;、&quot;+&quot;、&quot;/&ldquo;不适合在URL里传输，所以要替换为 &lsquo;,&rsquo;, &lsquo;_&rsquo;, &lsquo;('，这样就免去了在URL编解码和数据库存储时所要作的转换。</li>
 </ol>
 </li>
 <li>
@@ -334,7 +331,7 @@ echo ‘shi mian de&#39;;
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="c1">// php的闭包（Closure）也就是匿名函数。是PHP5.3引入的。
 </span><span class="c1"></span>
 <span class="c1">// 闭包的语法很简单，需要注意的关键字就只有use，use意思是连接闭包和外界变量。
@@ -421,7 +418,7 @@ echo ‘shi mian de&#39;;
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-01-01 10:37:43 \x2b0800 CST',
+        id: '2019-01-01 10:37:43 \u002b0800 CST',
         title: 'PHP 基础知识',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',

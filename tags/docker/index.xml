@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 01 Feb 2019 14:36:09 +0800</lastBuildDate>
-    
-	<atom:link href="https://zsmhub.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 01 Feb 2019 14:36:09 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>K8s 介绍</title>
       <link>https://zsmhub.github.io/post/docker/docker-k8s/</link>

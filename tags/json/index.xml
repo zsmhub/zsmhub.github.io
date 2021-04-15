@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 12 May 2020 21:51:25 +0800</lastBuildDate>
-    
-	<atom:link href="https://zsmhub.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 12 May 2020 21:51:25 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go Json 技巧</title>
       <link>https://zsmhub.github.io/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/</link>

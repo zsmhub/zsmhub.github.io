@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 29 Apr 2019 21:17:55 +0800</lastBuildDate>
-    
-	<atom:link href="https://zsmhub.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 29 Apr 2019 21:17:55 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DevOps 与 NoOps</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</link>

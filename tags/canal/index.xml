@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 10 Aug 2020 11:19:13 +0800</lastBuildDate>
-    
-	<atom:link href="https://zsmhub.github.io/tags/canal/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 10 Aug 2020 11:19:13 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/canal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Canal</title>
       <link>https://zsmhub.github.io/post/database/canal/</link>

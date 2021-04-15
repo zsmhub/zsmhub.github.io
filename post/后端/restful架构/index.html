@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/" />
@@ -35,24 +35,21 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Restful架构" />
 <meta property="og:description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/" />
-<meta property="article:published_time" content="2019-05-01T15:44:01+08:00" />
-<meta property="article:modified_time" content="2020-01-08T15:44:01+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-05-01T15:44:01&#43;08:00" />
+<meta property="article:modified_time" content="2020-01-08T15:44:01&#43;08:00" />
+
 <meta itemprop="name" content="Restful架构">
-<meta itemprop="description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个">
-<meta itemprop="datePublished" content="2019-05-01T15:44:01&#43;08:00" />
+<meta itemprop="description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个"><meta itemprop="datePublished" content="2019-05-01T15:44:01&#43;08:00" />
 <meta itemprop="dateModified" content="2020-01-08T15:44:01&#43;08:00" />
-<meta itemprop="wordCount" content="1024">
-
-
-
+<meta itemprop="wordCount" content="1022">
 <meta itemprop="keywords" content="restful," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Restful架构"/>
 <meta name="twitter:description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个"/>
@@ -133,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1024 字 </span>
+          <span class="more-meta"> 约 1022 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -163,7 +160,7 @@
 <p>客户端和服务器之间，传递这种资源的某种表现层；</p>
 </li>
 <li>
-<p>客户端通过五个HTTP动词，对服务器端资源进行操作，实现&quot;表现层状态转化&rdquo;。</p>
+<p>客户端通过五个HTTP动词，对服务器端资源进行操作，实现&quot;表现层状态转化&quot;。</p>
 <p>HTTP协议里面，五个表示操作方式的动词：GET、POST、PUT、DELETE。它们分别对应四种基本操作：GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源（全部更新），PATCH用来更新资源的部分信息，DELETE用来删除资源。</p>
 </li>
 <li>
@@ -223,7 +220,7 @@
 <p><a href="http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html">参考文章</a></p>
 </li>
 <li>
-<p>在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的&quot;集合&rdquo;（collection），所以API中的名词也应该使用复数。</p>
+<p>在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的&quot;集合&quot;（collection），所以API中的名词也应该使用复数。</p>
 </li>
 </ol>
 <h2 id="注意事项">注意事项</h2>
@@ -292,7 +289,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-05-01 15:44:01 \x2b0800 CST',
+        id: '2019-05-01 15:44:01 \u002b0800 CST',
         title: 'Restful架构',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',

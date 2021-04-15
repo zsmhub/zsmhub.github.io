@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" />
@@ -35,24 +35,21 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="PHP 常用函数" />
 <meta property="og:description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time())," />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" />
-<meta property="article:published_time" content="2019-06-03T19:02:58+08:00" />
-<meta property="article:modified_time" content="2020-05-06T22:45:33+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-06-03T19:02:58&#43;08:00" />
+<meta property="article:modified_time" content="2020-05-06T22:45:33&#43;08:00" />
+
 <meta itemprop="name" content="PHP 常用函数">
-<meta itemprop="description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),">
-<meta itemprop="datePublished" content="2019-06-03T19:02:58&#43;08:00" />
+<meta itemprop="description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),"><meta itemprop="datePublished" content="2019-06-03T19:02:58&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-06T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="2357">
-
-
-
+<meta itemprop="wordCount" content="2358">
 <meta itemprop="keywords" content="常用函数," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PHP 常用函数"/>
 <meta name="twitter:description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),"/>
@@ -133,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 2357 字 </span>
+          <span class="more-meta"> 约 2358 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -173,17 +170,17 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">date_default_timezone_set(&#39;PRC&#39;); //默认时区
-echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),&#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;昨天:&#34;,date(&#34;Y-m-d&#34;,strtotime(&#34;-1 day&#34;)), &#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;明天:&#34;,date(&#34;Y-m-d&#34;,strtotime(&#34;+1 day&#34;)), &#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;一周后:&#34;,date(&#34;Y-m-d&#34;,strtotime(&#34;+1 week&#34;)), &#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;一周零两天四小时两秒后:&#34;,date(&#34;Y-m-d G:H:s&#34;,strtotime(&#34;+1 week 2 days 4 hours 2 seconds&#34;)), &#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;下个星期四:&#34;,date(&#34;Y-m-d&#34;,strtotime(&#34;next Thursday&#34;)), &#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;上个周一:&#34;.date(&#34;Y-m-d&#34;,strtotime(&#34;last Monday&#34;)).&#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;一个月前:&#34;.date(&#34;Y-m-d&#34;,strtotime(&#34;last month&#34;)).&#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;一个月后:&#34;.date(&#34;Y-m-d&#34;,strtotime(&#34;+1 month&#34;)).&#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
-echo &#34;十年后:&#34;.date(&#34;Y-m-d&#34;,strtotime(&#34;+10 year&#34;)).&#34;<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>&#34;;
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;PRC&#39;</span><span class="p">);</span> <span class="c1">//默认时区
+</span><span class="c1"></span><span class="k">echo</span> <span class="s2">&#34;今天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">time</span><span class="p">()),</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;昨天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;-1 day&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;明天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 day&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;一周后:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 week&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;一周零两天四小时两秒后:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d G:H:s&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 week 2 days 4 hours 2 seconds&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;下个星期四:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;next Thursday&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;上个周一:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;last Monday&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;一个月前:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;last month&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;一个月后:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 month&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&#34;十年后:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+10 year&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -204,14 +201,14 @@ echo &#34;十年后:&#34;.date(&#34;Y-m-d&#34;,strtotime(&#34;+10 year&#34;)).&#
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">/**
- * 获取毫秒级时间戳
- * @return string
- */
-function getMicroTime(): string
-{
-    return bcmul(microtime(true), 1000);
-}
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="sd">/**
+</span><span class="sd"> * 获取毫秒级时间戳
+</span><span class="sd"> * @return string
+</span><span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">getMicroTime</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nx">bcmul</span><span class="p">(</span><span class="nx">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -265,7 +262,7 @@ function getMicroTime(): string
 <tr>
 <td>type</td>
 <td>string</td>
-<td>当前调用的类型。如果是一个方法，会返回 &ldquo;-&gt;&rdquo;。如果是一个静态方法，会返回 &ldquo;::&quot;。 如果是一个函数调用，则返回空。</td>
+<td>当前调用的类型。如果是一个方法，会返回 &ldquo;-&gt;&quot;。如果是一个静态方法，会返回 &ldquo;::&quot;。 如果是一个函数调用，则返回空。</td>
 </tr>
 <tr>
 <td>args</td>
@@ -286,11 +283,11 @@ function getMicroTime(): string
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">// 二进制安全比较字符串（不区分大小写）
-strcasecmp ( string $str1 , string $str2 ) : int
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// 二进制安全比较字符串（不区分大小写）
+</span><span class="c1"></span><span class="nx">strcasecmp</span> <span class="p">(</span> <span class="nx">string</span> <span class="nv">$str1</span> <span class="p">,</span> <span class="nx">string</span> <span class="nv">$str2</span> <span class="p">)</span> <span class="o">:</span> <span class="nx">int</span>
 
-// 二进制安全比较字符串（区分大小写）
-strcmp ( string $str1 , string $str2 ) : int
+<span class="c1">// 二进制安全比较字符串（区分大小写）
+</span><span class="c1"></span><span class="nx">strcmp</span> <span class="p">(</span> <span class="nx">string</span> <span class="nv">$str1</span> <span class="p">,</span> <span class="nx">string</span> <span class="nv">$str2</span> <span class="p">)</span> <span class="o">:</span> <span class="nx">int</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="其他函数">其他函数</h2>
@@ -306,12 +303,12 @@ strcmp ( string $str1 , string $str2 ) : int
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">password_hash(string $password , int $algo [, array $options ]): string // 使用足够强度的单向散列算法创建密码的散列（hash）
-password_verify(string $password , string $hash): bool // 验证密码是否和散列值匹配
-
-hash_hmac(string $algo , string $data , string $key [, bool $raw_output = FALSE ]): string // 使用 HMAC 方法生成带有密钥的哈希值
-hash_equals(string $known_string , string $user_string): bool // 可防止时序攻击的字符串比较，应用场景：密码、验证码等字段的校验。（比较两个字符串，无论它们是否相等，本函数的时间消耗是恒定的）
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">password_hash</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$password</span> <span class="p">,</span> <span class="nx">int</span> <span class="nv">$algo</span> <span class="p">[,</span> <span class="k">array</span> <span class="nv">$options</span> <span class="p">])</span><span class="o">:</span> <span class="nx">string</span> <span class="c1">// 使用足够强度的单向散列算法创建密码的散列（hash）
+</span><span class="c1"></span><span class="nx">password_verify</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$password</span> <span class="p">,</span> <span class="nx">string</span> <span class="nv">$hash</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="c1">// 验证密码是否和散列值匹配
+</span><span class="c1"></span>
+<span class="nx">hash_hmac</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$algo</span> <span class="p">,</span> <span class="nx">string</span> <span class="nv">$data</span> <span class="p">,</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">[,</span> <span class="nx">bool</span> <span class="nv">$raw_output</span> <span class="o">=</span> <span class="k">FALSE</span> <span class="p">])</span><span class="o">:</span> <span class="nx">string</span> <span class="c1">// 使用 HMAC 方法生成带有密钥的哈希值
+</span><span class="c1"></span><span class="nx">hash_equals</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$known_string</span> <span class="p">,</span> <span class="nx">string</span> <span class="nv">$user_string</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="c1">// 可防止时序攻击的字符串比较，应用场景：密码、验证码等字段的校验。（比较两个字符串，无论它们是否相等，本函数的时间消耗是恒定的）
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -338,7 +335,7 @@ PATHINFO_EXTENSION - 只返回 extension</p>
 </li>
 <li>
 <p>getimagesize — 取得图像大小
-，返回一个具有四个单元的数组。索引 0 包含图像宽度的像素值，索引 1 包含图像高度的像素值。索引 2 是图像类型的记：1 = GIF，2 = JPG，3 = PNG，4 = SWF，5 = PSD，6 = BMP，7 = TIFF(intel byte order)，8 = TIFF(motorola byte order)，9 = JPC，10 = JP2，11 = JPX，12 = JB2，13 = SWC，14 = IFF，15 = WBMP，16 = XBM。这些标记与 PHP 4.3.0 新加的 IMAGETYPE 常量对应。索引 3 是文本字符串，内容为“height=&quot;yyy&rdquo; width=&quot;xxx&rdquo;”，可直接用于 IMG 标记。</p>
+，返回一个具有四个单元的数组。索引 0 包含图像宽度的像素值，索引 1 包含图像高度的像素值。索引 2 是图像类型的记：1 = GIF，2 = JPG，3 = PNG，4 = SWF，5 = PSD，6 = BMP，7 = TIFF(intel byte order)，8 = TIFF(motorola byte order)，9 = JPC，10 = JP2，11 = JPX，12 = JB2，13 = SWC，14 = IFF，15 = WBMP，16 = XBM。这些标记与 PHP 4.3.0 新加的 IMAGETYPE 常量对应。索引 3 是文本字符串，内容为“height=&ldquo;yyy&rdquo; width=&ldquo;xxx&rdquo;”，可直接用于 IMG 标记。</p>
 <p>自 PHP 4.3.0 起，getimagesize() 还会返回额外的参数 mime，符合该图像的 MIME 类型。此信息可以用来在 HTTP Content-type 头信息中发送正确的信息</p>
 </li>
 <li>
@@ -377,13 +374,13 @@ return_var
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">filter_has_var — 检测是否存在指定类型的变量
-filter_id — 返回与某个特定名称的过滤器相关联的id
-filter_input_array — 获取一系列外部变量，并且可以通过过滤器处理它们
-filter_input — 通过名称获取特定的外部变量，并且可以通过过滤器处理它
-filter_list — 返回所支持的过滤器列表
-filter_var_array — 获取多个变量并且过滤它们
-filter_var — 使用特定的过滤器过滤一个变量
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">filter_has_var</span> <span class="nx">—</span> <span class="nx">检测是否存在指定类型的变量</span>
+<span class="nx">filter_id</span> <span class="nx">—</span> <span class="nx">返回与某个特定名称的过滤器相关联的id</span>
+<span class="nx">filter_input_array</span> <span class="nx">—</span> <span class="nx">获取一系列外部变量，并且可以通过过滤器处理它们</span>
+<span class="nx">filter_input</span> <span class="nx">—</span> <span class="nx">通过名称获取特定的外部变量，并且可以通过过滤器处理它</span>
+<span class="nx">filter_list</span> <span class="nx">—</span> <span class="nx">返回所支持的过滤器列表</span>
+<span class="nx">filter_var_array</span> <span class="nx">—</span> <span class="nx">获取多个变量并且过滤它们</span>
+<span class="nx">filter_var</span> <span class="nx">—</span> <span class="nx">使用特定的过滤器过滤一个变量</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -404,11 +401,11 @@ filter_var — 使用特定的过滤器过滤一个变量
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php">// 对比 array1 和其他一个或者多个数组，返回在 array1 中但是不在其他 array 里的值。
-array_diff ( array $array1 , array $array2 [, array $... ] ) : array
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// 对比 array1 和其他一个或者多个数组，返回在 array1 中但是不在其他 array 里的值。
+</span><span class="c1"></span><span class="nx">array_diff</span> <span class="p">(</span> <span class="k">array</span> <span class="nv">$array1</span> <span class="p">,</span> <span class="k">array</span> <span class="nv">$array2</span> <span class="p">[,</span> <span class="k">array</span> <span class="err">$</span><span class="o">...</span> <span class="p">]</span> <span class="p">)</span> <span class="o">:</span> <span class="k">array</span>
 
-// 使用回调函数比较数据，计算数组的不同之处。和 array_diff() 不同的是，前者使用内置函数进行数据比较。
-array_udiff ( array $array1 , array $array2 [, array $... ], callable $value_compare_func ) : array
+<span class="c1">// 使用回调函数比较数据，计算数组的不同之处。和 array_diff() 不同的是，前者使用内置函数进行数据比较。
+</span><span class="c1"></span><span class="nx">array_udiff</span> <span class="p">(</span> <span class="k">array</span> <span class="nv">$array1</span> <span class="p">,</span> <span class="k">array</span> <span class="nv">$array2</span> <span class="p">[,</span> <span class="k">array</span> <span class="err">$</span><span class="o">...</span> <span class="p">],</span> <span class="nx">callable</span> <span class="nv">$value_compare_func</span> <span class="p">)</span> <span class="o">:</span> <span class="k">array</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -472,7 +469,7 @@ array_udiff ( array $array1 , array $array2 [, array $... ], callable $value_com
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-06-03 19:02:58 \x2b0800 CST',
+        id: '2019-06-03 19:02:58 \u002b0800 CST',
         title: 'PHP 常用函数',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
