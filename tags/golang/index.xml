@@ -77,7 +77,7 @@
       <pubDate>Fri, 08 May 2020 14:26:32 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/</guid>
-      <description>一、即时效能分析工具 Pyroscope 分析服务器中央处理器 CPU 的利用率 即時效能分析工具 Pyroscope Pyroscope文档 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24</description>
+      <description>一、即时效能分析工具 Pyroscope 分析服务器中央处理器 CPU 的利用率『注意：目前 Pyroscope 还不成熟，占用服务器 CPU 过高，无法运用在生产环境&amp;ndash;2021041</description>
     </item>
     
     <item>
