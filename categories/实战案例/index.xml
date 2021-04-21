@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>实战案例 on ZsmHub - Blog</title>
-    <link>https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</link>
+    <link>https://zsmhub.github.io/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</link>
     <description>Recent content in 实战案例 on ZsmHub - Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 21 Apr 2021 10:17:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Apr 2021 10:17:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>抢白名单功能</title>
       <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</link>
@@ -33,15 +33,6 @@
       
       <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/</guid>
       <description>APP 如何接入收发红包功能 使用支付宝的现金红包方案 现金红包简介 现金红包- 开发入门 现金红包是基于支付宝的支付能力推出的一款针对收发红包场景的产品，</description>
-    </item>
-    
-    <item>
-      <title>实战案例总结</title>
-      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Thu, 06 Aug 2020 09:21:45 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/</guid>
-      <description>根据nginx的access_log分析接口请求 access_log：指的是访问日志，我们通过访问日志可以获取用户的 IP、请求处理的时间、接</description>
     </item>
     
   </channel>

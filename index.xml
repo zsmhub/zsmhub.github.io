@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 14 Apr 2021 10:42:55 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Apr 2021 10:17:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>抢白名单功能</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Wed, 21 Apr 2021 10:17:44 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</guid>
+      <description>功能说明 应用场景 数据库高负荷时，在员工层级进行限流，目的是让数据库尽早缓冲过来 特色功能 支持临时 追加/减少 白名单名额 支持重置白名单 使用案例 启用</description>
+    </item>
+    
+    <item>
+      <title>电商架构</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%94%B5%E5%95%86%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Wed, 21 Apr 2021 09:37:03 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%94%B5%E5%95%86%E6%9E%B6%E6%9E%84/</guid>
+      <description>小米海外电商架构 点击查看原文</description>
+    </item>
+    
     <item>
       <title>Go中的单元测试和基准测试</title>
       <link>https://zsmhub.github.io/post/golang/go%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8C%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/</link>
@@ -19,10 +37,10 @@
     
     <item>
       <title>APP接入收发红包功能</title>
-      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/</link>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Thu, 08 Apr 2021 15:59:35 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/</guid>
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/</guid>
       <description>APP 如何接入收发红包功能 使用支付宝的现金红包方案 现金红包简介 现金红包- 开发入门 现金红包是基于支付宝的支付能力推出的一款针对收发红包场景的产品，</description>
     </item>
     
@@ -50,7 +68,7 @@
       <pubDate>Fri, 08 Jan 2021 17:57:02 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/%E5%B8%B8%E7%94%A8%E6%A1%88%E4%BE%8B/</guid>
-      <description>golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &amp;#34;bytes&amp;#34; &amp;#34;fmt&amp;#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) }</description>
+      <description>golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &amp;#34;bytes&amp;#34; &amp;#34;fmt&amp;#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算</description>
     </item>
     
     <item>

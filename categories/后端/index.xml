@@ -7,16 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 08 Apr 2021 15:59:35 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>APP接入收发红包功能</title>
-      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/</link>
-      <pubDate>Thu, 08 Apr 2021 15:59:35 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/</guid>
-      <description>APP 如何接入收发红包功能 使用支付宝的现金红包方案 现金红包简介 现金红包- 开发入门 现金红包是基于支付宝的支付能力推出的一款针对收发红包场景的产品，</description>
-    </item>
-    
+    <lastBuildDate>Thu, 31 Dec 2020 09:55:21 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>位运算使用技巧</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>

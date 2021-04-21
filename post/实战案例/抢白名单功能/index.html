@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>抢白名单功能 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="功能说明 应用场景 数据库高负荷时，在员工层级进行限流，目的是让数据库尽早缓冲过来 特色功能 支持临时 追加/减少 白名单名额 支持重置白名单 使用案例 启用" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="抢白名单功能" />
+<meta property="og:description" content="功能说明 应用场景 数据库高负荷时，在员工层级进行限流，目的是让数据库尽早缓冲过来 特色功能 支持临时 追加/减少 白名单名额 支持重置白名单 使用案例 启用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-21T10:17:44&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-21T10:17:44&#43;08:00" />
+
+<meta itemprop="name" content="抢白名单功能">
+<meta itemprop="description" content="功能说明 应用场景 数据库高负荷时，在员工层级进行限流，目的是让数据库尽早缓冲过来 特色功能 支持临时 追加/减少 白名单名额 支持重置白名单 使用案例 启用"><meta itemprop="datePublished" content="2021-04-21T10:17:44&#43;08:00" />
+<meta itemprop="dateModified" content="2021-04-21T10:17:44&#43;08:00" />
+<meta itemprop="wordCount" content="862">
+<meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="抢白名单功能"/>
+<meta name="twitter:description" content="功能说明 应用场景 数据库高负荷时，在员工层级进行限流，目的是让数据库尽早缓冲过来 特色功能 支持临时 追加/减少 白名单名额 支持重置白名单 使用案例 启用"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">抢白名单功能</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-04-21 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+            </div>
+          <span class="more-meta"> 约 862 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#功能说明">功能说明</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="功能说明">功能说明</h2>
+<blockquote>
+<p>应用场景</p>
+</blockquote>
+<p>数据库高负荷时，在员工层级进行限流，目的是让数据库尽早缓冲过来</p>
+<blockquote>
+<p>特色功能</p>
+</blockquote>
+<ol>
+<li>支持临时 追加/减少 白名单名额</li>
+<li>支持重置白名单</li>
+</ol>
+<blockquote>
+<p>使用案例</p>
+</blockquote>
+<ol>
+<li>
+<p>启用白名单功能，在 .env 文件配置以下参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">WHITE_LIST_IS_ENABLE</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">WHITE_LIST_NUMBER</span><span class="o">=</span><span class="m">10</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>追加白名单名额，在 .env 文件调整以下参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">WHITE_LIST_NUMBER</span><span class="o">=</span><span class="m">20</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>减少白名单名额，在 .env 文件调整以下参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">WHITE_LIST_NUMBER</span><span class="o">=</span><span class="m">10</span>
+<span class="nv">WHITE_LIST_CACHE_KEY_PREFIX</span><span class="o">=</span><span class="s2">&#34;second&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>觉得该换另一批人使用 xxx 系统了，则重置白名单，在 .env 文件调整以下参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">WHITE_LIST_CACHE_KEY_PREFIX</span><span class="o">=</span><span class="s2">&#34;third&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>关闭白名单功能，在 .env 文件调整以下参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">WHITE_LIST_IS_ENABLE</span><span class="o">=</span><span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// config/white_list.php
+</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// 抢白名单配置，白名单内的员工允许访问 xxx 系统，其他员工则跳转到登陆界面
+</span><span class="c1">// 变更配置后，记得执行 php artisan optimize
+</span><span class="c1"></span><span class="k">return</span> <span class="p">[</span>
+    <span class="c1">// 是否启用
+</span><span class="c1"></span>    <span class="s1">&#39;is_enable&#39;</span> <span class="o">=&gt;</span> <span class="nx">env</span><span class="p">(</span><span class="s1">&#39;WHITE_LIST_IS_ENABLE&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+
+    <span class="c1">// 白名单名额，支持临时追加白名单名额，但不支持减少操作
+</span><span class="c1"></span>    <span class="s1">&#39;number&#39;</span> <span class="o">=&gt;</span> <span class="nx">env</span><span class="p">(</span><span class="s1">&#39;WHITE_LIST_NUMBER&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+
+    <span class="c1">// 缓存 key 前缀，变更后会重置白名单
+</span><span class="c1"></span>    <span class="s1">&#39;cache_key_prefix&#39;</span> <span class="o">=&gt;</span> <span class="nx">env</span><span class="p">(</span><span class="s1">&#39;WHITE_LIST_CACHE_KEY_PREFIX&#39;</span><span class="p">,</span> <span class="s1">&#39;first&#39;</span><span class="p">),</span>
+
+    <span class="c1">// 缓存 key
+</span><span class="c1"></span>    <span class="s1">&#39;cache_key_list_init&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;_xxx_white_list_init&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cache_key_list&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;_xxx_white_list&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cache_key_hash&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;_xxx_white_hash&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cache_ttl&#39;</span> <span class="o">=&gt;</span> <span class="mi">43200</span><span class="p">,</span>
+
+    <span class="c1">// 员工没在白名单内的提示文案，并跳转到登陆界面
+</span><span class="c1"></span>    <span class="s1">&#39;error_msg&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;xxx 系统暂不可用，请稍晚一些再登陆使用，谢谢配合！&#39;</span><span class="p">,</span>
+<span class="p">];</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// Services/RedisHelper.php
+</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Services</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Redis</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RedisHelper</span>
+<span class="p">{</span>
+    <span class="sd">/**
+</span><span class="sd">     * redis排他锁：拒绝并发相同的请求
+</span><span class="sd">     * @param string $key
+</span><span class="sd">     * @param $value
+</span><span class="sd">     * @param int $ttl
+</span><span class="sd">     * @return bool
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">setNxWithTTL</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">((</span><span class="nx">Redis</span><span class="o">::</span><span class="na">connection</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">,</span> <span class="s1">&#39;ex&#39;</span><span class="p">,</span> <span class="nv">$ttl</span><span class="p">,</span> <span class="s1">&#39;nx&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="sd">/**
+</span><span class="sd"> * 判断该员工是否在白名单内：只允许部分员工可以正常使用 xxx 系统，其他人则跳转到登陆界面
+</span><span class="sd"> * @param int $staffId
+</span><span class="sd"> * @return bool 返回 true 表示该员工在白名单内，允许正常使用 xxx 系统
+</span><span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">isInWhiteList</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$staffId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+<span class="p">{</span>
+    <span class="c1">// 是否启用白名单功能
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;white_list.is_enable&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 白名单名额
+</span><span class="c1"></span>    <span class="nv">$whiteListNumber</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;white_list.number&#39;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$whiteListNumber</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$redis</span> <span class="o">=</span> <span class="nx">Redis</span><span class="o">::</span><span class="na">connection</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">);</span>
+
+    <span class="nv">$cacheKeyPrefix</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;white_list.cache_key_prefix&#39;</span><span class="p">);</span>
+    <span class="nv">$cacheKeyListInit</span> <span class="o">=</span> <span class="nv">$cacheKeyPrefix</span> <span class="o">.</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;white_list.cache_key_list_init&#39;</span><span class="p">);</span>
+    <span class="nv">$cacheKeyList</span> <span class="o">=</span> <span class="nv">$cacheKeyPrefix</span> <span class="o">.</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;white_list.cache_key_list&#39;</span><span class="p">);</span>
+    <span class="nv">$cacheKeyHash</span> <span class="o">=</span> <span class="nv">$cacheKeyPrefix</span> <span class="o">.</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;white_list.cache_key_hash&#39;</span><span class="p">);</span>
+    <span class="nv">$cacheTTL</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;white_list.cache_ttl&#39;</span><span class="p">);</span>
+
+    <span class="c1">// 判断该员工是否在白名单中
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="nv">$cacheKeyHash</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">hexists</span><span class="p">(</span><span class="nv">$cacheKeyHash</span><span class="p">,</span> <span class="nv">$staffId</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 初始化令牌队列
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="nv">$cacheKeyListInit</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">RedisHelper</span><span class="o">::</span><span class="na">setNxWithTTL</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">{</span><span class="nv">$cacheKeyListInit</span><span class="si">}</span><span class="s2">_nx&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;cache.one_hour&#39;</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">rpush</span><span class="p">(</span><span class="nv">$cacheKeyListInit</span><span class="p">,</span> <span class="nx">array_fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$whiteListNumber</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">expire</span><span class="p">(</span><span class="nv">$cacheKeyListInit</span><span class="p">,</span> <span class="nv">$cacheTTL</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 支持临时追加白名单名额
+</span><span class="c1"></span>    <span class="nv">$length</span> <span class="o">=</span> <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">llen</span><span class="p">(</span><span class="nv">$cacheKeyListInit</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$length</span> <span class="o">&lt;</span> <span class="nv">$whiteListNumber</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">RedisHelper</span><span class="o">::</span><span class="na">setNxWithTTL</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">{</span><span class="nv">$cacheKeyListInit</span><span class="si">}</span><span class="s2">_nx_</span><span class="si">{</span><span class="nv">$whiteListNumber</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;cache.one_hour&#39;</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">rpush</span><span class="p">(</span><span class="nv">$cacheKeyListInit</span><span class="p">,</span> <span class="nx">array_fill</span><span class="p">(</span><span class="nv">$length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">$whiteListNumber</span> <span class="o">-</span> <span class="nv">$length</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">expire</span><span class="p">(</span><span class="nv">$cacheKeyListInit</span><span class="p">,</span> <span class="nv">$cacheTTL</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 避免并发情况下，同一员工占用多个白名单名额
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">hsetnx</span><span class="p">(</span><span class="nv">$cacheKeyHash</span><span class="p">,</span> <span class="nv">$staffId</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$index</span> <span class="o">=</span> <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">rpush</span><span class="p">(</span><span class="nv">$cacheKeyList</span><span class="p">,</span> <span class="p">[</span><span class="nv">$staffId</span><span class="p">]);</span>
+    <span class="nv">$ret</span> <span class="o">=</span> <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">lindex</span><span class="p">(</span><span class="nv">$cacheKeyListInit</span><span class="p">,</span> <span class="nv">$index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="c1">// 手慢了，白名单名额已被抢完
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$ret</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">rpop</span><span class="p">(</span><span class="nv">$cacheKeyList</span><span class="p">);</span>
+        <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">hdel</span><span class="p">(</span><span class="nv">$cacheKeyHash</span><span class="p">,</span> <span class="p">[</span><span class="nv">$staffId</span><span class="p">]);</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">expire</span><span class="p">(</span><span class="nv">$cacheKeyList</span><span class="p">,</span> <span class="nv">$cacheTTL</span><span class="p">);</span>
+    <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">expire</span><span class="p">(</span><span class="nv">$cacheKeyHash</span><span class="p">,</span> <span class="nv">$cacheTTL</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-04-21
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/">实战案例</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%94%B5%E5%95%86%E6%9E%B6%E6%9E%84/">
+            <span class="next-text nav-default">电商架构</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-04-21 10:17:44 \u002b0800 CST',
+        title: '抢白名单功能',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
