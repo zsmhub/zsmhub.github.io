@@ -35,5 +35,23 @@
       <description>APP 如何接入收发红包功能 使用支付宝的现金红包方案 现金红包简介 现金红包- 开发入门 现金红包是基于支付宝的支付能力推出的一款针对收发红包场景的产品，</description>
     </item>
     
+    <item>
+      <title>多系统对接-签名校验案例</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8B/</link>
+      <pubDate>Thu, 12 Nov 2020 09:49:41 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8B/</guid>
+      <description>config/Sign.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 &amp;lt;?php // 第三方平台调用『当前系统』接口的签名密钥 return [ // 签名生命周期设置，单位秒 &amp;#39;sign_ttl&amp;#39; =&amp;gt; env(&amp;#39;SIGN_TTL&amp;#39;, 600), // 签名类型 &amp;#39;sign_type_xxx&amp;#39; =&amp;gt; &amp;#39;xxx&amp;#39;, // xx</description>
+    </item>
+    
+    <item>
+      <title>实战案例总结</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 06 Aug 2020 09:21:45 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/</guid>
+      <description>根据nginx的access_log分析接口请求 access_log：指的是访问日志，我们通过访问日志可以获取用户的 IP、请求处理的时间、接</description>
+    </item>
+    
   </channel>
 </rss>

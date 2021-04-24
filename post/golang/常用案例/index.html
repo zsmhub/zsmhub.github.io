@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用案例">
 <meta itemprop="description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"><meta itemprop="datePublished" content="2021-01-08T17:57:02&#43;08:00" />
 <meta itemprop="dateModified" content="2021-01-08T17:57:02&#43;08:00" />
-<meta itemprop="wordCount" content="96">
+<meta itemprop="wordCount" content="455">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用案例"/>
 <meta name="twitter:description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 96 字 </span>
+          <span class="more-meta"> 约 455 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -143,6 +143,7 @@
   <ul>
     <li><a href="#golang中判断两个slice是否相等">golang中判断两个slice是否相等</a></li>
     <li><a href="#计算中文长度">计算中文长度</a></li>
+    <li><a href="#数据库初始化">数据库初始化</a></li>
   </ul>
 </nav>
   </div>
@@ -195,6 +196,109 @@
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">title</span> <span class="o">:=</span> <span class="s">&#34;中国人&#34;</span>
 <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">utf8</span><span class="p">.</span><span class="nf">RuneCountInString</span><span class="p">(</span><span class="nx">title</span><span class="p">))</span> <span class="c1">// 输出 3
 </span></code></pre></td></tr></table>
+</div>
+</div><h2 id="数据库初始化">数据库初始化</h2>
+<blockquote>
+<p>什么是 DSN 信息？</p>
+</blockquote>
+<p>DSN 全称为 Data Source Name，表示 数据源信息，用于定义如何连接数据库。不同数据库的 DSN 格式是不同的，这取决于数据库驱动的实现，下面是 go-sql-driver/sql 的 DSN 格式，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">// <span class="o">[</span>用户名<span class="o">[</span>:密码<span class="o">]</span>@<span class="o">][</span>协议<span class="o">(</span>数据库服务器地址<span class="o">)]]</span>/数据库名称?参数列表
+<span class="o">[</span>username<span class="o">[</span>:password<span class="o">]</span>@<span class="o">][</span>protocol<span class="o">[(</span>address<span class="o">)]]</span>/dbname<span class="o">[</span>?param1<span class="o">=</span>value1<span class="p">&amp;</span>...<span class="p">&amp;</span><span class="nv">paramN</span><span class="o">=</span>valueN<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>如何配置 sql.DB 的 SetMaxOpenConns SetMaxIdleConns 和 SetConnMaxLifetime</p>
+</blockquote>
+<p><a href="https://learnku.com/go/t/49809">如何配置 sql.DB 的 SetMaxOpenConns SetMaxIdleConns 和 SetConnMaxLifetime</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;github.com/go-sql-driver/mysql&#34;</span>
+    <span class="nx">_</span> <span class="s">&#34;github.com/go-sql-driver/mysql&#34;</span> <span class="c1">// 引入 mysql 驱动
+</span><span class="c1"></span><span class="p">)</span>
+
+<span class="c1">// 初始化单个数据库
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">initDB</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+
+    <span class="c1">// 设置数据库连接信息
+</span><span class="c1"></span>    <span class="nx">config</span> <span class="o">:=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+        <span class="nx">User</span><span class="p">:</span>                    <span class="s">&#34;root&#34;</span><span class="p">,</span>
+        <span class="nx">Passwd</span><span class="p">:</span>                  <span class="s">&#34;123456&#34;</span><span class="p">,</span>
+        <span class="nx">Net</span><span class="p">:</span>                     <span class="s">&#34;tcp&#34;</span><span class="p">,</span>
+        <span class="nx">Addr</span><span class="p">:</span>                    <span class="s">&#34;127.0.0.1:3305&#34;</span><span class="p">,</span>
+        <span class="nx">DBName</span><span class="p">:</span>                  <span class="s">&#34;goblog&#34;</span><span class="p">,</span>
+        <span class="nx">AllowNativePasswords</span><span class="p">:</span>    <span class="kc">true</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 准备数据库连接池
+</span><span class="c1"></span>    <span class="nx">db</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">sql</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="s">&#34;mysql&#34;</span><span class="p">,</span> <span class="nx">config</span><span class="p">.</span><span class="nf">FormatDSN</span><span class="p">())</span>
+    <span class="nf">checkError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+
+    <span class="c1">// 设置最大连接数，不能超过数据库本身设置的最大连接数 `show variables like &#39;max_connections&#39;;`
+</span><span class="c1"></span>    <span class="nx">db</span><span class="p">.</span><span class="nf">SetMaxOpenConns</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="c1">// yim 设置了 512
+</span><span class="c1"></span>    <span class="c1">// 设置最大空闲连接数
+</span><span class="c1"></span>    <span class="nx">db</span><span class="p">.</span><span class="nf">SetMaxIdleConns</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="c1">// yim 设置了 512
+</span><span class="c1"></span>    <span class="c1">// 设置每个连接的过期时间，这里的推荐，比较保守的做法是设置五分钟
+</span><span class="c1"></span>    <span class="nx">db</span><span class="p">.</span><span class="nf">SetConnMaxLifetime</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span>
+
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Ping</span><span class="p">()</span>
+    <span class="nf">checkError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">checkError</span><span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>

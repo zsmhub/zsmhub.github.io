@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Web 安全攻防总结">
 <meta itemprop="description" content="XSS（跨站攻击） XSS 种类 Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意"><meta itemprop="datePublished" content="2019-01-02T17:25:01&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-02T17:25:01&#43;08:00" />
-<meta itemprop="wordCount" content="731">
+<meta itemprop="wordCount" content="752">
 <meta itemprop="keywords" content="web安全," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Web 安全攻防总结"/>
 <meta name="twitter:description" content="XSS（跨站攻击） XSS 种类 Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/web-%E5%AE%89%E5%85%A8/"> web 安全 </a>
             </div>
-          <span class="more-meta"> 约 731 字 </span>
+          <span class="more-meta"> 约 752 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -144,6 +144,7 @@
     <li><a href="#xss跨站攻击">XSS（跨站攻击）</a></li>
     <li><a href="#csrf跨站请求伪造攻击">CSRF（跨站请求伪造攻击）</a></li>
     <li><a href="#sql注入漏洞">SQL注入漏洞</a></li>
+    <li><a href="#prepare">prepare</a></li>
   </ul>
 </nav>
   </div>
@@ -183,6 +184,9 @@
 <li>转义过滤用户的输入</li>
 <li>Pdo/Mysqli prepare 的预处理完全能避免 sql 攻击 【参数化查询】</li>
 </ol>
+<h2 id="prepare">prepare</h2>
+<p>使用 Prepare 语句会发送两次请求到数据库服务器上</p>
+<p><img src="/images/2021/SEjWZQArZc.png" alt="预处理需执行 2 条 sql"></p>
 
     </div>
 

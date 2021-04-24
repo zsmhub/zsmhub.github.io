@@ -27,15 +27,6 @@
     </item>
     
     <item>
-      <title>Micro</title>
-      <link>https://zsmhub.github.io/post/golang/micro/</link>
-      <pubDate>Fri, 18 Dec 2020 09:30:23 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/golang/micro/</guid>
-      <description>micro 常用的几个命令 micro server //启动服务端 micro login //登录服务 user: admin pass: micro micro new XXX //新建服务 micro services //服务列表 micro run XXX //挂载服务 micro status //查看服务状态 micro logs XXX //</description>
-    </item>
-    
-    <item>
       <title>Go的一些坑</title>
       <link>https://zsmhub.github.io/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</link>
       <pubDate>Fri, 13 Nov 2020 11:17:51 +0800</pubDate>

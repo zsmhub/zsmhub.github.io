@@ -9,12 +9,21 @@
     <copyright>ZsmHub</copyright>
     <lastBuildDate>Fri, 18 Dec 2020 09:30:23 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Micro</title>
-      <link>https://zsmhub.github.io/post/golang/micro/</link>
+      <title>Go Micro</title>
+      <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-micro/</link>
       <pubDate>Fri, 18 Dec 2020 09:30:23 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/golang/micro/</guid>
+      <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-micro/</guid>
       <description>micro 常用的几个命令 micro server //启动服务端 micro login //登录服务 user: admin pass: micro micro new XXX //新建服务 micro services //服务列表 micro run XXX //挂载服务 micro status //查看服务状态 micro logs XXX //</description>
+    </item>
+    
+    <item>
+      <title>微服务</title>
+      <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 12 Oct 2020 11:38:53 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <description>为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们</description>
     </item>
     
   </channel>

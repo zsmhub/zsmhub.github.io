@@ -49,7 +49,7 @@
 <meta itemprop="name" content="NSQ-分布式实时消息处理平台">
 <meta itemprop="description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"><meta itemprop="datePublished" content="2020-06-28T10:50:45&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-28T10:50:45&#43;08:00" />
-<meta itemprop="wordCount" content="1995">
+<meta itemprop="wordCount" content="2120">
 <meta itemprop="keywords" content="消息队列," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NSQ-分布式实时消息处理平台"/>
 <meta name="twitter:description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1995 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2120 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -194,6 +194,7 @@
 <p>Topic、Channel、Message</p>
 </blockquote>
 <p>一个 Topic -&gt; 多个 Channel -&gt; 多个 Message</p>
+<p><code>生产者将 message 推送到 topic 下，消费者通过 topic 下的 channel 接受 message。（topic 下有多少 channel，同一消息都会推送到所有 channel）</code></p>
 <blockquote>
 <p>常用工具类：</p>
 </blockquote>
@@ -220,6 +221,10 @@
 <p>每个 consumer 向每个 nsqd 主机进行订阅操作，用于表明 consumer 已经准备好接受消息了。这里我们不需要一个完整的连通图，但我们必须要保证每个单独的 nsqd 实例拥有足够的消费者去消费它们的消息，否则 channel 会被队列堆着。</p>
 </li>
 </ol>
+<blockquote>
+<p>一个通道通常可以连接多个客户端。 假设所有连接的客户端都处于准备接收消息的状态，则每条消息都将传递给随机客户端。 例如：</p>
+</blockquote>
+<p><img src="/images/2021/3004516-483e18e7a24a9ddb.gif" alt="消息传递过程"></p>
 <h2 id="quick-start">Quick Start</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

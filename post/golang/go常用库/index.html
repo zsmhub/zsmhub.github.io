@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="5018">
+<meta itemprop="wordCount" content="5086">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 5018 字 </span>
+          <span class="more-meta"> 约 5086 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
@@ -884,11 +884,13 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="err">#</span> <span class="nx">网络通讯包</span>
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="err">#</span> <span class="nx">网络通讯包</span><span class="err">，</span><span class="nx">Go</span> <span class="nx">的</span> <span class="nx">http</span> <span class="nx">包兼具</span> <span class="nx">HTTP</span> <span class="nx">服务器和</span> <span class="nx">HTTP</span> <span class="nx">客户端的功能</span><span class="err">，</span><span class="nx">HTTP</span> <span class="nx">客户端支持</span> <span class="nx">GET</span><span class="o">/</span><span class="nx">POST</span><span class="o">/</span><span class="nx">PUT</span> <span class="nx">等请求方式</span><span class="err">，</span><span class="nx">常用于访问网页</span><span class="err">，</span><span class="nx">或者请求第三方</span> <span class="nx">API</span> <span class="err">。</span>
 <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nx">sayHelloName</span><span class="p">)</span> <span class="c1">// 路由注册
 </span><span class="c1"></span><span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;:8080&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span> <span class="c1">// TCP 端口监听，对每个请求实例化一个 Conn，并且开启一个 goroutine 为这个请求进行服务 go c.serve ()
+</span><span class="c1"></span><span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">baseURL</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span><span class="p">)</span> <span class="c1">// http请求
 </span><span class="c1"></span>
 <span class="err">#</span> <span class="nx">net</span><span class="o">/</span><span class="nx">url</span> <span class="nx">专门处理</span> <span class="nx">URL</span>
 <span class="c1">// 类似 php 下的函数 http_build_query()

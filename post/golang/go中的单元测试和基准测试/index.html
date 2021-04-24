@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go中的单元测试和基准测试">
 <meta itemprop="description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"><meta itemprop="datePublished" content="2021-04-14T10:42:55&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-14T10:42:55&#43;08:00" />
-<meta itemprop="wordCount" content="1287">
+<meta itemprop="wordCount" content="1666">
 <meta itemprop="keywords" content="软件测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go中的单元测试和基准测试"/>
 <meta name="twitter:description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1287 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1666 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -145,6 +145,7 @@
     <li><a href="#单元测试框架提供的日志方法">单元测试框架提供的日志方法</a></li>
     <li><a href="#单元测试">单元测试</a></li>
     <li><a href="#基准测试">基准测试</a></li>
+    <li><a href="#第三方测试包">第三方测试包</a></li>
   </ul>
 </nav>
   </div>
@@ -188,6 +189,7 @@
 </tbody>
 </table>
 <h2 id="单元测试">单元测试</h2>
+<p>Go 为了提高测试的性能，会对包的编译后的测试代码进行缓存。</p>
 <blockquote>
 <p>常用命令</p>
 </blockquote>
@@ -196,11 +198,13 @@
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">go <span class="nb">test</span> . // 跑全部测试用例
 go <span class="nb">test</span> -v -run<span class="o">=</span>TestA // 指定 TestA 用例进行测试
 go <span class="nb">test</span> -v ./local_test.go local.go local2.go // 测试单个文件，一定要带上被测试的原文件，如果原文件有其他引用，也需一并带上。-v 可以让测试时显示详细的流程。
+go <span class="nb">test</span> ./tests -v -count<span class="o">=</span><span class="m">1</span> // Go 为了提高测试的性能，会对包的编译后的测试代码进行缓存。一般常见的，也是官方推荐的清除缓存的方式是使用 -count 参数。此参数一般用以设置测试运行的次数，如果设置为 <span class="m">2</span> 的话就会运行测试两次。
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -367,7 +371,72 @@ go <span class="nb">test</span> -bench<span class="o">=</span>. -run<span class=
 </code></pre></td></tr></table>
 </div>
 </div><p>基准测试是测量一个程序在固定工作负载下的性能。在Go语言中，基准测试函数和普通测试函数写法类似，但是以Benchmark为前缀名，并且带有一个*testing.B类型的参数；<em>testing.B参数除了提供和</em>testing.T类似的方法，还有额外一些和性能测量相关的方法。它还提供了一个整数N，用于指定操作执行的循环次数。</p>
-
+<h2 id="第三方测试包">第三方测试包</h2>
+<blockquote>
+<p>github.com/stretchr/testify</p>
+</blockquote>
+<p>断言功能强大</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 相等
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Equal</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">expected</span><span class="p">,</span> <span class="nx">actual</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nf">NotEqual</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">expected</span><span class="p">,</span> <span class="nx">actual</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="c1">// 是否为 nil
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Nil</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">object</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nf">NotNil</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">object</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="c1">// 是否为空
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Empty</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">object</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nf">NotEmpty</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">object</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="c1">// 是否存在错误
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NoError</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">,</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nf">Error</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">,</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="c1">// 是否为 0 值
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Zero</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nf">NotZero</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="c1">// 是否为布尔值
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">True</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">value</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nf">False</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">value</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="c1">// 断言长度一致
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Len</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">object</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">length</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="c1">// 断言包含、子集、非子集
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NotContains</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">contains</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nf">Subset</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">list</span><span class="p">,</span> <span class="nx">subset</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="p">(</span><span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">NotSubset</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">list</span><span class="p">,</span> <span class="nx">subset</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="p">(</span><span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
+<span class="c1">// 断言文件和目录存在
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">FileExists</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nf">DirExists</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
