@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/api%E7%BD%91%E5%85%B3/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-05-17T20:05:18&#43;08:00" />
-<meta property="article:modified_time" content="2020-05-17T20:05:18&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-28T20:05:18&#43;08:00" />
 
 <meta itemprop="name" content="API Gateway">
 <meta itemprop="description" content="API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的"><meta itemprop="datePublished" content="2020-05-17T20:05:18&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-17T20:05:18&#43;08:00" />
-<meta itemprop="wordCount" content="521">
+<meta itemprop="dateModified" content="2021-04-28T20:05:18&#43;08:00" />
+<meta itemprop="wordCount" content="787">
 <meta itemprop="keywords" content="API网关," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API Gateway"/>
 <meta name="twitter:description" content="API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 521 字 </span>
+          <span class="more-meta"> 约 787 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -142,10 +142,12 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#api-网关简介">API 网关简介</a></li>
-    <li><a href="#api-网关作用">API 网关作用</a></li>
+    <li><a href="#api-网关功能">API 网关功能</a></li>
     <li><a href="#网关生态">网关生态</a></li>
     <li><a href="#接口限流方式">接口限流方式</a></li>
     <li><a href="#熔断降级">熔断降级</a></li>
+    <li><a href="#api-网关实现的注意事项">API 网关实现的注意事项</a></li>
+    <li><a href="#学习文章">学习文章</a></li>
   </ul>
 </nav>
   </div>
@@ -153,17 +155,24 @@
     <div class="post-content">
       <h2 id="api-网关简介">API 网关简介</h2>
 <p>随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的问题，例如：如何让调用方快速接入、如何让业务方安全地对外开放能力，如何应对和控制业务洪峰调用等等。于是就诞生了一个隔离企业内部业务系统和外部系统调用的屏障 - API网关，它负责在上层抽象出各业务系统需要的通用功能，例如：鉴权、限流、ACL、降级等。另外随着近年来微服务的流行，API网关已经成为一个微服务架构中的标配组件。</p>
-<h2 id="api-网关作用">API 网关作用</h2>
-<p>让所有 API 接口按照统一的标准对外暴露，让开发者能够低门槛快速接入是网关的主要作用。</p>
-<blockquote>
-<p>API 网关统一规范</p>
-</blockquote>
+<p>位于客户端和服务器之间，充当从客户端到服务器的反向代理路由请求。与面向对象设计的模式相似，它为封装底层系统架构的 API 提供了一个单一的入口，称为 API 网关。</p>
+<p><img src="/images/2021/cf57a057b7e2c4a33e9b6f65ff322fc0.png" alt="API 网关"></p>
+<h2 id="api-网关功能">API 网关功能</h2>
+<p>网关封装了底层系统并与客户端分离，为客户端提供了与微服务系统进行通信的单个入口点。</p>
+<p>整合 API 网关整合了一些边缘的重复功能，无需让每个微服务都实现它们。它包括如下功能：</p>
 <ul>
-<li>接口命名规范</li>
-<li>入参规范</li>
-<li>出参规范</li>
-<li>错误码规范</li>
-<li>服务返回值规范</li>
+<li>认证和授权</li>
+<li>服务发现集成</li>
+<li>缓存响应结果</li>
+<li>重试策略、熔断器、QoS</li>
+<li>限速和节流</li>
+<li>负载均衡</li>
+<li>log 日志、链路追踪、关联</li>
+<li>Header、query 字符串 以及 claims 转义</li>
+<li>IP 白名单</li>
+<li>IAM</li>
+<li>集中式日志管理（服务之间的 transaction ID、错误日志等）</li>
+<li>身份的提供方，验证与授权</li>
 </ul>
 <h2 id="网关生态">网关生态</h2>
 <p>网关生态主要包含控制台、网关核心、网关统计与监控</p>
@@ -179,6 +188,13 @@
 </ul>
 <h2 id="熔断降级">熔断降级</h2>
 <p>由于我们经常遇到调用后端接口超时，或者异常的情况，后端服务无法立即恢复，这种情况下再将请求发到后端已没有意义。于是我们进行熔断降级处理。</p>
+<h2 id="api-网关实现的注意事项">API 网关实现的注意事项</h2>
+<ul>
+<li>可能产生的单点故障或者瓶颈</li>
+<li>由于通过 API 网关进行了额外的网络跳转以及复杂性风险，响应时间增长了。</li>
+</ul>
+<h2 id="学习文章">学习文章</h2>
+<p><a href="https://fredal.xin/build-api-gateway">建设微服务API网关的一些实践</a></p>
 
     </div>
 
@@ -190,7 +206,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-05-17
+        2021-04-28
         
     </span>
   </p>

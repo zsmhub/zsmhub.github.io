@@ -49,7 +49,7 @@
 <meta itemprop="name" content="MacOs 使用心得">
 <meta itemprop="description" content="MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&gt; Command ⇧ ——&gt; Shift ⌥ ——&gt; Option ⌃ ——&gt; Control ↩︎ ——&gt; Return/Enter"><meta itemprop="datePublished" content="2020-05-24T13:30:56&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-24T13:30:56&#43;08:00" />
-<meta itemprop="wordCount" content="1150">
+<meta itemprop="wordCount" content="1199">
 <meta itemprop="keywords" content="macos," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MacOs 使用心得"/>
 <meta name="twitter:description" content="MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&gt; Command ⇧ ——&gt; Shift ⌥ ——&gt; Option ⌃ ——&gt; Control ↩︎ ——&gt; Return/Enter"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/macos/"> macos </a>
             </div>
-          <span class="more-meta"> 约 1150 字 </span>
+          <span class="more-meta"> 约 1199 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -241,6 +241,23 @@ Home ——&gt; Fn + ←
 <p>MacOs 读写U盘方式</p>
 <p>在“LaunchPad－其他－硬盘工具”里，选择移动硬盘－擦除－设置文件格式为 ExFat，这个文件格式是Windows和Mac都可以读写的。这个文件格式也没有文件和硬盘大小的限制，硬盘有多大，就能存储多少东西。</p>
 </li>
+<li>
+<p>生成公钥私钥</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/.ssh
+
+<span class="c1"># 生成公钥私钥，并重命名</span>
+ssh-keygen -t rsa -C ‘xxxxx@company.com’ -f ~/.ssh/gitee_id_rsa
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 <h2 id="好用的应用">好用的应用</h2>
 <ol>

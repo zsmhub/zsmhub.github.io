@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Etcd - ZsmHub - Blog</title>
+  <title>用 etcd 实现 API 网关 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -39,19 +39,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Etcd" />
+<meta property="og:title" content="用 etcd 实现 API 网关" />
 <meta property="og:description" content="应用场景 etcd 是一个高可用强一致性的键值仓库，在很多分布式系统架构中得到了广泛的应用，其最经典的使用场景就是服务发现。 etcd 的场景默认处理的数据都是" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/etcd/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-04-21T11:28:32&#43;08:00" />
 <meta property="article:modified_time" content="2021-04-21T11:28:32&#43;08:00" />
 
-<meta itemprop="name" content="Etcd">
+<meta itemprop="name" content="用 etcd 实现 API 网关">
 <meta itemprop="description" content="应用场景 etcd 是一个高可用强一致性的键值仓库，在很多分布式系统架构中得到了广泛的应用，其最经典的使用场景就是服务发现。 etcd 的场景默认处理的数据都是"><meta itemprop="datePublished" content="2021-04-21T11:28:32&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-21T11:28:32&#43;08:00" />
-<meta itemprop="wordCount" content="1855">
+<meta itemprop="wordCount" content="3379">
 <meta itemprop="keywords" content="etcd," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Etcd"/>
+<meta name="twitter:title" content="用 etcd 实现 API 网关"/>
 <meta name="twitter:description" content="应用场景 etcd 是一个高可用强一致性的键值仓库，在很多分布式系统架构中得到了广泛的应用，其最经典的使用场景就是服务发现。 etcd 的场景默认处理的数据都是"/>
 
 <!--[if lte IE 9]>
@@ -123,15 +123,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Etcd</h1>
+      <h1 class="post-title">用 etcd 实现 API 网关</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2021-04-21 </span>
         <div class="post-category">
             <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 1855 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 3379 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -150,6 +150,7 @@
     <li><a href="#etcd-注册">etcd 注册</a></li>
     <li><a href="#启动服务端">启动服务端</a></li>
     <li><a href="#交互命令">交互命令</a></li>
+    <li><a href="#用-etcd-实现-api-网关的部分源代码">用 etcd 实现 API 网关的部分源代码</a></li>
     <li><a href="#其他微服务网关方案">其他微服务网关方案</a></li>
     <li><a href="#相关文章">相关文章</a></li>
   </ul>
@@ -162,6 +163,7 @@
 <p>etcd 的场景默认处理的数据都是系统中的控制数据。所以etcd在系统中的角色不是其他NoSQL产品的替代品，更不能作为应用的主要数据存储。etcd中应该尽量只存储系统中服务的配置信息，对于应用数据只推荐把数据量很小，但是更新和访问频次都很高的数据存储在etcd中。</p>
 <h2 id="主要作用">主要作用</h2>
 <p>etcd 主要提供可靠的配置共享和服务发现功能。</p>
+<p>可用于实现微服务网关，相当于一个反向代理服务器。</p>
 <h2 id="特点">特点</h2>
 <ul>
 <li>简单：易于部署，易使用。基于 HTTP+JSON 的 API 让你用 curl 就可以轻松使用。</li>
@@ -201,11 +203,6 @@
 <p>etcd 是一个 分布式键值存储系统，在一个集群中，如果一个节点配置了某些属性，集群中的每个节点都可以使用完整的存档，我们每次在网关节点后的计算节点集群加一个服务，只需要向etcd 注册 该服务（其实就是 存一个值）然后向etcd 发送心跳，当etcd 没有检测到心跳就会 把这个键值对 删了(这整个动作是etcd里的租约模式)，网关那边 就只需要 watch 这个 key ，就能够知道 所有服务的所有动态了。</p>
 <h2 id="启动服务端">启动服务端</h2>
 <p>./etcd &ndash;listen-client-urls ‘http://0.0.0.0:2379’ &ndash;advertise-client-urls ‘http://0.0.0.0:2379’</p>
-<ul>
-<li>–listen-client-urls：监听的用于客户端通信的url,可以监听多个</li>
-<li>–advertise-client-urls：建议使用的客户端通信url</li>
-</ul>
-<h2 id="交互命令">交互命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -234,39 +231,45 @@
 </span><span class="lnt">24
 </span><span class="lnt">25
 </span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">&gt; etcdctl version
-etcdctl version: 3.4.7
-API version: 3.4
+<pre class="chroma"><code class="language-sh" data-lang="sh">// docker-compose.yml
+etcd1: <span class="c1"># 服务发现 etcd</span>
+    image: <span class="s2">&#34;quay.io/coreos/etcd:v3.4.7&#34;</span>
+    entrypoint: /usr/local/bin/etcd
+    container_name: etcd1
+    command:
+      - <span class="s1">&#39;--name=etcd1&#39;</span>
+      - <span class="s1">&#39;--data-dir=/etcd_data&#39;</span>
+      - <span class="s1">&#39;--initial-advertise-peer-urls=http://etcd1:2380&#39;</span>
+      - <span class="s1">&#39;--listen-peer-urls=http://0.0.0.0:2380&#39;</span>
+      - <span class="s1">&#39;--listen-client-urls=http://0.0.0.0:2379&#39;</span>
+      - <span class="s1">&#39;--advertise-client-urls=http://0.0.0.0:23791&#39;</span> <span class="c1"># 解决 rpc error: code = DeadlineExceeded desc = latest balancer error: all SubConns are in TransientFailure, latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused</span>
+      - <span class="s1">&#39;--initial-cluster-token=mys1cr2tt1k7n&#39;</span>
+      - <span class="s1">&#39;--heartbeat-interval=250&#39;</span>
+      - <span class="s1">&#39;--election-timeout=1250&#39;</span>
+      - <span class="s1">&#39;--initial-cluster=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380&#39;</span>
+      - <span class="s1">&#39;--initial-cluster-state=new&#39;</span>
+    ports:
+      - 23791:2379
+      - 23801:2380
 
-&gt; etcdctl put hello v1
-OK
-
-&gt; etcdctl get hello
-hello
-v1
-
-&gt; etcdctl get hello --print-value-only
-v1
-
-&gt; etcdctl del hello
-<span class="m">1</span>
-
-<span class="c1"># 开始监听某个 key</span>
-&gt; etcdctl watch hello
-<span class="c1"># 。。。什么都不打印，在等待结果</span>
-
-<span class="c1"># 当另一个窗口执行了 etcdctl put hello 2 之后</span>
-&gt; etcdctl watch hello
-PUT
-hello
-<span class="m">2</span>
+--name      节点名称
+--data-dir      指定节点的数据存储目录
+--listen-peer-urls      监听URL，用于与其他节点通讯
+--listen-client-urls    对外提供服务的地址：比如 http://ip:2379,http://127.0.0.1:2379 ，客户端会连接到这里和 etcd 交互
+--initial-advertise-peer-urls   该节点同伴监听地址，这个值会告诉集群中其他节点
+--initial-cluster   集群中所有节点的信息，格式为 <span class="nv">node1</span><span class="o">=</span>http://ip1:2380,node2<span class="o">=</span>http://ip2:2380,… 。注意：这里的 node1 是节点的 --name 指定的名字；后面的 ip1:2380 是 --initial-advertise-peer-urls 指定的值
+--initial-cluster-state     新建集群的时候，这个值为 new ；假如已经存在的集群，这个值为 existing
+--initial-cluster-token     创建集群的 token，这个值每个集群保持唯一。这样的话，如果你要重新创建集群，即使配置和之前一样，也会再次生成新的集群和节点 uuid；否则会导致多个集群之间的冲突，造成未知的错误
+--advertise-client-urls     对外公告的该节点客户端监听地址，这个值会告诉集群中其他节点
 </code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p>续租</p>
-</blockquote>
+</div><h2 id="交互命令">交互命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -288,9 +291,85 @@ hello
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 创建一个20s的租约</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh">&gt; etcdctl version
+etcdctl version: 3.4.7
+API version: 3.4
+
+&gt; etcdctl put hello v1
+OK
+
+&gt; etcdctl get hello
+hello
+v1
+
+&gt; etcdctl get /test/ok --prefix
+/test/ok
+/test/ok/id
+
+&gt; etcdctl get hello --print-value-only
+v1
+
+&gt; etcdctl del hello
+<span class="m">1</span>
+
+<span class="c1"># 开始监听某个 key</span>
+&gt; etcdctl watch hello
+<span class="c1"># 。。。什么都不打印，在等待结果</span>
+
+<span class="c1"># 当另一个窗口执行了 etcdctl put hello 2 之后</span>
+&gt; etcdctl watch hello
+PUT
+hello
+<span class="m">2</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>续租（租约模式）</p>
+</blockquote>
+<p>租约被删除，归属的 kv 也同时会被删除。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 查找已创建的 lease</span>
+&gt; etcdctl lease list
+
+<span class="c1"># 创建一个20s的租约</span>
 &gt; etcdctl lease grant <span class="m">20</span>
 lease 694d673115905e37 granted with TTL<span class="o">(</span>20s<span class="o">)</span>
 
@@ -311,9 +390,436 @@ lease 694d673115905e4f keepalived with TTL<span class="o">(</span>20<span class=
 lease 694d673115905e4f keepalived with TTL<span class="o">(</span>20<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="用-etcd-实现-api-网关的部分源代码">用 etcd 实现 API 网关的部分源代码</h2>
+<blockquote>
+<p>注意事项</p>
+</blockquote>
+<ol>
+<li>API 网关实现了服务和路由的注册与发现</li>
+<li>API 网关为什么要初始化路由，因为可以实现路由权限校验、利用中间件判断路由归属哪个服务并执行转发等</li>
+<li>匹配服务对应路由规则：需要考虑固定路由、动态路由（如/test/:id/tes2/:id）、通配符（如/test/<em>/id/</em>）</li>
+</ol>
+<blockquote>
+<p>注册服务和路由，需考虑部署多服务器或 k8s 多节点的情况</p>
+</blockquote>
+<ul>
+<li>注册 service: 使用 sync.Map 存储 2 对 kv，第一个 key 为 微服务名称，第二个 key 为 lease id，value 均为微服务对应的 host</li>
+<li>注册 route: 使用 sync.Map 存储 2 对 kv，第一个 key 为 method+path，第二个 key 为 lease id, value 均为微服务名称</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">Separator</span>  <span class="p">=</span> <span class="s">&#34;@&#34;</span>
+    <span class="nx">ServiceKey</span> <span class="p">=</span> <span class="s">&#34;service&#34;</span>
+    <span class="nx">RouteKey</span>   <span class="p">=</span> <span class="s">&#34;route&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// service
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">ServiceKV</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">prefix</span> <span class="kt">string</span>
+    <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
+    <span class="nx">lease</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span> <span class="c1">// 存放节点
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="c1">// route
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">RouteKV</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">prefix</span> <span class="kt">string</span>
+    <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
+    <span class="nx">lease</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span> <span class="c1">// 存放节点
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">NewRoute</span><span class="p">(</span><span class="nx">prefix</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">RouteKV</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">RouteKV</span><span class="p">{</span><span class="nx">prefix</span><span class="p">:</span> <span class="nx">prefix</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">GetPrefix</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">prefix</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">Watch</span><span class="p">(</span><span class="nx">watchChan</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nx">WatchChan</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">wresp</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">watchChan</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">wresp</span><span class="p">.</span><span class="nx">Events</span> <span class="p">{</span>
+            <span class="nx">key</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">Kv</span><span class="p">.</span><span class="nx">Key</span><span class="p">)</span>
+            <span class="k">switch</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">Type</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="nx">mvccpb</span><span class="p">.</span><span class="nx">PUT</span><span class="p">:</span>
+                <span class="nx">val</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">Kv</span><span class="p">.</span><span class="nx">Value</span><span class="p">)</span>
+                <span class="nx">r</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span>
+            <span class="k">case</span> <span class="nx">mvccpb</span><span class="p">.</span><span class="nx">DELETE</span><span class="p">:</span>
+                <span class="nx">r</span><span class="p">.</span><span class="nf">Del</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">Extra</span><span class="p">(</span><span class="nx">resp</span> <span class="o">*</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">GetResponse</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">ret</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">resp</span> <span class="o">==</span> <span class="kc">nil</span> <span class="o">||</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Kvs</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">ret</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Kvs</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Kvs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Value</span><span class="p">;</span> <span class="nx">v</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">r</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Kvs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Key</span><span class="p">),</span> <span class="nb">string</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Kvs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Value</span><span class="p">))</span>
+            <span class="nx">ret</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">ret</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">List</span><span class="p">()</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">ret</span> <span class="p">[]</span><span class="kt">string</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="nx">k</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">key</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">v</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">value</span><span class="p">.(</span><span class="kt">string</span><span class="p">);</span> <span class="nx">ok</span> <span class="p">{</span>
+            <span class="nx">ret</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">},</span> <span class="s">&#34;-&gt;&#34;</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="nx">ret</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">Set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">keys</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">Separator</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">keys</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mi">3</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">keys</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="nx">Separator</span><span class="p">),</span> <span class="nx">val</span><span class="p">)</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nx">lease</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="nx">keys</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">val</span><span class="p">)</span> <span class="c1">// store lease-&gt;service
+</span><span class="c1"></span>    <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Debugf</span><span class="p">(</span><span class="s">&#34;add:%s-&gt;%s&#34;</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">Get</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">v</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;&#34;</span>
+    <span class="p">}</span>
+    <span class="nx">val</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">val</span>
+<span class="p">}</span>
+
+<span class="c1">// 匹配
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">Match</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">ret</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span> <span class="nx">ret</span> <span class="o">!=</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">ret</span>
+    <span class="p">}</span>
+
+    <span class="nx">keys</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">Separator</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">keys</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;&#34;</span>
+    <span class="p">}</span>
+    <span class="nx">method</span> <span class="o">:=</span> <span class="nx">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nx">path</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">keys</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="nx">Separator</span><span class="p">)</span>
+
+    <span class="nx">l</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">))</span>
+
+    <span class="kd">var</span> <span class="nx">ret</span> <span class="kt">string</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="nx">k2</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">k</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="nx">keys2</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">k2</span><span class="p">,</span> <span class="nx">Separator</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">keys2</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="nx">method2</span> <span class="o">:=</span> <span class="nx">keys2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nx">method</span> <span class="o">!=</span> <span class="nx">method2</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="nx">path2</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">keys2</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="nx">Separator</span><span class="p">)</span>
+
+        <span class="c1">// 动态参数路由
+</span><span class="c1"></span>        <span class="nx">wildcard</span> <span class="o">:=</span> <span class="s">&#34;:&#34;</span>
+        <span class="nx">isWild</span> <span class="o">:=</span> <span class="kc">true</span>
+        <span class="k">if</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">path2</span><span class="p">,</span> <span class="nx">wildcard</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">l</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">path2</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">))</span> <span class="p">{</span> <span class="c1">// 动态参数路由必须同级
+</span><span class="c1"></span>            <span class="nx">temp</span> <span class="o">:=</span> <span class="nx">path</span>
+            <span class="nx">wilds</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">path2</span><span class="p">,</span> <span class="nx">wildcard</span><span class="p">)</span>
+            <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">wild</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">wilds</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">!</span><span class="nx">strings</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="nx">wild</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 去除通配符级，跳下一级
+</span><span class="c1"></span>                    <span class="nx">ws</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">wild</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
+                    <span class="nx">wild</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">ws</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">!</span><span class="nx">strings</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="nx">temp</span><span class="p">,</span> <span class="nx">wild</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">isWild</span> <span class="p">=</span> <span class="kc">false</span>
+                    <span class="k">break</span>
+                <span class="p">}</span>
+                <span class="nx">temp</span> <span class="p">=</span> <span class="nx">temp</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">wild</span><span class="p">):]</span>
+                <span class="nx">temps</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">temp</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
+                <span class="nx">temp</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">temps</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="nx">isWild</span> <span class="p">{</span>
+                <span class="nx">ret</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 通配符
+</span><span class="c1"></span>        <span class="nx">wildcard</span> <span class="p">=</span> <span class="s">&#34;*&#34;</span>
+        <span class="nx">isWild</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="k">if</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">path2</span><span class="p">,</span> <span class="nx">wildcard</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">wilds</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">path2</span><span class="p">,</span> <span class="nx">wildcard</span><span class="p">)</span>
+            <span class="nx">temp</span> <span class="o">:=</span> <span class="nx">path</span>
+            <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">wild</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">wilds</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">!</span><span class="nx">strings</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="nx">wild</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 去除通配符级，跳下一级
+</span><span class="c1"></span>                    <span class="nx">ws</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">wild</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
+                    <span class="nx">wild</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">ws</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">!</span><span class="nx">strings</span><span class="p">.</span><span class="nf">HasPrefix</span><span class="p">(</span><span class="nx">temp</span><span class="p">,</span> <span class="nx">wild</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">isWild</span> <span class="p">=</span> <span class="kc">false</span>
+                    <span class="k">break</span>
+                <span class="p">}</span>
+                <span class="nx">temp</span> <span class="p">=</span> <span class="nx">temp</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">wild</span><span class="p">):]</span>
+                <span class="nx">temps</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">temp</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
+                <span class="nx">temp</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">temps</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s">&#34;/&#34;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nx">temp</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">wilds</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+                    <span class="nx">isWild</span> <span class="p">=</span> <span class="kc">false</span>
+                    <span class="k">break</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="nx">isWild</span> <span class="o">&amp;&amp;</span> <span class="nx">ret</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+                <span class="nx">ret</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="nx">ret</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">Del</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">keys</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">Separator</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">keys</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mi">3</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nx">lease</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="nx">keys</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Debug</span><span class="p">(</span><span class="s">&#34;del lease:&#34;</span><span class="p">,</span> <span class="nx">keys</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1">// 判断是否存在节点
+</span><span class="c1"></span>    <span class="nx">service</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">keys</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="nx">Separator</span><span class="p">))</span>
+    <span class="kd">var</span> <span class="nx">podExists</span> <span class="kt">bool</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nx">lease</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="nx">v</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">value</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nx">v</span> <span class="o">==</span> <span class="nx">service</span> <span class="p">{</span>
+            <span class="nx">podExists</span> <span class="p">=</span> <span class="kc">true</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">})</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">podExists</span> <span class="p">{</span>
+        <span class="nx">r</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">keys</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="nx">Separator</span><span class="p">))</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Debug</span><span class="p">(</span><span class="s">&#34;del key:&#34;</span><span class="p">,</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">keys</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="nx">Separator</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="其他微服务网关方案">其他微服务网关方案</h2>
 <p><a href="https://book-consul-guide.vnzmi.com/">Consul</a></p>
 <h2 id="相关文章">相关文章</h2>
+<p><a href="https://studygolang.com/articles/24456">etcd实现服务发现和注册</a></p>
 <p><a href="https://blog.csdn.net/ambzheng/article/details/106888823">golang etcd服务注册与发现</a></p>
 
     </div>
@@ -356,8 +862,8 @@ lease 694d673115905e4f keepalived with TTL<span class="o">(</span>20<span class=
           </div>
       <nav class="post-nav">
         
-        <a class="next" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/">
-            <span class="next-text nav-default">抢白名单功能</span>
+        <a class="next" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E9%99%90%E6%B5%81-%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/">
+            <span class="next-text nav-default">账号层级限流-抢白名单功能</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -371,7 +877,7 @@ lease 694d673115905e4f keepalived with TTL<span class="o">(</span>20<span class=
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: '2021-04-21 11:28:32 \u002b0800 CST',
-        title: 'Etcd',
+        title: '用 etcd 实现 API 网关',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

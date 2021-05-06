@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go切片详解">
 <meta itemprop="description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此"><meta itemprop="datePublished" content="2020-07-08T09:40:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-08T09:40:36&#43;08:00" />
-<meta itemprop="wordCount" content="3254">
+<meta itemprop="wordCount" content="3261">
 <meta itemprop="keywords" content="切片," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go切片详解"/>
 <meta name="twitter:description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3254 字 </span>
+          <span class="more-meta"> 约 3261 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -321,14 +321,16 @@
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">slice</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">}</span>
     <span class="nx">newSlice</span> <span class="o">:=</span> <span class="nx">slice</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">newSlice</span><span class="p">)</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">newSlice</span><span class="p">)</span>
 
     <span class="nx">slice</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">200</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">newSlice</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">newSlice</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">newSlice</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -336,9 +338,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="mi">200</span>
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="p">[</span><span class="mi">20</span> <span class="mi">30</span><span class="p">]</span>
+<span class="mi">200</span> <span class="mi">30</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>切片只能访问到其长度内的元素。试图访问超出其长度的元素将会导致语言运行时异常，比如对上面的 <code>newSlice</code> ，他只能访问索引为1和2的元素（不包括3），比如：</p>

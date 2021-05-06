@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="5086">
+<meta itemprop="wordCount" content="5198">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 5086 字 </span>
+          <span class="more-meta"> 约 5198 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
@@ -586,6 +586,10 @@
 </span><span class="lnt">33
 </span><span class="lnt">34
 </span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">eg</span><span class="p">:</span> <span class="kd">var</span> <span class="nx">textMap</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
@@ -617,8 +621,12 @@
     <span class="c1">// 根据键删除对应的键值对
 </span><span class="c1"></span>    <span class="nx">scene</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="s">&#34;london&#34;</span><span class="p">)</span>
 
-    <span class="c1">// 遍历所有sync.Map中的键值对
+    <span class="c1">// 遍历所有sync.Map中的键值对，返回 false 则中断循环
 </span><span class="c1"></span>    <span class="nx">scene</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="nx">k2</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">k</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;iterate:&#34;</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">true</span>
     <span class="p">})</span>
@@ -1004,6 +1012,7 @@
 </span><span class="lnt">45
 </span><span class="lnt">46
 </span><span class="lnt">47
+</span><span class="lnt">48
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">context是Go中广泛使用的程序包</span><span class="err">，</span><span class="nx">由Google官方开发</span><span class="err">，</span><span class="nx">在1</span><span class="mf">.7</span><span class="nx">版本引入</span><span class="err">。</span><span class="nx">它用来简化在多个</span> <span class="nx">goroutine</span> <span class="nx">传递上下文数据</span><span class="err">、</span><span class="p">(</span><span class="nx">手动</span><span class="o">/</span><span class="nx">超时</span><span class="p">)</span><span class="nx">中止</span> <span class="nx">goroutine</span> <span class="nx">等操作</span><span class="p">.</span>
@@ -1015,6 +1024,7 @@
 <span class="nx">context</span><span class="p">.</span><span class="nf">WithDeadline</span><span class="p">()</span> <span class="nx">该函数跟WithTimeout很相近</span><span class="err">，</span><span class="nx">只是WithDeadline设置的是一个时间点</span><span class="err">。</span>
 
 <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">():</span> <span class="nx">其返回值是一个空的context</span><span class="err">，</span><span class="nx">经常作为树的根结点</span><span class="err">，</span><span class="nx">它一般由接收请求的第一个</span> <span class="nx">goroutine</span> <span class="nx">创建</span><span class="err">，</span><span class="nx">不能被取消</span><span class="err">、</span><span class="nx">没有值</span><span class="err">、</span><span class="nx">也没有过期时间</span><span class="err">。</span>
+<span class="nx">context</span><span class="p">.</span><span class="nf">TODO</span><span class="p">():</span> <span class="nx">应该仅在不确定应该使用哪种上下文时使用</span><span class="err">。（</span><span class="nx">从源代码来看</span><span class="err">，</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span> <span class="nx">和</span> <span class="nx">context</span><span class="p">.</span><span class="nx">TODO</span> <span class="nx">也只是互为别名</span><span class="err">，</span><span class="nx">没有太大的差别</span><span class="err">）</span>
 
 <span class="c1">// 示例
 </span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1022,8 +1032,8 @@
 </span><span class="c1"></span>    <span class="nx">ctx</span><span class="p">,</span> <span class="nx">cancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithCancel</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">())</span>
     <span class="k">go</span> <span class="nf">work</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="s">&#34;work1&#34;</span><span class="p">)</span>
     <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="nf">cancel</span><span class="p">()</span>
-    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="nf">cancel</span><span class="p">()</span> <span class="c1">// 调用这个函数则可以主动停止goroutine
+</span><span class="c1"></span>    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 
     <span class="c1">// timeout
 </span><span class="c1"></span>    <span class="nx">ctx2</span><span class="p">,</span> <span class="nx">timeCancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithTimeout</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>

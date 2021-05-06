@@ -9,7 +9,7 @@
     <copyright>ZsmHub</copyright>
     <lastBuildDate>Wed, 21 Apr 2021 11:28:32 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Etcd</title>
+      <title>用 etcd 实现 API 网关</title>
       <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/etcd/</link>
       <pubDate>Wed, 21 Apr 2021 11:28:32 +0800</pubDate>
       
@@ -18,12 +18,12 @@
     </item>
     
     <item>
-      <title>抢白名单功能</title>
-      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</link>
+      <title>账号层级限流-抢白名单功能</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E9%99%90%E6%B5%81-%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Wed, 21 Apr 2021 10:17:44 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</guid>
-      <description>功能说明 应用场景 数据库高负荷时，在员工层级进行限流，目的是让数据库尽早缓冲过来 特色功能 支持临时 追加/减少 白名单名额 支持重置白名单 使用案例 启用</description>
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E9%99%90%E6%B5%81-%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</guid>
+      <description>功能说明 应用场景 数据库高负荷时，在员工账号层级进行限流，目的是让数据库尽早缓冲过来 特色功能 支持临时 追加/减少 白名单名额 支持重置白名单 直接配置</description>
     </item>
     
     <item>
@@ -1202,7 +1202,7 @@
       <pubDate>Wed, 09 Jan 2019 22:13:42 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/</guid>
-      <description>常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 date_format(&amp;#39;2019-12-12 12:22:33&amp;#39;, format) -- 日期格式化 FROM_UNIXTIME(&amp;#39;时间戳&amp;#39;,&amp;#39;%Y-%</description>
+      <description>常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 date_format(&amp;#39;2019-12-12 12:22:33&amp;#39;, format) -- 日期格式化 FROM_UNIXTIME(&amp;#39;时间戳&amp;#39;,&amp;#39;%</description>
     </item>
     
     <item>

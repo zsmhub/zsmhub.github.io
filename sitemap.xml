@@ -3,14 +3,7 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2021-04-24T11:38:53+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/etcd/</loc>
-    <lastmod>2021-04-21T11:28:32+08:00</lastmod>
+    <lastmod>2021-04-28T20:05:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -24,28 +17,35 @@
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2021-04-24T11:38:53+08:00</lastmod>
+    <lastmod>2021-04-28T20:05:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2021-04-24T11:38:53+08:00</lastmod>
+    <lastmod>2021-04-28T20:05:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/</loc>
-    <lastmod>2021-04-24T11:38:53+08:00</lastmod>
+    <lastmod>2021-04-28T20:05:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
-    <lastmod>2021-04-24T11:38:53+08:00</lastmod>
+    <lastmod>2021-04-28T20:05:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/etcd/</loc>
+    <lastmod>2021-04-21T11:28:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</loc>
+    <loc>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E9%99%90%E6%B5%81-%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</loc>
     <lastmod>2021-04-21T10:17:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -850,14 +850,14 @@
   
   <url>
     <loc>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/api%E7%BD%91%E5%85%B3/</loc>
-    <lastmod>2020-05-17T20:05:18+08:00</lastmod>
+    <lastmod>2021-04-28T20:05:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/api%E7%BD%91%E5%85%B3/</loc>
-    <lastmod>2020-05-17T20:05:18+08:00</lastmod>
+    <lastmod>2021-04-28T20:05:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
