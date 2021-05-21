@@ -14,7 +14,7 @@
       <pubDate>Wed, 02 Sep 2020 16:04:33 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/php/php-fpm/</guid>
-      <description>最大进程数 如何控制子进程，为了高性能建议使用 pm static pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers pm = ondemand: 进程在请求时按需创建，而不是动态的，其中</description>
+      <description>PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将</description>
     </item>
     
     <item>

@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="最大进程数 如何控制子进程，为了高性能建议使用 pm static pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers pm = ondemand: 进程在请求时按需创建，而不是动态的，其中" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="PHP-FPM" />
-<meta property="og:description" content="最大进程数 如何控制子进程，为了高性能建议使用 pm static pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers pm = ondemand: 进程在请求时按需创建，而不是动态的，其中" />
+<meta property="og:description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/php/php-fpm/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-09-02T16:04:33&#43;08:00" />
 <meta property="article:modified_time" content="2020-09-02T16:04:33&#43;08:00" />
 
 <meta itemprop="name" content="PHP-FPM">
-<meta itemprop="description" content="最大进程数 如何控制子进程，为了高性能建议使用 pm static pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers pm = ondemand: 进程在请求时按需创建，而不是动态的，其中"><meta itemprop="datePublished" content="2020-09-02T16:04:33&#43;08:00" />
+<meta itemprop="description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将"><meta itemprop="datePublished" content="2020-09-02T16:04:33&#43;08:00" />
 <meta itemprop="dateModified" content="2020-09-02T16:04:33&#43;08:00" />
-<meta itemprop="wordCount" content="297">
+<meta itemprop="wordCount" content="1536">
 <meta itemprop="keywords" content="php-fpm," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PHP-FPM"/>
-<meta name="twitter:description" content="最大进程数 如何控制子进程，为了高性能建议使用 pm static pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers pm = ondemand: 进程在请求时按需创建，而不是动态的，其中"/>
+<meta name="twitter:description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 297 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 1536 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -141,15 +141,32 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#php-fpm">PHP-FPM</a></li>
     <li><a href="#最大进程数">最大进程数</a></li>
     <li><a href="#最大活跃进程数">最大活跃进程数</a></li>
+    <li><a href="#管理方式">管理方式</a></li>
+    <li><a href="#保障基本安全">保障基本安全</a></li>
+    <li><a href="#进程数限制">进程数限制</a></li>
+    <li><a href="#防止内存泄漏">防止内存泄漏</a></li>
+    <li><a href="#php-fpm-执行命令">php-fpm 执行命令</a></li>
     <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="最大进程数">最大进程数</h2>
+      <h2 id="php-fpm">PHP-FPM</h2>
+<p>CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将客户端发送的数据作为输入，由Web服务器收集程序的输出并加上合适的头部，再发送回客户端。</p>
+<p>FastCGI是基于CGI的增强版本的协议，不同于创建新的进程来服务请求，使用持续的进程和创建的子进程来处理一连串的进程，这些进程由FastCGI服务器管理，开销更小，效率更高。</p>
+<p>PHP-FPM是PHP实现的FastCGI Process Manager(FastCGI进程管理器), 用于替换PHP FastCGI的大部分附加功能，适用于高负载网站。支持的功能如：</p>
+<ul>
+<li>平滑停止/启动的高级进程管理功能</li>
+<li>慢日志记录脚本</li>
+<li>动态/静态子进程产生</li>
+<li>基于php.ini的配置文件</li>
+</ul>
+<p>PHP-FPM在5.4之后已经整合进入PHP源代码中，提供更好的PHP进程管理方式，可以有效控制内存和进程，平滑重载PHP配置。</p>
+<h2 id="最大进程数">最大进程数</h2>
 <blockquote>
 <p>如何控制子进程，为了高性能建议使用 pm static</p>
 </blockquote>
@@ -164,8 +181,89 @@
 </ul>
 <h2 id="最大活跃进程数">最大活跃进程数</h2>
 <p>Active Processes: 设定为 256, 设置过高的话，很容易造成 web 服务器 CPU 占用过高等情况</p>
-<h2 id="参考文章">参考文章</h2>
+<h2 id="管理方式">管理方式</h2>
+<p>PHP-FPM管理的方式是一个master主进程，多个pool进程池，多个worker子进程。其中每个进程池监听一个socket套接字。具体的图示：</p>
+<p><img src="/images/2021/740066469-5b46e4d672e6d_fix732.png" alt="image"></p>
+<p>其中的worker子进程实际处理连接请求，master主进程负责管理子进程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">1. <span class="sb">`</span>master<span class="sb">`</span>进程，设置1s定时器，通过<span class="sb">`</span>socket<span class="sb">`</span>文件监听
+2. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>dynamic<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>数量&lt;<span class="sb">`</span>pm.min_spare_servers<span class="sb">`</span>，创建新的子进程
+3. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>dynamic<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>数量&gt;<span class="sb">`</span>pm.max_spare_servers<span class="sb">`</span>，杀死多余的空闲子进程
+4. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>ondemand<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>空闲时间&gt;<span class="sb">`</span>pm.process_idle_timeout<span class="sb">`</span>，杀死该空闲进程
+5. 当连接到达时，检测如果<span class="sb">`</span>worker<span class="sb">`</span>数量&gt;<span class="sb">`</span>pm.max_children<span class="sb">`</span>，打印<span class="sb">`</span>warning<span class="sb">`</span>日志，退出；如果无异常，使用<span class="sb">`</span>idle worker<span class="sb">`</span>服务，或者新建<span class="sb">`</span>worker<span class="sb">`</span>服务
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="保障基本安全">保障基本安全</h2>
+<p>我们为了避免PHP-FPM主进程由于某些糟糕的PHP代码挂掉，需要设置重启的全局配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 如果在1min内有10个子进程被中断失效，重启主进程</span>
+<span class="nv">emergency_restart_threshold</span> <span class="o">=</span> <span class="m">10</span>
+<span class="nv">emergency_restart_interval</span> <span class="o">=</span> 1m
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="进程数限制">进程数限制</h2>
+<p>此时如果我们分配全部的内存给PHP-FPM使用，那么进程数可以限制在157000/27 = 5814,但是由于我的服务器同时服务了很多内容，所以我们可以向下调整到512个进程数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">process.max <span class="o">=</span> <span class="m">512</span>
+<span class="nv">pm</span> <span class="o">=</span> dynamic
+pm.max_children <span class="o">=</span> <span class="m">512</span>
+pm.start_servers <span class="o">=</span> <span class="m">16</span>
+pm.min_spare_servers <span class="o">=</span> <span class="m">8</span>
+pm.max_spare_serveres <span class="o">=</span> <span class="m">30</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="防止内存泄漏">防止内存泄漏</h2>
+<p>由于糟糕的插件和库，内存泄漏时有发生，所以我们需要对每一个子进程服务的请求数量做限制，防止无限制的内存泄漏：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">pm.max_requests <span class="o">=</span> <span class="m">1000</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="php-fpm-执行命令">php-fpm 执行命令</h2>
+<p>如果上面的配置都按照你的实际需求和环境配置好了，不要忘记重启PHP-FPM服务。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl start php-fpm      <span class="c1"># 启动php-fpm</span>
+sudo systemctl stop php-fpm       <span class="c1"># 停止php-fpm</span>
+sudo systemctl reload php-fpm     <span class="c1"># 重载php-fpm</span>
+sudo systemctl restart php-fpm    <span class="c1"># 重启php-fpm</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考文章">参考文章</h2>
 <p><a href="https://segmentfault.com/a/1190000014735855">PHP-FPM 调优：为了高性能使用 pm static</a></p>
+<p><a href="https://segmentfault.com/a/1190000015612563">php-fpm进程数管理</a></p>
 
     </div>
 

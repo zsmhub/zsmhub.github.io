@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go的一些坑">
 <meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"><meta itemprop="datePublished" content="2020-11-13T11:17:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="wordCount" content="967">
+<meta itemprop="wordCount" content="1266">
 <meta itemprop="keywords" content="坑," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go的一些坑"/>
 <meta name="twitter:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 967 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1266 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -143,7 +143,7 @@
   <ul>
     <li><a href="#代码格式化">代码格式化</a></li>
     <li><a href="#json的坑">json的坑</a></li>
-    <li><a href="#slice本身就是引用类型">slice本身就是引用类型</a></li>
+    <li><a href="#slicemapchannel本身就是引用类型">slice/map/channel本身就是引用类型</a></li>
     <li><a href="#单引号">单引号</a></li>
     <li><a href="#len--utf8runecountinstring">len &amp; utf8.RuneCountInString</a></li>
     <li><a href="#在一个值为-nil-的-channel-上发送和接收数据将永久阻塞">在一个值为 nil 的 channel 上发送和接收数据将永久阻塞</a></li>
@@ -177,7 +177,10 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="slice本身就是引用类型">slice本身就是引用类型</h2>
+</div><h2 id="slicemapchannel本身就是引用类型">slice/map/channel本身就是引用类型</h2>
+<blockquote>
+<p>slice</p>
+</blockquote>
 <p>绝对不要用指针指向 slice。切片本身已经是一个引用类型，所以它本身就是一个指针！！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -275,6 +278,53 @@
 </span><span class="c1"></span>    <span class="p">}(</span><span class="nx">x</span><span class="p">)</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// [7 2 3]
 </span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>map</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">persons</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+    <span class="nx">persons</span><span class="p">[</span><span class="s">&#34;张三&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">19</span>
+
+    <span class="nx">mp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">persons</span>
+
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;原始map的内存地址是：%p\n&#34;</span><span class="p">,</span> <span class="nx">mp</span><span class="p">)</span> <span class="c1">// 输出：原始map的内存地址是：0xc00000e028
+</span><span class="c1"></span>    <span class="nf">modify</span><span class="p">(</span><span class="nx">persons</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map值被修改了，新值为:&#34;</span><span class="p">,</span> <span class="nx">persons</span><span class="p">)</span> <span class="c1">// 输出：map值被修改了，新值为: map[张三:20]
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">modify</span><span class="p">(</span><span class="nx">p</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;函数里接收到map的内存地址是：%p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)</span> <span class="c1">// 输出：函数里接收到map的内存地址是：0xc00000e038
+</span><span class="c1"></span>    <span class="nx">p</span><span class="p">[</span><span class="s">&#34;张三&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">20</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="单引号">单引号</h2>

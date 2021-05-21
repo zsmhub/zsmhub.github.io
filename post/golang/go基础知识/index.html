@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="8543">
+<meta itemprop="wordCount" content="8757">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8543 字 </span>
+          <span class="more-meta"> 约 8757 字 </span>
           <span class="more-meta"> 预计阅读 18 分钟 </span>
         
       </div>
@@ -616,6 +616,13 @@ ToDo Something&hellip;</li>
 </li>
 <li>
 <p>数组&amp;slice&amp;map</p>
+<blockquote>
+<p>new和make的区别
+两者都是用来做内存分配的;
+make只用于slice、map、以及channel的初始化，返回的还是这三个引用类型本身;
+new用于类型的内存分配，并且内存对应的值为类型零值，返回的是指向类型的指针。</p>
+</blockquote>
+<p><em>make也用来分配内存的，区别于new,它只用于slice,map以及chan的内存创建。而且返回的类型就是这三个类型的本身，而不是它们的指针类型，因为这三种类型本身就是引用类型。所以没必要返回它们的指针类型。</em></p>
 <blockquote>
 <p>何时使用 new() 和 make()『new和make的区别,前者返回的是指针，后者返回实例，且make关键字只能创建channel、slice和map这三个引用类型。』</p>
 </blockquote>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="PHP 的一些坑">
 <meta itemprop="description" content="大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 示例：array_udiff([&lsquo;a"><meta itemprop="datePublished" content="2020-05-07T16:00:02&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-07T16:00:02&#43;08:00" />
-<meta itemprop="wordCount" content="612">
+<meta itemprop="wordCount" content="651">
 <meta itemprop="keywords" content="坑,php," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PHP 的一些坑"/>
 <meta name="twitter:description" content="大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 示例：array_udiff([&lsquo;a"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 612 字 </span>
+          <span class="more-meta"> 约 651 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -146,6 +146,7 @@
     <li><a href="#json_encode函数输出中文不转为unicode编码方案">json_encode函数输出中文不转为unicode编码方案</a></li>
     <li><a href="#carbon">Carbon</a></li>
     <li><a href="#取差集">取差集</a></li>
+    <li><a href="#php-fpm">php-fpm</a></li>
   </ul>
 </nav>
   </div>
@@ -237,7 +238,9 @@
 <pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">array_udiff</span><span class="p">(</span><span class="nv">$arr2</span><span class="p">,</span> <span class="nv">$arr2</span><span class="p">,</span> <span class="s1">&#39;strcasecmp&#39;</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="php-fpm">php-fpm</h2>
+<p>当 php-fpm 设置了最大运行进程数为 256，如果某些请求卡住了，就会导致 php-fpm 进程堆积了。</p>
+
     </div>
 
     <div class="post-copyright">

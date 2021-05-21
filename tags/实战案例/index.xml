@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 21 Apr 2021 10:17:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 May 2021 15:21:36 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常见功能流程图汇总</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%B8%B8%E8%A7%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Mon, 17 May 2021 15:21:36 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%B8%B8%E8%A7%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%B1%87%E6%80%BB/</guid>
+      <description>登录流程 产品原型 后端流程图 友盟一键登录文档 一键登录接口文档：https://developer.umeng.com/docs/143070/</description>
+    </item>
+    
     <item>
       <title>账号层级限流-抢白名单功能</title>
       <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E9%99%90%E6%B5%81-%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/</link>
