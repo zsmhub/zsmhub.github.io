@@ -49,7 +49,7 @@
 <meta itemprop="name" content="MacOs 使用心得">
 <meta itemprop="description" content="MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&gt; Command ⇧ ——&gt; Shift ⌥ ——&gt; Option ⌃ ——&gt; Control ↩︎ ——&gt; Return/Enter"><meta itemprop="datePublished" content="2020-05-24T13:30:56&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-24T13:30:56&#43;08:00" />
-<meta itemprop="wordCount" content="1199">
+<meta itemprop="wordCount" content="1313">
 <meta itemprop="keywords" content="macos," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MacOs 使用心得"/>
 <meta name="twitter:description" content="MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&gt; Command ⇧ ——&gt; Shift ⌥ ——&gt; Option ⌃ ——&gt; Control ↩︎ ——&gt; Return/Enter"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/macos/"> macos </a>
             </div>
-          <span class="more-meta"> 约 1199 字 </span>
+          <span class="more-meta"> 约 1313 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <li><a href="#快捷键">快捷键</a></li>
     <li><a href="#常用操作">常用操作</a></li>
     <li><a href="#好用的应用">好用的应用</a></li>
+    <li><a href="#应用多开">应用多开</a></li>
   </ul>
 </nav>
   </div>
@@ -298,7 +299,21 @@ ssh-keygen -t rsa -C ‘xxxxx@company.com’ -f ~/.ssh/gitee_id_rsa
 <p>编写markdown的优秀工具，所见即所得。</p>
 </li>
 </ol>
-
+<h2 id="应用多开">应用多开</h2>
+<ul>
+<li>微信多开</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 这个命令是在后台关起一个进程，其中&gt; /dev/null，null是一个系统黑洞，输出信息给到黑洞去来，代表所有的信息包括错误信息都不要输出来。『缺点：电脑休眠状态：其中一个微信可能会挂掉』</span>
+nohup /Applications/WeChat.app/Contents/MacOS/WeChat &gt; /dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
