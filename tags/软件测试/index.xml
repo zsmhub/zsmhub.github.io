@@ -18,12 +18,12 @@
     </item>
     
     <item>
-      <title>AB测试的简单使用</title>
-      <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</link>
+      <title>AB压力测试</title>
+      <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Fri, 10 Jan 2020 21:01:48 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</guid>
-      <description>简单运用 1 2 # 并发测试：-n: 请求100次，-c: 并发10次 ab -n 100 -c 10 https://www.baidu.com/</description>
+      <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</guid>
+      <description>ApacheBench 是 Apache 服务器自带的一个web压力测试工具，简称ab。ab又是一个命令行工具，对发起负载的本机要求很低，根据ab命令可以创建很多的并发访问线程</description>
     </item>
     
     <item>

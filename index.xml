@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 21 May 2021 14:14:15 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 May 2021 11:16:12 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CDN-内容分发网络</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/cdn-%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Tue, 25 May 2021 11:16:12 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/cdn-%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C/</guid>
+      <description>内容分发网络（Content Delivery Network，CDN）通过将站点内容发布至遍布全球的海量加速节点，使其用户可就近获取所需内容，避免因网络拥堵</description>
+    </item>
+    
     <item>
       <title>制作简历平台</title>
       <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%88%B6%E4%BD%9C%E7%AE%80%E5%8E%86%E5%B9%B3%E5%8F%B0/</link>
@@ -846,12 +855,12 @@
     </item>
     
     <item>
-      <title>AB测试的简单使用</title>
-      <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</link>
+      <title>AB压力测试</title>
+      <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Fri, 10 Jan 2020 21:01:48 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</guid>
-      <description>简单运用 1 2 # 并发测试：-n: 请求100次，-c: 并发10次 ab -n 100 -c 10 https://www.baidu.com/</description>
+      <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</guid>
+      <description>ApacheBench 是 Apache 服务器自带的一个web压力测试工具，简称ab。ab又是一个命令行工具，对发起负载的本机要求很低，根据ab命令可以创建很多的并发访问线程</description>
     </item>
     
     <item>
@@ -1319,7 +1328,7 @@
       <pubDate>Tue, 01 Jan 2019 10:37:43 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所有 PHP 错误 ini_set(&amp;#39;display_errors&amp;#39;, 1); //打</description>
+      <description>PHP手册 点击跳转 操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所</description>
     </item>
     
   </channel>

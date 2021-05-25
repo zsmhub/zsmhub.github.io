@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Composer">
 <meta itemprop="description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理"><meta itemprop="datePublished" content="2019-04-03T21:50:58&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-03T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="1396">
+<meta itemprop="wordCount" content="1428">
 <meta itemprop="keywords" content="php," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Composer"/>
 <meta name="twitter:description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 1396 字 </span>
+          <span class="more-meta"> 约 1428 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -234,15 +234,19 @@ composer require hashids/hashids:2.0.4
 </span><span class="lnt">10
 </span><span class="lnt">11
 </span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">&gt; 流程一：新项目流程
 &gt; - 创建 composer.json，并添加依赖到的扩展包；
 &gt; - 运行 composer install，安装扩展包并生成composer.lock；
+&gt; - 执行额外命令：php artisan ide-helper:generate 等
 &gt; - 提交 composer.lock 到代码版本控制器中，如：git<span class="p">;</span>
 &gt;
 &gt; 流程二：新人接手安装现有项目的扩展
 &gt; - 克隆项目后，根目录下直接运行 composer install 从composer.lock 中安装 指定版本 的扩展包以及其依赖；
+&gt; - 执行额外命令：php artisan ide-helper:generate 等
 &gt; - 此流程同样适用于生产环境代码的部署。
 &gt;
 &gt; 流程三：为项目添加新扩展包
