@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 31 Dec 2020 09:55:21 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 11:11:52 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>面向故障编程</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Thu, 27 May 2021 11:11:52 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/</guid>
+      <description>Bug与故障 Bug Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此</description>
+    </item>
+    
     <item>
       <title>位运算使用技巧</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>

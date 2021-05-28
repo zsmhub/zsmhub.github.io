@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="5904">
+<meta itemprop="wordCount" content="6017">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 5904 字 </span>
-          <span class="more-meta"> 预计阅读 12 分钟 </span>
+          <span class="more-meta"> 约 6017 字 </span>
+          <span class="more-meta"> 预计阅读 13 分钟 </span>
         
       </div>
     </header>
@@ -169,7 +169,6 @@
         <li><a href="#githubcomtidwallsjson">github.com/tidwall/sjson</a></li>
         <li><a href="#githubcomdgrijalvajwt-go">github.com/dgrijalva/jwt-go</a></li>
         <li><a href="#githubcomahmetbgo-linq">github.com/ahmetb/go-linq</a></li>
-        <li><a href="#githubcomrobfigcron">github.com/robfig/cron</a></li>
         <li><a href="#githubcomvalyalafasthttp">github.com/valyala/fasthttp</a></li>
         <li><a href="#gouberorgzap">go.uber.org/zap</a></li>
         <li><a href="#githubcomgoogolleego-socketio">github.com/googollee/go-socket.io</a></li>
@@ -182,6 +181,9 @@
     <li><a href="#githubcomcosmtrekair">github.com/cosmtrek/air</a></li>
     <li><a href="#githubcomstretchrtestify">github.com/stretchr/testify</a></li>
     <li><a href="#githubcomjudwhitego-svc">github.com/judwhite/go-svc</a></li>
+    <li><a href="#githubcommicromicrov3">github.com/micro/micro/v3</a></li>
+    <li><a href="#githubcomtal-techgo-zero">github.com/tal-tech/go-zero</a></li>
+    <li><a href="#githubcomrobfigcron--githubcomgo-co-opgocron">github.com/robfig/cron || github.com/go-co-op/gocron</a></li>
   </ul>
 </nav>
   </div>
@@ -1130,6 +1132,10 @@
 </div>
 </div><h2 id="第三方库">第三方库</h2>
 <h3 id="gorm">gorm</h3>
+<ul>
+<li>Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录.</li>
+<li>Assign(User{Age: 30}).FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库.</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -1201,6 +1207,7 @@
 </div><h3 id="gorm-bulk">gorm-bulk</h3>
 <p>gorm 的补充，支持批量插入、批量更新等</p>
 <h3 id="go-nsq">go-nsq</h3>
+<p>消息队列</p>
 <h3 id="go-redis">go-redis</h3>
 <h3 id="go-admin">go-admin</h3>
 <p>后台管理系统</p>
@@ -1320,9 +1327,7 @@
 <span class="p">}).</span><span class="nf">ToSlice</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">chatroomIds</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="githubcomrobfigcron">github.com/robfig/cron</h3>
-<p>计划任务</p>
-<h3 id="githubcomvalyalafasthttp">github.com/valyala/fasthttp</h3>
+</div><h3 id="githubcomvalyalafasthttp">github.com/valyala/fasthttp</h3>
 <p>模拟 http 客户端请求[参考文章 https://juejin.im/post/6844903761832476686]</p>
 <p>fasthttp 不会将请求 header 值存储为导出的 map[string]string，而是存储为未存储的 []byte (将索引存储到其中)</p>
 <p>可以使用 Peek() 获得请求 header 值。</p>
@@ -1473,7 +1478,7 @@ fmt.Println<span class="o">(</span>string<span class="o">(</span>req.Header.Head
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="githubcomjudwhitego-svc">github.com/judwhite/go-svc</h2>
-<p>svc: service，svc服务运行框架，用于实现守护进程，守护进程(daemon)是在后台运行的特殊进程，用于执行指定的系统任务，一直运行直到系统关闭。</p>
+<p>svc: service，svc服务运行框架，用于实现守护进程，<em>守护进程</em>(daemon)是在后台运行的特殊进程，用于执行指定的系统任务，一直运行直到系统关闭。</p>
 <p>NSQ 源码的程序入口，是通过 go-svc 包启动为守护进程。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1589,7 +1594,13 @@ fmt.Println<span class="o">(</span>string<span class="o">(</span>req.Header.Head
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="githubcommicromicrov3">github.com/micro/micro/v3</h2>
+<p>微服务框架</p>
+<h2 id="githubcomtal-techgo-zero">github.com/tal-tech/go-zero</h2>
+<p>go-zero 是一个集成了各种工程实践的 web 和 rpc 框架。通过弹性设计保障了大并发服务端的稳定性，经受了充分的实战检验。</p>
+<h2 id="githubcomrobfigcron--githubcomgo-co-opgocron">github.com/robfig/cron || github.com/go-co-op/gocron</h2>
+<p>定时任务</p>
+
     </div>
 
     <div class="post-copyright">

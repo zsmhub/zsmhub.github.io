@@ -49,7 +49,7 @@
 <meta itemprop="name" content="微服务">
 <meta itemprop="description" content="为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们"><meta itemprop="datePublished" content="2020-10-12T11:38:53&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-24T11:38:53&#43;08:00" />
-<meta itemprop="wordCount" content="731">
+<meta itemprop="wordCount" content="846">
 <meta itemprop="keywords" content="微服务," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="微服务"/>
 <meta name="twitter:description" content="为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 731 字 </span>
+          <span class="more-meta"> 约 846 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -143,6 +143,7 @@
   <ul>
     <li><a href="#为什么要用微服务">为什么要用微服务</a></li>
     <li><a href="#为什么说做好微服务很难">为什么说做好微服务很难</a></li>
+    <li><a href="#微服务系统如何拆分">微服务系统如何拆分</a></li>
     <li><a href="#微服务网关">微服务网关</a></li>
   </ul>
 </nav>
@@ -172,6 +173,14 @@
 <li>日志，用于数据收集和问题定位</li>
 <li>可观测性，没有度量就没有优化</li>
 </ol>
+<h2 id="微服务系统如何拆分">微服务系统如何拆分</h2>
+<ul>
+<li>先粗后细，切忌过细，切忌一个请求一个服务</li>
+<li>横向拆分，而非纵向，我们一般不会超过三层</li>
+<li>单向调用，严禁循环调用</li>
+<li>禁止接口类型透传，如 model 层的一个结构体，三个微服务都用到了，这样会导致代码耦合</li>
+<li>没有依赖关系的串行调用改为并行调用</li>
+</ul>
 <h2 id="微服务网关">微服务网关</h2>
 <p>微服务网关的作用是在用户第一个网关服务器，你按照业务服务相关需求，给网关分流，相比云主机厂商提供的负载均衡器，强大在于你可以根据自己业务去分流，同时还以可以实现鉴权、校验、聚合、缓存等自定义服务，而云主机的负载均衡器只是一个简单按照流量给你负载均衡请求，不具有自定义编程性质。</p>
 <blockquote>

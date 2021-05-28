@@ -49,7 +49,7 @@
 <meta itemprop="name" content="MacOs 使用心得">
 <meta itemprop="description" content="MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&gt; Command ⇧ ——&gt; Shift ⌥ ——&gt; Option ⌃ ——&gt; Control ↩︎ ——&gt; Return/Enter"><meta itemprop="datePublished" content="2020-05-24T13:30:56&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-24T13:30:56&#43;08:00" />
-<meta itemprop="wordCount" content="1313">
+<meta itemprop="wordCount" content="1385">
 <meta itemprop="keywords" content="macos," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MacOs 使用心得"/>
 <meta name="twitter:description" content="MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&gt; Command ⇧ ——&gt; Shift ⌥ ——&gt; Option ⌃ ——&gt; Control ↩︎ ——&gt; Return/Enter"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/macos/"> macos </a>
             </div>
-          <span class="more-meta"> 约 1313 字 </span>
+          <span class="more-meta"> 约 1385 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -146,6 +146,7 @@
     <li><a href="#常用操作">常用操作</a></li>
     <li><a href="#好用的应用">好用的应用</a></li>
     <li><a href="#应用多开">应用多开</a></li>
+    <li><a href="#安装源代码程序">安装源代码程序</a></li>
   </ul>
 </nav>
   </div>
@@ -313,7 +314,29 @@ ssh-keygen -t rsa -C ‘xxxxx@company.com’ -f ~/.ssh/gitee_id_rsa
 nohup /Applications/WeChat.app/Contents/MacOS/WeChat &gt; /dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="安装源代码程序">安装源代码程序</h2>
+<p>如 安装 protocbuf ，可指定版本</p>
+<ol>
+<li>
+<p>到 <a href="https://github.com/protocolbuffers/protobuf/releases">https://github.com/protocolbuffers/protobuf/releases</a> 选择下载最新的 protoc-3.x.x-osx-x86_64.zip，解压后</p>
+</li>
+<li>
+<p>安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> protoc-3.x.x-osx-x86_64
+cp -r include/ /usr/local/include/
+cp -r bin/ /usr/local/bin/
+</code></pre></td></tr></table>
 </div>
+</div></li>
+</ol>
+
     </div>
 
     <div class="post-copyright">

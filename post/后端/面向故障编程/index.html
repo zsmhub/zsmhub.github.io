@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>面向故障编程 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="Bug与故障 Bug Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="面向故障编程" />
+<meta property="og:description" content="Bug与故障 Bug Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-27T11:11:52&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-27T11:11:52&#43;08:00" />
+
+<meta itemprop="name" content="面向故障编程">
+<meta itemprop="description" content="Bug与故障 Bug Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此"><meta itemprop="datePublished" content="2021-05-27T11:11:52&#43;08:00" />
+<meta itemprop="dateModified" content="2021-05-27T11:11:52&#43;08:00" />
+<meta itemprop="wordCount" content="4991">
+<meta itemprop="keywords" content="后端," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="面向故障编程"/>
+<meta name="twitter:description" content="Bug与故障 Bug Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">面向故障编程</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-05-27 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+            </div>
+          <span class="more-meta"> 约 4991 字 </span>
+          <span class="more-meta"> 预计阅读 10 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bug与故障">Bug与故障</a></li>
+    <li><a href="#为什么测试的时候没发生问题生产环境里却出了故障">为什么测试的时候没发生问题，生产环境里却出了故障</a></li>
+    <li><a href="#面向故障编程">面向故障编程</a></li>
+    <li><a href="#连接点故障">连接点故障</a></li>
+    <li><a href="#连锁反应故障">连锁反应故障</a></li>
+    <li><a href="#参考文章">参考文章</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="bug与故障">Bug与故障</h2>
+<blockquote>
+<p>Bug</p>
+</blockquote>
+<p>Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此时叫做漏洞。</p>
+<p>理论上来说，有 Bug 的系统根本不能通过基本测试，也就不会被部署到生产环境。如果任何 Bug 侵入到了生产环境，造成了服务的中断或系统事故，那这个责任必然要由开发人员和测试人员一起承担。</p>
+<blockquote>
+<p>故障</p>
+</blockquote>
+<p>故障是指在生产环境中，因为&quot;外部&quot;因素或者环境因素所造成的事故。比如配置不正确的防火墙屏蔽了系统发送的请求。比如其他客户大量访问数据库，从而阻塞了我的系统发出的数据库请求。比如上游系统发生故障，突然发送了海量的垃圾消息等等。</p>
+<h2 id="为什么测试的时候没发生问题生产环境里却出了故障">为什么测试的时候没发生问题，生产环境里却出了故障</h2>
+<blockquote>
+<p>以下是可能出现故障的部分原因</p>
+</blockquote>
+<ol>
+<li>功能测试只覆盖了正面测试(positive test)，而忽略了负面测试(negative test)</li>
+<li>整合测试没有覆盖到的某个在生产环境中引起故障的外部系统</li>
+<li>没有进行压力测试，或者压力测试的程度与生产环境情况相差过大</li>
+</ol>
+<h2 id="面向故障编程">面向故障编程</h2>
+<p>在一个成熟的程序员眼里，生产环境中的&quot;故障&quot;才是&quot;真实&quot;，&ldquo;异常&quot;才是&quot;正常&rdquo;。墨菲定律告诉我们：有可能出错的地方，就一定会出错。在生产环境中，有可能发生故障的地方，早晚都会发生故障。作为开发人员，我们能做的，就是利用各种设计模式和技巧，主动积极地去正视故障，处理故障，修复故障，将故障杀死于襁褓之中。这种思想，就叫做面向故障编程。</p>
+<h2 id="连接点故障">连接点故障</h2>
+<blockquote>
+<p>故障描述</p>
+</blockquote>
+<p>系统中最薄弱，最容易引起故障的地方，就是系统中的&quot;连接点&quot;，或者叫做&quot;集成点&quot;。任意socket/进程/管道/远程程序之间发送的请求和数据都有可能（所以早晚会）发生故障，从而造成系统的阻塞或崩溃。让我们仔细观察一下几种有代表性的&quot;交接点&quot;</p>
+<p>目前，大部分高级通信协议都依赖于下层的tcp协议以及socket连接来实现通信。说到tcp协议，大家都很了解，&ldquo;三次握手&quot;也是耳熟能详</p>
+<p><img src="/images/2021/QQ20210527-144329.png" alt="简单 3 次握手"></p>
+<p>客户端发送SYN到服务器监听端口以发起连接请求，如果此时没有进程正在监听这个端口，服务器就会返回TCP reset以中止此次连接请求。而如果服务器端进程正在监听此端口，服务器就会返回SYN/ACK表示接受连接请求。客户端收到之后，再发送ACK，到此为止，新的连接就建立起来了。</p>
+<p>可是在生产环境中，事情却没有这么简单。如果客户端与服务器端之间存在一道防火墙呢？</p>
+<p>由于测试环境往往是100%的内部环境，我们几乎从没在测试环境下遭遇类似的情境。防火墙就像一个路由。根据内部配置，防火墙每次见到SYN请求，都会决定究竟要允许（即正常转发SYN请求去目标服务器端口），还是阻拦（即返回tcp reset消息），或是忽略（既不转发消息，也不返回任何消息）。而一旦防火墙决定允许一个SYN请求通过，就会把这个允许通过的连接记录在内部的列表中，今后遇到这条连接上发送的消息，就不必再做额外的考察，直接放行。听上去没有什么问题吧~</p>
+<p>但是，防火墙内部的连接列表并不是无限增长的。当某个列表中的连接长时间处于闲置状态（无数据传输），防火墙会把这个连接从列表中移除。可是，防火墙并不会像普通的路由那样，发送任何reset消息来提示连接两端的socket。所以客户端和服务器端都以为两者之间的连接还是有效的。【提问：为什么防火墙不能发送一个reset消息作为清除缓存连接的提示呢？回答：因为这样的reset消息有可能被恶意用户利用，从而威胁到系统安全性】只是，当它们互相之间试图继续发送消息时，这些消息会被防火墙无情的忽略掉（既不放行，也不返回reset）。此时的防火墙，完全成为了一个网络黑洞，默默地吃掉了这条连接上发送的数据。</p>
+<p><img src="/images/2021/QQ20210527-144436.png" alt="介入防火墙的 3 次握手"></p>
+<p>作为发送消息的一方，由于消息被防火墙吃掉，所以无法收到ACK。于是TCP协议就会要求重新发送这条消息，然后又被防火墙吃掉。。。这样周而复始，直到超过os内核锁预设的TCP重试次数最大值，才会抛出错误。一般内核设定的TCP重试最大值在15左右，这可能导致长达20分钟以上的重试时间！</p>
+<p>而接收消息的一方更惨。它只能徒劳的等待黑洞那里传来任何数据（这当然是不可能的）。如果接收方是以阻塞式调用来进行读取数据的操作，那么理论上来说，这个接收操作可能永远地被阻塞下去&hellip;&hellip;.</p>
+<p>这还只是我们为了向大家说明情况，讲解的一个单个连接被阻塞的情境。在生产环境中，如果我们把例子中的客户端换成一个常用的连接池，流量大的繁忙时段，连接池里的所有有效连接都在不停的发送数据，所以不会造成防火墙移除超时连接的状况发生。到了夜晚流量变少，连接池中绝大部分连接都会长时间闲置，导致防火墙大量的移除这些超时连接。然后第二天一早，系统的流量又上来了，连接池中的所有连接都被取出用来发送数据，而这些数据全部被防火墙吞掉&hellip;&hellip; 此时你的系统会出现大面积的无响应警告，画面太美&hellip;&hellip;</p>
+<p>估计此时你也已经接到运维小伙伴的电话了。而更糟的是，当你查看连接池这边的客户端进程，发现一切正常。。。当你查看服务器端的进程时，也是一切正常。。。网络本身也是正常状态。。。由于防火墙往往是由网络安全团队设置的，有些业务开发人员可能根本不知道防火墙的存在。。。于是这个问题会成为一个悬案，往往最终都是由运维团队重启系统来解决。</p>
+<p>这个故障情境，几乎不可能通过提升测试覆盖度来检测。我们只能在开发阶段主动的去规避这些可能发生（所以早晚会发生）的连接层面的故障。针对系统中这些容易产生连接故障的&quot;连接点&rdquo;，我们给大家推荐两个最常见的方法来降低故障带来的影响，从而提示系统的稳定性。</p>
+<blockquote>
+<p>故障解决方案</p>
+</blockquote>
+<p>第一个方法就是Timeout。Timeout的原理很简单。为了避免连接故障造成请求方和应答方陷入长时间的阻塞，一旦发送的请求超过一定时间还没有返回结果（不管是成功还是失败的结果），我们就中止这个请求。这样我们才可以及时的发现失败的连接。由于现代系统大量使用分布式结构，系统中的&quot;连接点&quot;不再是一个两个，而是相当大的一个数字（尤其是微服务架构），还会不断增加。系统中常见的问题就是Timeout机制的缺失。我会建议大家将Timeout的逻辑包装成一个可复用的实现。这样就可以一次实现，到处调用，减少了代码重复性。同时，也可以降低其他开发人员使用Timeout的难度，促使大家多多使用Timeout来保护系统。</p>
+<p><img src="/images/2021/QQ20210527-144616.png" alt="img"></p>
+<p>另一个常常和Timeout搭配使用的方法，就是Circuit Breaker（翻译成熔断器吧）。这个词本身的意思，就是指电路中的保险丝，在电流过大时，熔断自己，保护整条电路的安全。当我们的请求长时间无响应，导致Timeout之后，我们需要怎样处理这个未完成的请求呢？大家的第一个反应一定是重试，也许刚刚应答方太忙，所以才不能及时处理我们的请求。我再试一次，也许应答方就可以答复了呢。但是我劝你谨慎。因为作为开发人员，我们无法猜测导致请求Timeout的原因。如果是之前所讲的防火墙黑洞的例子，那你重试一辈子也是没用的。即便造成请求Timeout的原因的确是暂时性的，可修复的，比如是因为应答方暂时繁忙所造成的，你也要注意重试的频率和次数。如果盲目的频繁大量重试，只会给应答方造成更大的流量压力，不但对你自己的请求没帮助，还间接影响了整个系统的稳定性。</p>
+<p>而Circuit Breaker是一个可以帮到你的设计模式。你可以为有可能Timeout的操作添加一个Circuit Breaker，在初始状态下，Circuit Breaker处于连接的状态（保险丝完好，电路连通），我们要求Circuit Breaker发送的请求，都会被正常的发送出去。而当后续的请求开始出现Timeout或请求的失败的状况时，Circuit Breaker会记录下失败的次数或者频率。当失败次数或频率超过一个阈值时，Circuit Breaker就会转换到断开状态（保险丝熔断，电路断开）。此时，Circuit Breaker不会执行任何新的请求，而是在接到请求之后立即返回一个错误，告知请求的发起方，目前连接不正常，请等一等再尝试。在经过一段时间的熔断之后（这里又用到了Timeout机制），Circuit Breaker会转换到一个特殊的&quot;半连接&quot;状态。此时Circuit Breaker会把收到的请求发送出去，如果发送成功，那么Circuit Breaker会马上转入连接状态，恢复正常工作。而如果这次请求发送失败或再次Timeout，Circuit Breaker就会立刻转回断开状态，直到断开状态再次Timeout。</p>
+<p>由此可见，Circuit Breaker这种机制，就是在连接故障原因未知的情况下，试图用一种&quot;聪明&quot;的策略来自动调整&quot;连接点&quot;的流量，以便在系统稳定性和可恢复性之间取得一个平衡。当我们面向故障编程时，一个很大的困难就是故障的未知性。在开发层面，我们很难去判断故障产生的原因。所以我们不得不&quot;戴着脚镣跳舞&quot;，在未知的情况下选择最好的策略。Circuit Breaker机制就是一个很好的例子。</p>
+<h2 id="连锁反应故障">连锁反应故障</h2>
+<blockquote>
+<p>故障描述</p>
+</blockquote>
+<p>在现代系统设计中，为了增强可用性，或是为了增强可扩展性以应付更大的流量，我们往往在一个集群中运行多个服务进程，然后在集群上通过一个Load Balancer，负载均衡器，将发送到集群上的请求尽量平均的分配到集群中的各个服务进程上面去。</p>
+<p><img src="/images/2021/QQ20210527-144844.png" alt="LB"></p>
+<p>这种集群架构，在大多数情况下，可以很有效地帮助我们提高整个系统的健壮度，因为我们有&quot;备胎&quot;了，我们集群里有的是节点，所有节点一起死光光的概率是很小的啊。没错，这个假设通常是对的。可是，这个架构对于某一种故障非常敏感。那就是在大流量压力下所造成的节点崩溃。如果我们在服务进程的实现中有个缺陷，会造成内存泄漏。那么，当整个集群的流量增大时，每一个节点上分担的流量也很大，大流量可能加快内存泄漏的速度，使得某一个节点因为系统资源耗尽而崩溃。然后会发生什么呢？由于集群中少了一个节点，其他节点就必须分担更多的流量。别忘了，大部分节点运行的都是同样版本的服务。所以这个要命的内存泄漏很可能存在于所有节点中。于是剩下的节点在承受了更大的流量之后，也会更容易耗尽系统资源而崩溃，然后留下更少的节点分别承担更大的流量&hellip;&hellip; 显而易见，这是一个恶性循环。从第一个节点崩溃开始，这个故障可能像洪水一样，迅速蔓延至整个集群从而导致整个集群崩溃。我们管这种故障叫做连锁反应故障。</p>
+<blockquote>
+<p>故障解决方案</p>
+</blockquote>
+<p>第一，改进你的测试方法，尽量在测试环境中发现类似内存泄漏，或是潜在死锁这样的bug是很重要的。因为这些bug都对流量很敏感。一旦把这种bug部署到生产环境，无论进程是否跑在集群中，都相当于在生产环境中埋了一个地雷。越是需要系统保持稳定的大流量情境，这个地雷越容易爆炸。</p>
+<p>第二，如果集群的上游系统总是在一次请求失败之后，就疯狂地向集群发送重试请求，那么集群的流量压力很快就被搞大了。如果说大流量是由可以产生利润的用户请求所带来的，那我们愿意承受。而如果流量是因为愚蠢的系统重试请求所造成的，并且还把我们的集群搞垮了，那就太不值得了。所以， 在开发中使用上面介绍的Circuit Breaker机制，不只可以保护你正在开发的服务组件，还很有可能间接的保护了下游的其他服务组件。你在开发上做的一点额外努力，可能拯救了整个系统。相反的，你在开发上偷的一点懒，可能会坑死下游的兄弟团队呢。</p>
+<p>第三，最有效的规避连锁反应故障的方法，就是实现一个可以自动伸缩的集群。尤其是当你在cloud容器上运行节点时，这样的自动伸缩集群功能就更容易实现了。当集群中的一个节点崩溃，我们最好尽快自动的启动一个新节点（或者重启崩溃的节点）。这样至少可以在短时间内，尽量保证集群的尺寸不要萎缩的太厉害，从而避免了集群中余下的节点承担（它们这个年龄无法承受的）急剧增大的流量负担。</p>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="https://bbs.huaweicloud.com/blogs/121658">你是一个成熟的程序员了，是时候学习面向故障编程了</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-05-27
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/cdn-%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C/">
+            <span class="next-text nav-default">CDN-内容分发网络</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-05-27 11:11:52 \u002b0800 CST',
+        title: '面向故障编程',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
