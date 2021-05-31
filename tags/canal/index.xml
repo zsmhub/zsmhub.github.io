@@ -14,7 +14,7 @@
       <pubDate>Mon, 10 Aug 2020 11:19:13 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/canal/</guid>
-      <description>canal 简介 canal 是阿里开发的一款基于数据库增量日志解析，提供增量数据订阅与消费的框架，整个框架纯JAVA开发，目前仅支持 Mysql 和 MariaDB（和mys</description>
+      <description>canal 简介 canal github canal 是阿里开发的一款基于数据库增量日志解析，提供增量数据订阅与消费的框架，可以很方便地同步数据库的增量数据到其他的存储应用。 整个框架</description>
     </item>
     
   </channel>

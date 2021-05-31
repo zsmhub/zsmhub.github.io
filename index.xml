@@ -347,7 +347,7 @@
       <pubDate>Mon, 10 Aug 2020 11:19:13 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/canal/</guid>
-      <description>canal 简介 canal 是阿里开发的一款基于数据库增量日志解析，提供增量数据订阅与消费的框架，整个框架纯JAVA开发，目前仅支持 Mysql 和 MariaDB（和mys</description>
+      <description>canal 简介 canal github canal 是阿里开发的一款基于数据库增量日志解析，提供增量数据订阅与消费的框架，可以很方便地同步数据库的增量数据到其他的存储应用。 整个框架</description>
     </item>
     
     <item>
@@ -887,7 +887,7 @@
       <pubDate>Wed, 01 Jan 2020 16:30:02 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/navigation/</guid>
-      <description>学习ing 学习 socket 编程相关知识 goim 项目源码查查看 Swoole 从入门到实战 Swoole入门教程 如何成为黑客 RPC框架 熟悉 PHP 多进程 TableStore-Tim</description>
+      <description>学习ing goim 项目源码查查看 如何成为黑客 RPC框架 熟悉 PHP 多进程 TableStore-Timeline模型 Socket编程学习ing 老司机带你用</description>
     </item>
     
     <item>
