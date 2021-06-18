@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用案例">
 <meta itemprop="description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"><meta itemprop="datePublished" content="2021-01-08T17:57:02&#43;08:00" />
 <meta itemprop="dateModified" content="2021-01-08T17:57:02&#43;08:00" />
-<meta itemprop="wordCount" content="455">
+<meta itemprop="wordCount" content="750">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用案例"/>
 <meta name="twitter:description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 455 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 750 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -144,6 +144,8 @@
     <li><a href="#golang中判断两个slice是否相等">golang中判断两个slice是否相等</a></li>
     <li><a href="#计算中文长度">计算中文长度</a></li>
     <li><a href="#数据库初始化">数据库初始化</a></li>
+    <li><a href="#根据结构体返回字段名切片">根据结构体返回字段名切片</a></li>
+    <li><a href="#移除数组元素">移除数组元素</a></li>
   </ul>
 </nav>
   </div>
@@ -213,9 +215,9 @@
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>如何配置 sql.DB 的 SetMaxOpenConns SetMaxIdleConns 和 SetConnMaxLifetime</p>
+<p>如何配置 sql. DB 的 SetMaxOpenConns SetMaxIdleConns 和 SetConnMaxLifetime</p>
 </blockquote>
-<p><a href="https://learnku.com/go/t/49809">如何配置 sql.DB 的 SetMaxOpenConns SetMaxIdleConns 和 SetConnMaxLifetime</a></p>
+<p><a href="https://learnku.com/go/t/49809">如何配置 sql. DB 的 SetMaxOpenConns SetMaxIdleConns 和 SetConnMaxLifetime</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -297,6 +299,136 @@
     <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="根据结构体返回字段名切片">根据结构体返回字段名切片</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span>  <span class="p">{</span>
+    <span class="c1">// 输出：[ `name`  `password`  `gender`  `create_time`  `update_time`  `id`  `number` ]
+</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">RawFieldNames</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}))</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">dbTag</span> <span class="p">=</span> <span class="s">&#34;db&#34;</span> <span class="c1">// 根据哪个标签获取字段名称
+</span><span class="c1"></span>
+<span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Name</span>       <span class="kt">string</span> <span class="s">`db:&#34;name&#34;`</span> <span class="c1">// 用户名称
+</span><span class="c1"></span>    <span class="nx">Password</span>   <span class="kt">string</span> <span class="s">`db:&#34;password&#34;`</span> <span class="c1">// 用户密码
+</span><span class="c1"></span>    <span class="nx">Gender</span>     <span class="kt">string</span> <span class="s">`db:&#34;gender&#34;`</span> <span class="c1">// 男｜女｜未公开
+</span><span class="c1"></span>    <span class="nx">CreateTime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span> <span class="s">`db:&#34;create_time&#34;`</span>
+    <span class="nx">UpdateTime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span> <span class="s">`db:&#34;update_time&#34;`</span>
+    <span class="nx">Id</span>         <span class="kt">int64</span> <span class="s">`db:&#34;id&#34;`</span>
+    <span class="nx">Number</span>     <span class="kt">string</span> <span class="s">`db:&#34;number&#34;`</span> <span class="c1">// 学号
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">RawFieldNames</span><span class="p">(</span><span class="nx">in</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">out</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nf">ValueOf</span><span class="p">(</span><span class="nx">in</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nf">Kind</span><span class="p">()</span> <span class="o">==</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Ptr</span> <span class="p">{</span>
+        <span class="nx">v</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nf">Elem</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="c1">// we only accept structs
+</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nf">Kind</span><span class="p">()</span> <span class="o">!=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Struct</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;ToMap only accepts structs; got %T&#34;</span><span class="p">,</span> <span class="nx">v</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="nx">typ</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nf">Type</span><span class="p">()</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">v</span><span class="p">.</span><span class="nf">NumField</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="c1">// gets us a StructField
+</span><span class="c1"></span>        <span class="nx">fi</span> <span class="o">:=</span> <span class="nx">typ</span><span class="p">.</span><span class="nf">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">tagv</span> <span class="o">:=</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">Tag</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">dbTag</span><span class="p">);</span> <span class="nx">tagv</span> <span class="o">!=</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+            <span class="nx">out</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34; `%s` &#34;</span><span class="p">,</span> <span class="nx">tagv</span><span class="p">))</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">out</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span> <span class="s">`&#34;%s&#34;`</span> <span class="p">,</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">Name</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">out</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="移除数组元素">移除数组元素</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">Remove</span><span class="p">(</span><span class="nx">strings</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">strs</span> <span class="o">...</span><span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">out</span> <span class="o">:=</span> <span class="nb">append</span><span class="p">([]</span><span class="nb">string</span><span class="p">(</span><span class="kc">nil</span><span class="p">),</span> <span class="nx">strings</span><span class="o">...</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">str</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">strs</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">n</span> <span class="kt">int</span>
+        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">out</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="nx">v</span> <span class="o">!=</span> <span class="nx">str</span> <span class="p">{</span>
+                <span class="nx">out</span><span class="p">[</span><span class="nx">n</span><span class="p">]</span> <span class="p">=</span> <span class="nx">v</span>
+                <span class="nx">n</span><span class="o">++</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">out</span> <span class="p">=</span> <span class="nx">out</span><span class="p">[:</span><span class="nx">n</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">out</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>

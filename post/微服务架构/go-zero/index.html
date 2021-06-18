@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Go Zero - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="官方文档 点击前往 启动服务 1 2 // 代码运行 cd project/service/user/cmd/api &amp;amp;&amp;amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：or" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-zero/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Go Zero" />
+<meta property="og:description" content="官方文档 点击前往 启动服务 1 2 // 代码运行 cd project/service/user/cmd/api &amp;&amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：or" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-zero/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-04T15:43:03&#43;08:00" />
+<meta property="article:modified_time" content="2021-06-04T15:43:03&#43;08:00" />
+
+<meta itemprop="name" content="Go Zero">
+<meta itemprop="description" content="官方文档 点击前往 启动服务 1 2 // 代码运行 cd project/service/user/cmd/api &amp;&amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：or"><meta itemprop="datePublished" content="2021-06-04T15:43:03&#43;08:00" />
+<meta itemprop="dateModified" content="2021-06-04T15:43:03&#43;08:00" />
+<meta itemprop="wordCount" content="557">
+<meta itemprop="keywords" content="微服务框架," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go Zero"/>
+<meta name="twitter:description" content="官方文档 点击前往 启动服务 1 2 // 代码运行 cd project/service/user/cmd/api &amp;&amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：or"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Go Zero</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-06-04 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
+            </div>
+          <span class="more-meta"> 约 557 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#官方文档">官方文档</a></li>
+    <li><a href="#启动服务">启动服务</a></li>
+    <li><a href="#rpc调用链建议">rpc调用链建议</a></li>
+    <li><a href="#语法示例">语法示例</a></li>
+    <li><a href="#goctl">goctl</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="官方文档">官方文档</h2>
+<p><a href="https://go-zero.dev/cn/">点击前往</a></p>
+<h2 id="启动服务">启动服务</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">// 代码运行
+<span class="nb">cd</span> project/service/user/cmd/api <span class="o">&amp;&amp;</span> go run user.go -f etc/user.yaml
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="rpc调用链建议">rpc调用链建议</h2>
+<p>在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：order服务调用了user服务，而user服务反过来也会调用order的服务， 当其中一个服务启动故障，就会相互影响，进入死循环，你order认为是user服务故障导致的，而user认为是order服务导致的，如果有大量服务存在相互调用链， 则需要考虑服务拆分是否合理。</p>
+<blockquote>
+<p>go-zero 为何使用 etcd: 用于服务注册，检测 rpc server 是否存在</p>
+</blockquote>
+<h2 id="语法示例">语法示例</h2>
+<blockquote>
+<p>API .api 语法示例</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nf">info</span><span class="p">(</span>
+    <span class="nx">author</span><span class="p">:</span> <span class="s">&#34;xxx&#34;</span>
+    <span class="nx">date</span><span class="p">:</span>   <span class="s">&#34;xxx&#34;</span>
+    <span class="nx">desc</span><span class="p">:</span>   <span class="s">&#34;api语法示例及语法说明&#34;</span>
+<span class="p">)</span>
+
+<span class="err">@</span><span class="nf">server</span><span class="p">(</span>
+    <span class="nx">jwt</span><span class="p">:</span> <span class="nx">Auth</span>
+    <span class="nx">group</span><span class="p">:</span> <span class="nx">votes</span> <span class="c1">// 定义文件夹分组
+</span><span class="c1"></span>    <span class="nx">middleware</span><span class="p">:</span> <span class="nx">Usercheck</span>
+<span class="p">)</span>
+<span class="nx">service</span> <span class="nx">votes</span><span class="o">-</span><span class="nx">api</span> <span class="p">{</span>
+    <span class="err">@</span><span class="nf">doc</span><span class="p">(</span>
+        <span class="nx">summary</span><span class="p">:</span> <span class="s">&#34;投票&#34;</span>
+    <span class="p">)</span>
+    <span class="err">@</span><span class="nx">handler</span> <span class="nx">vote</span>
+    <span class="nx">post</span> <span class="o">/</span><span class="nx">votes</span><span class="o">/</span><span class="nf">vote</span> <span class="p">(</span><span class="nx">VoteReq</span><span class="p">)</span> <span class="nf">returns</span> <span class="p">(</span><span class="nx">VoteResp</span><span class="p">)</span>
+
+    <span class="err">@</span><span class="nf">doc</span><span class="p">(</span>
+        <span class="nx">summary</span><span class="p">:</span> <span class="s">&#34;获取投票列表&#34;</span>
+    <span class="p">)</span>
+    <span class="err">@</span><span class="nx">handler</span> <span class="nx">list</span>
+    <span class="nx">get</span> <span class="o">/</span><span class="nx">votes</span><span class="o">/</span><span class="nf">list</span> <span class="p">(</span><span class="nx">ListReq</span><span class="p">)</span> <span class="nf">returns</span> <span class="p">(</span><span class="nx">ListResp</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>RPC .proto 语法示例</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">syntax</span> <span class="p">=</span> <span class="s">&#34;proto3&#34;</span><span class="p">;</span>
+
+<span class="kn">package</span> <span class="nx">user</span><span class="p">;</span>
+
+<span class="nx">message</span> <span class="nx">IdReq</span> <span class="p">{</span>
+  <span class="kt">int64</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">message</span> <span class="nx">UserInfoReply</span> <span class="p">{</span>
+  <span class="kt">int64</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="nx">number</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="kt">string</span> <span class="nx">gender</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">service</span> <span class="nx">user</span> <span class="p">{</span>
+  <span class="nx">rpc</span> <span class="nf">getUser</span><span class="p">(</span><span class="nx">IdReq</span><span class="p">)</span> <span class="nf">returns</span> <span class="p">(</span><span class="nx">UserInfoReply</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="goctl">goctl</h2>
+<p>goctl是go-zero微服务框架下的代码生成工具。使用 goctl 可显著提升开发效率，让开发人员将时间重点放在业务开发上，其功能有：</p>
+<ul>
+<li>api服务生成</li>
+<li>rpc服务生成</li>
+<li>model代码生成</li>
+<li>模板管理</li>
+</ul>
+<blockquote>
+<p>goctl 读音</p>
+</blockquote>
+<p>很多人会把 goctl 读作 go-C-T-L，这种是错误的念法，应参照 go control 读做 ɡō kənˈtrōl。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-06-04
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6/">微服务框架</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/">
+            <span class="next-text nav-default">面向故障编程</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-06-04 15:43:03 \u002b0800 CST',
+        title: 'Go Zero',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

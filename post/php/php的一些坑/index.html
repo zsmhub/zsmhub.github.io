@@ -49,7 +49,7 @@
 <meta itemprop="name" content="PHP 的一些坑">
 <meta itemprop="description" content="大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 示例：array_udiff([&lsquo;a"><meta itemprop="datePublished" content="2020-05-07T16:00:02&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-07T16:00:02&#43;08:00" />
-<meta itemprop="wordCount" content="651">
+<meta itemprop="wordCount" content="666">
 <meta itemprop="keywords" content="坑,php," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PHP 的一些坑"/>
 <meta name="twitter:description" content="大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 示例：array_udiff([&lsquo;a"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 651 字 </span>
+          <span class="more-meta"> 约 666 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -217,15 +217,17 @@
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// strtotime() 也会出现月溢出问题
 </span><span class="c1"></span><span class="nv">$t</span> <span class="o">=</span> <span class="nx">strtotime</span><span class="p">(</span><span class="s1">&#39;2020-10-30&#39;</span><span class="p">);</span>
 <span class="nv">$a</span> <span class="o">=</span> <span class="nx">date</span><span class="p">(</span><span class="s1">&#39;Y-m-d&#39;</span><span class="p">,</span> <span class="nx">strtotime</span><span class="p">(</span><span class="s1">&#39;-1 month&#39;</span><span class="p">,</span> <span class="nv">$t</span><span class="p">));</span>
 <span class="k">echo</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">;</span> <span class="c1">// 输出2020-10-01
+</span><span class="c1"></span><span class="k">echo</span> <span class="nx">date</span><span class="p">(</span><span class="s1">&#39;Y-m&#39;</span><span class="p">,</span> <span class="nx">strtotime</span><span class="p">(</span><span class="nx">date</span><span class="p">(</span><span class="s1">&#39;Y-m-01&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39; -1 month&#39;</span><span class="p">))</span> <span class="o">.</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">;</span> <span class="c1">// 因为每月都有1号，如果需要获取上一个月的月份，可以使用以下的方式获取：
 </span><span class="c1"></span>
-<span class="c1">// 因为每月都有1号，如果需要获取上一个月的月份，可以使用以下的方式获取：
-</span><span class="c1"></span><span class="k">echo</span> <span class="nx">date</span><span class="p">(</span><span class="s1">&#39;Y-m&#39;</span><span class="p">,</span> <span class="nx">strtotime</span><span class="p">(</span><span class="nx">date</span><span class="p">(</span><span class="s1">&#39;Y-m-01&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39; -1 month&#39;</span><span class="p">))</span> <span class="o">.</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">;</span>
+<span class="c1">// 根据提供的时间参数做处理
+</span><span class="c1"></span><span class="nx">Carbon</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">argument</span><span class="p">(</span><span class="s1">&#39;the_date&#39;</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">toDateString</span><span class="p">();</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="取差集">取差集</h2>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Canal">
 <meta itemprop="description" content="canal 简介 canal github canal 是阿里开发的一款基于数据库增量日志解析，提供增量数据订阅与消费的框架，可以很方便地同步数据库的增量数据到其他的存储应用。 整个框架"><meta itemprop="datePublished" content="2020-08-10T11:19:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-10T11:19:13&#43;08:00" />
-<meta itemprop="wordCount" content="900">
+<meta itemprop="wordCount" content="1075">
 <meta itemprop="keywords" content="canal," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Canal"/>
 <meta name="twitter:description" content="canal 简介 canal github canal 是阿里开发的一款基于数据库增量日志解析，提供增量数据订阅与消费的框架，可以很方便地同步数据库的增量数据到其他的存储应用。 整个框架"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 900 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1075 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -144,6 +144,7 @@
     <li><a href="#canal-简介">canal 简介</a></li>
     <li><a href="#基于日志增量订阅和消费的业务包括">基于日志增量订阅和消费的业务包括</a></li>
     <li><a href="#基于canalkafka实现缓存实时更新">基于Canal+Kafka实现缓存实时更新</a></li>
+    <li><a href="#类似产品">类似产品</a></li>
   </ul>
 </nav>
   </div>
@@ -184,6 +185,12 @@
 </blockquote>
 <p>说明：大体流程就是 canal 充当一个 mysql 的从服务器，从 master 拉取 binlog 变化，将更新内容推送至 kafka 中，然后客户端启动消费者订阅主题，根据数据变化执行对应的业务逻辑。</p>
 <p><img src="/images/2021/QQ20210529-172006.png" alt="工作流程"></p>
+<h2 id="类似产品">类似产品</h2>
+<blockquote>
+<p>阿里云数据传输服务DTS</p>
+</blockquote>
+<p>数据传输服务DTS（Data Transmission Service）支持RDBMS、NoSQL、OLAP等数据源间的数据交互，集数据迁移/订阅/同步于一体，助您构建安全、可扩展、高可用的数据架构。</p>
+<p>相对于第三方数据流工具，数据传输服务 DTS 提供更丰富多样、高性能、高安全可靠的传输链路，同时它提供了诸多便利功能，极大得方便了传输链路的创建及管理。</p>
 
     </div>
 

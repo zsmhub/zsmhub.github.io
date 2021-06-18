@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="6180">
+<meta itemprop="wordCount" content="6547">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 6180 字 </span>
-          <span class="more-meta"> 预计阅读 13 分钟 </span>
+          <span class="more-meta"> 约 6547 字 </span>
+          <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
     </header>
@@ -184,6 +184,7 @@
     <li><a href="#githubcommicromicrov3">github.com/micro/micro/v3</a></li>
     <li><a href="#githubcomtal-techgo-zero">github.com/tal-tech/go-zero</a></li>
     <li><a href="#githubcomrobfigcron--githubcomgo-co-opgocron">github.com/robfig/cron || github.com/go-co-op/gocron</a></li>
+    <li><a href="#httpsgithubcomtal-techgo-stash"><a href="https://github.com/tal-tech/go-stash">https://github.com/tal-tech/go-stash</a></a></li>
   </ul>
 </nav>
   </div>
@@ -1341,6 +1342,40 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kn">package</span> <span class="nx">main</span>
@@ -1352,6 +1387,40 @@
 <span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">value</span> <span class="o">:=</span> <span class="nx">gjson</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="s">&#34;name.last&#34;</span><span class="p">)</span>
     <span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nf">String</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="c1">// 解析远程json，并进行原始排序，因为 json 解析后的 map 是无序的
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">parse</span><span class="p">()</span> <span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;http://fw-wxa.yidejia.com/city.json&#34;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="k">defer</span> <span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+    <span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="nx">jsonData</span> <span class="o">:=</span> <span class="nx">gjson</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">),</span> <span class="s">&#34;&#39;&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;&#34;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="nx">tempMapKeysIndex</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+    <span class="nx">provinces</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nf">Map</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;省份：&#34;</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="s">&#34;省份所在 json 位置(可用于 map 的排序)：&#34;</span><span class="p">,</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">k</span><span class="p">).</span><span class="nx">Index</span><span class="p">)</span>
+
+        <span class="nx">provinces</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">provinces</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span>
+        <span class="nx">tempMapKeysIndex</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="p">=</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">k</span><span class="p">).</span><span class="nx">Index</span>
+
+        <span class="c1">// for kk, _ := range v.Map() {
+</span><span class="c1"></span>        <span class="c1">//     fmt.Println(&#34;市：&#34;, kk, &#34;省所在 json 位置(可用于 map 的排序)：&#34;, jsonData.Get(kk).Index)
+</span><span class="c1"></span>        <span class="c1">// }
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="nx">sort</span><span class="p">.</span><span class="nf">Slice</span><span class="p">(</span><span class="nx">provinces</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">tempMapKeysIndex</span><span class="p">[</span><span class="nx">provinces</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="p">&lt;</span> <span class="nx">tempMapKeysIndex</span><span class="p">[</span><span class="nx">provinces</span><span class="p">[</span><span class="nx">j</span><span class="p">]]</span>
+    <span class="p">})</span>
+
+    <span class="k">return</span> <span class="nx">provinces</span><span class="p">,</span> <span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -1674,6 +1743,9 @@ fmt.Println<span class="o">(</span>string<span class="o">(</span>req.Header.Head
 <p>go-zero 是一个集成了各种工程实践的 web 和 rpc 框架。通过弹性设计保障了大并发服务端的稳定性，经受了充分的实战检验。</p>
 <h2 id="githubcomrobfigcron--githubcomgo-co-opgocron">github.com/robfig/cron || github.com/go-co-op/gocron</h2>
 <p>定时任务</p>
+<h2 id="httpsgithubcomtal-techgo-stash"><a href="https://github.com/tal-tech/go-stash">https://github.com/tal-tech/go-stash</a></h2>
+<p>go-stash是一个高效的从Kafka获取数据，根据配置的规则进行处理，然后发送到ElasticSearch集群的工具。</p>
+<p>go-stash有大概logstash 5倍的吞吐性能，并且部署简单，一个可执行文件即可。</p>
 
     </div>
 

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="PHP 常用函数">
 <meta itemprop="description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),"><meta itemprop="datePublished" content="2019-06-03T19:02:58&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-06T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="2358">
+<meta itemprop="wordCount" content="2462">
 <meta itemprop="keywords" content="常用函数," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PHP 常用函数"/>
 <meta name="twitter:description" content="时间函数 常用代码 1 2 3 4 5 6 7 8 9 10 11 date_default_timezone_set(&#39;PRC&#39;); //默认时区 echo &#34;今天:&#34;,date(&#34;Y-m-d&#34;,time()),"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 2358 字 </span>
+          <span class="more-meta"> 约 2462 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <li><a href="#文件上传下载">文件上传下载</a></li>
     <li><a href="#调试函数">调试函数</a></li>
     <li><a href="#大小写比较">大小写比较</a></li>
+    <li><a href="#array_map-vs-array_walk">array_map vs array_walk</a></li>
     <li><a href="#其他函数">其他函数</a></li>
   </ul>
 </nav>
@@ -290,7 +291,27 @@
 </span><span class="c1"></span><span class="nx">strcmp</span> <span class="p">(</span> <span class="nx">string</span> <span class="nv">$str1</span> <span class="p">,</span> <span class="nx">string</span> <span class="nv">$str2</span> <span class="p">)</span> <span class="o">:</span> <span class="nx">int</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="其他函数">其他函数</h2>
+</div><h2 id="array_map-vs-array_walk">array_map vs array_walk</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">array_map <span class="o">(</span> callable <span class="nv">$callback</span> , array <span class="nv">$array</span> , array ...<span class="nv">$arrays</span> <span class="o">)</span> : array
+
+array_walk <span class="o">(</span> array <span class="p">&amp;</span><span class="nv">$array</span> , callable <span class="nv">$callback</span> , mixed <span class="nv">$userdata</span> <span class="o">=</span> null <span class="o">)</span> : bool
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>不同点</p>
+</blockquote>
+<ol>
+<li>array_map 支持对多个数组进行遍历处理，array_walk 仅支持对一个数组进行处理</li>
+<li>array_map 返回处理后的结果数组，array_walk 返回操作是否成功</li>
+</ol>
+<h2 id="其他函数">其他函数</h2>
 <ol>
 <li>
 <p>密码&amp;哈希函数</p>

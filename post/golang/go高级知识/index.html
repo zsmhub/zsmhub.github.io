@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go高级知识">
 <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="598">
+<meta itemprop="wordCount" content="636">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go高级知识"/>
 <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 598 字 </span>
+          <span class="more-meta"> 约 636 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -144,6 +144,7 @@
     <li><a href="#代码编译过程">代码编译过程</a></li>
     <li><a href="#扇出和扇入">扇出和扇入</a></li>
     <li><a href="#死锁活锁和饥饿">死锁、活锁和饥饿</a></li>
+    <li><a href="#go-mod-无法引入私有仓库时的解决方案">go mod 无法引入私有仓库时的解决方案</a></li>
   </ul>
 </nav>
   </div>
@@ -188,6 +189,12 @@
 </blockquote>
 <p>饥饿是在任何情况下，并发进程都无法获得执行工作所需的所有资源。</p>
 <p>饥饿通常意味着有一个或多个贪婪的并发进程，它们不公平地阻止一个或多个井发进程，以尽可能有效地完成工作，或者阻止全部并发进程。</p>
+<h2 id="go-mod-无法引入私有仓库时的解决方案">go mod 无法引入私有仓库时的解决方案</h2>
+<ol>
+<li>配置 git 全局变量：git config &ndash;global url.&ldquo;<a href="mailto:git@gitlab.xxx.cn">git@gitlab.xxx.cn</a>:project&rdquo;.insteadOf &ldquo;<a href="http://gitlab.xxx.cn/project%22">http://gitlab.xxx.cn/project&quot;</a></li>
+<li>go get -insecure xxx@xxx</li>
+<li>go mod tidy</li>
+</ol>
 
     </div>
 

@@ -122,7 +122,7 @@
       <pubDate>Tue, 01 Jan 2019 10:37:43 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/php/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>PHP手册 点击跳转 操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出级别： 1 2 error_reporting(-1); //报告所</description>
+      <description>PHP手册 点击跳转 查找 php.ini 路径 1 php -i | grep php.ini 操作符 两个相连的冒号: 范围解析操作符:: 执行操作符` getenv 获取一个系统环境变量的值 php设置错误信息输出</description>
     </item>
     
   </channel>
