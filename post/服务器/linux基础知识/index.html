@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Linux 基础知识">
 <meta itemprop="description" content="基本命令 find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $"><meta itemprop="datePublished" content="2019-01-01T17:32:56&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-05T17:32:56&#43;08:00" />
-<meta itemprop="wordCount" content="3990">
+<meta itemprop="wordCount" content="4682">
 <meta itemprop="keywords" content="linux,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux 基础知识"/>
 <meta name="twitter:description" content="基本命令 find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
             </div>
-          <span class="more-meta"> 约 3990 字 </span>
-          <span class="more-meta"> 预计阅读 8 分钟 </span>
+          <span class="more-meta"> 约 4682 字 </span>
+          <span class="more-meta"> 预计阅读 10 分钟 </span>
         
       </div>
     </header>
@@ -151,6 +151,8 @@
     <li><a href="#用户和用户组">用户和用户组</a></li>
     <li><a href="#回车和换行">回车和换行</a></li>
     <li><a href="#软件包管理器">软件包管理器</a></li>
+    <li><a href="#kill-vs-pkill">kill vs pkill</a></li>
+    <li><a href="#shell">shell</a></li>
   </ul>
 </nav>
   </div>
@@ -343,10 +345,12 @@ unzip wx.zip  // 解压
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">netstat -apn <span class="p">|</span> grep <span class="m">11211</span>   <span class="c1"># 监听11211端口是否启用，11211为memcached占用的端口</span>
 lsof -i:端口号 <span class="c1"># 用于查看某一端口的占用情况，比如查看8000端口使用情况，lsof -i:8000</span>
+lsof -iTCP:80 <span class="p">|</span> grep LISTEN <span class="c1"># 查看 80 端口被哪个应用占用了</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -378,9 +382,6 @@ lsof -i:端口号 <span class="c1"># 用于查看某一端口的占用情况，�
 </code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p>kill：杀死进程</p>
-</li>
 <li>
 <p>pwd: 命令用于显示当前目录</p>
 </li>
@@ -554,6 +555,84 @@ chown -R www:www *
 <ul>
 <li>yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基於RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</li>
 </ul>
+<h2 id="kill-vs-pkill">kill vs pkill</h2>
+<p>kill [参数] [进程id]</p>
+<p>kill：杀死单个进程</p>
+<p>pkill: 看到pkill想到了什么？没错pgrep和kill！pkill＝pgrep+kill。</p>
+<blockquote>
+<p>下面是常用的信号：</p>
+</blockquote>
+<ul>
+<li>HUP 1 终端断线</li>
+<li>INT 2 中断（同 Ctrl + C）</li>
+<li>QUIT 3 退出（同 Ctrl + \）</li>
+<li>TERM 15 终止</li>
+<li>KILL 9 强制终止</li>
+<li>CONT 18 继续（与STOP相反， fg/bg命令）</li>
+<li>STOP 19 暂停（同 Ctrl + Z）</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 删除占用 443 端口的进程</span>
+<span class="nb">kill</span> -15 <span class="nv">$$</span><span class="o">(</span>lsof -t -i:443<span class="o">)</span> <span class="p">&amp;</span>
+
+<span class="c1"># -9 强制杀掉进程</span>
+<span class="nb">kill</span> –9 <span class="m">3268</span>
+
+<span class="c1">#删除 logic.go 这个名称的相关进程</span>
+pkill -f main/logic.go <span class="p">&amp;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="shell">shell</h2>
+<blockquote>
+<p>&amp;</p>
+</blockquote>
+<p>&amp; 放在启动参数后面表示设置此进程为后台进程</p>
+<p>默认情况下，进程是前台进程，这时就把Shell给占据了，我们无法进行其他操作，对于那些没有交互的进程，很多时候，我们希望将其在后台启动，可以在启动参数的时候加一个'&amp;&lsquo;实现这个目的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git clone git@gitlab.xxx.cn:xxx/c.git rename-c <span class="p">&amp;</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>&amp;&amp;</p>
+</blockquote>
+<p>shell 在执行某个命令的时候，会返回一个返回值，该返回值保存在 shell 变量 ? 中。当?中。当? == 0 时，表示执行成功；当 $? == 1 时（我认为是非0的数，返回值在0-255间），表示执行失败。</p>
+<p>command1 &amp;&amp; command2 [&amp;&amp; command3 &hellip;]</p>
+<ol>
+<li>命令之间使用 &amp;&amp; 连接，实现 逻辑与的功能。</li>
+<li>只有在 &amp;&amp; 左边的命令返回真（命令返回值 $? == 0），&amp;&amp; 右边的命令才会被执行。</li>
+<li>只要有一个命令返回假（命令返回值 $? == 1），后面的命令就不会被执行。</li>
+</ol>
+<blockquote>
+<p>||</p>
+</blockquote>
+<p>command1 || command2 [|| command3 &hellip;]</p>
+<p>1 命令之间使用 || 连接，实现 逻辑或的功能。
+2 只有在 || 左边的命令返回假（命令返回值 $? == 1），|| 右边的命令才会被执行。
+3 只要有一个命令返回真（命令返回值 $? == 0），后面的命令就不会被执行。</p>
+<blockquote>
+<p>;</p>
+</blockquote>
+<p>command1; command2 [; command3 &hellip;]</p>
+<p>分号是指无论前面的命令是否执行成功，都继续继续下一条命令。（等价于直接换行，变多条命令）</p>
+<blockquote>
+<p>\</p>
+</blockquote>
+<p>换行符，一行命令过长时建议换行</p>
 
     </div>
 

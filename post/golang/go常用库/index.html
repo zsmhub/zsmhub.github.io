@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="6547">
+<meta itemprop="wordCount" content="7301">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 6547 字 </span>
-          <span class="more-meta"> 预计阅读 14 分钟 </span>
+          <span class="more-meta"> 约 7301 字 </span>
+          <span class="more-meta"> 预计阅读 15 分钟 </span>
         
       </div>
     </header>
@@ -826,8 +826,9 @@
 </div><ul>
 <li>sync.Pool</li>
 </ul>
-<p>临时对象池，Pool 里装的对象可以被无通知地被回收</p>
+<p>临时对象池，Pool 里装的对象可以无通知地被回收</p>
 <p>作用：保存和复用临时对象，减少内存分配，降低GC压力。</p>
+<p>sync.Pool 本身就是线程安全的，多个 goroutine 可以并发地调用它的方法存取对象；sync.Pool 不可在使用之后再复制使用。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -858,7 +859,26 @@
 </span><span class="c1"></span><span class="nx">memberInfoByChatroomPool</span><span class="p">.</span><span class="nf">Put</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="flag-或-osargs">flag 或 os.Args[]</h3>
+</div><blockquote>
+<p>性能优化</p>
+</blockquote>
+<p>一般做性能优化的时候，会采用对象池的方式，把不用的对象回收起来，避免被垃圾回收掉，这样使用的时候就不必在堆上重新创建了；</p>
+<p>像数据库连接、TCP 的长连接，这些连接在创建的时候是一个非常耗时的操作。如果每次都创建一个新的连接对象，耗时较长，很可能整个业务的大部分耗时都花在了创建连接上；</p>
+<p>如果能把这些连接保存下来，避免每次使用的时候都重新创建，不仅可以大大减少业务的耗时，还能提高应用程序的整体性能。</p>
+<blockquote>
+<p>第三方对象池：oxtoacart/bpool</p>
+</blockquote>
+<p>提供了以下几种类型的 buffer。</p>
+<p>bpool.BufferPool： 提供一个固定元素数量的 buffer 池，元素类型是 bytes.Buffer，如果超过这个数量，Put 的时候就丢弃，如果池中的元素都被取光了，会新建一个返回。Put 回去的时候，不会检测 buffer 的大小。</p>
+<p>bpool.BytesPool：提供一个固定元素数量的 byte slice 池，元素类型是 byte slice。Put 回去的时候不检测 slice 的大小。</p>
+<p>bpool.SizedBufferPool： 提供一个固定元素数量的 buffer 池，如果超过这个数量，Put 的时候就丢弃，如果池中的元素都被取光了，会新建一个返回。Put 回去的时候，会检测 buffer 的大小，超过指定的大小的话，就会创建一个新的满足条件的 buffer 放回去。</p>
+<p>bpool 最大的特色就是能够保持池子中元素的数量，一旦 Put 的数量多于它的阈值，就会自动丢弃，而 sync.Pool 是一个没有限制的池子，只要 Put 就会收进去。</p>
+<p>bpool 是基于 Channel 实现的，不像 sync.Pool 为了提高性能而做了很多优化，所以，在性能上比不过 sync.Pool。 不过，它提供了限制 Pool 容量的功能，所以，如果你想控制 Pool 的容量的话，可以考虑这个库。</p>
+<ul>
+<li>bytes.buffer</li>
+</ul>
+<p>bytes.buffer是一个缓冲byte类型的缓冲器</p>
+<h3 id="flag-或-osargs">flag 或 os.Args[]</h3>
 <p>用于解析命令行选项，如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

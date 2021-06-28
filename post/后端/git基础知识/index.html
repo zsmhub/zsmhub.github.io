@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="1654">
+<meta itemprop="wordCount" content="1694">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1654 字 </span>
+          <span class="more-meta"> 约 1694 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -361,7 +361,7 @@ git push
 </li>
 <li>
 <p>查看配置信息</p>
-<p>git config &ndash;list</p>
+<p>git config &ndash;l</p>
 </li>
 <li>
 <p>如果要查看某个特定的环境变量，只要把它的名字放到最后即可</p>
@@ -370,6 +370,14 @@ git push
 <li>
 <p>配置git 使其对文件名大小写敏感</p>
 <p>git config core.ignorecase false</p>
+</li>
+<li>
+<p>编辑/删除全局变量</p>
+<p>git config &ndash;global &ndash;edit</p>
+</li>
+<li>
+<p>添加全局变量，将 http 拉取代码的方式替换为 ssh 方式</p>
+<p>git config &ndash;global url.&ldquo;<a href="mailto:git@gitlab.xxx.cn">git@gitlab.xxx.cn</a>&rdquo;.insteadOf &ldquo;<a href="http://gitlab.xxx.cn">http://gitlab.xxx.cn</a>&rdquo;</p>
 </li>
 </ol>
 

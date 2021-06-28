@@ -285,9 +285,9 @@
     <span class="nf">checkError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 
     <span class="c1">// 设置最大连接数，不能超过数据库本身设置的最大连接数 `show variables like &#39;max_connections&#39;;`
-</span><span class="c1"></span>    <span class="nx">db</span><span class="p">.</span><span class="nf">SetMaxOpenConns</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="c1">// yim 设置了 512
+</span><span class="c1"></span>    <span class="nx">db</span><span class="p">.</span><span class="nf">SetMaxOpenConns</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="c1">// yim 设置了 512
 </span><span class="c1"></span>    <span class="c1">// 设置最大空闲连接数
-</span><span class="c1"></span>    <span class="nx">db</span><span class="p">.</span><span class="nf">SetMaxIdleConns</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="c1">// yim 设置了 512
+</span><span class="c1"></span>    <span class="nx">db</span><span class="p">.</span><span class="nf">SetMaxIdleConns</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1">// yim 设置了 256
 </span><span class="c1"></span>    <span class="c1">// 设置每个连接的过期时间，这里的推荐，比较保守的做法是设置五分钟
 </span><span class="c1"></span>    <span class="nx">db</span><span class="p">.</span><span class="nf">SetConnMaxLifetime</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span>
 
