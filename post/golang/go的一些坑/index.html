@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go的一些坑">
 <meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"><meta itemprop="datePublished" content="2020-11-13T11:17:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="wordCount" content="1269">
+<meta itemprop="wordCount" content="1313">
 <meta itemprop="keywords" content="坑," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go的一些坑"/>
 <meta name="twitter:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1269 字 </span>
+          <span class="more-meta"> 约 1313 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -328,24 +328,18 @@
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="单引号">单引号</h2>
-<p>单引号则用于表示Golang的一个特殊类型：rune，类似其他语言的byte但又不完全一样，是指：码点字面量（Unicode code point），不做任何转义的原始内容。</p>
+<p>单引号在 Golang 表示一个字符，使用一个特殊类型 rune 表示字符型。rune 为 int32 的别名，它完全等价于 int32，习惯上用它来区别字符值和整数值。rune 表示字符的 Unicode 码值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">x</span> <span class="o">:=</span> <span class="s">&#34;text&#34;</span>
-    <span class="nx">xRunes</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
-    <span class="nx">xRunes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;我&#39;</span> <span class="c1">// 此处使用单引号
-</span><span class="c1"></span>    <span class="nx">x</span> <span class="p">=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">xRunes</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 我ext
+    <span class="kd">var</span> <span class="nx">c</span> <span class="kt">rune</span> <span class="p">=</span> <span class="sc">&#39;你&#39;</span> <span class="c1">// 此处必须使用单引号，而且只能写一个字符，不能这样定义：var c rune = &#39;ab&#39;
+</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;c=%v ct=%T\n&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="c1">// 输出 c=20320 ct=int32 （字符’你’的 Unicode 码值是 0x4f60，十进制是 20320）
 </span><span class="c1"></span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
