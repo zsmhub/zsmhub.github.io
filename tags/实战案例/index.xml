@@ -45,6 +45,15 @@
     </item>
     
     <item>
+      <title>无限极分类树</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/</link>
+      <pubDate>Thu, 19 Nov 2020 09:33:51 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/</guid>
+      <description>分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这中形式。 另一种是nested set，</description>
+    </item>
+    
+    <item>
       <title>实战案例总结</title>
       <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/</link>
       <pubDate>Thu, 06 Aug 2020 09:21:45 +0800</pubDate>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="数据传输方式汇总">
 <meta itemprop="description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"><meta itemprop="datePublished" content="2020-04-10T15:02:25&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-10T15:02:25&#43;08:00" />
-<meta itemprop="wordCount" content="697">
+<meta itemprop="wordCount" content="1134">
 <meta itemprop="keywords" content="数据传输方式," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数据传输方式汇总"/>
 <meta name="twitter:description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 697 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1134 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -161,10 +161,11 @@
 </ol>
 <h2 id="protobuf">protobuf</h2>
 <p><a href="https://colobu.com/2019/10/03/protobuf-ultimate-tutorial-in-go/">Protobuf终极教程</a></p>
-<ol>
+<ul>
+<li>Protocol Buffer (简称Protobuf) 是 Google 出品的性能优异、跨语言、跨平台的<code>序列化库</code>。</li>
 <li>protoc 是 protobuf 文件（.proto）的编译器（参考链接），可以借助这个工具把 .proto 文件转译成各种编程语言对应的源码，包含数据类型定义、调用接口等。</li>
 <li>protoc-gen-go 是生成.go文件的插件，配合 protoc &ndash;go_out=output_directory input_diretory/*.proto</li>
-</ol>
+</ul>
 <blockquote>
 <p>tip: 如果 google.golang.org/protobuf 为 v1.25.0，因此 protoc-gen-go 也应同步版本为 v1.25.0。</p>
 </blockquote>
@@ -190,6 +191,9 @@
 <ol>
 <li>
 <p>安装 protoc 编译器</p>
+<blockquote>
+<p>protoc &ndash;version # 查询系统 protobuf 编译器的版本号</p>
+</blockquote>
 <p>方式一： macos =&gt; brew install protobuf</p>
 <p>方式二：（可指定版本）</p>
 <ul>
@@ -215,6 +219,9 @@ cp -r bin/ /usr/local/bin/
 </li>
 <li>
 <p>安装编译器插件 protoc-gen-go (protoc-gen-go用于生成Go语言代码)</p>
+<blockquote>
+<p>protoc-gen-go 的版本号，可以在生成的 xxx.pb.go 文件开头查看</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -249,7 +256,33 @@ mv project/proto/*.go lib/pb/
 <li>repeated: 数组</li>
 <li>enum: 枚举值，转成 go 后变成常量定义</li>
 </ul>
+<blockquote>
+<p>分配字段编号</p>
+</blockquote>
+<p>每个消息定义中的每个字段都有唯一的编号。这些字段编号用于标识消息二进制格式中的字段，并且在使用消息类型后不应更改。请注意，范围 1 到 15 中的字段编号需要一个字节进行编码，包括字段编号和字段类型（具体原因见 Protocol Buffer 编码原理 这一章节）。范围 16 至 2047 中的字段编号需要两个字节。所以你应该保留数字 1 到 15 作为非常频繁出现的消息元素。请记住为将来可能添加的频繁出现的元素留出一些空间。</p>
+<p>可以指定的最小字段编号为1，最大字段编号为2^29^-1 或 536,870,911。也不能使用数字 19000 到 19999（FieldDescriptor :: kFirstReservedNumber 到 FieldDescriptor :: kLastReservedNumber），因为它们是为 Protocol Buffers实现保留的。</p>
+<p>如果在 .proto 中使用这些保留数字中的一个，Protocol Buffers 编译的时候会报错。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">syntax</span> <span class="o">=</span> <span class="s2">&#34;proto3&#34;</span><span class="p">;</span>
 
+message SearchRequest <span class="o">{</span>
+  string <span class="nv">query</span> <span class="o">=</span> 1<span class="p">;</span>
+  int32 <span class="nv">page_number</span> <span class="o">=</span> 2<span class="p">;</span>
+  int32 <span class="nv">result_per_page</span> <span class="o">=</span> 3<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

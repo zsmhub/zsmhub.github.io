@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 04 Jun 2021 15:43:03 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Jul 2021 15:20:52 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>挣钱之道</title>
+      <link>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%8C%A3%E9%92%B1%E4%B9%8B%E9%81%93/</link>
+      <pubDate>Mon, 12 Jul 2021 15:20:52 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%8C%A3%E9%92%B1%E4%B9%8B%E9%81%93/</guid>
+      <description>程序员如何优雅地挣零花钱 原文跳转</description>
+    </item>
+    
+    <item>
+      <title>项目部署与发布</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/</link>
+      <pubDate>Wed, 07 Jul 2021 09:26:58 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/</guid>
+      <description>目前我们的k8s部署是通过金丝雀发布（灰度发布），发布新版本时，旧版本的Pod继续运行，当新版本的Pod全部启动成功，且等待一定时间后，再K</description>
+    </item>
+    
     <item>
       <title>Go Zero</title>
       <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-zero/</link>
@@ -163,10 +181,10 @@
     
     <item>
       <title>无限极分类树</title>
-      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/</link>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/</link>
       <pubDate>Thu, 19 Nov 2020 09:33:51 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/</guid>
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/</guid>
       <description>分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这中形式。 另一种是nested set，</description>
     </item>
     
@@ -932,7 +950,7 @@
       <pubDate>Wed, 04 Dec 2019 21:51:34 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
-      <description>时间复杂度基础概念 在计算机科学中，算法的时间复杂度（Time complexity）是一个函数，它定性描述该算法的运行时间。这是一个代表算法输</description>
+      <description>算法复杂度 算法复杂度分为时间复杂度和空间复杂度。其作用： 时间复杂度是指执行这个算法所需要的计算工作量； 空间复杂度是指执行这个算法所需要的内存</description>
     </item>
     
     <item>
