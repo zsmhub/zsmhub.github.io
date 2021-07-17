@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go中的单元测试和基准测试">
 <meta itemprop="description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"><meta itemprop="datePublished" content="2021-04-14T10:42:55&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-14T10:42:55&#43;08:00" />
-<meta itemprop="wordCount" content="1666">
+<meta itemprop="wordCount" content="2047">
 <meta itemprop="keywords" content="软件测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go中的单元测试和基准测试"/>
 <meta name="twitter:description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1666 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2047 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -168,7 +168,7 @@
 </tr>
 <tr>
 <td>Logf</td>
-<td>格式化打印日志，同时结束测试</td>
+<td>格式化打印日志，同时结束测试，eg: t.Logf(&quot;%+v&quot;, resp)</td>
 </tr>
 <tr>
 <td>Error</td>
@@ -362,15 +362,34 @@ go <span class="nb">test</span> -bench<span class="o">=</span>. -run<span class=
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">BenchmarkReverse</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 示例：测试 fmt.Sprintf() 的性能
+</span><span class="c1">// 输出结果为：BenchmarkRepeat-12     10000000   116 ns/op。
+</span><span class="c1">// 重解释下输出的结果值，看到函数后面的-12了吗？这个表示运行时对应的 GOMAXPROCS 的值。接着的 10000000 表示运行 for 循环的次数，也就是调用被测试代码的次数，最后的 116 ns/op表示每次需要话费 116 纳秒。以上测试时间默认是1秒，也就是1秒的时间，调用 10000000 次，每次调用花费 116 纳秒。
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">BenchmarkSprintf</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">b</span><span class="p">.</span><span class="nf">ResetTimer</span><span class="p">()</span> <span class="c1">// 用于忽略基本测试启动时的消耗时间
-</span><span class="c1"></span>    <span class="o">...</span>
+</span><span class="c1"></span>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1">// //执行 b.N 次 fmt.Sprintf() 函数
+</span><span class="c1"></span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>基准测试是测量一个程序在固定工作负载下的性能。在Go语言中，基准测试函数和普通测试函数写法类似，但是以Benchmark为前缀名，并且带有一个*testing.B类型的参数；<em>testing.B参数除了提供和</em>testing.T类似的方法，还有额外一些和性能测量相关的方法。它还提供了一个整数N，用于指定操作执行的循环次数。</p>
+<blockquote>
+<p>基准测试基本原则</p>
+</blockquote>
+<p>在进行基准测试之前，你必须要有一个稳定的环境以得到可重复的输出结果。</p>
+<ul>
+<li>机器必须是空闲状态 &ndash; 不能在共享的硬件上采集数据，当长时间运行基准测试时不能浏览网页等</li>
+<li>机器是否关闭了节能模式。一般笔记本电脑上会默认开启该模式。</li>
+<li>避免使用虚拟机和云主机。一般情况下，为了尽可能地提高资源的利用率，虚拟机和云主机 CPU 和内存一般会超分配，超分机器的性能表现会非常地不稳定。</li>
+</ul>
 <h2 id="第三方测试包">第三方测试包</h2>
 <blockquote>
 <p>github.com/stretchr/testify</p>

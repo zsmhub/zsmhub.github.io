@@ -140,7 +140,7 @@
       <pubDate>Mon, 29 Mar 2021 09:10:10 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/%E9%98%BF%E9%87%8C%E4%BA%91mysql%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/</guid>
-      <description>MySQL分析实例是AnaylticDB MySQL的一种标准适用场景，它可实现对MySQL的分析加速。针对RDS MySQL用户的复杂分析查询</description>
+      <description>MySQL分析实例是 AnaylticDB MySQL (简称ADB)的一种标准适用场景，它可实现对MySQL的分析加速。针对RDS MySQL用户的复杂分析查询卡顿或者响应</description>
     </item>
     
     <item>
@@ -1233,12 +1233,12 @@
     </item>
     
     <item>
-      <title>K8s 介绍</title>
+      <title>k8s简介</title>
       <link>https://zsmhub.github.io/post/docker/docker-k8s/</link>
       <pubDate>Fri, 01 Feb 2019 14:36:09 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/docker/docker-k8s/</guid>
-      <description>K8S 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效</description>
+      <description>k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效</description>
     </item>
     
     <item>

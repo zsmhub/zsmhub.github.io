@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k8s on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/k8s/</link>
+    <description>Recent content in k8s on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Fri, 01 Feb 2019 14:36:09 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>k8s简介</title>
+      <link>https://zsmhub.github.io/post/docker/docker-k8s/</link>
+      <pubDate>Fri, 01 Feb 2019 14:36:09 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/docker/docker-k8s/</guid>
+      <description>k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效</description>
+    </item>
+    
+  </channel>
+</rss>

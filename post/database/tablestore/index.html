@@ -49,7 +49,7 @@
 <meta itemprop="name" content="大数据表设计-TableStore">
 <meta itemprop="description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存"><meta itemprop="datePublished" content="2020-08-02T10:13:11&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-02T10:13:11&#43;08:00" />
-<meta itemprop="wordCount" content="2647">
+<meta itemprop="wordCount" content="4137">
 <meta itemprop="keywords" content="TableStore," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="大数据表设计-TableStore"/>
 <meta name="twitter:description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2647 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 4137 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
     </header>
@@ -144,12 +144,9 @@
     <li><a href="#简介">简介</a></li>
     <li><a href="#支持多种数据库模型">支持多种数据库模型</a></li>
     <li><a href="#tablestore-优缺点">TableStore 优缺点</a></li>
-    <li><a href="#高级配置">高级配置</a></li>
-    <li><a href="#timeline模型结构">Timeline模型结构</a>
-      <ul>
-        <li><a href="#go-sdk">Go SDK</a></li>
-      </ul>
-    </li>
+    <li><a href="#术语">术语</a></li>
+    <li><a href="#timeline模型结构">Timeline模型结构</a></li>
+    <li><a href="#go-sdk">Go SDK</a></li>
   </ul>
 </nav>
   </div>
@@ -172,8 +169,8 @@
 <p>首先说明一下为什么Tablestore的主键可以包含多个主键列，这里有几点：</p>
 </blockquote>
 <ul>
-<li>多列主键列按照顺序共同构成一个联合主键，类似MySQL的联合『唯一索引』。如果使用过HBase，可以把这里的多列主键列，拼接起来看作一个RowKey，每一列其实都只是整体主键的一部分。</li>
-<li>第一列主键列是分区键，使用分区键的范围进行分区划分，保证了分区键相同的行，一定在同一个分区(Partition)上。一些功能依赖这一特性，比如分区内事务(Transection)，本地二级索引(LocalIndex, 待发布)，分区内自增列等。</li>
+<li>多列主键列按照顺序共同构成一个联合主键，类似MySQL的联合<code>唯一索引</code>。如果使用过HBase，可以把这里的多列主键列，拼接起来看作一个RowKey，每一列其实都只是整体主键的一部分。</li>
+<li>第一列主键列是分片键，使用分片键的范围进行分片划分，保证了分片键相同的行，一定在同一个分片(Partition)上。一些功能依赖这一特性，比如分片内事务(Transection)，本地二级索引(LocalIndex, 待发布)，分片内自增列等。</li>
 <li>业务上常需要多个字段来构成主键，如果只支持一个主键列，业务需要进行拼接，多列主键列避免了业务层做主键拼接和拆解。</li>
 <li>许多用户第一次看到多列主键列时，常会有误解，认为主键的范围查询(GetRange接口)可以针对每一列单独进行，实际上这里的主键范围指的是整体主键的范围，而非单独某一列的范围。</li>
 </ul>
@@ -184,7 +181,7 @@
 <ol>
 <li>
 <p>无缝扩展「单表存储能力超强！！！」</p>
-<p>表格存储通过数据分片和负载均衡技术，实现了存储无缝扩展。随着表数据量的不断增大，表格存储会进行数据分区的调整从而为该表配置更多的存储。表格存储可支持不少于10 PB数据存储量，单表可支持不少于1 PB数据存储量或1万亿条记录。</p>
+<p>表格存储通过数据分片和负载均衡技术，实现了存储无缝扩展。随着表数据量的不断增大，表格存储会进行数据分片的调整从而为该表配置更多的存储。表格存储可支持不少于10 PB数据存储量，单表可支持不少于1 PB数据存储量或1万亿条记录。</p>
 </li>
 <li>
 <p>查询能力强</p>
@@ -207,7 +204,7 @@
 <p>表格存储支持千万级并发读写能力。</p>
 </li>
 <li>
-<p>自带主键列递增功能</p>
+<p>自带主键列递增功能（自带递增ID是用微秒时间生成的，不能保证唯一）</p>
 </li>
 </ol>
 <blockquote>
@@ -220,8 +217,11 @@
 <li>
 <p>搜索功能不精准</p>
 </li>
+<li>
+<p>表格存储不支持两表关联查询</p>
+</li>
 </ol>
-<h2 id="高级配置">高级配置</h2>
+<h2 id="术语">术语</h2>
 <ol>
 <li>
 <p>数据生命周期</p>
@@ -233,13 +233,196 @@
 <p>最大版本数</p>
 <p>数据表中的属性列能够保留数据的最大版本个数。当属性列数据的版本个数超过设置的最大版本数时，系统会自动删除较早版本的数据。</p>
 <p>取值必须为非0整数。</p>
+<p>设置了多元索引的表，最大版本数只能为 1。</p>
 </li>
 <li>
-<p>二级索引</p>
+<p>数据表 &amp; 索引表</p>
+<ul>
+<li>索引表：对数据表中某些列数据的索引。索引表只能用于读取数据，不能写入数据。</li>
+</ul>
+<blockquote>
+<p>表数据类型</p>
+</blockquote>
+<p>String、Integer、Double、Double</p>
 </li>
 <li>
-<p>多级索引</p>
-<p>表格存储多元索引（Search Index）基于倒排索引和列式存储，可以解决多种大数据复杂的查询问题。在控制台创建多元索引后，可以使用多元索引进行数据查询。</p>
+<p>数据表主键 &amp; 二元索引 &amp; 多元索引</p>
+<blockquote>
+<p>主键列：相当于 MySQL 的<code>唯一索引</code>，主键包含的列数最大为 4 列。</p>
+</blockquote>
+<p><img src="/images/2021/QQ20210713-113016@2x.png" alt="索引区别"></p>
+<blockquote>
+<p>全局二级索引和本地二级索引，索引表名不能重复『不常用』</p>
+</blockquote>
+<p><img src="/images/2021/QQ20210713-113341@2x.png" alt="全局二级索引和本地二级索引区别"></p>
+<blockquote>
+<p>多元索引『常用』</p>
+</blockquote>
+<p>对模糊搜索很方便。</p>
+</li>
+<li>
+<p>多元索引『<code>Tablestore 的搜索/排序需求基本靠多元索引就可实现</code>』</p>
+<p>多元索引主要用于表字段的搜索。</p>
+<p>您可以使用CreateSearchIndex接口为主表创建一个多元索引（SearchIndex）。一张主表上可以创建多个多元索引，在创建多元索引时可以指定索引名和索引结构。</p>
+<p>官方建议：一张表只建一个多元索引，一个多元索引包含多个字段。（此方式才能发挥多元索引最大优势，不仅功能更丰富，而且价格会更低。）</p>
+<blockquote>
+<p>多元索引字段</p>
+</blockquote>
+<p>Text 类型支持分词后再存储该字段所有分词的值，不支持开启EnableSortAndAgg</p>
+<p><img src="/images/2021/QQ20210716-102536@2x.png" alt="多元索引字段和表字段对比"></p>
+<blockquote>
+<p>常用查询方式</p>
+</blockquote>
+<ul>
+<li>
+<p>多条件组合查询：BoolQuery查询条件包含一个或者多个子查询条件，根据子查询条件来判断一行数据是否满足查询条件。每个子查询条件可以是任意一种Query类型，包括BoolQuery。</p>
+</li>
+<li>
+<p>精确查询：TermQuery采用完整精确匹配的方式查询表中的数据，类似于字符串匹配。对于Text类型字段，只要分词后有词条可以精确匹配即可。</p>
+</li>
+<li>
+<p>多词精确查询：类似于TermQuery，但是TermsQuery可以指定多个查询关键词，查询匹配这些词的数据。多个查询关键词中只要有一个词精确匹配，该行数据就会被返回，等价于SQL中的In。</p>
+</li>
+<li>
+<p>匹配查询：MatchQuery采用<code>近似匹配</code>的方式查询表中的数据。对<code>Text类型的列值</code>和<code>查询关键词</code>会先按照设置好的分词器做切分，然后按照<code>切分</code>好后的词去查询。</p>
+<ul>
+<li>Text查询关键词：当要<code>匹配的列</code>为<code>Text类型</code>时，查询关键词会被切分成多个词，分词类型为创建多元索引时设置的分词器类型。</li>
+<li>MinimumShouldMatch：最小匹配个数，如果为 1 则会出现很多无相关的数据。</li>
+</ul>
+</li>
+<li>
+<p>范围查询：RangeQuery根据范围条件查询表中的数据，适合于 int 型字段查询</p>
+</li>
+<li>
+<p>通配符查询（<code>查询效率低</code>）：WildcardQuery通配符查询中，要匹配的值可以是一个带有通配符的字符串，目前支持星号（<em>）和问号（?）两种通配符。要匹配的值中可以用星号（</em>）代表任意字符序列，或者用问号（?）代表任意单个字符，且支持以星号（<em>）或问号（?）开头。例如查询“table</em>e”，可以匹配到“tablestore”。『<code>text 类型字段是根据分词后的结果进行查询的</code>』</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 通过 BoolQuery 进行多条件组合查询示例
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">tableStoreDB</span><span class="p">)</span> <span class="nf">BoolQuery</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">searchRequest</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">tablestore</span><span class="p">.</span><span class="nx">SearchRequest</span><span class="p">{}</span>
+    <span class="nx">searchRequest</span><span class="p">.</span><span class="nf">SetTableName</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">TableName</span><span class="p">)</span>
+    <span class="nx">searchRequest</span><span class="p">.</span><span class="nf">SetIndexName</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">IndexName</span><span class="p">)</span>
+
+    <span class="c1">// 查询条件一
+</span><span class="c1"></span>    <span class="nx">rangeQuery</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">search</span><span class="p">.</span><span class="nx">RangeQuery</span><span class="p">{}</span>
+    <span class="nx">rangeQuery</span><span class="p">.</span><span class="nx">FieldName</span> <span class="p">=</span> <span class="s">&#34;id&#34;</span>
+    <span class="nx">rangeQuery</span><span class="p">.</span><span class="nf">GTE</span><span class="p">(</span><span class="mi">1626251065881994</span><span class="p">)</span>
+
+    <span class="c1">// 查询条件二
+</span><span class="c1"></span>    <span class="nx">matchQuery</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">search</span><span class="p">.</span><span class="nx">MatchQuery</span><span class="p">{}</span>
+    <span class="nx">matchQuery</span><span class="p">.</span><span class="nx">FieldName</span> <span class="p">=</span> <span class="s">&#34;col2&#34;</span>
+    <span class="nx">matchQuery</span><span class="p">.</span><span class="nx">Text</span> <span class="p">=</span> <span class="s">&#34;haha4&#34;</span>
+
+    <span class="c1">// 构造一个BoolQuery，设置查询条件是必须同时满足&#34;查询条件一&#34;和&#34;查询条件二&#34;。
+</span><span class="c1"></span>    <span class="nx">boolQuery</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">search</span><span class="p">.</span><span class="nx">BoolQuery</span><span class="p">{</span>
+        <span class="nx">MustQueries</span><span class="p">:</span> <span class="p">[]</span><span class="nx">search</span><span class="p">.</span><span class="nx">Query</span><span class="p">{</span>
+            <span class="nx">rangeQuery</span><span class="p">,</span>
+            <span class="nx">matchQuery</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+    <span class="nx">searchQuery</span> <span class="o">:=</span> <span class="nx">search</span><span class="p">.</span><span class="nf">NewSearchQuery</span><span class="p">()</span>
+    <span class="nx">searchQuery</span><span class="p">.</span><span class="nf">SetQuery</span><span class="p">(</span><span class="nx">boolQuery</span><span class="p">)</span>
+    <span class="nx">searchQuery</span><span class="p">.</span><span class="nf">SetGetTotalCount</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// 返回总数
+</span><span class="c1"></span>    <span class="nx">searchQuery</span><span class="p">.</span><span class="nf">SetOffset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nx">searchQuery</span><span class="p">.</span><span class="nf">SetLimit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nx">searchRequest</span><span class="p">.</span><span class="nf">SetSearchQuery</span><span class="p">(</span><span class="nx">searchQuery</span><span class="p">)</span>
+
+    <span class="c1">// 设置为返回指定列。
+</span><span class="c1"></span>    <span class="nx">searchRequest</span><span class="p">.</span><span class="nf">SetColumnsToGet</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">tablestore</span><span class="p">.</span><span class="nx">ColumnsToGet</span><span class="p">{</span>
+        <span class="c1">// ReturnAll: true,
+</span><span class="c1"></span>        <span class="nx">Columns</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="s">&#34;col1&#34;</span><span class="p">,</span> <span class="s">&#34;col2&#34;</span><span class="p">},</span>
+    <span class="p">})</span>
+
+    <span class="nx">searchResponse</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Client</span><span class="p">.</span><span class="nf">Search</span><span class="p">(</span><span class="nx">searchRequest</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%#v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;TotalCount: &#34;</span><span class="p">,</span> <span class="nx">searchResponse</span><span class="p">.</span><span class="nx">TotalCount</span><span class="p">)</span>     <span class="c1">// 打印匹配的总行数，非返回行数。
+</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;RowCount: &#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">searchResponse</span><span class="p">.</span><span class="nx">Rows</span><span class="p">))</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">row</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">searchResponse</span><span class="p">.</span><span class="nx">Rows</span> <span class="p">{</span>
+        <span class="nx">jsonBody</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Row: &#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">jsonBody</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>主键列 &amp; 预定义列</p>
+<ul>
+<li>创建表时，将非分片键的主键列设置为自增列。只有整型的主键列才能设置为自增列，系统自动生成的自增列值为64位的有符号整型。</li>
+<li>设置预定义列后，在创建全局二级索引时将预定义列作为索引表的索引列或者属性列。</li>
+</ul>
+</li>
+<li>
+<p>条件更新</p>
+<blockquote>
+<p>行存在性条件：对数据表进行更改操作时，系统会先检查行存在性条件，如果不满足行存在性条件，则更改失败并给用户报错。</p>
+</blockquote>
+<ul>
+<li>IGNORE：表示忽略，不做任何存在性检查。</li>
+<li>EXPECT_EXIST：表示期望存在，如果该行存在，则满足条件；如果该行不存在，则不满足条件。</li>
+<li>EXPECT_NOT_EXIST：期望行不存在，如果该行不存在，则满足条件；如果该行存在，则不满足条件。</li>
+</ul>
 </li>
 </ol>
 <h2 id="timeline模型结构">Timeline模型结构</h2>
@@ -258,7 +441,7 @@
 </ul>
 <p><img src="/images/2020/539729897-5b63ca6cc84a1_articlex.png" alt="Timeline的模型图"></p>
 <p>如上图是Timeline的模型图，将一张大表内的数据抽象为多个Timeline，一个大表能够承载的Timeline个数无上限。</p>
-<h3 id="go-sdk">Go SDK</h3>
+<h2 id="go-sdk">Go SDK</h2>
 <ol>
 <li>
 <p>创建表</p>
@@ -309,11 +492,6 @@
 <p>索引表的Meta信息。使用表格存储创建一张数据表时，可以同时为其创建多张索引表。</p>
 </li>
 </ul>
-</li>
-<li>
-<p>多元索引</p>
-<p>多元索引主要用于表字段的搜索。</p>
-<p>您可以使用CreateSearchIndex接口为主表创建一个多元索引（SearchIndex）。一张主表上可以创建多个多元索引，在创建多元索引时可以指定索引名和索引结构。</p>
 </li>
 </ol>
 

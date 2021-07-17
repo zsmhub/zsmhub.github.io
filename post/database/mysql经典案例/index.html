@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 经典案例">
 <meta itemprop="description" content="too many connection 报错可能原因 机器负载飙升，导致SQL执行效率下降，导致连接堆积 业务访问量突增（或者有SQL注入现象），导致连接数打满 出现“死锁”或者锁"><meta itemprop="datePublished" content="2020-05-29T19:13:07&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-29T19:13:07&#43;08:00" />
-<meta itemprop="wordCount" content="381">
+<meta itemprop="wordCount" content="450">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 经典案例"/>
 <meta name="twitter:description" content="too many connection 报错可能原因 机器负载飙升，导致SQL执行效率下降，导致连接堆积 业务访问量突增（或者有SQL注入现象），导致连接数打满 出现“死锁”或者锁"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 381 字 </span>
+          <span class="more-meta"> 约 450 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -144,6 +144,7 @@
     <li><a href="#too-many-connection-报错可能原因">too many connection 报错可能原因</a></li>
     <li><a href="#大表数据删除方案">大表数据删除方案</a></li>
     <li><a href="#权重排序">权重排序</a></li>
+    <li><a href="#使用-delete-join-删除单表重复数据">使用 DELETE JOIN 删除单表重复数据</a></li>
   </ul>
 </nav>
   </div>
@@ -192,7 +193,24 @@ insert ignore into <code>friend_record</code>(owner_account_id, account_id, rema
 <h2 id="权重排序">权重排序</h2>
 <p>假定表 table 包含 A B C 三个字段，需要按照 50 30 20 的权重排序：</p>
 <p>select * from table order by A<em>0.5+B</em>0.3+C*0.2 desc;XX</p>
-
+<h2 id="使用-delete-join-删除单表重复数据">使用 DELETE JOIN 删除单表重复数据</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">只保留最大</span> <span class="n">id</span> <span class="err">的数据，等清理数据后，再把字段</span> <span class="n">room_id</span><span class="o">+</span><span class="n">member_uid</span> <span class="err">设置为唯一索引</span>
+<span class="k">delete</span> <span class="n">a</span>
+<span class="k">from</span> <span class="n">room_user</span> <span class="k">as</span> <span class="n">a</span>
+<span class="k">join</span> <span class="n">room_user</span> <span class="k">as</span> <span class="n">b</span> <span class="k">on</span> <span class="n">a</span><span class="p">.</span><span class="n">room_id</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">room_id</span> <span class="k">and</span> <span class="n">a</span><span class="p">.</span><span class="n">member_uid</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">member_uid</span> <span class="o">#</span> <span class="err">笛卡尔乘积</span>
+<span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="o">&lt;</span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

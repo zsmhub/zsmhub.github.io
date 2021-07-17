@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>K8s 介绍 - ZsmHub - Blog</title>
+  <title>k8s简介 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="K8S 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -39,20 +39,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="K8s 介绍" />
-<meta property="og:description" content="K8S 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效" />
+<meta property="og:title" content="k8s简介" />
+<meta property="og:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/docker/docker-k8s/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-02-01T14:36:09&#43;08:00" />
-<meta property="article:modified_time" content="2019-02-01T14:36:09&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-15T14:36:09&#43;08:00" />
 
-<meta itemprop="name" content="K8s 介绍">
-<meta itemprop="description" content="K8S 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"><meta itemprop="datePublished" content="2019-02-01T14:36:09&#43;08:00" />
-<meta itemprop="dateModified" content="2019-02-01T14:36:09&#43;08:00" />
-<meta itemprop="wordCount" content="1285">
-<meta itemprop="keywords" content="docker," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="K8s 介绍"/>
-<meta name="twitter:description" content="K8S 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"/>
+<meta itemprop="name" content="k8s简介">
+<meta itemprop="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"><meta itemprop="datePublished" content="2019-02-01T14:36:09&#43;08:00" />
+<meta itemprop="dateModified" content="2021-07-15T14:36:09&#43;08:00" />
+<meta itemprop="wordCount" content="2409">
+<meta itemprop="keywords" content="k8s," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="k8s简介"/>
+<meta name="twitter:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -123,15 +123,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">K8s 介绍</h1>
+      <h1 class="post-title">k8s简介</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2019-02-01 </span>
         <div class="post-category">
             <a href="/categories/docker/"> docker </a>
             </div>
-          <span class="more-meta"> 约 1285 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 2409 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -141,19 +141,25 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#k8s-简介">K8S 简介</a></li>
+    <li><a href="#k8s-简介">k8s 简介</a></li>
+    <li><a href="#k8s实现平滑发布">k8s实现平滑发布</a></li>
     <li><a href="#kubernetes主要由以下几个核心组件组成">Kubernetes主要由以下几个核心组件组成</a></li>
-    <li><a href="#核心技术概念">核心技术概念</a></li>
+    <li><a href="#术语">术语</a></li>
+    <li><a href="#pod定义文件yaml">Pod定义文件yaml</a></li>
     <li><a href="#prometheus系统监控和告警工具包">Prometheus(系统监控和告警工具包)</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="k8s-简介">K8S 简介</h2>
+      <h2 id="k8s-简介">k8s 简介</h2>
 <p>Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。</p>
 <p>K8S，就是基于容器的集群管理平台，它的全称，是kubernetes。</p>
 <p>k8s集群主要包括两个部分：一个Master节点（主节点），一群Node节点（计算节点）</p>
+<h2 id="k8s实现平滑发布">k8s实现平滑发布</h2>
+<p>k8s部署是通过金丝雀发布（灰度发布），可实现平滑发布。</p>
+<p>发布新版本时，旧版本的 Pod 继续运行，当新版本的 Pod 全部启动成功，且等待 n 秒后，再 Kill 掉旧版本的 Pod。</p>
+<p>此时新旧版本的 Pod 在 n 秒并行运行着，用户可能访问到旧代码的 Pod，也可能访问到新版本的 Pod，这由我们配置的升级策略决定。</p>
 <h2 id="kubernetes主要由以下几个核心组件组成">Kubernetes主要由以下几个核心组件组成</h2>
 <ul>
 <li>etcd保存了整个集群的状态；</li>
@@ -164,20 +170,31 @@
 <li>Container runtime负责镜像管理以及Pod和容器的真正运行（CRI）；</li>
 <li>kube-proxy负责为Service提供cluster内部的服务发现和负载均衡；</li>
 </ul>
-<h2 id="核心技术概念">核心技术概念</h2>
+<h2 id="术语">术语</h2>
+<p><img src="/images/2021/k8s-master-node.png" alt="k8s-master-node架构"></p>
 <ul>
 <li>
-<p>主机（Master）</p>
-<p>用于控制 Kubernetes 节点的计算机。所有任务分配都来自于此。</p>
+<p>主节点（Master）或 控制平面（Control Plane）</p>
+<p>用于控制 Kubernetes 节点的计算机。所有任务分配都来自于此。（我们通过 Master 对每个节点 Node 发送命令。简单来说，Master 就是管理者，Node 就是被管理者。）</p>
 </li>
 <li>
 <p>节点（Node）</p>
-<p>负责执行请求和所分配任务的计算机。由 Kubernetes 主机负责对节点进行控制。</p>
+<p>负责执行请求和所分配任务的计算机。由 Kubernetes 主机负责对节点进行控制。【在 Node 上面可以运行多个 Pod】</p>
 </li>
 <li>
-<p>Pod</p>
-<p>容器集，是Kubernetes最基本的操作单元。一个Pod代表着集群中运行的一个进程，它内部封装了一个或多个紧密相关的容器</p>
+<p>容器组或副本（Pod）</p>
+<blockquote>
+<p>容器组（Pod）是最小、最简单的 Kubernetes 对象</p>
+</blockquote>
+<p>容器组，是 Kubernetes 最基本的操作单元。一个 Pod 代表着集群中运行的一个进程，它内部封装了一个或多个紧密相关的容器（docker），如filebeat日志容器、主程序容器。</p>
 <p>【可以这样简单理解：一个 go logic 服务就是一个 pod，部署多个 pod 可以实现负载均衡，而每个 pod 包含一个 go logic 服务】</p>
+<blockquote>
+<p>TIP</p>
+<p>请不要混淆以下两个概念：</p>
+<p>重启 Pod 中的容器
+重启 Pod
+Pod 本身并不会运行，Pod 仅仅是容器运行的一个环境</p>
+</blockquote>
 </li>
 <li>
 <p>Job</p>
@@ -187,6 +204,81 @@
 <p>服务（Service）</p>
 <p>将工作内容与容器集分离。Kubernetes 服务代理会自动将服务请求分发到正确的容器集——无论这个容器集会移到集群中的哪个位置，甚至可以被替换掉。</p>
 </li>
+<li>
+<p>命名空间（namespace）</p>
+<p>一个虚拟集群，Kubernetes 通过名称空间（namespace）在同一个物理集群上支持多个虚拟集群。</p>
+<p>命名空间的用途是，为不同团队的用户（或项目）提供虚拟的集群空间，也可以用来区分开发环境/测试环境、准上线环境/生产环境。</p>
+</li>
+</ul>
+<h2 id="pod定义文件yaml">Pod定义文件yaml</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: <span class="m">80</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>apiVersion： 使用哪个版本的Kubernetes API来创建此对象</p>
+</li>
+<li>
+<p>kind：要创建的对象类型，例如Pod，Deployment等</p>
+<p>如果多个容器在同一Pod下他们公用一个IP所以不能出现重复的端口号,比如在一个Pod下运行两个nginx就会有一个容器异常,一个Pod下的多个容器可以使用localhost来访问对方端口</p>
+<p>因为Pod是最小的单元如果在Pod中容器出现异常终止了是不会重启,在实际使用场景下基本<code>不会直接使用 Pod 而是使用 Deployment 部署自己的应用</code></p>
+<blockquote>
+<p>Deployment 优点</p>
+</blockquote>
+<ul>
+<li>Deployment 拥有更加灵活强大的升级、回滚功能,并且支持滚动更新</li>
+<li>使用 Deployment 升级 Pod 只需要定义 Pod 的最终状态，k8s 会为你执行必要的操作(RC要自己定义如何操作)</li>
+</ul>
+</li>
+<li>
+<p>metadata：用于唯一区分对象的元数据，包括：name，UID和namespace</p>
+<ul>
+<li>labels：是一个个的key/value对，定义这样的label到Pod后，其他控制器对象可以通过这样的label来定位到此Pod，从而对Pod进行管理。（参见Deployment等控制器对象）</li>
+</ul>
+</li>
+<li>
+<p>spec： 其它描述信息，包含Pod中运行的容器，容器中运行的应用等等。不同类型的对象拥有不同的spec定义。</p>
+<ul>
+<li>minReadySeconds: 最小准备时间</li>
+<li>replicas: pod 副本数量</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>滚动升级策略:</p>
+</blockquote>
+<ul>
+<li>maxSurge: 允许最多同时创建Pod的数量或比例（pod 超过期望数量则 kill 掉），</li>
+<li>maxUnavailable: 允许不可用的Pod数量或比例(非 running 状态的 Pod 为不可用)</li>
+<li>最大存活的 Pod 数量：replicas+maxSurge，最大 Running Pod 数量：replicas+maxSurge-maxUnavailable</li>
 </ul>
 <h2 id="prometheus系统监控和告警工具包">Prometheus(系统监控和告警工具包)</h2>
 <p><a href="https://prometheus.fuckcloudnative.io/">Prometheus 中文文档</a></p>
@@ -206,7 +298,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-02-01
+        2021-07-15
         
     </span>
   </p>
@@ -232,7 +324,7 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/docker/">docker</a>
+          <a href="/tags/k8s/">k8s</a>
           </div>
       <nav class="post-nav">
         <a class="prev" href="/post/python/python%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/">
@@ -255,7 +347,7 @@
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: '2019-02-01 14:36:09 \u002b0800 CST',
-        title: 'K8s 介绍',
+        title: 'k8s简介',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
