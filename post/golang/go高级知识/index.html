@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go高级知识">
 <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="636">
+<meta itemprop="wordCount" content="718">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go高级知识"/>
 <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 636 字 </span>
+          <span class="more-meta"> 约 718 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <li><a href="#扇出和扇入">扇出和扇入</a></li>
     <li><a href="#死锁活锁和饥饿">死锁、活锁和饥饿</a></li>
     <li><a href="#go-mod-无法引入私有仓库时的解决方案">go mod 无法引入私有仓库时的解决方案</a></li>
+    <li><a href="#跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</a></li>
   </ul>
 </nav>
   </div>
@@ -195,7 +196,35 @@
 <li>go get -insecure xxx@xxx</li>
 <li>go mod tidy</li>
 </ol>
-
+<h2 id="跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</h2>
+<p>在循环外使用 label 标记定义退出哪一层循环。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">loop</span><span class="p">:</span>
+<span class="k">for</span> <span class="p">{</span>
+ <span class="k">select</span><span class="p">{</span>
+ <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">tick</span><span class="p">.</span><span class="nx">C</span><span class="p">:</span>
+  <span class="c1">//do someting
+</span><span class="c1"></span> <span class="k">case</span> <span class="o">&lt;-</span> <span class="nx">stop</span><span class="p">:</span>
+  <span class="k">break</span> <span class="nx">loop</span> <span class="c1">// 直接跳到 loop 标签位置，相当于退出 select 循环和 for 循环
+</span><span class="c1"></span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="nf">doNext</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

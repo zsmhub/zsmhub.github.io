@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go的一些坑">
 <meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"><meta itemprop="datePublished" content="2020-11-13T11:17:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="wordCount" content="1313">
+<meta itemprop="wordCount" content="1417">
 <meta itemprop="keywords" content="坑," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go的一些坑"/>
 <meta name="twitter:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1313 字 </span>
+          <span class="more-meta"> 约 1417 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -386,6 +386,13 @@ fmt.Println(utf8.RuneCountInString(x)) // 输出：6
 <li>每个 goroutine 的 异常都需要分别捕获，</li>
 <li>每个 goroutine 的子 goroutine 的异常也都需要分别捕获</li>
 </ul>
+<blockquote>
+<p>对于错误和异常是如何处理的？</p>
+</blockquote>
+<ol>
+<li>对于错误，我们自己写代码处理掉</li>
+<li>对于异常（如协程上没有处理的 panic），系统会中断代码的运行，直接返回错误<code>{&quot;message&quot;:&quot;Internal Server Error&quot;}</code></li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1

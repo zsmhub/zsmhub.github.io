@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 基础知识一">
 <meta itemprop="description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;"><meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="2729">
+<meta itemprop="wordCount" content="2781">
 <meta itemprop="keywords" content="database,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 基础知识一"/>
 <meta name="twitter:description" content="常用函数 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2729 字 </span>
+          <span class="more-meta"> 约 2781 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -454,6 +454,10 @@ mysql&gt; flush privileges<span class="p">;</span>
 <li>
 <p>永远不要在MySQL中使用utf8，改用utf8mb4</p>
 <p>MySQL的“utf8mb4”是真正的“UTF-8”。“utf8”只支持每个字符最多三个字节，而“utf8mb4”是每个字符最多四个字节。</p>
+<ul>
+<li>mysql5.7 默认排序规则：utf8mb4_general_ci</li>
+<li>mysql8.0 默认排序规则：utf8mb4_0900_ai_ci</li>
+</ul>
 </li>
 <li>
 <p>InnoDB 行锁的触发条件是 where 后面带的字段包含索引。若是没有索引的条件下，就会退化为表锁。然后获取所有行后，Mysql 再过滤符合条件的的行并释放锁。这样就降低了并发度，并且性能开销也会很大。</p>

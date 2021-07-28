@@ -49,7 +49,7 @@
 <meta itemprop="name" content="大数据表设计-TableStore">
 <meta itemprop="description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存"><meta itemprop="datePublished" content="2020-08-02T10:13:11&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-02T10:13:11&#43;08:00" />
-<meta itemprop="wordCount" content="4137">
+<meta itemprop="wordCount" content="4263">
 <meta itemprop="keywords" content="TableStore," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="大数据表设计-TableStore"/>
 <meta name="twitter:description" content="简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 4137 字 </span>
+          <span class="more-meta"> 约 4263 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -241,7 +241,7 @@
 <li>索引表：对数据表中某些列数据的索引。索引表只能用于读取数据，不能写入数据。</li>
 </ul>
 <blockquote>
-<p>表数据类型</p>
+<p>表数据类型『TableStore interface{} type must be string/int64/float64.』</p>
 </blockquote>
 <p>String、Integer、Double、Double</p>
 </li>
@@ -350,6 +350,23 @@
 </span><span class="lnt">49
 </span><span class="lnt">50
 </span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 通过 BoolQuery 进行多条件组合查询示例
@@ -380,6 +397,23 @@
     <span class="nx">searchQuery</span><span class="p">.</span><span class="nf">SetGetTotalCount</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// 返回总数
 </span><span class="c1"></span>    <span class="nx">searchQuery</span><span class="p">.</span><span class="nf">SetOffset</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="nx">searchQuery</span><span class="p">.</span><span class="nf">SetLimit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nx">searchQuery</span><span class="p">.</span><span class="nf">SetSort</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">search</span><span class="p">.</span><span class="nx">Sort</span><span class="p">{</span>
+        <span class="p">[]</span><span class="nx">search</span><span class="p">.</span><span class="nx">Sorter</span><span class="p">{</span>
+            <span class="c1">// 按命名率排序
+</span><span class="c1"></span>            <span class="o">&amp;</span><span class="nx">search</span><span class="p">.</span><span class="nx">ScoreSort</span><span class="p">{</span>
+                <span class="nx">Order</span><span class="p">:</span> <span class="nx">search</span><span class="p">.</span><span class="nx">SortOrder_DESC</span><span class="p">.</span><span class="nf">Enum</span><span class="p">(),</span>
+            <span class="p">},</span>
+            <span class="c1">// 按所有主键字段排序
+</span><span class="c1"></span>            <span class="o">&amp;</span><span class="nx">search</span><span class="p">.</span><span class="nx">PrimaryKeySort</span><span class="p">{</span>
+                <span class="nx">Order</span><span class="p">:</span> <span class="nx">search</span><span class="p">.</span><span class="nx">SortOrder_DESC</span><span class="p">.</span><span class="nf">Enum</span><span class="p">(),</span>
+            <span class="p">},</span>
+            <span class="c1">// 按索引列的值排序，如果多元索引包含主键列时，主键列也可以使用这种排序方式
+</span><span class="c1"></span>            <span class="o">&amp;</span><span class="nx">search</span><span class="p">.</span><span class="nx">FieldSort</span><span class="p">{</span>
+                <span class="nx">FieldName</span><span class="p">:</span> <span class="s">&#34;money&#34;</span><span class="p">,</span>
+                <span class="nx">Order</span><span class="p">:</span>     <span class="nx">search</span><span class="p">.</span><span class="nx">SortOrder_DESC</span><span class="p">.</span><span class="nf">Enum</span><span class="p">(),</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">})</span>
     <span class="nx">searchRequest</span><span class="p">.</span><span class="nf">SetSearchQuery</span><span class="p">(</span><span class="nx">searchQuery</span><span class="p">)</span>
 
     <span class="c1">// 设置为返回指定列。

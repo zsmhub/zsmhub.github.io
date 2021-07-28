@@ -49,7 +49,7 @@
 <meta itemprop="name" content="AB压力测试">
 <meta itemprop="description" content="ApacheBench 是 Apache 服务器自带的一个web压力测试工具，简称ab。ab又是一个命令行工具，对发起负载的本机要求很低，根据ab命令可以创建很多的并发访问线程"><meta itemprop="datePublished" content="2020-01-10T21:01:48&#43;08:00" />
 <meta itemprop="dateModified" content="2020-01-10T21:01:48&#43;08:00" />
-<meta itemprop="wordCount" content="1239">
+<meta itemprop="wordCount" content="1240">
 <meta itemprop="keywords" content="软件测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AB压力测试"/>
 <meta name="twitter:description" content="ApacheBench 是 Apache 服务器自带的一个web压力测试工具，简称ab。ab又是一个命令行工具，对发起负载的本机要求很低，根据ab命令可以创建很多的并发访问线程"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"> 软件测试 </a>
             </div>
-          <span class="more-meta"> 约 1239 字 </span>
+          <span class="more-meta"> 约 1240 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -177,7 +177,7 @@ ab --help
 
 格式：ab <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>http://<span class="o">]</span>hostname<span class="o">[</span>:port<span class="o">]</span>/path
 参数很多，一般我们用 -c 和 -n 参数就可以了
-ab -n <span class="m">1024</span> -c <span class="m">100</span> -H <span class="s2">&#34;token:xxx&#34;</span> https://www.baidu.com/  <span class="c1"># 注意这里最后的斜杠一定要加，-n: 请求1024次，-c: 并发100次，-H: 请求头</span>
+ab -n <span class="m">10000</span> -c <span class="m">100</span> -H <span class="s2">&#34;token:xxx&#34;</span> https://www.baidu.com<span class="se">\?</span>search<span class="se">\=</span>abc  <span class="c1"># 注意这里最后的斜杠一定要加，-n: 请求10000次，-c: 并发100次，-H: 请求头</span>
 
 -n 表示测试请求次数
 -c 表示并发次数
@@ -201,10 +201,10 @@ ab -n <span class="m">1024</span> -c <span class="m">100</span> -H <span class="
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 以 json 的形式发送，post.json 文件内容为 json 字符串</span>
-ab -n <span class="m">1000</span> -c <span class="m">100</span> -p post.json -T <span class="s1">&#39;application/json; charset=UTF-8&#39;</span> http://www.test.com/test/api
+ab -n <span class="m">10000</span> -c <span class="m">100</span> -p post.json -T <span class="s1">&#39;application/json; charset=UTF-8&#39;</span> http://www.test.com/test/api
 
 ​# 以 x-www-form-urlencoded 形式发送，post.txt文件内容： <span class="nv">name</span><span class="o">=</span>hello,world
-ab -n <span class="m">1000</span> -c <span class="m">100</span> -p post.txt -T <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span> http://www.test.com/test/api
+ab -n <span class="m">10000</span> -c <span class="m">100</span> -p post.txt -T <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span> http://www.test.com/test/api
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="压测-put-请求">压测 PUT 请求</h2>
