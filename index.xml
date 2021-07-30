@@ -572,7 +572,7 @@
       <pubDate>Tue, 26 May 2020 16:54:52 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/go%E5%B8%B8%E7%94%A8%E5%BA%93/</guid>
-      <description>标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 // 获取当前时间，这是个奇葩,必须</description>
+      <description>标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 // 获取当前时间，这是个奇</description>
     </item>
     
     <item>
@@ -1004,7 +1004,7 @@
       <pubDate>Sat, 05 Oct 2019 15:15:06 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/</guid>
-      <description>常用命令 1 2 3 4 5 supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本 supervisorctl reload // 重启，每次更改了脚本代码后需要reload supervisorctl status // 查看进程启动状态 supervisor reload 后报错 Exited too quickly (process log may have details) 解</description>
+      <description>安装 brew install supervisor 安装完成后会有如下几个命令工具 supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所</description>
     </item>
     
     <item>

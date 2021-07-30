@@ -113,7 +113,7 @@
       <pubDate>Sat, 05 Oct 2019 15:15:06 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/</guid>
-      <description>常用命令 1 2 3 4 5 supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本 supervisorctl reload // 重启，每次更改了脚本代码后需要reload supervisorctl status // 查看进程启动状态 supervisor reload 后报错 Exited too quickly (process log may have details) 解</description>
+      <description>安装 brew install supervisor 安装完成后会有如下几个命令工具 supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所</description>
     </item>
     
     <item>
