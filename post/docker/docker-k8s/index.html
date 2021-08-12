@@ -49,7 +49,7 @@
 <meta itemprop="name" content="k8s简介">
 <meta itemprop="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"><meta itemprop="datePublished" content="2019-02-01T14:36:09&#43;08:00" />
 <meta itemprop="dateModified" content="2021-07-15T14:36:09&#43;08:00" />
-<meta itemprop="wordCount" content="2409">
+<meta itemprop="wordCount" content="3299">
 <meta itemprop="keywords" content="k8s," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s简介"/>
 <meta name="twitter:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/docker/"> docker </a>
             </div>
-          <span class="more-meta"> 约 2409 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 3299 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -147,6 +147,14 @@
     <li><a href="#术语">术语</a></li>
     <li><a href="#pod定义文件yaml">Pod定义文件yaml</a></li>
     <li><a href="#prometheus系统监控和告警工具包">Prometheus(系统监控和告警工具包)</a></li>
+    <li><a href="#snat和dnat">SNAT和DNAT</a></li>
+    <li><a href="#为什么需要-lb-直通-pod">为什么需要 LB 直通 Pod</a></li>
+    <li><a href="#常见案例">常见案例</a>
+      <ul>
+        <li><a href="#部署在-k8s-上的项目可能出现的问题">部署在 k8s 上的项目可能出现的问题：</a></li>
+      </ul>
+    </li>
+    <li><a href="#kubernetes-网络疑难杂症排查分享">Kubernetes 网络疑难杂症排查分享</a></li>
   </ul>
 </nav>
   </div>
@@ -287,6 +295,48 @@ spec:
 <p>使用场景</p>
 </blockquote>
 <p>Prometheus 适用于记录文本格式的时间序列，它既适用于以机器为中心的监控，也适用于高度动态的面向服务架构的监控。在微服务的世界中，它对多维数据收集和查询的支持有特殊优势。Prometheus 是专为提高系统可靠性而设计的，它可以在断电期间快速诊断问题，每个 Prometheus Server 都是相互独立的，不依赖于网络存储或其他远程服务。当基础架构出现故障时，你可以通过 Prometheus 快速定位故障点，而且不会消耗大量的基础架构资源。</p>
+<h2 id="snat和dnat">SNAT和DNAT</h2>
+<p>SNAT 是源地址转换</p>
+<p>DNAT 是目标地址转换</p>
+<p>都是地址转换的功能，将私有地址转换为公网地址</p>
+<p>SNAT:内部地址要访问公网上的服务时（如web访问），内部地址会主动发起连接，由路由器或者防火墙上的网关对内部地址做个地址转换，将内部地址的私有IP转换为公网的公有IP，网关的这个地址转换称为SNAT，主要用于内部共享IP访问外部。</p>
+<p>DNAT:当内部需要提供对外服务时（如对外发布web网站），外部地址发起主动连接，由路由器或者防火墙上的网关接收这个连接，然后将连接转换到内部，此过程是由带有公网IP的网关替代内部服务来接收外部的连接，然后在内部做地址转换，此转换称为DNAT，主要用于内部服务对外发布。</p>
+<h2 id="为什么需要-lb-直通-pod">为什么需要 LB 直通 Pod</h2>
+<p>LB 直接绑 NodePort 来实现云上的 Ingress 或 LoadBalancer 类型 Service 是最简单通用的方法，那为什么有了这种实现还不够，还要搞个 LB 直通 Pod 的模式？</p>
+<p>首先，我们分析下传统 NodePort 实现方式存在的一些问题：</p>
+<ol>
+<li>流量从 LB 转发到 NodePort 之后还需要进行 SNAT，再转发到 Pod，会带来一些额外的性能损耗。</li>
+<li>如果流量过于集中到某几个 NodePort 时(比如使用 nodeSelector 部署网关到固定几台节点上)，可能导致源端口耗尽，或者 conntrack 插入冲突。</li>
+<li>NodePort 本身也充当负载均衡器，LB 绑定过多节点 NodePort 可能导致负载均衡状态过于分散，导致全局负载不均。</li>
+</ol>
+<p>如果使用 LB 直通 Pod 的方式，以上问题都将消失，并且还有一些其它好处：</p>
+<ol>
+<li>由于没有 SNAT，获取源 IP 不再需要 externalTrafficPolicy: Local 。</li>
+<li>实现会话保持更简单，只需要让 CLB 开启会话保持即可，不需要设置 Service 的 sessionAffinity。</li>
+</ol>
+<p>所以使用 LB 直通 Pod 的场景通常有:</p>
+<ol>
+<li>在四层获取客户端真实源 IP，但又不希望通过使用 externalTrafficPolicy: Local 的方式。</li>
+<li>希望进一步提升网络性能。</li>
+<li>让会话保持更容易。</li>
+<li>解决全局连接调度的负载不均。</li>
+</ol>
+<h2 id="常见案例">常见案例</h2>
+<h3 id="部署在-k8s-上的项目可能出现的问题">部署在 k8s 上的项目可能出现的问题：</h3>
+<ol>
+<li>接口响应慢，容易出现超时</li>
+<li>go fasthttp是建立tcp连接，会报 &ldquo;dialing to the given TCP address timed out&rdquo;，3秒没建立连接超时就异常了</li>
+</ol>
+<blockquote>
+<p>问题定位：</p>
+</blockquote>
+<p>k8s集群的节点是默认通过 SNAT 将流量转发出去的；运维测试通过 SNAT 的节点访问非 k8s 项目的接口很慢。但试了下一台节点绑定了公网IP，不走SNAT 网关，访问出去就很快。</p>
+<blockquote>
+<p>解决方案：</p>
+</blockquote>
+<p>扩容 SNAT</p>
+<h2 id="kubernetes-网络疑难杂症排查分享">Kubernetes 网络疑难杂症排查分享</h2>
+<p><a href="https://imroc.cc/post/201908/troubleshooting-with-kubernetes-network/#lb-%E5%8E%8B%E6%B5%8B-cps-%E4%BD%8E">点击查看文章</a></p>
 
     </div>
 

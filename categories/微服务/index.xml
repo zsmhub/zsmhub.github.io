@@ -23,7 +23,7 @@
       <pubDate>Fri, 04 Jun 2021 15:43:03 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-zero/</guid>
-      <description>官方文档 点击前往 启动服务 1 2 // 代码运行 cd project/service/user/cmd/api &amp;amp;&amp;amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：or</description>
+      <description>官方文档 点击前往 启动服务 1 2 // API 或 rpc 代码运行 cd project/service/user/cmd/api &amp;amp;&amp;amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如</description>
     </item>
     
     <item>

@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 07 Jul 2021 09:26:58 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Aug 2021 10:23:52 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安全层面-限流策略</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/</link>
+      <pubDate>Thu, 12 Aug 2021 10:23:52 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/</guid>
+      <description>一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和acc</description>
+    </item>
+    
     <item>
       <title>项目部署与发布</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/</link>

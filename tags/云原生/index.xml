@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>云原生 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
+    <description>Recent content in 云原生 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Thu, 05 Aug 2021 09:07:55 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>云原生</title>
+      <link>https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
+      <pubDate>Thu, 05 Aug 2021 09:07:55 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E4%BA%91%E5%8E%9F%E7%94%9F/</guid>
+      <description>云原生四大要点：DevOps+持续交付+微服务+容器。 总而言之，符合云原生架构的应用程序应该是：采用开源堆栈（K8S+Docker）进行容器</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="1694">
+<meta itemprop="wordCount" content="1799">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1694 字 </span>
+          <span class="more-meta"> 约 1799 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -154,6 +154,7 @@
     <li><a href="#git-常用分支">Git 常用分支</a></li>
     <li><a href="#github上fork项目后如何同步更新原先项目的提交">github上fork项目后，如何同步更新原先项目的提交</a></li>
     <li><a href="#配置信息">配置信息</a></li>
+    <li><a href="#公司变更-gitlab-地址后需执行的操作">公司变更 gitlab 地址后需执行的操作</a></li>
   </ul>
 </nav>
   </div>
@@ -377,8 +378,13 @@ git push
 </li>
 <li>
 <p>添加全局变量，将 http 拉取代码的方式替换为 ssh 方式</p>
-<p>git config &ndash;global url.&ldquo;<a href="mailto:git@gitlab.xxx.cn">git@gitlab.xxx.cn</a>&rdquo;.insteadOf &ldquo;<a href="http://gitlab.xxx.cn">http://gitlab.xxx.cn</a>&rdquo;</p>
+<p>git config &ndash;global url.&ldquo;<a href="mailto:git@gitlab.xxx.cn">git@gitlab.xxx.cn</a>:&quot;.insteadOf &ldquo;<a href="http://gitlab.xxx.cn/%22">http://gitlab.xxx.cn/&quot;</a></p>
 </li>
+</ol>
+<h2 id="公司变更-gitlab-地址后需执行的操作">公司变更 gitlab 地址后需执行的操作</h2>
+<ol>
+<li>在新 gitlab 上 add ssh key「在本机执行命令：cat ~/.ssh/id_rsa.pub 即可获取ssh key」</li>
+<li>在本地代码库执行更换源命令：git remote set-url origin <a href="mailto:git@gitlab.ydjdev.com">git@gitlab.ydjdev.com</a>:ydjai/对应项目名称.git</li>
 </ol>
 
     </div>

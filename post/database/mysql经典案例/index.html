@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 经典案例">
 <meta itemprop="description" content="too many connection 报错可能原因 机器负载飙升，导致SQL执行效率下降，导致连接堆积 业务访问量突增（或者有SQL注入现象），导致连接数打满 出现“死锁”或者锁"><meta itemprop="datePublished" content="2020-05-29T19:13:07&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-29T19:13:07&#43;08:00" />
-<meta itemprop="wordCount" content="450">
+<meta itemprop="wordCount" content="489">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 经典案例"/>
 <meta name="twitter:description" content="too many connection 报错可能原因 机器负载飙升，导致SQL执行效率下降，导致连接堆积 业务访问量突增（或者有SQL注入现象），导致连接数打满 出现“死锁”或者锁"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 450 字 </span>
+          <span class="more-meta"> 约 489 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -159,7 +159,7 @@
 <p>业务访问量突增（或者有SQL注入现象），导致连接数打满</p>
 </li>
 <li>
-<p>出现“死锁”或者锁竞争严重，导致大量SQL堆积【事务没有正确关闭等】</p>
+<p>出现“死锁”或者锁竞争严重，导致大量SQL堆积【如事务没有正确关闭、频繁更新导致资源争用等】</p>
 </li>
 </ol>
 <h2 id="大表数据删除方案">大表数据删除方案</h2>
@@ -201,9 +201,11 @@ insert ignore into <code>friend_record</code>(owner_account_id, account_id, rema
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">只保留最大</span> <span class="n">id</span> <span class="err">的数据，等清理数据后，再把字段</span> <span class="n">room_id</span><span class="o">+</span><span class="n">member_uid</span> <span class="err">设置为唯一索引</span>
+<span class="o">#</span>  <span class="n">tip</span><span class="p">:</span> <span class="err">两百万记录的表</span> <span class="k">delete</span> <span class="err">很快，两千万的表半个小时还删不完</span>
 <span class="k">delete</span> <span class="n">a</span>
 <span class="k">from</span> <span class="n">room_user</span> <span class="k">as</span> <span class="n">a</span>
 <span class="k">join</span> <span class="n">room_user</span> <span class="k">as</span> <span class="n">b</span> <span class="k">on</span> <span class="n">a</span><span class="p">.</span><span class="n">room_id</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">room_id</span> <span class="k">and</span> <span class="n">a</span><span class="p">.</span><span class="n">member_uid</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">member_uid</span> <span class="o">#</span> <span class="err">笛卡尔乘积</span>

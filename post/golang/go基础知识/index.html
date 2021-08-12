@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="8927">
+<meta itemprop="wordCount" content="9119">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8927 字 </span>
-          <span class="more-meta"> 预计阅读 18 分钟 </span>
+          <span class="more-meta"> 约 9119 字 </span>
+          <span class="more-meta"> 预计阅读 19 分钟 </span>
         
       </div>
     </header>
@@ -1517,6 +1517,15 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 </code></pre></td></tr></table>
 </div>
 </div></li>
+<li>
+<p>数据类型</p>
+<p>nil可以赋值给引用类型（除string外）、error类型和指针类型</p>
+<ul>
+<li>值类型：int、float、bool、array、sturct等</li>
+<li>引用类型：包含slice，map，channel，interface，func，string等『需要注意的是：引用类型在函数的内部可以对它的值进行修改，但是如果给形参重新赋值，重新赋值后的形参再怎么修改都不会影响外面的实参了』</li>
+<li>指针类型：ptr</li>
+</ul>
+</li>
 </ol>
 <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
 <div class="highlight"><div class="chroma">
