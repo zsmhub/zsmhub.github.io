@@ -534,8 +534,8 @@ i- s null ,is not null 也无法使用索引</li>
 <p>函数解读：函数分为两个部分，</p>
 <p>第一部分是函数名称，开窗函数的数量较少，只有11个窗口函数+聚合函数（所有聚合函数都可以用作开窗函数），根据函数性质，有的要写参数，有的不需要写参数；</p>
 <p>第二部分是over语句，over()是必须要写的，里面有三个参数，都是非必须参数，根据需求选写：</p>
-<p>1.第一个参数是 partition by +分组字段，将数据根据此字段分成多份，如果不加partition by参数，那会把整个数据当做一个窗口。</p>
-<p>2.第二个参数是 order by +排序字段，每个窗口的数据要不要进行排序。</p>
+<p>1.第一个参数是 partition by + 分组字段，将数据根据此字段分成多份，如果不加partition by参数，那会把整个数据当做一个窗口。</p>
+<p>2.第二个参数是 order by + 排序字段，每个窗口的数据要不要进行排序。</p>
 <p>3.第三个参数 rows/range between 起始位置 and 结束位置，这个参数仅针对滑动窗口函数有用，是在当前窗口下分出更小的子窗口。其中起始位置和结束位置可写：current row 边界是当前行，unbounded preceding 边界是分区中的第一行，unbounded following 边界是分区中的最后一行，expr preceding 边界是当前行减去expr的值，expr following 边界是当前行加上expr的值。rows是基于行数，range是基于值的大小，到讲解到滑动窗口函数时再详细介绍。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

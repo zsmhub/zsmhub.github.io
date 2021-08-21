@@ -49,7 +49,7 @@
 <meta itemprop="name" content="系统事故记录">
 <meta itemprop="description" content="一、数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主"><meta itemprop="datePublished" content="2020-08-26T10:27:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-26T10:27:51&#43;08:00" />
-<meta itemprop="wordCount" content="874">
+<meta itemprop="wordCount" content="905">
 <meta itemprop="keywords" content="事故记录," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="系统事故记录"/>
 <meta name="twitter:description" content="一、数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
             </div>
-          <span class="more-meta"> 约 874 字 </span>
+          <span class="more-meta"> 约 905 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -146,6 +146,7 @@
     <li><a href="#三mysql连接数暴增服务器cpu爆满">三、mysql连接数暴增，服务器cpu爆满</a></li>
     <li><a href="#四object-too-large-for-cache">四、object too large for cache</a></li>
     <li><a href="#五go-源码构建失败却以为构建成功">五、go 源码构建失败却以为构建成功</a></li>
+    <li><a href="#六接口返回json被截断">六、接口返回json被截断</a></li>
   </ul>
 </nav>
   </div>
@@ -259,6 +260,17 @@ db.DB<span class="o">()</span>.SetConnMaxLifetime<span class="o">(</span>xx<span
 <p>某个进程代码报错，导致其他进程构建失败，但我们却未看发版结果，误以为构建成功，</p>
 <p>然后发现发版后有一些报错，却一直找不出问题！</p>
 <p>修改历史代码后，要全局搜索下该方法影响到哪些进程，一定要注意多个进程都要能正常编译运行。</p>
+<h2 id="六接口返回json被截断">六、接口返回json被截断</h2>
+<blockquote>
+<p>可能原因</p>
+</blockquote>
+<ol>
+<li>返回 json 数据量大</li>
+</ol>
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<p>？？？</p>
 
     </div>
 

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 事务和锁">
 <meta itemprop="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中"><meta itemprop="datePublished" content="2019-09-01T17:12:23&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-01T17:12:23&#43;08:00" />
-<meta itemprop="wordCount" content="3289">
+<meta itemprop="wordCount" content="4194">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 事务和锁"/>
 <meta name="twitter:description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3289 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 4194 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
     </header>
@@ -144,9 +144,9 @@
     <li><a href="#事务是必须满足4个条件acid">事务是必须满足4个条件（ACID）</a></li>
     <li><a href="#并发事务处理带来的问题">并发事务处理带来的问题</a></li>
     <li><a href="#事务的隔离级别">事务的隔离级别</a></li>
-    <li><a href="#乐观锁与悲观锁">乐观锁与悲观锁</a></li>
     <li><a href="#锁模式innodb-有三种行锁的算法">锁模式(InnoDB 有三种行锁的算法)</a></li>
-    <li><a href="#行锁和表锁">行锁和表锁</a></li>
+    <li><a href="#innodb共享锁和排他锁">InnoDB共享锁和排他锁</a></li>
+    <li><a href="#myisam表锁">MyISAM表锁</a></li>
     <li><a href="#死锁">死锁</a></li>
   </ul>
 </nav>
@@ -219,10 +219,6 @@
 <li>通过优化事务逻辑，大部分应用使用 Read Commited 隔离级别就足够了。</li>
 <li>set autocommit=0;  //设置不自动提交事务</li>
 </ul>
-<h2 id="乐观锁与悲观锁">乐观锁与悲观锁</h2>
-<p>乐观锁与悲观锁是两种并发控制的思想，可用于解决丢失更新问题</p>
-<p>乐观锁会“乐观地”假定大概率不会发生并发更新冲突，访问、处理数据过程中不加锁，只在更新数据时再根据版本号或时间戳判断是否有冲突，有则处理，无则提交事务。用数据版本（Version）记录机制实现，这是乐观锁最常用的一种实现方式</p>
-<p>悲观锁会“悲观地”假定大概率会发生并发更新冲突，<em>访问、处理数据前就加排他锁</em>（如 redis 排他锁），在整个数据处理过程中锁定数据，事务提交或回滚后才释放锁。</p>
 <h2 id="锁模式innodb-有三种行锁的算法">锁模式(InnoDB 有三种行锁的算法)</h2>
 <ol>
 <li>
@@ -259,17 +255,36 @@
 <p>对于行的查询，都是采用该方法，主要目的是解决幻读的问题。</p>
 </li>
 </ol>
-<h2 id="行锁和表锁">行锁和表锁</h2>
+<h2 id="innodb共享锁和排他锁">InnoDB共享锁和排他锁</h2>
 <blockquote>
 <p>InnoDB 行锁是通过给索引上的索引项加锁来实现的，不是针对记录加的锁。</p>
 </blockquote>
 <p>在没有索引的情况下，InnoDB会对所有记录都加锁。</p>
 <p>意向锁是InnoDB自动加的，不需用户干预。对于UPDATE、DELETE、INSERT语句，InnoDB会自动给涉及数据集加排他锁(X)；对于普通SELECT语句，InnoDB不会加任何锁，事务可以通过以下语句显示给记录集加共享锁或排他锁。</p>
-<p>共享锁(S，读锁): select * from table_name where &hellip; lock in share mode;
-排他锁(X，写锁): select * from table_name where &hellip; for update;</p>
 <blockquote>
-<p>MyISAM 表锁</p>
+<p>共享锁作用：在你正在读的行设置一个共享锁，其他session也可以读这些行，但是直到你读完这些行，事务提交释放锁之后，其他sesstion才能更改这些行。如果你要读取的行正在被其他session修改，那么读取会卡住，直到其他session修改完毕，读取才能继续，并且读到的是最新版本的数据。</p>
 </blockquote>
+<p>共享锁(S，读锁): select * from table_name where &hellip; lock in share mode;</p>
+<blockquote>
+<p>排他锁作用：对于select的数据，会对这些行及其相关行加锁，效果和用update更新这些行时是一样的。其他对这些数据进行操作，无论是select、update也好，上面提到的SELECT … LOCK IN SHARE MODE也好，甚至在某些事务隔离级别下读取这些数据也好，所有这些操作都会被阻塞。</p>
+</blockquote>
+<p>排他锁(X，写锁): select * from table_name where &hellip; for update;</p>
+<blockquote>
+<p>select … lock in share mode的使用场景</p>
+</blockquote>
+<p>引用mysql官网的例子，有两张表：parent表和child表，向child表插入数据时，要保证child的parent在parent表中存在，删除parent表时，会将parent以及该parent的child都删掉。一般的操作是先select，得到parentId，然后向child中插入一条数据(关联parentId)，但是这样是有问题的，如果select之后，插入之前，另一个session将parent删掉了，那么向child表中插入的数据并不会受到影响，最终造成该child没有parent的状况。</p>
+<p>根据上面提到的特性，select时用select … lock in share mode就能解决这个问题。<code>其实select … lock in share mode 在平时用到的场景很少很少，用的比较多的还是select … for update。</code></p>
+<blockquote>
+<p>select … for update的使用场景</p>
+</blockquote>
+<p>账户表中有一个字段money，取出来后，将money更新(比如加上一个值)后再存进去。对于这个场景，如果两个session同时select，比如都取出来的是100，然后都加30, 都变成130，然后都update money，最终money的值是130，与预期的160不符。这个时候用select … for update 就能完美解决这个问题，这时因为两个session不能同时select … for update。</p>
+<blockquote>
+<p>思考</p>
+</blockquote>
+<p>上述select … for update的场景如果使用select … lock in share mode会怎样？</p>
+<p>答案是，会很大概率造成死锁，造成死锁的原因是：session A和session B同时select lock in share mode, 这时都未提交事务，session A 继续执行update操作，此时因为session B事务还没提交，锁还没释放，所以session A的update操作会被阻塞，等待session B释放锁，同样的，session B此时也在等待session A提交事务释放锁，这就发生了死锁。</p>
+<p><code>所以 lock in share mode 使用时要仔细检查，确认该场景是否真的适用且不会发生死锁。</code></p>
+<h2 id="myisam表锁">MyISAM表锁</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
