@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="8014">
+<meta itemprop="wordCount" content="8034">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8014 字 </span>
-          <span class="more-meta"> 预计阅读 16 分钟 </span>
+          <span class="more-meta"> 约 8034 字 </span>
+          <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
     </header>
@@ -977,9 +977,9 @@
 </span><span class="cm"> */</span>
 
 <span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">i</span>    <span class="o">*</span><span class="kt">int</span>
+    <span class="nx">i</span>   <span class="o">*</span><span class="kt">int</span>
     <span class="nx">b</span>   <span class="o">*</span><span class="kt">bool</span>
-    <span class="nx">s</span> <span class="o">*</span><span class="kt">string</span>
+    <span class="nx">s</span>   <span class="o">*</span><span class="kt">string</span>
 <span class="p">)</span>
 
 <span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
@@ -1079,14 +1079,17 @@
 </div><h3 id="strings--strconv">strings &amp; strconv</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 将一个[]string的切片通过分隔符，分割成一个字符串
@@ -1097,6 +1100,9 @@
 </span><span class="c1"></span><span class="nx">ret</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="s">&#34;a,b,c,d,e&#34;</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
 
 <span class="nb">string</span><span class="p">([]</span><span class="kt">byte</span><span class="p">)</span> <span class="c1">// 坑：string()只能将[]byte类型的数据转换为字符串
+</span><span class="c1"></span>
+<span class="c1">// 所有单次首字母大写
+</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Title</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">))</span> <span class="c1">// 输出 Hello World
 </span></code></pre></td></tr></table>
 </div>
 </div><h3 id="sort">sort</h3>
