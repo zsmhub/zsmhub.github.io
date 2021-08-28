@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="9202">
+<meta itemprop="wordCount" content="9284">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 9202 字 </span>
+          <span class="more-meta"> 约 9284 字 </span>
           <span class="more-meta"> 预计阅读 19 分钟 </span>
         
       </div>
@@ -412,8 +412,8 @@ ToDo Something&hellip;</li>
 </span><span class="c1"></span>
 <span class="c1">// int64和string互转
 </span><span class="c1"></span><span class="nx">i</span> <span class="o">:=</span> <span class="nb">int64</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
-<span class="nx">s</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatInt</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// int64转string
-</span><span class="c1"></span><span class="nx">i</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseInt</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="c1">// string转int64，Tip: strconv.ParseInt(s string, base int, bitSize int) 的 bitSize 参数不会将字符串转换为您选择的类型, 而只是在此处将结果限制为特定的“位”，如果想要得到你要的 int 类型必须手动转换类型.
+<span class="nx">s</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatInt</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// int64转十进制的string
+</span><span class="c1"></span><span class="nx">i</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseInt</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="c1">// 十进制string转int64，Tip: strconv.ParseInt(s string, base int, bitSize int) 的 bitSize 参数不会将字符串转换为您选择的类型, 而只是在此处将结果限制为特定的“位”，如果想要得到你要的 int 类型必须手动转换类型.
 </span><span class="c1"></span>
 <span class="c1">// uint64和string互转
 </span><span class="c1"></span><span class="nx">i</span> <span class="o">:=</span> <span class="nb">uint</span><span class="p">(</span><span class="mi">18446744073709551615</span><span class="p">)</span>
@@ -1314,9 +1314,11 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 单向channel，适用于生产者消费者模式
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 可以将普通 channel 隐式转换成单向 channel，只收或只发，但不能将单向 channel 转换为普通 channel
+</span><span class="c1">// 单向channel，适用于生产者消费者模式
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">ch1</span> <span class="kd">chan</span> <span class="kt">int</span>             <span class="c1">// ch1是一个正常的channel，是双向的
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">ch2</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="kt">int</span> <span class="p">=</span> <span class="nx">ch1</span>     <span class="c1">// ch2是单向channel，只用于写int数据
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">ch3</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="kt">int</span> <span class="p">=</span> <span class="nx">ch1</span>     <span class="c1">// ch3是单向channel，只用于读int数据
@@ -1327,6 +1329,7 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 </blockquote>
 <p>select 语句实现了一种监听模式，通常用在（无限）循环中；在某种情况下，通过 break 语句使循环退出。</p>
 <p>case 是随机选取，所以当 select 有两个 channel 以上满足条件时，则會随机选取其中一个 case 往下走。</p>
+<p>如果你有多个 channel 需要读取，而读取是不间断的，就必须使用 for+select 机制来实现。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

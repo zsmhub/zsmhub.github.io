@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>直播 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/%E7%9B%B4%E6%92%AD/</link>
+    <description>Recent content in 直播 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Thu, 26 Aug 2021 16:46:41 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E7%9B%B4%E6%92%AD/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>直播开发</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Thu, 26 Aug 2021 16:46:41 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/</guid>
+      <description>腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称</description>
+    </item>
+    
+  </channel>
+</rss>

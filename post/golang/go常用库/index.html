@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="8034">
+<meta itemprop="wordCount" content="8178">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8034 字 </span>
+          <span class="more-meta"> 约 8178 字 </span>
           <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
@@ -312,9 +312,9 @@
 </span><span class="c1"></span><span class="nx">startTime</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
 <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">startTime</span><span class="p">).</span><span class="nf">Seconds</span><span class="p">()</span>
 
-<span class="c1">// time.NewTimer 和 time.NewTicker
-</span><span class="c1"></span><span class="nx">timer</span><span class="p">:</span> <span class="nx">定时器</span><span class="err">，</span><span class="nx">是到固定时间后会执行一次</span>
-<span class="nx">ticker</span><span class="p">:</span> <span class="nx">只要定义完成</span><span class="err">，</span><span class="nx">从此刻开始计时</span><span class="err">，</span><span class="nx">不需要任何其他的操作</span><span class="err">，</span><span class="nx">每隔固定时间都会触发</span><span class="err">。『</span><span class="nx">相比</span> <span class="nx">sleep</span><span class="err">，</span><span class="nx">资源占用少</span><span class="err">』</span>
+<span class="c1">// 定时器: time.NewTimer 和 time.NewTicker
+</span><span class="c1"></span><span class="nx">timer</span><span class="p">:</span> <span class="nx">只执行一次</span><span class="err">，</span><span class="nx">到时间执行</span>
+<span class="nx">ticker</span><span class="p">:</span> <span class="nx">循环执行</span><span class="err">，</span><span class="nx">只要定义完成</span><span class="err">，</span><span class="nx">从此刻开始计时</span><span class="err">，</span><span class="nx">不需要任何其他的操作</span><span class="err">，</span><span class="nx">每隔固定时间都会触发</span><span class="err">。『</span><span class="nx">相比</span> <span class="nx">sleep</span><span class="err">，</span><span class="nx">资源占用少</span><span class="err">』</span>
 <span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">lotteryRepository</span><span class="p">)</span> <span class="nf">lockActivity</span><span class="p">(</span><span class="nx">activityId</span><span class="p">,</span> <span class="nx">userId</span> <span class="kt">uint64</span><span class="p">)</span> <span class="p">(</span><span class="kt">bool</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">key</span> <span class="o">:=</span> <span class="s">&#34;keyxxx&#34;</span>
     <span class="kd">var</span> <span class="nx">times</span> <span class="kt">uint32</span>
@@ -1214,7 +1214,7 @@
     <span class="nf">cancel</span><span class="p">()</span> <span class="c1">// 调用这个函数则可以主动停止goroutine
 </span><span class="c1"></span>    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 
-    <span class="c1">// timeout
+    <span class="c1">// timeout超时处理
 </span><span class="c1"></span>    <span class="nx">ctx2</span><span class="p">,</span> <span class="nx">timeCancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithTimeout</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">defer</span> <span class="nf">timeCancel</span><span class="p">()</span>
     <span class="nx">ticker</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTicker</span><span class="p">(</span><span class="mi">500</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
@@ -1742,6 +1742,14 @@
 <p>uber开源的日志库zap，对性能和内存分配做了极致的优化。[参考文章：https://www.liwenzhou.com/posts/Go/zap/]</p>
 <h3 id="githubcomgoogolleego-socketio">github.com/googollee/go-socket.io</h3>
 <p>socketIO 第三方库</p>
+<blockquote>
+<p>go-socket.io 1.6 内存泄漏问题：</p>
+</blockquote>
+<ul>
+<li>原因：由于新版本的session未回收，断连socket conn存在内存中，导致内存不断上升。</li>
+<li>解决：在当前版本修复，socket连接断开回收该链接。Session.Remove(sid)</li>
+<li>结果：目前系统socketio已经稳定1w链接/1G内存</li>
+</ul>
 <h2 id="githubcomgorillawebsocket">github.com/gorilla/websocket</h2>
 <p>websocket</p>
 <h2 id="githubcompanjf2000antsv2">github.com/panjf2000/ants/v2</h2>

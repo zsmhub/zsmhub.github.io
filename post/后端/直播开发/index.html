@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>直播开发 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="直播开发" />
+<meta property="og:description" content="腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-26T16:46:41&#43;08:00" />
+<meta property="article:modified_time" content="2021-08-26T16:46:41&#43;08:00" />
+
+<meta itemprop="name" content="直播开发">
+<meta itemprop="description" content="腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称"><meta itemprop="datePublished" content="2021-08-26T16:46:41&#43;08:00" />
+<meta itemprop="dateModified" content="2021-08-26T16:46:41&#43;08:00" />
+<meta itemprop="wordCount" content="1907">
+<meta itemprop="keywords" content="直播," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="直播开发"/>
+<meta name="twitter:description" content="腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">直播开发</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-08-26 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+            </div>
+          <span class="more-meta"> 约 1907 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#腾讯云直播">腾讯云直播</a></li>
+    <li><a href="#基本概念">基本概念</a></li>
+    <li><a href="#直播推流">直播推流</a></li>
+    <li><a href="#直播播放">直播播放</a></li>
+    <li><a href="#产品概念">产品概念</a></li>
+    <li><a href="#产品架构">产品架构</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="腾讯云直播">腾讯云直播</h2>
+<p>使用腾讯 云直播·标准直播 产品进行直播需求开发</p>
+<p><a href="https://cloud.tencent.com/product/lvb/developer">产品文档</a></p>
+<h2 id="基本概念">基本概念</h2>
+<blockquote>
+<p>推流</p>
+</blockquote>
+<p>主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称为“RTMP 发布”。</p>
+<blockquote>
+<p>拉流</p>
+</blockquote>
+<p>即直播播放，指已实现直播推流之后，用指定地址将腾讯视频云服务器中的视频源和音频源拉取播放的过程。其视频源是实时生成的，有人推流直播才有意义，一旦主播停播，直播 URL 也就失效了。而且由于是实时直播，所以播放器在播直播视频的时候是没有进度条的。</p>
+<blockquote>
+<p>推流域名</p>
+</blockquote>
+<p>指用于推送直播流的域名，必选配置，该域名必须在使用直播服务前完成注册并备案。配置完推流域名后，直播服务会生成对应的推流地址，拼接规则请参见 <a href="https://cloud.tencent.com/document/product/267/32720#push">自主拼装推流 URL</a>。</p>
+<blockquote>
+<p>播放域名</p>
+</blockquote>
+<p>指用于播放直播流的域名，必选配置，该域名必须在使用直播服务前完成注册并备案。配置完播放域名后，直播服务会生成对应的播放地址，拼接规则请参见 <a href="https://cloud.tencent.com/document/product/267/32720#play">自主拼装播放 URL</a>。</p>
+<blockquote>
+<p>域名 CNAME</p>
+</blockquote>
+<p>CNAME 域名是在腾讯云直播控制台接入加速域名后，系统给对应的域名分配一个以 .liveplay.myqcloud.com 为后缀的域名。用户需要在域名服务商处，配置一条 CNAME 记录，记录生效后，域名解析的工作就正式转向腾讯云云直播，该域名所有的请求都将转向腾讯云直播的边缘节点。</p>
+<blockquote>
+<p>StreamName</p>
+</blockquote>
+<p>StreamName 是一路流的标识符，通常与某个域名一起唯一标识一路流。「可使用直播间id作为StreamName，因为每个直播间id是唯一的」</p>
+<blockquote>
+<p>AppName</p>
+</blockquote>
+<p>直播的应用名称，用于区分直播流媒体文件存放路径，默认为 live，可自定义。</p>
+<blockquote>
+<p>事件消息通知</p>
+</blockquote>
+<p>指推流过程中，直播触发事件通知，腾讯云按照配置模板信息主动发送请求到客户的服务器，客户的服务器负责应答验证请求，相关应答协议请参见 <a href="https://cloud.tencent.com/document/product/267/32744#protocol">事件消息通知协议</a>。验证通过后即可获取包含回调信息的 JSON 数据包，获取后请解析并记录相关信息。</p>
+<blockquote>
+<p>防盗链</p>
+</blockquote>
+<p>指推流和播放 URL 中的 txSecret 字段，可防止攻击者伪造您的后台生成推流 URL 或者非法盗取您的播放地址进行谋利。</p>
+<blockquote>
+<p>直播录制</p>
+</blockquote>
+<p>在推流过程中，将直播原始流经过转音视频封装（不修改音频、视频数据以及对应的时间戳等信息）得到的视频文件存储到云点播平台。使用该功能需提前开通 云点播服务。</p>
+<h2 id="直播推流">直播推流</h2>
+<table>
+<thead>
+<tr>
+<th>功能名称</th>
+<th>功能简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>推流协议</td>
+<td>支持 RTMP 协议进行推流。</td>
+</tr>
+<tr>
+<td>推流方式</td>
+<td>支持集成腾讯云直播 iOS、Android、Web 等推流 SDK 的 App，以及常见的第三方推流软件，包括 OBS、XSplit、FMLE 等。</td>
+</tr>
+<tr>
+<td>推流设备</td>
+<td>支持常见的第三方 RTMP 推流硬件和编码器或盒子等设备。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="直播播放">直播播放</h2>
+<table>
+<thead>
+<tr>
+<th>功能名称</th>
+<th>功能简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>播放协议</td>
+<td>支持 RTMP、FLV、HLS 及 UDP(指WebRTC) 播放协议。</td>
+</tr>
+<tr>
+<td>播放方式</td>
+<td>支持腾讯云直播 iOS、Android、Web 等播放器 SDK，以及常见的第三方 FLV、RTMP、HLS 播放器。</td>
+</tr>
+<tr>
+<td>播放控制</td>
+<td>可播放与输入流规格一致的原始码流，或播放经过实时转码的码流。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>RTMP</p>
+</blockquote>
+<p>RTMP是Real Time Messaging Protocol（实时消息传输协议）的缩写，是Adobe公司为Flash/AIR平台和服务器之间音、视频及数据传输开发的实时消息传送协议。RTMP协议基于TCP，包括RTMP基本协议及RTMPT/RTMPS/RTMPE等多种变种。</p>
+<p>RTMP协议中，视频必须是H264编码，音频必须是AAC或MP3编码，且多以flv格式封包。RTMP是目前最主流的流媒体传输协议，对CDN支持良好，实现难度较低，是大多数的直播平台的选择。</p>
+<p>不过RTMP有着一个最大的不足——不支持浏览器，且Adobe已不再更新。因此直播服务要支持浏览器的话，需要另外的推送协议支持。</p>
+<blockquote>
+<p>HLS</p>
+</blockquote>
+<p>Http Live Streaming是由Apple公司定义的基于HTTP的流媒体实时传输协议。它的原理是将整个流分为多个小的文件来下载，每次只下载若干个。服务器端会将最新的直播数据生成新的小文件，客户端只要不停的按顺序播放从服务器获取到的文件，就实现了直播。</p>
+<p>基本上，HLS是以点播的技术实现了直播的体验。因为每个小文件的时长很短，客户端可以很快地切换码率，以适应不同带宽条件下的播放。分段推送的技术特点，决定了HLS的延迟一般会高于普通的流媒体直播协议。</p>
+<blockquote>
+<p>WebRTC(UDP)</p>
+</blockquote>
+<p>WebRTC（Web Real-Time Communication），即“源自网页即时通信”。WebRTC是一个支持浏览器进行实时语音、视频对话的开源协议。WebRTC的支持者甚多，Google、Mozilla、Opera推动其成为W3C推荐标准。</p>
+<p>WebRTC支持目前的主流浏览器，并且基于SRTP和UDP，即便在网络信号一般的情况下也具备较好的稳定性。</p>
+<p>此外，WebRTC可以实现点对点通信，通信双方延时低，此外，WebRTC可以实现点对点通信，通信双方延时低，是实现“连麦”功能比较好的选择。</p>
+<h2 id="产品概念">产品概念</h2>
+<p>直播频道 &gt; 直播间</p>
+<ul>
+<li>直播APP包含多个直播频道，一个直播频道包含多个直播间</li>
+<li>直播计划：每个直播间可以设定多个直播计划，用于预告下次直播时间</li>
+</ul>
+<h2 id="产品架构">产品架构</h2>
+<p><img src="/images/2021/QQ20210826-171108@2x.png" alt="标准直播"></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-08-26
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E7%9B%B4%E6%92%AD/">直播</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/">
+            <span class="next-text nav-default">安全层面-限流策略</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-08-26 16:46:41 \u002b0800 CST',
+        title: '直播开发',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
