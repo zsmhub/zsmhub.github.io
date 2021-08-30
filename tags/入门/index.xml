@@ -9,11 +9,11 @@
     <copyright>ZsmHub</copyright>
     <lastBuildDate>Thu, 16 Apr 2020 20:53:50 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>IM 基础知识</title>
-      <link>https://zsmhub.github.io/post/im/im%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <title>IM-基础知识</title>
+      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 16 Apr 2020 20:53:50 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/im/im%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>IM 消息可靠性及一致性的解决方案 参考文章 对于 IM 系统消息可靠性及一致性问题，通过消息重发机制保证消息成功被服务端接收，通过会话记录检查保证收取消</description>
     </item>
     

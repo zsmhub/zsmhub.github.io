@@ -49,7 +49,7 @@
 <meta itemprop="name" content="直播开发">
 <meta itemprop="description" content="腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称"><meta itemprop="datePublished" content="2021-08-26T16:46:41&#43;08:00" />
 <meta itemprop="dateModified" content="2021-08-26T16:46:41&#43;08:00" />
-<meta itemprop="wordCount" content="1962">
+<meta itemprop="wordCount" content="2000">
 <meta itemprop="keywords" content="直播," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="直播开发"/>
 <meta name="twitter:description" content="腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1962 字 </span>
+          <span class="more-meta"> 约 2000 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -270,8 +270,16 @@
 <p><img src="/images/2021/QQ20210826-171108@2x.png" alt="标准直播"></p>
 <h2 id="后端开发思路">后端开发思路</h2>
 <ul>
-<li>需要提供推流地址、播放地址给前端/移动端</li>
-<li>需要提供云直播的一些回调接口，用于处理录制视频回调url等</li>
+<li>
+<p>需要提供推流地址、播放地址给前端/移动端</p>
+</li>
+<li>
+<p>需要提供一些回调事件接口给云直播后台，用于处理录制视频信息、直播推流、直播断流等</p>
+<p><a href="https://cloud.tencent.com/document/product/267/32744">回调事件消息通知</a></p>
+</li>
+<li>
+<p>直播特效使用<a href="https://www.volcengine.com/product/effect-beauty">火山引擎</a>，抖音同款美化滤镜</p>
+</li>
 </ul>
 
     </div>

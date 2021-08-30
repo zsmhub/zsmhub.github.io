@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 01 May 2020 16:20:58 +0800</lastBuildDate>
-    
-	<atom:link href="https://zsmhub.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 20 Oct 2020 11:30:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>TCP通信-三次握手与四次挥手</title>
-      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp%E9%80%9A%E4%BF%A1-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</link>
-      <pubDate>Fri, 01 May 2020 16:20:58 +0800</pubDate>
+      <title>TCP/IP</title>
+      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</link>
+      <pubDate>Tue, 20 Oct 2020 11:30:44 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp%E9%80%9A%E4%BF%A1-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</guid>
-      <description>OSI 模型和 TCP/IP 协议 OSI 模型作为一种概念模型，由国际标准化组织（ISO）提出，一个试图使各种计算机在世界范围内互连为网络的标准框架。我们熟悉的 HTT</description>
+      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</guid>
+      <description>协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，</description>
     </item>
     
   </channel>
