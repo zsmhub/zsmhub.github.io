@@ -49,7 +49,7 @@
 <meta itemprop="name" content="API Gateway">
 <meta itemprop="description" content="API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的"><meta itemprop="datePublished" content="2020-05-17T20:05:18&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-28T20:05:18&#43;08:00" />
-<meta itemprop="wordCount" content="787">
+<meta itemprop="wordCount" content="833">
 <meta itemprop="keywords" content="API网关," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API Gateway"/>
 <meta name="twitter:description" content="API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 787 字 </span>
+          <span class="more-meta"> 约 833 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -147,6 +147,7 @@
     <li><a href="#接口限流方式">接口限流方式</a></li>
     <li><a href="#熔断降级">熔断降级</a></li>
     <li><a href="#api-网关实现的注意事项">API 网关实现的注意事项</a></li>
+    <li><a href="#遇到的坑">遇到的坑</a></li>
     <li><a href="#学习文章">学习文章</a></li>
   </ul>
 </nav>
@@ -193,6 +194,11 @@
 <li>可能产生的单点故障或者瓶颈</li>
 <li>由于通过 API 网关进行了额外的网络跳转以及复杂性风险，响应时间增长了。</li>
 </ul>
+<h2 id="遇到的坑">遇到的坑</h2>
+<ol>
+<li>接口跨域问题</li>
+</ol>
+<p>网关层开启了 cors 处理，其他业务微服务则不需要开启 cors 处理，否则浏览器会报 cors error</p>
 <h2 id="学习文章">学习文章</h2>
 <p><a href="https://fredal.xin/build-api-gateway">建设微服务API网关的一些实践</a></p>
 

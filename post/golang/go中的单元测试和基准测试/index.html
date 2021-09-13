@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go中的单元测试和基准测试">
 <meta itemprop="description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"><meta itemprop="datePublished" content="2021-04-14T10:42:55&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-14T10:42:55&#43;08:00" />
-<meta itemprop="wordCount" content="2047">
+<meta itemprop="wordCount" content="2693">
 <meta itemprop="keywords" content="软件测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go中的单元测试和基准测试"/>
 <meta name="twitter:description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2047 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2693 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -146,6 +146,8 @@
     <li><a href="#单元测试">单元测试</a></li>
     <li><a href="#基准测试">基准测试</a></li>
     <li><a href="#第三方测试包">第三方测试包</a></li>
+    <li><a href="#visualising-the-costs-and-benefits">Visualising the Costs and Benefits</a></li>
+    <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
   </div>
@@ -455,7 +457,39 @@ go <span class="nb">test</span> -bench<span class="o">=</span>. -run<span class=
 <span class="kd">func</span> <span class="nf">DirExists</span><span class="p">(</span><span class="nx">t</span> <span class="nx">TestingT</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">msgAndArgs</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="visualising-the-costs-and-benefits">Visualising the Costs and Benefits</h2>
+<p>在受益于单元测试的好处的同时，也必然增加了代码量以及维护成本（单元测试代码也是要维护的）。下面这张成本/价值象限图很清晰的阐述了在不同性质的系统中单元测试成本和价值之间的关系。</p>
+<p><img src="/2021/images/image-golang-unit.png" alt="成本与收益的象限图"></p>
+<ol>
+<li>
+<p>依赖很少的简单的代码(左下)</p>
+<p>对于外部依赖少，代码又简单的代码。自然其成本和价值都是比较低的。举Go官方库里errors包为例，整个包就两个方法 New()和 Error()，没有任何外部依赖，代码也很简单，所以其单元测试起来也是相当方便。</p>
+</li>
+<li>
+<p>依赖较多但是很简单的代码（右下）</p>
+<p>依赖一多，mock和stub就必然增多，单元测试的成本也就随之增加。但代码又如此简单（比如上述errors包的例子），这个时候写单元测试的成本已经大于其价值，还不如不写单元测试。</p>
+</li>
+<li>
+<p>依赖很少的复杂代码 (左上)</p>
+<p>像这一类代码，是最有价值写单元测试的。比如一些独立的复杂算法（银行利息计算，保险费率计算，TCP协议解析等），像这一类代码外部依赖很少，但却很容易出错，如果没有单元测试，几乎不能保证代码质量。</p>
+</li>
+<li>
+<p>依赖很多又很复杂（右上）</p>
+<p>这种代码显然是单元测试的噩梦。写单元测试吧，代价高昂；不写单元测试吧，风险太高。像这种代码我们尽量在设计上将其分为两部分：1.处理复杂的逻辑部分 2.处理依赖部分 然后1部分进行单元测试</p>
+</li>
+</ol>
+<blockquote>
+<p>结论：一般编写依赖较少的单元测试代码，收益较高</p>
+</blockquote>
+<p>我们遇到最常见的依赖无非下面几种：</p>
+<ul>
+<li>网络依赖——函数执行依赖于网络请求，比如第三方http-api，rpc服务，消息队列等等</li>
+<li>数据库依赖</li>
+<li>I/O依赖（文件）</li>
+</ul>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="https://juejin.cn/post/6844903853528186894">搞定Go单元测试（一）——基础原理</a></p>
+
     </div>
 
     <div class="post-copyright">

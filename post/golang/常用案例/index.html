@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用案例">
 <meta itemprop="description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"><meta itemprop="datePublished" content="2021-01-08T17:57:02&#43;08:00" />
 <meta itemprop="dateModified" content="2021-01-08T17:57:02&#43;08:00" />
-<meta itemprop="wordCount" content="851">
+<meta itemprop="wordCount" content="956">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用案例"/>
 <meta name="twitter:description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 851 字 </span>
+          <span class="more-meta"> 约 956 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -148,6 +148,7 @@
     <li><a href="#移除数组元素">移除数组元素</a></li>
     <li><a href="#超时处理--定时器">超时处理 &amp; 定时器</a></li>
     <li><a href="#获取真实ip">获取真实IP</a></li>
+    <li><a href="#md5--hmac">md5 &amp;&amp; hmac</a></li>
   </ul>
 </nav>
   </div>
@@ -497,6 +498,45 @@
         <span class="k">return</span> <span class="nx">v</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">RemoteAddr</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="md5--hmac">md5 &amp;&amp; hmac</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">Md5</span><span class="p">(</span><span class="nx">str</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">md5</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+    <span class="nx">h</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nx">hex</span><span class="p">.</span><span class="nf">EncodeToString</span><span class="p">(</span><span class="nx">h</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">HmacSha256</span><span class="p">(</span><span class="nx">data</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">secret</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">h</span> <span class="o">:=</span> <span class="nx">hmac</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">sha256</span><span class="p">.</span><span class="nx">New</span><span class="p">,</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">secret</span><span class="p">))</span>
+    <span class="nx">h</span><span class="p">.</span><span class="nf">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nx">hex</span><span class="p">.</span><span class="nf">EncodeToString</span><span class="p">(</span><span class="nx">h</span><span class="p">.</span><span class="nf">Sum</span><span class="p">(</span><span class="kc">nil</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">// 简单的密码加密方案
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">makePassword</span><span class="p">(</span><span class="nx">pwd</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">helper</span><span class="p">.</span><span class="nf">Md5</span><span class="p">(</span><span class="nx">helper</span><span class="p">.</span><span class="nf">HmacSha256</span><span class="p">(</span><span class="s">&#34;盐&#34;</span><span class="p">,</span> <span class="nx">pwd</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>

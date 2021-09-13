@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 01 Sep 2021 10:35:12 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Sep 2021 07:55:16 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>寻医问药总结</title>
+      <link>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AF%BB%E5%8C%BB%E9%97%AE%E8%8D%AF%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 13 Sep 2021 07:55:16 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AF%BB%E5%8C%BB%E9%97%AE%E8%8D%AF%E6%80%BB%E7%BB%93/</guid>
+      <description>感冒 中医分类 中医有风热和风寒感冒之分，风寒感冒和风热感冒是比较常见的两个感冒病型，其区别在于一个在寒一个在热。 风寒感冒 风寒感冒一般有受寒经历</description>
+    </item>
+    
     <item>
       <title>Nginx</title>
       <link>https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/nginx/</link>
@@ -392,7 +401,7 @@
       <pubDate>Tue, 18 Aug 2020 16:40:37 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/goadmin/</guid>
-      <description>准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 用命令安装扩展 go get github.com/GoAdminGroup/go-admin/adm # 根据指示填写就可以初始化一个项目模板 adm init -l cn # 执行以下命令运行： &amp;gt; make serve # 访问</description>
+      <description>准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad</description>
     </item>
     
     <item>
@@ -446,7 +455,7 @@
       <pubDate>Sat, 08 Aug 2020 18:02:57 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E7%9B%91%E6%8E%A7%E8%BE%85%E5%8A%A9%E5%B9%B3%E5%8F%B0/</guid>
-      <description>日志监控系统 ELK Logs(Open source log monitoring) 服务器监控系统 Zabbix statsd + influxdb + grafana 网关链路追踪 作用：限流、降级、接口请求链路追踪、接口响应时间等 10分钟完成分布式追踪 ELK APM + Opentracing</description>
+      <description>日志监控系统 ELK Logs(Open source log monitoring) 服务器监控系统 Zabbix statsd + influxdb + grafana(监控UI平台) 网关链路追踪 作用：限流、降级、接口请求链路追踪、接口响应时间等 1</description>
     </item>
     
     <item>
@@ -869,7 +878,7 @@
       <pubDate>Sun, 22 Mar 2020 09:22:50 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      <description>参考文章 go语言面试题 Golang面试问题汇总</description>
+      <description>常见问题 垃圾回收、内存模型、内存调优、并发 参考文章 go语言面试题 Golang面试问题汇总</description>
     </item>
     
     <item>

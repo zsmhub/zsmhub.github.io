@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="8178">
+<meta itemprop="wordCount" content="8225">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8178 字 </span>
+          <span class="more-meta"> 约 8225 字 </span>
           <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
@@ -466,7 +466,7 @@
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">原子锁</span><span class="err">：</span><span class="nx">Go</span> <span class="nx">语言的</span> <span class="nx">sync</span><span class="o">/</span><span class="nx">atomic</span> <span class="nx">包提供了对原子操作的支持</span><span class="err">，</span><span class="nx">用于同步访问整数和指针</span><span class="err">。</span>
 
 <span class="o">-</span> <span class="nx">Go语言提供的原子操作都是非入侵式的</span><span class="err">。</span>
-<span class="o">-</span> <span class="nx">这些函数提供的原子操作共有五种</span><span class="err">：</span><span class="nx">增减</span><span class="err">、</span><span class="nx">比较并交换</span><span class="err">、</span><span class="nx">载入</span><span class="err">、</span><span class="nx">存储</span><span class="err">、</span><span class="nx">交换</span><span class="err">。</span>
+<span class="o">-</span> <span class="nx">这些函数提供的原子操作共有五种</span><span class="err">：</span><span class="nx">增减</span><span class="err">、</span><span class="nx">比较并交换</span><span class="err">、</span><span class="nx">载入</span><span class="err">、</span><span class="nx">存储</span><span class="err">、</span><span class="nx">交换</span><span class="err">。</span><span class="nx">eg</span><span class="p">:</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddUint32</span><span class="err">、</span><span class="nx">atomic</span><span class="p">.</span><span class="nx">CompareAndSwapUint32</span>
 <span class="o">-</span> <span class="nx">原子操作支持的类型类型包括int32</span><span class="err">、</span><span class="kt">int64</span><span class="err">、</span><span class="kt">uint32</span><span class="err">、</span><span class="kt">uint64</span><span class="err">、</span><span class="kt">uintptr</span><span class="err">、</span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="err">。</span>
 
 <span class="err">#</span> <span class="nx">原子操作与互斥锁的比较</span><span class="err">（</span><span class="nx">原子操作</span><span class="o">-</span><span class="p">&gt;</span><span class="nx">乐观锁</span><span class="err">，</span><span class="nx">互斥锁</span><span class="o">-</span><span class="p">&gt;</span><span class="nx">悲观锁</span><span class="err">）</span>

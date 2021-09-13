@@ -41,7 +41,7 @@
       <pubDate>Tue, 18 Aug 2020 16:40:37 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/goadmin/</guid>
-      <description>准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 用命令安装扩展 go get github.com/GoAdminGroup/go-admin/adm # 根据指示填写就可以初始化一个项目模板 adm init -l cn # 执行以下命令运行： &amp;gt; make serve # 访问</description>
+      <description>准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad</description>
     </item>
     
     <item>
