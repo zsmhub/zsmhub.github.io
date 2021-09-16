@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go高级知识">
 <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="851">
+<meta itemprop="wordCount" content="882">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go高级知识"/>
 <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 851 字 </span>
+          <span class="more-meta"> 约 882 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -146,6 +146,7 @@
     <li><a href="#死锁活锁和饥饿">死锁、活锁和饥饿</a></li>
     <li><a href="#引入私有仓库报错的解决方案">引入私有仓库报错的解决方案</a></li>
     <li><a href="#跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</a></li>
+    <li><a href="#golang-ast初探一个懒人源码分析工具">golang ast初探：一个懒人源码分析工具</a></li>
   </ul>
 </nav>
   </div>
@@ -243,7 +244,10 @@ git config --global url.https://gitlab.xxx.com/.insteadof http://gitlab.xxx.com/
 <span class="nf">doNext</span><span class="p">()</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="golang-ast初探一个懒人源码分析工具">golang ast初探：一个懒人源码分析工具</h2>
+<p><a href="https://jodezer.github.io/2017/12/golang-ast%E5%88%9D%E6%8E%A2-%E4%B8%80%E4%B8%AA%E6%87%92%E4%BA%BA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">查看原文</a></p>
+<p><a href="https://github.com/JodeZer/lazydog">一个懒人源码分析工具</a></p>
+
     </div>
 
     <div class="post-copyright">

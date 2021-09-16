@@ -49,7 +49,7 @@
 <meta itemprop="name" content="无限极分类树">
 <meta itemprop="description" content="分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这种形式。 另一种是nested set，"><meta itemprop="datePublished" content="2020-11-19T09:33:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-19T09:33:51&#43;08:00" />
-<meta itemprop="wordCount" content="1233">
+<meta itemprop="wordCount" content="1495">
 <meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="无限极分类树"/>
 <meta name="twitter:description" content="分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这种形式。 另一种是nested set，"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 1233 字 </span>
+          <span class="more-meta"> 约 1495 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -142,6 +142,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#分类树">分类树</a></li>
+    <li><a href="#go递归实现无限极系统菜单">GO递归实现无限极系统菜单</a></li>
     <li><a href="#php递归实现无限极分类树">php递归实现无限极分类树</a></li>
     <li><a href="#另类的无限极分类树设计">另类的无限极分类树设计</a></li>
     <li><a href="#左右值无限极分类">左右值无限极分类</a></li>
@@ -159,7 +160,99 @@
 <p>左右值形式查询起来比较高效，无需递归等，推荐使用，但是没有pid形式简单直观。</p>
 <p>无限极分类树的使用场景：菜单、组织架构等</p>
 <p>效率对比：递归效率低，引用方式效率高。</p>
-<h2 id="php递归实现无限极分类树">php递归实现无限极分类树</h2>
+<h2 id="go递归实现无限极系统菜单">GO递归实现无限极系统菜单</h2>
+<p><a href="https://www.codeleading.com/article/33912098232/">实现无限级菜单</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 递归获取父节点下的菜单，roleMenuIds：当前用户角色被授权的菜单权限id，不传则返回全部菜单
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">GetMenu</span><span class="p">(</span><span class="nx">parentId</span> <span class="kt">uint64</span><span class="p">,</span> <span class="nx">roleMenuIds</span> <span class="p">[]</span><span class="kt">uint64</span><span class="p">)</span> <span class="p">[]</span><span class="o">*</span><span class="nx">form</span><span class="p">.</span><span class="nx">MenuTree</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">menu</span> <span class="p">[]</span><span class="nx">model_account</span><span class="p">.</span><span class="nx">Menu</span>
+    <span class="nx">model_account</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">Model</span><span class="p">().</span><span class="nf">Where</span><span class="p">(</span><span class="s">&#34;parent_id=?&#34;</span><span class="p">,</span> <span class="nx">parentId</span><span class="p">).</span><span class="nf">Order</span><span class="p">(</span><span class="s">&#34;`order` asc&#34;</span><span class="p">).</span><span class="nf">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">menu</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">menuTreeList</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">form</span><span class="p">.</span><span class="nx">MenuTree</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">menu</span> <span class="p">{</span>
+        <span class="nx">child</span> <span class="o">:=</span> <span class="nf">GetMenu</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span> <span class="nx">roleMenuIds</span><span class="p">)</span>
+        <span class="nx">node</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">form</span><span class="p">.</span><span class="nx">MenuTree</span><span class="p">{</span>
+            <span class="nx">Id</span><span class="p">:</span>    <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span>
+            <span class="nx">Title</span><span class="p">:</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Title</span><span class="p">,</span>
+            <span class="nx">Slug</span><span class="p">:</span>  <span class="nx">v</span><span class="p">.</span><span class="nx">Slug</span><span class="p">,</span>
+            <span class="nx">Icon</span><span class="p">:</span>  <span class="nx">v</span><span class="p">.</span><span class="nx">Icon</span><span class="p">,</span>
+            <span class="nx">Uri</span><span class="p">:</span>   <span class="nx">v</span><span class="p">.</span><span class="nx">Uri</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="nx">node</span><span class="p">.</span><span class="nx">Children</span> <span class="p">=</span> <span class="nx">child</span>
+
+        <span class="c1">// 处理用户角色可查看的菜单
+</span><span class="c1"></span>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">roleMenuIds</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">flag</span> <span class="kt">bool</span>
+            <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">vv</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">roleMenuIds</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="nx">vv</span> <span class="o">==</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span> <span class="p">{</span>
+                    <span class="nx">flag</span> <span class="p">=</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="c1">// 当前菜单无权限且子菜单为空
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">!</span><span class="nx">flag</span> <span class="o">&amp;&amp;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">Children</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="k">continue</span>
+            <span class="p">}</span>
+
+            <span class="c1">// 处理父级菜单存在而子级菜单不存在的情况
+</span><span class="c1"></span>            <span class="k">if</span> <span class="nx">flag</span> <span class="o">&amp;&amp;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">Uri</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">Children</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="k">continue</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nx">menuTreeList</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">menuTreeList</span><span class="p">,</span> <span class="nx">node</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">menuTreeList</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="php递归实现无限极分类树">php递归实现无限极分类树</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
