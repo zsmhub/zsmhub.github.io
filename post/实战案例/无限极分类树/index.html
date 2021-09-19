@@ -49,7 +49,7 @@
 <meta itemprop="name" content="无限极分类树">
 <meta itemprop="description" content="分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这种形式。 另一种是nested set，"><meta itemprop="datePublished" content="2020-11-19T09:33:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-19T09:33:51&#43;08:00" />
-<meta itemprop="wordCount" content="1495">
+<meta itemprop="wordCount" content="1554">
 <meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="无限极分类树"/>
 <meta name="twitter:description" content="分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这种形式。 另一种是nested set，"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 1495 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1554 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -206,15 +206,25 @@
 </span><span class="lnt">40
 </span><span class="lnt">41
 </span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 递归获取父节点下的菜单，roleMenuIds：当前用户角色被授权的菜单权限id，不传则返回全部菜单
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">menu</span> <span class="p">[]</span><span class="nx">model_account</span><span class="p">.</span><span class="nx">Menu</span> <span class="c1">// 定义全局变量
 </span><span class="c1"></span><span class="kd">func</span> <span class="nf">GetMenu</span><span class="p">(</span><span class="nx">parentId</span> <span class="kt">uint64</span><span class="p">,</span> <span class="nx">roleMenuIds</span> <span class="p">[]</span><span class="kt">uint64</span><span class="p">)</span> <span class="p">[]</span><span class="o">*</span><span class="nx">form</span><span class="p">.</span><span class="nx">MenuTree</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">menu</span> <span class="p">[]</span><span class="nx">model_account</span><span class="p">.</span><span class="nx">Menu</span>
-    <span class="nx">model_account</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">Model</span><span class="p">().</span><span class="nf">Where</span><span class="p">(</span><span class="s">&#34;parent_id=?&#34;</span><span class="p">,</span> <span class="nx">parentId</span><span class="p">).</span><span class="nf">Order</span><span class="p">(</span><span class="s">&#34;`order` asc&#34;</span><span class="p">).</span><span class="nf">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">menu</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">menu</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">model_account</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">Model</span><span class="p">().</span><span class="nf">Order</span><span class="p">(</span><span class="s">&#34;`order` asc&#34;</span><span class="p">).</span><span class="nf">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">menu</span><span class="p">)</span> <span class="c1">// 一次性取出全部菜单，只需执行一次sql
+</span><span class="c1"></span>    <span class="p">}</span>
 
     <span class="kd">var</span> <span class="nx">menuTreeList</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">form</span><span class="p">.</span><span class="nx">MenuTree</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">menu</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">ParentId</span> <span class="o">!=</span> <span class="nx">parentId</span> <span class="p">{</span> <span class="c1">// 关键一步：符合条件的才往下走
+</span><span class="c1"></span>            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
         <span class="nx">child</span> <span class="o">:=</span> <span class="nf">GetMenu</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span> <span class="nx">roleMenuIds</span><span class="p">)</span>
         <span class="nx">node</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">form</span><span class="p">.</span><span class="nx">MenuTree</span><span class="p">{</span>
             <span class="nx">Id</span><span class="p">:</span>    <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span>
