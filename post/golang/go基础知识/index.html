@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="9284">
+<meta itemprop="wordCount" content="9834">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 9284 字 </span>
-          <span class="more-meta"> 预计阅读 19 分钟 </span>
+          <span class="more-meta"> 约 9834 字 </span>
+          <span class="more-meta"> 预计阅读 20 分钟 </span>
         
       </div>
     </header>
@@ -1565,6 +1565,108 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 <li>指针类型：ptr</li>
 </ul>
 </li>
+<li>
+<p>template 包是数据驱动的文本输出模板，其实就是在写好的模板中填充数据。</p>
+<p><a href="https://juejin.cn/post/6844903762901860360">标准库 text/template 包深入浅出</a></p>
+<p>{{ 和 }} 中间的句号 . 代表传入模板的数据，根据传入的数据不同渲染不同的内容。. 可以代表 go 语言中的任何类型，如结构体、哈希等。至于 {{ 和 }} 包裹的内容统称为 action，分为两种类型：</p>
+<p>数据求值（data evaluations）
+控制结构（control structures）</p>
+<p>action 求值的结果会直接复制到模板中，控制结构和我们写 Go 程序差不多，也是条件语句、循环语句、变量、函数调用等等&hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 加载多个模板到一个命名空间（同一个命名空间的模块可以互相引用）</span>
+template.ParseFiles<span class="o">(</span><span class="s2">&#34;header.tmpl&#34;</span>, <span class="s2">&#34;content.tmpl&#34;</span>, <span class="s2">&#34;footer.tmpl&#34;</span><span class="o">)</span>
+
+<span class="c1"># 获取传入数据的数组第一个</span>
+<span class="o">(</span>index . 0<span class="o">)</span>.xxx
+
+<span class="c1"># 条件语句</span>
+<span class="o">{{</span> <span class="k">if</span> pipeline <span class="o">}}</span> T1 <span class="o">{{</span> <span class="k">else</span> <span class="k">if</span> pipeline <span class="o">}}</span> T0 <span class="o">{{</span> end <span class="o">}}</span>
+
+<span class="c1"># 循环语句</span>
+<span class="o">{{</span> range . <span class="o">}}</span> T1 <span class="o">{{</span> <span class="k">else</span> <span class="o">}}</span> T0 <span class="o">{{</span> end <span class="o">}}</span> <span class="c1"># 这个 else 比较有意思，如果 pipeline 的长度为 0 则输出 else 中的内容</span>
+<span class="o">{{</span> range <span class="nv">$index</span>, <span class="nv">$value</span> :<span class="o">=</span> pipeline <span class="o">}}</span> T1 <span class="o">{{</span> end <span class="o">}}</span> <span class="c1"># 获取容器的下标</span>
+
+<span class="c1">## 上下文，with 创建一个新的上下文环境，在此环境中的 . 与外面的 . 无关。</span>
+<span class="o">{{</span> with pipeline <span class="o">}}</span> T1 <span class="o">{{</span> <span class="k">else</span> <span class="o">}}</span> T0 <span class="o">{{</span> end <span class="o">}}</span> <span class="c1"># 如果 pipeline 是空值则输出 T0</span>
+<span class="o">{{</span> with arg <span class="o">}}</span>
+    . <span class="c1"># 此时 . 就是 arg</span>
+<span class="o">{{</span> end <span class="o">}}</span>
+
+<span class="c1"># and</span>
+tpl :<span class="o">=</span> <span class="s2">&#34;{{ and .x .y .z }}&#34;</span>
+t, _ :<span class="o">=</span> template.New<span class="o">(</span><span class="s2">&#34;test&#34;</span><span class="o">)</span>.Parse<span class="o">(</span>tpl<span class="o">)</span>
+t.Execute<span class="o">(</span>os.Stdout, map<span class="o">[</span>string<span class="o">]</span>interface<span class="o">{}{</span>
+    <span class="s2">&#34;x&#34;</span>: 1,
+    <span class="s2">&#34;y&#34;</span>: 0,
+    <span class="s2">&#34;z&#34;</span>: 3,
+<span class="o">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Api</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">IsGet</span>      <span class="kt">bool</span>
+    <span class="nx">StructName</span> <span class="kt">string</span>
+    <span class="nx">Method</span>     <span class="kt">string</span>
+<span class="p">}</span>
+<span class="nx">apis</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">Api</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nx">tpl</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">ParseFiles</span><span class="p">(</span><span class="s">&#34;./api_generate/api_template.tmpl&#34;</span><span class="p">)</span>
+<span class="nx">buf</span> <span class="o">:=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nf">NewBufferString</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+<span class="nx">err</span> <span class="p">=</span> <span class="nx">tpl</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="nx">apis</span><span class="p">)</span> <span class="c1">// 模板和变量整合
+</span><span class="c1"></span><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">Wrap</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="s">&#34;tpl.Execute failed&#34;</span><span class="p">)</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+<span class="nx">result</span> <span class="p">=</span> <span class="nx">buf</span><span class="p">.</span><span class="nf">Bytes</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
 <div class="highlight"><div class="chroma">

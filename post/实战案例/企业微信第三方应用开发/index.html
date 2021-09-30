@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>企业微信第三方应用开发 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="企业微信第三方应用开发" />
+<meta property="og:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-09-24T16:46:43&#43;08:00" />
+<meta property="article:modified_time" content="2021-09-24T16:46:43&#43;08:00" />
+
+<meta itemprop="name" content="企业微信第三方应用开发">
+<meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
+<meta itemprop="dateModified" content="2021-09-24T16:46:43&#43;08:00" />
+<meta itemprop="wordCount" content="2715">
+<meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="企业微信第三方应用开发"/>
+<meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">企业微信第三方应用开发</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-09-24 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+            </div>
+          <span class="more-meta"> 约 2715 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#术语介绍">术语介绍</a></li>
+    <li><a href="#区分三种类型access_token">区分三种类型access_token</a></li>
+    <li><a href="#前端js-sdk使用权限的签名算法">前端JS-SDK使用权限的签名算法</a></li>
+    <li><a href="#应用授权流程">应用授权流程</a></li>
+    <li><a href="#一些心得">一些心得</a></li>
+    <li><a href="#特别留意">特别留意</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="术语介绍">术语介绍</h2>
+<ol>
+<li>
+<p>corpid</p>
+<p>每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看</p>
+</li>
+<li>
+<p>provider_secret</p>
+<p>作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。</p>
+</li>
+<li>
+<p>suiteid/suite_secret</p>
+<p>suiteid（第三方应用ID）为应用的唯一身份标识，suite_secret为对应的调用身份密钥。</p>
+</li>
+<li>
+<p>suite_ticket</p>
+<p>suite_ticket与suite_secret配套使用，用于获取suite_access_token。</p>
+<p>suite_ticket由企业微信后台向登记的应用指令回调地址定期推送（10分钟），<code>用于加强调用者身份确认</code>（即使suite_secret泄露，也无法获取到suite_access_token）。</p>
+<p>若开发者丢失suite_ticket，除了等待定时推送的事件外，开发者也<code>可以在管理端手动触发推送</code>。</p>
+</li>
+<li>
+<p>userid &amp;&amp; open_userid</p>
+<p>通过网页授权接口可以获取到当前用户的 userid &amp;&amp; open_userid 信息，如果需要获取用户的更多信息可以调用 通讯录管理 - 成员接口 来获取。</p>
+<ul>
+<li>userid用于在一个企业内唯一标识一个用户[第三方应用服务商可以将返回信息中的corpid及userid为主键匹配用户]</li>
+<li>open_userid：全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。 [第三方应用服务商可以将此字段作为用户id]</li>
+</ul>
+</li>
+<li>
+<p>回调配置</p>
+<ul>
+<li>数据回调URL：用于接收用户发送给应用的消息和事件，包括文本、图片、视频、位置、链接等消息和成员关注、取消关注、进入应用、通讯录变更等事件，详见<a href="https://work.weixin.qq.com/api/doc/90001/90143/90373">消息推送文档</a></li>
+<li>指令回调URL（即第三方应用回调URL）：系统将会把此应用的授权变更事件以及ticket参数推送给此URL</li>
+</ul>
+</li>
+<li>
+<p>应用上线与上架</p>
+<p>tip: 第三方应用可只上线，而不上架。</p>
+<p>上线应用-&gt;自有渠道推广，用户达到企业微信要求，程序达到优先要求-&gt;申请上架应用-&gt;企业微信联系联合体验优化,灰度测试优化-&gt;应用上架出现在企业微信应用市场</p>
+<p>上线应用：上线后你的应用可在自有渠道让其它公司进行安装 1. 其它公司可以在你第三方应用的网站进行安装（需程序实现自行构造测试授权链接）2. 服务商后台应用的二维码进行安装 。</p>
+<p><img src="/images/2021/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy84OTc5Nzk0LWZhNDYwYzEzOGYyNjIxYWMucG5n.png" alt="应用开发与推广"></p>
+</li>
+</ol>
+<h2 id="区分三种类型access_token">区分三种类型access_token</h2>
+<p>在第三方应用开发提供的接口中，会涉及到三种类型的access_token。下面表格对这三类token的定义及使用场景进行说明，开发者应在不同场景中选择对应的token：</p>
+<p>简单地说： 在应用授权前和授权时，调用的接口一般都是用的第三方应用的token。而在授权后，操作企业相关接口，用的就是授权企业的token。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服务商的token(provider_access_token)</td>
+<td>以corpid（服务商CorpID）、provider_secret（服务商密钥）换取provider_access_token，代表的是服务商的身份</td>
+<td>用于服务商级别的接口调用，比如登录授权、推广二维码等。说明文档参考 获取服务商凭证</td>
+</tr>
+<tr>
+<td>第三方应用的token(suite_access_token)</td>
+<td>以suite_id（第三方应用ID）、suite_secret（第三方应用密钥）换取suite_access_token，代表第三方应用的身份</td>
+<td>用于获取第三方应用的预授权码，获取授权企业信息等。说明文档参考 获取第三方应用凭证</td>
+</tr>
+<tr>
+<td>授权企业的token(access_token)</td>
+<td>企业安装第三方应用后，第三方服务商以企业的corpid、永久授权码来获取access_token</td>
+<td>用于操作授权企业相关接口，如通讯录管理，消息推送等。说明文档参考 获取企业凭证</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>access_token 在调用 api 之前怎么验证它的有效性？</p>
+</blockquote>
+<p>方案：access_token如果失效调用接口会有返回错误码的，如果返回了42001错误码，就是失效了，需要重新获取一次。</p>
+<ul>
+<li>42001：access_token已过期或provider_access_token已过期</li>
+<li>42009：suite_access_token已过期</li>
+</ul>
+<h2 id="前端js-sdk使用权限的签名算法">前端JS-SDK使用权限的签名算法</h2>
+<p><a href="https://work.weixin.qq.com/api/doc/90001/90144/90539">JS-SDK使用权限签名算法</a></p>
+<p>签名生成规则：</p>
+<ul>
+<li>参与签名的参数有四个: noncestr（随机字符串）, jsapi_ticket(如何获取参考“获取企业jsapi_ticket”以及“获取应用的jsapi_ticket接口”), timestamp（时间戳）, url（前端请求网页的URL， 不包含#及其后面部分）</li>
+<li>需实时生成签名，并缓存jsapi_ticket</li>
+</ul>
+<p>jsapi_ticket：分为 企业的jsapi_ticket(corp_jsapi_ticket) 和 应用的jsapi_ticket(app_jsapi_ticket)。jsapi_ticket是H5应用调用企业微信JS接口的临时票据。正常情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。</p>
+<h2 id="应用授权流程">应用授权流程</h2>
+<p><a href="https://work.weixin.qq.com/api/doc/90001/90143/90597">应用授权文档</a></p>
+<p><img src="/images/2021/1eb70248c93dbc87bfd51e4e9974ae33.png" alt="应用授权流程"></p>
+<h2 id="一些心得">一些心得</h2>
+<blockquote>
+<p>对于第三方服务商来说，如何保证多个企业的所有员工唯一性？如何保证多个企业内的相同客户的唯一性？</p>
+</blockquote>
+<ol>
+<li>使用我们第三方应用的是员工，不同企业的员工可以用 open_userid 保证唯一性</li>
+<li>前端只能拿到客户的 external_userid，后端用该 external_userid 拿到的 union_id，不同企业的客户可以用 external_userid 或 union_id 保证唯一性</li>
+</ol>
+<blockquote>
+<p>获取客户详情API</p>
+</blockquote>
+<p><a href="https://work.weixin.qq.com/api/doc/90001/90143/92265">获取客户详情API</a></p>
+<ul>
+<li>
+<p>请求参数说明</p>
+<p>access_token： 企业的access_token，非第三方服务商的access_token</p>
+<p>external_userid: 外部联系人的userid，注意不是企业成员的帐号。</p>
+<p><strong>对于第三方服务商来说，可以使用 external_userid 保证客户的唯一性</strong></p>
+</li>
+<li>
+<p>响应参数说明</p>
+<p>关于返回的unionid，如果是第三方应用调用该接口，则返回的unionid是该第三方服务商所关联的微信开发者帐号下的unionid。也就是说，同一个企业客户，企业自己调用，与第三方服务商调用，所返回的unionid不同；不同的服务商调用，所返回的unionid也不同。</p>
+<p><strong>这里其实是说第三方服务商调用客户详情API时，返回的客户 unionid 是第三方服务商微信开放平台上的 unionid</strong></p>
+<p><strong>第三方服务商服务于多个企业时，也可以使用 unionid 保证客户的唯一</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>回调消息/事件类型</p>
+</blockquote>
+<pre><code>- MsgType: 消息类型
+- EventType: 事件类型，当 MsgType 为 event 时存在
+- InfoType: 是企业微信第三方服务商专用字段，此时我们可以手动设置 MsgType=&quot;third&quot;，这样InfoType就等于EventType
+- ChangeType：变更类型，当 InfoType 为 change_external_contact 时存在
+</code></pre>
+<h2 id="特别留意">特别留意</h2>
+<ol>
+<li>所有接口返回包里都有errcode、errmsg。开发者需根据errcode是否为0判断是否调用成功</li>
+<li>接口调用请求体和响应体是 json 格式，回调接口的请求体和响应体是 xml 格式</li>
+</ol>
+<h2 id="参考文献">参考文献</h2>
+<p><a href="http://loriame.cn/archives/be1a3ce8.html">企业微信第三方服务商应用开发经验分享</a></p>
+<p><a href="https://www.daimajiaoliu.com/daima/7b746c1306d1804">企业微信服务商第三方应用开发流程</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-09-24
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%A5%AE%E8%8C%B6%E4%B9%8B%E9%81%93/">
+            <span class="next-text nav-default">饮茶之道</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-09-24 16:46:43 \u002b0800 CST',
+        title: '企业微信第三方应用开发',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

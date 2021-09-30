@@ -3,28 +3,49 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2021-09-15T08:55:04+08:00</lastmod>
+    <lastmod>2021-09-24T16:46:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2021-09-15T08:55:04+08:00</lastmod>
+    <lastmod>2021-09-24T16:46:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2021-09-15T08:55:04+08:00</lastmod>
+    <lastmod>2021-09-24T16:46:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/</loc>
-    <lastmod>2021-09-15T08:55:04+08:00</lastmod>
+    <lastmod>2021-09-24T16:46:43+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/</loc>
+    <lastmod>2021-09-24T16:46:43+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2021-09-24T16:46:43+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</loc>
+    <lastmod>2021-09-24T16:46:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -262,13 +283,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</loc>
-    <lastmod>2021-05-17T15:21:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</loc>
     <lastmod>2021-05-17T15:21:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
