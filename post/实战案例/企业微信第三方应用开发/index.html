@@ -49,7 +49,7 @@
 <meta itemprop="name" content="企业微信第三方应用开发">
 <meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
 <meta itemprop="dateModified" content="2021-09-24T16:46:43&#43;08:00" />
-<meta itemprop="wordCount" content="2715">
+<meta itemprop="wordCount" content="3327">
 <meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="企业微信第三方应用开发"/>
 <meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 2715 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3327 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -146,7 +146,11 @@
     <li><a href="#前端js-sdk使用权限的签名算法">前端JS-SDK使用权限的签名算法</a></li>
     <li><a href="#应用授权流程">应用授权流程</a></li>
     <li><a href="#一些心得">一些心得</a></li>
-    <li><a href="#特别留意">特别留意</a></li>
+    <li><a href="#特别留意">特别留意</a>
+      <ul>
+        <li><a href="#上线注意">上线注意</a></li>
+      </ul>
+    </li>
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
@@ -184,21 +188,22 @@
 <li>
 <p>回调配置</p>
 <ul>
-<li>数据回调URL：用于接收用户发送给应用的消息和事件，包括文本、图片、视频、位置、链接等消息和成员关注、取消关注、进入应用、通讯录变更等事件，详见<a href="https://work.weixin.qq.com/api/doc/90001/90143/90373">消息推送文档</a></li>
-<li>指令回调URL（即第三方应用回调URL）：系统将会把此应用的授权变更事件以及ticket参数推送给此URL</li>
+<li>服务商后台 -&gt; 应用管理 -&gt; 第三方应用 -&gt; 数据回调URL：用于接收用户发送给应用的消息和事件，包括文本、图片、视频、位置、链接等消息和成员关注、取消关注、进入应用、通讯录变更等事件，详见<a href="https://work.weixin.qq.com/api/doc/90001/90143/90373">消息推送文档</a></li>
+<li>服务商后台 -&gt; 应用管理 -&gt; 第三方应用 -&gt; 指令回调URL（即第三方应用回调URL）：系统将会把此应用的授权变更事件以及ticket参数推送给此URL</li>
+<li>服务商后台 -&gt; 应用管理 -&gt; 通用开发参数 -&gt; 系统事件接收URL：<a href="https://work.weixin.qq.com/api/doc/90001/90143/90585">通过推广二维码企业微信注册成功事件</a></li>
 </ul>
 </li>
 <li>
 <p>应用上线与上架</p>
 <p>tip: 第三方应用可只上线，而不上架。</p>
 <p>上线应用-&gt;自有渠道推广，用户达到企业微信要求，程序达到优先要求-&gt;申请上架应用-&gt;企业微信联系联合体验优化,灰度测试优化-&gt;应用上架出现在企业微信应用市场</p>
-<p>上线应用：上线后你的应用可在自有渠道让其它公司进行安装 1. 其它公司可以在你第三方应用的网站进行安装（需程序实现自行构造测试授权链接）2. 服务商后台应用的二维码进行安装 。</p>
+<p>上线应用的安装途径：1. 注册按钮（需程序实现自行构造测试授权链接）2. 推广二维码（设置入口：服务商管理后台 &gt; 应用推广 &gt; 推广二维码）</p>
 <p><img src="/images/2021/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy84OTc5Nzk0LWZhNDYwYzEzOGYyNjIxYWMucG5n.png" alt="应用开发与推广"></p>
 </li>
 </ol>
 <h2 id="区分三种类型access_token">区分三种类型access_token</h2>
 <p>在第三方应用开发提供的接口中，会涉及到三种类型的access_token。下面表格对这三类token的定义及使用场景进行说明，开发者应在不同场景中选择对应的token：</p>
-<p>简单地说： 在应用授权前和授权时，调用的接口一般都是用的第三方应用的token。而在授权后，操作企业相关接口，用的就是授权企业的token。</p>
+<p>服务商、第三方应用、授权企业的关系：一个服务商下有多个第三方应用，每个第三方应用可授权多个企业使用。</p>
 <table>
 <thead>
 <tr>
@@ -228,11 +233,16 @@
 <blockquote>
 <p>access_token 在调用 api 之前怎么验证它的有效性？</p>
 </blockquote>
-<p>方案：access_token如果失效调用接口会有返回错误码的，如果返回了42001错误码，就是失效了，需要重新获取一次。</p>
+<p>方案：access_token如果失效调用接口会有返回错误码的，如果返回了42001/42009错误码，就是失效了，需要重新获取一次。</p>
 <ul>
 <li>42001：access_token已过期或provider_access_token已过期</li>
 <li>42009：suite_access_token已过期</li>
 </ul>
+<blockquote>
+<p>企业微信access_token在有效期内重复获取会返回相同结果，有效期正常情况下为7200秒（2小时）。</p>
+</blockquote>
+<p>注意：<code>每次获取token时，该token都有2小时有效期</code></p>
+<p><img src="/images/2021/qyapi_token_validate.png" alt="每次获取token时，该token都有2小时有效期"></p>
 <h2 id="前端js-sdk使用权限的签名算法">前端JS-SDK使用权限的签名算法</h2>
 <p><a href="https://work.weixin.qq.com/api/doc/90001/90144/90539">JS-SDK使用权限签名算法</a></p>
 <p>签名生成规则：</p>
@@ -249,9 +259,15 @@
 <p>对于第三方服务商来说，如何保证多个企业的所有员工唯一性？如何保证多个企业内的相同客户的唯一性？</p>
 </blockquote>
 <ol>
-<li>使用我们第三方应用的是员工，不同企业的员工可以用 open_userid 保证唯一性</li>
+<li>使用我们第三方应用的是员工，不同企业的员工可以用 open_userid 保证唯一性（对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的）</li>
 <li>前端只能拿到客户的 external_userid，后端用该 external_userid 拿到的 union_id，不同企业的客户可以用 external_userid 或 union_id 保证唯一性</li>
 </ol>
+<p><code>关于ExternalUserId</code></p>
+<p>ExternalUserId是企业微信外部联系人的标识，但需要开发者(尤其是第三方开发者)注意的是，对于同一个外部联系人，不同调用方（企业/第三方服务商）获取到的ExternalUserId是不同的。</p>
+<p><code>关于客户群ID</code></p>
+<p>企业微信为每个客户群生成唯一的ID（chat_id），同样需要注意的是，对于同一个群，不同调用方（企业/第三方服务商）获取到的chat_id是不同的</p>
+<p><code>unionid获取，需提前绑定微信开发者ID</code></p>
+<p><img src="/images/2021/syncCopiedImage_1633678662020_1633678666426.png" alt="客户联系设置"></p>
 <blockquote>
 <p>获取客户详情API</p>
 </blockquote>
@@ -275,14 +291,24 @@
 </blockquote>
 <pre><code>- MsgType: 消息类型
 - EventType: 事件类型，当 MsgType 为 event 时存在
-- InfoType: 是企业微信第三方服务商专用字段，此时我们可以手动设置 MsgType=&quot;third&quot;，这样InfoType就等于EventType
+- InfoType: 是企业微信第三方应用的`专用字段`，此时我们可以手动设置 MsgType=&quot;third&quot;，这样InfoType就等同于EventType
 - ChangeType：变更类型，当 InfoType 为 change_external_contact 时存在
 </code></pre>
 <h2 id="特别留意">特别留意</h2>
 <ol>
 <li>所有接口返回包里都有errcode、errmsg。开发者需根据errcode是否为0判断是否调用成功</li>
 <li>接口调用请求体和响应体是 json 格式，回调接口的请求体和响应体是 xml 格式</li>
+<li>如果第三方应用需要使用发微信小程序功能，需要先配置一个第三方小程序绑定微信小程序。授权企业需要同时安装第三方应用和第三方小程序（推广二维码支持应用和小程序混合推广）</li>
 </ol>
+<h3 id="上线注意">上线注意</h3>
+<blockquote>
+<p>设置IP白名单</p>
+</blockquote>
+<p>将代码运行服务器的IP设置为IP白名单（支持多个ip白名单），否则无法调用企业微信的api，配置路径：服务商后台-&gt;基本信息-&gt;<code>IP白名单</code></p>
+<blockquote>
+<p>生成推广二维码并获取推广包ID(template_id)</p>
+</blockquote>
+<p>设置入口：服务商管理后台 &gt; 应用推广 &gt; 推广二维码</p>
 <h2 id="参考文献">参考文献</h2>
 <p><a href="http://loriame.cn/archives/be1a3ce8.html">企业微信第三方服务商应用开发经验分享</a></p>
 <p><a href="https://www.daimajiaoliu.com/daima/7b746c1306d1804">企业微信服务商第三方应用开发流程</a></p>

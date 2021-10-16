@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go的一些坑">
 <meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"><meta itemprop="datePublished" content="2020-11-13T11:17:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="wordCount" content="1531">
+<meta itemprop="wordCount" content="1719">
 <meta itemprop="keywords" content="坑," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go的一些坑"/>
 <meta name="twitter:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1531 字 </span>
+          <span class="more-meta"> 约 1719 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -148,6 +148,7 @@
     <li><a href="#len--utf8runecountinstring">len &amp; utf8.RuneCountInString</a></li>
     <li><a href="#在一个值为-nil-的-channel-上发送和接收数据将永久阻塞">在一个值为 nil 的 channel 上发送和接收数据将永久阻塞</a></li>
     <li><a href="#golang-没有全局异常捕获">golang 没有全局异常捕获</a></li>
+    <li><a href="#如何在http服务端程序中读取2次request-body">如何在http服务端程序中读取2次Request Body</a></li>
   </ul>
 </nav>
   </div>
@@ -425,6 +426,19 @@ fmt.Println(utf8.RuneCountInString(x)) // 输出：6
         <span class="nf">f</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
     <span class="p">}(</span><span class="nx">v</span><span class="p">)</span>
 <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="如何在http服务端程序中读取2次request-body">如何在http服务端程序中读取2次Request Body</h2>
+<p>在http服务端程序中,我想在真正处理Request Body之前将Body中的内容记录到日志中.</p>
+<p>实际上这一需求就是要在Request Body中读取2次数据，由于Body为<code>ReadCloser</code> 类型，读取一次之后就无法再次进行读取，就需要读取完之后对Body重新赋值来支持后续的读取操作, 网上一般都是这样实现的.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">bodyBytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Body</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">NopCloser</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nf">NewBuffer</span><span class="p">(</span><span class="nx">bodyBytes</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
 </div>

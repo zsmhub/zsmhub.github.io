@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="8357">
+<meta itemprop="wordCount" content="8754">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 8357 字 </span>
-          <span class="more-meta"> 预计阅读 17 分钟 </span>
+          <span class="more-meta"> 约 8754 字 </span>
+          <span class="more-meta"> 预计阅读 18 分钟 </span>
         
       </div>
     </header>
@@ -1192,9 +1192,17 @@
 </span><span class="lnt">62
 </span><span class="lnt">63
 </span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">context是Go中广泛使用的程序包</span><span class="err">，</span><span class="nx">由Google官方开发</span><span class="err">，</span><span class="nx">在1</span><span class="mf">.7</span><span class="nx">版本引入</span><span class="err">。</span><span class="nx">它用来简化在多个</span> <span class="nx">goroutine</span> <span class="nx">传递上下文数据</span><span class="err">、</span><span class="p">(</span><span class="nx">手动</span><span class="o">/</span><span class="nx">超时</span><span class="p">)</span><span class="nx">中止</span> <span class="nx">goroutine</span> <span class="nx">等操作</span><span class="p">.</span>
+
+<span class="s">`对于路由层来说，不要将 context 传入 goroutine 中，因为路由结束后，context 可能会 Cancel goroutine`</span>
+
+<span class="s">`context `</span>
 
 <span class="nx">context库中</span><span class="err">，</span><span class="nx">有4个关键方法</span><span class="err">：</span>
 <span class="nx">context</span><span class="p">.</span><span class="nf">WithCancel</span><span class="p">()</span> <span class="nx">返回一个cancel函数</span><span class="err">，</span><span class="nx">调用这个函数则可以主动停止goroutine</span><span class="err">。</span>
@@ -1476,7 +1484,7 @@
 </div><h3 id="gorm-bulk">gorm-bulk</h3>
 <p>gorm 的补充，支持批量插入、批量更新等【gorm2.0已支持这些功能： 利用clauses实现】</p>
 <h3 id="go-nsq">go-nsq</h3>
-<p>消息队列</p>
+<p>消息队列，支持异步队列</p>
 <h3 id="go-redis">go-redis</h3>
 <p><a href="https://www.lsdcloud.com/go/middleware/go-redis.html">go-redis文档</a></p>
 <div class="highlight"><div class="chroma">
@@ -2014,9 +2022,29 @@
 <h2 id="githubcompuerkitobiogoquery">github.com/PuerkitoBio/goquery</h2>
 <p>网页爬虫工具，goquery的选择器功能很强大，很好用。</p>
 <h2 id="githubcomcenkaltibackoff">github.com/cenkalti/backoff</h2>
-<p>退避算法</p>
-<p><a href="https://zhuanlan.zhihu.com/p/140743365">在 Go 代码中使用退避方法</a></p>
-<h2 id="http-client">http client</h2>
+<p>操作重试 <a href="https://tkstorm.com/posts-list/programming/go/library/backoff/">Golang - Backoff+Ticker+Timer示例</a></p>
+<p>操作重试有不同的策略（退避算法），同时操作重试在很场景中都使用到了，比如IP数据包发送(CSMA/CD)、网络通信，RPC服务调用等，有的是用于协调网络传输速率，避免网络拥塞，有的是为了考虑网络波动影响，提高服务可用性；</p>
+<p>常见的是<code>指数退避算法</code>，通常起先是基于一个较低的时间间隔尝试操作，若尝试失败，则按指数级的逐步延长事件发生的间隔时间，直至超过最大尝试机会；大多数指数退避算法会利用抖动（随机延迟）来防止连续的冲突。</p>
+<p>退避算法有两块，一块是退避策略，即间隔多久操作下一次（退避策略）；另一块是累计可以支持的最大操作次数（重试次数）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 使用指数退避算法策略示例（失败后，基于指数级别的间隔，再次发起操作）
+</span><span class="c1"></span><span class="nx">syncToken</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="nx">retryer</span> <span class="o">:=</span> <span class="nx">backoff</span><span class="p">.</span><span class="nf">WithContext</span><span class="p">(</span><span class="nx">backoff</span><span class="p">.</span><span class="nf">NewExponentialBackOff</span><span class="p">(),</span> <span class="nx">ctx</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">backoff</span><span class="p">.</span><span class="nf">Retry</span><span class="p">(</span><span class="nx">syncToken</span><span class="p">,</span> <span class="nx">retryer</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;retry getting access token failed&#34;</span><span class="p">,</span> <span class="s">&#34;err&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="http-client">http client</h2>
 <p><a href="https://github.com/valyala/fasthttp">fasthttp</a></p>
 <p><a href="https://github.com/go-resty/resty">resty</a></p>
 <h2 id="githubcomtotovaltotoval">github.com/totoval/totoval</h2>

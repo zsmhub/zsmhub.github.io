@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="9834">
+<meta itemprop="wordCount" content="9962">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 9834 字 </span>
+          <span class="more-meta"> 约 9962 字 </span>
           <span class="more-meta"> 预计阅读 20 分钟 </span>
         
       </div>
@@ -257,7 +257,7 @@
 <span class="err">#</span> <span class="nx">包管理器</span> <span class="nx">Go</span> <span class="nx">Modules</span><span class="err">，</span><span class="nx">旨在取代工作区和</span> <span class="nx">GOPATH</span><span class="err">。</span>
 <span class="k">go</span> <span class="nx">mod</span> <span class="nx">init</span> <span class="nf">xxx</span><span class="p">(</span><span class="nx">项目名</span><span class="p">)</span> <span class="c1">// 初始化go.mod
 </span><span class="c1"></span><span class="k">go</span> <span class="nx">mod</span> <span class="nx">vendor</span> <span class="c1">// go get 新依赖包后，将依赖包复制到项目下的 vendor 目录。
-</span><span class="c1"></span><span class="k">go</span> <span class="nx">mod</span> <span class="nx">tidy</span> <span class="c1">// 整理现有的依赖，删除缺失或者未使用的扩展包
+</span><span class="c1"></span><span class="k">go</span> <span class="nx">mod</span> <span class="nx">tidy</span> <span class="c1">// 整理现有的依赖，新增依赖包、删除缺失或者未使用的扩展包
 </span><span class="c1"></span>
 <span class="err">###</span> <span class="nx">project</span> <span class="nx">依赖包升级的两种方案</span>
 <span class="mf">1.</span> <span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span>
@@ -404,6 +404,24 @@ ToDo Something&hellip;</li>
 </span><span class="lnt">27
 </span><span class="lnt">28
 </span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// int和string互转，Atoi代表什么意思, A 就是ASCII, i就是integer,所以Atoi= ASCII to integer. ItoA= Integer to ASCII.
@@ -435,7 +453,25 @@ ToDo Something&hellip;</li>
     <span class="nx">leftAmount</span> <span class="kt">int</span>
 <span class="p">)</span>
 <span class="nx">num</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float32</span><span class="p">(</span><span class="nx">luck</span><span class="p">[</span><span class="nx">k</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float32</span><span class="p">(</span><span class="nx">leftAmountSum</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float32</span><span class="p">(</span><span class="nx">leftAmount</span><span class="p">))</span>
-</code></pre></td></tr></table>
+
+<span class="c1">// interface 转为具体的 struct
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">msgI</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">Set</span><span class="p">(</span><span class="nx">a</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
+<span class="p">}</span>
+<span class="kd">type</span> <span class="nx">msgStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">A</span> <span class="kt">string</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">msgStruct</span><span class="p">)</span> <span class="nf">Set</span><span class="p">(</span><span class="nx">a</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nx">A</span> <span class="p">=</span> <span class="nx">a</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">NewObject</span><span class="p">()</span> <span class="nx">msgI</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">msgStruct</span><span class="p">{</span><span class="nx">A</span><span class="p">:</span> <span class="nx">a</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">msg</span> <span class="o">:=</span> <span class="nf">NewObject</span><span class="p">()</span>
+<span class="nx">s</span> <span class="o">:=</span> <span class="nx">msg</span><span class="p">.(</span><span class="nx">msgStruct</span><span class="p">)</span> <span class="c1">// interface 转为 struct，方便获取结构体内的变量
+</span><span class="c1"></span><span class="nx">a</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">A</span> <span class="c1">// 等价于 a := msg.(msgStruct).A
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1689,9 +1725,13 @@ t.Execute<span class="o">(</span>os.Stdout, map<span class="o">[</span>string<sp
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">go mod init xxx<span class="o">(</span>项目名<span class="o">)</span> // 初始化go.mod，启用 go module 包管理器
+
+重新修改整个项目名：全局替换 go.mod 里的 moduleName 即可
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="生产环境下-golang-项目的部署方案supervisor">生产环境下 GoLang 项目的部署方案『supervisor』</h2>

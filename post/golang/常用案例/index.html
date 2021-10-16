@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用案例">
 <meta itemprop="description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"><meta itemprop="datePublished" content="2021-01-08T17:57:02&#43;08:00" />
 <meta itemprop="dateModified" content="2021-01-08T17:57:02&#43;08:00" />
-<meta itemprop="wordCount" content="956">
+<meta itemprop="wordCount" content="1322">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用案例"/>
 <meta name="twitter:description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 956 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1322 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -149,6 +149,8 @@
     <li><a href="#超时处理--定时器">超时处理 &amp; 定时器</a></li>
     <li><a href="#获取真实ip">获取真实IP</a></li>
     <li><a href="#md5--hmac">md5 &amp;&amp; hmac</a></li>
+    <li><a href="#利用反射结构体转map方法">利用反射，结构体转map方法</a></li>
+    <li><a href="#同步队列并发消费">同步队列+并发消费</a></li>
   </ul>
 </nav>
   </div>
@@ -537,6 +539,176 @@
 <span class="c1">// 简单的密码加密方案
 </span><span class="c1"></span><span class="kd">func</span> <span class="nf">makePassword</span><span class="p">(</span><span class="nx">pwd</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">helper</span><span class="p">.</span><span class="nf">Md5</span><span class="p">(</span><span class="nx">helper</span><span class="p">.</span><span class="nf">HmacSha256</span><span class="p">(</span><span class="s">&#34;盐&#34;</span><span class="p">,</span> <span class="nx">pwd</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="利用反射结构体转map方法">利用反射，结构体转map方法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 结构体转map方法
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Struct2Map</span><span class="p">(</span><span class="nx">obj</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nf">TypeOf</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>
+    <span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nf">ValueOf</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">data</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span>
+    <span class="k">if</span> <span class="nx">reflect</span><span class="p">.</span><span class="nf">TypeOf</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nf">Kind</span><span class="p">()</span> <span class="o">!=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Struct</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">t</span><span class="p">.</span><span class="nf">NumField</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">data</span><span class="p">[</span><span class="nx">t</span><span class="p">.</span><span class="nf">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Name</span><span class="p">]</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nf">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nf">Interface</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">data</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="同步队列并发消费">同步队列+并发消费</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;context&#34;</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;sync&#34;</span>
+    <span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// 同步队列+并发消费案例
+</span><span class="c1"></span><span class="kd">type</span> <span class="p">(</span>
+    <span class="nx">Task</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">StartTime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+    <span class="p">}</span>
+
+    <span class="nx">TaskManager</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">Tasks</span> <span class="kd">chan</span> <span class="o">*</span><span class="nx">Task</span>
+        <span class="nx">Wg</span>    <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+        <span class="nx">Ctx</span>   <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">timeoutCtx</span><span class="p">,</span> <span class="nx">cancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithTimeout</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="mi">10</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span> <span class="c1">// 10分钟超时
+</span><span class="c1"></span>    <span class="k">defer</span> <span class="nf">cancel</span><span class="p">()</span>
+
+    <span class="kd">var</span> <span class="nx">manager</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">TaskManager</span><span class="p">{</span>
+        <span class="nx">Tasks</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="o">*</span><span class="nx">Task</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="c1">// 等待队列10，并发5 执行任务
+</span><span class="c1"></span>        <span class="nx">Wg</span><span class="p">:</span>    <span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{},</span>
+        <span class="nx">Ctx</span><span class="p">:</span>   <span class="nx">timeoutCtx</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="nf">runDaemon</span><span class="p">(</span><span class="nx">manager</span><span class="p">)</span>
+
+    <span class="c1">// 生产者：负责生产任务
+</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">tasks</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Task</span>
+    <span class="nx">tasks</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">tasks</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">Task</span><span class="p">{})</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">20</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">manager</span><span class="p">.</span><span class="nx">Wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nx">manager</span><span class="p">.</span><span class="nx">Tasks</span> <span class="o">&lt;-</span> <span class="o">&amp;</span><span class="nx">Task</span><span class="p">{</span><span class="nx">StartTime</span><span class="p">:</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()}</span>
+    <span class="p">}</span>
+
+    <span class="nx">manager</span><span class="p">.</span><span class="nx">Wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">runDaemon</span><span class="p">(</span><span class="nx">manager</span> <span class="o">*</span><span class="nx">TaskManager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 并发 5 个协程消费队列
+</span><span class="c1"></span>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">{</span>
+                <span class="k">select</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="nx">task</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">manager</span><span class="p">.</span><span class="nx">Tasks</span><span class="p">:</span>
+                    <span class="c1">// todo 执行相关业务逻辑
+</span><span class="c1"></span>                    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;消费任务：start_time：&#34;</span><span class="p">,</span> <span class="nx">task</span><span class="p">.</span><span class="nx">StartTime</span><span class="p">.</span><span class="nf">String</span><span class="p">())</span>
+                    <span class="nx">manager</span><span class="p">.</span><span class="nx">Wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+                <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">manager</span><span class="p">.</span><span class="nx">Ctx</span><span class="p">.</span><span class="nf">Done</span><span class="p">():</span>
+                    <span class="k">return</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>

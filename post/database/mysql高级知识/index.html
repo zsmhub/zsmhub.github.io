@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql高级知识">
 <meta itemprop="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安"><meta itemprop="datePublished" content="2020-07-12T13:51:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-12T13:51:13&#43;08:00" />
-<meta itemprop="wordCount" content="6522">
+<meta itemprop="wordCount" content="6569">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql高级知识"/>
 <meta name="twitter:description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 6522 字 </span>
+          <span class="more-meta"> 约 6569 字 </span>
           <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
@@ -464,6 +464,7 @@ i- s null ,is not null 也无法使用索引</li>
 <p>JSON 类型的优点</p>
 </blockquote>
 <ul>
+<li>JSON 类型在 MySQL 内部以特殊的二进制方式存放，类似于 PostgreSQL 的 JSONB 类型。最大占用空间和 longtext 或者 longblob 一样，都是<code>4G</code>。</li>
 <li>SON数据类型，会自动校验数据是否为JSON格式，如果不是JSON格式数据，则会报错。</li>
 <li>MySQL提供了一组操作JSON数据的内置函数。</li>
 <li>优化的存储格式，存储在JSON列中的JSON数据被转换成内部的存储格式。其允许快速读取。</li>
