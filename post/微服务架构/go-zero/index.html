@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go Zero">
 <meta itemprop="description" content="官方文档 点击前往 启动服务 1 2 // API 或 rpc 代码运行 cd project/service/user/cmd/api &amp;&amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如"><meta itemprop="datePublished" content="2021-06-04T15:43:03&#43;08:00" />
 <meta itemprop="dateModified" content="2021-06-04T15:43:03&#43;08:00" />
-<meta itemprop="wordCount" content="585">
+<meta itemprop="wordCount" content="627">
 <meta itemprop="keywords" content="微服务框架," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go Zero"/>
 <meta name="twitter:description" content="官方文档 点击前往 启动服务 1 2 // API 或 rpc 代码运行 cd project/service/user/cmd/api &amp;&amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 585 字 </span>
+          <span class="more-meta"> 约 627 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -230,6 +230,7 @@
 </div><blockquote>
 <p>RPC .proto 语法示例</p>
 </blockquote>
+<p>在 .proto 文件内，写好相关方法定义文件后，按下快捷键 command+n，即可生成 rpc 相关代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -256,19 +257,19 @@
 
 <span class="kn">package</span> <span class="nx">user</span><span class="p">;</span>
 
+<span class="nx">service</span> <span class="nx">user</span> <span class="p">{</span>
+  <span class="nx">rpc</span> <span class="nf">getUser</span><span class="p">(</span><span class="nx">IdReq</span><span class="p">)</span> <span class="nf">returns</span> <span class="p">(</span><span class="nx">UserInfoReply</span><span class="p">);</span>
+<span class="p">}</span>
+
 <span class="nx">message</span> <span class="nx">IdReq</span> <span class="p">{</span>
-  <span class="kt">int64</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">int64</span> <span class="nx">user_id</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">message</span> <span class="nx">UserInfoReply</span> <span class="p">{</span>
-  <span class="kt">int64</span> <span class="nx">id</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">int64</span> <span class="nx">user_id</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
   <span class="kt">string</span> <span class="nx">number</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span>
   <span class="kt">string</span> <span class="nx">gender</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">service</span> <span class="nx">user</span> <span class="p">{</span>
-  <span class="nx">rpc</span> <span class="nf">getUser</span><span class="p">(</span><span class="nx">IdReq</span><span class="p">)</span> <span class="nf">returns</span> <span class="p">(</span><span class="nx">UserInfoReply</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>

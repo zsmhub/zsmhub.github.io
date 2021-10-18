@@ -49,7 +49,7 @@
 <meta itemprop="name" content="数据传输方式汇总">
 <meta itemprop="description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"><meta itemprop="datePublished" content="2020-04-10T15:02:25&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-10T15:02:25&#43;08:00" />
-<meta itemprop="wordCount" content="1134">
+<meta itemprop="wordCount" content="1202">
 <meta itemprop="keywords" content="数据传输方式," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数据传输方式汇总"/>
 <meta name="twitter:description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1134 字 </span>
+          <span class="more-meta"> 约 1202 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -253,8 +253,43 @@ mv project/proto/*.go lib/pb/
 <p>数据类型</p>
 </blockquote>
 <ul>
-<li>repeated: 数组</li>
-<li>enum: 枚举值，转成 go 后变成常量定义</li>
+<li>
+<p>repeated: 数组，repeated string snippets = 3;</p>
+</li>
+<li>
+<p>enum: 枚举值，转成 go 后变成常量定义</p>
+</li>
+<li>
+<p>map&lt;int64,string&gt; values = 1;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 结构体嵌套用法</span>
+message  GetJsapiTicketResp <span class="o">{</span>
+message JsapiTicket <span class="o">{</span>
+    string <span class="nv">corp_id</span> <span class="o">=</span> 1<span class="p">;</span>
+    string <span class="nv">noncestr</span> <span class="o">=</span> 2<span class="p">;</span>
+    int64 <span class="nv">timestamp</span> <span class="o">=</span> 3<span class="p">;</span>
+    string <span class="nv">signature</span> <span class="o">=</span> 4<span class="p">;</span>
+<span class="o">}</span>
+JsapiTicket <span class="nv">corp_jsapi_ticket</span> <span class="o">=</span> 1<span class="p">;</span>
+JsapiTicket <span class="nv">app_jsapi_ticket</span> <span class="o">=</span> 2<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 <blockquote>
 <p>分配字段编号</p>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="加密算法">
 <meta itemprop="description" content="对称加密算法 AES 高级加密标准（Advanced Encryption Standard，AES），在密码学中又称Rijndael 加密法，是美国联邦政府采用的一种区块"><meta itemprop="datePublished" content="2019-01-02T21:45:06&#43;08:00" />
 <meta itemprop="dateModified" content="2019-01-02T21:45:06&#43;08:00" />
-<meta itemprop="wordCount" content="551">
+<meta itemprop="wordCount" content="817">
 <meta itemprop="keywords" content="加密,算法," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="加密算法"/>
 <meta name="twitter:description" content="对称加密算法 AES 高级加密标准（Advanced Encryption Standard，AES），在密码学中又称Rijndael 加密法，是美国联邦政府采用的一种区块"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
             </div>
-          <span class="more-meta"> 约 551 字 </span>
+          <span class="more-meta"> 约 817 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -168,11 +168,125 @@
 <li>密码反馈模式（Cipher FeedBack (CFB)）</li>
 <li>输出反馈模式（Output FeedBack (OFB)）</li>
 </ol>
-<p>秘钥长度：128、192、256</p>
-<p>补码方式：PKCS5Padding、PKCS7Padding</p>
+<p>// The key argument should be the AES key, either 16, 24, or 32 bytes to select AES-128, AES-192, or AES-256.</p>
+<p>密钥长度：16、24、32，对应AES类型：AES-128、AES-192、AES-256</p>
+<p>常见补码方式：PKCS5Padding、PKCS7Padding</p>
 <p>秘钥偏移量</p>
-<p><a href="https://segmentfault.com/a/1190000037798295###">golang实现 aes加解密,对称加密</a></p>
-<h3 id="移位加密">移位加密</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">aes</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;bytes&#34;</span>
+    <span class="s">&#34;crypto/aes&#34;</span>
+    <span class="s">&#34;crypto/cipher&#34;</span>
+    <span class="s">&#34;encoding/base64&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// AES对称加密 CBC
+</span><span class="c1"></span>
+<span class="kd">func</span> <span class="nf">PKCS7Padding</span><span class="p">(</span><span class="nx">ciphertext</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">blockSize</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">byte</span> <span class="p">{</span>
+    <span class="nx">padding</span> <span class="o">:=</span> <span class="nx">blockSize</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="nx">ciphertext</span><span class="p">)</span><span class="o">%</span><span class="nx">blockSize</span>
+    <span class="nx">padtext</span> <span class="o">:=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nf">Repeat</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="nb">byte</span><span class="p">(</span><span class="nx">padding</span><span class="p">)},</span> <span class="nx">padding</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">append</span><span class="p">(</span><span class="nx">ciphertext</span><span class="p">,</span> <span class="nx">padtext</span><span class="o">...</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">PKCS7UnPadding</span><span class="p">(</span><span class="nx">origData</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">[]</span><span class="kt">byte</span> <span class="p">{</span>
+    <span class="nx">length</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">origData</span><span class="p">)</span>
+    <span class="nx">unpadding</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">origData</span><span class="p">[</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nx">origData</span><span class="p">[:(</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">unpadding</span><span class="p">)]</span>
+<span class="p">}</span>
+
+<span class="c1">// AES加密+base64编码
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">AesEncrypt</span><span class="p">(</span><span class="nx">origData</span><span class="p">,</span> <span class="nx">key</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">block</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">aes</span><span class="p">.</span><span class="nf">NewCipher</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="nx">blockSize</span> <span class="o">:=</span> <span class="nx">block</span><span class="p">.</span><span class="nf">BlockSize</span><span class="p">()</span>
+    <span class="nx">origData</span> <span class="p">=</span> <span class="nf">PKCS7Padding</span><span class="p">(</span><span class="nx">origData</span><span class="p">,</span> <span class="nx">blockSize</span><span class="p">)</span>
+    <span class="nx">blockMode</span> <span class="o">:=</span> <span class="nx">cipher</span><span class="p">.</span><span class="nf">NewCBCEncrypter</span><span class="p">(</span><span class="nx">block</span><span class="p">,</span> <span class="nx">key</span><span class="p">[:</span><span class="nx">blockSize</span><span class="p">])</span>
+    <span class="nx">encryptData</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">origData</span><span class="p">))</span>
+    <span class="nx">blockMode</span><span class="p">.</span><span class="nf">CryptBlocks</span><span class="p">(</span><span class="nx">encryptData</span><span class="p">,</span> <span class="nx">origData</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">base64</span><span class="p">.</span><span class="nx">StdEncoding</span><span class="p">.</span><span class="nf">EncodeToString</span><span class="p">(</span><span class="nx">encryptData</span><span class="p">),</span> <span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// AES解密+base64解码
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">AesDecrypt</span><span class="p">(</span><span class="nx">encryptData</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">key</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">base64DecryptData</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">base64</span><span class="p">.</span><span class="nx">StdEncoding</span><span class="p">.</span><span class="nf">DecodeString</span><span class="p">(</span><span class="nx">encryptData</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="nx">block</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">aes</span><span class="p">.</span><span class="nf">NewCipher</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="nx">blockSize</span> <span class="o">:=</span> <span class="nx">block</span><span class="p">.</span><span class="nf">BlockSize</span><span class="p">()</span>
+    <span class="nx">blockMode</span> <span class="o">:=</span> <span class="nx">cipher</span><span class="p">.</span><span class="nf">NewCBCDecrypter</span><span class="p">(</span><span class="nx">block</span><span class="p">,</span> <span class="nx">key</span><span class="p">[:</span><span class="nx">blockSize</span><span class="p">])</span>
+    <span class="nx">origData</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">base64DecryptData</span><span class="p">))</span>
+    <span class="nx">blockMode</span><span class="p">.</span><span class="nf">CryptBlocks</span><span class="p">(</span><span class="nx">origData</span><span class="p">,</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">base64DecryptData</span><span class="p">))</span>
+    <span class="nx">origData</span> <span class="p">=</span> <span class="nf">PKCS7UnPadding</span><span class="p">(</span><span class="nx">origData</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">origData</span><span class="p">),</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="移位加密">移位加密</h3>
 <p>利用Ascii码值加减,秘钥为移动n位</p>
 <h3 id="异或加密">异或加密</h3>
 <p>利用二进制</p>
