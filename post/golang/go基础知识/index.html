@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="9962">
+<meta itemprop="wordCount" content="10141">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 9962 字 </span>
-          <span class="more-meta"> 预计阅读 20 分钟 </span>
+          <span class="more-meta"> 约 10141 字 </span>
+          <span class="more-meta"> 预计阅读 21 分钟 </span>
         
       </div>
     </header>
@@ -469,7 +469,7 @@ ToDo Something&hellip;</li>
     <span class="k">return</span> <span class="nx">msgStruct</span><span class="p">{</span><span class="nx">A</span><span class="p">:</span> <span class="nx">a</span><span class="p">}</span>
 <span class="p">}</span>
 <span class="nx">msg</span> <span class="o">:=</span> <span class="nf">NewObject</span><span class="p">()</span>
-<span class="nx">s</span> <span class="o">:=</span> <span class="nx">msg</span><span class="p">.(</span><span class="nx">msgStruct</span><span class="p">)</span> <span class="c1">// interface 转为 struct，方便获取结构体内的变量
+<span class="nx">s</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">msg</span><span class="p">.(</span><span class="nx">msgStruct</span><span class="p">)</span> <span class="c1">// interface 转为 struct，方便获取结构体内的变量
 </span><span class="c1"></span><span class="nx">a</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">A</span> <span class="c1">// 等价于 a := msg.(msgStruct).A
 </span></code></pre></td></tr></table>
 </div>
@@ -897,6 +897,7 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 <p>接口定义了一组方法（方法集），但是这些方法不包含（实现）代码：它们没有被实现（它们是抽象的）。接口里也不能包含变量。『适用场景：定时任务』</p>
 <p>接口的名字由方法名加 [e]r 后缀组成，例如 Printer、Reader、Writer、Logger、Converter 等等。还有一些不常用的方式（当后缀 er 不合适时），比如 Recoverable，此时接口名以 able 结尾，或者以 I 开头（像 .NET 或 Java 中那样）。</p>
 <p>用 类型断言 来测试在某个接口 varI 是否包含某个结构体类型 T 的值</p>
+<p><code>struct嵌入interface可以使得一个struct具有interface的接口，而不需要实现interface中的有声明的函数。</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1044,6 +1045,49 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
         <span class="p">}</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">shapes</span><span class="p">[</span><span class="nx">n</span><span class="p">],</span> <span class="nx">shapes</span><span class="p">[</span><span class="nx">n</span><span class="p">].</span><span class="nf">Area</span><span class="p">())</span>
     <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>struct 实现 interface 的方法，struct 实现了 interface 所有方法后，可以隐式声明实现了那个 interface</p>
+</blockquote>
+<ul>
+<li>var _ error = (*ClientError)(nil)</li>
+<li>var _ error = ClientError{}</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// ClientError 重构 error 这个内置的 interface
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">ClientError</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Code</span> <span class="nx">ErrCode</span>
+    <span class="nx">Msg</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">_</span> <span class="kt">error</span> <span class="p">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">ClientError</span><span class="p">)(</span><span class="kc">nil</span><span class="p">)</span> <span class="c1">// 隐式声明
+</span><span class="c1"></span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">ClientError</span><span class="p">)</span> <span class="nf">Error</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span>
+        <span class="s">&#34;ClientError { Code: %d, Msg: %#v }&#34;</span><span class="p">,</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">Code</span><span class="p">,</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">Msg</span><span class="p">,</span>
+    <span class="p">)</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
