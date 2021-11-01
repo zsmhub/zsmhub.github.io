@@ -49,7 +49,7 @@
 <meta itemprop="name" content="k8s简介">
 <meta itemprop="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"><meta itemprop="datePublished" content="2019-02-01T14:36:09&#43;08:00" />
 <meta itemprop="dateModified" content="2021-07-15T14:36:09&#43;08:00" />
-<meta itemprop="wordCount" content="3299">
+<meta itemprop="wordCount" content="3416">
 <meta itemprop="keywords" content="k8s," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s简介"/>
 <meta name="twitter:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/docker/"> docker </a>
             </div>
-          <span class="more-meta"> 约 3299 字 </span>
+          <span class="more-meta"> 约 3416 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -164,8 +164,12 @@
 <p>Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。</p>
 <p>K8S，就是基于容器的集群管理平台，它的全称，是kubernetes。</p>
 <p>k8s集群主要包括两个部分：一个Master节点（主节点），一群Node节点（计算节点）</p>
+<blockquote>
+<p>常见用法</p>
+</blockquote>
+<p>Namespace(虚拟集群，一个项目独立部署在一个namespace下)-&gt;Deployment资源对象(高级Pod控制器，一个logic进程服务)-&gt;Pod(副本，一个进程下分配多少个pod)</p>
 <h2 id="k8s实现平滑发布">k8s实现平滑发布</h2>
-<p>k8s部署是通过金丝雀发布（灰度发布），可实现平滑发布。</p>
+<p>k8s部署是通过<code>金丝雀发布</code>（灰度发布），可实现平滑发布。</p>
 <p>发布新版本时，旧版本的 Pod 继续运行，当新版本的 Pod 全部启动成功，且等待 n 秒后，再 Kill 掉旧版本的 Pod。</p>
 <p>此时新旧版本的 Pod 在 n 秒并行运行着，用户可能访问到旧代码的 Pod，也可能访问到新版本的 Pod，这由我们配置的升级策略决定。</p>
 <h2 id="kubernetes主要由以下几个核心组件组成">Kubernetes主要由以下几个核心组件组成</h2>
@@ -190,7 +194,7 @@
 <p>负责执行请求和所分配任务的计算机。由 Kubernetes 主机负责对节点进行控制。【在 Node 上面可以运行多个 Pod】</p>
 </li>
 <li>
-<p>容器组或副本（Pod）</p>
+<p>容器组或副本（Pod/replicas）</p>
 <blockquote>
 <p>容器组（Pod）是最小、最简单的 Kubernetes 对象</p>
 </blockquote>

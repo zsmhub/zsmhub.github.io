@@ -49,7 +49,7 @@
 <meta itemprop="name" content="企业微信第三方应用开发">
 <meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
 <meta itemprop="dateModified" content="2021-09-24T16:46:43&#43;08:00" />
-<meta itemprop="wordCount" content="3475">
+<meta itemprop="wordCount" content="3639">
 <meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="企业微信第三方应用开发"/>
 <meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 3475 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 3639 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
     </header>
@@ -307,11 +307,22 @@
 <p>企业注销企业微信账号</p>
 </blockquote>
 <p>企业注销企业微信账号，第三方应用会接收到取消授权事件。（InfoType=cancel_auth）</p>
+<blockquote>
+<p>前端保存 token 的方案</p>
+</blockquote>
+<p>同一个设备，不同员工账号登录，在不进行oauh登录的情况下，怎么知道切换了账号？</p>
+<p>用cookie做下判断，企业微信在切换账号时，会清理cookie</p>
 <h2 id="特别留意">特别留意</h2>
 <ol>
 <li>所有接口返回包里都有errcode、errmsg。开发者需根据errcode是否为0判断是否调用成功</li>
 <li>接口调用请求体和响应体是 json 格式，回调接口的请求体和响应体是 xml 格式</li>
 <li>如果第三方应用需要使用发微信小程序功能，需要先配置一个第三方小程序绑定微信小程序。授权企业需要同时安装第三方应用和第三方小程序（推广二维码支持应用和小程序混合推广）</li>
+<li>接口调用频率限制：
+<ul>
+<li>获取access_token频率：每日限额2000次</li>
+<li>获取jsapi_ticket频率：一小时内，一个企业最多可获取400次，且单个应用不能超过100次</li>
+</ul>
+</li>
 </ol>
 <h2 id="一些坑">一些坑</h2>
 <ol>

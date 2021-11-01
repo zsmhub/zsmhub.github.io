@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Redis">
 <meta itemprop="description" content="缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使"><meta itemprop="datePublished" content="2019-01-03T22:38:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T22:38:49&#43;08:00" />
-<meta itemprop="wordCount" content="3059">
+<meta itemprop="wordCount" content="3717">
 <meta itemprop="keywords" content="redis," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Redis"/>
 <meta name="twitter:description" content="缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3059 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 3717 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
     </header>
@@ -146,7 +146,7 @@
     <li><a href="#redis常用命令">redis常用命令</a></li>
     <li><a href="#scan">scan</a></li>
     <li><a href="#大-key-扫描">大 key 扫描</a></li>
-    <li><a href="#发布与订阅">发布与订阅</a></li>
+    <li><a href="#发布订阅模型pubsub">发布订阅模型（Pub/Sub）</a></li>
     <li><a href="#常用案例">常用案例</a></li>
     <li><a href="#redis的持久化">redis的持久化</a></li>
     <li><a href="#redis-和-memcached-对比">redis 和 memcached 对比</a></li>
@@ -270,10 +270,47 @@ redis-cli --bigkeys -i 0.1
 <li>如果是 set 结构，通过 scard 判断；</li>
 <li>如果是 sorted se t结构，通过 zcard 判断。</li>
 </ul>
-<h2 id="发布与订阅">发布与订阅</h2>
+<h2 id="发布订阅模型pubsub">发布订阅模型（Pub/Sub）</h2>
+<p><a href="https://jishuin.proginn.com/p/763bfbd58e7b">选 Redis 还是 MQ，终于说明白了</a></p>
+<p>当你在使用 Pub/Sub 时，一定要注意：消费者必须先订阅队列，生产者才能发布消息，否则消息会丢失。</p>
 <ul>
 <li>publish: 发布一个消息到一个指定频道</li>
 <li>subscribe：订阅一个指定频道，当频道有新消息时，直接获取</li>
+<li>unsubscribe： 取消订阅一个指定频道</li>
+</ul>
+<blockquote>
+<p>一个完整的发布、订阅消息处理流程(整个过程中，没有任何的数据存储，一切都是实时转发的。)</p>
+</blockquote>
+<ol>
+<li>消费者订阅指定队列，Redis 就会记录一个映射关系：队列-&gt;消费者</li>
+<li>生产者向这个队列发布消息，那 Redis 就从映射关系中找出对应的消费者，把消息转发给它</li>
+</ol>
+<p><img src="/2021/images/QQ20211031-095921@2x.png" alt="一个完整的发布、订阅消息处理流程"></p>
+<blockquote>
+<p>优缺点</p>
+</blockquote>
+<ol>
+<li>
+<p>最大的优势就是，支持多组生产者、消费者处理消息（也支持多个消费者同时消费同一条消息）</p>
+</li>
+<li>
+<p>最大问题是：丢数据。</p>
+<ul>
+<li>消费者下线，数据会丢失</li>
+<li>不支持数据持久化，Redis 宕机数据也会丢失</li>
+<li>消息堆积，缓冲区溢出，消费者会被强制踢下线，数据也会丢失</li>
+</ul>
+</li>
+</ol>
+<p>有没有发现，除了第一个是优点之外，剩下的都是缺点。所以，很多人觉得 Pub/Sub 很「鸡肋」。</p>
+<blockquote>
+<p>List队列 vs 发布订阅模型(Pub/Sub) vs Redis Stream</p>
+</blockquote>
+<p>List 是属于「拉」模型，而 Pub/Sub 其实属于「推」模型。</p>
+<ul>
+<li>List 中的数据可以一直积压在内存中，消费者什么时候来「拉」都可以。</li>
+<li>但 Pub/Sub 是把消息先「推」到消费者在 Redis Server 上的缓冲区中，然后等消费者再来取。</li>
+<li>Redis Stream 是 发布订阅模型(Pub/Sub) 的升级版，主要用于消息队列（MQ，Message Queue）。Redis 本身是有一个 Redis 发布订阅 (pub/sub) 来实现消息队列的功能，但它有个缺点就是消息无法持久化，如果出现网络断开、Redis 宕机等，消息就会被丢弃。而 Redis Stream 提供了消息的持久化和主备复制功能，可以让任何客户端访问任何时刻的数据，并且能记住每一个客户端的访问位置，还能保证消息不丢失。</li>
 </ul>
 <h2 id="常用案例">常用案例</h2>
 <pre><code>```php
