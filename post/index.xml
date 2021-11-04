@@ -77,7 +77,7 @@
       <pubDate>Wed, 28 Jul 2021 10:03:21 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/http%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid>
-      <description>http vs fasthttp fasthttp 使用 tcp 做长连接，使用连接池复用连接 net/http 是短连接，用完即断开连接 net/http 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35</description>
+      <description>理解 timeout timeout 又可以细分为 connect timeout、read timeout、write timeout。而 read timeout 和 write timeout 必须是在 connect 之后才能发生。 ReadTime</description>
     </item>
     
     <item>

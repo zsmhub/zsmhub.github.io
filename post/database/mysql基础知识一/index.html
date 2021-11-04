@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 基础知识一">
 <meta itemprop="description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME"><meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="2895">
+<meta itemprop="wordCount" content="3246">
 <meta itemprop="keywords" content="database,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 基础知识一"/>
 <meta name="twitter:description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 date_format(&#39;2019-12-12 12:22:33&#39;, format) -- 日期格式化 FROM_UNIXTIME"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2895 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3246 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -481,7 +481,42 @@ mysql&gt; flush privileges<span class="p">;</span>
 <li>mysql5.7 默认排序规则：utf8mb4_general_ci</li>
 <li>mysql8.0 默认排序规则：utf8mb4_0900_ai_ci</li>
 </ul>
-</li>
+<blockquote>
+<p>utf8mb4_0900_ai_ci字段如何修改为大小写敏感</p>
+</blockquote>
+<p>utf8mb4_0900_ai_ci, 中间的0900，它对应的是Unicode 9.0的规范，ai表示accent insensitivity，也就是“不区分音调”，而ci表示case insensitivity，也就是“不区分大小写”。</p>
+<p>mysql8.0默认排序规则是utf8mb4_0900_ai_ci，对大小写不敏感，如果有些字段对大小写敏感的话，需要改下排序规则，如<code>utf8mb4_0900_as_cs</code></p>
+<p><img src="/images/2021/v2-7db650666030c7a6711601f47fe5222a_1440w.jpg" alt="字符集后缀"></p>
+<p>mysql charset 和 collation 有多个级别的设置：服务器级、数据库级、表级、列级和连接级。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 查看当前数据库各个级别的排序规则</span>
+SHOW VARIABLES LIKE <span class="s1">&#39;collation_%&#39;</span><span class="p">;</span>
+
+<span class="c1"># 数据库级：修改数据库的默认排序规则</span>
+alter database xc  character <span class="nb">set</span> utf8mb4 collate utf8mb4_0900_as_cs<span class="p">;</span>
+
+<span class="c1"># 表级：修改表数据的字符集</span>
+alter table table_name character <span class="nb">set</span> utf8mb4 collate utf8mb4_0900_as_cs<span class="p">;</span>
+
+<span class="c1"># 列级：修改表内所有字段的字符集</span>
+alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>InnoDB 行锁的触发条件是 where 后面带的字段包含索引。若是没有索引的条件下，就会退化为表锁。然后获取所有行后，Mysql 再过滤符合条件的的行并释放锁。这样就降低了并发度，并且性能开销也会很大。</p>
 </li>

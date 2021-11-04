@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 事务和锁">
 <meta itemprop="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中"><meta itemprop="datePublished" content="2019-09-01T17:12:23&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-01T17:12:23&#43;08:00" />
-<meta itemprop="wordCount" content="4194">
+<meta itemprop="wordCount" content="4135">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 事务和锁"/>
 <meta name="twitter:description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 4194 字 </span>
+          <span class="more-meta"> 约 4135 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -164,16 +164,9 @@
 <p>相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。</p>
 <ul>
 <li>更新丢失（ost Update）：当两个或多个事务选择同一行，然后基于最初选定的值更新该行时，由于每个事务都不知道其他事务的存在，就会发生丢失更新问题－－最后的更新覆盖了由其他事务所做的更新。例如，两个编辑人员制作了同一文档的电子副本。每个编辑人员独立地更改其副本，然后保存更改后的副本，这样就覆盖了原始文档。最后保存其更改副本的编辑人员覆盖另一个编辑人员所做的更改。如果在一个编辑人员完成并提交事务之前，另一个编辑人员不能访问同一文件，则可避免此问题。</li>
-<li>脏读（Dirty Reads）：一个事务正在对一条记录做修改，在这个事务完成并提交前，这条记录的数据就处于不一致状态；这时，另一个事务也来读取同一条记录，如果不加控制，第二个事务读取了这些“脏”数据，并据此做进一步的处理，就会产生未提交的数据依赖关系。这种现象被形象地叫做&quot;脏读&quot;。</li>
-<li>不可重复读（Non-Repeatabe Reads）：一个事务在读取某些数据后的某个时间，再次读取以前读过的数据，却发现其读出的数据已经发生了改变、或某些记录已经被删除了！这种现象就叫做“不可重复读”。</li>
-<li>幻读（Phantom Reads）：一个事务按相同的查询条件重新读取以前检索过的数据，却发现其他事务插入了满足其查询条件的新数据，这种现象就称为“幻读”。</li>
-</ul>
-<blockquote>
-<p>幻读和不可重复读的区别：</p>
-</blockquote>
-<ul>
-<li>不可重复读的重点是修改：在同一事务中，同样的条件，第一次读的数据和第二次读的数据不一样。（因为中间有其他事务提交了修改）</li>
-<li>幻读的重点在于新增或者删除：在同一事务中，同样的条件,，第一次和第二次读出来的记录数不一样。（因为中间有其他事务提交了插入/删除）</li>
+<li>脏读（Dirty Reads）：<code>一个事务中访问到了另外一个事务未提交的数据。</code>（一个事务正在对一条记录做修改，在这个事务完成并提交前，这条记录的数据就处于不一致状态；这时，另一个事务也来读取同一条记录，如果不加控制，第二个事务读取了这些“脏”数据，并据此做进一步的处理，就会产生未提交的数据依赖关系。这种现象被形象地叫做&quot;脏读&quot;。）</li>
+<li>不可重复读（Non-Repeatabe Reads）：<code>一个事务读取同一条记录2次，得到的结果不一致。</code>（一个事务在读取某些数据后的某个时间，再次读取以前读过的数据，却发现其读出的数据已经发生了改变、或某些记录已经被删除了！这种现象就叫做“不可重复读”。）</li>
+<li>幻读（Phantom Reads）：<code>一个事务读取2次，得到的记录条数不一致。</code>（一个事务按相同的查询条件重新读取以前检索过的数据，却发现其他事务插入了满足其查询条件的新数据，这种现象就称为“幻读”。）</li>
 </ul>
 <h2 id="事务的隔离级别">事务的隔离级别</h2>
 <table>
@@ -214,10 +207,16 @@
 </table>
 <ul>
 <li>Oracle 默认级别是 RC『已提交读』；InnoDB 默认级别是：RR『可重复读』。【TIP: InnoDB 的 RR 级别利用 Next-key 锁解决了幻读问题，相当于 Serializable 级别了】</li>
-<li>select @@tx_isolation;  // 查询当前数据库的事务隔离级别</li>
 <li>set global tx_isolation=&lsquo;read-committed&rsquo;;  // 设置数据库默认的事务隔离级别</li>
 <li>通过优化事务逻辑，大部分应用使用 Read Commited 隔离级别就足够了。</li>
 <li>set autocommit=0;  //设置不自动提交事务</li>
+</ul>
+<blockquote>
+<p>查询当前数据库的事务隔离级别</p>
+</blockquote>
+<ul>
+<li>mysql5.7: SHOW VARIABLES LIKE &lsquo;tx_isolation&rsquo;;</li>
+<li>mysql8.0: show variables like &lsquo;transaction_isolation&rsquo;;</li>
 </ul>
 <h2 id="锁模式innodb-有三种行锁的算法">锁模式(InnoDB 有三种行锁的算法)</h2>
 <ol>

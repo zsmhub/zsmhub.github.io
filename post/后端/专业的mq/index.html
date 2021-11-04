@@ -49,7 +49,7 @@
 <meta itemprop="name" content="专业的MQ">
 <meta itemprop="description" content="一个专业的消息队列，必须要做到两点： 消息不丢 消息可堆积 PHP&#43;ActiveMQ&#43;Stomp ActiveMQ 是由 Apache 出品的一款开源消息中间件，旨在为应用程序提供高效、可扩展、稳定、安全的企业级"><meta itemprop="datePublished" content="2020-08-10T09:22:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-10T09:22:30&#43;08:00" />
-<meta itemprop="wordCount" content="1468">
+<meta itemprop="wordCount" content="1820">
 <meta itemprop="keywords" content="消息队列," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="专业的MQ"/>
 <meta name="twitter:description" content="一个专业的消息队列，必须要做到两点： 消息不丢 消息可堆积 PHP&#43;ActiveMQ&#43;Stomp ActiveMQ 是由 Apache 出品的一款开源消息中间件，旨在为应用程序提供高效、可扩展、稳定、安全的企业级"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1468 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1820 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -173,6 +173,8 @@
 <p>NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模地处理每天数以十亿计级别的消息。</p>
 <p>有2种消费者的写法，第一种是直连nsqd（tcp长连接），第二种是通过nsqlookupd的http接口查询后长连接到nsqd, 显然第二种更易于分布式容错和高可用。</p>
 <p>nsqadmin 访问地址: http://0.0.0.0:4171/</p>
+<p><code>nsq topic、channel、和消费客户端的结构如下图，一个 topic 下有多个 channel，每个 channel 可以被多个客户端订阅。</code></p>
+<p><img src="/images/2021/QQ20211102-165603@2x.png" alt="topic、channel结构图"></p>
 <h3 id="常见案例">常见案例</h3>
 <ol>
 <li>
@@ -182,9 +184,88 @@
 </li>
 <li>
 <p>通过 channel/topic 实现广播、发布订阅功能</p>
-<p>核心点：将 channel 设置为服务器本地ip，生产者往一个 topic 发消息时，多个 channel 下相同的 topic 会同时消费同一个消息。</p>
+<p>核心点：将 channel 设置为服务器本地ip，生产者往一个 topic 发消息时，topic 下多个 channel 会同时消费同一个消息。</p>
 <p><img src="/images/2021/QQ20211102-163315@2x.png" alt="广播流程"></p>
 </li>
+<li>
+<p>客户端对消息的处理和响应</p>
+<p>在服务端发送消息给客户端后，如果在处理业务逻辑时，如果发生错误则给服务器发送Requeue命令告诉服务器，重新发送消息进处理。如果处理成功，则发送Finish命令。</p>
+<p>服务端收到命令后，对飞翔中的消息进行处理，如果成功则去掉，如果是Requeue则执行归队和重发操作，或者进行defer队列处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">Consumer</span><span class="p">)</span> <span class="nf">handlerLoop</span><span class="p">(</span><span class="nx">handler</span> <span class="nx">Handler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">LogLevelDebug</span><span class="p">,</span> <span class="s">&#34;starting Handler&#34;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="nx">message</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">r</span><span class="p">.</span><span class="nx">incomingMessages</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+            <span class="k">goto</span> <span class="nx">exit</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="nx">r</span><span class="p">.</span><span class="nf">shouldFailMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">handler</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">message</span><span class="p">.</span><span class="nf">Finish</span><span class="p">()</span>
+            <span class="k">continue</span>
+        <span class="p">}</span>
+
+        <span class="nx">err</span> <span class="o">:=</span> <span class="nx">handler</span><span class="p">.</span><span class="nf">HandleMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">r</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">LogLevelError</span><span class="p">,</span> <span class="s">&#34;Handler returned error (%s) for msg %s&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">!</span><span class="nx">message</span><span class="p">.</span><span class="nf">IsAutoResponseDisabled</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">message</span><span class="p">.</span><span class="nf">Requeue</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// 重试
+</span><span class="c1"></span>            <span class="p">}</span>
+            <span class="k">continue</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">!</span><span class="nx">message</span><span class="p">.</span><span class="nf">IsAutoResponseDisabled</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">message</span><span class="p">.</span><span class="nf">Finish</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="nx">exit</span><span class="p">:</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">LogLevelDebug</span><span class="p">,</span> <span class="s">&#34;stopping Handler&#34;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">r</span><span class="p">.</span><span class="nx">runningHandlers</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">r</span><span class="p">.</span><span class="nf">exit</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
 </ol>
 <h3 id="常见报错">常见报错</h3>
 <ol>
@@ -276,6 +357,9 @@
 </span><span class="lnt">67
 </span><span class="lnt">68
 </span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
@@ -332,6 +416,9 @@
         <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="p">}</span>
 
+    <span class="c1">// concurrency： 最大并发消费进程
+</span><span class="c1"></span>    <span class="c1">// consumer.AddConcurrentHandlers(nsq.HandlerFunc(handle), concurrency)
+</span><span class="c1"></span>
     <span class="c1">// 设置消息处理函数
 </span><span class="c1"></span>    <span class="nx">consumer</span><span class="p">.</span><span class="nf">AddHandler</span><span class="p">(</span><span class="nx">nsq</span><span class="p">.</span><span class="nf">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">message</span> <span class="o">*</span><span class="nx">nsq</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
         <span class="nx">message</span><span class="p">.</span><span class="nf">Finish</span><span class="p">()</span> <span class="c1">// 收到消息的响应，否则会一直循环这个方法的逻辑

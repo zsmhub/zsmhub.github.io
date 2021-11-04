@@ -49,7 +49,7 @@
 <meta itemprop="name" content="k8s简介">
 <meta itemprop="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"><meta itemprop="datePublished" content="2019-02-01T14:36:09&#43;08:00" />
 <meta itemprop="dateModified" content="2021-07-15T14:36:09&#43;08:00" />
-<meta itemprop="wordCount" content="3416">
+<meta itemprop="wordCount" content="3852">
 <meta itemprop="keywords" content="k8s," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="k8s简介"/>
 <meta name="twitter:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/docker/"> docker </a>
             </div>
-          <span class="more-meta"> 约 3416 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 3852 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
     </header>
@@ -151,10 +151,11 @@
     <li><a href="#为什么需要-lb-直通-pod">为什么需要 LB 直通 Pod</a></li>
     <li><a href="#常见案例">常见案例</a>
       <ul>
-        <li><a href="#部署在-k8s-上的项目可能出现的问题">部署在 k8s 上的项目可能出现的问题：</a></li>
+        <li><a href="#部署在-k8s-上的项目可能出现的问题">部署在 k8s 上的项目可能出现的问题</a></li>
       </ul>
     </li>
     <li><a href="#kubernetes-网络疑难杂症排查分享">Kubernetes 网络疑难杂症排查分享</a></li>
+    <li><a href="#requests-与-limits-简介">requests 与 limits 简介</a></li>
   </ul>
 </nav>
   </div>
@@ -326,7 +327,7 @@ spec:
 <li>解决全局连接调度的负载不均。</li>
 </ol>
 <h2 id="常见案例">常见案例</h2>
-<h3 id="部署在-k8s-上的项目可能出现的问题">部署在 k8s 上的项目可能出现的问题：</h3>
+<h3 id="部署在-k8s-上的项目可能出现的问题">部署在 k8s 上的项目可能出现的问题</h3>
 <ol>
 <li>接口响应慢，容易出现超时</li>
 <li>go fasthttp是建立tcp连接，会报 &ldquo;dialing to the given TCP address timed out&rdquo;，3秒没建立连接超时就异常了</li>
@@ -341,6 +342,10 @@ spec:
 <p>扩容 SNAT</p>
 <h2 id="kubernetes-网络疑难杂症排查分享">Kubernetes 网络疑难杂症排查分享</h2>
 <p><a href="https://imroc.cc/post/201908/troubleshooting-with-kubernetes-network/#lb-%E5%8E%8B%E6%B5%8B-cps-%E4%BD%8E">点击查看文章</a></p>
+<h2 id="requests-与-limits-简介">requests 与 limits 简介</h2>
+<p>为了实现 K8s 集群中资源的有效调度和充分利用， K8s 采用requests和limits两种限制类型来对资源进行容器粒度的分配。每一个容器都可以独立地设定相应的requests和limits。这 2 个参数是通过每个容器 containerSpec 的 resources 字段进行设置的。一般来说，在调度的时候requests比较重要，在运行时limits比较重要。</p>
+<p><code>requests定义了对应容器需要的最小资源量。</code>这句话的含义是，举例来讲，比如对于一个 Spring Boot 业务容器，这里的requests必须是容器镜像中 JVM 虚拟机需要占用的最少资源。如果这里把 pod 的内存requests指定为 10Mi ，显然是不合理的，JVM 实际占用的内存 Xms 超出了 K8s 分配给 pod 的内存，导致 pod 内存溢出，从而 K8s 不断重启 pod 。</p>
+<p><code>limits定义了这个容器最大可以消耗的资源上限，防止过量消耗资源导致资源短缺甚至宕机。</code>特别的，设置为 0 表示对使用的资源不做限制。值得一提的是，当设置limits而没有设置requests时，Kubernetes 默认令requests等于limits。</p>
 
     </div>
 
