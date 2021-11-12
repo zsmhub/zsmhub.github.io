@@ -49,7 +49,7 @@
 <meta itemprop="name" content="企业微信第三方应用开发">
 <meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
 <meta itemprop="dateModified" content="2021-09-24T16:46:43&#43;08:00" />
-<meta itemprop="wordCount" content="3678">
+<meta itemprop="wordCount" content="3929">
 <meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="企业微信第三方应用开发"/>
 <meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 3678 字 </span>
+          <span class="more-meta"> 约 3929 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -148,7 +148,8 @@
     <li><a href="#第三方应用设置">第三方应用设置</a></li>
     <li><a href="#一些心得">一些心得</a></li>
     <li><a href="#特别留意">特别留意</a></li>
-    <li><a href="#一些坑">一些坑</a>
+    <li><a href="#一些坑">一些坑</a></li>
+    <li><a href="#前端问题">前端问题</a>
       <ul>
         <li><a href="#上线注意">上线注意</a></li>
       </ul>
@@ -180,12 +181,13 @@
 <p>若开发者丢失suite_ticket，除了等待定时推送的事件外，开发者也<code>可以在管理端手动触发推送</code>。</p>
 </li>
 <li>
-<p>userid &amp;&amp; open_userid</p>
+<p>userid &amp;&amp; open_userid(企业员工级别)</p>
 <p>通过网页授权接口可以获取到当前用户的 userid &amp;&amp; open_userid 信息，如果需要获取用户的更多信息可以调用 通讯录管理 - 成员接口 来获取。</p>
 <ul>
 <li>userid用于在一个企业内唯一标识一个用户[第三方应用服务商可以将返回信息中的corpid及userid为主键匹配用户]</li>
 <li>open_userid：全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。 [第三方应用服务商可以将此字段作为用户id]</li>
 </ul>
+<p>ExternalUserId（客户级别）是企业微信外部联系人的标识。</p>
 </li>
 <li>
 <p>回调配置</p>
@@ -328,6 +330,40 @@
 <ol>
 <li>发视频，有时发得出去，有时发不出去，原因未知</li>
 <li>解散企业会发送取消授权第三方应用事件，不过企微那边会延迟15天才会回调 cancel_auth 事件</li>
+<li></li>
+</ol>
+<h2 id="前端问题">前端问题</h2>
+<ol>
+<li>
+<p>前端页面缓存问题如何解决?</p>
+<p>解决方案：前端路由nginx，设置浏览器不做页面缓存，直接读服务器的数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">location / <span class="o">{</span>
+    access_log /data/nginx/log/xxx.log api<span class="p">;</span>
+    root /home/www/html<span class="p">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$request_filename</span> ~ .*<span class="se">\.</span><span class="o">(</span>htm<span class="p">|</span>html<span class="o">)</span>$<span class="o">)</span>
+    <span class="o">{</span>
+            add_header Cache-Control no-cache<span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>如何清空local-storage？(token存储在local-storage)</p>
+<p>前端在代码加个版本号标识，每次加载前端页面框架时，触发检查版本号标识是否一致。如果代码的版本号标识和本地缓存中的版本号标识不一致，则清空本地缓存，重新登录。</p>
+</li>
 </ol>
 <h3 id="上线注意">上线注意</h3>
 <blockquote>
