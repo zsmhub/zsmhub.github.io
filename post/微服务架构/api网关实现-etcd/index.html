@@ -49,7 +49,7 @@
 <meta itemprop="name" content="用 etcd 实现 API 网关">
 <meta itemprop="description" content="应用场景 etcd 是一个高可用强一致性的键值仓库，在很多分布式系统架构中得到了广泛的应用，其最经典的使用场景就是服务发现。 etcd 的场景默认处理的数据都是"><meta itemprop="datePublished" content="2021-05-06T11:28:32&#43;08:00" />
 <meta itemprop="dateModified" content="2021-05-06T11:28:32&#43;08:00" />
-<meta itemprop="wordCount" content="3415">
+<meta itemprop="wordCount" content="3430">
 <meta itemprop="keywords" content="etcd," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="用 etcd 实现 API 网关"/>
 <meta name="twitter:description" content="应用场景 etcd 是一个高可用强一致性的键值仓库，在很多分布式系统架构中得到了广泛的应用，其最经典的使用场景就是服务发现。 etcd 的场景默认处理的数据都是"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 3415 字 </span>
+          <span class="more-meta"> 约 3430 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -611,6 +611,7 @@ lease 694d673115905e4f keepalived with TTL<span class="o">(</span>20<span class=
 </span><span class="lnt">200
 </span><span class="lnt">201
 </span><span class="lnt">202
+</span><span class="lnt">203
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">const</span> <span class="p">(</span>
@@ -641,7 +642,8 @@ lease 694d673115905e4f keepalived with TTL<span class="o">(</span>20<span class=
     <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">prefix</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">Watch</span><span class="p">(</span><span class="nx">watchChan</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nx">WatchChan</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// 监听 kv 变化、包括更新、删除
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">RouteKV</span><span class="p">)</span> <span class="nf">Watch</span><span class="p">(</span><span class="nx">watchChan</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nx">WatchChan</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="nx">wresp</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">watchChan</span> <span class="p">{</span>
         <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ev</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">wresp</span><span class="p">.</span><span class="nx">Events</span> <span class="p">{</span>
             <span class="nx">key</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">Kv</span><span class="p">.</span><span class="nx">Key</span><span class="p">)</span>

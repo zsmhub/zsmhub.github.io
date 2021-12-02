@@ -49,7 +49,7 @@
 <meta itemprop="name" content="GoAdmin">
 <meta itemprop="description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"><meta itemprop="datePublished" content="2020-08-18T16:40:37&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-18T16:40:37&#43;08:00" />
-<meta itemprop="wordCount" content="199">
+<meta itemprop="wordCount" content="275">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="GoAdmin"/>
 <meta name="twitter:description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 199 字 </span>
+          <span class="more-meta"> 约 275 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -142,6 +142,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#准备工作">准备工作</a></li>
+    <li><a href="#一些坑">一些坑</a></li>
   </ul>
 </nav>
   </div>
@@ -186,7 +187,17 @@ adm init -l cn
 2. 使用在线生成工具 // 注意：输出路径为本地文件绝对路径
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="一些坑">一些坑</h2>
+<ol>
+<li>
+<p>K8S部署环境下，不支持多个Pod部署，否则非GET方式的接口会出现以下错误提示【todo 具体原因不知：有空再查下】</p>
+<ul>
+<li>500 Sorry, the server is reporting an error</li>
+<li>token异常</li>
+</ul>
+</li>
+</ol>
+
     </div>
 
     <div class="post-copyright">

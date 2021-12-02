@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="10141">
+<meta itemprop="wordCount" content="10195">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 10141 字 </span>
+          <span class="more-meta"> 约 10195 字 </span>
           <span class="more-meta"> 预计阅读 21 分钟 </span>
         
       </div>
@@ -169,6 +169,7 @@
 <p>Go 是一门与时代相符的主流系统编程语言。</p>
 <p>编译是将源代码翻译为更加低级的语言的过程 —— 翻译成汇编语言（例如 Go），或是翻译成其他中间语言（如 Java 和 C#）。</p>
 <p><img src="/images/2020/60523966-44c74300-9d1e-11e9-9ba9-d1f594607edc.png" alt="从源文件到可执行目标文件的转化过程"></p>
+<p><code>使用 GO 开发的开源项目：docker, k8s, grpc, etcd</code></p>
 <h3 id="go-logo">Go Logo</h3>
 <p>Go 通过以下的 Logo 来展示它的速度，并以囊地鼠（Gopher）作为它的吉祥物。</p>
 <p><img src="/images/2020/iBjwmRhSYF.png" alt="Go Logo"></p>
@@ -514,15 +515,22 @@ ToDo Something&hellip;</li>
 <p><em>常量和变量进行大小比较时，常量类型会进行隐式转换，然后再跟变量比较。</em></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">const</span> <span class="p">(</span>
@@ -534,6 +542,13 @@ ToDo Something&hellip;</li>
     <span class="nx">Friday</span>
     <span class="nx">Saturday</span>
 <span class="p">)</span>
+
+<span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">mutexLocked</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="kc">iota</span> <span class="c1">// 1
+</span><span class="c1"></span>    <span class="nx">mutexWoken</span>              <span class="c1">// 2
+</span><span class="c1"></span>    <span class="nx">mutexStarving</span>           <span class="c1">// 4
+</span><span class="c1"></span>    <span class="nx">mutexWaiterShift</span> <span class="p">=</span> <span class="kc">iota</span> <span class="c1">// 3
+</span><span class="c1"></span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -748,7 +763,7 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="err">#</span> <span class="nx">切片的初始化</span>
 
-<span class="c1">// 创建切片：创建了一个长度为 10，容量为 50 的 切片 slice1，该 切片 指向数组的前 10 个元素。『如果没有指定容量，则容量等于长度』
+<span class="c1">// 初始化切片的两种方式：创建了一个长度为 10，容量为 50 的 切片 slice1，该 切片 指向数组的前 10 个元素。『如果没有指定容量，则容量等于长度』
 </span><span class="c1"></span><span class="nx">slice1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kd">type</span><span class="p">,</span> <span class="nx">start_length</span><span class="p">,</span> <span class="nx">capacity</span><span class="p">)</span>
 <span class="kd">var</span> <span class="nx">slice1</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 
@@ -784,15 +799,13 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
-</span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 声明map
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">m</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span>
-<span class="c1">// 初始化map, 未初始化的map为nil map，不能赋值
-</span><span class="c1"></span><span class="nx">m</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
-<span class="c1">// 上面两行等价于
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">m</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+<span class="c1">// 初始化map的两种方式, 未初始化的map为nil map，不能赋值
+</span><span class="c1"></span><span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">m</span> <span class="p">=</span>  <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">uint8</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
 
 <span class="err">#</span> <span class="nx">创建map</span>
 <span class="nx">map1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="nx">keytype</span><span class="p">]</span><span class="nx">valuetype</span><span class="p">,</span> <span class="nx">cap</span><span class="p">)</span>

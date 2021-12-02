@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="Go之并发安全" />
-<meta property="og:description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy" />
+<meta property="og:description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-08-23T20:57:43&#43;08:00" />
 <meta property="article:modified_time" content="2020-08-23T20:57:43&#43;08:00" />
 
 <meta itemprop="name" content="Go之并发安全">
-<meta itemprop="description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy"><meta itemprop="datePublished" content="2020-08-23T20:57:43&#43;08:00" />
+<meta itemprop="description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单"><meta itemprop="datePublished" content="2020-08-23T20:57:43&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-23T20:57:43&#43;08:00" />
-<meta itemprop="wordCount" content="877">
+<meta itemprop="wordCount" content="1484">
 <meta itemprop="keywords" content="并发安全," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go之并发安全"/>
-<meta name="twitter:description" content="分段锁ConcurrentMap，map&#43;读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map&#43;读写锁，sy"/>
+<meta name="twitter:description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 877 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1484 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -141,16 +141,29 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#并发实践">并发实践</a></li>
     <li><a href="#分段锁concurrentmapmap读写锁syncmap的效率测试">分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</a></li>
     <li><a href="#go-syncmap-源码分析">go sync.map 源码分析</a></li>
     <li><a href="#go-并发安全map-分段锁实现">go 并发安全map 分段锁实现</a></li>
     <li><a href="#并行计算并指定key存储结果案例">并行计算并指定key存储结果案例</a></li>
+    <li><a href="#互斥锁的执行顺序">互斥锁的执行顺序</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="分段锁concurrentmapmap读写锁syncmap的效率测试">分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</h2>
+      <h2 id="并发实践">并发实践</h2>
+<p>Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单，而且不容易出错。</p>
+<p>所以，我给你提供一套选择的方法:</p>
+<ul>
+<li>共享资源的并发访问使用传统并发原语；</li>
+<li>复杂的任务编排和消息传递使用 Channel；</li>
+<li>需要和 Select 语句结合，使用 Channel；</li>
+<li>需要和超时配合时，使用 Channel 和 Context；</li>
+<li>简单等待所有任务的完成用 WaitGroup，也有 Channel 的推崇者用 Channel，都可以；</li>
+<li>消息通知机制使用 Channel，除非只想 signal 一个 goroutine，才使用 Cond；</li>
+</ul>
+<h2 id="分段锁concurrentmapmap读写锁syncmap的效率测试">分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</h2>
 <p><a href="https://blog.csdn.net/yzf279533105/article/details/98636679">原文：go 分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</a></p>
 <blockquote>
 <p>效率测试结论：</p>
@@ -314,7 +327,15 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="互斥锁的执行顺序">互斥锁的执行顺序</h2>
+<p>如果 Mutex 已经被一个 goroutine 获取了锁，其它等待中的 goroutine 们只能一直等待。那么，等这个锁释放后，等待中的 goroutine 中哪一个会优先获取 Mutex 呢？</p>
+<p>等待的goroutine们是以FIFO排队的</p>
+<ol>
+<li>当Mutex处于正常模式时，若此时没有新goroutine与队头goroutine竞争，则队头goroutine获得。若有新goroutine竞争大概率新goroutine获得。</li>
+<li>当队头goroutine竞争锁失败1ms后，它会将Mutex调整为饥饿模式。进入饥饿模式后，锁的所有权会直接从解锁goroutine移交给队头goroutine，此时新来的goroutine直接放入队尾。</li>
+<li>当一个goroutine获取锁后，如果发现自己满足下列条件中的任何一个#1它是队列中最后一个#2它等待锁的时间少于1ms，则将锁切换回正常模式</li>
+</ol>
+
     </div>
 
     <div class="post-copyright">

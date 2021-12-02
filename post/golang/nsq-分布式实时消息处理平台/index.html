@@ -49,7 +49,7 @@
 <meta itemprop="name" content="NSQ-分布式实时消息处理平台">
 <meta itemprop="description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"><meta itemprop="datePublished" content="2020-06-28T10:50:45&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-28T10:50:45&#43;08:00" />
-<meta itemprop="wordCount" content="2683">
+<meta itemprop="wordCount" content="2776">
 <meta itemprop="keywords" content="消息队列," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NSQ-分布式实时消息处理平台"/>
 <meta name="twitter:description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2683 字 </span>
+          <span class="more-meta"> 约 2776 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -384,6 +384,26 @@ $ curl -d <span class="s1">&#39;hello world 3&#39;</span> <span class="s1">&#39;
 <h2 id="代码示例">代码示例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">// HandleMessage方法 <span class="k">return</span> nil 或 手动执行msg.Finish，都会将当前消息移除队列，nsq才会消费下一个队列消息
+
+msg.Finish<span class="o">()</span> // 手动提交消费完成，移出队列
+
+msg.Requeue<span class="o">(</span>time.Second * 5<span class="o">)</span> // 重新放入队列消费
+
+msg.DisableAutoResponse<span class="o">()</span>  // 禁用自动提交
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
@@ -517,7 +537,7 @@ $ curl -d <span class="s1">&#39;hello world 3&#39;</span> <span class="s1">&#39;
 </span><span class="c1"></span>
     <span class="c1">// 设置消息处理函数
 </span><span class="c1"></span>    <span class="nx">consumer</span><span class="p">.</span><span class="nf">AddHandler</span><span class="p">(</span><span class="nx">nsq</span><span class="p">.</span><span class="nf">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">message</span> <span class="o">*</span><span class="nx">nsq</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="nx">message</span><span class="p">.</span><span class="nf">Finish</span><span class="p">()</span> <span class="c1">// 收到消息的响应，否则会一直循环这个方法的逻辑
+        <span class="nx">message</span><span class="p">.</span><span class="nf">Finish</span><span class="p">()</span> <span class="c1">// 手动提交消费完成，移出队列
 </span><span class="c1"></span>        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;消费信息：&#34;</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">Body</span><span class="p">))</span>
         <span class="k">return</span> <span class="kc">nil</span>
     <span class="p">}))</span>

@@ -410,7 +410,7 @@
       <pubDate>Sun, 23 Aug 2020 20:57:43 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/</guid>
-      <description>分段锁ConcurrentMap，map+读写锁，sync.map的效率测试 原文：go 分段锁ConcurrentMap，map+读写锁，sy</description>
+      <description>并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单</description>
     </item>
     
     <item>
@@ -1355,7 +1355,7 @@
       <pubDate>Wed, 09 Jan 2019 22:13:42 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/</guid>
-      <description>常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 date_format(&amp;#39;2019-12-12 12:22:33&amp;#39;, format) -- 日期格式化 FROM_UNIXTIME</description>
+      <description>常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 date_format(&amp;#39;2019-12-12 12:22:33&amp;#39;, &amp;#34;%Y-%m-%d&amp;#34;) -- 日期格式化 FROM_UNIXTIME</description>
     </item>
     
     <item>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go高级知识">
 <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="882">
+<meta itemprop="wordCount" content="1450">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go高级知识"/>
 <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 882 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1450 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -147,6 +147,8 @@
     <li><a href="#引入私有仓库报错的解决方案">引入私有仓库报错的解决方案</a></li>
     <li><a href="#跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</a></li>
     <li><a href="#golang-ast初探一个懒人源码分析工具">golang ast初探：一个懒人源码分析工具</a></li>
+    <li><a href="#throw">throw</a></li>
+    <li><a href="#uinptr--unsafepointer">uinptr &amp;&amp; unsafe.Pointer</a></li>
   </ul>
 </nav>
   </div>
@@ -247,6 +249,39 @@ git config --global url.https://gitlab.xxx.com/.insteadof http://gitlab.xxx.com/
 </div><h2 id="golang-ast初探一个懒人源码分析工具">golang ast初探：一个懒人源码分析工具</h2>
 <p><a href="https://jodezer.github.io/2017/12/golang-ast%E5%88%9D%E6%8E%A2-%E4%B8%80%E4%B8%AA%E6%87%92%E4%BA%BA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">查看原文</a></p>
 <p><a href="https://github.com/JodeZer/lazydog">一个懒人源码分析工具</a></p>
+<h2 id="throw">throw</h2>
+<p>其实 go 语言源码中一些地方有一些 throw 调用，这个函数会打印相应的 fatal msg，并退出整个程序，因为这类报错被 go 语言认为无法动态修复的崩溃。所以这类奔溃与 panic 不同，属于无法通过 defer 和 recover 捕获的崩溃（因为无法修复）。</p>
+<p>map：熟悉 go 语言的开发者都知道，在 go 多协程架构使用便利的情况下，往往存在很多线程不安全的变量，map 就是其中最经典的栗子，当在并发下，在没有添加读写锁的情况下对 map 进行写、读写操作时，也会抛出 throw 崩溃。</p>
+<p>需要注意的是，这类崩溃是直接 down 掉整个进程的，所以我们线上使用 go 语言进行应用开发时，一定要记得使用 supervisor 之类的进程管理工具，确保进行崩溃后先拉起来，再进行修复。否则会产生大面积机器完全宕机的情况。</p>
+<p>再需要注意的一点是，go 语言中一个进程往往有很多 goroutinue 在同时进行，如果发生 throw 奔溃时，整个进程都会被关掉，如果通过日志，会发现打印了无数堆栈信息的日志（所有 goroutinue 的日志），这时候千万不要在堆栈日志上下功夫了，因为打印出来的都是正常日志，只需要查看日志中的 fatal 关键字即可找出真正的问题所在。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">testmap</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="kc">true</span><span class="p">{</span>
+            <span class="nx">testmap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">10</span> <span class="c1">// fatal: sync: curcurent map writes
+</span><span class="c1"></span>        <span class="p">}</span>
+    <span class="p">}()</span>
+<span class="p">}</span>
+<span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="uinptr--unsafepointer">uinptr &amp;&amp; unsafe.Pointer</h2>
+<p>两者都是数据类型。</p>
+<p>uintptr用来进行指针计算，因为它是整型，所以很容易计算出下一个指针所指向的位置。</p>
+<p>unsafe.Pointer是特别定义的一种指针类型,它可以包含任意类型变量的地址。</p>
 
     </div>
 
