@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="9681">
+<meta itemprop="wordCount" content="10335">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 9681 字 </span>
-          <span class="more-meta"> 预计阅读 20 分钟 </span>
+          <span class="more-meta"> 约 10335 字 </span>
+          <span class="more-meta"> 预计阅读 21 分钟 </span>
         
       </div>
     </header>
@@ -713,7 +713,7 @@
     <span class="c1">// 根据键删除对应的键值对
 </span><span class="c1"></span>    <span class="nx">scene</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="s">&#34;london&#34;</span><span class="p">)</span>
 
-    <span class="c1">// 遍历所有sync.Map中的键值对，返回 false 则中断循环
+    <span class="c1">// 遍历所有sync.Map中的键值对，返回的 bool 结果，true表明遍历继续，false表明遍历终止。
 </span><span class="c1"></span>    <span class="nx">scene</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">bool</span> <span class="p">{</span>
         <span class="nx">k2</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">k</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
@@ -1366,7 +1366,113 @@
 <li>Attrs(User{Age: 20}). FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录.</li>
 <li>Assign(User{Age: 30}). FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库.</li>
 </ul>
+<blockquote>
+<p>为什么结构体中 字段string 类型时间， 和数据库不吻合？</p>
+</blockquote>
+<p>我们发现，在连接mysql时， 有一个parseTime参数</p>
+<p>parseTime=true 改变 数据库DATE， DATETIME值的输出类型， 从 []byte/string类型被改变为time.Time类型， 像0000-00-00 00:00:00会被转化为time.Time的零值</p>
+<p>再看下我们的配置， parseTime参数为true， 即我们的datetime被转化time.time,</p>
+<p>但我们定义的是字符串， 即又被转化为了字符串， 具体转化方案是这样：</p>
+<p>DATETIME(Mysql) —–&gt;time.Time(golang) ——&gt; string(golang), 即这里的time.time到字符串 这一步出现了转化差异。</p>
+<blockquote>
+<p>gorm中格式化时间的问题，通过自定义一个JSONTime的结构，来控制时间的格式</p>
+</blockquote>
+<p>问题：时间字段格式为0001-01-01T00:00:00Z，对于 json，time.Time使用的是 time.RFC3339Nano 这种格式。通常程序中不使用这种格式。解决办法是定义自己的类型</p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">JSONTime</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="p">}</span>
+
+<span class="c1">// 序列化：转json时解析为毫秒时间戳
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="nx">JSONTime</span><span class="p">)</span> <span class="nf">MarshalJSON</span><span class="p">()</span> <span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ts</span> <span class="o">:=</span> <span class="nx">t</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1e6</span>
+    <span class="k">if</span> <span class="nx">ts</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">ts</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatInt</span><span class="p">(</span><span class="nx">ts</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// 反序列化
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">JSONTime</span><span class="p">)</span> <span class="nf">UnmarshalJSON</span><span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="nx">val</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseInt</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="nx">val</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span> <span class="c1">// 兼容queue+gorm问题
+</span><span class="c1"></span>        <span class="nx">t</span><span class="p">.</span><span class="nx">Time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{}</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+    <span class="nx">t</span><span class="p">.</span><span class="nx">Time</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">val</span><span class="o">*</span><span class="mf">1e6</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">JSONTime</span><span class="p">)</span> <span class="nf">Scan</span><span class="p">(</span><span class="nx">v</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="nx">value</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">ok</span> <span class="p">{</span>
+        <span class="o">*</span><span class="nx">t</span> <span class="p">=</span> <span class="nx">JSONTime</span><span class="p">{</span><span class="nx">Time</span><span class="p">:</span> <span class="nx">value</span><span class="p">}</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;can not convert %v to timestamp&#34;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Value insert timestamp into mysql need this function.
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">t</span> <span class="nx">JSONTime</span><span class="p">)</span> <span class="nf">Value</span><span class="p">()</span> <span class="p">(</span><span class="nx">driver</span><span class="p">.</span><span class="nx">Value</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">zeroTime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+    <span class="k">if</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Time</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">()</span> <span class="o">==</span> <span class="nx">zeroTime</span><span class="p">.</span><span class="nf">UnixNano</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2

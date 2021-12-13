@@ -49,7 +49,7 @@
 <meta itemprop="name" content="企业微信第三方应用开发">
 <meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
 <meta itemprop="dateModified" content="2021-09-24T16:46:43&#43;08:00" />
-<meta itemprop="wordCount" content="3929">
+<meta itemprop="wordCount" content="3977">
 <meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="企业微信第三方应用开发"/>
 <meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 3929 字 </span>
+          <span class="more-meta"> 约 3977 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -181,13 +181,13 @@
 <p>若开发者丢失suite_ticket，除了等待定时推送的事件外，开发者也<code>可以在管理端手动触发推送</code>。</p>
 </li>
 <li>
-<p>userid &amp;&amp; open_userid(企业员工级别)</p>
+<p>userid &amp;&amp; open_userid(密文员工id)</p>
 <p>通过网页授权接口可以获取到当前用户的 userid &amp;&amp; open_userid 信息，如果需要获取用户的更多信息可以调用 通讯录管理 - 成员接口 来获取。</p>
 <ul>
-<li>userid用于在一个企业内唯一标识一个用户[第三方应用服务商可以将返回信息中的corpid及userid为主键匹配用户]</li>
-<li>open_userid：全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。 [第三方应用服务商可以将此字段作为用户id]</li>
+<li>userid用于在一个企业内唯一标识一个用户[企业微信帐号ID安全性全面升级后，userid=open_userid]</li>
+<li>open_userid：服务商内全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。 [第三方应用服务商可以将此字段作为用户id]</li>
 </ul>
-<p>ExternalUserId（客户级别）是企业微信外部联系人的标识。</p>
+<p>external_userid（客户级别）是企业微信外部联系人的标识（企业内唯一，服务商内不唯一）。</p>
 </li>
 <li>
 <p>回调配置</p>
@@ -267,14 +267,12 @@
 </blockquote>
 <ol>
 <li>使用我们第三方应用的是员工，不同企业的员工可以用 open_userid 保证唯一性（对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的）</li>
-<li>前端只能拿到客户的 external_userid，后端用该 external_userid 拿到的 union_id，不同企业的客户可以用 external_userid 或 union_id 保证唯一性</li>
+<li>前端只能拿到客户的 external_userid，后端用该 corpid+external_userid 保证客户的唯一性（建议使用 uuid 等其他方案标识客户的唯一性）</li>
 </ol>
 <p><code>关于ExternalUserId</code></p>
 <p>ExternalUserId是企业微信外部联系人的标识，但需要开发者(尤其是第三方开发者)注意的是，对于同一个外部联系人，不同调用方（企业/第三方服务商）获取到的ExternalUserId是不同的。</p>
 <p><code>关于客户群ID</code></p>
 <p>企业微信为每个客户群生成唯一的ID（chat_id），同样需要注意的是，对于同一个群，不同调用方（企业/第三方服务商）获取到的chat_id是不同的</p>
-<p><code>unionid获取，需提前绑定微信开发者ID</code></p>
-<p><img src="/images/2021/syncCopiedImage_1633678662020_1633678666426.png" alt="客户联系设置"></p>
 <blockquote>
 <p>获取客户详情API</p>
 </blockquote>
@@ -328,7 +326,7 @@
 </ol>
 <h2 id="一些坑">一些坑</h2>
 <ol>
-<li>发视频，有时发得出去，有时发不出去，原因未知</li>
+<li>前端发视频，有时发得出去，有时发不出去，原因未知</li>
 <li>解散企业会发送取消授权第三方应用事件，不过企微那边会延迟15天才会回调 cancel_auth 事件</li>
 <li></li>
 </ol>
@@ -374,6 +372,11 @@
 <p>生成推广二维码并获取推广包ID(template_id)</p>
 </blockquote>
 <p>设置入口：服务商管理后台 &gt; 应用推广 &gt; 推广二维码</p>
+<blockquote>
+<p>应用市场搜索</p>
+</blockquote>
+<p>功能位置：应用管理 -&gt; 应用推广 -&gt; 应用市场搜索</p>
+<p>如果开发的第三方应用是开放性的，建议开启支持可搜。</p>
 <h2 id="参考文献">参考文献</h2>
 <p><a href="http://loriame.cn/archives/be1a3ce8.html">企业微信第三方服务商应用开发经验分享</a></p>
 <p><a href="https://www.daimajiaoliu.com/daima/7b746c1306d1804">企业微信服务商第三方应用开发流程</a></p>

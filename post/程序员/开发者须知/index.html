@@ -49,7 +49,7 @@
 <meta itemprop="name" content="开发者须知">
 <meta itemprop="description" content="开发过程：SOLID五大设计原则 S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Pricipl"><meta itemprop="datePublished" content="2019-01-25T15:42:14&#43;08:00" />
 <meta itemprop="dateModified" content="2019-05-10T15:42:14&#43;08:00" />
-<meta itemprop="wordCount" content="747">
+<meta itemprop="wordCount" content="1116">
 <meta itemprop="keywords" content="程序员," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="开发者须知"/>
 <meta name="twitter:description" content="开发过程：SOLID五大设计原则 S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Pricipl"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/"> 程序员 </a>
             </div>
-          <span class="more-meta"> 约 747 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1116 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -146,6 +146,7 @@
     <li><a href="#编码规范标准">编码规范标准</a></li>
     <li><a href="#mvc-转变成-mbc">MVC 转变成 MBC</a></li>
     <li><a href="#go-zero作者的代码抽象经验和心得">go-zero作者的代码抽象经验和心得</a></li>
+    <li><a href="#字节与字符的区别">字节与字符的区别</a></li>
   </ul>
 </nav>
   </div>
@@ -186,6 +187,18 @@
 <li>Martin Fowler提出出现三次再抽象的原则，有时有些同事会找我往框架里增加一个功能，我思考后经常会回答这个你先在业务层写，其它地方也有需要了你再告诉我，三次出现我会考虑集成到框架里</li>
 <li>一个文件应该尽量只做一件事，每个文件尽可能控制在200行以内，一个函数尽可能控制在50行以内，这样不需要滚动就可以看到整个函数</li>
 <li>需要抽象和提炼的能力，多去思考，经常回头思考之前的架构或实现</li>
+</ul>
+<h2 id="字节与字符的区别">字节与字符的区别</h2>
+<p>字节(Byte)是计量单位，表示数据量多少，是计算机信息技术用于计量存储容量的一种计量单位，通常情况下一字节等于八位。</p>
+<p>字符(Character)计算机中使用的字母、数字、字和符号，比如&rsquo;A'、&lsquo;B&rsquo;、'$'、'&amp;&lsquo;等。</p>
+<p>字节与字符：</p>
+<ul>
+<li>符号：英文标点为一个字节，中文标点为两个字节。例如：英文句号 . 占1个字节的大小，中文句号 。占2个字节的大小。</li>
+<li>ASCII 码中，一个英文字母（不分大小写）为一个字节，一个中文汉字为两个字节。</li>
+<li>UTF-8 编码中，一个英文字为一个字节，一个中文为三个字节。</li>
+<li>Unicode 编码中，一个英文为一个字节，一个中文为两个字节。</li>
+<li>UTF-16 编码中，一个英文字母字符或一个汉字字符存储都需要 2 个字节（Unicode 扩展区的一些汉字存储需要 4 个字节）。</li>
+<li>UTF-32 编码中，世界上任何字符的存储都需要 4 个字节。</li>
 </ul>
 
     </div>

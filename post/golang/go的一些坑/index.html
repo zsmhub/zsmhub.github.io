@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go的一些坑">
 <meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"><meta itemprop="datePublished" content="2020-11-13T11:17:51&#43;08:00" />
 <meta itemprop="dateModified" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="wordCount" content="2104">
+<meta itemprop="wordCount" content="2614">
 <meta itemprop="keywords" content="坑," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go的一些坑"/>
 <meta name="twitter:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2104 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2614 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -149,7 +149,7 @@
     <li><a href="#在一个值为-nil-的-channel-上发送和接收数据将永久阻塞">在一个值为 nil 的 channel 上发送和接收数据将永久阻塞</a></li>
     <li><a href="#golang-没有全局异常捕获">golang 没有全局异常捕获</a></li>
     <li><a href="#如何在http服务端程序中读取2次request-body">如何在http服务端程序中读取2次Request Body</a></li>
-    <li><a href="#goroutine泄漏">goroutine泄漏</a></li>
+    <li><a href="#超时退出导致goroutine泄漏问题">超时退出导致goroutine泄漏问题</a></li>
   </ul>
 </nav>
   </div>
@@ -442,11 +442,12 @@ fmt.Println(utf8.RuneCountInString(x)) // 输出：6
 <span class="nx">req</span><span class="p">.</span><span class="nx">Body</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">NopCloser</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nf">NewBuffer</span><span class="p">(</span><span class="nx">bodyBytes</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="goroutine泄漏">goroutine泄漏</h2>
-<p>在下方代码例子中，process 函数会启动一个 goroutine，去处理需要长时间处理的业务，处理完之后，会发送 true 到 chan 中，目的是通知其它等待的 goroutine，可以继续处理了。
-我们来看一下下方代码第 10 行到第 15 行，主 goroutine 接收到任务处理完成的通知，或者超时后就返回了。这段代码有问题吗？
-如果发生超时，process 函数就返回了，这就会导致 unbuffered 的 chan 从来就没有被读取。我们知道，unbuffered chan 必须等 reader 和 writer 都准备好了才能交流，否则就会阻塞。超时导致未读，结果就是子 goroutine 就阻塞在第 7 行永远结束不了，进而导致 goroutine 泄漏。
-解决这个 Bug 的办法很简单，就是将 unbuffered chan 改成容量为 1 的 chan，这样第 7 行就不会被阻塞了。</p>
+</div><h2 id="超时退出导致goroutine泄漏问题">超时退出导致goroutine泄漏问题</h2>
+<p><code>做超时提前退出时，一定要注意代码中会不会出现 goroutine 泄漏！！！</code></p>
+<p>在下方代码例子中，process 函数会启动一个 goroutine，去处理需要长时间处理的业务，处理完之后，会发送 true 到 chan 中，目的是通知其它等待的 goroutine，可以继续处理了。</p>
+<p>我们来看一下下方代码第 10 行到第 15 行，主 goroutine 接收到任务处理完成的通知，或者超时后就返回了。这段代码有问题吗？</p>
+<p>如果发生超时，process 函数就返回了，这就会导致 unbuffered 的 chan 从来就没有被读取。我们知道，unbuffered chan 必须等 reader 和 writer 都准备好了才能交流，否则就会<code>阻塞</code>。超时导致未读，结果就是子 goroutine 就阻塞在第 7 行永远结束不了，<code>进而导致 goroutine 泄漏</code>。</p>
+<p>解决这个 Bug 的办法很简单，就是将 unbuffered chan 改成容量为 1 的 chan（创建有缓冲区的channel），这样第 7 行就不会被阻塞了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -468,8 +469,8 @@ fmt.Println(utf8.RuneCountInString(x)) // 输出：6
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">process</span><span class="p">(</span><span class="nx">timeout</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-    <span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span>
-
+    <span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="c1">// 修改为：ch := make(chan bool, 1) 即可解决 goroutine 泄露问题
+</span><span class="c1"></span>
     <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// 模拟处理耗时的业务
 </span><span class="c1"></span>        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">((</span><span class="nx">timeout</span> <span class="o">+</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">))</span>
@@ -485,7 +486,67 @@ fmt.Println(utf8.RuneCountInString(x)) // 输出：6
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
+</div><p>设置缓冲区是一种方式，还有另一种方式：使用 select 尝试向信道 done 发送信号，如果发送失败，则说明缺少接收者(receiver)，即超时了，那么直接退出即可。</p>
+<p>select 优势：缓冲区不能够区分是否超时了，但是 select 可以（没有接收方，信道发送信号失败，则说明超时了）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">process</span><span class="p">(</span><span class="nx">timeout</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="c1">// 修改为：ch := make(chan bool, 1) 即可解决 goroutine 泄露问题
+</span><span class="c1"></span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 模拟处理耗时的业务
+</span><span class="c1"></span>        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">((</span><span class="nx">timeout</span> <span class="o">+</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">))</span>
+        <span class="k">select</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="nx">ch</span> <span class="o">&lt;-</span><span class="kc">true</span><span class="p">:</span>
+                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exit goroutine&#34;</span><span class="p">)</span>
+            <span class="k">default</span><span class="p">:</span>
+                <span class="k">return</span>
+        <span class="p">}</span>
+    <span class="p">}()</span>
+    <span class="k">select</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">result</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">result</span>
+    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">timeout</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
+</div><blockquote>
+<p>强制 kill goroutine 可能吗？</p>
+</blockquote>
+<p>上面的例子，即时超时返回了，但是子协程仍在继续运行，直到自己退出。那么有可能在超时的时候，就强制关闭子协程吗？</p>
+<p>答案是不能，goroutine 只能自己退出，而不能被其他 goroutine 强制关闭或杀死。</p>
+<p>关于这个问题，Github 上也有讨论：</p>
+<p><a href="https://github.com/golang/go/issues/32610">question: is it possible to a goroutine immediately stop another goroutine?</a></p>
+<p>摘抄其中几个比较有意思的观点如下：</p>
+<ul>
+<li>杀死一个 goroutine 设计上会有很多挑战，当前所拥有的资源如何处理？堆栈如何处理？defer 语句需要执行么？</li>
+<li>如果允许 defer 语句执行，那么 defer 语句可能阻塞 goroutine 退出，这种情况下怎么办呢？</li>
+</ul>
+
     </div>
 
     <div class="post-copyright">

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="NSQ-分布式实时消息处理平台">
 <meta itemprop="description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"><meta itemprop="datePublished" content="2020-06-28T10:50:45&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-28T10:50:45&#43;08:00" />
-<meta itemprop="wordCount" content="2776">
+<meta itemprop="wordCount" content="2820">
 <meta itemprop="keywords" content="消息队列," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NSQ-分布式实时消息处理平台"/>
 <meta name="twitter:description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2776 字 </span>
+          <span class="more-meta"> 约 2820 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -167,15 +167,16 @@
 </blockquote>
 <p>负责接收消息，存储队列和将消息发送给客户端。</p>
 <p>nsqd 可以多机器部署，当客户端向指定 topic 发送消息时，可以配置多个 nsqd 地址，消息会随机的分配到各个 nsqd 上，nsqd 优先把消息存储到内存 channel 中，当内存 channel 满了之后，则把消息写到磁盘文件中。</p>
+<p>指标Connections: 等于 nsqd 数量 * 监听 topic 服务数量</p>
 <blockquote>
 <p>nsqlookupd</p>
 </blockquote>
 <p>主要负责管理拓扑信息、nsqd 的心跳、状态监测，给客户端、nsqadmin 提供 topic 所在的 nsqd 地址与状态。</p>
+<p>用来维护，管理，发现nsqd节点。</p>
 <blockquote>
 <p>nsqadmin</p>
 </blockquote>
 <p>nsqadmin 是一个 web 管理界面，用来汇集集群的实时统计，并执行不同的管理任务。</p>
-<p>Connections: 等于 nsqd 数量 * 监听 topic 服务数量</p>
 <p>nsqadmin 访问地址: http://0.0.0.0:4171/</p>
 <blockquote>
 <p>topic『类似数据库中的表』</p>
@@ -380,6 +381,10 @@ $ curl -d <span class="s1">&#39;hello world 3&#39;</span> <span class="s1">&#39;
 </code></pre></td></tr></table>
 </div>
 </div></li>
+<li>
+<p>error connecting to nsqd - dial tcp: i/o timeout</p>
+<p>TODO 原因未知</p>
+</li>
 </ol>
 <h2 id="代码示例">代码示例</h2>
 <div class="highlight"><div class="chroma">

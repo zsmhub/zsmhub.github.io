@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 经典案例">
 <meta itemprop="description" content="too many connection 报错可能原因 机器负载飙升，导致SQL执行效率下降，导致连接堆积 业务访问量突增（或者有SQL注入现象），导致连接数打满 出现“死锁”或者锁"><meta itemprop="datePublished" content="2020-05-29T19:13:07&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-29T19:13:07&#43;08:00" />
-<meta itemprop="wordCount" content="489">
+<meta itemprop="wordCount" content="1241">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 经典案例"/>
 <meta name="twitter:description" content="too many connection 报错可能原因 机器负载飙升，导致SQL执行效率下降，导致连接堆积 业务访问量突增（或者有SQL注入现象），导致连接数打满 出现“死锁”或者锁"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 489 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 1241 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -145,6 +145,7 @@
     <li><a href="#大表数据删除方案">大表数据删除方案</a></li>
     <li><a href="#权重排序">权重排序</a></li>
     <li><a href="#使用-delete-join-删除单表重复数据">使用 DELETE JOIN 删除单表重复数据</a></li>
+    <li><a href="#选择合适的-mysql-日期时间类型来存储你的时间">选择合适的 MySQL 日期时间类型来存储你的时间</a></li>
   </ul>
 </nav>
   </div>
@@ -212,7 +213,35 @@ insert ignore into <code>friend_record</code>(owner_account_id, account_id, rema
 <span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="o">&lt;</span><span class="n">b</span><span class="p">.</span><span class="n">id</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="选择合适的-mysql-日期时间类型来存储你的时间">选择合适的 MySQL 日期时间类型来存储你的时间</h2>
+<p>构建数据库写程序避免不了使用日期和时间，对于数据库来说，有多种日期时间字段可供选择，如 timestamp 和 datetime 以及使用 int 来存储 unix timestamp。</p>
+<blockquote>
+<p>datetime(8个字节) 和 timestamp(4个字节)</p>
+</blockquote>
+<ol>
+<li>datetime 更像日历上面的时间和你手表的时间的结合，就是指具体某个时间。</li>
+<li>timestamp 更适合来记录时间，比如我在东八区时间现在是 2016-08-02 10:35:52， 你在日本（东九区此时时间为 2016-08-02 11:35:52），我和你在聊天，数据库记录了时间，取出来之后，对于我来说时间是 2016-08-02 10:35:52，对于日本的你来说就是 2016-08-02 11:35:52。所以就不用考虑时区的计算了。</li>
+<li>时间范围是 timestamp 硬伤（1970-2038），当然 datetime （1000-9999）也记录不了刘备什么时候出生（161 年）。</li>
+</ol>
+<blockquote>
+<p>timestamp 和 UNIX timestamp(4个字节)</p>
+</blockquote>
+<ol>
+<li>显示直观，出问题了便于排错，比好多很长的 int 数字好看多了</li>
+<li>int 是从 1970 年开始累加的，但是 int 支持的范围是 1901-12-13 到 2038-01-19 03:14:07，如果需要更大的范围需要设置为 bigInt。但是这个时间不包含毫秒，如果需要毫秒，还需要定义为浮点数。datetime 和 timestamp 原生自带 6 位的微秒。</li>
+<li>timestamp 是自带时区转换的，同上面的第 2 项。</li>
+<li>用户前端输入的时间一般都是日期类型，如果存储 int 还需要存前取后处理</li>
+</ol>
+<blockquote>
+<p>总结：</p>
+</blockquote>
+<ol>
+<li>timestamp 记录经常变化的更新 / 创建 / 发布 / 日志时间 / 购买时间 / 登录时间 / 注册时间等，并且是近来的时间，够用，时区自动处理，比如说做海外购或者业务可能拓展到海外</li>
+<li>datetime 记录固定时间如服务器执行计划任务时间 / 健身锻炼计划时间等，在任何时区都是需要一个固定的时间要做某个事情。超出 timestamp 的时间，如果需要时区必须记得时区处理</li>
+<li>UNIX timestamps 使用起来并不是很方便，至于说比较取范围什么的，timestamp 和 datetime 都能干。</li>
+<li>如果你不考虑时区，或者有自己一套的时区方案，随意了，喜欢哪个上哪个了</li>
+</ol>
+
     </div>
 
     <div class="post-copyright">
