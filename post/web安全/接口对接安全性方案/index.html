@@ -49,7 +49,7 @@
 <meta itemprop="name" content="接口对接安全性方案">
 <meta itemprop="description" content="接口对接安全性方案 鉴权（authentication）是指验证用户是否拥有访问系统的权利。 建立访问IP白名单 可以在nginx上配置只允许某些"><meta itemprop="datePublished" content="2019-12-25T21:44:01&#43;08:00" />
 <meta itemprop="dateModified" content="2019-12-25T21:44:01&#43;08:00" />
-<meta itemprop="wordCount" content="1084">
+<meta itemprop="wordCount" content="1417">
 <meta itemprop="keywords" content="接口对接,web安全," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="接口对接安全性方案"/>
 <meta name="twitter:description" content="接口对接安全性方案 鉴权（authentication）是指验证用户是否拥有访问系统的权利。 建立访问IP白名单 可以在nginx上配置只允许某些"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/web-%E5%AE%89%E5%85%A8/"> web 安全 </a>
             </div>
-          <span class="more-meta"> 约 1084 字 </span>
+          <span class="more-meta"> 约 1417 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -144,6 +144,7 @@
     <li><a href="#接口对接安全性方案">接口对接安全性方案</a></li>
     <li><a href="#接口具体加密方式">接口具体加密方式</a></li>
     <li><a href="#系统级别的安全性方案">系统级别的安全性方案</a></li>
+    <li><a href="#接口通讯规范示例">接口通讯规范示例</a></li>
   </ul>
 </nav>
   </div>
@@ -208,6 +209,109 @@
 <p>阿里云DDoS防护服务是以阿里云覆盖全球的DDoS防护网络为基础，结合阿里巴巴自研的DDoS攻击检测和智能防护体系，向您提供可管理的DDoS防护服务，自动快速的缓解网络攻击对业务造成的延迟增加，访问受限，业务中断等影响，从而减少业务损失，降低潜在DDoS攻击风险。</p>
 </li>
 </ol>
+<h2 id="接口通讯规范示例">接口通讯规范示例</h2>
+<ul>
+<li>
+<p>签名规则：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 签名有效期暂定为 600 秒
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">platform</span> <span class="p">=</span> <span class="s">&#34;xxxx&#34;</span>       <span class="c1">// 平台，正式测试环境保持一致
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">secret</span> <span class="p">=</span> <span class="s">&#34;test_123456&#34;</span>   <span class="c1">// 测试环境密钥
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">requestTime</span> <span class="p">=</span> <span class="mi">1640163102</span> <span class="c1">// 秒级时间戳
+</span><span class="c1"></span>
+<span class="c1">// 生成签名
+</span><span class="c1"></span><span class="nx">sign</span> <span class="o">:=</span> <span class="nf">Md5</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d-%s-%s&#34;</span><span class="p">,</span> <span class="nx">requestTime</span><span class="p">,</span> <span class="nx">platform</span><span class="p">,</span> <span class="nx">secret</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>数据规范</p>
+<ul>
+<li>
+<p>数据类型规范</p>
+<ul>
+<li>字段约定返回 int 型，则不能返回 string 等其他类型，其他类型同理</li>
+<li>字段约定返回 array ，如果为空则需返回[]</li>
+<li>字段约定返回 object，如果为空则需返回null</li>
+</ul>
+</li>
+<li>
+<p>接口请求规范：</p>
+<ul>
+<li>header头必带参数</li>
+<li>请求参数传递使用 json body 的方式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>header参数</th>
+<th>数据类型</th>
+<th>参数说明</th>
+<th>补充说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-sign</td>
+<td>string</td>
+<td>签名串</td>
+<td></td>
+</tr>
+<tr>
+<td>api-time</td>
+<td>int</td>
+<td>秒级时间戳</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>数据响应规范</p>
+<table>
+<thead>
+<tr>
+<th>响应参数</th>
+<th>数据类型</th>
+<th>参数说明</th>
+<th>补充说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>code</strong></td>
+<td>int</td>
+<td>响应状态码：0-接口响应成功，1-接口请求失败直接报错，2-签名无效</td>
+<td>http状态码：0-返回200，1-返回400，500 等，2-返回401</td>
+</tr>
+<tr>
+<td><strong>message</strong></td>
+<td>string</td>
+<td>结果提示信息</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td>object</td>
+<td>array</td>
+<td>响应内容</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
