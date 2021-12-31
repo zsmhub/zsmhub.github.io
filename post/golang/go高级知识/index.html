@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go高级知识">
 <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="1450">
+<meta itemprop="wordCount" content="2007">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go高级知识"/>
 <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1450 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 2007 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -149,6 +149,7 @@
     <li><a href="#golang-ast初探一个懒人源码分析工具">golang ast初探：一个懒人源码分析工具</a></li>
     <li><a href="#throw">throw</a></li>
     <li><a href="#uinptr--unsafepointer">uinptr &amp;&amp; unsafe.Pointer</a></li>
+    <li><a href="#静态代码分析工具">静态代码分析工具</a></li>
   </ul>
 </nav>
   </div>
@@ -282,7 +283,71 @@ git config --global url.https://gitlab.xxx.com/.insteadof http://gitlab.xxx.com/
 <p>两者都是数据类型。</p>
 <p>uintptr用来进行指针计算，因为它是整型，所以很容易计算出下一个指针所指向的位置。</p>
 <p>unsafe.Pointer是特别定义的一种指针类型,它可以包含任意类型变量的地址。</p>
+<h2 id="静态代码分析工具">静态代码分析工具</h2>
+<blockquote>
+<p>pre-commit hook</p>
+</blockquote>
+<p>在项目开发中，我们都会使用到 git，因此我们可以将代码静态检查放在一个 git 触发点上，而不用每次写完代码手动去执行 golangci-lint run 等命令。这里，我们就需要用到 git hooks。</p>
+<p>git hooks 是 git 的一种钩子机制，可以让用户在 git 操作的各个阶段执行自定义的逻辑。git hooks 在项目根目录的 .git/hooks 下面配置，配置文件的名称是固定的，实质上就是一个个 shell 脚本。根据 git 执行体，钩子被分为客户端钩子和服务端钩子两类。</p>
+<p>客户端钩子包括：pre-commit、prepare-commit-msg、commit-msg、post-commit 等，主要用于控制客户端 git 的提交工作流。服务端钩子：pre-receive、post-receive、update，主要在服务端接收提交对象时、推送到服务器之前调用。</p>
+<blockquote>
+<p>使用go自带的vet工具，是比较简单的工具，无法递归检查整个服务的代码</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 分析单个文件或多个文件</span>
+go vet xxx.go xx2.go
 
+<span class="c1"># 一个包下所有源文件进行检测</span>
+go tool vet source/directory/*.go
+
+<span class="c1"># 利用vet对一个package进行检查,当然传入的包名必须是 相对路径 或者完整package</span>
+go vet ./source/repository
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>使用 golangci-lint</p>
+</blockquote>
+<p><a href="https://learnku.com/articles/59885#604f62">golangci-lint 代码检查</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># install</span>
+go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+<span class="c1"># golangci-lint 可以通过 -E/--enable 去开启指定 linter，或者 -D/--disable 禁止指定 linter。</span>
+golangci-lint run --disable-all -E errcheck
+
+<span class="c1"># 分析对整个服务代码</span>
+golangci-lint run &lt;<span class="o">=</span>&gt; golangci-lint run ./...
+
+<span class="c1"># 对某特定的文件或文件夹进行分析</span>
+golangci-lint run dir1 dir2/... dir3/file1.go
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

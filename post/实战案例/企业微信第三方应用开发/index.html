@@ -49,7 +49,7 @@
 <meta itemprop="name" content="企业微信第三方应用开发">
 <meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
 <meta itemprop="dateModified" content="2021-09-24T16:46:43&#43;08:00" />
-<meta itemprop="wordCount" content="4024">
+<meta itemprop="wordCount" content="4419">
 <meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="企业微信第三方应用开发"/>
 <meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 4024 字 </span>
+          <span class="more-meta"> 约 4419 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -191,6 +191,10 @@
 </li>
 <li>
 <p>回调配置</p>
+<blockquote>
+<p>回调事件规则：企业微信服务器在五秒内收不到响应会断掉连接，并且重新发起请求，总共重试三次，每次间隔1秒</p>
+<p>当接收成功后，http头部返回200表示接收ok，其他错误码企业微信后台会一律当做失败并发起重试</p>
+</blockquote>
 <ul>
 <li>服务商后台 -&gt; 应用管理 -&gt; 第三方应用 -&gt; 数据回调URL：用于接收用户发送给应用的消息和事件，包括文本、图片、视频、位置、链接等消息和成员关注、取消关注、进入应用、通讯录变更等事件，详见<a href="https://work.weixin.qq.com/api/doc/90001/90143/90373">消息推送文档</a></li>
 <li>服务商后台 -&gt; 应用管理 -&gt; 第三方应用 -&gt; 指令回调URL（即第三方应用回调URL）：系统将会把此应用的授权变更事件以及ticket参数推送给此URL</li>
@@ -300,9 +304,24 @@
 - ChangeType：变更类型，当 InfoType 为 change_external_contact 时存在
 </code></pre>
 <blockquote>
-<p>离职继承</p>
+<p>客户继承</p>
 </blockquote>
-<p>新员工继承成功相当于添加客户成功，会有添加企业客户事件回调，同时也会有旧员工删除外部联系人事件回调。</p>
+<pre><code>继承分在职继承、离职继承两种。在职员工客户只能转两次，有90天保护期。
+
+-  在企业微信中离职分两种情况
+
+    1. 员工主动退出企业（员工主动退出企业，他的客户可以当日做离职继承吗？答：不能继承，需要30天后才能继承，或者管理员主动删除员工）
+    2. 管理员主动在通讯录删除成员
+
+- 继承回调事件
+
+    1. 在职继承成功的话会有添加外部联系人和删除外部联系人的回调事件
+    2. 离职成员分配客户成功，会有添加外部联系人事件回调，没有删除外部联系人事件回调
+
+- [在职继承介绍](https://work.weixin.qq.com/nl/act/p/6dce987927674295)
+
+- [离职继承介绍](https://work.weixin.qq.com/wework_admin/frame#customer/pending_intro)
+</code></pre>
 <blockquote>
 <p>企业注销企业微信账号</p>
 </blockquote>

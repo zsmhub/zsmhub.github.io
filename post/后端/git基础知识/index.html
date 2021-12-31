@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="1839">
+<meta itemprop="wordCount" content="1929">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1839 字 </span>
+          <span class="more-meta"> 约 1929 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -155,6 +155,7 @@
     <li><a href="#github上fork项目后如何同步更新原先项目的提交">github上fork项目后，如何同步更新原先项目的提交</a></li>
     <li><a href="#配置信息">配置信息</a></li>
     <li><a href="#公司变更-gitlab-地址后需执行的操作">公司变更 gitlab 地址后需执行的操作</a></li>
+    <li><a href="#分支开发流程图">分支开发流程图</a></li>
   </ul>
 </nav>
   </div>
@@ -181,8 +182,8 @@
 <p>模板：开发者姓名拼音首字母_feat/fix_功能名</p>
 </blockquote>
 <ul>
-<li>zsm_feat_功能： 建立新功能分支</li>
-<li>zsm_fix_修复内容：建立 bug 修复分支</li>
+<li>zs_feat_功能： 建立新功能分支</li>
+<li>zs_fix_修复内容：建立 bug 修复分支</li>
 </ul>
 <h2 id="git-remote">git remote</h2>
 <div class="highlight"><div class="chroma">
@@ -225,12 +226,14 @@ git stash pop  <span class="c1"># 恢复工作现场并删除stash内容</span>
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard HEAD^  <span class="c1">#回退到上一个版本，HEAD^可以更改为版本号</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard HEAD^  <span class="c1">#回退到上一个版本，HEAD^可以更改为commit版本号</span>
 git reset . <span class="c1"># 取消已贮存文件</span>
 git reset HEAD &lt;file&gt;  <span class="c1">#git暂存区add的file文件回退工作区</span>
-git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码仍然保留</span>
+git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码仍然保留『代码保留在暂存区』</span>
+git reset --mixed HEAD^ <span class="c1"># 撤回commit操作，提交的代码仍然保留『代码保留在工作区』（常用点）</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -249,7 +252,7 @@ git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码�
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard &lt;old-commit-id&gt;
-git push -f &lt;remote-name&gt; &lt;branch-name&gt;  <span class="c1">#主要是加个-f参数</span>
+git push -f &lt;remote-name&gt; &lt;branch-name&gt;  <span class="c1">#主要是加个-f参数『gilab:master默认分支是保护状态取消分支保护即可提交』</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -390,8 +393,10 @@ git push
 <h2 id="公司变更-gitlab-地址后需执行的操作">公司变更 gitlab 地址后需执行的操作</h2>
 <ol>
 <li>在新 gitlab 上 add ssh key「在本机执行命令：cat ~/.ssh/id_rsa.pub 即可获取ssh key」</li>
-<li>在本地代码库执行更换源命令：git remote set-url origin <a href="mailto:git@gitlab.ydjdev.com">git@gitlab.ydjdev.com</a>:ydjai/对应项目名称.git</li>
+<li>在本地代码库执行更换源命令：git remote set-url origin <a href="mailto:git@gitlab.xxx.com">git@gitlab.xxx.com</a>:xxx/对应项目名称.git</li>
 </ol>
+<h2 id="分支开发流程图">分支开发流程图</h2>
+<p><img src="/images/2021/Jietu20211231-110157.jpg" alt="分支开发流程图"></p>
 
     </div>
 

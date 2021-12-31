@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql高级知识">
 <meta itemprop="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安"><meta itemprop="datePublished" content="2020-07-12T13:51:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-12T13:51:13&#43;08:00" />
-<meta itemprop="wordCount" content="6569">
+<meta itemprop="wordCount" content="7009">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql高级知识"/>
 <meta name="twitter:description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 6569 字 </span>
+          <span class="more-meta"> 约 7009 字 </span>
           <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
@@ -296,6 +296,60 @@
 &gt; - 多列索引（复合索引、联合索引）：复合索引指多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用复合索引时遵循最左前缀原则，* 且联合索引的字段可以是任意顺序的 *
 &gt; - 唯一索引或者非唯一索引
 &gt; - 空间索引：空间索引是对空间数据类型的字段建立的索引，MYSQL中的空间数据类型有4种，分别是GEOMETRY、POINT、LINESTRING、POLYGON。MYSQL使用SPATIAL关键字进行扩展，使得能够用于创建正规索引类型的语法创建空间索引。创建空间索引的列，必须将其声明为NOT NULL，空间索引只能在存储引擎为MYISAM的表中创建
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<blockquote>
+<p>建索引案例</p>
+</blockquote>
+<ul>
+<li>
+<p>hash索引</p>
+<p>利用 CRC32() 创建 hash 字段索引，查询性能稳定，有额外的存储和计算消耗，不支持范围扫描。</p>
+<p>CRC全称为Cyclic Redundancy Check，又叫循环冗余校验。CRC32是CRC算法的一种，常用于校验网络上传输的文件。</p>
+<p>CRC32的基本特征：1.CRC32函数返回值的范围是0-4294967296（2的32次方减1)，2.相比MD5，CRC32函数很容易碰撞</p>
+</li>
+<li>
+<p>前缀索引、后缀索引</p>
+<p>对一个长字符串类型的字段A，如果需要做查询功能，整个字段A加索引的话则很浪费存储空间，此时可以考虑建一个短字符串字段B并加上索引，</p>
+<p>前缀索引：截取字段A前几个字符</p>
+<p>后缀索引：截取字段A后几个字符</p>
+<p>选择前缀/后缀长度的原则是：区分度高 + 占用空间少，常用的字符长度为4，具体可以执行 sql 后再选择：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 前缀索引截取长度判断
+</span><span class="c1"></span><span class="k">SELECT</span>
+<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">LEFT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">3</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L3</span><span class="p">,</span>
+<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">LEFT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">4</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L4</span><span class="p">,</span>
+<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">LEFT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">5</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L5</span><span class="p">,</span>
+<span class="k">count</span><span class="p">(</span> <span class="n">FieldA</span> <span class="p">)</span> <span class="k">AS</span> <span class="k">all</span>
+<span class="k">FROM</span> <span class="n">t</span><span class="p">;</span>
+
+<span class="c1">-- 后缀索引截取长度判断
+</span><span class="c1"></span><span class="k">SELECT</span>
+<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">RIGHT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">3</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L3</span><span class="p">,</span>
+<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">RIGHT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">4</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L4</span><span class="p">,</span>
+<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">RIGHT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">5</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L5</span><span class="p">,</span>
+<span class="k">count</span><span class="p">(</span> <span class="n">FieldA</span> <span class="p">)</span> <span class="k">AS</span> <span class="k">all</span>
+<span class="k">FROM</span> <span class="n">t</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
