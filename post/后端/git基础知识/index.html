@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="1929">
+<meta itemprop="wordCount" content="1989">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1929 字 </span>
+          <span class="more-meta"> 约 1989 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -148,6 +148,7 @@
     <li><a href="#git-stash">git stash</a></li>
     <li><a href="#代码回滚命令">代码回滚命令</a></li>
     <li><a href="#忽略跟踪">忽略跟踪</a></li>
+    <li><a href="#tag">tag</a></li>
     <li><a href="#其他常用命令">其他常用命令</a></li>
     <li><a href="#git-文件的三种状态">Git 文件的三种状态</a></li>
     <li><a href="#git-多帐号配置">Git 多帐号配置</a></li>
@@ -278,6 +279,23 @@ $ git update-index --no-assume-unchanged /path/to/file <span class="c1"># 恢复
 git ls-files -v <span class="p">|</span> grep <span class="s1">&#39;^h&#39;</span>  <span class="c1"># 查看所有被 update-index 忽略跟踪的文件</span>
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="tag">tag</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git tag -a <span class="s1">&#39;v0.0.1&#39;</span> -m <span class="s1">&#39;第一个版本的注释&#39;</span> <span class="c1"># 打 tag</span>
+git push --tags <span class="c1"># 推送 tag</span>
+git tag -d 标签名 <span class="c1"># 删除本地标签</span>
+git reset --hard v0.02<span class="o">(</span>版本的tag值<span class="o">)</span> <span class="c1"># 按tag 回滚</span>
+git push origin :refs/tags/标签名 <span class="c1"># 删除远程标签</span>
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="其他常用命令">其他常用命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -297,9 +315,6 @@ git ls-files -v <span class="p">|</span> grep <span class="s1">&#39;^h&#39;</spa
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">git config --global --edit <span class="c1"># 编辑全局变量文件</span>
@@ -318,9 +333,6 @@ git branch <span class="p">|</span> grep <span class="s1">&#39;zsm_&#39;</span> 
 <span class="c1"># 拉取远程分支的 2 种方式</span>
 git fetch origin develop <span class="c1"># 拉取develop远程分支到本地</span>
 git checkout -b develop origin/develop <span class="c1"># 本地创建并切换到 develop 分支</span>
-
-git tag -d 标签名 <span class="c1"># 删除本地标签</span>
-git push origin :refs/tags/标签名 <span class="c1"># 删除远程标签</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="git-文件的三种状态">Git 文件的三种状态</h2>
@@ -499,7 +511,7 @@ git push
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

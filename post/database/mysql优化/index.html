@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 优化">
 <meta itemprop="description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"><meta itemprop="datePublished" content="2019-06-01T16:54:37&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-24T16:54:37&#43;08:00" />
-<meta itemprop="wordCount" content="1374">
+<meta itemprop="wordCount" content="1344">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 优化"/>
 <meta name="twitter:description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1374 字 </span>
+          <span class="more-meta"> 约 1344 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -167,21 +167,7 @@
 <p>缺点：锁表，锁表会导致 insert，delete，update 语句堵住</p>
 <pre><code>```sql
 -- 分析数据表大小
-SELECT
-table_name,
-table_rows,
--- 数据表大小
-ROUND(`data_length`/1024/1024/1024,2) AS `data_size(G)`,
--- 索引大小
-ROUND(`index_length`/1024/1024/1024,2) AS `index_size(G)`,
--- 碎片大小
-ROUND(`data_free`/1024/1024/1024,2) AS `free_size(G)`
-FROM `information_schema`.`tables`
-WHERE
-ENGINE='InnoDB'
-AND TABLE_NAME IN ('bi_mid_layer_cache', 'bi_credit_apply')
-ORDER BY DATA_LENGTH DESC
-;
+select table_name,engine,table_rows,data_length+index_length length,DATA_FREE from information_schema.tables where data_free !=0 order by table_rows desc;
 ```
 </code></pre>
 <h2 id="索引">索引</h2>
@@ -352,7 +338,7 @@ ORDER BY DATA_LENGTH DESC
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

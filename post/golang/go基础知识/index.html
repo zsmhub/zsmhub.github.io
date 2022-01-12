@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="10195">
+<meta itemprop="wordCount" content="10501">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 10195 字 </span>
+          <span class="more-meta"> 约 10501 字 </span>
           <span class="more-meta"> 预计阅读 21 分钟 </span>
         
       </div>
@@ -1418,6 +1418,89 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 </span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
+<p>无缓冲channel与有缓冲channel的区别</p>
+</blockquote>
+<p>无缓冲channel是同步的（如打电话），而又缓冲channel是非同步的（如发短信）。</p>
+<p>打电话。打电话只有等对方接收才会通，要不然只能阻塞。</p>
+<p>发短信，不用等对方接受，只需发送过去就行。</p>
+<p><img src="/images/2022/20180825200604328.png" alt="无缓冲通道就是一次只能传输一个数据"></p>
+<p><img src="/images/2022/2018082520082792.png" alt="有缓冲通道就是非同步的"></p>
+<blockquote>
+<p>常见面试题：用两个协程+一个channel实现交替输出1和2</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">num</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span>
+
+    <span class="k">go</span> <span class="nf">child</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nf">child</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+
+    <span class="nx">num</span> <span class="o">&lt;-</span> <span class="mi">0</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="o">&lt;-</span><span class="nx">num</span>
+    <span class="nb">close</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="c1">// 让协程主动退出
+</span><span class="c1"></span>    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">child</span><span class="p">(</span><span class="nx">ch</span> <span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="nb">recover</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="nx">num</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">num</span><span class="o">%</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nx">num</span><span class="o">++</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="nx">num</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <p>使用 select 切换协程或设置超时处理</p>
 </blockquote>
 <p>select 语句实现了一种监听模式，通常用在（无限）循环中；在某种情况下，通过 break 语句使循环退出。</p>
@@ -1446,6 +1529,23 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 </span><span class="c1"></span>        <span class="o">...</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>通过i, ok := &lt;-c可以查看Channel的状态，判断值是零值还是正常读取的值。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">c</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">close</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="nx">i</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%d, %t&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">ok</span><span class="p">)</span> <span class="c1">//0, false
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1915,7 +2015,7 @@ yourProject/main/logic <span class="c1"># 执行后项目开始运行</span>
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2021
+    2022
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
