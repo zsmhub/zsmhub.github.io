@@ -49,7 +49,7 @@
 <meta itemprop="name" content="NSQ-分布式实时消息处理平台">
 <meta itemprop="description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"><meta itemprop="datePublished" content="2020-06-28T10:50:45&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-28T10:50:45&#43;08:00" />
-<meta itemprop="wordCount" content="2820">
+<meta itemprop="wordCount" content="2959">
 <meta itemprop="keywords" content="消息队列," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NSQ-分布式实时消息处理平台"/>
 <meta name="twitter:description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2820 字 </span>
+          <span class="more-meta"> 约 2959 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -362,6 +362,13 @@ $ curl -d <span class="s1">&#39;hello world 3&#39;</span> <span class="s1">&#39;
 </code></pre></td></tr></table>
 </div>
 </div></li>
+<li>
+<p>Timeout</p>
+<p>每一条消息都必须在一定时间内向 nsq 做出响应，否则 nsq 会认为这条消息超时，然后 requeue 处理。</p>
+<p>配置项 -msg-timeout ：单条消息的超时时间，默认一分钟，即消息投递后一分钟内未收到响应，则 nsq 会将这条消息 requeue 处理。</p>
+<p>配置值 -max-msg-timeout ：nsqd 全局设置的最大超时时间，默认 15 分钟。</p>
+<p>超时的判定时长将取决于以上两个配置的最小值。</p>
+</li>
 </ol>
 <h2 id="常见报错">常见报错</h2>
 <ol>

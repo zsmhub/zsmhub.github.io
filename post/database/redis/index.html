@@ -199,14 +199,15 @@ keys 算法是遍历算法，复杂度是 O(n)，如果实例中有千万级以�
 所以要用 scan 代替 keys *</p>
 </blockquote>
 <ul>
-<li>info: 查看 redis 基本信息，包含多少库，多少 keys</li>
 <li>dbsize: 当前库key的数量</li>
+<li>del key：删除一个key</li>
+<li>ttl // 查看生存时间</li>
 <li>select 1: 切换到库 1</li>
+<li>info: 查看 redis 基本信息，包含多少库，多少 keys</li>
 <li>keys * : 查看当前库已存在的所有key</li>
 <li>keys pattern：返回满足给定pattern的所有key</li>
 <li>help cmd： 查看cmd帮助，例如：help quit</li>
 <li>exists key：确认一个key是否存在</li>
-<li>del key：删除一个key</li>
 <li>type key：返回值的类型</li>
 <li>RPOPLPUSH source destination 【安全队列】
 命令 RPOPLPUSH 在一个原子时间内，执行以下两个动作：
@@ -214,7 +215,6 @@ keys 算法是遍历算法，复杂度是 O(n)，如果实例中有千万级以�
 将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。</li>
 <li>flushdb  // 删除当前数据库中的所有Key</li>
 <li>flushall // 删除所有数据库中的key</li>
-<li>ttl // 查看生存时间</li>
 </ul>
 <h2 id="scan">scan</h2>
 <p>SCAN cursor [MATCH pattern] [COUNT count]</p>
