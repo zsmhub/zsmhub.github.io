@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Http客户端">
 <meta itemprop="description" content="理解 timeout timeout 又可以细分为 connect timeout、read timeout、write timeout。而 read timeout 和 write timeout 必须是在 connect 之后才能发生。 ReadTime"><meta itemprop="datePublished" content="2021-07-28T10:03:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-07-28T10:03:21&#43;08:00" />
-<meta itemprop="wordCount" content="1613">
+<meta itemprop="wordCount" content="1802">
 <meta itemprop="keywords" content="http," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Http客户端"/>
 <meta name="twitter:description" content="理解 timeout timeout 又可以细分为 connect timeout、read timeout、write timeout。而 read timeout 和 write timeout 必须是在 connect 之后才能发生。 ReadTime"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1613 字 </span>
+          <span class="more-meta"> 约 1802 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -508,6 +508,49 @@
 </span><span class="lnt">163
 </span><span class="lnt">164
 </span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// fasthttp client 示例
@@ -538,16 +581,7 @@
 
 <span class="kd">func</span> <span class="nf">CreateFastHttpClient</span><span class="p">()</span> <span class="nx">fasthttp</span><span class="p">.</span><span class="nx">Client</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">fasthttp</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span>
-        <span class="nx">MaxConnsPerHost</span><span class="p">:</span>     <span class="mi">100</span><span class="p">,</span>              <span class="c1">// 连接的客户端可以持有的最大空闲连接
-</span><span class="c1"></span>        <span class="nx">MaxIdleConnDuration</span><span class="p">:</span> <span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span> <span class="c1">// 最大空闲连接时间：应短，避免连接服务keepalive过短主动关闭
-</span><span class="c1"></span>        <span class="nx">MaxConnDuration</span><span class="p">:</span>     <span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span> <span class="c1">// 最大连接时间
-</span><span class="c1"></span>        <span class="nx">ReadBufferSize</span><span class="p">:</span>      <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
-        <span class="nx">WriteBufferSize</span><span class="p">:</span>     <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
-        <span class="nx">ReadTimeout</span><span class="p">:</span>         <span class="nx">ttl</span><span class="p">,</span>
-        <span class="nx">WriteTimeout</span><span class="p">:</span>        <span class="nx">ttl</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">MaxResponseBodySize</span><span class="p">:</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
-        <span class="nx">MaxConnWaitTimeout</span><span class="p">:</span>  <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span> <span class="c1">// 最大等待出现空闲连接的时间
-</span><span class="c1"></span>        <span class="nx">Dial</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">addr</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">Dial</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">addr</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">idx</span> <span class="o">:=</span> <span class="mi">3</span> <span class="c1">// 重试三次
 </span><span class="c1"></span>            <span class="k">for</span> <span class="p">{</span>
                 <span class="nx">idx</span><span class="o">--</span>
@@ -674,6 +708,58 @@
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// 上传文件到服务端，link: 文件链接，objResp：结果结构体
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">UploadFile</span><span class="p">(</span><span class="nx">link</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">objResp</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="c1">// 下载文件
+</span><span class="c1"></span>    <span class="nx">_</span><span class="p">,</span> <span class="nx">stream</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">FastClient</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="nx">link</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+
+    <span class="nx">urlInfo</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">link</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+
+    <span class="nx">filename</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s%s&#34;</span><span class="p">,</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">().</span><span class="nf">String</span><span class="p">(),</span> <span class="nx">path</span><span class="p">.</span><span class="nf">Ext</span><span class="p">(</span><span class="nx">urlInfo</span><span class="p">.</span><span class="nx">Path</span><span class="p">))</span>
+
+    <span class="nx">httpReq</span> <span class="o">:=</span> <span class="nx">fasthttp</span><span class="p">.</span><span class="nf">AcquireRequest</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">fasthttp</span><span class="p">.</span><span class="nf">ReleaseRequest</span><span class="p">(</span><span class="nx">httpReq</span><span class="p">)</span>
+
+    <span class="nx">httpResp</span> <span class="o">:=</span> <span class="nx">fasthttp</span><span class="p">.</span><span class="nf">AcquireResponse</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">fasthttp</span><span class="p">.</span><span class="nf">ReleaseResponse</span><span class="p">(</span><span class="nx">httpResp</span><span class="p">)</span>
+
+    <span class="c1">//新建一个缓冲，用于存放文件内容
+</span><span class="c1"></span>    <span class="nx">bodyBufer</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">{}</span>
+    <span class="c1">//创建一个multipart文件写入器，方便按照http规定格式写入内容
+</span><span class="c1"></span>    <span class="nx">bodyWriter</span> <span class="o">:=</span> <span class="nx">multipart</span><span class="p">.</span><span class="nf">NewWriter</span><span class="p">(</span><span class="nx">bodyBufer</span><span class="p">)</span>
+    <span class="c1">//从bodyWriter生成fileWriter,并将文件内容写入fileWriter,多个文件可进行多次
+</span><span class="c1"></span>    <span class="nx">fileWriter</span><span class="p">,</span><span class="nx">err</span> <span class="o">:=</span> <span class="nx">bodyWriter</span><span class="p">.</span><span class="nf">CreateFormFile</span><span class="p">(</span><span class="s">&#34;media&#34;</span><span class="p">,</span> <span class="nx">filename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+
+    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">Copy</span><span class="p">(</span><span class="nx">fileWriter</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">stream</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">{</span>
+        <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 停止写入
+</span><span class="c1"></span>    <span class="nx">_</span> <span class="p">=</span> <span class="nx">bodyWriter</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+
+    <span class="nx">httpReq</span><span class="p">.</span><span class="nf">SetRequestURI</span><span class="p">(</span><span class="s">&#34;https://qyapi.weixin.qq.com/cgi-bin/media/upload&#34;</span><span class="p">)</span>
+    <span class="nx">httpReq</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">SetContentType</span><span class="p">(</span><span class="nx">bodyWriter</span><span class="p">.</span><span class="nf">FormDataContentType</span><span class="p">())</span>
+    <span class="nx">httpReq</span><span class="p">.</span><span class="nf">SetBody</span><span class="p">(</span><span class="nx">bodyBufer</span><span class="p">.</span><span class="nf">Bytes</span><span class="p">())</span>
+    <span class="nx">httpReq</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">SetMethod</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">MethodPost</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">FastClient</span><span class="p">.</span><span class="nf">DoTimeout</span><span class="p">(</span><span class="nx">httpReq</span><span class="p">,</span> <span class="nx">httpResp</span><span class="p">,</span> <span class="nx">HttpTTL</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">err</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">httpResp</span><span class="p">.</span><span class="nf">Body</span><span class="p">(),</span> <span class="o">&amp;</span><span class="nx">objResp</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
