@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 24 Sep 2021 16:46:43 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Mar 2022 18:00:53 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git分支管理</title>
+      <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 07 Mar 2022 18:00:53 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/</guid>
+      <description>GIT 分支管理及发版流程 主要分支：master, release, uat, develop, yourname_feature, yourname_hotfix 开发环境分 4 种：本地开发环境、测试环境、预发布环境、生产环境 本地环境开发时, 从最新的 uat</description>
+    </item>
+    
     <item>
       <title>企业微信第三方应用开发</title>
       <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link>

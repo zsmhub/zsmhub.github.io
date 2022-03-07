@@ -3,28 +3,49 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2022-02-24T10:50:45+08:00</lastmod>
+    <lastmod>2022-03-07T18:00:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/git/</loc>
+    <lastmod>2022-03-07T18:00:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2022-03-07T18:00:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2022-02-24T10:50:45+08:00</lastmod>
+    <lastmod>2022-03-07T18:00:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2022-02-24T10:50:45+08:00</lastmod>
+    <lastmod>2022-03-07T18:00:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/</loc>
-    <lastmod>2022-02-24T10:50:45+08:00</lastmod>
+    <lastmod>2022-03-07T18:00:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
+    <lastmod>2022-03-07T18:00:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -102,13 +123,6 @@
   <url>
     <loc>https://zsmhub.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     <lastmod>2021-09-01T10:35:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
-    <lastmod>2021-08-26T16:46:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1523,13 +1537,6 @@
   <url>
     <loc>https://zsmhub.github.io/tags/supervisor/</loc>
     <lastmod>2021-07-30T15:15:06+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/tags/git/</loc>
-    <lastmod>2020-05-09T16:05:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
