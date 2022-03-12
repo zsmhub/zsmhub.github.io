@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git分支管理">
 <meta itemprop="description" content="GIT 分支管理及发版流程 主要分支：master, release, uat, develop, yourname_feature, yourname_hotfix 开发环境分 4 种：本地开发环境、测试环境、预发布环境、生产环境 本地环境开发时, 从最新的 uat"><meta itemprop="datePublished" content="2022-03-07T18:00:53&#43;08:00" />
 <meta itemprop="dateModified" content="2022-03-07T18:00:53&#43;08:00" />
-<meta itemprop="wordCount" content="309">
+<meta itemprop="wordCount" content="329">
 <meta itemprop="keywords" content="git," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git分支管理"/>
 <meta name="twitter:description" content="GIT 分支管理及发版流程 主要分支：master, release, uat, develop, yourname_feature, yourname_hotfix 开发环境分 4 种：本地开发环境、测试环境、预发布环境、生产环境 本地环境开发时, 从最新的 uat"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 309 字 </span>
+          <span class="more-meta"> 约 329 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -152,8 +152,8 @@
 <p>开发环境分 4 种：本地开发环境、测试环境、预发布环境、生产环境</p>
 <ol>
 <li>本地环境开发时, 从最新的 uat 分支上, 创建自己的新功能分支 yourname_feature。</li>
-<li>发测试环境时，将自己的 feature 分支合并到 develop 分支，<em>注意不要将 develop 分支合并到任何其他分支！！！</em></li>
-<li>发预生产环境时，将开发完成的 feature/hotfix 分支，提交合并请求到 release 分支。</li>
+<li>发测试环境时，将自己的 feature 分支合并到 develop 分支。<em>注意不要将 develop 分支合并到任何其他分支！！！</em></li>
+<li>发预生产环境时，将开发完成的 feature/hotfix 分支，提交合并请求到 release 分支。<em>注意不要将 release 分支合并到任何其他分支！！！</em></li>
 <li>发生产环境时，将开发完成的 feature/hotfix 分支，提交合并请求到 uat 分支，然后在 master 分支打下 tag（方便代码回滚），最后将 uat 分支合并到 master 分支。</li>
 </ol>
 <p><img src="/images/2022/2022gitflow.png" alt="git-flow"></p>
@@ -213,7 +213,11 @@ git push --tags
           <a href="/tags/git/">git</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%92%8C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">稳定排序和不稳定排序</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">
             <span class="next-text nav-default">企业微信第三方应用开发</span>
             <span class="next-text nav-mobile">下一篇</span>
