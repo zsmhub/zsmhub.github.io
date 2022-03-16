@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 10 Mar 2022 11:21:07 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 10:57:57 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>线上事故记录</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Tue, 15 Mar 2022 10:57:57 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/</guid>
+      <description>一、数据库宕机 事故时间：2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大</description>
+    </item>
+    
+    <item>
+      <title>多系统对接-签名校验案例(GO)</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/</link>
+      <pubDate>Tue, 15 Mar 2022 10:39:08 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/</guid>
+      <description>接口通讯规范 签名规则： 1 2 3 4 5 6 7 8 // 签名有效期暂定为 600 秒 var platform = &amp;#34;baidu&amp;#34; // 对接平台，正式测试环境保持一致 var secret = &amp;#34;test_123456&amp;#34; // 测试环境密钥，生产环境密钥私聊</description>
+    </item>
+    
+    <item>
+      <title>企业微信自建应用代开发</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Mon, 14 Mar 2022 09:41:17 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/</guid>
+      <description>企业微信开发汇总 关于企业微信的所有，如开源企业微信sdk 企业微信开发自建应用代开发篇 企业微信开发第三方应用开发篇 企业微信开发自建内部应用开发</description>
+    </item>
+    
     <item>
       <title>稳定排序和不稳定排序</title>
       <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%92%8C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F/</link>
@@ -297,11 +324,11 @@
     </item>
     
     <item>
-      <title>多系统对接-签名校验案例</title>
-      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8B/</link>
+      <title>多系统对接-签名校验案例(PHP)</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bphp/</link>
       <pubDate>Thu, 12 Nov 2020 09:49:41 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8B/</guid>
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bphp/</guid>
       <description>config/Sign.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 &amp;lt;?php // 第三方平台调用『当前系统』接口的签名密钥 return [ // 签名生命周期设置，单位秒 &amp;#39;sign_ttl&amp;#39; =&amp;gt; env(&amp;#39;SIGN_TTL&amp;#39;, 600), // 签名类型 &amp;#39;sign_type_xxx&amp;#39; =&amp;gt; &amp;#39;xxx&amp;#39;, // xx</description>
     </item>
     
@@ -411,15 +438,6 @@
       
       <guid>https://zsmhub.github.io/post/golang/go%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</guid>
       <description>学习文档 Go学习手册 The Way to Go 学习视频 80手残哥 刘丹冰Aceld</description>
-    </item>
-    
-    <item>
-      <title>系统事故记录</title>
-      <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/</link>
-      <pubDate>Wed, 26 Aug 2020 10:27:51 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%B3%BB%E7%BB%9F%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/</guid>
-      <description>一、数据库宕机 事故时间： 2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主</description>
     </item>
     
     <item>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="NSQ-分布式实时消息处理平台">
 <meta itemprop="description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"><meta itemprop="datePublished" content="2020-06-28T10:50:45&#43;08:00" />
 <meta itemprop="dateModified" content="2022-02-24T10:50:45&#43;08:00" />
-<meta itemprop="wordCount" content="3812">
+<meta itemprop="wordCount" content="3898">
 <meta itemprop="keywords" content="消息队列," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="NSQ-分布式实时消息处理平台"/>
 <meta name="twitter:description" content="NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3812 字 </span>
+          <span class="more-meta"> 约 3898 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -414,8 +414,8 @@ $ curl -d <span class="s1">&#39;hello world 3&#39;</span> <span class="s1">&#39;
 <li>
 <p>Timeout</p>
 <p>每一条消息都必须在一定时间内向 nsq 做出响应，否则 nsq 会认为这条消息超时，然后 requeue 处理。</p>
-<p>配置项 -msg-timeout ：单条消息的超时时间，默认一分钟，即消息投递后一分钟内未收到响应，则 nsq 会将这条消息 requeue 处理。</p>
-<p>配置值 -max-msg-timeout ：nsqd 全局设置的最大超时时间，默认 15 分钟。</p>
+<p>配置项 -msg-timeout ：单条消息的超时时间，<code>默认一分钟</code>，即消息投递后一分钟内未收到响应，则 nsq 会将这条消息 requeue 处理。</p>
+<p>配置值 -max-msg-timeout ：nsqd 全局设置的最大超时时间，<code>默认 15 分钟</code>。</p>
 <p>超时的判定时长将取决于以上两个配置的最小值。</p>
 </li>
 </ol>
@@ -445,18 +445,24 @@ $ curl -d <span class="s1">&#39;hello world 3&#39;</span> <span class="s1">&#39;
 <h2 id="代码示例">代码示例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">// HandleMessage方法 <span class="k">return</span> nil 或 手动执行msg.Finish，都会将当前消息移除队列，nsq才会消费下一个队列消息
 
-msg.Finish<span class="o">()</span> // 手动提交消费完成，移出队列
+msg.Finish<span class="o">()</span> // 手动提交消费完成，移出队列，避免耗时任务阻塞队列
+// 什么时候需要调用 msg.Finish<span class="o">()</span> 这个方法？
+1. 需支持高并发（并发消费进程concurrency大于1），实时性要求高
+2. 耗时较长的任务，nsq默认一分钟超时重发
 
 msg.Requeue<span class="o">(</span>time.Second * 5<span class="o">)</span> // 重新放入队列消费
 

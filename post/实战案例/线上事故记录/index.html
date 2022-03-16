@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>线上事故记录 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="一、数据库宕机 事故时间：2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="线上事故记录" />
+<meta property="og:description" content="一、数据库宕机 事故时间：2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-03-15T10:57:57&#43;08:00" />
+<meta property="article:modified_time" content="2022-03-15T10:57:57&#43;08:00" />
+
+<meta itemprop="name" content="线上事故记录">
+<meta itemprop="description" content="一、数据库宕机 事故时间：2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大"><meta itemprop="datePublished" content="2022-03-15T10:57:57&#43;08:00" />
+<meta itemprop="dateModified" content="2022-03-15T10:57:57&#43;08:00" />
+<meta itemprop="wordCount" content="1207">
+<meta itemprop="keywords" content="事故," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="线上事故记录"/>
+<meta name="twitter:description" content="一、数据库宕机 事故时间：2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">线上事故记录</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-03-15 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+            </div>
+          <span class="more-meta"> 约 1207 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一数据库宕机">一、数据库宕机</a></li>
+    <li><a href="#二数据库堆积">二、数据库堆积</a></li>
+    <li><a href="#三mysql连接数暴增服务器cpu爆满">三、mysql连接数暴增，服务器cpu爆满</a></li>
+    <li><a href="#四object-too-large-for-cache">四、object too large for cache</a></li>
+    <li><a href="#五go源码构建失败却以为构建成功">五、go源码构建失败却以为构建成功</a></li>
+    <li><a href="#六服务器接口响应慢">六、服务器接口响应慢</a></li>
+    <li><a href="#七数据库从库同步延迟严重">七、数据库从库同步延迟严重</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="一数据库宕机">一、数据库宕机</h2>
+<ol>
+<li>
+<p>事故时间：2020-08-25</p>
+</li>
+<li>
+<p>事故描述：</p>
+<ol>
+<li>大量慢查询</li>
+<li>阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承受不住请求压力，主库宕机，备胎主库也失效。</li>
+<li>主从延迟严重，从库失效，全部查询堆在主库，这样也会导致主库宕机。（比如删除大量数据、更新大量数据的时候）</li>
+</ol>
+</li>
+<li>
+<p>事故错误日志:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class="o">[</span>2812<span class="o">]</span> Connect Failed For Mysql Server No Response fields.index
+
+The MySQL server is running with the --read-only option so it cannot execute this statement
+
+handleSQLSTATE<span class="o">[</span>HY000<span class="o">]</span> <span class="o">[</span>2831<span class="o">]</span> Failed For Wait Mysql Server Handshake, please check the health of db input.type:log fields.index:xxx-laravel
+
+从库同步主库时，出现主键冲突的 bug
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>事故可能原因分析</p>
+<ul>
+<li><a href="https://bugs.mysql.com/bug.php?id=86641">mysql5.7主从同步存在bug：会出现主键冲突异常情况</a></li>
+<li>阿里云数据库 RDS 从库失效，一个主库扛不住压力，直接宕机</li>
+<li>业务系统本身上存在大量慢查询，占用了数据库大量连接数</li>
+</ul>
+</li>
+<li>
+<p>事故解决方案：</p>
+<ol>
+<li>减少请求量</li>
+<li>在阿里云提工单，让他们解决失效从库失效和备胎主库问题。</li>
+<li>避免在系统使用高峰期，大量增删改数据。</li>
+<li>优化慢 SQL</li>
+</ol>
+</li>
+<li>
+<p>为什么备胎主库和 3 个从库会失效呢？</p>
+<p>阿里售后回复:</p>
+<p><img src="/images/2022/aliyundberror.png" alt="1"></p>
+</li>
+</ol>
+<h2 id="二数据库堆积">二、数据库堆积</h2>
+<ol>
+<li>
+<p>事故描述：数据库 SQL 堆积，往往来自接口请求的堆积，接口请求的堆积, 往往是因为短时间内的请求处理速度慢。</p>
+</li>
+<li>
+<p>解决方案</p>
+<ol>
+<li>减少数据库慢查询</li>
+<li>增加缓存代码</li>
+<li>提高服务器配置</li>
+</ol>
+</li>
+</ol>
+<h2 id="三mysql连接数暴增服务器cpu爆满">三、mysql连接数暴增，服务器cpu爆满</h2>
+<p>纠其原因，Golang作为常驻进程，请求第三方服务或者资源完毕后，需要手动关闭连接，否则连接会一直存在。而很多时候，开发者不一定记得关闭这个连接。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">某系统：
+最大连接数/最大空闲连接数
+空闲连接存活时间2分钟
+logic: 256/128
+admin: 16/8
+crontab: 32/16
+message: 128/64
+
+db.DB<span class="o">()</span>.SetMaxIdleConns<span class="o">(</span>xx<span class="o">)</span>
+db.DB<span class="o">()</span>.SetMaxOpenConns<span class="o">(</span>xx<span class="o">)</span>
+db.DB<span class="o">()</span>.SetConnMaxLifetime<span class="o">(</span>xx<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://colobu.com/2020/05/18/configuring-sql-DB-for-better-performance-2020/">配置 sql.DB 获得更好的性能</a></p>
+<h2 id="四object-too-large-for-cache">四、object too large for cache</h2>
+<p>内存空间和数据量大小：</p>
+<ul>
+<li>MemCached可以修改最大内存，采用LRU算法。Redis增加了VM的特性，突破了物理内存的限制。</li>
+<li>Memcached单个key-value大小有限，一个value最大只支持1MB，而Redis最大支持512MB。</li>
+</ul>
+<h2 id="五go源码构建失败却以为构建成功">五、go源码构建失败却以为构建成功</h2>
+<p>多服务项目，某个服务代码报错，导致其他服务构建失败，但我们却未看发版结果，误以为构建成功，</p>
+<p>然后发现发版后有一些报错，却一直找不出问题！</p>
+<p>修改历史代码后，要全局搜索下该方法影响到哪些服务，一定要注意多个服务都要能正常编译运行。</p>
+<h2 id="六服务器接口响应慢">六、服务器接口响应慢</h2>
+<ol>
+<li>事故时间：2022-02-15，持续时长：约 10 分钟</li>
+<li>事故描述：服务器接口响应慢，大部分接口的响应时间约 35 秒</li>
+<li>报错日志：dial tcp xxx.x.x.x:11211: connect: connection refused</li>
+<li>事故原因：运维重启了 memcached 服务，其对外 IP 变更了， 我们的 logic 服务使用了长连接 memcached 服务， logic 服务的 memcached 库没有重试机制，故还是连着 memcached 服务的旧 IP，导致很多用到 memcached  的接口响应慢</li>
+<li>解决方案：重启所有连接 memcached 的所有 logic 服务，同时可考虑加上 memcached 服务的重试机制。</li>
+</ol>
+<h2 id="七数据库从库同步延迟严重">七、数据库从库同步延迟严重</h2>
+<ol>
+<li>事故时间：2022-03-15</li>
+<li>事故描述：数据库从库同步延迟，用户在界面变更了数据，但后端接口却返回了旧数据，让用户误以为变更失败。</li>
+<li>事故原因：OA数据库50G的大表结构变更，导致所有同步该大表的项目都出现从库延迟严重的情况。</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2022-03-15
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E4%BA%8B%E6%95%85/">事故</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/">
+            <span class="next-text nav-default">多系统对接-签名校验案例(GO)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2022-03-15 10:57:57 \u002b0800 CST',
+        title: '线上事故记录',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

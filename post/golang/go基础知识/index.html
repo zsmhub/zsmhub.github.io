@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="10531">
+<meta itemprop="wordCount" content="10547">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 10531 字 </span>
+          <span class="more-meta"> 约 10547 字 </span>
           <span class="more-meta"> 预计阅读 22 分钟 </span>
         
       </div>
@@ -242,6 +242,8 @@
 </span><span class="lnt">33
 </span><span class="lnt">34
 </span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">env</span> <span class="c1">// 用于打印Go语言环境信息
@@ -254,6 +256,8 @@
 </span><span class="c1"></span><span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">tal</span><span class="o">-</span><span class="nx">tech</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">zero</span><span class="err">@</span><span class="mi">5</span><span class="nx">b2282301862387d2a7d05efb51be910688fd5ab</span> <span class="c1">// 下载指定 commit 的远程代码包，执行完成后，go.mod 加入 github.com/tal-tech/go-zero v1.1.8-0.20210623065737-9ccb997ed85c，其中 v1.1.8 指最新 release ，0.20210623065737 指提交时间戳，9ccb997ed85c 指提交哈希前缀
 </span><span class="c1"></span>
 <span class="k">go</span> <span class="nx">install</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span> <span class="c1">// 安装已有的包
+</span><span class="c1"></span>
+<span class="k">go</span> <span class="nx">clean</span> <span class="o">-</span><span class="nx">i</span> <span class="o">-</span><span class="nx">n</span>  <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="mi">360</span><span class="nx">EntSecGroup</span><span class="o">-</span><span class="nx">Skylar</span><span class="o">/</span><span class="nx">excelize</span><span class="o">/</span><span class="nx">v2</span> <span class="c1">// 删除 go get 安装的包
 </span><span class="c1"></span>
 <span class="err">#</span> <span class="nx">包管理器</span> <span class="nx">Go</span> <span class="nx">Modules</span><span class="err">，</span><span class="nx">旨在取代工作区和</span> <span class="nx">GOPATH</span><span class="err">。</span>
 <span class="k">go</span> <span class="nx">mod</span> <span class="nx">init</span> <span class="nf">xxx</span><span class="p">(</span><span class="nx">项目名</span><span class="p">)</span> <span class="c1">// 初始化go.mod

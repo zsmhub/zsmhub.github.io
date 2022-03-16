@@ -7,13 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 12 Nov 2020 09:49:41 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 10:39:08 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>多系统对接-签名校验案例</title>
-      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8B/</link>
+      <title>多系统对接-签名校验案例(GO)</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/</link>
+      <pubDate>Tue, 15 Mar 2022 10:39:08 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/</guid>
+      <description>接口通讯规范 签名规则： 1 2 3 4 5 6 7 8 // 签名有效期暂定为 600 秒 var platform = &amp;#34;baidu&amp;#34; // 对接平台，正式测试环境保持一致 var secret = &amp;#34;test_123456&amp;#34; // 测试环境密钥，生产环境密钥私聊</description>
+    </item>
+    
+    <item>
+      <title>多系统对接-签名校验案例(PHP)</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bphp/</link>
       <pubDate>Thu, 12 Nov 2020 09:49:41 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8B/</guid>
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bphp/</guid>
       <description>config/Sign.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 &amp;lt;?php // 第三方平台调用『当前系统』接口的签名密钥 return [ // 签名生命周期设置，单位秒 &amp;#39;sign_ttl&amp;#39; =&amp;gt; env(&amp;#39;SIGN_TTL&amp;#39;, 600), // 签名类型 &amp;#39;sign_type_xxx&amp;#39; =&amp;gt; &amp;#39;xxx&amp;#39;, // xx</description>
     </item>
     
