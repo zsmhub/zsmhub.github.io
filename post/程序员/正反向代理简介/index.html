@@ -49,7 +49,7 @@
 <meta itemprop="name" content="正反向代理简介">
 <meta itemprop="description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。） 比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花"><meta itemprop="datePublished" content="2020-07-09T21:33:12&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-09T21:33:12&#43;08:00" />
-<meta itemprop="wordCount" content="1255">
+<meta itemprop="wordCount" content="1671">
 <meta itemprop="keywords" content="代理," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="正反向代理简介"/>
 <meta name="twitter:description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。） 比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/"> 程序员 </a>
             </div>
-          <span class="more-meta"> 约 1255 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1671 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -143,7 +143,11 @@
   <ul>
     <li><a href="#正向代理">正向代理</a></li>
     <li><a href="#反向代理">反向代理</a></li>
-    <li><a href="#内网穿透">内网穿透</a></li>
+    <li><a href="#内网穿透">内网穿透</a>
+      <ul>
+        <li><a href="#内网穿透可以做什么">内网穿透可以做什么?</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -266,6 +270,27 @@
 <ol>
 <li>为什么要使用内网穿透？ 因为当内网中的主机没有静态 IP 地址要被外网稳定访问时，可以使用内网穿透</li>
 <li>定义：简单来说实现不同局域网内的主机之间通过互联网进行通信的技术叫内网穿透</li>
+</ol>
+<h3 id="内网穿透可以做什么">内网穿透可以做什么?</h3>
+<ol>
+<li>
+<p>使用本地局域网之内才能访问的办公软件</p>
+</li>
+<li>
+<p>放在家里的树莓派,服务器等,需要远程ssh管理,这样打通服务器的22端口即可远程通过ssh操作服务器了.</p>
+</li>
+<li>
+<p>微信/支付宝等本地开发.现在微信/支付宝等应用,需要服务器接收微信/支付宝发送的回调信息,然而在本地开发程序的话,还得实时上传到服务器,以便支持微信/支付宝的回调信息,如果使用了内网穿透软件,将回调地址设置成内网穿透软件提供的地址,回调数据立即传递回本地,,这样很方便的在本地就可以实时调试程序,无须再不断上传服务器等繁琐且无意义的步骤.</p>
+</li>
+<li>
+<p>一些企业内部数据库,由于安全等原因,不愿意放到云服务器上,可以将数据库放到办公室本地,然后通过内网穿透软件的tcp隧道映射,这样既保证安全,又保证公网可以正常访问.</p>
+</li>
+<li>
+<p>一些开发板做的监控等信息,每台设备运行一条隧道,可以方便的管理监控各个设备的运行情况.</p>
+</li>
+<li>
+<p>一些本地运行的游戏,想和好基友一起联网玩,一条命令运行内网穿透软件即可实现联网游戏.</p>
+</li>
 </ol>
 
     </div>

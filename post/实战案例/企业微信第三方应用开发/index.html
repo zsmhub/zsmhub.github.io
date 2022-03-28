@@ -49,7 +49,7 @@
 <meta itemprop="name" content="企业微信第三方应用开发">
 <meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
 <meta itemprop="dateModified" content="2021-09-24T16:46:43&#43;08:00" />
-<meta itemprop="wordCount" content="4628">
+<meta itemprop="wordCount" content="4677">
 <meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="企业微信第三方应用开发"/>
 <meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 4628 字 </span>
+          <span class="more-meta"> 约 4677 字 </span>
           <span class="more-meta"> 预计阅读 10 分钟 </span>
         
       </div>
@@ -192,7 +192,7 @@
 <li>
 <p>回调配置</p>
 <blockquote>
-<p>回调事件规则：企业微信服务器在五秒内收不到响应会断掉连接，并且重新发起请求，总共重试三次，每次间隔1秒</p>
+<p>回调事件规则：企业微信服务器在五秒内收不到响应会断掉连接，并且重新发起请求，总共重试三次，每次间隔1秒，如果三次都失败后就不会再重试了！</p>
 <p>当接收成功后，http头部返回200表示接收ok，其他错误码企业微信后台会一律当做失败并发起重试</p>
 </blockquote>
 <ul>
@@ -343,7 +343,7 @@
 </ul>
 </li>
 <li>获取roomid方式
-同时按下Ctrl+Alt+Shift+D&mdash;&gt;进入debug模式&ndash;&gt;右键会话&ndash;&gt;复制会话id&ndash;&gt;粘贴&ndash;&gt;同时按下Ctrl+Alt+Shift+D&ndash;&gt;退出debug模式</li>
+同时按下Ctrl+Shift+Command+D&mdash;&gt;进入debug模式&ndash;&gt;右键会话&ndash;&gt;复制会话id&ndash;&gt;粘贴&ndash;&gt;同时按下Ctrl+Shift+Command+D&ndash;&gt;退出debug模式</li>
 </ol>
 <h2 id="一些坑">一些坑</h2>
 <ol>
@@ -382,6 +382,9 @@
 <li>
 <p>如何清空local-storage？(token存储在local-storage)</p>
 <p>前端在代码加个版本号标识，每次加载前端页面框架时，触发检查版本号标识是否一致。如果代码的版本号标识和本地缓存中的版本号标识不一致，则清空本地缓存，重新登录。</p>
+</li>
+<li>
+<p>本地开发oauth2跳转问题：使用内网穿透、代理</p>
 </li>
 </ol>
 <h3 id="上线注意">上线注意</h3>

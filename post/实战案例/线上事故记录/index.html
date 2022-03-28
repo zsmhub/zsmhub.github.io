@@ -49,7 +49,7 @@
 <meta itemprop="name" content="线上事故记录">
 <meta itemprop="description" content="一、数据库宕机 事故时间：2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大"><meta itemprop="datePublished" content="2022-03-15T10:57:57&#43;08:00" />
 <meta itemprop="dateModified" content="2022-03-15T10:57:57&#43;08:00" />
-<meta itemprop="wordCount" content="1207">
+<meta itemprop="wordCount" content="1245">
 <meta itemprop="keywords" content="事故," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="线上事故记录"/>
 <meta name="twitter:description" content="一、数据库宕机 事故时间：2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 1207 字 </span>
+          <span class="more-meta"> 约 1245 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -280,6 +280,7 @@ db.DB<span class="o">()</span>.SetConnMaxLifetime<span class="o">(</span>xx<span
 <li>事故时间：2022-03-15</li>
 <li>事故描述：数据库从库同步延迟，用户在界面变更了数据，但后端接口却返回了旧数据，让用户误以为变更失败。</li>
 <li>事故原因：OA数据库50G的大表结构变更，导致所有同步该大表的项目都出现从库延迟严重的情况。</li>
+<li>解决方案：(1) 暂时放弃从库，直连主库；(2) 清缓存，避免缓存从库的旧数据。</li>
 </ol>
 
     </div>
