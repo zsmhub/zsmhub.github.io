@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go中的单元测试和基准测试">
 <meta itemprop="description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"><meta itemprop="datePublished" content="2021-04-14T10:42:55&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-14T10:42:55&#43;08:00" />
-<meta itemprop="wordCount" content="2693">
+<meta itemprop="wordCount" content="2735">
 <meta itemprop="keywords" content="软件测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go中的单元测试和基准测试"/>
 <meta name="twitter:description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2693 字 </span>
+          <span class="more-meta"> 约 2735 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -344,6 +344,8 @@ go <span class="nb">test</span> ./tests -v -count<span class="o">=</span><span c
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">go <span class="nb">test</span> -bench<span class="o">=</span>. // 会运行所有的基准测试函数；代码中的函数会被调用 N 次（N 是非常大的数，如 <span class="nv">N</span> <span class="o">=</span> 1000000），并展示 N 的值和函数执行的平均时间，单位为 ns（纳秒，ns/op）。
@@ -353,6 +355,8 @@ go <span class="nb">test</span> -bench<span class="o">=</span>. -run<span class=
 go <span class="nb">test</span> -bench<span class="o">=</span>. -benchtime<span class="o">=</span>3s // 测试时间调整：默认是1秒，一般来说这个值最好不要超过3秒，意义不大。
 
 go <span class="nb">test</span> -bench<span class="o">=</span>. -run<span class="o">=</span>none -benchmem // -benchmem可以提供每次操作分配内存的字节数, 以及每次操作分配内存的次数。
+
+go <span class="nb">test</span> -bench<span class="o">=</span><span class="s2">&#34;Fib</span>$<span class="s2">&#34;</span> -cpuprofile<span class="o">=</span>cpu.pprof . // 压测BenchmarkFib用例，添加 -cpuprofile 参数即可生成 BenchmarkFib 对应的 CPU pprof 文件
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
