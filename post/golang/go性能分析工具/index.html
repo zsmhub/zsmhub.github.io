@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 性能分析工具">
 <meta itemprop="description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。 Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库ppro"><meta itemprop="datePublished" content="2022-03-29T14:26:32&#43;08:00" />
 <meta itemprop="dateModified" content="2022-03-29T14:26:32&#43;08:00" />
-<meta itemprop="wordCount" content="1318">
+<meta itemprop="wordCount" content="1381">
 <meta itemprop="keywords" content="pprof," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 性能分析工具"/>
 <meta name="twitter:description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。 Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库ppro"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1318 字 </span>
+          <span class="more-meta"> 约 1381 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -230,6 +230,7 @@
 <blockquote>
 <p>使用web方式分析数据</p>
 </blockquote>
+<p>当然一般线上不可能把 pprof 相关端口/路由开放出来，因为有很大的安全风险。所以，我们一般在线上机器 profile 生成文件，将文件下载到本地分析。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
