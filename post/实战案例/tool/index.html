@@ -217,7 +217,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 计算出 weekdays 里距离 compareTime 最近的一个未来时间点
-</span><span class="c1">// days: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now()
+</span><span class="c1">// weekdays: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now()
 </span><span class="c1"></span><span class="kd">func</span> <span class="nf">LatestTimeByWeekday</span><span class="p">(</span><span class="nx">weekdays</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">hourMinute</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">compareTime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">weekdays</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;weekdays参数不能为空&#34;</span><span class="p">)</span>
