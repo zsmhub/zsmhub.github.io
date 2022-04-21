@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Http客户端">
 <meta itemprop="description" content="理解 timeout timeout 又可以细分为 connect timeout、read timeout、write timeout。而 read timeout 和 write timeout 必须是在 connect 之后才能发生。 ReadTime"><meta itemprop="datePublished" content="2021-07-28T10:03:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-07-28T10:03:21&#43;08:00" />
-<meta itemprop="wordCount" content="1802">
+<meta itemprop="wordCount" content="2441">
 <meta itemprop="keywords" content="http," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Http客户端"/>
 <meta name="twitter:description" content="理解 timeout timeout 又可以细分为 connect timeout、read timeout、write timeout。而 read timeout 和 write timeout 必须是在 connect 之后才能发生。 ReadTime"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1802 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2441 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -145,6 +145,7 @@
     <li><a href="#http-vs-fasthttp">http vs fasthttp</a></li>
     <li><a href="#nethttp">net/http</a></li>
     <li><a href="#fasthttp">fasthttp</a></li>
+    <li><a href="#什么是keep-alive模式">什么是Keep-Alive模式</a></li>
   </ul>
 </nav>
   </div>
@@ -240,8 +241,8 @@
         <span class="nx">TLSHandshakeTimeout</span><span class="p">:</span> <span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
         <span class="nx">MaxIdleConnsPerHost</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
         <span class="nx">MaxConnsPerHost</span><span class="p">:</span>     <span class="mi">500</span><span class="p">,</span>
-        <span class="nx">IdleConnTimeout</span><span class="p">:</span>     <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
-        <span class="nx">WriteBufferSize</span><span class="p">:</span>     <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+        <span class="nx">IdleConnTimeout</span><span class="p">:</span>     <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span> <span class="c1">// 空闲链接时间：控制连接池中一个连接可以idle多长时间
+</span><span class="c1"></span>        <span class="nx">WriteBufferSize</span><span class="p">:</span>     <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
         <span class="nx">ReadBufferSize</span><span class="p">:</span>      <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="nx">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span>
@@ -337,9 +338,9 @@
 </blockquote>
 <ul>
 <li>timeout</li>
-<li>dialing to the given TCP address timed out</li>
+<li>dialing to the given TCP address timed out【解决方案：请求服务器负载过高导致，提升请求服务器的配置或者降低并发数】</li>
+<li>the server closed connection before returning the first response byte. Make sure the server returns &lsquo;Connection: close&rsquo; response header before closing the connection【解决方案：调小 MaxIdleConnDuration 参数，避免请求服务的 keep-alive 过短主动关闭】</li>
 <li>no free connections available to host【解决方案：调高参数 MaxConnsPerHost（每个 host 最大的连接数，默认512）】</li>
-<li>the server closed connection before returning the first response byte. Make sure the server returns &lsquo;Connection: close&rsquo; response header before closing the connection</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -551,6 +552,13 @@
 </span><span class="lnt">206
 </span><span class="lnt">207
 </span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// fasthttp client 示例
@@ -572,7 +580,7 @@
 <span class="kd">const</span> <span class="nx">ttl</span> <span class="p">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
 
 <span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">defaultDialer</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">fasthttp</span><span class="p">.</span><span class="nx">TCPDialer</span><span class="p">{</span><span class="nx">Concurrency</span><span class="p">:</span> <span class="mi">300</span><span class="p">}</span> <span class="c1">// tcp 并发200
+    <span class="nx">defaultDialer</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">fasthttp</span><span class="p">.</span><span class="nx">TCPDialer</span><span class="p">{</span><span class="nx">Concurrency</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span> <span class="c1">// tcp 并发200
 </span><span class="c1"></span>
     <span class="nx">FastClient</span> <span class="p">=</span> <span class="nf">CreateFastHttpClient</span><span class="p">()</span>
 
@@ -581,6 +589,13 @@
 
 <span class="kd">func</span> <span class="nf">CreateFastHttpClient</span><span class="p">()</span> <span class="nx">fasthttp</span><span class="p">.</span><span class="nx">Client</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">fasthttp</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span>
+        <span class="nx">MaxConnsPerHost</span><span class="p">:</span>     <span class="mi">300</span><span class="p">,</span>
+        <span class="nx">MaxIdleConnDuration</span><span class="p">:</span> <span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span> <span class="c1">// 空闲链接时间应短，避免请求服务的 keep-alive 过短主动关闭，默认10秒
+</span><span class="c1"></span>        <span class="nx">MaxConnDuration</span><span class="p">:</span>     <span class="mi">10</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
+        <span class="nx">ReadTimeout</span><span class="p">:</span>         <span class="mi">30</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+        <span class="nx">WriteTimeout</span><span class="p">:</span>        <span class="mi">30</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+        <span class="nx">MaxResponseBodySize</span><span class="p">:</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nx">MaxConnWaitTimeout</span><span class="p">:</span>  <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
         <span class="nx">Dial</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">addr</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">idx</span> <span class="o">:=</span> <span class="mi">3</span> <span class="c1">// 重试三次
 </span><span class="c1"></span>            <span class="k">for</span> <span class="p">{</span>
@@ -763,7 +778,12 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="什么是keep-alive模式">什么是Keep-Alive模式</h2>
+<p>我们知道HTTP协议采用“请求-应答”模式，当使用普通模式，即非KeepAlive模式时，每个请求/应答客户和服务器都要新建一个连接，完成之后立即断开连接（HTTP协议为无连接的协议）；当使用Keep-Alive模式（又称持久连接、连接重用）时，Keep-Alive功能使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接。</p>
+<p>http 1.0中默认是关闭的，需要在http头加入&quot;Connection: keep-alive&quot;，才能启用Keep-Alive；http 1.1中默认启用Keep-Alive，如果加入&quot;Connection: close &ldquo;，才关闭。目前大部分浏览器都是用http1.1协议，也就是说默认都会发起Keep-Alive的连接请求了，所以是否能完成一个完整的Keep-Alive连接就看服务器设置情况。</p>
+<p><img src="/images/2022/450px-HTTP_persistent_connection.svg.png" alt="连接"></p>
+<p>决定着我们是不是要开启 KeepAlive 的因素是一个页面请求中是否会向会向服务器发出多个HTTP的请求。会则开启能够提高访问性能。</p>
+
     </div>
 
     <div class="post-copyright">
