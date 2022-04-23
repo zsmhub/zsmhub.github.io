@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 优化">
 <meta itemprop="description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"><meta itemprop="datePublished" content="2019-06-01T16:54:37&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-24T16:54:37&#43;08:00" />
-<meta itemprop="wordCount" content="1344">
+<meta itemprop="wordCount" content="2174">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 优化"/>
 <meta name="twitter:description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 1344 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 2174 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -145,6 +145,7 @@
     <li><a href="#实用的表优化方案">实用的表优化方案</a></li>
     <li><a href="#索引">索引</a></li>
     <li><a href="#配置优化">配置优化</a></li>
+    <li><a href="#书写高质量-sql-建议">书写高质量 SQL 建议</a></li>
     <li><a href="#其他">其他</a></li>
   </ul>
 </nav>
@@ -230,6 +231,60 @@ select table_name,engine,table_rows,data_length+index_length length,DATA_FREE fr
 <li>group_concat_max_len: 聚合函数，默认1024，可以设置字符创连接允许的最大长度（eg: 使用group_concat()函数，对查询的数据进行字符串连接操作）</li>
 <li>max_length_for_sort_data: 增大该值，能够让MySQL选择更优化的Filesort排序算法</li>
 <li>sort_buffer_size: 适当增大该值，尽量让排序在内存中完成，而不是通过创建临时表放在文件中进行</li>
+</ol>
+<h2 id="书写高质量-sql-建议">书写高质量 SQL 建议</h2>
+<ol>
+<li>
+<p>不要有超过 5 个以上的表连接</p>
+<ul>
+<li>连表越多，编译的时间和开销也就越大。</li>
+<li>把连接表拆开成较小的几个执行，可读性更高。</li>
+<li>如果一定需要连接很多表才能得到数据，那么意味着糟糕的设计了。</li>
+</ul>
+</li>
+<li>
+<p>索引不宜太多，一般 5 个以内。</p>
+<ul>
+<li>索引并不是越多越好，索引虽然提高了查询的效率，但是也降低了插入和更新的效率。</li>
+<li>insert 或 update 时有可能会重建索引，所以建索引需要慎重考虑，视具体情况来定。</li>
+<li>一个表的索引数最好不要超过 5 个，若太多需要考虑一些索引是否没有存在的必要。</li>
+</ul>
+</li>
+<li>
+<p>索引不适合建在有大量重复数据的字段上，如性别这类型数据库字段。</p>
+<p>因为 SQL 优化器是根据表中数据量来进行查询优化的，如果索引列有大量重复数据，Mysql 查询优化器推算发现不走索引的成本更低，很可能就放弃索引了。</p>
+</li>
+<li>
+<p>尽量用 union all 替换 union</p>
+<p>如果使用 union，不管检索结果有没有重复，都会尝试进行合并，然后在输出最终结果前进行排序。如果已知检索结果没有重复记录，使用 union all 代替 union，这样会提高效率。</p>
+</li>
+<li>
+<p>尽可能使用 varchar/nvarchar 代替 char/nchar</p>
+<p>因为首先变长字段存储空间小，可以节省存储空间。其次对于查询来说，在一个相对较小的字段内搜索，效率更高。</p>
+</li>
+<li>
+<p>优化 limit 分页</p>
+<p>我们日常做分页需求时，一般会用 limit 实现，但是当偏移量特别大的时候，查询效率就变得低下。</p>
+<p>反例：select id，name，age from employee limit 10000，10</p>
+<p>正例：</p>
+<pre><code> ```sql
+ //方案一 ：返回上次查询的最大记录(偏移量)
+ select id，name from employee where id&gt;10000 limit 10.
+
+ //方案二：order by + 索引
+ select id，name from employee order by id  limit 10000，10
+
+ //方案三：在业务允许的情况下限制页数：
+ ```
+</code></pre>
+<p>理由：</p>
+<ul>
+<li>当偏移量最大的时候，查询效率就会越低，因为 Mysql 并非是跳过偏移量直接去取后面的数据，而是先把偏移量 + 要取的条数，然后再把前面偏移量这一段的数据抛弃掉再返回的。</li>
+<li>如果使用优化方案一，返回上次最大查询记录（偏移量），这样可以跳过偏移量，效率提升不少。</li>
+<li>方案二使用 order by + 索引，也是可以提高查询效率的。</li>
+<li>方案三的话，建议跟业务讨论，有没有必要查这么后的分页啦。因为绝大多数用户都不会往后翻太多页。</li>
+</ul>
+</li>
 </ol>
 <h2 id="其他">其他</h2>
 <ol>

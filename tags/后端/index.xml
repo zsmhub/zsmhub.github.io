@@ -32,7 +32,7 @@
       <pubDate>Thu, 31 Dec 2020 09:55:21 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
-      <description>位运算概览 符号 描述 运算规则 &amp;amp; 与 两个位都为1时，结果才为1 | 或 两个位都为0时，结果才为0 ^ 异或 两个位相同为0，相异为1 ~ 取反 0变1，1变0 &amp;laquo; 左</description>
+      <description>位运算概览 符号 描述 运算规则 &amp;amp; 与 两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp;amp; 选中标签的用户</description>
     </item>
     
   </channel>

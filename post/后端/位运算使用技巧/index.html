@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="位运算概览 符号 描述 运算规则 &amp;amp; 与 两个位都为1时，结果才为1 | 或 两个位都为0时，结果才为0 ^ 异或 两个位相同为0，相异为1 ~ 取反 0变1，1变0 &amp;laquo; 左" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="位运算概览 符号 描述 运算规则 &amp;amp; 与 两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp;amp; 选中标签的用户" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="位运算使用技巧" />
-<meta property="og:description" content="位运算概览 符号 描述 运算规则 &amp; 与 两个位都为1时，结果才为1 | 或 两个位都为0时，结果才为0 ^ 异或 两个位相同为0，相异为1 ~ 取反 0变1，1变0 &laquo; 左" />
+<meta property="og:description" content="位运算概览 符号 描述 运算规则 &amp; 与 两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp; 选中标签的用户" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-12-31T09:55:21&#43;08:00" />
 <meta property="article:modified_time" content="2020-12-31T09:55:21&#43;08:00" />
 
 <meta itemprop="name" content="位运算使用技巧">
-<meta itemprop="description" content="位运算概览 符号 描述 运算规则 &amp; 与 两个位都为1时，结果才为1 | 或 两个位都为0时，结果才为0 ^ 异或 两个位相同为0，相异为1 ~ 取反 0变1，1变0 &laquo; 左"><meta itemprop="datePublished" content="2020-12-31T09:55:21&#43;08:00" />
+<meta itemprop="description" content="位运算概览 符号 描述 运算规则 &amp; 与 两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp; 选中标签的用户"><meta itemprop="datePublished" content="2020-12-31T09:55:21&#43;08:00" />
 <meta itemprop="dateModified" content="2020-12-31T09:55:21&#43;08:00" />
-<meta itemprop="wordCount" content="685">
+<meta itemprop="wordCount" content="1551">
 <meta itemprop="keywords" content="后端," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="位运算使用技巧"/>
-<meta name="twitter:description" content="位运算概览 符号 描述 运算规则 &amp; 与 两个位都为1时，结果才为1 | 或 两个位都为0时，结果才为0 ^ 异或 两个位相同为0，相异为1 ~ 取反 0变1，1变0 &laquo; 左"/>
+<meta name="twitter:description" content="位运算概览 符号 描述 运算规则 &amp; 与 两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp; 选中标签的用户"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 685 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1551 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -142,9 +142,15 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#位运算概览">位运算概览</a></li>
-    <li><a href="#按位与按位或的使用场景">按位与、按位或的使用场景</a></li>
+    <li><a href="#逻辑与逻辑或异或的使用场景">逻辑与、逻辑或、异或的使用场景</a></li>
     <li><a href="#按位左移的使用场景">按位左移的使用场景</a></li>
     <li><a href="#按位右移的使用场景">按位右移的使用场景</a></li>
+    <li><a href="#bitmap">Bitmap</a>
+      <ul>
+        <li><a href="#原理">原理</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文章">参考文章</a></li>
   </ul>
 </nav>
   </div>
@@ -163,17 +169,17 @@
 <tr>
 <td>&amp;</td>
 <td>与</td>
-<td>两个位都为1时，结果才为1</td>
+<td>两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp; 选中标签的用户bitmap】</td>
 </tr>
 <tr>
 <td>|</td>
 <td>或</td>
-<td>两个位都为0时，结果才为0</td>
+<td>两个位都为0时，结果才为0 【选中A或B标签的用户bitmap=选中A标签的用户bitmap</td>
 </tr>
 <tr>
 <td>^</td>
 <td>异或</td>
-<td>两个位相同为0，相异为1</td>
+<td>两个位相同为0，相异为1【可用于取非数据，如不包含某个标签的用户bitmap=全量用户bitmap ^ 包含某个标签的用户bitmap】</td>
 </tr>
 <tr>
 <td>~</td>
@@ -196,7 +202,7 @@
 <p>优点</p>
 </blockquote>
 <p>由于位运算直接对内存数据进行操作，不需要转成十进制，因此处理速度非常快。</p>
-<h2 id="按位与按位或的使用场景">按位与、按位或的使用场景</h2>
+<h2 id="逻辑与逻辑或异或的使用场景">逻辑与、逻辑或、异或的使用场景</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -221,10 +227,13 @@
 </span><span class="lnt">20
 </span><span class="lnt">21
 </span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="cm">/**
-</span><span class="cm"> * 按位与（&amp;）、按位或（|）的使用场景：配合数字1,2,4,8..等 2的倍数 进行使用
+</span><span class="cm"> * 逻辑与、逻辑或、异或的使用场景：配合数字1,2,4,8..等 2的倍数 进行使用
 </span><span class="cm"> * 用于数据库单个字段一个数字便包含多个信息标识，如数字7，包含数字标识：1，2，4
 </span><span class="cm"> */</span>
 <span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
@@ -235,15 +244,18 @@
     <span class="nx">type4</span> <span class="o">:=</span> <span class="mi">8</span>
     <span class="nx">type5</span> <span class="o">:=</span> <span class="mi">16</span>
 
-    <span class="nx">types</span> <span class="o">:=</span> <span class="nx">type1</span> <span class="p">|</span> <span class="nx">type2</span> <span class="p">|</span> <span class="nx">type3</span> <span class="p">|</span> <span class="nx">type5</span> <span class="c1">// 未包含typ4
+    <span class="nx">types</span> <span class="o">:=</span> <span class="nx">type1</span> <span class="p">|</span> <span class="nx">type2</span> <span class="p">|</span> <span class="nx">type3</span> <span class="p">|</span> <span class="nx">type4</span> <span class="p">|</span> <span class="nx">type5</span> <span class="c1">// 逻辑或求并集
+</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">types</span><span class="p">)</span> <span class="c1">// 十进制：31，二进制：11111
 </span><span class="c1"></span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">types</span><span class="p">)</span> <span class="c1">// 十进制：23，二进制：11111
+    <span class="nx">types</span> <span class="p">=</span> <span class="nx">types</span> <span class="p">^</span> <span class="nx">type4</span> <span class="c1">// 逻辑异或，去掉type4
+</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">types</span><span class="p">)</span> <span class="c1">// 十进制：23，二进制：10111
 </span><span class="c1"></span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">((</span><span class="nx">types</span> <span class="o">&amp;</span> <span class="nx">type1</span><span class="p">)</span> <span class="o">==</span> <span class="nx">type1</span><span class="p">)</span> <span class="c1">// true
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">((</span><span class="nx">types</span> <span class="o">&amp;</span> <span class="nx">type1</span><span class="p">)</span> <span class="o">==</span> <span class="nx">type1</span><span class="p">)</span> <span class="c1">// true，逻辑与求交集
 </span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">((</span><span class="nx">types</span> <span class="o">&amp;</span> <span class="nx">type2</span><span class="p">)</span> <span class="o">==</span> <span class="nx">type2</span><span class="p">)</span> <span class="c1">// true
 </span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">((</span><span class="nx">types</span> <span class="o">&amp;</span> <span class="nx">type3</span><span class="p">)</span> <span class="o">==</span> <span class="nx">type3</span><span class="p">)</span> <span class="c1">// true
 </span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">((</span><span class="nx">types</span> <span class="o">&amp;</span> <span class="nx">type4</span><span class="p">)</span> <span class="o">==</span> <span class="nx">type4</span><span class="p">)</span> <span class="c1">// false
 </span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">((</span><span class="nx">types</span> <span class="o">&amp;</span> <span class="nx">type5</span><span class="p">)</span> <span class="o">==</span> <span class="nx">type5</span><span class="p">)</span> <span class="c1">// true
+</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">((</span><span class="nx">types</span><span class="o">&amp;</span> <span class="p">(</span><span class="nx">type1</span><span class="o">+</span><span class="nx">type2</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="nx">type1</span><span class="o">+</span><span class="nx">type2</span><span class="p">))</span> <span class="c1">// true
 </span><span class="c1"></span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -252,6 +264,36 @@
 <p>通常认为 a &laquo; 1 比 a * 2 更快，因为前者是更底层一些的操作。因此程序中乘以 2 的操作请尽量用左移一位来代替。</p>
 <h2 id="按位右移的使用场景">按位右移的使用场景</h2>
 <p>a &raquo; b 表示二进制右移 b 位（去掉末 b 位），相当于 a 除以 2 的 b 次方（取整）。我们也经常用 &raquo; 1 来代替 div 2，比如二分查找、堆的插入操作等等。</p>
+<p>如 5&raquo;2=1，9&raquo;2=2</p>
+<h2 id="bitmap">Bitmap</h2>
+<p>位图（Bitmap），即位（Bit）的集合，<code>是一种数据结构</code>，可用于记录大量的0-1状态，在很多地方都会用到，比如Linux内核（如inode，磁盘块）、Bloom Filter算法等，其优势是可以在一个非常高的空间利用率下保存大量0-1状态。</p>
+<p>Bitmap 其本质上是采用了bit位来表示元素状态，从而在特定场景下能够极大的节省存储空间，非常适合对海量数据的查找，判重，删除等问题的处理。</p>
+<h3 id="原理">原理</h3>
+<p>BitMap 从字面的意思，很多人认为是位图，其实准确的来说，翻译成<code>基于位的映射</code>。</p>
+<p>BitMap 的基本原理就是用一个 bit 位来存放某种状态，适用于大规模数据，但数据状态又不是很多的情况。通常是用来判断某个数据存不存在的。</p>
+<p>举例：在Java里面一个int类型占4个字节，假如要对于10亿个int数据进行处理呢？10亿*4/1024/1024/1024=4个G左右，需要4个G的内存。</p>
+<p>如果能够采用bit储,10_0000_0000Bit=1_2500_0000byte=122070KB=119MB, 那么在存储空间方面可以大大节省。</p>
+<p>我们来看看具体存储：</p>
+<p>对于1，3，5，7这四个数，如果存在的话，则可以这样表示：</p>
+<p><img src="/images/2022/16027-20190609163837937-937433350.png" alt="1"></p>
+<p>1代表这个数存在，0代表不存在。例如表中01010101代表1，3，5，7存在，0，2，4，6不存在。那如果8，10，14也存在怎么存呢？如图，8，10，14我们可以存在第二个字节里</p>
+<p><img src="/images/2022/16027-20190609163847117-889665768.png" alt="2"></p>
+<p>以此类推。</p>
+<blockquote>
+<p>bitmap应用</p>
+</blockquote>
+<ul>
+<li>可进行数据的快速查找，判重，删除，一般来说数据范围是int的10倍以下。</li>
+<li>去重数据而达到压缩数据</li>
+</ul>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<p>无法进行『非运算』。</p>
+<h2 id="参考文章">参考文章</h2>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1510721">牛逼的Bitmap算法</a></li>
+</ul>
 
     </div>
 
