@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="目前我们的k8s部署是通过金丝雀发布（灰度发布），发布新版本时，旧版本的Pod继续运行，当新版本的Pod全部启动成功，且等待一定时间后，再K" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="目前我们的k8s部署是通过金丝雀发布（灰度发布）， 发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod 旧版本的Pod继续运行" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="项目部署与发布" />
-<meta property="og:description" content="目前我们的k8s部署是通过金丝雀发布（灰度发布），发布新版本时，旧版本的Pod继续运行，当新版本的Pod全部启动成功，且等待一定时间后，再K" />
+<meta property="og:description" content="目前我们的k8s部署是通过金丝雀发布（灰度发布）， 发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod 旧版本的Pod继续运行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-07-07T09:26:58&#43;08:00" />
 <meta property="article:modified_time" content="2021-07-07T09:26:58&#43;08:00" />
 
 <meta itemprop="name" content="项目部署与发布">
-<meta itemprop="description" content="目前我们的k8s部署是通过金丝雀发布（灰度发布），发布新版本时，旧版本的Pod继续运行，当新版本的Pod全部启动成功，且等待一定时间后，再K"><meta itemprop="datePublished" content="2021-07-07T09:26:58&#43;08:00" />
+<meta itemprop="description" content="目前我们的k8s部署是通过金丝雀发布（灰度发布）， 发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod 旧版本的Pod继续运行"><meta itemprop="datePublished" content="2021-07-07T09:26:58&#43;08:00" />
 <meta itemprop="dateModified" content="2021-07-07T09:26:58&#43;08:00" />
-<meta itemprop="wordCount" content="391">
+<meta itemprop="wordCount" content="512">
 <meta itemprop="keywords" content="后端," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="项目部署与发布"/>
-<meta name="twitter:description" content="目前我们的k8s部署是通过金丝雀发布（灰度发布），发布新版本时，旧版本的Pod继续运行，当新版本的Pod全部启动成功，且等待一定时间后，再K"/>
+<meta name="twitter:description" content="目前我们的k8s部署是通过金丝雀发布（灰度发布）， 发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod 旧版本的Pod继续运行"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 391 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 512 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -147,7 +147,12 @@
   </div>
 </div>
     <div class="post-content">
-      <p>目前我们的k8s部署是通过金丝雀发布（灰度发布），发布新版本时，旧版本的Pod继续运行，当新版本的Pod全部启动成功，且等待一定时间后，再Kill掉旧版本的Pod。</p>
+      <p>目前我们的k8s部署是通过金丝雀发布（灰度发布），</p>
+<ol>
+<li>发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod</li>
+<li>旧版本的Pod继续运行10秒但不接受新的请求，方便旧pod的异步任务数据处理，10秒后再Kill掉旧版本的Pod。</li>
+</ol>
+<p>部署流程：服务重启 =&gt; 10秒灰度发布，新旧pod共存 =&gt; 新pod依次替代旧pod，旧pod移除调度，等待10秒后发送kill -15信号量给程序 =&gt; 程序接受信号量并终止，删除旧pod</p>
 <h2 id="金丝雀发布灰度发布">金丝雀发布（灰度发布）</h2>
 <p>与蓝绿部署类似，金丝雀发布也是始于两套环境：有实时流量的环境以及没有实时流量但包含了更新的代码的环境。与蓝绿部署不同的是，流量是逐渐迁移到更新的代码。一开始是1%，然后10%、25%，以此类推，直至100%。通过自动化发布，当确认代码能够正确运行时，它就可以逐步推广到更大、更关键的环境中。如果在任何时候发生了问题，所有流量都会被回滚到之前的版本。这在很大程度上降低了风险，因为仅有一小部分用户会使用到新的代码。</p>
 <p>IT不仅可以控制用户部署的比例，而且金丝雀发布还可以从不太重要的用户开始，例如使用免费账户的用户或相对来说不太重要的业务市场。</p>
