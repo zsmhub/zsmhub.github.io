@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go切片详解">
 <meta itemprop="description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此"><meta itemprop="datePublished" content="2020-07-08T09:40:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-08T09:40:36&#43;08:00" />
-<meta itemprop="wordCount" content="3423">
+<meta itemprop="wordCount" content="3398">
 <meta itemprop="keywords" content="切片," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go切片详解"/>
 <meta name="twitter:description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3423 字 </span>
+          <span class="more-meta"> 约 3398 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -327,7 +327,7 @@
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">slice</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">}</span>
     <span class="nx">newSlice</span> <span class="o">:=</span> <span class="nx">slice</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">newSlice</span><span class="p">)</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">newSlice</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">newSlice</span><span class="p">)</span>
 
     <span class="nx">slice</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">200</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">newSlice</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">newSlice</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -532,7 +532,10 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>如果你仔细看的话，上面的子切片的生成方式和普通的切片有所不同，[]里面有三个部分组成，，第一个值表示新切片开始元素的索引位置，这个例子中是2。第二个值表示开始的索引位置（2）加上希望包括的元素的个数（1），2+1 的结果是3，所以第二个值就是3。为了设置容量，从索引位置2 开始，加上希望容量中包含的元素的个数（2），就得到了第三个值4。所以这个新的切片slice的长度为1，容量为2。还有一点大家一定要记住，你指定的容量不能比原先的容量，这里就是source的容量大，加入我们这样设置的话：</p>
+</div><blockquote>
+<p>source[2:3:4]</p>
+</blockquote>
+<p>如果你仔细看的话，上面的子切片的生成方式和普通的切片有所不同，[]里面有三个部分组成，第一个值表示新切片开始元素的索引位置，这个例子中是2。第二个值表示开始的索引位置（2）加上希望包括的元素的个数（1），2+1 的结果是3，所以第二个值就是3。为了设置容量，从索引位置2 开始，加上希望容量中包含的元素的个数（2），就得到了第三个值4。所以这个新的切片slice的长度为1，容量为2。还有一点大家一定要记住，你指定的容量不能比原先的容量大：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

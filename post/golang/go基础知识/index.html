@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="10547">
+<meta itemprop="wordCount" content="10703">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 10547 字 </span>
+          <span class="more-meta"> 约 10703 字 </span>
           <span class="more-meta"> 预计阅读 22 分钟 </span>
         
       </div>
@@ -235,15 +235,6 @@
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="k">go</span> <span class="nx">env</span> <span class="c1">// 用于打印Go语言环境信息
@@ -259,15 +250,6 @@
 </span><span class="c1"></span>
 <span class="k">go</span> <span class="nx">clean</span> <span class="o">-</span><span class="nx">i</span> <span class="o">-</span><span class="nx">n</span>  <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="mi">360</span><span class="nx">EntSecGroup</span><span class="o">-</span><span class="nx">Skylar</span><span class="o">/</span><span class="nx">excelize</span><span class="o">/</span><span class="nx">v2</span> <span class="c1">// 删除 go get 安装的包
 </span><span class="c1"></span>
-<span class="err">#</span> <span class="nx">包管理器</span> <span class="nx">Go</span> <span class="nx">Modules</span><span class="err">，</span><span class="nx">旨在取代工作区和</span> <span class="nx">GOPATH</span><span class="err">。</span>
-<span class="k">go</span> <span class="nx">mod</span> <span class="nx">init</span> <span class="nf">xxx</span><span class="p">(</span><span class="nx">项目名</span><span class="p">)</span> <span class="c1">// 初始化go.mod
-</span><span class="c1"></span><span class="k">go</span> <span class="nx">mod</span> <span class="nx">vendor</span> <span class="c1">// go get 新依赖包后，将依赖包复制到项目下的 vendor 目录。
-</span><span class="c1"></span><span class="k">go</span> <span class="nx">mod</span> <span class="nx">tidy</span> <span class="c1">// 整理现有的依赖，新增依赖包、删除缺失或者未使用的扩展包
-</span><span class="c1"></span>
-<span class="err">###</span> <span class="nx">project</span> <span class="nx">依赖包升级的两种方案</span>
-<span class="mf">1.</span> <span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span>
-<span class="mf">2.</span> <span class="nx">修改</span> <span class="k">go</span><span class="p">.</span><span class="nx">mod</span> <span class="nx">文件下的相关依赖包的版本号</span><span class="err">；</span><span class="nx">再执行</span> <span class="k">go</span> <span class="nx">mod</span> <span class="nx">vendor</span> <span class="nx">即可完成依赖包的升级</span>
-
 <span class="err">#</span> <span class="nx">格式化</span>
 <span class="nx">gofmt</span> <span class="err">–</span><span class="nx">w</span> <span class="nx">program</span><span class="p">.</span><span class="k">go</span>  <span class="c1">//会格式化该源文件的代码然后将格式化后的代码覆盖原始内容
 </span><span class="c1"></span><span class="nx">gofmt</span> <span class="o">-</span><span class="nx">w</span> <span class="o">*</span><span class="p">.</span><span class="k">go</span>  <span class="c1">// 会格式化并重写所有 Go 源文件
@@ -1866,7 +1848,24 @@ t.Execute<span class="o">(</span>os.Stdout, map<span class="o">[</span>string<sp
 </div></li>
 </ol>
 <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
+<p>包管理器 Go Modules，旨在取代工作区和 GOPATH。</p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">go mod init xxx<span class="o">(</span>项目名<span class="o">)</span> // 初始化go.mod
+go mod vendor // go get 新依赖包后，将依赖包复制到项目下的 vendor 目录。
+go mod tidy // 整理现有的依赖，新增依赖包、删除缺失或者未使用的扩展包
+
+go mod why // 这个命令用来解释为什么会依赖某个软件包，若要查看go.mod中某个间接依赖是被哪个依赖引入的，可以使用命令go mod why -m &lt;pkg&gt;来查看。eg: go mod why -m github.com/onsi/ginkgo【如何去掉间接依赖包？如果间接依赖包对应的源组件的新版本支持Go Modules，则升级源组件就能解决】
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -1874,13 +1873,20 @@ t.Execute<span class="o">(</span>os.Stdout, map<span class="o">[</span>string<sp
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">echo</span> <span class="s2">&#34;export GO111MODULE=on&#34;</span> &gt;&gt; ~/.bash_profile
-<span class="nb">echo</span> <span class="s2">&#34;export GOPROXY=https://goproxy.cn,direct&#34;</span> &gt;&gt; ~/.bash_profile
-<span class="nb">echo</span> <span class="s2">&#34;export PATH=&#34;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/go/bin:<span class="nv">$PATH</span><span class="s2">&#34; &gt;&gt; ~/.bash_profile
-</span><span class="s2">source ~/.bash_profile
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">export</span> <span class="nv">GOSUMDB</span><span class="o">=</span>off // 需要引入私有仓库时关闭
+<span class="nb">export</span> <span class="nv">GO111MODULE</span><span class="o">=</span>on
+<span class="nb">export</span> <span class="nv">GOPROXY</span><span class="o">=</span>https://goproxy.cn,direct
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/go/bin:</span><span class="nv">$PATH</span><span class="s2">
 </span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
+<p>project 依赖包升级的两种方案</p>
+</blockquote>
+<ol>
+<li>go get -u <a href="mailto:github.com/jinzhu/gorm@v1.9">github.com/jinzhu/gorm@v1.9</a></li>
+<li>修改 go.mod 文件下的相关依赖包的版本号；再执行 go mod tidy &amp;&amp; go mod vendor 即可完成依赖包的升级</li>
+</ol>
+<blockquote>
 <p>以下是搭建建新项目前的操作</p>
 </blockquote>
 <div class="highlight"><div class="chroma">

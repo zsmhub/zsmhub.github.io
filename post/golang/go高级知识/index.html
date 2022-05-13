@@ -210,7 +210,7 @@ git config --global url.https://gitlab.xxx.com/.insteadof http://gitlab.xxx.com/
 </div>
 </div></li>
 <li>
-<p>export GOSUMDB=&ldquo;off&rdquo; // 为了保证开发者的依赖库不被人恶意劫持篡改，Go team 推出了 Go module checksum database。当你在本地对依赖进行变动（更新/添加）操作时，Go 会自动去这个服务器进行数据校验，保证你下的这个代码库和世界上其他人下的代码库是一样的。如果有问题，会有个大大的安全提示。</p>
+<p>export GOSUMDB=off // 为了保证开发者的依赖库不被人恶意劫持篡改，Go team 推出了 Go module checksum database。当你在本地对依赖进行变动（更新/添加）操作时，Go 会自动去这个服务器进行数据校验，保证你下的这个代码库和世界上其他人下的代码库是一样的。如果有问题，会有个大大的安全提示。</p>
 </li>
 <li>
 <p>go get -u -insecure <a href="mailto:gitlab.xxx.com/xxxx@v0.0.1">gitlab.xxx.com/xxxx@v0.0.1</a></p>
