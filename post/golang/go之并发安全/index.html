@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go之并发安全">
 <meta itemprop="description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单"><meta itemprop="datePublished" content="2020-08-23T20:57:43&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-23T20:57:43&#43;08:00" />
-<meta itemprop="wordCount" content="1484">
+<meta itemprop="wordCount" content="1517">
 <meta itemprop="keywords" content="并发安全," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go之并发安全"/>
 <meta name="twitter:description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1484 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1517 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -147,6 +147,7 @@
     <li><a href="#go-并发安全map-分段锁实现">go 并发安全map 分段锁实现</a></li>
     <li><a href="#并行计算并指定key存储结果案例">并行计算并指定key存储结果案例</a></li>
     <li><a href="#互斥锁的执行顺序">互斥锁的执行顺序</a></li>
+    <li><a href="#semaphore">Semaphore</a></li>
   </ul>
 </nav>
   </div>
@@ -331,10 +332,22 @@
 <p>如果 Mutex 已经被一个 goroutine 获取了锁，其它等待中的 goroutine 们只能一直等待。那么，等这个锁释放后，等待中的 goroutine 中哪一个会优先获取 Mutex 呢？</p>
 <p>等待的goroutine们是以FIFO排队的</p>
 <ol>
-<li>当Mutex处于正常模式时，若此时没有新goroutine与队头goroutine竞争，则队头goroutine获得。若有新goroutine竞争大概率新goroutine获得。</li>
-<li>当队头goroutine竞争锁失败1ms后，它会将Mutex调整为饥饿模式。进入饥饿模式后，锁的所有权会直接从解锁goroutine移交给队头goroutine，此时新来的goroutine直接放入队尾。</li>
-<li>当一个goroutine获取锁后，如果发现自己满足下列条件中的任何一个#1它是队列中最后一个#2它等待锁的时间少于1ms，则将锁切换回正常模式</li>
+<li>
+<p>当Mutex处于正常模式时，若此时没有新goroutine与队头goroutine竞争，则队头goroutine获得，若有新goroutine竞争则大概率新goroutine获得。</p>
+</li>
+<li>
+<p>当队头goroutine竞争锁失败1ms后，它会将Mutex调整为<code>饥饿模式</code>。进入饥饿模式后，锁的所有权会直接从解锁goroutine移交给队头goroutine，此时新来的goroutine直接放入队尾。</p>
+</li>
+<li>
+<p>当一个goroutine获取锁后，如果发现自己满足下列条件中的任何一个，则将锁切换回正常模式</p>
+<ul>
+<li>它是队列中最后一个</li>
+<li>它等待锁的时间少于1ms</li>
+</ul>
+</li>
 </ol>
+<h2 id="semaphore">Semaphore</h2>
+<p>信号量（Semaphore）是用来控制多个 goroutine 同时访问多个资源的并发原语</p>
 
     </div>
 
