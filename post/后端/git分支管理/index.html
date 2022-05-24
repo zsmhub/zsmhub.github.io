@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="GIT 分支管理及发版流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支), you" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="GIT分支管理及发版合并流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支)" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="Git分支管理" />
-<meta property="og:description" content="GIT 分支管理及发版流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支), you" />
+<meta property="og:description" content="GIT分支管理及发版合并流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-03-07T18:00:53&#43;08:00" />
 <meta property="article:modified_time" content="2022-03-07T18:00:53&#43;08:00" />
 
 <meta itemprop="name" content="Git分支管理">
-<meta itemprop="description" content="GIT 分支管理及发版流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支), you"><meta itemprop="datePublished" content="2022-03-07T18:00:53&#43;08:00" />
+<meta itemprop="description" content="GIT分支管理及发版合并流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支)"><meta itemprop="datePublished" content="2022-03-07T18:00:53&#43;08:00" />
 <meta itemprop="dateModified" content="2022-03-07T18:00:53&#43;08:00" />
-<meta itemprop="wordCount" content="439">
+<meta itemprop="wordCount" content="448">
 <meta itemprop="keywords" content="git," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git分支管理"/>
-<meta name="twitter:description" content="GIT 分支管理及发版流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支), you"/>
+<meta name="twitter:description" content="GIT分支管理及发版合并流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支)"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 439 字 </span>
+          <span class="more-meta"> 约 448 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -141,21 +141,21 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#git-分支管理及发版流程">GIT 分支管理及发版流程</a></li>
+    <li><a href="#git分支管理及发版合并流程">GIT分支管理及发版合并流程</a></li>
     <li><a href="#开发分支代码如何合并到测试环境预发布环境生产环境">开发分支代码如何合并到测试环境/预发布环境/生产环境</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <h2 id="git-分支管理及发版流程">GIT 分支管理及发版流程</h2>
+      <h2 id="git分支管理及发版合并流程">GIT分支管理及发版合并流程</h2>
 <p>主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支), yourname_feature(功能分支), yourname_hotfix(修复分支)</p>
 <p>开发环境分 4 种：本地开发环境、测试环境、预发布环境、生产环境</p>
 <ol>
 <li>本地环境开发时, 从最新的 uat 分支上, 创建自己的新功能分支 yourname_feature。</li>
-<li>发测试环境时，将自己的 feature 分支合并到 develop 分支。<em>注意不要将 develop 分支合并到任何其他分支！！！</em></li>
-<li>发预生产环境时，将开发完成的 feature/hotfix 分支，提交合并请求到 release 分支。<em>注意不要将 release 分支合并到任何其他分支！！！</em></li>
-<li>发生产环境时，将开发完成的 feature/hotfix 分支，提交合并请求到 uat 分支，然后在 master 分支打下 tag（方便代码回滚），最后将 uat 分支合并到 master 分支。</li>
+<li>发测试环境时，将自己的 feature 分支合并到 develop 分支。<code>注意不要将 develop 分支合并到任何其他分支！！！</code></li>
+<li>发预生产环境时，将开发完成的 feature/hotfix 分支，提交合并请求到 release 分支。<code>注意不要将 release 分支合并到任何其他分支！！！</code></li>
+<li>发生产环境时，将开发完成的 feature/hotfix 分支提交合并请求到 uat 分支，负责人同意合并后将 uat 分支合并到 master 分支，最后在 master 分支打下 tag（方便代码回滚）。</li>
 </ol>
 <p><img src="/images/2022/2022gitflow.png" alt="git-flow"></p>
 <div class="highlight"><div class="chroma">
@@ -175,7 +175,7 @@ git push --tags
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="开发分支代码如何合并到测试环境预发布环境生产环境">开发分支代码如何合并到测试环境/预发布环境/生产环境</h2>
-<p><img src="/images/2022/git-branch-merge.jpg" alt="# 开发分支代码如何合并到测试环境/预发布环境/生产环境"></p>
+<p><img src="/images/2022/git-branch-merge.jpg" alt="开发分支代码如何合并到测试环境/预发布环境/生产环境"></p>
 
     </div>
 

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go Json 技巧">
 <meta itemprop="description" content="omitempty 忽略 struct 空字段，当字段的值为空值的时候，它不会出现在JSON数据中. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 package main import ( &#34;encoding/json&#34; &#34;fmt&#34; ) type User struct { Email string `json:&#34;email&#34;` Password string"><meta itemprop="datePublished" content="2020-05-12T21:51:25&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T21:51:25&#43;08:00" />
-<meta itemprop="wordCount" content="489">
+<meta itemprop="wordCount" content="710">
 <meta itemprop="keywords" content="json," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go Json 技巧"/>
 <meta name="twitter:description" content="omitempty 忽略 struct 空字段，当字段的值为空值的时候，它不会出现在JSON数据中. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 package main import ( &#34;encoding/json&#34; &#34;fmt&#34; ) type User struct { Email string `json:&#34;email&#34;` Password string"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 489 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 710 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -145,6 +145,7 @@
     <li><a href="#临时合并两个struct">临时合并两个struct</a></li>
     <li><a href="#一个json切分成两个struct">一个json切分成两个struct</a></li>
     <li><a href="#数字以字符串形式输出">数字以字符串形式输出</a></li>
+    <li><a href="#json和map转换">json和map转换</a></li>
   </ul>
 </nav>
   </div>
@@ -384,6 +385,49 @@
 <span class="c1">// 输出结果
 </span><span class="c1">// {&#34;email&#34;:&#34;7@qq.com&#34;,&#34;field&#34;:&#34;100&#34;}
 </span></code></pre></td></tr></table>
+</div>
+</div><h2 id="json和map转换">json和map转换</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">jsonStr</span> <span class="o">:=</span> <span class="s">`
+</span><span class="s">        {
+</span><span class="s">          &#34;env&#34;: &#34;local&#34;,
+</span><span class="s">          &#34;redis_address&#34;: &#34;127.0.0.1:6379&#34;,
+</span><span class="s">          &#34;redis_password&#34;: &#34;xxx&#34;
+</span><span class="s">        }
+</span><span class="s">    `</span>
+
+    <span class="c1">// json转换成map
+</span><span class="c1"></span>    <span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">jsonStr</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">m</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="c1">// 输出：map[env:local redis_address:127.0.0.1:6379 redis_password:xxx]
+</span><span class="c1"></span>
+    <span class="c1">// map转换成json
+</span><span class="c1"></span>    <span class="nx">j</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">j</span><span class="p">))</span> <span class="c1">// 输出：{&#34;env&#34;:&#34;local&#34;,&#34;redis_address&#34;:&#34;127.0.0.1:6379&#34;,&#34;redis_password&#34;:&#34;xxx&#34;}
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>

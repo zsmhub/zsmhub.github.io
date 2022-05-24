@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="12428">
+<meta itemprop="wordCount" content="12095">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 12428 字 </span>
+          <span class="more-meta"> 约 12095 字 </span>
           <span class="more-meta"> 预计阅读 25 分钟 </span>
         
       </div>
@@ -193,11 +193,6 @@
     <li><a href="#githubcommikuzek">github.com/miku/zek</a></li>
     <li><a href="#githubcomgo-yamlyaml">github.com/go-yaml/yaml</a></li>
     <li><a href="#uuid">uuid</a></li>
-    <li><a href="#golangorgxsync">golang.org/x/sync</a>
-      <ul>
-        <li><a href="#singleflight">SingleFlight</a></li>
-      </ul>
-    </li>
     <li><a href="#githubcomcoocoodfreecache">github.com/coocood/freecache</a></li>
     <li><a href="#githubcomjinzhucopier">github.com/jinzhu/copier</a></li>
     <li><a href="#githubcomyanyiwugojieba">github.com/yanyiwu/gojieba</a></li>
@@ -2294,7 +2289,13 @@
 <p>go-stash是一个高效的从Kafka获取数据，根据配置的规则进行处理，然后发送到ElasticSearch集群的工具。</p>
 <p>go-stash有大概logstash 5倍的吞吐性能，并且部署简单，一个可执行文件即可。</p>
 <h2 id="githubcomfsnotifyfsnotify">github.com/fsnotify/fsnotify</h2>
-<p>热更新</p>
+<p>可以监听文件修改进而自动重新加载，可用于实现配置热更新。</p>
+<p>fsnotify的使用比较简单：</p>
+<ol>
+<li>先调用NewWatcher创建一个监听器；</li>
+<li>然后调用监听器的Add增加监听的文件或目录（如果是实现配置热更新：后端收到事件后读取整个文件内容，再判断哪个参数变更了，最后该变量引用赋值）；</li>
+<li>如果目录或文件有事件产生，监听器中的通道Events可以取出事件。如果出现错误，监听器中的通道Errors可以取出错误信息。</li>
+</ol>
 <h2 id="gouberorgzap-1">go.uber.org/zap</h2>
 <p>日志记录</p>
 <h2 id="githubcomchimeracodergojson">github.com/ChimeraCoder/gojson</h2>
@@ -2348,111 +2349,6 @@
 <span class="nx">key</span> <span class="o">:=</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">().</span><span class="nf">String</span><span class="p">()</span>
 <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="c1">// 输出： 4738c1d9-04ce-46a5-a49f-7cc2b9f061e2
 </span></code></pre></td></tr></table>
-</div>
-</div><h2 id="golangorgxsync">golang.org/x/sync</h2>
-<p>Go 官方扩展库</p>
-<h3 id="singleflight">SingleFlight</h3>
-<p>SingleFlight 是 Go 开发组提供的一个扩展并发原语。它的作用是，在处理多个 goroutine 同时调用同一个函数的时候，只让一个 goroutine 去调用这个函数，等到这个 goroutine 返回结果的时候，再把结果返回给这几个同时调用的 goroutine，这样可以减少并发调用的数量。</p>
-<p>使用场景: 如防缓存击穿、减少并发读库以提高性能、减少并发写相同数据以提高性能。</p>
-<blockquote>
-<p>标准库中的 sync.Once 也可以保证并发的 goroutine 只会执行一次函数 f，那么，SingleFlight 和 sync.Once 有什么区别呢？</p>
-</blockquote>
-<p>其实，sync.Once 不是只在并发的时候保证只有一个 goroutine 执行函数 f，而是会保证永远只执行一次，而 SingleFlight 是每次调用都重新执行，并且在多个请求同时调用的时候只有一个执行。它们两个面对的场景是不同的，sync.Once 主要是用在单次初始化场景中，而 SingleFlight 主要用在合并并发请求的场景中，尤其是缓存场景。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;golang.org/x/sync/singleflight&#34;</span>
-    <span class="s">&#34;sync&#34;</span>
-    <span class="s">&#34;sync/atomic&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// 防缓存击穿代码示例
-</span><span class="c1"></span>
-<span class="kd">var</span> <span class="nx">count</span> <span class="p">=</span> <span class="nb">int64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">a</span><span class="p">()</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//time.Sleep(time.Millisecond * 500) // 去掉注释可查看高并发取值情况
-</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">count</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">g</span> <span class="o">:=</span> <span class="nx">singleflight</span><span class="p">.</span><span class="nx">Group</span><span class="p">{}</span>
-
-    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
-
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-
-            <span class="c1">// 直接返回结果集
-</span><span class="c1"></span>            <span class="nx">val</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">shared</span> <span class="o">:=</span> <span class="nx">g</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="s">&#34;cache_key_name&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-                <span class="k">return</span>
-            <span class="p">}</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;index: %d, val: %d, shared: %v\n&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">shared</span><span class="p">)</span>
-
-            <span class="c1">// 返回值为 channel 方式
-</span><span class="c1"></span>            <span class="c1">//result := g.DoChan(&#34;cache_key_name2&#34;, a)
-</span><span class="c1"></span>            <span class="c1">//ret, _ := &lt;-result
-</span><span class="c1"></span>            <span class="c1">//fmt.Printf(&#34;channel-&gt;index: %d, val: %d, shared: %v\n&#34;, j, ret.Val, ret.Shared)
-</span><span class="c1"></span>        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
 </div>
 </div><h2 id="githubcomcoocoodfreecache">github.com/coocood/freecache</h2>
 <p>freecache 是一个用 go 语言实现的本地缓存系统（类似于 lru）。相关的 github 地址：https://github.com/coocood/freecache</p>

@@ -23,7 +23,7 @@
       <pubDate>Mon, 07 Mar 2022 18:00:53 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/</guid>
-      <description>GIT 分支管理及发版流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支), you</description>
+      <description>GIT分支管理及发版合并流程 主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支)</description>
     </item>
     
     <item>
