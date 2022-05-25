@@ -43,12 +43,12 @@
 <meta property="og:description" content="协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-10-20T11:30:44&#43;08:00" />
-<meta property="article:modified_time" content="2020-10-20T11:30:44&#43;08:00" />
+<meta property="article:published_time" content="2019-04-28T11:30:44&#43;08:00" />
+<meta property="article:modified_time" content="2019-04-28T11:30:44&#43;08:00" />
 
 <meta itemprop="name" content="TCP/IP">
-<meta itemprop="description" content="协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，"><meta itemprop="datePublished" content="2020-10-20T11:30:44&#43;08:00" />
-<meta itemprop="dateModified" content="2020-10-20T11:30:44&#43;08:00" />
+<meta itemprop="description" content="协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，"><meta itemprop="datePublished" content="2019-04-28T11:30:44&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-28T11:30:44&#43;08:00" />
 <meta itemprop="wordCount" content="3824">
 <meta itemprop="keywords" content="tcp," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TCP/IP"/>
@@ -126,7 +126,7 @@
       <h1 class="post-title">TCP/IP</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-10-20 </span>
+        <span class="post-time"> 2019-04-28 </span>
         <div class="post-category">
             <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
             </div>
@@ -166,7 +166,7 @@
 <h2 id="osi-参考模型和-tcpip-协议">OSI 参考模型和 TCP/IP 协议</h2>
 <p>网络分层架构目的：为了减少协议设计的复杂性，大多数网络模型均采用分层的方式来组织。每一层都有自己的功能，就想建筑物一样，每一层都靠下一层支持。每一层利用下一层提供的服务来为上一层提供服务，本层服务的实现细节对上层屏蔽。好处：分工明确。</p>
 <p>OSI 参考模型作为一种概念模型，由国际标准化组织（ISO）提出，一个试图使各种计算机在世界范围内互连为网络的标准框架。我们熟悉的 HTTP、FTP 等协议都工作在最顶端的应用层(Application Layer)。</p>
-<p>而 TCP/IP 协议族（Protocol Suite）将软件通信过程抽象化为四个抽象层，常被视为是简化的七层OSI模型。当多个层次的协议共同工作时，类似数据结构中的堆栈，因此又被称为 TCP/IP 协议栈（Protocol Stack）。『TCP/IP 协议栈包含 IP, TCP, UDP, HTTP, SMTP等协议』</p>
+<p><code>而 TCP/IP 协议族（Protocol Suite）将软件通信过程抽象化为四个抽象层</code>，常被视为是简化的七层OSI模型。当多个层次的协议共同工作时，类似数据结构中的堆栈，因此又被称为 TCP/IP 协议栈（Protocol Stack）。『TCP/IP 协议栈包含 IP, TCP, UDP, HTTP, SMTP等协议』</p>
 <p>越下面的层，越靠近硬件；越上面的层，越靠近用户。</p>
 <p><img src="/images/2020/tcp-ip.png" alt="OSI模型和TCP/IP协议"></p>
 <h2 id="osi-参考模型">OSI 参考模型</h2>
@@ -202,8 +202,8 @@
 <h2 id="通信过程如何组包和拆包">通信过程如何组包和拆包</h2>
 <p><img src="/images/2021/QQ20210827-175309@2x.png" alt="飞Q通讯过程的组包和拆包流程"></p>
 <h2 id="粘包问题">粘包问题</h2>
-<p><em><strong>严格意义上来说，TCP协议本身是没有粘包问题的，粘包问题是因为程序员有特殊的需求-需要对数据包进行拆分解析，才导致需要程序员自己解决粘包问题</strong></em></p>
-<p><em><strong>TCP 的粘包问题，这种叫法是不太对的，本身 TCP 就是面向连接的流式传输协议，特性如此，我们却说是 TCP 这个协议出了问题，这只能说是使用者的无知。多个数据包粘连到一起无法拆分是我们的需求过于复杂造成的，是程序员的问题而不是协议的问题，TCP 协议标识这锅它不想背。</strong></em></p>
+<p><em><strong>严格意义上来说，TCP协议本身是没有粘包问题的，粘包问题是因为程序员有特殊的需求：需要对数据包进行拆分解析，才导致需要程序员自己解决粘包问题</strong></em></p>
+<p><em><strong>TCP 的粘包问题，这种叫法是不太对的，本身 TCP 就是面向连接的流式传输协议，特性如此，我们却说是 TCP 这个协议出了问题，这只能说是使用者的无知。多个数据包粘连到一起无法拆分是我们的需求过于复杂造成的，是程序员的问题而不是协议的问题，TCP 协议表示这锅它不想背。</strong></em></p>
 <blockquote>
 <p>粘包出现的根本原因</p>
 </blockquote>
@@ -310,7 +310,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-10-20
+        2019-04-28
         
     </span>
   </p>
@@ -339,13 +339,13 @@
           <a href="/tags/tcp/">tcp</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http/">
+        <a class="prev" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/websocket%E5%8D%8F%E8%AE%AE/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Http</span>
+            <span class="prev-text nav-default">WebSocket协议</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AD%A9%E5%AD%90%E6%95%99%E8%82%B2%E8%AE%B0%E5%BD%95/">
-            <span class="next-text nav-default">孩子教育记录</span>
+        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/">
+            <span class="next-text nav-default">OAuth 与 OpenID</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -358,7 +358,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-10-20 11:30:44 \u002b0800 CST',
+        id: '2019-04-28 11:30:44 \u002b0800 CST',
         title: 'TCP\/IP',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',

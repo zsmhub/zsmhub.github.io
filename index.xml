@@ -396,21 +396,12 @@
     </item>
     
     <item>
-      <title>Http</title>
-      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http/</link>
+      <title>http和https</title>
+      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http%E5%92%8Chttps/</link>
       <pubDate>Thu, 29 Oct 2020 09:36:54 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http/</guid>
+      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http%E5%92%8Chttps/</guid>
       <description>网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一</description>
-    </item>
-    
-    <item>
-      <title>TCP/IP</title>
-      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</link>
-      <pubDate>Tue, 20 Oct 2020 11:30:44 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</guid>
-      <description>协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，</description>
     </item>
     
     <item>
@@ -1067,7 +1058,7 @@
       <pubDate>Wed, 01 Jan 2020 16:30:02 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/navigation/</guid>
-      <description>学习ing 力扣(LeetCode)代码刷题 【解题参考：https://github.com/roseduan/algo-learn】 goim 项目源</description>
+      <description>ing 力扣(LeetCode)代码刷题 【解题参考：https://github.com/roseduan/algo-learn】 goim 项目源码查查看</description>
     </item>
     
     <item>
@@ -1283,7 +1274,7 @@
       <pubDate>Sun, 28 Apr 2019 16:22:13 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket/</guid>
-      <description>一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程和 UDP编程。 socket 简介 Socket 是</description>
+      <description>一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。</description>
     </item>
     
     <item>
@@ -1293,6 +1284,15 @@
       
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/websocket%E5%8D%8F%E8%AE%AE/</guid>
       <description>http 通信只能一来一回，不能直接回包，于是出现了 websocket 实时通讯 简介 WebSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。 WebSocket 使得客户端和服务器之间的</description>
+    </item>
+    
+    <item>
+      <title>TCP/IP</title>
+      <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</link>
+      <pubDate>Sun, 28 Apr 2019 11:30:44 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</guid>
+      <description>协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，</description>
     </item>
     
     <item>

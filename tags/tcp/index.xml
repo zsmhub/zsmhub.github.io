@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 20 Oct 2020 11:30:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Apr 2019 11:30:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TCP/IP</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</link>
-      <pubDate>Tue, 20 Oct 2020 11:30:44 +0800</pubDate>
+      <pubDate>Sun, 28 Apr 2019 11:30:44 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</guid>
       <description>协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，</description>

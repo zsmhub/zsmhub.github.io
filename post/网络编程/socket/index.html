@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程和 UDP编程。 socket 简介 Socket 是" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="Socket" />
-<meta property="og:description" content="一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程和 UDP编程。 socket 简介 Socket 是" />
+<meta property="og:description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-04-28T16:22:13&#43;08:00" />
 <meta property="article:modified_time" content="2020-08-16T16:22:13&#43;08:00" />
 
 <meta itemprop="name" content="Socket">
-<meta itemprop="description" content="一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程和 UDP编程。 socket 简介 Socket 是"><meta itemprop="datePublished" content="2019-04-28T16:22:13&#43;08:00" />
+<meta itemprop="description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。"><meta itemprop="datePublished" content="2019-04-28T16:22:13&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-16T16:22:13&#43;08:00" />
-<meta itemprop="wordCount" content="565">
+<meta itemprop="wordCount" content="570">
 <meta itemprop="keywords" content="socket," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Socket"/>
-<meta name="twitter:description" content="一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程和 UDP编程。 socket 简介 Socket 是"/>
+<meta name="twitter:description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
             </div>
-          <span class="more-meta"> 约 565 字 </span>
+          <span class="more-meta"> 约 570 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -150,10 +150,10 @@
   </div>
 </div>
     <div class="post-content">
-      <p>一般网络编程都叫 Socket 编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。</p>
-<p>网络编程无非简单来看就是 TCP编程和 UDP编程。</p>
+      <p>一般<code>网络编程</code>都叫<code>Socket编程</code>，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。</p>
+<p>网络编程无非简单来看就是 TCP编程 和 UDP编程。</p>
 <h2 id="socket-简介">socket 简介</h2>
-<p>Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket 其实就是一个门面模式，它把复杂的 TCP/IP 协议族隐藏在 Socket 接口后面，对用户来说，一组简单的接口就是全部，让 Socket 去组织数据，以符合指定的协议。</p>
+<p><code>Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。</code>在设计模式中，Socket 其实就是一个门面模式，它把复杂的 TCP/IP 协议族隐藏在 Socket 接口后面，对用户来说，一组简单的接口就是全部，让 Socket 去组织数据，以符合指定的协议。</p>
 <p>套接字（socket）是一个抽象层，应用程序可以通过它发送或接收数据，可对其进行像对文件一样的打开、读写和关闭等操作。 套接字允许应用程序将I/O插入到网络中，并与网络中的其他应用程序进行通信。 网络套接字是IP地址与端口的组合。</p>
 <p><img src="/images/2020/socket1.png" alt="socket"></p>
 <h2 id="socket-作用">socket 作用</h2>
@@ -161,7 +161,7 @@
 <p><img src="/images/2021/QQ20210830-165930@2x.png" alt="socket作用"></p>
 <h2 id="socket-类型">socket 类型</h2>
 <blockquote>
-<p>常用的 Socket 类型有两种：流式 Socket（SOCK_STREAM）和数据报式Socket（SOCK_DGRAM）。</p>
+<p>常用的 Socket 类型有两种：流式Socket（SOCK_STREAM）和数据报式Socket（SOCK_DGRAM）。</p>
 </blockquote>
 <ul>
 <li>流式，二进制流，是一种面向连接的 Socket，针对于面向连接的 TCP 服务应用。应用场景：im 通讯，安全</li>
@@ -171,8 +171,8 @@
 <p>简单对比一下</p>
 </blockquote>
 <ul>
-<li>TCP：比较靠谱，面向连接，安全，可靠的传输方式 ，但是 比较慢</li>
-<li>UDP：不是太靠谱，不可靠的，丢包不会重传，但是 比较快</li>
+<li>TCP：比较靠谱，面向连接，安全，可靠的传输方式 ，但是比较慢</li>
+<li>UDP：不是太靠谱，不可靠的，丢包不会重传，但是比较快</li>
 </ul>
 <h2 id="cs-模型">CS 模型</h2>
 <p>c: client，s: server</p>

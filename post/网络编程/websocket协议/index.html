@@ -49,7 +49,7 @@
 <meta itemprop="name" content="WebSocket协议">
 <meta itemprop="description" content="http 通信只能一来一回，不能直接回包，于是出现了 websocket 实时通讯 简介 WebSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。 WebSocket 使得客户端和服务器之间的"><meta itemprop="datePublished" content="2019-04-28T15:54:05&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-16T15:54:05&#43;08:00" />
-<meta itemprop="wordCount" content="1044">
+<meta itemprop="wordCount" content="1422">
 <meta itemprop="keywords" content="socket," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="WebSocket协议"/>
 <meta name="twitter:description" content="http 通信只能一来一回，不能直接回包，于是出现了 websocket 实时通讯 简介 WebSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。 WebSocket 使得客户端和服务器之间的"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
             </div>
-          <span class="more-meta"> 约 1044 字 </span>
+          <span class="more-meta"> 约 1422 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -186,7 +186,8 @@
 </ol>
 <p><img src="/images/2020/websocket.png" alt="websocket 连接过程"></p>
 <h2 id="握手协议">握手协议</h2>
-<p>在第一步的时候进行了握手，这里来看一下请求的详情</p>
+<p>在第一步的时候进行了握手，这里来看一下请求的详情。</p>
+<p>至今为止最经常会需要升级一个HTTP连接的场合就是使用WebSocket。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -197,16 +198,18 @@
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">// 请求
+<pre class="chroma"><code class="language-sh" data-lang="sh">// 客户端请求头：wss://xxx.com/socket.io/?EIO<span class="o">=</span>3<span class="p">&amp;</span><span class="nv">transport</span><span class="o">=</span>websocket
 GET / HTTP/1.1
-Upgrade: websocket // 升级为websocket协议
-Connection: Upgrade
+Connection: Upgrade // 指示这是一个升级请求
+Upgrade: websocket // 指定一项或多项协议名，按优先级排序，以逗号分隔。如升级为websocket协议
 Host: localhost:3000 // 请求host
 Origin: http://binnie.com // 请求来源
-Sec-WebSocket-Key: sN9cRrP/n9NdMgdcy2VJFQ<span class="o">==</span> // 用于后续计算accept
-Sec-WebSocket-Version: <span class="m">13</span> // websocket版本号
+Sec-WebSocket-Extensions: permessage-deflate<span class="p">;</span> client_max_window_bits // 用于指定一个或多个请求服务器使用的协议级WebSocket扩展。
+Sec-WebSocket-Key: sN9cRrP/n9NdMgdcy2VJFQ<span class="o">==</span> // 向服务器提供所需的信息，以确认客户端有权请求升级到 WebSocket。此请求升级的密钥。如果客户端愿意，它会添加它，并且服务器将在响应中包含它自己的密钥，客户端将在向您发送升级响应之前对其进行验证。【服务器响应的Sec-WebSocket-Accept标头将具有基于指定的计算的值key】
+Sec-WebSocket-Version: <span class="m">13</span> // 指定客户端希望使用的 WebSocket 协议版本，以便服务器可以确认其端是否支持该版本。<span class="o">[</span>目前 WebSocket 协议的最新最终版本是第 <span class="m">13</span> 版<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -216,15 +219,13 @@ Sec-WebSocket-Version: <span class="m">13</span> // websocket版本号
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">// 回包
-HTTP/1.1 <span class="m">101</span> Switching Protocols // 101表示链接成功
+<pre class="chroma"><code class="language-sh" data-lang="sh">// 服务端响应头
+HTTP/1.1 <span class="m">101</span> Switching Protocols // <span class="nv">status_code</span><span class="o">=</span>101，表示握手成功，websocket连接已经建立完成。
 Upgrade: websocket // 与请求对应
 Connection: Upgrade
-// 使用key计算得来，尽量避免普通HTTP请求被误认为Websocket协议
-Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span class="o">=</span>
+Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span class="o">=</span> // 使用 Sec-WebSocket-Key 计算得来，为了尽量避免普通HTTP请求被误认为Websocket协议
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="帧格式">帧格式</h2>
@@ -234,14 +235,16 @@ Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span c
 <p><img src="/images/2020/QQ20200816-161400@2x.png" alt="帧"></p>
 <p>上图为websocket的帧格式，下面我们一个个来分析
 这里从左往右看，横向为32位（bit）</p>
-<p>FIN：最后的片段
-RSV1-3：拓展定义
-opcode：帧类型，其中控制帧：0x8 (Close), 0x9 (Ping), and 0xA (Pong)，数据帧主要有：0x1 (Text), 0x2 (Binary)
-MASK：数据是否掩码
-Payload len：负载长度
-Extended payload length：拓展负载长度
-Masking-key：掩码
-Playload Data：负载数据</p>
+<ul>
+<li>FIN：最后的片段</li>
+<li>RSV1-3：拓展定义</li>
+<li>opcode：帧类型，其中控制帧：0x8 (Close), 0x9 (Ping), and 0xA (Pong)，数据帧主要有：0x1 (Text), 0x2 (Binary)</li>
+<li>MASK：数据是否掩码</li>
+<li>Payload len：负载长度</li>
+<li>Extended payload length：拓展负载长度</li>
+<li>Masking-key：掩码</li>
+<li>Playload Data：负载数据</li>
+</ul>
 <p>所以，websocket传递数据时最小的请求头为 FIN+RSV1-3+opcode+MASK+Payload len+Masking-key = 6 byte（字节），剩下的就都是实际数据，相比于http头部小得多。</p>
 <h2 id="websocket前后端通信的时候丢包怎么处理怎么监控">websocket前后端通信的时候，丢包怎么处理，怎么监控</h2>
 <blockquote>
@@ -298,8 +301,8 @@ Playload Data：负载数据</p>
             <span class="prev-text nav-default">Socket</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/">
-            <span class="next-text nav-default">OAuth 与 OpenID</span>
+        <a class="next" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/">
+            <span class="next-text nav-default">TCP/IP</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
