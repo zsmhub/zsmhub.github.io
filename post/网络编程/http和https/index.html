@@ -49,7 +49,7 @@
 <meta itemprop="name" content="http和https">
 <meta itemprop="description" content="网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一"><meta itemprop="datePublished" content="2020-10-29T09:36:54&#43;08:00" />
 <meta itemprop="dateModified" content="2022-05-25T09:36:54&#43;08:00" />
-<meta itemprop="wordCount" content="1917">
+<meta itemprop="wordCount" content="2104">
 <meta itemprop="keywords" content="http," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="http和https"/>
 <meta name="twitter:description" content="网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
             </div>
-          <span class="more-meta"> 约 1917 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2104 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -147,6 +147,7 @@
       <ul>
         <li><a href="#https的基本原理">HTTPS的基本原理</a></li>
         <li><a href="#https的通信流程和握手过程">HTTPS的通信流程和握手过程</a></li>
+        <li><a href="#证书相关">证书相关</a></li>
       </ul>
     </li>
     <li><a href="#引用文章">引用文章</a></li>
@@ -239,6 +240,15 @@
 </ol>
 </li>
 </ol>
+<h3 id="证书相关">证书相关</h3>
+<blockquote>
+<p>浏览器如何检查SSL证书是否有效？</p>
+</blockquote>
+<p>客户在浏览器发起https请求时，浏览器会从 受信任的根证书颁发机构存储区 验证服务器身份后，会收到机构颁发的SSL数字证书，该证书具有网站身份验证和加密传输的双重功能。</p>
+<blockquote>
+<p>服务器如何解密浏览器使用证书加密后的传输内容？</p>
+</blockquote>
+<p>如果服务器使用了nginx代理，那就是在nginx这一层进行证书校验和解密，并将解密后的传输内容转发到指定的运行程序中。</p>
 <h2 id="引用文章">引用文章</h2>
 <ul>
 <li><a href="https://www.wosign.com/Info/https_tls_ssl_http.htm">详解 HTTPS、TLS、SSL、HTTP区别和关系</a></li>

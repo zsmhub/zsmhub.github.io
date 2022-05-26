@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Socket &amp;&amp; WebSocket">
 <meta itemprop="description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。"><meta itemprop="datePublished" content="2019-04-28T16:22:13&#43;08:00" />
 <meta itemprop="dateModified" content="2022-05-25T16:22:13&#43;08:00" />
-<meta itemprop="wordCount" content="2449">
+<meta itemprop="wordCount" content="2471">
 <meta itemprop="keywords" content="socket,websocket," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Socket &amp;&amp; WebSocket"/>
 <meta name="twitter:description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
             </div>
-          <span class="more-meta"> 约 2449 字 </span>
+          <span class="more-meta"> 约 2471 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -227,7 +227,9 @@
 <p><img src="/images/2020/websocket.png" alt="websocket 连接过程"></p>
 <h3 id="握手协议">握手协议</h3>
 <p>在第一步的时候进行了握手，这里来看一下请求的详情。</p>
-<p>至今为止最经常会需要升级一个HTTP连接的场合就是使用WebSocket。</p>
+<blockquote>
+<p>客户端使用 http 请求升级切换到 Websocket 协议</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -298,7 +300,8 @@ Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span c
 <p><code>本质上来讲，两者并没有什么关联，只是名称类似、作用类似而已！【两者都能做即时通讯】</code></p>
 <ol>
 <li>Socket 是位于应用层和传输控制层之间的一组接口，用户可以通过 Socket 来操作底层 TCP/IP 协议族通信。而 WebSocket 是一个完整的应用层协议。(相比WebSocket，Socket更底层)</li>
-<li>Socket 更灵活，WebSocket 更易用。</li>
+<li>Socket 使用 TCP 协议，WebSocket 使用 WebSocket 协议。</li>
+<li>建立持久性连接时，Socket 需要三次握手，WebSocket 只需要一次握手。</li>
 </ol>
 <h2 id="websocket-与-http-的关系">WebSocket 与 HTTP 的关系</h2>
 <blockquote>
