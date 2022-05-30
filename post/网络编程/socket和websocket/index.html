@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Socket &amp;&amp; WebSocket">
 <meta itemprop="description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。"><meta itemprop="datePublished" content="2019-04-28T16:22:13&#43;08:00" />
 <meta itemprop="dateModified" content="2022-05-25T16:22:13&#43;08:00" />
-<meta itemprop="wordCount" content="2471">
+<meta itemprop="wordCount" content="3279">
 <meta itemprop="keywords" content="socket,websocket," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Socket &amp;&amp; WebSocket"/>
 <meta name="twitter:description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
             </div>
-          <span class="more-meta"> 约 2471 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 3279 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -158,6 +158,7 @@
         <li><a href="#握手协议">握手协议</a></li>
         <li><a href="#帧格式">帧格式</a></li>
         <li><a href="#websocket前后端通信的时候丢包怎么处理怎么监控">websocket前后端通信的时候，丢包怎么处理，怎么监控</a></li>
+        <li><a href="#socketio">socket.io</a></li>
       </ul>
     </li>
     <li><a href="#socket-与-websocket-的区别">Socket 与 WebSocket 的区别</a></li>
@@ -171,6 +172,7 @@
       <p>一般<code>网络编程</code>都叫<code>Socket编程</code>，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。</p>
 <p>网络编程无非简单来看就是 TCP编程 和 UDP编程。</p>
 <h2 id="socket">Socket</h2>
+<p>每一次建立 socket 连接后，都会生成一个 SessionId，便于标识通讯中的客户端和服务端。（SessionId 应保证分布式唯一）</p>
 <h3 id="socket-简介">socket 简介</h3>
 <p><code>Socket 是应用层与 TCP/IP 协议族通信的中间软件抽象层，它是一组接口。</code>在设计模式中，Socket 其实就是一个门面模式，它把复杂的 TCP/IP 协议族隐藏在 Socket 接口后面，对用户来说，一组简单的接口就是全部，让 Socket 去组织数据，以符合指定的协议。</p>
 <p>套接字（socket）是一个抽象层，应用程序可以通过它发送或接收数据，可对其进行像对文件一样的打开、读写和关闭等操作。 套接字允许应用程序将I/O插入到网络中，并与网络中的其他应用程序进行通信。 网络套接字是IP地址与端口的组合。</p>
@@ -296,12 +298,51 @@ Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span c
 <li>集群部署聊天(实现横向可扩展)</li>
 <li>采用消息确认机制，确认消息稳定的送达</li>
 </ul>
+<h3 id="socketio">socket.io</h3>
+<p><a href="https://github.com/zsmhub/golang_practice_everyday/tree/master/ws_socket.io">点击前往查看源码示例</a></p>
+<p><a href="http://blog.rinchannow.top/socket-io-issues/">go-socket.io 踩坑记录</a></p>
+<blockquote>
+<p>概览</p>
+</blockquote>
+<p><a href="https://socket.io/">socket.io</a> 本身是一个 Node.js 的包，使用 long polling 或者 websocket 的方式提供持续的网络连接服务。由于简单好用，很多开发者为其开发了不同语言的 SDK，比如 Java、C++、Go 等。</p>
+<p><a href="https://github.com/googollee/go-socket.io">go-socket.io</a> Golang版后端 socket.io 的实现框架。</p>
+<blockquote>
+<p>socket.io 优势</p>
+</blockquote>
+<p>socket.io 会自动选择合适双向通信协议，仅仅需要程序员对套接字的概念有所了解。</p>
+<blockquote>
+<p>socket.io 劣势</p>
+</blockquote>
+<p>socket.io并不是一个基本的、独立的、能够回退到其它实时协议的WebSocket库，它实际上是一个依赖于其它实时传输协议的<code>自定义实时传输协议</code>的实现。该协议的协商部分使得支持<code>标准WebSocket的客户端</code>不能直接连接到Socket.io服务器，并且支持Socket.io的客户端也不能与非Socket.io框架的WebSocket或Comet服务器通信。因而，<code>Socket.io要求客户端与服务器端均须使用该框架。</code></p>
+<blockquote>
+<p>github.com/googollee/go-socket.io</p>
+</blockquote>
+<p>WebSocket第三方框架，基于开源项目 github.com/gorilla/websocket 开发的。客户端代码只能用 socket.io 框架，这样就会存在 go-socket.io 与 socket.io 的兼容性问题。</p>
+<p><a href="mailto:github.com/googollee/go-socket.io@v1.6.1">github.com/googollee/go-socket.io@v1.6.1</a> 内存泄漏问题：</p>
+<ul>
+<li>原因：由于v1.6.1版本的session未回收，断连socket conn存在内存中，导致内存不断上升。</li>
+<li>解决：在v1.6.2版本修复，socket连接断开回收该链接。Session. Remove(sid)</li>
+<li>结果：目前系统socketio已经稳定1w连接/1G内存</li>
+</ul>
+<blockquote>
+<p>概念</p>
+</blockquote>
+<ul>
+<li>
+<p>namespace 和 room 是同一个服务端socket多路复用的体现。</p>
+<p>namespace、room 和 socket 的关系为：socket会属于某一个room，如果没有指定，那么会有一个default的room。这个room又会属于某个namespace，如果没有指定，那么就是默认的namespace /.</p>
+</li>
+<li>
+<p>Adapter：适配器是一个服务器端的组件，负责将事件广播给所有或一个子集的客户端。</p>
+</li>
+</ul>
 <h2 id="socket-与-websocket-的区别">Socket 与 WebSocket 的区别</h2>
 <p><code>本质上来讲，两者并没有什么关联，只是名称类似、作用类似而已！【两者都能做即时通讯】</code></p>
 <ol>
 <li>Socket 是位于应用层和传输控制层之间的一组接口，用户可以通过 Socket 来操作底层 TCP/IP 协议族通信。而 WebSocket 是一个完整的应用层协议。(相比WebSocket，Socket更底层)</li>
 <li>Socket 使用 TCP 协议，WebSocket 使用 WebSocket 协议。</li>
 <li>建立持久性连接时，Socket 需要三次握手，WebSocket 只需要一次握手。</li>
+<li>WebSocket需要处理跨域问题，Socket则不需要。</li>
 </ol>
 <h2 id="websocket-与-http-的关系">WebSocket 与 HTTP 的关系</h2>
 <blockquote>
