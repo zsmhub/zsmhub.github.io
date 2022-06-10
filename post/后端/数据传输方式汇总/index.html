@@ -49,7 +49,7 @@
 <meta itemprop="name" content="数据传输方式汇总">
 <meta itemprop="description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"><meta itemprop="datePublished" content="2020-04-10T15:02:25&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-10T15:02:25&#43;08:00" />
-<meta itemprop="wordCount" content="1203">
+<meta itemprop="wordCount" content="1355">
 <meta itemprop="keywords" content="数据传输方式," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数据传输方式汇总"/>
 <meta name="twitter:description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1203 字 </span>
+          <span class="more-meta"> 约 1355 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -242,9 +242,9 @@ cp -r bin/ /usr/local/bin/
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">protoc --go_out<span class="o">=</span>. project/proto/*.proto
-rm -rf lib/pb/*
-mv project/proto/*.go lib/pb/
+<pre class="chroma"><code class="language-sh" data-lang="sh">protoc --proto_path<span class="o">=</span>../convention --go_out<span class="o">=</span>../convention/. ../convention/protobuf/*.proto <span class="c1"># --proto_path=PATH：它表示的是我们要在哪个路径下搜索.proto文件；--go_out=PATH：编程语言插件参数</span>
+rm -rf lib/pb/* <span class="o">&amp;&amp;</span> mkdir -p lib/pb <span class="o">&amp;&amp;</span> mv ../convention/protobuf/*.go lib/pb/
+cp ../convention/protocol/*.go lib/pb/
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -257,8 +257,28 @@ mv project/proto/*.go lib/pb/
 <p>repeated xxx: 数组，repeated string snippets = 3;</p>
 </li>
 <li>
-<p>enum: 枚举值，转成 go 后变成常量定义</p>
-</li>
+<p>enum: 枚举值，转成 go 后变成常量定义和生成对应的枚举值map映射</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go">    <span class="nx">enum</span> <span class="nx">Event</span> <span class="p">{</span>
+        <span class="nx">web</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// web 事件
+</span><span class="c1"></span>        <span class="nx">web_login</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// web登陆
+</span><span class="c1"></span>        <span class="nx">web_logout</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// web登出
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="nx">pb</span><span class="p">.</span><span class="nx">Event_web_login</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="c1">// 输出web_login：获取枚举值1对应的key名
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>map&lt;int64,string&gt; values = 1;</p>
 <div class="highlight"><div class="chroma">
@@ -278,14 +298,14 @@ mv project/proto/*.go lib/pb/
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 结构体嵌套用法</span>
 message  GetJsapiTicketResp <span class="o">{</span>
-message JsapiTicket <span class="o">{</span>
-    string <span class="nv">corp_id</span> <span class="o">=</span> 1<span class="p">;</span>
-    string <span class="nv">noncestr</span> <span class="o">=</span> 2<span class="p">;</span>
-    int64 <span class="nv">timestamp</span> <span class="o">=</span> 3<span class="p">;</span>
-    string <span class="nv">signature</span> <span class="o">=</span> 4<span class="p">;</span>
-<span class="o">}</span>
-JsapiTicket <span class="nv">corp_jsapi_ticket</span> <span class="o">=</span> 1<span class="p">;</span>
-JsapiTicket <span class="nv">app_jsapi_ticket</span> <span class="o">=</span> 2<span class="p">;</span>
+    message JsapiTicket <span class="o">{</span>
+        string <span class="nv">corp_id</span> <span class="o">=</span> 1<span class="p">;</span>
+        string <span class="nv">noncestr</span> <span class="o">=</span> 2<span class="p">;</span>
+        int64 <span class="nv">timestamp</span> <span class="o">=</span> 3<span class="p">;</span>
+        string <span class="nv">signature</span> <span class="o">=</span> 4<span class="p">;</span>
+    <span class="o">}</span>
+    JsapiTicket <span class="nv">corp_jsapi_ticket</span> <span class="o">=</span> 1<span class="p">;</span>
+    JsapiTicket <span class="nv">app_jsapi_ticket</span> <span class="o">=</span> 2<span class="p">;</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
