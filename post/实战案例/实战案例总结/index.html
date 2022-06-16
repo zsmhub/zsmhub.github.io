@@ -49,7 +49,7 @@
 <meta itemprop="name" content="实战案例总结">
 <meta itemprop="description" content="根据nginx的access_log分析接口请求 access_log：指的是访问日志，我们通过访问日志可以获取用户的 IP、请求处理的时间、接"><meta itemprop="datePublished" content="2020-08-06T09:21:45&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-06T09:21:45&#43;08:00" />
-<meta itemprop="wordCount" content="943">
+<meta itemprop="wordCount" content="967">
 <meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="实战案例总结"/>
 <meta name="twitter:description" content="根据nginx的access_log分析接口请求 access_log：指的是访问日志，我们通过访问日志可以获取用户的 IP、请求处理的时间、接"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 943 字 </span>
+          <span class="more-meta"> 约 967 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -179,10 +179,13 @@
 </blockquote>
 <p><a href="https://juejin.im/post/6844903923459817479#heading-11">Mysql死锁如何排查：insert on duplicate死锁一次排查分析过程</a></p>
 <p>insert语句会对插入的这条记录加排他记录锁，在加记录锁之前还会加一种 GAP 锁，叫做插入意向(insert intention)锁，如果出现唯一键冲突，还会加一个共享记录(S)锁。</p>
-<p>解决方案：</p>
+<blockquote>
+<p>如何避免该 insert on duplicate 死锁问题：</p>
+</blockquote>
 <ol>
 <li>sql 更改为 insert ignore 方式，insert 会在 索引 和 主键 中加 record x locks，而不是 gap lock 或者 next key lock，所以不会有死锁。</li>
 <li>删除唯一索引，尽量减少在数据库中使用 unique index，因为 unique key 会引起额外的 index 检查，需要更大的开销，本例中 duplicate-key checking 会使用 gap lock</li>
+<li>代码加上互斥锁，避免并发触发死锁</li>
 </ol>
 <h2 id="根据支付宝-userid-调出付款界面">根据支付宝 userId 调出付款界面</h2>
 <div class="highlight"><div class="chroma">

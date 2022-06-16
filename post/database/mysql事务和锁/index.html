@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 事务和锁">
 <meta itemprop="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中"><meta itemprop="datePublished" content="2019-09-01T17:12:23&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-01T17:12:23&#43;08:00" />
-<meta itemprop="wordCount" content="4311">
+<meta itemprop="wordCount" content="4509">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 事务和锁"/>
 <meta name="twitter:description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 4311 字 </span>
+          <span class="more-meta"> 约 4509 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -243,8 +243,9 @@
 </div></li>
 <li>
 <p>间隙锁（Gap Locks）</p>
-<p>当我们使用范围条件而不是相等条件检索数据，并请求共享或排他锁时，InnoDB会给符合条件的已有数据记录的索引项加锁。对于键值在条件范围内但并不存在的记录，叫做“间隙”。</p>
-<p>InnoDB 也会对这个“间隙”加锁，这种锁机制就是所谓的间隙锁。</p>
+<p>间隙锁是一种加在两个索引之间的锁，或者加在第一个索引之前，或最后一个索引之后的间隙。</p>
+<p>使用间隙锁锁住的是一个区间，而不仅仅是这个区间中的每一条数据。</p>
+<p>间隙锁只阻止其他事务插入到间隙中，他们不阻止其他事务在同一个间隙上获得间隙锁，所以 gap x lock 和 gap s lock 有相同的作用。</p>
 <p>对索引项之间的“间隙”加锁，锁定记录的范围（对第一条记录前的间隙或最后一条将记录后的间隙加锁），不包含索引项本身。其他事务不能在锁范围内插入数据，这样就防止了别的事务新增幻影行。</p>
 <p>间隙锁基于非唯一索引，它锁定一段范围内的索引记录。间隙锁基于下面将会提到的Next-Key Locking 算法，请务必牢记：使用间隙锁锁住的是一个区间，而不仅仅是这个区间中的每一条数据。</p>
 <p><code>SELECT * FROM table WHERE id BETWEN 1 AND 10 FOR UPDATE;</code></p>
@@ -256,6 +257,11 @@
 <p>临键锁，是记录锁与间隙锁的组合，它的封锁范围，既包含索引记录，又包含索引区间。(临键锁的主要目的，也是为了避免幻读(Phantom Read)。如果把事务的隔离级别降级为RC，临键锁则也会失效。)</p>
 <p>Next-Key 可以理解为一种特殊的间隙锁，也可以理解为一种特殊的算法。通过临建锁可以解决幻读的问题。每个数据行上的非唯一索引列上都会存在一把临键锁，当某个事务持有该数据行的临键锁时，会锁住一段左开右闭区间的数据。需要强调的一点是，InnoDB 中行级锁是基于索引实现的，临键锁只与非唯一索引列有关，在唯一索引列（包括主键列）上不存在临键锁。</p>
 <p>对于行的查询，都是采用该方法，主要目的是解决幻读的问题。</p>
+</li>
+<li>
+<p>插入意向锁（Insert Intention）</p>
+<p>插入意向锁是在插入一行记录操作之前设置的一种间隙锁，这个锁释放了一种插入方式的信号，亦即多个事务在相同的索引间隙插入时如果不是插入间隙中相同的位置就不需要互相等待。</p>
+<p>假设有索引值4、7，几个不同的事务准备插入5、6，每个锁都在获得插入行的独占锁之前用插入意向锁各自锁住了4、7之间的间隙，但是不阻塞对方因为插入行不冲突。</p>
 </li>
 </ol>
 <h2 id="innodb共享锁和排他锁">InnoDB共享锁和排他锁</h2>
