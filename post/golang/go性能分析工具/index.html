@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 性能分析工具">
 <meta itemprop="description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。 Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库ppro"><meta itemprop="datePublished" content="2022-03-29T14:26:32&#43;08:00" />
 <meta itemprop="dateModified" content="2022-03-29T14:26:32&#43;08:00" />
-<meta itemprop="wordCount" content="1381">
+<meta itemprop="wordCount" content="1424">
 <meta itemprop="keywords" content="pprof," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 性能分析工具"/>
 <meta name="twitter:description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。 Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库ppro"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1381 字 </span>
+          <span class="more-meta"> 约 1424 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -201,12 +201,12 @@
 <li>
 <p>net/http/pprof：采集 HTTP Server 的运行时数据进行分析</p>
 <ul>
-<li>profile：$HOST/debug/pprof/profile，访问这个链接会自动进行 CPU profiling，持续 30s，并生成一个文件供下载，可以通过带参数?=seconds=60进行60秒的数据采集</li>
-<li>heap: $HOST/debug/pprof/heap，查看活动对象的内存分配情况</li>
-<li>block：$HOST/debug/pprof/block，查看导致阻塞同步的堆栈跟踪</li>
+<li>profile：$HOST/debug/pprof/profile，cpu分析，访问这个链接会自动进行 CPU profiling，持续 30s，并生成一个文件供下载，可以通过带参数?=seconds=60进行60秒的数据采集</li>
+<li>heap: $HOST/debug/pprof/heap，内存分析，查看活动对象的内存分配情况，如内存泄漏、内存消耗异常等情况</li>
+<li>block：$HOST/debug/pprof/block，阻塞分析，查看导致阻塞同步的堆栈跟踪，如 groutine 的 wait</li>
 <li>goroutine：$HOST/debug/pprof/goroutine，查看当前所有运行的 goroutines 堆栈跟踪</li>
 <li>allocs：$HOST/debug/pprof/allocs，过去活动对象的内存分配情况</li>
-<li>mutex：$HOST/debug/pprof/mutex，查看导致互斥锁的竞争持有者的堆栈跟踪</li>
+<li>mutex：$HOST/debug/pprof/mutex，互斥锁分析，查看导致互斥锁的竞争持有者的堆栈跟踪</li>
 <li>threadcreate：$HOST/debug/pprof/threadcreate，查看创建新OS线程的堆栈跟踪</li>
 </ul>
 <p><img src="/images/2022/QQ20220328-183035@2x.png" alt="debug/pprof首页"></p>
