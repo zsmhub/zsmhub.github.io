@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 优化">
 <meta itemprop="description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"><meta itemprop="datePublished" content="2019-06-01T16:54:37&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-24T16:54:37&#43;08:00" />
-<meta itemprop="wordCount" content="2174">
+<meta itemprop="wordCount" content="2298">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 优化"/>
 <meta name="twitter:description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2174 字 </span>
+          <span class="more-meta"> 约 2298 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -157,6 +157,17 @@
 <li>根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』</li>
 <li>使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、rows、filtered 这三个字段，rows 越小表示扫描记录数越少，filtered 越大表示过滤效果越好。</li>
 </ol>
+<blockquote>
+<p>限制 SQL 的最大执行时间</p>
+</blockquote>
+<pre><code>```sh
+# 查看数据库默认的最大SQL执行时间，默认是0，即没限制
+show global variables like 'max_execution_time';
+
+# 大表需要用 like 全表扫描获取计数时，可以改为查询列表并限制最大获取计数，同时限制单条sql的执行时间，避免数据库出现大量慢sql导致数据库崩溃
+select /*+ MAX_EXECUTION_TIME(1000) */ id from material limit 20
+```
+</code></pre>
 <h2 id="实用的表优化方案">实用的表优化方案</h2>
 <ol>
 <li>定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的执行计划。</li>
