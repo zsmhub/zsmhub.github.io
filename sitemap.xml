@@ -786,13 +786,6 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/post/golang/go%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</loc>
-    <lastmod>2020-08-30T15:44:06+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2022-05-23T20:57:43+08:00</lastmod>
     <changefreq>weekly</changefreq>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go语言环境安装及如何使用Go多版本（Mac）">
 <meta itemprop="description" content="go环境的卸载 pkg方式安装go？ 删除/usr/local下的go目录即可 1 sudo rm -rf /usr/local/go brew方式安装go? 1 brew uninstall go@1.14 使用brew安装 1 2 3 4 5"><meta itemprop="datePublished" content="2022-07-06T14:41:22&#43;08:00" />
 <meta itemprop="dateModified" content="2022-07-06T14:41:22&#43;08:00" />
-<meta itemprop="wordCount" content="235">
+<meta itemprop="wordCount" content="258">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go语言环境安装及如何使用Go多版本（Mac）"/>
 <meta name="twitter:description" content="go环境的卸载 pkg方式安装go？ 删除/usr/local下的go目录即可 1 sudo rm -rf /usr/local/go brew方式安装go? 1 brew uninstall go@1.14 使用brew安装 1 2 3 4 5"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 235 字 </span>
+          <span class="more-meta"> 约 258 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -144,7 +144,7 @@
     <li><a href="#go环境的卸载">go环境的卸载</a></li>
     <li><a href="#使用brew安装">使用brew安装</a></li>
     <li><a href="#使用brew切换版本">使用brew切换版本</a></li>
-    <li><a href="#goland-配置-go118-时报错">GoLand 配置 go1.18 时报错</a></li>
+    <li><a href="#goland-配置-gorootgo118-时报错">GoLand 配置 GOROOT=go1.18 时报错</a></li>
   </ul>
 </nav>
   </div>
@@ -224,26 +224,37 @@ brew link go@1.14
 go version
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="goland-配置-go118-时报错">GoLand 配置 go1.18 时报错</h2>
+</div><h2 id="goland-配置-gorootgo118-时报错">GoLand 配置 GOROOT=go1.18 时报错</h2>
 <p>error msg: “the selected directory is not a valid home for Go SDK ”</p>
 <p>解决方案：</p>
 <ol>
 <li>
 <p>终端执行命令：go env | grep GOROOT</p>
-</li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">go env <span class="p">|</span> grep GOROOT
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
-<p>编辑 {GOROOT}/src/runtime/internal/sys/zversion.go 文件，尾部添加以下内容即可</p>
+<p>编辑 {GOROOT}/src/runtime/internal/sys/zversion.go 文件，尾部添加以下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">const <span class="nv">theVersion</span> <span class="o">=</span> <span class="sb">`</span>go1.18.3<span class="sb">`</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh">const <span class="nv">theVersion</span> <span class="o">=</span> <span class="sb">`</span>go1.18.4<span class="sb">`</span>
 var <span class="nv">buildVersion</span> <span class="o">=</span> theVersion
 </code></pre></td></tr></table>
 </div>
 </div></li>
+<li>
+<p>关闭并重新打开 GoLand Preferences 窗口，配置 Go &gt; GOROOT = {GOROOT}</p>
+</li>
 </ol>
 
     </div>
