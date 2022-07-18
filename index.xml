@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 11 Jul 2022 15:14:43 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jul 2022 17:00:40 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AppleScript</title>
+      <link>https://zsmhub.github.io/post/macos/applescript/</link>
+      <pubDate>Mon, 18 Jul 2022 17:00:40 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/macos/applescript/</guid>
+      <description>什么是 AppleScript 点击查看官方文档 脚本语言有很多种，你可能听说过的 Shell Script、Python 和 JavaScript，都是其中的代表。而 AppleScript 则是 macOS 下提供</description>
+    </item>
+    
     <item>
       <title>讲话技巧</title>
       <link>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%AE%B2%E8%AF%9D%E6%8A%80%E5%B7%A7/</link>
