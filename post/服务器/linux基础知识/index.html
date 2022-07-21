@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Linux 基础知识">
 <meta itemprop="description" content="基本命令 hostname -i: 查看服务器本地IP find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # fi"><meta itemprop="datePublished" content="2019-01-01T17:32:56&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-05T17:32:56&#43;08:00" />
-<meta itemprop="wordCount" content="5115">
+<meta itemprop="wordCount" content="5138">
 <meta itemprop="keywords" content="linux,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux 基础知识"/>
 <meta name="twitter:description" content="基本命令 hostname -i: 查看服务器本地IP find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # fi"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
             </div>
-          <span class="more-meta"> 约 5115 字 </span>
+          <span class="more-meta"> 约 5138 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
@@ -482,7 +482,7 @@ crontab -e <span class="c1"># 编辑计划任务</span>
 </div><p><img src="/images/2020/linux-crontab.png" alt="crontab"></p>
 <p>在以上各个字段中，还可以使用以下特殊字符：</p>
 <ul>
-<li>星号（*）：代表所有可能的值，例如month字段如果是星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。</li>
+<li>星号（*）：代表所有可能的值，例如month字段如果是星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。<code>整点必触发，如设定*/35，则触发时间点为 *:00, *:35</code></li>
 <li>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”</li>
 <li>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”</li>
 <li>正斜线（/）：可以用正斜线指定时间的间隔频率，例如“0-23/2”表示每两小时执行一次。同时正斜线可以和星号一起使用，例如*/10，如果用在minute字段，表示每十分钟执行一次。</li>
