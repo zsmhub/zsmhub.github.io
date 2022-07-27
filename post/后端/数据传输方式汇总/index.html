@@ -49,7 +49,7 @@
 <meta itemprop="name" content="数据传输方式汇总">
 <meta itemprop="description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"><meta itemprop="datePublished" content="2020-04-10T15:02:25&#43;08:00" />
 <meta itemprop="dateModified" content="2020-04-10T15:02:25&#43;08:00" />
-<meta itemprop="wordCount" content="1355">
+<meta itemprop="wordCount" content="1349">
 <meta itemprop="keywords" content="数据传输方式," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数据传输方式汇总"/>
 <meta name="twitter:description" content="json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 1355 字 </span>
+          <span class="more-meta"> 约 1349 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -195,23 +195,23 @@
 <p>protoc &ndash;version # 查询系统 protobuf 编译器的版本号</p>
 </blockquote>
 <p>方式一： macos =&gt; brew install protobuf</p>
-<p>方式二：（可指定版本）</p>
+<p>方式二：（可指定版本，优先选择这个方案）</p>
 <ul>
 <li>
-<p>到 <a href="https://github.com/protocolbuffers/protobuf/releases">https://github.com/protocolbuffers/protobuf/releases</a> 选择下载最新的 protoc-3.x.x-osx-x86_64.zip，解压后</p>
+<p>到 <a href="https://github.com/protocolbuffers/protobuf/releases">https://github.com/protocolbuffers/protobuf/releases</a> 选择下载最新的 protoc-21.2-osx-x86_64.zip</p>
 </li>
 <li>
 <p>安装</p>
+<ul>
+<li>m1版本: protoc-21.2-osx-aarch_64.zip</li>
+<li>x86版本: protoc-21.2-osx-x86_64.zip</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> protoc-3.x.x-osx-x86_64
-cp -r include/ /usr/local/include/
-cp -r bin/ /usr/local/bin/
+<pre class="chroma"><code class="language-sh" data-lang="sh">unzip protoc-21.2-osx-x86_64.zip <span class="o">&amp;&amp;</span> sudo cp -r include/ /usr/local/include/ <span class="o">&amp;&amp;</span> sudo cp -r bin/ /usr/local/bin/
 </code></pre></td></tr></table>
 </div>
 </div></li>

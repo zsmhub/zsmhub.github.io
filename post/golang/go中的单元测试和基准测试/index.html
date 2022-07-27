@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go中的单元测试和基准测试">
 <meta itemprop="description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"><meta itemprop="datePublished" content="2021-04-14T10:42:55&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-14T10:42:55&#43;08:00" />
-<meta itemprop="wordCount" content="2735">
+<meta itemprop="wordCount" content="3063">
 <meta itemprop="keywords" content="软件测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go中的单元测试和基准测试"/>
 <meta name="twitter:description" content="TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2735 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3063 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -144,6 +144,7 @@
     <li><a href="#tdd">TDD</a></li>
     <li><a href="#单元测试框架提供的日志方法">单元测试框架提供的日志方法</a></li>
     <li><a href="#单元测试">单元测试</a></li>
+    <li><a href="#模糊测试">模糊测试</a></li>
     <li><a href="#基准测试">基准测试</a></li>
     <li><a href="#第三方测试包">第三方测试包</a></li>
     <li><a href="#visualising-the-costs-and-benefits">Visualising the Costs and Benefits</a></li>
@@ -325,6 +326,83 @@ go <span class="nb">test</span> ./tests -v -count<span class="o">=</span><span c
         <span class="nx">want</span> <span class="o">:=</span> <span class="nx">englishHelloPrefix</span> <span class="o">+</span>  <span class="s">&#34;World&#34;</span>
 
         <span class="nf">assertCorrectMessage</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">got</span><span class="p">,</span> <span class="nx">want</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="模糊测试">模糊测试</h2>
+<p>go1.18才可以支持模糊测试。模糊测试是通过指定的规则， 使用模糊参数变异作为输入去测试模糊目标在各种边界条件下的状况的一种测试方式。</p>
+<blockquote>
+<p>常用命令</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">go <span class="nb">test</span> -fuzz<span class="o">=</span>Fuzz <span class="c1"># 全局模糊测试</span>
+go <span class="nb">test</span> -fuzz<span class="o">=</span>FuzzReverse <span class="c1"># 只对某个函数(Reverse)进行模糊测试</span>
+go <span class="nb">test</span> -run<span class="o">=</span>FuzzReverse/1fdd0160e6b3dd8f1e6b7a4179b4787e0c014cf9c46c67a863d71e3a0277c213 <span class="c1"># 测试某个失败数据：使用 -run=file 指定数据文件</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>示例</p>
+</blockquote>
+<p>模糊测试的适用场景比较有限，如果函数的入参并不是像本例中的那样的简单（字符串），而是各种对象呢？可能它就无能为力了吧。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">Reverse</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+        <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">b</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">b</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 记得前面导入 &#34;unicode/utf8&#34; 包
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">FuzzReverse</span><span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">F</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">testcases</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;Hello, world&#34;</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">,</span> <span class="s">&#34;!12345&#34;</span><span class="p">}</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tc</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">testcases</span> <span class="p">{</span>
+        <span class="nx">f</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">tc</span><span class="p">)</span>  <span class="c1">// Use f.Add to provide a seed corpus
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="nx">f</span><span class="p">.</span><span class="nf">Fuzz</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">,</span> <span class="nx">orig</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">rev</span> <span class="o">:=</span> <span class="nf">Reverse</span><span class="p">(</span><span class="nx">orig</span><span class="p">)</span>
+        <span class="nx">doubleRev</span> <span class="o">:=</span> <span class="nf">Reverse</span><span class="p">(</span><span class="nx">rev</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">orig</span> <span class="o">!=</span> <span class="nx">doubleRev</span> <span class="p">{</span>
+            <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Before: %q, after: %q&#34;</span><span class="p">,</span> <span class="nx">orig</span><span class="p">,</span> <span class="nx">doubleRev</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nx">utf8</span><span class="p">.</span><span class="nf">ValidString</span><span class="p">(</span><span class="nx">orig</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">!</span><span class="nx">utf8</span><span class="p">.</span><span class="nf">ValidString</span><span class="p">(</span><span class="nx">rev</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Reverse produced invalid UTF-8 string %q&#34;</span><span class="p">,</span> <span class="nx">rev</span><span class="p">)</span>
+        <span class="p">}</span>
     <span class="p">})</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>

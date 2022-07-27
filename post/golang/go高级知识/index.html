@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go高级知识">
 <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="2007">
+<meta itemprop="wordCount" content="1880">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go高级知识"/>
 <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2007 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 1880 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -210,10 +210,10 @@ git config --global url.https://gitlab.xxx.com/.insteadof http://gitlab.xxx.com/
 </div>
 </div></li>
 <li>
-<p>export GOSUMDB=off // 为了保证开发者的依赖库不被人恶意劫持篡改，Go team 推出了 Go module checksum database。当你在本地对依赖进行变动（更新/添加）操作时，Go 会自动去这个服务器进行数据校验，保证你下的这个代码库和世界上其他人下的代码库是一样的。如果有问题，会有个大大的安全提示。</p>
+<p>export GOPRIVATE=gitlab.xxx.com</p>
 </li>
 <li>
-<p>go get -u -insecure <a href="mailto:gitlab.xxx.com/xxxx@v0.0.1">gitlab.xxx.com/xxxx@v0.0.1</a></p>
+<p>go get <a href="mailto:gitlab.xxx.com/xxxx@v0.0.1">gitlab.xxx.com/xxxx@v0.0.1</a></p>
 </li>
 <li>
 <p>go mod tidy &amp;&amp; go mod vendor</p>
