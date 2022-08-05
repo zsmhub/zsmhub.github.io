@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go高级知识">
 <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="1880">
+<meta itemprop="wordCount" content="1904">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go高级知识"/>
 <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1880 字 </span>
+          <span class="more-meta"> 约 1904 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -210,7 +210,7 @@ git config --global url.https://gitlab.xxx.com/.insteadof http://gitlab.xxx.com/
 </div>
 </div></li>
 <li>
-<p>export GOPRIVATE=gitlab.xxx.com</p>
+<p>全局生效：go env -w GOPRIVATE=gitlab.ydjdev.com [或当前终端生效：export GOPRIVATE=gitlab.xxx.com]</p>
 </li>
 <li>
 <p>go get <a href="mailto:gitlab.xxx.com/xxxx@v0.0.1">gitlab.xxx.com/xxxx@v0.0.1</a></p>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="2110">
+<meta itemprop="wordCount" content="2118">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 2110 字 </span>
+          <span class="more-meta"> 约 2118 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -153,10 +153,15 @@
     <li><a href="#git-文件的三种状态">Git 文件的三种状态</a></li>
     <li><a href="#git-多帐号配置">Git 多帐号配置</a></li>
     <li><a href="#git-常用分支">Git 常用分支</a></li>
-    <li><a href="#github上fork项目后如何同步更新原先项目的提交">github上fork项目后，如何同步更新原先项目的提交</a></li>
     <li><a href="#配置信息">配置信息</a></li>
     <li><a href="#公司变更-gitlab-地址后需执行的操作">公司变更 gitlab 地址后需执行的操作</a></li>
     <li><a href="#分支开发流程图">分支开发流程图</a></li>
+    <li><a href="#github">GitHub</a>
+      <ul>
+        <li><a href="#fork项目后如何同步更新原先项目的提交">fork项目后，如何同步更新原先项目的提交</a></li>
+        <li><a href="#批量删除-github-仓库">批量删除 Github 仓库</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -357,24 +362,7 @@ git merge --squash feature_name
 <li>feature：新功能开发分支，从uat分支fork代码，开发完成后合并到develop测试，测试通过后合并到uat分支，然后删除重新fork</li>
 <li>hotfix：生产环境修复分支，从master分支fork代码，开发完成后合并到master，酌情合并到其它分支，然后删除重新fork</li>
 </ul>
-<h2 id="github上fork项目后如何同步更新原先项目的提交">github上fork项目后，如何同步更新原先项目的提交</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git remote -v
-git remote add upstream git@github.com:xxx/xxx.git
-git fetch upstream
-git merge upstream/master
-git push
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="配置信息">配置信息</h2>
+<h2 id="配置信息">配置信息</h2>
 <ol>
 <li>
 <p>用户名设置</p>
@@ -415,6 +403,26 @@ git push
 </ol>
 <h2 id="分支开发流程图">分支开发流程图</h2>
 <p><img src="/images/2021/Jietu20211231-110157.jpg" alt="分支开发流程图"></p>
+<h2 id="github">GitHub</h2>
+<h3 id="fork项目后如何同步更新原先项目的提交">fork项目后，如何同步更新原先项目的提交</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git remote -v
+git remote add upstream git@github.com:xxx/xxx.git
+git fetch upstream
+git merge upstream/master
+git push
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="批量删除-github-仓库">批量删除 Github 仓库</h3>
+<p><a href="https://github.com/itzhangbao/remove-repos">批量删除 Github 仓库</a></p>
 
     </div>
 
