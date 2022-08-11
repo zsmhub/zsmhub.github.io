@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 18 Jul 2022 17:00:40 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Aug 2022 15:06:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>生活笔记</title>
+      <link>https://zsmhub.github.io/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 08 Aug 2022 15:06:44 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>AppleScript</title>
       <link>https://zsmhub.github.io/tags/applescript/</link>
@@ -32,15 +41,6 @@
       <pubDate>Wed, 06 Jul 2022 14:41:22 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>生活笔记</title>
-      <link>https://zsmhub.github.io/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Fri, 24 Jun 2022 11:03:11 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/tags/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
     </item>
     
