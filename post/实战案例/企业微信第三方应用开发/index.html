@@ -49,7 +49,7 @@
 <meta itemprop="name" content="企业微信第三方应用开发">
 <meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
 <meta itemprop="dateModified" content="2022-08-12T16:46:43&#43;08:00" />
-<meta itemprop="wordCount" content="5352">
+<meta itemprop="wordCount" content="5383">
 <meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="企业微信第三方应用开发"/>
 <meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 5352 字 </span>
+          <span class="more-meta"> 约 5383 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
@@ -438,49 +438,91 @@
 </ul>
 <h2 id="下载企业微信旧版本">下载企业微信旧版本</h2>
 <p>由于企业微信软件更新新版本时，企微Mac桌面端时不时会有bug导致不可用，只能进行版本回退，故需要下载旧版的企微Mac桌面端。</p>
-<pre><code>```go
-import (
-    &quot;fmt&quot;
-    &quot;io&quot;
-    &quot;log&quot;
-    &quot;net/http&quot;
-    &quot;os&quot;
-    &quot;path&quot;
-)
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;io&#34;</span>
+    <span class="s">&#34;log&#34;</span>
+    <span class="s">&#34;net/http&#34;</span>
+    <span class="s">&#34;os&#34;</span>
+    <span class="s">&#34;path&#34;</span>
+<span class="p">)</span>
 
-// 下载企业微信旧版本-Mac桌面端
-func DownloadQiweiSoftwareOldVersion() {
-    i := 90000
-    for i &lt; 99999 {
-        var (
-            version  = fmt.Sprintf(&quot;4.0.8.%d&quot;, i)                                   // 下载版本号
-            fileName = fmt.Sprintf(&quot;WeCom_%s.dmg&quot;, version)                         // 保存文件名
-            url      = &quot;https://dldir1.qq.com/foxmail/wecom-mac/update/&quot; + fileName // 下载链接
-        )
-        log.Printf(&quot;当前尝试下载版本号：%s&quot;, version)
-        resp, err := http.Get(url)
-        if err != nil {
-            log.Fatal(err)
-        }
-        if resp.StatusCode != http.StatusOK {
-            i++
-            continue
-        }
-        filePath := path.Join(&quot;./&quot;, fileName)
-        f, err := os.Create(filePath)
-        if err != nil {
-            log.Fatal(err)
-        }
-        if _, err = io.Copy(f, resp.Body); err != nil {
-            log.Fatal(&quot;文件保存失败&quot;, err)
-        }
-        log.Println(&quot;下载成功，保存路径：&quot;, filePath)
-        break
-    }
-}
-```
-</code></pre>
-<h2 id="参考文献">参考文献</h2>
+<span class="c1">// 下载企业微信旧版本-Mac桌面端
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">DownloadQiweiSoftwareOldVersion</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">90000</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">99999</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="p">(</span>
+            <span class="nx">version</span>  <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;4.0.8.%d&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>                                   <span class="c1">// 下载版本号
+</span><span class="c1"></span>            <span class="nx">fileName</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;WeCom_%s.dmg&#34;</span><span class="p">,</span> <span class="nx">version</span><span class="p">)</span>                         <span class="c1">// 保存文件名
+</span><span class="c1"></span>            <span class="nx">url</span>      <span class="p">=</span> <span class="s">&#34;https://dldir1.qq.com/foxmail/wecom-mac/update/&#34;</span> <span class="o">+</span> <span class="nx">fileName</span> <span class="c1">// 下载链接
+</span><span class="c1"></span>        <span class="p">)</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;当前尝试下载版本号：%s&#34;</span><span class="p">,</span> <span class="nx">version</span><span class="p">)</span>
+        <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">StatusCode</span> <span class="o">!=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span> <span class="p">{</span>
+            <span class="nx">i</span><span class="o">++</span>
+            <span class="k">continue</span>
+        <span class="p">}</span>
+        <span class="nx">filePath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="s">&#34;./&#34;</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">)</span>
+        <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">Copy</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="s">&#34;文件保存失败&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;下载成功，保存路径：&#34;</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考文献">参考文献</h2>
 <p><a href="http://loriame.cn/archives/be1a3ce8.html">企业微信第三方服务商应用开发经验分享</a></p>
 <p><a href="https://www.daimajiaoliu.com/daima/7b746c1306d1804">企业微信服务商第三方应用开发流程</a></p>
 
