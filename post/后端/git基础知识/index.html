@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="2118">
+<meta itemprop="wordCount" content="2140">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 2118 字 </span>
+          <span class="more-meta"> 约 2140 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -151,8 +151,8 @@
     <li><a href="#tag">tag</a></li>
     <li><a href="#其他常用命令">其他常用命令</a></li>
     <li><a href="#git-文件的三种状态">Git 文件的三种状态</a></li>
-    <li><a href="#git-多帐号配置">Git 多帐号配置</a></li>
     <li><a href="#git-常用分支">Git 常用分支</a></li>
+    <li><a href="#git-多帐号配置">Git 多帐号配置</a></li>
     <li><a href="#配置信息">配置信息</a></li>
     <li><a href="#公司变更-gitlab-地址后需执行的操作">公司变更 gitlab 地址后需执行的操作</a></li>
     <li><a href="#分支开发流程图">分支开发流程图</a></li>
@@ -349,11 +349,6 @@ git merge --squash feature_name
 </div><h2 id="git-文件的三种状态">Git 文件的三种状态</h2>
 <p>在Git中，文件只有三种状态，已修改，已暂存和已提交。</p>
 <p>这三个文件分别放在工作目录，暂存区域和git目录。当一个文件修改完毕之后，它仍然在工作目录；只有当它被add之后，才会进入暂存区域，文件状态变为已暂存；最后，当文件被 commit之后，它就会进去git目录区域。</p>
-<h2 id="git-多帐号配置">Git 多帐号配置</h2>
-<ol>
-<li>生成多个ssh秘钥，关联不同的git账号</li>
-<li>然后进入项目文件夹下，执行命令git config user.email &ldquo;your_email&rdquo;</li>
-</ol>
 <h2 id="git-常用分支">Git 常用分支</h2>
 <ul>
 <li>master：生产环境分支，不允许直接提交代码，只能从uat和hotfix分支合并</li>
@@ -362,6 +357,26 @@ git merge --squash feature_name
 <li>feature：新功能开发分支，从uat分支fork代码，开发完成后合并到develop测试，测试通过后合并到uat分支，然后删除重新fork</li>
 <li>hotfix：生产环境修复分支，从master分支fork代码，开发完成后合并到master，酌情合并到其它分支，然后删除重新fork</li>
 </ul>
+<h2 id="git-多帐号配置">Git 多帐号配置</h2>
+<ol>
+<li>
+<p>生成两个ssh秘钥，关联不同的git账号，一个用于github，一个用于公司</p>
+</li>
+<li>
+<p>然后进入项目文件夹下，执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git config user.name <span class="s2">&#34;your_name&#34;</span>
+git config user.email <span class="s2">&#34;your_email&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/2022/QQ20220811-111716.png" alt="~/.ssh"></p>
+</li>
+</ol>
 <h2 id="配置信息">配置信息</h2>
 <ol>
 <li>
@@ -377,7 +392,7 @@ git merge --squash feature_name
 </li>
 <li>
 <p>查看配置信息</p>
-<p>git config &ndash;l</p>
+<p>git config -l</p>
 </li>
 <li>
 <p>如果要查看某个特定的环境变量，只要把它的名字放到最后即可</p>
