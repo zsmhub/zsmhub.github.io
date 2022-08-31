@@ -3,28 +3,49 @@
   
   <url>
     <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2022-08-12T16:46:43+08:00</lastmod>
+    <lastmod>2022-08-31T09:08:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2022-08-12T16:46:43+08:00</lastmod>
+    <lastmod>2022-08-31T09:08:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2022-08-12T16:46:43+08:00</lastmod>
+    <lastmod>2022-08-31T09:08:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/</loc>
-    <lastmod>2022-08-12T16:46:43+08:00</lastmod>
+    <lastmod>2022-08-31T09:08:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</loc>
+    <lastmod>2022-08-31T09:08:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</loc>
+    <lastmod>2022-08-31T09:08:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E8%84%9A%E6%9C%AC%E8%B7%91%E6%95%B0/</loc>
+    <lastmod>2022-08-31T09:08:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -165,13 +186,6 @@
   <url>
     <loc>https://zsmhub.github.io/post/golang/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</loc>
     <lastmod>2022-05-05T18:03:19+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</loc>
-    <lastmod>2022-08-12T16:46:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -508,13 +522,6 @@
   <url>
     <loc>https://zsmhub.github.io/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/</loc>
     <lastmod>2021-05-21T14:14:15+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</loc>
-    <lastmod>2021-05-17T15:21:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
