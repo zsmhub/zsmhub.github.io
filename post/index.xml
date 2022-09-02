@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 31 Aug 2022 09:08:49 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Sep 2022 17:14:30 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go之GORM</title>
+      <link>https://zsmhub.github.io/post/golang/go%E4%B9%8Bgorm/</link>
+      <pubDate>Fri, 02 Sep 2022 17:14:30 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/go%E4%B9%8Bgorm/</guid>
+      <description>GORM Attrs(User{Age: 20}).FirstOrCreate(&amp;amp;user): 如果记录未找到，将使用参数创建 struct 和记录. Assign(User{Age: 30}).FirstOrCreate(&amp;amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库. 数据类型建议 时间戳字段：建议使用 int6</description>
+    </item>
+    
     <item>
       <title>脚本跑数</title>
       <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E8%84%9A%E6%9C%AC%E8%B7%91%E6%95%B0/</link>

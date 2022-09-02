@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 06 Jul 2022 14:41:22 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Sep 2022 17:14:30 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go之GORM</title>
+      <link>https://zsmhub.github.io/post/golang/go%E4%B9%8Bgorm/</link>
+      <pubDate>Fri, 02 Sep 2022 17:14:30 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/go%E4%B9%8Bgorm/</guid>
+      <description>GORM Attrs(User{Age: 20}).FirstOrCreate(&amp;amp;user): 如果记录未找到，将使用参数创建 struct 和记录. Assign(User{Age: 30}).FirstOrCreate(&amp;amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库. 数据类型建议 时间戳字段：建议使用 int6</description>
+    </item>
+    
     <item>
       <title>Go语言环境安装及如何使用Go多版本（Mac）</title>
       <link>https://zsmhub.github.io/post/golang/go%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8go%E5%A4%9A%E7%89%88%E6%9C%ACmac/</link>
