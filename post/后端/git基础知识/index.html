@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="2140">
+<meta itemprop="wordCount" content="2186">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 2140 字 </span>
+          <span class="more-meta"> 约 2186 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -342,7 +342,7 @@ git branch <span class="p">|</span> grep <span class="s1">&#39;zsm_&#39;</span> 
 git fetch origin develop <span class="c1"># 拉取develop远程分支到本地</span>
 git checkout -b develop origin/develop <span class="c1"># 本地创建并切换到 develop 分支</span>
 
-<span class="c1"># 将一个分支上的所有commit（修改）合并为同一个commit，然后合并到当前分支【注意gitlab的mr会自动勾选上squash选项】</span>
+<span class="c1"># 将一个分支上的所有commit（修改）合并为同一个commit，然后合并到当前分支【注意gitlab的mr会自动勾选上squash选项，多个提交者信息会统一变为分支创建者】</span>
 git merge --squash feature_name
 </code></pre></td></tr></table>
 </div>
@@ -362,6 +362,27 @@ git merge --squash feature_name
 <li>
 <p>生成两个ssh秘钥，关联不同的git账号，一个用于github，一个用于公司</p>
 </li>
+<li>
+<p>秘钥校验配置：vi ~/.ssh/config</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># github</span>
+Host github.com
+HostName github.com
+User xxx@.com
+PreferredAuthentications publickey
+IdentityFile /Users/xxx/.ssh/id_rsa_github
+</code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>然后进入项目文件夹下，执行命令</p>
 <div class="highlight"><div class="chroma">

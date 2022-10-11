@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>围棋GO - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="数子法和数目法 当今世界，主要玩围棋也就中日韩三国，其中中国采用数子法，日韩采用数目法。 日韩数目法只要黑棋贴6目半，而中国数子法要黑棋贴3又3" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8Bgo/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="围棋GO" />
+<meta property="og:description" content="数子法和数目法 当今世界，主要玩围棋也就中日韩三国，其中中国采用数子法，日韩采用数目法。 日韩数目法只要黑棋贴6目半，而中国数子法要黑棋贴3又3" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8Bgo/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-10-11T08:54:37&#43;08:00" />
+<meta property="article:modified_time" content="2022-10-11T08:54:37&#43;08:00" />
+
+<meta itemprop="name" content="围棋GO">
+<meta itemprop="description" content="数子法和数目法 当今世界，主要玩围棋也就中日韩三国，其中中国采用数子法，日韩采用数目法。 日韩数目法只要黑棋贴6目半，而中国数子法要黑棋贴3又3"><meta itemprop="datePublished" content="2022-10-11T08:54:37&#43;08:00" />
+<meta itemprop="dateModified" content="2022-10-11T08:54:37&#43;08:00" />
+<meta itemprop="wordCount" content="2680">
+<meta itemprop="keywords" content="围棋," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="围棋GO"/>
+<meta name="twitter:description" content="数子法和数目法 当今世界，主要玩围棋也就中日韩三国，其中中国采用数子法，日韩采用数目法。 日韩数目法只要黑棋贴6目半，而中国数子法要黑棋贴3又3"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">围棋GO</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-10-11 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
+            </div>
+          <span class="more-meta"> 约 2680 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数子法和数目法">数子法和数目法</a>
+      <ul>
+        <li><a href="#规则简单说明">规则简单说明</a></li>
+        <li><a href="#规则详细说明">规则详细说明</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="数子法和数目法">数子法和数目法</h2>
+<p>当今世界，主要玩围棋也就中日韩三国，其中中国采用数子法，日韩采用数目法。</p>
+<p>日韩数目法只要黑棋贴6目半，而中国数子法要黑棋贴3又3/4子。</p>
+<p><code>总结一下，不管是按中国数子规则，还是日韩点目规则，对围棋胜负的判断结果是一样的，大家可以放心地交换使用。但是要说这俩完全一样的话需要有一个很苛刻的条件，就是黑白双方的手数一样，也就是说不能是黑棋收后，也不能有任何一方停招。</code></p>
+<h3 id="规则简单说明">规则简单说明</h3>
+<blockquote>
+<p>数子法：</p>
+</blockquote>
+<p>如果对局双方是平下，则终局后先将双方死子全部清理出盘外，然后对一方的活棋（包括活棋围住的点）以子为单位进行计数。 双方活棋之间的空点各得一半，一个点即为一子。 <code>就现行的中国围棋规则来看，黑方超过184又1/4为胜，反之为负(注：平下不可能是和棋）。</code> (184.25 = 180.5 + 3.75)</p>
+<p>如果是让子棋，则黑方在终局时还给白方让子数的一半，随后数棋。若本局是黑收后，则黑棋要超过181子算胜。若本局是白收后，则黑棋要超过180又1/2子算胜（注：可以是和棋）。</p>
+<ol>
+<li>单官收完。双方确认无误，同意棋局终了。</li>
+<li>然后剔除盘面上，不活的孤子。</li>
+<li>再来在双方的领地上，填满己方的棋子。</li>
+<li>数双方的棋子数目，再加上规定的贴子数目，就可以判定输赢。</li>
+</ol>
+<blockquote>
+<p>数目法：</p>
+</blockquote>
+<p>不用把死棋去除，而是将棋放入本方空内（如：白方空内的死黑棋放入黑方空内）。将每方空内的空格数（即无子处）相加，判定胜负（目前规则是黑贴6目半）。</p>
+<ol>
+<li>官子收完，领地划分完，双方确认无误，同意棋局终了。（可不收完单官）</li>
+<li><code>然后将对方不活的孤子，填入对方的领地</code>。</li>
+<li><code>再把对方死子也同样的填入对手的领地。</code></li>
+<li>最后数双方所围的空，再加上规定的贴目数目，就可以判定输赢，数子法规则比较简单，也比较没有争议，而数目法就比较复杂，有很多特别棋型需要沿用判例加以辅助。例如：像是盘角曲四。</li>
+</ol>
+<h3 id="规则详细说明">规则详细说明</h3>
+<table>
+<thead>
+<tr>
+<th>终局算法</th>
+<th>黑</th>
+<th>白</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数子法</td>
+<td>黑活子+黑空</td>
+<td>白活子+白空</td>
+</tr>
+<tr>
+<td>数目法</td>
+<td>黑空-黑死子</td>
+<td>白空-白死子</td>
+</tr>
+</tbody>
+</table>
+<p>对两列表格分别做减法就会发现，数目法其实是在数子法的基础上减去了（活子+死子）。而活子+死子其实就是一共下在棋盘上的手数。<code>也就是说，数子法得出的结果和数目法一样当且仅当黑白双方总手数一样。</code>由于围棋是一人一手下的，因此双方的总手数应该是差不多的，所以我说这两种数法大体上是一样的，所以您一般不用担心因为换了一种数法结果就不同了。<code>由于数目法得出的数字更小，所以对局时的形势判断一般都是用数目法。</code></p>
+<p>那么究竟什么情况下双方手数会不一样呢？下面列举几种比较常见的情况。</p>
+<ol>
+<li>
+<p>黑先收后。</p>
+<p>黑先收后是最常见的导致双方手数不一样的情况，平均每两盘就会发生一盘。由于黑棋先走，如果最后一步单官也是黑棋走的话，黑棋的手数就会比白棋多一手。所以假如不贴目/子的话，黑棋又占了一点便宜。据说唐宋时期是不承认黑先收后的利益的，后来到明清时期为了避免频繁出现和棋又予以承认。</p>
+<p>下面我们说说为什么日韩规则只要黑棋贴6目半，而中国规则要黑棋贴3又3/4子。棋盘一共361个点，是一个单数，所以<code>如果盘面目数差是双数就是黑棋收后，反之就是白棋收后。</code>如果黑棋盘面7目，在日韩规则中是黑棋赢了，但是在中国规则中黑棋输了，因为盘面7目是白棋收后。中国规则需要黑棋盘面8目才赢，这就是为什么我们有时候说贴3又3/4子相当于贴7目半，当然黑棋的压力就比贴6目半更大了。可是，如果中国规则改成贴3又1/4子，那么黑棋只要盘面6目就赢了，也就是说只相当于贴5目半了，黑棋又太轻松了。因此尽管普遍反映贴3又3/4子对黑棋压力较大，但在数子法下也可以说是一种无奈之举，因为数子法不能实现让黑棋贴6目半。</p>
+<table>
+<thead>
+<tr>
+<th>盘面</th>
+<th>收后</th>
+<th>日韩</th>
+<th>中国</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>黑多5目</td>
+<td>白</td>
+<td>白胜1目半</td>
+<td>白胜1又1/4子</td>
+</tr>
+<tr>
+<td>黑多6目</td>
+<td>黑</td>
+<td>白胜半目</td>
+<td>白胜1/4子</td>
+</tr>
+<tr>
+<td>黑多7目</td>
+<td>白</td>
+<td>黑胜半目</td>
+<td>白胜1/4子</td>
+</tr>
+<tr>
+<td>黑多8目</td>
+<td>黑</td>
+<td>黑胜1目半</td>
+<td>黑胜3/4子</td>
+</tr>
+</tbody>
+</table>
+<p>另外需要特别注意的是，如果棋盘上出现一个有眼双活这样的特殊情况，有一个点双方都无法占，那么棋盘就变成双数了。这时候贴3又3/4子就和贴6目半一样。也就是说，出现（单数个）有眼双活的情况，黑棋就便宜了1目棋，或者说白棋亏了1目棋。</p>
+</li>
+<li>
+<p>让子棋</p>
+<p>让子棋中显然也会导致双方的手数不同，因为黑棋先在棋盘上连摆了几个子然后才一人一手开始下。但是由于一般让子棋双方实力差距比较大，而且让子棋的输赢结果一般并不重要，所以这点影响往往被忽略了。实际上，让子棋中的白棋如果采用数子法的话比数目法更难获胜，这一点也很容易明白。有一种解决方法：如果是让n子棋，那么黑棋应该贴还n/2子给白棋，这样就基本与数目法结果一致。但是我们也完全可以认为数子法才真正反映了谁嬴谁输，这并没有对错之分。但我们需要知道的是，这里数子法和数目法结果不一样。</p>
+</li>
+<li>
+<p>粘劫收后</p>
+<p>在数子规则中，有一种特殊的手段叫做粘劫收后。也就是，当棋盘上还剩在我手里的劫和若干单官的时候，我不先粘劫，而先收单官，在此过程中仗着劫材优势一直撑着这个劫。当我收完最后一个单官，再来提劫，迫使对方由于没有劫材而停招，然后我再把劫粘上。之所以叫做特殊手段，是因为它需要我方有大量的劫材（多于单官数量的一半加上对方的劫材数），而且单官的数量必须是单数。尽管如此，比赛中依靠粘劫收后逆转获胜的例子也是屡有发生。</p>
+<p>粘劫收后从“目”的角度来说没有任何便宜，因此日韩规则下没有这种手段。但是，当对方由于没有劫材而停招的时候，双方手数的平衡就被打破了，也就是说通过这种手段可以获取“子”的便宜，特殊情况下甚至可以便宜好几个子。</p>
+<p>数子法在这里赋予围棋更多变化，而数目法则相对比较稳定。</p>
+</li>
+<li>
+<p>盘角曲四</p>
+<p>“盘角曲四，劫尽棋亡”，这句话会下围棋的人应该都知道（如果您不知道的话，现在知道了）。盘角曲四这个棋型的特殊性在于，盘角曲四尽管本身是打劫，但杀棋的一方可以选择开劫的时机，而且还是先手劫。这就意味着他可以等到把对方的劫材全部补掉，而后再行开劫，让对方没有还手的余地。但是，你在自己空里补劫材的时候，对方可以停招不用补，这就又使得双方的手数产生了差异。在自己空里走子，对于数子法来说没有任何影响，但对于数目法来说走一个就损1目。为了使得结果跟数子法一样，日韩规则均规定，一旦出现盘角曲四的棋例，就视作净死，也就是说不用去补劫材再把它吃掉。本来事情到这里也就算圆满解决了，可是没想到竟然有些劫材是补也补不掉的，比如双活。你总不能为了补劫材先把自己的双活送死吧？既然你不肯，那么对方就有可能把自己的双活送死当劫材。也就是说，按照中国规则对盘角曲四实战解决的判定，如果棋盘上有双活的话，盘角曲四的一方是有可能取得一定的代偿，甚至做活的。数目法把盘角曲四判定为死棋的解决方案在这些问题上就太死板了。幸好职业比赛中几乎没有出现过既有盘角曲四又有双活的情况。</p>
+</li>
+</ol>
+<h2 id="参考文献">参考文献</h2>
+<p><a href="http://www.tianqiweiqi.com/weiqi-shuzi.html">围棋点目和数子方法图解</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2022-10-11
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%9B%B4%E6%A3%8B/">围棋</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/golang/go%E4%B9%8Bgorm/">
+            <span class="next-text nav-default">Go之GORM</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2022-10-11 08:54:37 \u002b0800 CST',
+        title: '围棋GO',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

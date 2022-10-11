@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go切片详解">
 <meta itemprop="description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此"><meta itemprop="datePublished" content="2020-07-08T09:40:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-08T09:40:36&#43;08:00" />
-<meta itemprop="wordCount" content="3398">
+<meta itemprop="wordCount" content="3643">
 <meta itemprop="keywords" content="切片," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go切片详解"/>
 <meta name="twitter:description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3398 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 3643 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
     </header>
@@ -158,6 +158,7 @@
     <li><a href="#函数间传递切片">函数间传递切片</a></li>
     <li><a href="#函数间传递切片如何避免引用传值">函数间传递切片：如何避免引用传值</a></li>
     <li><a href="#移除切片元素">移除切片元素</a></li>
+    <li><a href="#指定切片容量">指定切片容量</a></li>
     <li><a href="#转载声明">转载声明</a></li>
   </ul>
 </nav>
@@ -831,6 +832,65 @@
 
     <span class="k">return</span> <span class="nx">out</span>
 <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="指定切片容量">指定切片容量</h2>
+<p>在尽可能的情况下，在使用 make() 初始化切片时提供容量信息，特别是在追加切片时，优点是可以减少内存分配。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nb">make</span><span class="p">([]</span><span class="nx">T</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">capacity</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>与 map 不同，slice capacity 不是一个提示：编译器将为提供给 make() 的 slice 的容量分配足够的内存，这意味着后续的 append() 操作将导致零分配（直到 slice 的长度与容量匹配，在此之后，任何 append 都可能调整大小以容纳其他元素）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">const</span> <span class="nx">size</span> <span class="p">=</span> <span class="mi">1000000</span>
+
+<span class="c1">// Bad
+</span><span class="c1"></span><span class="k">for</span> <span class="nx">n</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">n</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">n</span><span class="o">++</span> <span class="p">{</span>
+ <span class="nx">data</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="k">for</span> <span class="nx">k</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">k</span> <span class="p">&lt;</span> <span class="nx">size</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span> <span class="p">{</span>
+     <span class="nx">data</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">BenchmarkBad</span><span class="o">-</span><span class="mi">4</span>    <span class="mi">219</span>    <span class="mi">5202179</span> <span class="nx">ns</span><span class="o">/</span><span class="nx">op</span>
+
+<span class="c1">// Good
+</span><span class="c1"></span><span class="k">for</span> <span class="nx">n</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">n</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">n</span><span class="o">++</span> <span class="p">{</span>
+ <span class="nx">data</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">size</span><span class="p">)</span>
+   <span class="k">for</span> <span class="nx">k</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">k</span> <span class="p">&lt;</span> <span class="nx">size</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span> <span class="p">{</span>
+     <span class="nx">data</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">BenchmarkGood</span><span class="o">-</span><span class="mi">4</span>   <span class="mi">706</span>    <span class="mi">1528934</span> <span class="nx">ns</span><span class="o">/</span><span class="nx">op</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="转载声明">转载声明</h2>

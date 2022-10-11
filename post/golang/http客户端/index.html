@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Http客户端">
 <meta itemprop="description" content="理解 timeout timeout 又可以细分为 connect timeout、read timeout、write timeout。而 read timeout 和 write timeout 必须是在 connect 之后才能发生。 ReadTime"><meta itemprop="datePublished" content="2021-07-28T10:03:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-07-28T10:03:21&#43;08:00" />
-<meta itemprop="wordCount" content="2711">
+<meta itemprop="wordCount" content="2774">
 <meta itemprop="keywords" content="http," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Http客户端"/>
 <meta name="twitter:description" content="理解 timeout timeout 又可以细分为 connect timeout、read timeout、write timeout。而 read timeout 和 write timeout 必须是在 connect 之后才能发生。 ReadTime"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2711 字 </span>
+          <span class="more-meta"> 约 2774 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -143,6 +143,7 @@
   <ul>
     <li><a href="#理解-timeout">理解 timeout</a></li>
     <li><a href="#http-vs-fasthttp">http vs fasthttp</a></li>
+    <li><a href="#常见问题">常见问题</a></li>
     <li><a href="#nethttp">net/http</a></li>
     <li><a href="#fasthttp">fasthttp</a></li>
     <li><a href="#什么是keep-alive模式">什么是Keep-Alive模式</a></li>
@@ -162,6 +163,14 @@
 <li>fasthttp 使用 tcp 做长连接，使用连接池复用连接</li>
 <li>net/http 是短连接，用完即断开连接</li>
 </ul>
+<h2 id="常见问题">常见问题</h2>
+<blockquote>
+<p>golang http context deadline exceeded (client.timeout exceeded while awaiting headers)</p>
+</blockquote>
+<ol>
+<li>请求已经到达服务端但超时，原因：服务方响应慢</li>
+<li>请求没到服务端超时，原因：golang CPU调度不过来</li>
+</ol>
 <h2 id="nethttp">net/http</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

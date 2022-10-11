@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 02 Sep 2022 17:14:30 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Oct 2022 08:54:37 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>围棋GO</title>
+      <link>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8Bgo/</link>
+      <pubDate>Tue, 11 Oct 2022 08:54:37 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8Bgo/</guid>
+      <description>数子法和数目法 当今世界，主要玩围棋也就中日韩三国，其中中国采用数子法，日韩采用数目法。 日韩数目法只要黑棋贴6目半，而中国数子法要黑棋贴3又3</description>
+    </item>
+    
     <item>
       <title>Go之GORM</title>
       <link>https://zsmhub.github.io/post/golang/go%E4%B9%8Bgorm/</link>
