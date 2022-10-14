@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用案例">
 <meta itemprop="description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"><meta itemprop="datePublished" content="2021-01-08T17:57:02&#43;08:00" />
 <meta itemprop="dateModified" content="2021-01-08T17:57:02&#43;08:00" />
-<meta itemprop="wordCount" content="2020">
+<meta itemprop="wordCount" content="2182">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用案例"/>
 <meta name="twitter:description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2020 字 </span>
+          <span class="more-meta"> 约 2182 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -153,6 +153,7 @@
     <li><a href="#同步队列并发消费">同步队列+并发消费</a></li>
     <li><a href="#interface变量转为字符串值">interface{}变量转为字符串值</a></li>
     <li><a href="#map实现集合方案">map实现集合方案</a></li>
+    <li><a href="#浮点数四舍五入">浮点数四舍五入</a></li>
   </ul>
 </nav>
   </div>
@@ -1023,6 +1024,65 @@
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;d exist&#34;</span><span class="p">)</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;d no exist&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="浮点数四舍五入">浮点数四舍五入</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Round 四舍五入
+</span><span class="c1">// 返回将 val 根据指定精度 precision（十进制小数点后数字的数目）进行四舍五入的结果，precision可为0
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Round</span><span class="p">(</span><span class="nx">val</span> <span class="kt">float64</span><span class="p">,</span> <span class="nx">precision</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">float64</span> <span class="p">{</span>
+    <span class="nx">p</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nf">Pow10</span><span class="p">(</span><span class="nx">precision</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nf">Floor</span><span class="p">(</span><span class="nx">val</span><span class="o">*</span><span class="nx">p</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="nx">p</span>
+<span class="p">}</span>
+
+<span class="c1">// 元转分
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Yuan2Fen</span><span class="p">(</span><span class="nx">f</span> <span class="kt">float64</span><span class="p">)</span> <span class="kt">int64</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">f</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    <span class="nx">decimalValue</span> <span class="o">:=</span> <span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromFloat</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+    <span class="nx">decimalValue</span> <span class="p">=</span> <span class="nx">decimalValue</span><span class="p">.</span><span class="nf">Mul</span><span class="p">(</span><span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromInt</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nx">decimalValue</span><span class="p">.</span><span class="nf">BigInt</span><span class="p">().</span><span class="nf">Int64</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// 分转元
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">FenToYuan</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int64</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;0.00&#34;</span>
+    <span class="p">}</span>
+    <span class="nx">decimalValue</span> <span class="o">:=</span> <span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromInt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="nx">decimalValue</span> <span class="p">=</span> <span class="nx">decimalValue</span><span class="p">.</span><span class="nf">Div</span><span class="p">(</span><span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromInt</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nx">decimalValue</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
