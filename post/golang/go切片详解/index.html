@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go切片详解">
 <meta itemprop="description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此"><meta itemprop="datePublished" content="2020-07-08T09:40:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-08T09:40:36&#43;08:00" />
-<meta itemprop="wordCount" content="3643">
+<meta itemprop="wordCount" content="3647">
 <meta itemprop="keywords" content="切片," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go切片详解"/>
 <meta name="twitter:description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3643 字 </span>
+          <span class="more-meta"> 约 3647 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -182,9 +182,9 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//创建了一个长度和容量都为5的切片
-</span><span class="c1"></span><span class="nx">slice1</span><span class="o">:=</span><span class="nx">make</span><span class="p">[[]</span><span class="kt">string</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+</span><span class="c1"></span><span class="nx">slice1</span> <span class="o">:=</span> <span class="nx">make</span><span class="p">[[]</span><span class="kt">string</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="c1">//创建了一个长度5，容量为10的切片
-</span><span class="c1"></span><span class="nx">slice2</span><span class="o">:=</span><span class="nx">make</span><span class="p">[[]</span><span class="kt">string</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+</span><span class="c1"></span><span class="nx">slice2</span> <span class="o">:=</span> <span class="nx">make</span><span class="p">[[]</span><span class="kt">string</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>需要说明的是，<strong>切片对应的底层数组的大小为指定的容量</strong>，这个一定要谨记，比如对于上面的例子，我们指定了 <code>slice2</code> 的容量为10，那么 <code>slice2</code> 对应的底层数组的大小就是10。
