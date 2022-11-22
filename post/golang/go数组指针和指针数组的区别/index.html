@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 数组指针和指针数组的区别">
 <meta itemprop="description" content="Golang中数组指针和指针数组区别 区别二者，字面上只看后两个字即可： 数组指针 ：它是一个指针，但是数据类型为数组，或者说指向数组 指针数组 ：它"><meta itemprop="datePublished" content="2020-05-05T14:13:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-05T14:13:30&#43;08:00" />
-<meta itemprop="wordCount" content="2370">
+<meta itemprop="wordCount" content="2369">
 <meta itemprop="keywords" content="golang,转载," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 数组指针和指针数组的区别"/>
 <meta name="twitter:description" content="Golang中数组指针和指针数组区别 区别二者，字面上只看后两个字即可： 数组指针 ：它是一个指针，但是数据类型为数组，或者说指向数组 指针数组 ：它"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2370 字 </span>
+          <span class="more-meta"> 约 2369 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -173,7 +173,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">arrPtr</span> <span class="o">*</span><span class="p">[</span><span class="nx">size</span><span class="p">]</span> <span class="nx">Type</span>
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">arrPtr</span> <span class="o">*</span><span class="p">[</span><span class="nx">size</span><span class="p">]</span><span class="nx">Type</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>因为数组指针是一个指针，所以在定义时，先写 *， 表示定义一个指针，后面接数据类型</p>
