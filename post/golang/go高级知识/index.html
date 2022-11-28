@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go高级知识">
 <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="1904">
+<meta itemprop="wordCount" content="1919">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go高级知识"/>
 <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1904 字 </span>
+          <span class="more-meta"> 约 1919 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -219,7 +219,20 @@ git config --global url.https://gitlab.xxx.com/.insteadof http://gitlab.xxx.com/
 <p>go mod tidy &amp;&amp; go mod vendor</p>
 </li>
 </ol>
-<h2 id="跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</h2>
+<blockquote>
+<p>go.mod 引入本地包</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">require <span class="s2">&#34;xxx/p&#34;</span> v0.0.0
+replace <span class="s2">&#34;xxx/p&#34;</span> <span class="o">=</span>&gt; <span class="s2">&#34;../p2&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</h2>
 <p>在循环外使用 label 标记定义退出哪一层循环。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
