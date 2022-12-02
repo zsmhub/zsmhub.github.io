@@ -49,7 +49,7 @@
 <meta itemprop="name" content="企业微信第三方应用开发">
 <meta itemprop="description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"><meta itemprop="datePublished" content="2021-09-24T16:46:43&#43;08:00" />
 <meta itemprop="dateModified" content="2022-08-12T16:46:43&#43;08:00" />
-<meta itemprop="wordCount" content="5496">
+<meta itemprop="wordCount" content="5594">
 <meta itemprop="keywords" content="企业微信," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="企业微信第三方应用开发"/>
 <meta name="twitter:description" content="术语介绍 corpid 每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看 provider_secret 作"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 5496 字 </span>
-          <span class="more-meta"> 预计阅读 11 分钟 </span>
+          <span class="more-meta"> 约 5594 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
         
       </div>
     </header>
@@ -255,7 +255,9 @@
 <p>企业微信access_token在有效期内重复获取会返回相同结果，有效期正常情况下为7200秒（2小时）。</p>
 </blockquote>
 <p>注意：<code>每次获取token时，该token都有2小时有效期</code>（<code>企业微信可能会出于运营需要，提前使access_token失效，开发者应实现access_token失效时重新获取的逻辑。</code>）</p>
+<p><code>整体来说，企业微信和微信公众号、小程序等都有对旧token的有效期做延长处理，access_token可以直接用redis缓存7200秒，redis过期后直接重新获取access_token即可。</code></p>
 <p><img src="/images/2021/qyapi_token_validate.png" alt="每次获取token时，该token都有2小时有效期"></p>
+<p><img src="/images/2022/WechatIMG815.jpeg" alt="微信公众号每次获取token时，该token都有2小时有效期"></p>
 <h2 id="前端js-sdk使用权限的签名算法">前端JS-SDK使用权限的签名算法</h2>
 <p><a href="https://work.weixin.qq.com/api/doc/90001/90144/90539">JS-SDK使用权限签名算法</a></p>
 <p>签名生成规则：</p>
