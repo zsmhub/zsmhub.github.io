@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="简单说明 刮刮卡&amp;amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&amp;gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&amp;g" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="简单说明 刮刮卡&amp;amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="小程序·刮刮卡抽奖简单设计" />
-<meta property="og:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&g" />
+<meta property="og:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%88%AE%E5%88%AE%E5%8D%A1%E6%8A%BD%E5%A5%96%E7%AE%80%E5%8D%95%E8%AE%BE%E8%AE%A1/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-12-06T10:05:13&#43;08:00" />
 <meta property="article:modified_time" content="2022-12-06T10:05:13&#43;08:00" />
 
 <meta itemprop="name" content="小程序·刮刮卡抽奖简单设计">
-<meta itemprop="description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&g"><meta itemprop="datePublished" content="2022-12-06T10:05:13&#43;08:00" />
+<meta itemprop="description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击"><meta itemprop="datePublished" content="2022-12-06T10:05:13&#43;08:00" />
 <meta itemprop="dateModified" content="2022-12-06T10:05:13&#43;08:00" />
-<meta itemprop="wordCount" content="3302">
+<meta itemprop="wordCount" content="3559">
 <meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="小程序·刮刮卡抽奖简单设计"/>
-<meta name="twitter:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&g"/>
+<meta name="twitter:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 3302 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 3559 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
     </header>
@@ -151,11 +151,18 @@
 </div>
     <div class="post-content">
       <h2 id="简单说明">简单说明</h2>
-<p>刮刮卡&amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&gt; 用户点击幸运大转盘进行抽奖 -&gt; 中奖后进行兑奖 -&gt; 到期不兑奖则视为过期</p>
+<p>刮刮卡&amp;幸运大转盘抽奖的流程：</p>
+<ol>
+<li>用户获取刮刮卡上的抽奖码</li>
+<li>在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）</li>
+<li>用户点击幸运大转盘进行抽奖</li>
+<li>用户中奖后进行兑奖</li>
+<li>到期不兑奖则视为过期</li>
+</ol>
 <p>支持设置某个奖品为兜底奖品，如果有奖品被设置为兜底奖品，则视为100%中奖。</p>
 <p>如果设置了多个奖品的总中奖概率为100%，则必须设置其中一个奖品为兜底奖品，否则其中一个奖品数量变为0时，无法继续抽奖，这种属于运营操作错误</p>
 <h2 id="微信小程序sdk">微信小程序SDK</h2>
-<p>采用 <a href="https://powerwechat.artisan-cloud.com/">PowerWeChat SDK</a></p>
+<p>使用 <a href="https://powerwechat.artisan-cloud.com/">PowerWeChat SDK</a></p>
 <p>PowerWeChat是一款简单易用的WeChat SDK for Golang，目前已经覆盖微信公众号、微信小程序、微信支付、企业微信。</p>
 <p>对标PHP版的easywechat，优点：由Artisan Cloud团队长期维护、文档详细等</p>
 <h2 id="数据库表设计">数据库表设计</h2>
@@ -543,6 +550,57 @@
 </span><span class="lnt"> 99
 </span><span class="lnt">100
 </span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">activityId</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">1</span> <span class="c1">// 抽奖活动ID，支持多个抽奖活动的代码复用
@@ -573,79 +631,130 @@
     <span class="nx">Max</span> <span class="kt">int</span>
 <span class="p">}</span>
 
-<span class="c1">// 奖品判断
-</span><span class="c1"></span><span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">currentProbabilityTotal</span>  <span class="kt">int</span>                                      <span class="c1">// 当前奖品总概率
-</span><span class="c1"></span>    <span class="nx">originalProbabilityTotal</span> <span class="kt">int</span>                                      <span class="c1">// 初始奖品总概率
-</span><span class="c1"></span>    <span class="nx">isDefault</span>                <span class="kt">bool</span>                                     <span class="c1">// 是否有兜底奖品
-</span><span class="c1"></span>    <span class="nx">defaultPrizeId</span>           <span class="p">=</span> <span class="nx">LosePrizeId</span>                            <span class="c1">// 兜底奖品ID或未中奖ID
-</span><span class="c1"></span>    <span class="nx">surplusTotal</span>             <span class="kt">int64</span>                                    <span class="c1">// 总剩余奖品数量
-</span><span class="c1"></span>    <span class="nx">prizeMap</span>                 <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">uint64</span><span class="p">]</span><span class="nx">PrizeProbabilityRange</span><span class="p">)</span> <span class="c1">// 奖品概率范围
-</span><span class="c1"></span>    <span class="nx">winPrizeId</span>               <span class="kt">uint64</span>                                   <span class="c1">// 中奖奖品ID
-</span><span class="c1"></span><span class="p">)</span>
-<span class="nx">prizes</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLotteryPrizeDao</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="nx">activityId</span><span class="p">)</span> <span class="c1">// 获取活动的所有上架奖品列表
-</span><span class="c1"></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">prizes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;尚未配置奖池&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">prizes</span> <span class="p">{</span>
-    <span class="c1">// 兜底奖品设置的 奖品概率 和 奖品数量 直接忽略，当做未中奖项处理
-</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IsDefault</span> <span class="p">{</span>
-        <span class="nx">isDefault</span> <span class="p">=</span> <span class="kc">true</span>
-        <span class="nx">defaultPrizeId</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span>
-        <span class="k">continue</span>
+<span class="c1">// 获取抽奖结果
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Result</span><span class="p">()</span> <span class="p">(</span><span class="kt">uint64</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 奖品判断
+</span><span class="c1"></span>    <span class="kd">var</span> <span class="p">(</span>
+        <span class="nx">currentProbabilityTotal</span>  <span class="kt">int</span>                                      <span class="c1">// 当前奖品总概率
+</span><span class="c1"></span>        <span class="nx">originalProbabilityTotal</span> <span class="kt">int</span>                                      <span class="c1">// 初始奖品总概率
+</span><span class="c1"></span>        <span class="nx">isDefault</span>                <span class="kt">bool</span>                                     <span class="c1">// 是否有兜底奖品
+</span><span class="c1"></span>        <span class="nx">defaultPrizeId</span>           <span class="p">=</span> <span class="nx">LosePrizeId</span>                            <span class="c1">// 兜底奖品ID或未中奖ID
+</span><span class="c1"></span>        <span class="nx">surplusTotal</span>             <span class="kt">int64</span>                                    <span class="c1">// 总剩余奖品数量
+</span><span class="c1"></span>        <span class="nx">prizeMap</span>                 <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">uint64</span><span class="p">]</span><span class="nx">PrizeProbabilityRange</span><span class="p">)</span> <span class="c1">// 奖品概率范围
+</span><span class="c1"></span>        <span class="nx">winPrizeId</span>               <span class="kt">uint64</span>                                   <span class="c1">// 中奖奖品ID
+</span><span class="c1"></span>    <span class="p">)</span>
+    <span class="nx">prizes</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLotteryPrizeDao</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="nx">activityId</span><span class="p">)</span> <span class="c1">// 获取活动的所有上架奖品列表
+</span><span class="c1"></span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">prizes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;尚未配置奖池&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">prizes</span> <span class="p">{</span>
+        <span class="c1">// 兜底奖品设置的 奖品概率 和 奖品数量 直接忽略，当做未中奖项处理
+</span><span class="c1"></span>        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IsDefault</span> <span class="p">{</span>
+            <span class="nx">isDefault</span> <span class="p">=</span> <span class="kc">true</span>
+            <span class="nx">defaultPrizeId</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span>
+            <span class="k">continue</span>
+        <span class="p">}</span>
+
+        <span class="nx">originalProbabilityTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Probability</span>
+
+        <span class="c1">// 数量为零的奖品不参与抽奖
+</span><span class="c1"></span>        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Surplus</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">continue</span>
+        <span class="p">}</span>
+
+        <span class="nx">surplusTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Surplus</span>
+        <span class="nx">min</span> <span class="o">:=</span> <span class="nx">currentProbabilityTotal</span>
+        <span class="nx">currentProbabilityTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Probability</span>
+        <span class="nx">max</span> <span class="o">:=</span> <span class="nx">currentProbabilityTotal</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="nx">prizeMap</span><span class="p">[</span><span class="nx">v</span><span class="p">.</span><span class="nx">Id</span><span class="p">]</span> <span class="p">=</span> <span class="nx">PrizeProbabilityRange</span><span class="p">{</span>
+            <span class="nx">Min</span><span class="p">:</span> <span class="nx">min</span><span class="p">,</span>
+            <span class="nx">Max</span><span class="p">:</span> <span class="nx">max</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="nx">currentProbabilityTotal</span> <span class="p">&gt;</span> <span class="nx">MaxPrizeProbability</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;奖池设置异常，暂无法抽奖&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="nx">originalProbabilityTotal</span> <span class="o">==</span> <span class="nx">MaxPrizeProbability</span> <span class="o">&amp;&amp;</span> <span class="nx">currentProbabilityTotal</span> <span class="o">!=</span> <span class="nx">originalProbabilityTotal</span> <span class="p">{</span>
+        <span class="c1">// 如果设置了多个奖品的总中奖概率为100%，则必须设置其中一个奖品为兜底奖品，否则其中一个奖品数量变为0时，无法继续抽奖，这种属于运营操作错误
+</span><span class="c1"></span>        <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;奖池设置异常，暂无法抽奖哟&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="nx">currentProbabilityTotal</span> <span class="p">&lt;</span> <span class="nx">MaxPrizeProbability</span> <span class="p">{</span>
+        <span class="nx">prizeMap</span><span class="p">[</span><span class="nx">defaultPrizeId</span><span class="p">]</span> <span class="p">=</span> <span class="nx">PrizeProbabilityRange</span><span class="p">{</span>
+            <span class="nx">Min</span><span class="p">:</span> <span class="nx">currentProbabilityTotal</span><span class="p">,</span>
+            <span class="nx">Max</span><span class="p">:</span> <span class="nx">MaxPrizeProbability</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">isDefault</span> <span class="o">&amp;&amp;</span> <span class="nx">surplusTotal</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;来的太晚啦，奖品已经派完&#34;</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="nx">originalProbabilityTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Probability</span>
-
-    <span class="c1">// 数量为零的奖品不参与抽奖
-</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Surplus</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="k">continue</span>
+    <span class="c1">// 抽奖
+</span><span class="c1"></span>    <span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
+    <span class="nx">random</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="nx">MaxPrizeProbability</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">prizeId</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">prizeMap</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Min</span> <span class="o">&lt;=</span> <span class="nx">random</span> <span class="o">&amp;&amp;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Max</span> <span class="o">&gt;=</span> <span class="nx">random</span> <span class="p">{</span>
+            <span class="nx">winPrizeId</span> <span class="p">=</span> <span class="nx">prizeId</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="nx">surplusTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Surplus</span>
-    <span class="nx">min</span> <span class="o">:=</span> <span class="nx">currentProbabilityTotal</span>
-    <span class="nx">currentProbabilityTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Probability</span>
-    <span class="nx">max</span> <span class="o">:=</span> <span class="nx">currentProbabilityTotal</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="nx">prizeMap</span><span class="p">[</span><span class="nx">v</span><span class="p">.</span><span class="nx">Id</span><span class="p">]</span> <span class="p">=</span> <span class="nx">PrizeProbabilityRange</span><span class="p">{</span>
-        <span class="nx">Min</span><span class="p">:</span> <span class="nx">min</span><span class="p">,</span>
-        <span class="nx">Max</span><span class="p">:</span> <span class="nx">max</span><span class="p">,</span>
+    <span class="c1">// 再次确认中奖奖品是否有库存，没有库存则设置为兜底奖品或未中奖
+</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">winPrizeId</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">winPrizeId</span> <span class="o">!=</span> <span class="nx">defaultPrizeId</span> <span class="p">{</span>
+        <span class="nx">prize</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLotteryPrizeDao</span><span class="p">.</span><span class="nf">GetById</span><span class="p">(</span><span class="nx">winPrizeId</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">prize</span><span class="p">.</span><span class="nx">Surplus</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">!</span><span class="nx">prize</span><span class="p">.</span><span class="nx">IsEnable</span> <span class="p">{</span>
+            <span class="nx">winPrizeId</span> <span class="p">=</span> <span class="nx">defaultPrizeId</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="nx">currentProbabilityTotal</span> <span class="p">&gt;</span> <span class="nx">MaxPrizeProbability</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;奖池设置异常，暂无法抽奖&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="nx">originalProbabilityTotal</span> <span class="o">==</span> <span class="nx">MaxPrizeProbability</span> <span class="o">&amp;&amp;</span> <span class="nx">currentProbabilityTotal</span> <span class="o">!=</span> <span class="nx">originalProbabilityTotal</span> <span class="p">{</span>
-    <span class="c1">// 如果设置了多个奖品的总中奖概率为100%，则必须设置其中一个奖品为兜底奖品，否则其中一个奖品数量变为0时，无法继续抽奖，这种属于运营操作错误
-</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;奖池设置异常，暂无法抽奖哟&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="nx">currentProbabilityTotal</span> <span class="p">&lt;</span> <span class="nx">MaxPrizeProbability</span> <span class="p">{</span>
-    <span class="nx">prizeMap</span><span class="p">[</span><span class="nx">defaultPrizeId</span><span class="p">]</span> <span class="p">=</span> <span class="nx">PrizeProbabilityRange</span><span class="p">{</span>
-        <span class="nx">Min</span><span class="p">:</span> <span class="nx">currentProbabilityTotal</span><span class="p">,</span>
-        <span class="nx">Max</span><span class="p">:</span> <span class="nx">MaxPrizeProbability</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">!</span><span class="nx">isDefault</span> <span class="o">&amp;&amp;</span> <span class="nx">surplusTotal</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;来的太晚啦，奖品已经派完&#34;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="kc">nil</span>
 <span class="p">}</span>
 
-<span class="c1">// 抽奖
-</span><span class="c1"></span><span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
-<span class="nx">random</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="nx">MaxPrizeProbability</span><span class="p">)</span>
-<span class="k">for</span> <span class="nx">prizeId</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">prizeMap</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Min</span> <span class="o">&lt;=</span> <span class="nx">random</span> <span class="o">&amp;&amp;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Max</span> <span class="o">&gt;=</span> <span class="nx">random</span> <span class="p">{</span>
-        <span class="nx">winPrizeId</span> <span class="p">=</span> <span class="nx">prizeId</span>
-        <span class="k">break</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="c1">// 获取所有奖品
+</span><span class="c1"></span><span class="kd">type</span> <span class="p">(</span>
+    <span class="nx">MiniLotteryPrizeImage</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">Win</span>  <span class="kt">string</span> <span class="s">`json:&#34;win&#34;`</span>  <span class="c1">// 获奖展示图片
+</span><span class="c1"></span>        <span class="nx">Word</span> <span class="kt">string</span> <span class="s">`json:&#34;word&#34;`</span> <span class="c1">// 带文字的图片
+</span><span class="c1"></span>    <span class="p">}</span>
 
-<span class="c1">// 再次确认中奖奖品是否有库存，没有库存则设置为兜底奖品或未中奖
-</span><span class="c1"></span><span class="k">if</span> <span class="nx">winPrizeId</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">winPrizeId</span> <span class="o">!=</span> <span class="nx">defaultPrizeId</span> <span class="p">{</span>
-    <span class="nx">prize</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLotteryPrizeDao</span><span class="p">.</span><span class="nf">GetById</span><span class="p">(</span><span class="nx">winPrizeId</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">prize</span><span class="p">.</span><span class="nx">Surplus</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">!</span><span class="nx">prize</span><span class="p">.</span><span class="nx">IsEnable</span> <span class="p">{</span>
-        <span class="nx">winPrizeId</span> <span class="p">=</span> <span class="nx">defaultPrizeId</span>
+    <span class="nx">MiniLotteryActivityPrize</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">Id</span>    <span class="kt">uint64</span>                 <span class="s">`json:&#34;id&#34;`</span>
+        <span class="nx">Name</span>  <span class="kt">string</span>                 <span class="s">`json:&#34;name&#34;`</span>
+        <span class="nx">Image</span> <span class="o">*</span><span class="nx">MiniLotteryPrizeImage</span> <span class="s">`json:&#34;image&#34;`</span>
     <span class="p">}</span>
+<span class="p">)</span>
+<span class="kd">func</span> <span class="nf">GetPrizes</span><span class="p">(</span><span class="nx">activityId</span> <span class="kt">uint64</span><span class="p">)</span> <span class="p">(</span><span class="nx">MiniLotteryActivityPrize</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="p">(</span>
+        <span class="nx">isDefault</span>        <span class="kt">bool</span> <span class="c1">// 是否有兜底奖品
+</span><span class="c1"></span>        <span class="nx">probabilityTotal</span> <span class="kt">int</span> <span class="c1">// 奖品中奖总概率
+</span><span class="c1"></span>        <span class="nx">resp</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="nx">MiniLotteryActivityPrize</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="nx">prizes</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLotteryPrizeDao</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="nx">activityId</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">prizes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">resp</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;尚未配置奖池&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">prizes</span> <span class="p">{</span>
+        <span class="nx">probabilityTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Probability</span>
+        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IsDefault</span> <span class="p">{</span>
+            <span class="nx">isDefault</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="nx">resp</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">resp</span><span class="p">,</span> <span class="nx">MiniLotteryActivityPrize</span><span class="p">{</span>
+            <span class="nx">Id</span><span class="p">:</span>    <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span>
+            <span class="nx">Name</span><span class="p">:</span>  <span class="nx">v</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+            <span class="nx">Image</span><span class="p">:</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Image</span><span class="p">,</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+    <span class="c1">// 判断是否有未中奖的情况，有则追加上未中奖数据
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">!</span><span class="nx">isDefault</span> <span class="o">&amp;&amp;</span> <span class="nx">probabilityTotal</span> <span class="p">&lt;</span> <span class="nx">MaxPrizeProbability</span> <span class="p">{</span>
+        <span class="nx">resp</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">resp</span><span class="p">,</span> <span class="nx">MiniLotteryActivityPrize</span><span class="p">{</span>
+            <span class="nx">Id</span><span class="p">:</span>   <span class="nx">LosePrizeId</span><span class="p">,</span>
+            <span class="nx">Name</span><span class="p">:</span> <span class="nx">LosePrizeName</span><span class="p">,</span>
+            <span class="nx">Image</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">MiniLotteryPrizeImage</span><span class="p">{</span>
+                <span class="nx">Win</span><span class="p">:</span>  <span class="nx">LosePrizeImageUrl</span><span class="p">,</span>
+                <span class="nx">Word</span><span class="p">:</span> <span class="nx">LosePrizeImageUrl</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">resp</span><span class="p">,</span> <span class="kc">nil</span>
 <span class="p">}</span>
-<span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="kc">nil</span>
 </code></pre></td></tr></table>
 </div>
 </div>
