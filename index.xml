@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 06 Oct 2022 08:54:37 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Dec 2022 10:05:13 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>小程序·刮刮卡抽奖简单设计</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%88%AE%E5%88%AE%E5%8D%A1%E6%8A%BD%E5%A5%96%E7%AE%80%E5%8D%95%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Tue, 06 Dec 2022 10:05:13 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%88%AE%E5%88%AE%E5%8D%A1%E6%8A%BD%E5%A5%96%E7%AE%80%E5%8D%95%E8%AE%BE%E8%AE%A1/</guid>
+      <description>简单说明 刮刮卡&amp;amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&amp;gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&amp;g</description>
+    </item>
+    
     <item>
       <title>围棋GO</title>
       <link>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8Bgo/</link>

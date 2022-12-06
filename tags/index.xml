@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 06 Oct 2022 08:54:37 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Dec 2022 10:05:13 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>实战案例</title>
+      <link>https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</link>
+      <pubDate>Tue, 06 Dec 2022 10:05:13 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>围棋</title>
       <link>https://zsmhub.github.io/tags/%E5%9B%B4%E6%A3%8B/</link>
@@ -23,15 +32,6 @@
       <pubDate>Fri, 02 Sep 2022 17:14:30 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>实战案例</title>
-      <link>https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</link>
-      <pubDate>Wed, 31 Aug 2022 09:08:49 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</guid>
       <description></description>
     </item>
     

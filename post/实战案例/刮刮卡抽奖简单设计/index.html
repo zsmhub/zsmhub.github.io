@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>小程序·刮刮卡抽奖简单设计 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="简单说明 刮刮卡&amp;amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&amp;gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&amp;g" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%88%AE%E5%88%AE%E5%8D%A1%E6%8A%BD%E5%A5%96%E7%AE%80%E5%8D%95%E8%AE%BE%E8%AE%A1/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="小程序·刮刮卡抽奖简单设计" />
+<meta property="og:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&g" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%88%AE%E5%88%AE%E5%8D%A1%E6%8A%BD%E5%A5%96%E7%AE%80%E5%8D%95%E8%AE%BE%E8%AE%A1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-12-06T10:05:13&#43;08:00" />
+<meta property="article:modified_time" content="2022-12-06T10:05:13&#43;08:00" />
+
+<meta itemprop="name" content="小程序·刮刮卡抽奖简单设计">
+<meta itemprop="description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&g"><meta itemprop="datePublished" content="2022-12-06T10:05:13&#43;08:00" />
+<meta itemprop="dateModified" content="2022-12-06T10:05:13&#43;08:00" />
+<meta itemprop="wordCount" content="3302">
+<meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="小程序·刮刮卡抽奖简单设计"/>
+<meta name="twitter:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&g"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">小程序·刮刮卡抽奖简单设计</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-12-06 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+            </div>
+          <span class="more-meta"> 约 3302 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简单说明">简单说明</a></li>
+    <li><a href="#微信小程序sdk">微信小程序SDK</a></li>
+    <li><a href="#数据库表设计">数据库表设计</a></li>
+    <li><a href="#抽奖代码逻辑">抽奖代码逻辑</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="简单说明">简单说明</h2>
+<p>刮刮卡&amp;幸运大转盘抽奖的流程：用户获取刮刮卡上的抽奖码 -&gt; 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖）-&gt; 用户点击幸运大转盘进行抽奖 -&gt; 中奖后进行兑奖 -&gt; 到期不兑奖则视为过期</p>
+<p>支持设置某个奖品为兜底奖品，如果有奖品被设置为兜底奖品，则视为100%中奖。</p>
+<p>如果设置了多个奖品的总中奖概率为100%，则必须设置其中一个奖品为兜底奖品，否则其中一个奖品数量变为0时，无法继续抽奖，这种属于运营操作错误</p>
+<h2 id="微信小程序sdk">微信小程序SDK</h2>
+<p>采用 <a href="https://powerwechat.artisan-cloud.com/">PowerWeChat SDK</a></p>
+<p>PowerWeChat是一款简单易用的WeChat SDK for Golang，目前已经覆盖微信公众号、微信小程序、微信支付、企业微信。</p>
+<p>对标PHP版的easywechat，优点：由Artisan Cloud团队长期维护、文档详细等</p>
+<h2 id="数据库表设计">数据库表设计</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_user</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;微信小程序用户表id&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">unionid</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;用户在开放平台的唯一标识&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">openid</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;用户在某个小程序的唯一标识&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">session_key</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;小程序会话密钥&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">nickname</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;用户昵称&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">avatar_url</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;用户头像&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">handset</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;手机号（国外手机号会有区号）&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">country_code</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;手机区号,&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">last_login_at</span><span class="o">`</span> <span class="n">datetime</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;最后登录时间&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">last_login_ip</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;最后登录IP&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">updated_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">invite_staff_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;最新邀请员工ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">invite_at</span><span class="o">`</span> <span class="n">datetime</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;最新邀请时间&#39;</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="o">`</span><span class="n">u_unionid</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">unionid</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">index_created_at</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">created_at</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">i_openid</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">openid</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">i_handset</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">handset</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">idx_mini_user_invite_staff_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">invite_staff_id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_callback</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;微信小程序回调记录表id&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">msg_type</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">event</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">change_type</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="k">data</span><span class="o">`</span> <span class="nb">text</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">COMMENT</span> <span class="s1">&#39;query body&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">query_string</span><span class="o">`</span> <span class="nb">text</span> <span class="nb">CHARACTER</span> <span class="k">SET</span> <span class="n">utf8mb4</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">COMMENT</span> <span class="s1">&#39;URL query string&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">i_me</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">msg_type</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">event</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">i_created_at</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">created_at</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_lottery_activity</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;活动表id&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;活动名称&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">start_at</span><span class="o">`</span> <span class="n">datetime</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;开始时间，null则是没时间限制&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">end_at</span><span class="o">`</span> <span class="n">datetime</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;结束时间，null则是没时间限制&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="k">rule</span><span class="o">`</span> <span class="nb">text</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;活动规则&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">staff_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;操作员工ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">updated_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_lottery_prize</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;奖品表ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">activity_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;归属活动ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;奖品名称&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">image</span><span class="o">`</span> <span class="n">json</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;奖品图片&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">probability</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;中奖概率（百分号前面的数字*100）&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">is_default</span><span class="o">`</span> <span class="n">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;是否作为兜底奖品，0-否，1-是&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">total</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;奖品总数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">surplus</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;剩余奖品数量&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">is_enable</span><span class="o">`</span> <span class="n">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;1&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;是否上架&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">updated_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">idx_mini_lottery_prize_activity_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">activity_id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_lucky_code_all</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;全量抽奖码表id，方便表mini_lucky_code生成不连串的抽奖码&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">code</span><span class="o">`</span> <span class="nb">char</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖码，如AA1234&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">is_enable</span><span class="o">`</span> <span class="n">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;1&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;是否可用，0-已被用过，1-可用&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">updated_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="o">`</span><span class="n">u_code</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">code</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_lucky_code</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖码表id&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">activity_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;归属活动ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">code</span><span class="o">`</span> <span class="nb">char</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖码&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">COMMENT</span> <span class="s1">&#39;创建时间&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">batch</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;批次&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">is_enable</span><span class="o">`</span> <span class="n">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;1&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;是否可用，0-已被用过，1-可用&#39;</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="o">`</span><span class="n">u_code</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">code</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">i_batch</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">batch</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">i_ac</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">activity_id</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">code</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_lottery_record</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;用户抽奖记录表id&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">activity_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;归属活动ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">user_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;mini_user表ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">prize_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;中奖奖品ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">lucky_code</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖码&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">status</span><span class="o">`</span> <span class="n">tinyint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖状态，0-未抽奖，1-未中奖，2-待兑奖，3-已兑奖，4-已过期&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">draw_at</span><span class="o">`</span> <span class="n">datetime</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖时间&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">remark</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_0900_as_cs</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;备注&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">COMMENT</span> <span class="s1">&#39;获取抽奖机会时间&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">updated_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">invite_staff_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;邀请员工ID&#39;</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">idx_mini_lottery_record_user_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">user_id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">idx_mini_lottery_record_lucky_code</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">lucky_code</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">idx_mini_lottery_record_out_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">out_id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">i_au</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">activity_id</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">user_id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">idx_mini_lottery_record_invite_staff_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">invite_staff_id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_lottery_user</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖用户统计表id&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">activity_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;归属活动ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">user_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;mini_user表ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">surplus_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;剩余抽奖次数(总抽奖机会=抽奖次数+剩余抽奖次数)&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">draw_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖次数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">win_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;中奖次数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">award_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;兑奖次数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">updated_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="o">`</span><span class="n">u_au</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">activity_id</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">user_id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">KEY</span> <span class="o">`</span><span class="n">idx_mini_lottery_user_user_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">user_id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">mini_lottery_report</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖数据统计报表ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">activity_id</span><span class="o">`</span> <span class="nb">bigint</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;活动ID&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">report_at</span><span class="o">`</span> <span class="nb">date</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;统计日期&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">player_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;参与人数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">draw_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;抽奖次数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">winner_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;中奖人数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">win_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;中奖次数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">awarder_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;兑奖人数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">award_num</span><span class="o">`</span> <span class="nb">bigint</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;兑奖次数&#39;</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">updated_at</span><span class="o">`</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="o">`</span><span class="n">u_ar</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">activity_id</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">report_at</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_0900_as_cs</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="抽奖代码逻辑">抽奖代码逻辑</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">activityId</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">1</span> <span class="c1">// 抽奖活动ID，支持多个抽奖活动的代码复用
+</span><span class="c1"></span>
+<span class="c1">// 抽奖参与状态
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">LotteryStatus</span> <span class="kt">uint8</span>
+<span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">LotteryStatusDefault</span> <span class="nx">LotteryStatus</span> <span class="p">=</span> <span class="kc">iota</span> <span class="c1">// 未抽奖
+</span><span class="c1"></span>    <span class="nx">LotteryStatusLose</span>                         <span class="c1">// 未中奖
+</span><span class="c1"></span>    <span class="nx">LotteryStatusWait</span>                         <span class="c1">// 已中奖-待兑奖
+</span><span class="c1"></span>    <span class="nx">LotteryStatusSuccess</span>                      <span class="c1">// 已中奖-已兑奖
+</span><span class="c1"></span>    <span class="nx">LotteryStatusExpired</span>                      <span class="c1">// 已中奖-已过期
+</span><span class="c1"></span><span class="p">)</span>
+
+<span class="c1">// 最大概率值，百分号前面的数字*100，兼容2位小数，如30.22%）
+</span><span class="c1"></span><span class="kd">const</span> <span class="nx">MaxPrizeProbability</span> <span class="p">=</span> <span class="mi">10000</span>
+
+<span class="c1">// 未中奖设置
+</span><span class="c1"></span><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">LosePrizeId</span>       <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>                                  <span class="c1">// 未中奖奖品ID
+</span><span class="c1"></span>    <span class="nx">LosePrizeName</span>            <span class="p">=</span> <span class="s">&#34;未中奖&#34;</span>                              <span class="c1">// 名称
+</span><span class="c1"></span>    <span class="nx">LosePrizeImageUrl</span>        <span class="p">=</span> <span class="s">&#34;https://xxx/weizhongjiangtmp.jpg&#34;</span> <span class="c1">// 未中奖图片
+</span><span class="c1"></span><span class="p">)</span>
+
+<span class="c1">// 奖品概率范围
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">PrizeProbabilityRange</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Min</span> <span class="kt">int</span>
+    <span class="nx">Max</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="c1">// 奖品判断
+</span><span class="c1"></span><span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">currentProbabilityTotal</span>  <span class="kt">int</span>                                      <span class="c1">// 当前奖品总概率
+</span><span class="c1"></span>    <span class="nx">originalProbabilityTotal</span> <span class="kt">int</span>                                      <span class="c1">// 初始奖品总概率
+</span><span class="c1"></span>    <span class="nx">isDefault</span>                <span class="kt">bool</span>                                     <span class="c1">// 是否有兜底奖品
+</span><span class="c1"></span>    <span class="nx">defaultPrizeId</span>           <span class="p">=</span> <span class="nx">LosePrizeId</span>                            <span class="c1">// 兜底奖品ID或未中奖ID
+</span><span class="c1"></span>    <span class="nx">surplusTotal</span>             <span class="kt">int64</span>                                    <span class="c1">// 总剩余奖品数量
+</span><span class="c1"></span>    <span class="nx">prizeMap</span>                 <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">uint64</span><span class="p">]</span><span class="nx">PrizeProbabilityRange</span><span class="p">)</span> <span class="c1">// 奖品概率范围
+</span><span class="c1"></span>    <span class="nx">winPrizeId</span>               <span class="kt">uint64</span>                                   <span class="c1">// 中奖奖品ID
+</span><span class="c1"></span><span class="p">)</span>
+<span class="nx">prizes</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLotteryPrizeDao</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="nx">activityId</span><span class="p">)</span> <span class="c1">// 获取活动的所有上架奖品列表
+</span><span class="c1"></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">prizes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;尚未配置奖池&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">prizes</span> <span class="p">{</span>
+    <span class="c1">// 兜底奖品设置的 奖品概率 和 奖品数量 直接忽略，当做未中奖项处理
+</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IsDefault</span> <span class="p">{</span>
+        <span class="nx">isDefault</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="nx">defaultPrizeId</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span>
+        <span class="k">continue</span>
+    <span class="p">}</span>
+
+    <span class="nx">originalProbabilityTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Probability</span>
+
+    <span class="c1">// 数量为零的奖品不参与抽奖
+</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Surplus</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">continue</span>
+    <span class="p">}</span>
+
+    <span class="nx">surplusTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Surplus</span>
+    <span class="nx">min</span> <span class="o">:=</span> <span class="nx">currentProbabilityTotal</span>
+    <span class="nx">currentProbabilityTotal</span> <span class="o">+=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Probability</span>
+    <span class="nx">max</span> <span class="o">:=</span> <span class="nx">currentProbabilityTotal</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="nx">prizeMap</span><span class="p">[</span><span class="nx">v</span><span class="p">.</span><span class="nx">Id</span><span class="p">]</span> <span class="p">=</span> <span class="nx">PrizeProbabilityRange</span><span class="p">{</span>
+        <span class="nx">Min</span><span class="p">:</span> <span class="nx">min</span><span class="p">,</span>
+        <span class="nx">Max</span><span class="p">:</span> <span class="nx">max</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="nx">currentProbabilityTotal</span> <span class="p">&gt;</span> <span class="nx">MaxPrizeProbability</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;奖池设置异常，暂无法抽奖&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="nx">originalProbabilityTotal</span> <span class="o">==</span> <span class="nx">MaxPrizeProbability</span> <span class="o">&amp;&amp;</span> <span class="nx">currentProbabilityTotal</span> <span class="o">!=</span> <span class="nx">originalProbabilityTotal</span> <span class="p">{</span>
+    <span class="c1">// 如果设置了多个奖品的总中奖概率为100%，则必须设置其中一个奖品为兜底奖品，否则其中一个奖品数量变为0时，无法继续抽奖，这种属于运营操作错误
+</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;奖池设置异常，暂无法抽奖哟&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="nx">currentProbabilityTotal</span> <span class="p">&lt;</span> <span class="nx">MaxPrizeProbability</span> <span class="p">{</span>
+    <span class="nx">prizeMap</span><span class="p">[</span><span class="nx">defaultPrizeId</span><span class="p">]</span> <span class="p">=</span> <span class="nx">PrizeProbabilityRange</span><span class="p">{</span>
+        <span class="nx">Min</span><span class="p">:</span> <span class="nx">currentProbabilityTotal</span><span class="p">,</span>
+        <span class="nx">Max</span><span class="p">:</span> <span class="nx">MaxPrizeProbability</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">!</span><span class="nx">isDefault</span> <span class="o">&amp;&amp;</span> <span class="nx">surplusTotal</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;来的太晚啦，奖品已经派完&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 抽奖
+</span><span class="c1"></span><span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
+<span class="nx">random</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="nx">MaxPrizeProbability</span><span class="p">)</span>
+<span class="k">for</span> <span class="nx">prizeId</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">prizeMap</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Min</span> <span class="o">&lt;=</span> <span class="nx">random</span> <span class="o">&amp;&amp;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Max</span> <span class="o">&gt;=</span> <span class="nx">random</span> <span class="p">{</span>
+        <span class="nx">winPrizeId</span> <span class="p">=</span> <span class="nx">prizeId</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 再次确认中奖奖品是否有库存，没有库存则设置为兜底奖品或未中奖
+</span><span class="c1"></span><span class="k">if</span> <span class="nx">winPrizeId</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">winPrizeId</span> <span class="o">!=</span> <span class="nx">defaultPrizeId</span> <span class="p">{</span>
+    <span class="nx">prize</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLotteryPrizeDao</span><span class="p">.</span><span class="nf">GetById</span><span class="p">(</span><span class="nx">winPrizeId</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">prize</span><span class="p">.</span><span class="nx">Surplus</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">!</span><span class="nx">prize</span><span class="p">.</span><span class="nx">IsEnable</span> <span class="p">{</span>
+        <span class="nx">winPrizeId</span> <span class="p">=</span> <span class="nx">defaultPrizeId</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="nx">winPrizeId</span><span class="p">,</span> <span class="kc">nil</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2022-12-06
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/">实战案例</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8Bgo/">
+            <span class="next-text nav-default">围棋GO</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2022-12-06 10:05:13 \u002b0800 CST',
+        title: '小程序·刮刮卡抽奖简单设计',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
