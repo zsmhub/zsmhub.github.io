@@ -49,7 +49,7 @@
 <meta itemprop="name" content="小程序·刮刮卡抽奖简单设计">
 <meta itemprop="description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击"><meta itemprop="datePublished" content="2022-12-06T10:05:13&#43;08:00" />
 <meta itemprop="dateModified" content="2022-12-06T10:05:13&#43;08:00" />
-<meta itemprop="wordCount" content="3559">
+<meta itemprop="wordCount" content="3983">
 <meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="小程序·刮刮卡抽奖简单设计"/>
 <meta name="twitter:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 3559 字 </span>
+          <span class="more-meta"> 约 3983 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -145,6 +145,7 @@
     <li><a href="#微信小程序sdk">微信小程序SDK</a></li>
     <li><a href="#数据库表设计">数据库表设计</a></li>
     <li><a href="#抽奖代码逻辑">抽奖代码逻辑</a></li>
+    <li><a href="#生成抽奖码代码">生成抽奖码代码</a></li>
   </ul>
 </nav>
   </div>
@@ -754,6 +755,91 @@
         <span class="p">})</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">resp</span><span class="p">,</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="生成抽奖码代码">生成抽奖码代码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">MiniLuckyCodeAll</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Id</span>        <span class="kt">uint64</span>          <span class="s">`gorm:&#34;comment:全量抽奖码表id;&#34; json:&#34;id&#34;`</span>
+    <span class="nx">Code</span>      <span class="kt">string</span>          <span class="s">`gorm:&#34;type:char(6);not null;default:&#39;&#39;;comment:抽奖码;uniqueIndex:u_code;&#34; json:&#34;code&#34;`</span>
+    <span class="nx">IsEnable</span>  <span class="kt">bool</span>            <span class="s">`gorm:&#34;not null;default:1;comment:是否可用，0-已被用过，1-可用&#34; json:&#34;is_use&#34;`</span>
+<span class="p">}</span>
+
+<span class="c1">// 脚本一次性生成所需抽奖码入库
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">GenerateLotteryLuckyCode</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="p">(</span>
+        <span class="nx">prefix</span>        <span class="p">=</span> <span class="s">&#34;AA&#34;</span> <span class="c1">// 抽奖码总共6位，预先设定前两位数
+</span><span class="c1"></span>        <span class="nx">str</span>           <span class="p">=</span> <span class="s">&#34;ABCDEFGHIJKLMNPQRSTUVWXYZ123456789&#34;</span> <span class="c1">// 去掉容易混淆的字母O和数字0
+</span><span class="c1"></span>        <span class="nx">bytes</span>         <span class="p">=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+        <span class="nx">luckCodeSlice</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="nx">MiniLuckyCodeAll</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nx">startAt</span>       <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v1</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">bytes</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v2</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">bytes</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v3</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">bytes</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v4</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">bytes</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">code</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="nx">v1</span><span class="p">,</span> <span class="nx">v2</span><span class="p">,</span> <span class="nx">v3</span><span class="p">,</span> <span class="nx">v4</span><span class="p">}</span>
+                    <span class="nx">luckCodeSlice</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">luckCodeSlice</span><span class="p">,</span> <span class="nx">MiniLuckyCodeAll</span><span class="p">{</span>
+                        <span class="nx">Code</span><span class="p">:</span>     <span class="nx">prefix</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">code</span><span class="p">),</span>
+                        <span class="nx">IsEnable</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="p">})</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="c1">// 一次性入库一千多个抽奖码
+</span><span class="c1"></span>            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLuckyCodeDao</span><span class="p">.</span><span class="nf">BatchCreateLuckyCodeAll</span><span class="p">(</span><span class="nx">luckCodeSlice</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="p">}</span>
+
+            <span class="nx">luckCodeSlice</span> <span class="p">=</span> <span class="nx">luckCodeSlice</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Infof</span><span class="p">(</span><span class="s">&#34;开始时间：%s&#34;</span><span class="p">,</span> <span class="nx">startAt</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">))</span>
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Infof</span><span class="p">(</span><span class="s">&#34;结束时间：%s&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
