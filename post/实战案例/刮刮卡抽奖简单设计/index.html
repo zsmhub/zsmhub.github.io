@@ -49,7 +49,7 @@
 <meta itemprop="name" content="小程序·刮刮卡抽奖简单设计">
 <meta itemprop="description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击"><meta itemprop="datePublished" content="2022-12-06T10:05:13&#43;08:00" />
 <meta itemprop="dateModified" content="2022-12-06T10:05:13&#43;08:00" />
-<meta itemprop="wordCount" content="3983">
+<meta itemprop="wordCount" content="4014">
 <meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="小程序·刮刮卡抽奖简单设计"/>
 <meta name="twitter:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 3983 字 </span>
-          <span class="more-meta"> 预计阅读 8 分钟 </span>
+          <span class="more-meta"> 约 4014 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
     </header>
@@ -146,6 +146,7 @@
     <li><a href="#数据库表设计">数据库表设计</a></li>
     <li><a href="#抽奖代码逻辑">抽奖代码逻辑</a></li>
     <li><a href="#生成抽奖码代码">生成抽奖码代码</a></li>
+    <li><a href="#简单批量获取随机抽奖码sql">简单批量获取随机抽奖码SQL</a></li>
   </ul>
 </nav>
   </div>
@@ -841,6 +842,21 @@
     <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Infof</span><span class="p">(</span><span class="s">&#34;开始时间：%s&#34;</span><span class="p">,</span> <span class="nx">startAt</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">))</span>
     <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Infof</span><span class="p">(</span><span class="s">&#34;结束时间：%s&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">))</span>
 <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="简单批量获取随机抽奖码sql">简单批量获取随机抽奖码SQL</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="o">`</span><span class="n">mini_lucky_code_all</span><span class="o">`</span>
+<span class="k">WHERE</span> <span class="n">is_enable</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">RAND</span><span class="p">()</span> <span class="k">LIMIT</span> <span class="mi">10000</span>
 </code></pre></td></tr></table>
 </div>
 </div>
