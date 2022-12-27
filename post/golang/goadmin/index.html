@@ -49,7 +49,7 @@
 <meta itemprop="name" content="GoAdmin">
 <meta itemprop="description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"><meta itemprop="datePublished" content="2020-08-18T16:40:37&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-18T16:40:37&#43;08:00" />
-<meta itemprop="wordCount" content="275">
+<meta itemprop="wordCount" content="884">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="GoAdmin"/>
 <meta name="twitter:description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 275 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 884 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -143,6 +143,7 @@
   <ul>
     <li><a href="#准备工作">准备工作</a></li>
     <li><a href="#一些坑">一些坑</a></li>
+    <li><a href="#常用代码示例">常用代码示例</a></li>
   </ul>
 </nav>
   </div>
@@ -197,7 +198,108 @@ adm init -l cn
 </ul>
 </li>
 </ol>
+<h2 id="常用代码示例">常用代码示例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">GetOAMenuTable</span><span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="nx">table</span><span class="p">.</span><span class="nx">Table</span> <span class="p">{</span>
+    <span class="nx">m</span> <span class="o">:=</span> <span class="nx">table</span><span class="p">.</span><span class="nf">NewDefaultTable</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nf">DefaultConfigWithDriverAndConnection</span><span class="p">(</span><span class="s">&#34;mysql&#34;</span><span class="p">,</span> <span class="nx">table</span><span class="p">.</span><span class="nx">DefaultConnectionName</span><span class="p">))</span>
+    <span class="nx">tableName</span> <span class="o">:=</span> <span class="s">&#34;menu&#34;</span>
+    <span class="nx">title</span> <span class="o">:=</span> <span class="s">&#34;OA系统菜单&#34;</span>
 
+    <span class="nx">info</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">GetInfo</span><span class="p">()</span>
+
+    <span class="nx">info</span><span class="p">.</span><span class="nf">HideDetailButton</span><span class="p">()</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nf">HideFilterArea</span><span class="p">()</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nf">SetDefaultPageSize</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">).</span><span class="nf">FieldFilterable</span><span class="p">().</span><span class="nf">FieldSortable</span><span class="p">()</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单名&#34;</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">).</span><span class="nf">FieldFilterable</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">FilterType</span><span class="p">{</span><span class="nx">Operator</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">FilterOperatorLike</span><span class="p">})</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;父级菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;parent_id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">)</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端标识&#34;</span><span class="p">,</span> <span class="s">&#34;slug&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;排序&#34;</span><span class="p">,</span> <span class="s">&#34;order&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Int</span><span class="p">).</span><span class="nf">FieldSortable</span><span class="p">()</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;图标&#34;</span><span class="p">,</span> <span class="s">&#34;icon&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
+    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端跳转uri&#34;</span><span class="p">,</span> <span class="s">&#34;uri&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
+
+    <span class="nx">info</span><span class="p">.</span><span class="nf">SetTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nf">SetTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">).</span><span class="nf">SetSortField</span><span class="p">(</span><span class="s">&#34;order&#34;</span><span class="p">).</span><span class="nf">SetSortAsc</span><span class="p">()</span>
+
+    <span class="nx">formList</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">GetForm</span><span class="p">()</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Default</span><span class="p">).</span><span class="nf">FieldDisableWhenCreate</span><span class="p">()</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单名&#34;</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;父级菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;parent_id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;0&#34;</span><span class="p">)</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端标识&#34;</span><span class="p">,</span> <span class="s">&#34;slug&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;排序，小的排前面&#34;</span><span class="p">,</span> <span class="s">&#34;order&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Int</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Number</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">().</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;100&#34;</span><span class="p">)</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;图标&#34;</span><span class="p">,</span> <span class="s">&#34;icon&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端跳转uri&#34;</span><span class="p">,</span> <span class="s">&#34;uri&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
+
+    <span class="c1">// 增改hook
+</span><span class="c1"></span>    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetPostHook</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">DelCache</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">})</span>
+
+    <span class="c1">// 删除hook
+</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Path</span><span class="p">(),</span> <span class="s">&#34;/admin/delete/oa_menu&#34;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">_</span> <span class="p">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">DelCache</span><span class="p">()</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
+
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nf">SetTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nx">m</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
