@@ -49,7 +49,7 @@
 <meta itemprop="name" content="小程序·刮刮卡抽奖简单设计">
 <meta itemprop="description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击"><meta itemprop="datePublished" content="2022-12-06T10:05:13&#43;08:00" />
 <meta itemprop="dateModified" content="2022-12-06T10:05:13&#43;08:00" />
-<meta itemprop="wordCount" content="4014">
+<meta itemprop="wordCount" content="4081">
 <meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="小程序·刮刮卡抽奖简单设计"/>
 <meta name="twitter:description" content="简单说明 刮刮卡&amp;幸运大转盘抽奖的流程： 用户获取刮刮卡上的抽奖码 在小程序上录入抽奖码获取抽奖机会（可累加多次抽奖机会后再抽奖） 用户点击"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 4014 字 </span>
+          <span class="more-meta"> 约 4081 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -603,6 +603,10 @@
 </span><span class="lnt">150
 </span><span class="lnt">151
 </span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">activityId</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">1</span> <span class="c1">// 抽奖活动ID，支持多个抽奖活动的代码复用
@@ -635,6 +639,8 @@
 
 <span class="c1">// 获取抽奖结果
 </span><span class="c1"></span><span class="kd">func</span> <span class="nf">Result</span><span class="p">()</span> <span class="p">(</span><span class="kt">uint64</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// todo 此处先加上抽奖用户个人的分布式互斥锁，避免该用户同时触发多次抽奖
+</span><span class="c1"></span>
     <span class="c1">// 奖品判断
 </span><span class="c1"></span>    <span class="kd">var</span> <span class="p">(</span>
         <span class="nx">currentProbabilityTotal</span>  <span class="kt">int</span>                                      <span class="c1">// 当前奖品总概率
@@ -700,6 +706,8 @@
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// todo 此处先加上全局的分布式互斥锁，避免高并发时奖品库存超额
+</span><span class="c1"></span>
     <span class="c1">// 再次确认中奖奖品是否有库存，没有库存则设置为兜底奖品或未中奖
 </span><span class="c1"></span>    <span class="k">if</span> <span class="nx">winPrizeId</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">winPrizeId</span> <span class="o">!=</span> <span class="nx">defaultPrizeId</span> <span class="p">{</span>
         <span class="nx">prize</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">MiniLotteryPrizeDao</span><span class="p">.</span><span class="nf">GetById</span><span class="p">(</span><span class="nx">winPrizeId</span><span class="p">)</span>
