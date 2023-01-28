@@ -14,7 +14,7 @@
       <pubDate>Tue, 19 May 2020 21:18:05 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/ide/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%B9%B3%E5%8F%B0/</guid>
-      <description>code SourceTree TortoiseSvn / TortoiseGit IDE sublime visual studio code phpStorm hbuilder gvim / macvim database powerdesigner / workbench navicat SQLyog sequelPro datagrip DBeaver Robot 3T (MongoDB) ssh windows: SecureCRT MacOs: iTerm2 CI/CD gitlab/github Jenkins Ant phpunit api 接口平台 ApiDoc：是一款可以有源代码中的注释直接自动生成ap</description>
+      <description>code SourceTree TortoiseSvn / TortoiseGit IDE sublime visual studio code phpStorm hbuilder gvim / macvim database powerdesigner / workbench navicat SQLyog sequelPro datagrip DBeaver Robot 3T (MongoDB) ssh windows: SecureCRT MacOs: iTerm2 1 2 3 4 5 6 # macos iterm2代理配置 &amp;gt; vi subl ~/.bash_profile，加</description>
     </item>
     
     <item>
