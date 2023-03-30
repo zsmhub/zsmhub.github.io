@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AI on ZsmHub - Blog</title>
-    <link>https://zsmhub.github.io/tags/ai/</link>
-    <description>Recent content in AI on ZsmHub - Blog</description>
+    <title>stable-diffusion-webui on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/stable-diffusion-webui/</link>
+    <description>Recent content in stable-diffusion-webui on ZsmHub - Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 30 Mar 2023 10:01:29 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Mar 2023 10:01:29 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/stable-diffusion-webui/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MAC搭建stable Diffusion Webui</title>
       <link>https://zsmhub.github.io/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/</link>
@@ -15,15 +15,6 @@
       
       <guid>https://zsmhub.github.io/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/</guid>
       <description>mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 汉化教程 打开stable diffusion webui，进入&amp;quo</description>
-    </item>
-    
-    <item>
-      <title>玩转AI WORLD</title>
-      <link>https://zsmhub.github.io/post/ai/%E7%8E%A9%E8%BD%ACai/</link>
-      <pubDate>Thu, 02 Mar 2023 15:14:30 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/ai/%E7%8E%A9%E8%BD%ACai/</guid>
-      <description>一、AI写文案 ChatGPT: https://chat.openai.com/chat 二、AI生成图片 AI绘图平台·midjourney 先用邮箱在 discord 社交平台 上注册一个账号 访问 https://www.midjo</description>
     </item>
     
   </channel>

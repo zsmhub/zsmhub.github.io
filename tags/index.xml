@@ -7,22 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 09 Mar 2023 15:08:49 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Mar 2023 10:01:29 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://zsmhub.github.io/tags/ai/</link>
+      <pubDate>Thu, 30 Mar 2023 10:01:29 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stable-diffusion-webui</title>
+      <link>https://zsmhub.github.io/tags/stable-diffusion-webui/</link>
+      <pubDate>Thu, 30 Mar 2023 10:01:29 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/tags/stable-diffusion-webui/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>库存扣减</title>
       <link>https://zsmhub.github.io/tags/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F/</link>
       <pubDate>Thu, 09 Mar 2023 15:08:49 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/tags/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AI</title>
-      <link>https://zsmhub.github.io/tags/ai/</link>
-      <pubDate>Thu, 02 Mar 2023 15:14:30 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/tags/ai/</guid>
       <description></description>
     </item>
     
