@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>MAC搭建stable Diffusion Webui - ZsmHub - Blog</title>
+  <title>mac搭建Stable Diffusion Webui - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 汉化教程 打开stable diffusion webui，进入&amp;quo" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com https://huggingface.co prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 LoRA 可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加入 LoRA 引" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -39,20 +39,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="MAC搭建stable Diffusion Webui" />
-<meta property="og:description" content="mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 汉化教程 打开stable diffusion webui，进入&quo" />
+<meta property="og:title" content="mac搭建Stable Diffusion Webui" />
+<meta property="og:description" content="mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com https://huggingface.co prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 LoRA 可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加入 LoRA 引" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-03-30T10:01:29&#43;08:00" />
 <meta property="article:modified_time" content="2023-03-30T10:01:29&#43;08:00" />
 
-<meta itemprop="name" content="MAC搭建stable Diffusion Webui">
-<meta itemprop="description" content="mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 汉化教程 打开stable diffusion webui，进入&quo"><meta itemprop="datePublished" content="2023-03-30T10:01:29&#43;08:00" />
+<meta itemprop="name" content="mac搭建Stable Diffusion Webui">
+<meta itemprop="description" content="mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com https://huggingface.co prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 LoRA 可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加入 LoRA 引"><meta itemprop="datePublished" content="2023-03-30T10:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2023-03-30T10:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="492">
+<meta itemprop="wordCount" content="770">
 <meta itemprop="keywords" content="AI,stable-diffusion-webui," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="MAC搭建stable Diffusion Webui"/>
-<meta name="twitter:description" content="mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 汉化教程 打开stable diffusion webui，进入&quo"/>
+<meta name="twitter:title" content="mac搭建Stable Diffusion Webui"/>
+<meta name="twitter:description" content="mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com https://huggingface.co prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 LoRA 可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加入 LoRA 引"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -123,15 +123,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">MAC搭建stable Diffusion Webui</h1>
+      <h1 class="post-title">mac搭建Stable Diffusion Webui</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2023-03-30 </span>
         <div class="post-category">
             <a href="/categories/ai/"> AI </a>
             </div>
-          <span class="more-meta"> 约 492 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 770 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -145,6 +145,13 @@
     <li><a href="#启动命令">启动命令</a></li>
     <li><a href="#绘画模型下载平台">绘画模型下载平台</a></li>
     <li><a href="#prompt-生成器">prompt 生成器</a></li>
+    <li><a href="#lora">LoRA</a>
+      <ul>
+        <li><a href="#如何安装-lora-到stable-diffusion-webui">如何安装 LoRA 到Stable Diffusion WebUI</a></li>
+        <li><a href="#如何使用lora">如何使用LoRA</a></li>
+        <li><a href="#同时套用两个lora">同时套用两个LoRA</a></li>
+      </ul>
+    </li>
     <li><a href="#汉化教程">汉化教程</a></li>
   </ul>
 </nav>
@@ -167,8 +174,35 @@
 <p>模型，别人训练好的绘画范本</p>
 </blockquote>
 <p><a href="https://civitai.com">https://civitai.com</a></p>
+<p><a href="https://huggingface.co/models">https://huggingface.co</a></p>
 <h2 id="prompt-生成器">prompt 生成器</h2>
 <p><a href="http://www.atoolbox.net/Category.php?Id=32">http://www.atoolbox.net/Category.php?Id=32</a></p>
+<h2 id="lora">LoRA</h2>
+<p>可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加入 LoRA 引用，即能大幅改变算图的结果，甚至也能同时套用多个 LoRA 来取得混合风格。使用上比单纯更换 model 或作 checkpoint merge 更有弹性且多变。</p>
+<h3 id="如何安装-lora-到stable-diffusion-webui">如何安装 LoRA 到Stable Diffusion WebUI</h3>
+<ol>
+<li>
+<p>将下载好的LoRA 档案放入 stable-diffusion-webui/models/Lora 资料夹中即可。</p>
+</li>
+<li>
+<p>回到WebUI，点一下Refresh 就能看到新增的LoRA</p>
+<p><img src="/images/2023/WX20230330-143147@2x.png" alt="LoRA"></p>
+</li>
+</ol>
+<h3 id="如何使用lora">如何使用LoRA</h3>
+<ol>
+<li>
+<p>点想要套用的LoRA，WebUI 会自动把LoRA 的名称加入Prompt 中。如果熟悉名称也能直接键入节省时间</p>
+<p><img src="/images/2023/WX20230330-143327@2x.png" alt="img"></p>
+</li>
+<li>
+<p>LoRA 名称冒号旁边的数字是权重，可以想像成套用的比例，数字越大效果越明显，反之则越弱。</p>
+<p><img src="/images/2023/WX20230330-143418@2x.png" alt="img"></p>
+</li>
+</ol>
+<h3 id="同时套用两个lora">同时套用两个LoRA</h3>
+<p>只需调整两个 LoRA 的权重比例即可。</p>
+<p>如：a girl, pink hair, <a href="lora:yaeMikoRealistic_yaemikoMixed:0.75">lora:yaeMikoRealistic_yaemikoMixed:0.75</a>, <a href="lora:koreanDollLikeness_v15:0.25">lora:koreanDollLikeness_v15:0.25</a></p>
 <h2 id="汉化教程">汉化教程</h2>
 <ol>
 <li>打开stable diffusion webui，进入&quot;Extensions&quot;选项卡</li>
@@ -221,7 +255,7 @@
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: '2023-03-30 10:01:29 \u002b0800 CST',
-        title: 'MAC搭建stable Diffusion Webui',
+        title: 'mac搭建Stable Diffusion Webui',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
