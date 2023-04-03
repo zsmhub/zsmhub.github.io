@@ -14,7 +14,7 @@
       <pubDate>Thu, 30 Mar 2023 10:01:29 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/</guid>
-      <description>mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com https://huggingface.co prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 LoRA 可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加入 LoRA 引</description>
+      <description>mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 2 cd ~/go/src/zsmhub/stable-diffusion-webui ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com https://huggingface.co prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 LoRA 可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加</description>
     </item>
     
   </channel>
