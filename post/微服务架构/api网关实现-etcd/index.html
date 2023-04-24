@@ -203,7 +203,7 @@
 <p>租约模式</p>
 <p>etcd 是一个 分布式键值存储系统，在一个集群中，如果一个节点配置了某些属性，集群中的每个节点都可以使用完整的存档，我们每次在网关节点后的计算节点集群加一个服务，只需要向etcd 注册 该服务（其实就是 存一个值）然后向etcd 发送心跳，当etcd 没有检测到心跳就会 把这个键值对 删了(这整个动作是etcd里的租约模式)，网关那边 就只需要 watch 这个 key ，就能够知道 所有服务的所有动态了。</p>
 <h2 id="启动服务端">启动服务端</h2>
-<p>./etcd &ndash;listen-client-urls ‘http://0.0.0.0:2379’ &ndash;advertise-client-urls ‘http://0.0.0.0:2379’</p>
+<p>./etcd1 &ndash;listen-client-urls ‘http://0.0.0.0:2379’ &ndash;advertise-client-urls ‘http://0.0.0.0:2379’</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
