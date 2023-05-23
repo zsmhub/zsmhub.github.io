@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zsmhub.github.io/categories/</loc>
+    <lastmod>2023-05-23T14:15:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/</loc>
+    <lastmod>2023-05-23T14:15:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/</loc>
+    <lastmod>2023-05-23T14:15:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/</loc>
+    <lastmod>2023-05-23T14:15:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2023-05-23T14:15:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/%E8%A1%97%E6%9C%BA/</loc>
+    <lastmod>2023-05-23T14:15:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%A1%97%E6%9C%BA%E6%B8%B8%E6%88%8F/</loc>
+    <lastmod>2023-05-23T14:15:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://zsmhub.github.io/tags/ai/</loc>
     <lastmod>2023-03-30T10:01:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -16,13 +65,6 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2023-03-30T10:01:29+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://zsmhub.github.io/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/</loc>
     <lastmod>2023-03-30T10:01:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -30,28 +72,7 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2023-03-30T10:01:29+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://zsmhub.github.io/tags/stable-diffusion-webui/</loc>
-    <lastmod>2023-03-30T10:01:29+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2023-03-30T10:01:29+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/</loc>
     <lastmod>2023-03-30T10:01:29+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -150,13 +171,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8B/</loc>
-    <lastmod>2022-12-06T08:54:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-12-06T08:54:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
