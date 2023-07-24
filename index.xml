@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 15 Jul 2023 16:29:19 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Jul 2023 11:12:57 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>框架 Goframe</title>
+      <link>https://zsmhub.github.io/post/golang/%E6%A1%86%E6%9E%B6-goframe/</link>
+      <pubDate>Mon, 24 Jul 2023 11:12:57 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/golang/%E6%A1%86%E6%9E%B6-goframe/</guid>
+      <description>官方文档</description>
+    </item>
+    
     <item>
       <title>保险相关</title>
       <link>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E4%BF%9D%E9%99%A9%E7%9B%B8%E5%85%B3/</link>
@@ -752,7 +761,7 @@
       <pubDate>Sun, 26 Jul 2020 09:17:00 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/%E6%A1%86%E6%9E%B6-echo%E6%A1%86%E6%9E%B6/</guid>
-      <description>Echo 入门示例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 package main import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/labstack/echo/v4&amp;#34; &amp;#34;github.com/labstack/echo/v4/middleware&amp;#34; ) func main() { // Echo instance e := echo.New() // Middleware e.Use(middleware.Logger()) e.Use(middleware.Recover()) // Routes e.GET(&amp;#34;/&amp;#34;, hello) // Start server // e.Logger.Fatal(e.Start(&amp;#34;:1323&amp;#34;)) // 平</description>
+      <description>官方文档 Echo 入门示例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 package main import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/labstack/echo/v4&amp;#34; &amp;#34;github.com/labstack/echo/v4/middleware&amp;#34; ) func main() { // Echo instance e := echo.New() // Middleware e.Use(middleware.Logger()) e.Use(middleware.Recover()) // Routes e.GET(&amp;#34;/&amp;#34;, hello) // Start server</description>
     </item>
     
     <item>
@@ -1103,7 +1112,7 @@
       <pubDate>Wed, 01 Apr 2020 22:02:25 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/golang/%E6%A1%86%E6%9E%B6-iris%E6%A1%86%E6%9E%B6/</guid>
-      <description>Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。 Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。 Iris 为您提供构建面向服务的应用程序的结构。</description>
+      <description>官方文档 Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。 Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。 Iris 为您提供构建面向服务的应用程序</description>
     </item>
     
     <item>
