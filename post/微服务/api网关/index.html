@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>OLTP和OLAP - ZsmHub - Blog</title>
+  <title>API Gateway - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/database/oltp%E5%92%8Colap/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,20 +39,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="OLTP和OLAP" />
-<meta property="og:description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型" />
+<meta property="og:title" content="API Gateway" />
+<meta property="og:description" content="API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/oltp%E5%92%8Colap/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-10-10T09:13:08&#43;08:00" />
-<meta property="article:modified_time" content="2020-10-10T09:13:08&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-05-17T20:05:18&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-28T20:05:18&#43;08:00" />
 
-<meta itemprop="name" content="OLTP和OLAP">
-<meta itemprop="description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型"><meta itemprop="datePublished" content="2020-10-10T09:13:08&#43;08:00" />
-<meta itemprop="dateModified" content="2020-10-10T09:13:08&#43;08:00" />
-<meta itemprop="wordCount" content="293">
-<meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="OLTP和OLAP"/>
-<meta name="twitter:description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型"/>
+<meta itemprop="name" content="API Gateway">
+<meta itemprop="description" content="API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的"><meta itemprop="datePublished" content="2020-05-17T20:05:18&#43;08:00" />
+<meta itemprop="dateModified" content="2021-04-28T20:05:18&#43;08:00" />
+<meta itemprop="wordCount" content="922">
+<meta itemprop="keywords" content="API网关," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="API Gateway"/>
+<meta name="twitter:description" content="API 网关简介 随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -123,15 +123,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">OLTP和OLAP</h1>
+      <h1 class="post-title">API Gateway</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-10-10 </span>
+        <span class="post-time"> 2020-05-17 </span>
         <div class="post-category">
-            <a href="/categories/database/"> database </a>
+            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 293 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 922 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -141,16 +141,89 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#oltp-vs-olap">OLTP vs OLAP</a></li>
+    <li><a href="#api-网关简介">API 网关简介</a></li>
+    <li><a href="#api-网关功能">API 网关功能</a></li>
+    <li><a href="#网关生态">网关生态</a></li>
+    <li><a href="#接口限流方式">接口限流方式</a></li>
+    <li><a href="#熔断降级">熔断降级</a></li>
+    <li><a href="#api-网关实现的注意事项">API 网关实现的注意事项</a></li>
+    <li><a href="#遇到的坑">遇到的坑</a></li>
+    <li><a href="#项目中常见报错">项目中常见报错</a></li>
+    <li><a href="#学习文章">学习文章</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。</p>
-<h2 id="oltp-vs-olap">OLTP vs OLAP</h2>
-<p>常见的 Oracle、MySQL 等数据库都属于 OLTP 类型，也就是 On-Line Transaction Processing，联机事务处理。OLTP 数据库处理请求和数据时对延迟要求很高，并且要保证数据的完整性和一致性。此类数据库是面向最终客户的，需要具备 7x24 不间断服务能力。</p>
-<p>OLAP 的含义是联机分析数据处理，这种数据库需要存储海量、但很少更新修改的数据，主要用于多维度历史数据分析统计目的。出于这种需求，OLAP 数据库需要确保足够高的查询效率，至少 90% 的请求要在很短的时间内返回。另一方面，OLAP 数据库并不是直接面对最终客户，而是更关注数据吞吐。</p>
+      <h2 id="api-网关简介">API 网关简介</h2>
+<p>随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的问题，例如：如何让调用方快速接入、如何让业务方安全地对外开放能力，如何应对和控制业务洪峰调用等等。于是就诞生了一个隔离企业内部业务系统和外部系统调用的屏障 - API网关，它负责在上层抽象出各业务系统需要的通用功能，例如：鉴权、限流、ACL、降级等。另外随着近年来微服务的流行，API网关已经成为一个微服务架构中的标配组件。</p>
+<p>位于客户端和服务器之间，充当从客户端到服务器的反向代理路由请求。与面向对象设计的模式相似，它为封装底层系统架构的 API 提供了一个单一的入口，称为 API 网关。</p>
+<p><img src="/images/2021/cf57a057b7e2c4a33e9b6f65ff322fc0.png" alt="API 网关"></p>
+<h2 id="api-网关功能">API 网关功能</h2>
+<p>网关封装了底层系统并与客户端分离，为客户端提供了与微服务系统进行通信的单个入口点。</p>
+<p>整合 API 网关整合了一些边缘的重复功能，无需让每个微服务都实现它们。它包括如下功能：</p>
+<ul>
+<li>认证和授权</li>
+<li>服务发现集成</li>
+<li>缓存响应结果</li>
+<li>重试策略、熔断器、QoS</li>
+<li>限速和节流</li>
+<li>负载均衡</li>
+<li>log 日志、链路追踪、关联</li>
+<li>Header、query 字符串 以及 claims 转义</li>
+<li>IP 白名单</li>
+<li>IAM</li>
+<li>集中式日志管理（服务之间的 transaction ID、错误日志等）</li>
+<li>身份的提供方，验证与授权</li>
+</ul>
+<h2 id="网关生态">网关生态</h2>
+<p>网关生态主要包含控制台、网关核心、网关统计与监控</p>
+<ul>
+<li>控制台主要对API生命周期进行管理，以及ACL、流量管控等功能；</li>
+<li>网关核心主要处理API调用，包含鉴权、限流、路由、协议转换等功能；</li>
+<li>统计与监控模块主要完成API调用的统计，同时提供监控功能和报警功能</li>
+</ul>
+<h2 id="接口限流方式">接口限流方式</h2>
+<ul>
+<li>令牌桶限流</li>
+<li>漏桶限流</li>
+</ul>
+<h2 id="熔断降级">熔断降级</h2>
+<p>由于我们经常遇到调用后端接口超时，或者异常的情况，后端服务无法立即恢复，这种情况下再将请求发到后端已没有意义。于是我们进行熔断降级处理。</p>
+<h2 id="api-网关实现的注意事项">API 网关实现的注意事项</h2>
+<ul>
+<li>可能产生的单点故障或者瓶颈</li>
+<li>由于通过 API 网关进行了额外的网络跳转以及复杂性风险，响应时间增长了。</li>
+</ul>
+<h2 id="遇到的坑">遇到的坑</h2>
+<ol>
+<li>接口跨域问题</li>
+</ol>
+<p>网关层开启了 cors 处理，其他业务微服务则不需要开启 cors 处理，否则浏览器会报 cors error</p>
+<h2 id="项目中常见报错">项目中常见报错</h2>
+<ol>
+<li>
+<p>Internal Server Error</p>
+<ul>
+<li>业务逻辑代码中，代码有 bug 导致程序报 panic</li>
+<li>如果项目部署在 K8S 上，可能是 gateway 服务的某个 Pod 挂了</li>
+</ul>
+</li>
+<li>
+<p>Bad Gateway</p>
+<ul>
+<li>请求路由不存在，没有在网关服务注册</li>
+</ul>
+</li>
+<li>
+<p>remote http://127.0.0.1:8081 unreachable, could not forward: EOF</p>
+<ul>
+<li>8081端口对应的服务挂了</li>
+</ul>
+</li>
+</ol>
+<h2 id="学习文章">学习文章</h2>
+<p><a href="https://fredal.xin/build-api-gateway">建设微服务API网关的一些实践</a></p>
 
     </div>
 
@@ -162,7 +235,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-10-10
+        2021-04-28
         
     </span>
   </p>
@@ -174,16 +247,16 @@
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/database/">database</a>
+          <a href="/tags/api%E7%BD%91%E5%85%B3/">API网关</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+        <a class="prev" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A4%AB%E5%A6%BB%E4%B9%8B%E9%97%B4/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">微服务</span>
+            <span class="prev-text nav-default">夫妻之间</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%82%9F%E9%81%93/">
-            <span class="next-text nav-default">悟道</span>
+        <a class="next" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/restfulsoaprpcsoa%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/">
+            <span class="next-text nav-default">Restful、SOAP、RPC、gRPC、SOA、微服务之间的区别</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -196,8 +269,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-10-10 09:13:08 \u002b0800 CST',
-        title: 'OLTP和OLAP',
+        id: '2020-05-17 20:05:18 \u002b0800 CST',
+        title: 'API Gateway',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

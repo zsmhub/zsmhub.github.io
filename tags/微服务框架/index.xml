@@ -10,19 +10,19 @@
     <lastBuildDate>Fri, 04 Jun 2021 15:43:03 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go Zero</title>
-      <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-zero/</link>
+      <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-zero/</link>
       <pubDate>Fri, 04 Jun 2021 15:43:03 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-zero/</guid>
+      <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-zero/</guid>
       <description>官方文档 点击前往 启动服务 1 2 // API 或 rpc 代码运行 cd project/service/user/cmd/api &amp;amp;&amp;amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如</description>
     </item>
     
     <item>
       <title>Go Micro</title>
-      <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-micro/</link>
+      <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-micro/</link>
       <pubDate>Fri, 18 Dec 2020 09:30:23 +0800</pubDate>
       
-      <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/go-micro/</guid>
+      <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-micro/</guid>
       <description>micro 常用的几个命令 micro server //启动服务端 micro login //登录服务 user: admin pass: micro micro new XXX //新建服务 micro services //服务列表 micro run XXX //挂载服务 micro status //查看服务状态 micro logs XXX //</description>
     </item>
     

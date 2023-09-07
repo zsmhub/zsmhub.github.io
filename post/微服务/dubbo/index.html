@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是开源的一款高性能、轻量级的开源 Java RPC 框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/" />
@@ -35,27 +35,24 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Dubbo" />
-<meta property="og:description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智" />
+<meta property="og:description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是开源的一款高性能、轻量级的开源 Java RPC 框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/" />
-<meta property="article:published_time" content="2020-05-16T10:15:48+08:00" />
-<meta property="article:modified_time" content="2020-05-16T10:15:48+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-05-16T10:15:48&#43;08:00" />
+<meta property="article:modified_time" content="2020-05-16T10:15:48&#43;08:00" />
+
 <meta itemprop="name" content="Dubbo">
-<meta itemprop="description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智">
-<meta itemprop="datePublished" content="2020-05-16T10:15:48&#43;08:00" />
+<meta itemprop="description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是开源的一款高性能、轻量级的开源 Java RPC 框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及"><meta itemprop="datePublished" content="2020-05-16T10:15:48&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-16T10:15:48&#43;08:00" />
-<meta itemprop="wordCount" content="438">
-
-
-
+<meta itemprop="wordCount" content="600">
 <meta itemprop="keywords" content="dubbo," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dubbo"/>
-<meta name="twitter:description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智"/>
+<meta name="twitter:description" content="Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是开源的一款高性能、轻量级的开源 Java RPC 框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 438 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 600 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -145,6 +142,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#dubbo-简介">Dubbo 简介</a></li>
+    <li><a href="#dubbo-和-spring-cloud-的区别">Dubbo 和 Spring Cloud 的区别</a></li>
     <li><a href="#dubbo-主要特性">Dubbo 主要特性</a></li>
     <li><a href="#dubbo-支持多种注册中心">Dubbo 支持多种注册中心</a></li>
     <li><a href="#官网链接">官网链接</a></li>
@@ -154,7 +152,12 @@
 </div>
     <div class="post-content">
       <h2 id="dubbo-简介">Dubbo 简介</h2>
-<p>Apache Dubbo (incubating) |ˈdʌbəʊ| 是阿里巴巴公司开源的一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。</p>
+<p>Apache Dubbo (incubating) |ˈdʌbəʊ| 是开源的一款高性能、轻量级的开源 Java RPC 框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。</p>
+<p>2018年2月9日，Apache 基金会的邮件列表上发起了讨论是否接纳阿里的 Dubbo 项目进入 Apache 孵化器的投票。</p>
+<p>2018年2月15日，邮件列表显示，Dubbo 获得了 14 张赞成票，在无弃权和反对票的情况下，正式通过投票，顺利成为 Apache 基金会孵化项目。</p>
+<h2 id="dubbo-和-spring-cloud-的区别">Dubbo 和 Spring Cloud 的区别</h2>
+<p>Dubbo 的定位是专注在 RPC 领域，成为微服务生态体系中的一个重要组件。</p>
+<p>Spring Cloud 的定位是成为一个微服务的全面解决方案。</p>
 <h2 id="dubbo-主要特性">Dubbo 主要特性</h2>
 <ul>
 <li>面向接口代理的高性能RPC调用</li>
@@ -202,28 +205,14 @@
     <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
   </p>
 </div>
-<div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">赞赏支持</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
-        <span>微信打赏</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
-        <span>支付宝打赏</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
           <a href="/tags/dubbo/">dubbo</a>
           </div>
       <nav class="post-nav">
         <a class="prev" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/restfulsoaprpcsoa%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Restful、SOAP、RPC、SOA、微服务之间的区别</span>
+            <span class="prev-text nav-default">Restful、SOAP、RPC、gRPC、SOA、微服务之间的区别</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%A4%A7%E7%89%9B%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/">
@@ -240,7 +229,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-05-16 10:15:48 \x2b0800 CST',
+        id: '2020-05-16 10:15:48 \u002b0800 CST',
         title: 'Dubbo',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
@@ -264,7 +253,7 @@
       <div class="social-links">
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
-  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -273,16 +262,16 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    主题 -
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy; 
-    2019 - 
-    2020
+    &copy;
+    2019 -
+    2023
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

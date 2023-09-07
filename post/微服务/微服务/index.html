@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>OLTP和OLAP - ZsmHub - Blog</title>
+  <title>微服务 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/database/oltp%E5%92%8Colap/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,20 +39,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="OLTP和OLAP" />
-<meta property="og:description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型" />
+<meta property="og:title" content="微服务" />
+<meta property="og:description" content="为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/oltp%E5%92%8Colap/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-10-10T09:13:08&#43;08:00" />
-<meta property="article:modified_time" content="2020-10-10T09:13:08&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-10-12T11:38:53&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-24T11:38:53&#43;08:00" />
 
-<meta itemprop="name" content="OLTP和OLAP">
-<meta itemprop="description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型"><meta itemprop="datePublished" content="2020-10-10T09:13:08&#43;08:00" />
-<meta itemprop="dateModified" content="2020-10-10T09:13:08&#43;08:00" />
-<meta itemprop="wordCount" content="293">
-<meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="OLTP和OLAP"/>
-<meta name="twitter:description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型"/>
+<meta itemprop="name" content="微服务">
+<meta itemprop="description" content="为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们"><meta itemprop="datePublished" content="2020-10-12T11:38:53&#43;08:00" />
+<meta itemprop="dateModified" content="2021-04-24T11:38:53&#43;08:00" />
+<meta itemprop="wordCount" content="903">
+<meta itemprop="keywords" content="微服务," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="微服务"/>
+<meta name="twitter:description" content="为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -123,15 +123,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">OLTP和OLAP</h1>
+      <h1 class="post-title">微服务</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-10-10 </span>
+        <span class="post-time"> 2020-10-12 </span>
         <div class="post-category">
-            <a href="/categories/database/"> database </a>
+            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 293 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 903 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -141,16 +141,73 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#oltp-vs-olap">OLTP vs OLAP</a></li>
+    <li><a href="#为什么要用微服务">为什么要用微服务</a></li>
+    <li><a href="#为什么说做好微服务很难">为什么说做好微服务很难</a></li>
+    <li><a href="#微服务系统如何拆分">微服务系统如何拆分</a></li>
+    <li><a href="#微服务网关">微服务网关</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。</p>
-<h2 id="oltp-vs-olap">OLTP vs OLAP</h2>
-<p>常见的 Oracle、MySQL 等数据库都属于 OLTP 类型，也就是 On-Line Transaction Processing，联机事务处理。OLTP 数据库处理请求和数据时对延迟要求很高，并且要保证数据的完整性和一致性。此类数据库是面向最终客户的，需要具备 7x24 不间断服务能力。</p>
-<p>OLAP 的含义是联机分析数据处理，这种数据库需要存储海量、但很少更新修改的数据，主要用于多维度历史数据分析统计目的。出于这种需求，OLAP 数据库需要确保足够高的查询效率，至少 90% 的请求要在很短的时间内返回。另一方面，OLAP 数据库并不是直接面对最终客户，而是更关注数据吞吐。</p>
+      <h2 id="为什么要用微服务">为什么要用微服务</h2>
+<p>小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。</p>
+<h2 id="为什么说做好微服务很难">为什么说做好微服务很难</h2>
+<p>要想做好微服务，我们需要理解和掌握的知识点非常多，从几个维度上来说：</p>
+<blockquote>
+<p>基本功能层面</p>
+</blockquote>
+<ol>
+<li>并发控制&amp;限流，避免服务被突发流量击垮</li>
+<li>服务注册与服务发现，确保能够动态侦测增减的节点</li>
+<li>负载均衡，需要根据节点承受能力分发流量</li>
+<li>超时控制，避免对已超时请求做无用功</li>
+<li>熔断设计，快速失败，保障故障节点的恢复能力</li>
+</ol>
+<blockquote>
+<p>高阶功能层面</p>
+</blockquote>
+<ol>
+<li>请求认证，确保每个用户只能访问自己的数据</li>
+<li>链路追踪，用于理解整个系统和快速定位特定请求的问题</li>
+<li>日志，用于数据收集和问题定位</li>
+<li>可观测性，没有度量就没有优化</li>
+</ol>
+<h2 id="微服务系统如何拆分">微服务系统如何拆分</h2>
+<ul>
+<li>先粗后细，切忌过细，切忌一个请求一个服务</li>
+<li>横向拆分，而非纵向，我们一般不会超过三层</li>
+<li>单向调用，严禁循环调用</li>
+<li>禁止接口类型透传，如 model 层的一个结构体，三个微服务都用到了，这样会导致代码耦合</li>
+<li>没有依赖关系的串行调用改为并行调用</li>
+</ul>
+<h2 id="微服务网关">微服务网关</h2>
+<p>微服务网关的作用是在用户第一个网关服务器，你按照业务服务相关需求，给网关分流，相比云主机厂商提供的负载均衡器，强大在于你可以根据自己业务去分流，同时还以可以实现鉴权、校验、聚合、缓存等自定义服务，而云主机的负载均衡器只是一个简单按照流量给你负载均衡请求，不具有自定义编程性质。</p>
+<blockquote>
+<p>简单实现流程：</p>
+</blockquote>
+<ol>
+<li>启动一个微服务网关，用于注册和发现服务，提供统一的对外域名和端口，如 127.0.0.1:80</li>
+<li>将大项目拆分成多个微小服务，如商城订单服务、商城商品服务，每个服务对应 『不同域名』或『相同域名不同端口』，如 127.0.0.1:81 和 127.0.0.1:82</li>
+<li>前端调用后端接口时，直接请求微服务网关（如 127.0.0.1:80），然后微服务网关再根据路由归属，将请求转发到对应微服务模块的 域名+端口 下</li>
+<li>最后前端的请求会在对应微服务模块下处理后，将响应结果转发到微服务网关，再由微服务网关返回响应结果给前端</li>
+</ol>
+<blockquote>
+<p>如果不用微服务网关，则另有两种选择：</p>
+</blockquote>
+<ol>
+<li>选择一： 不同的服务，使用不同的域名访问 （前端需要对接多个域名）</li>
+<li>选择二： 不同的服务使用不同的路由前缀，使用 nginx 来定向 （前端需要改很多个接口）</li>
+</ol>
+<blockquote>
+<p>微服务的事务处理怎么实现好</p>
+</blockquote>
+<ul>
+<li>2PC，两阶段提交</li>
+<li>TCC，Try-Confirm-Cancel</li>
+<li>消息队列，最大尝试</li>
+<li>人工补偿</li>
+</ul>
 
     </div>
 
@@ -162,7 +219,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-10-10
+        2021-04-24
         
     </span>
   </p>
@@ -174,16 +231,16 @@
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/database/">database</a>
+          <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+        <a class="prev" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%B4%A0%E6%8F%8F%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">微服务</span>
+            <span class="prev-text nav-default">素描简单了解</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%82%9F%E9%81%93/">
-            <span class="next-text nav-default">悟道</span>
+        <a class="next" href="/post/database/oltp%E5%92%8Colap/">
+            <span class="next-text nav-default">OLTP和OLAP</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -196,8 +253,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-10-10 09:13:08 \u002b0800 CST',
-        title: 'OLTP和OLAP',
+        id: '2020-10-12 11:38:53 \u002b0800 CST',
+        title: '微服务',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Restful、SOAP、RPC、SOA、微服务之间的区别 - ZsmHub - Blog</title>
+  <title>Restful、SOAP、RPC、gRPC、SOA、微服务之间的区别 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/restfulsoaprpcsoa%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" />
@@ -35,26 +35,23 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Restful、SOAP、RPC、SOA、微服务之间的区别" />
+<meta property="og:title" content="Restful、SOAP、RPC、gRPC、SOA、微服务之间的区别" />
 <meta property="og:description" content="Restful Restful是一种架构设计风格，提供了设计原则和约束条件，而不是架构，而满足这些约束条件和原则的应用程序或设计就是 Restful架构或服" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/restfulsoaprpcsoa%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" />
-<meta property="article:published_time" content="2020-05-16T10:41:57+08:00" />
-<meta property="article:modified_time" content="2020-05-16T10:41:57+08:00" />
-<meta itemprop="name" content="Restful、SOAP、RPC、SOA、微服务之间的区别">
-<meta itemprop="description" content="Restful Restful是一种架构设计风格，提供了设计原则和约束条件，而不是架构，而满足这些约束条件和原则的应用程序或设计就是 Restful架构或服">
-<meta itemprop="datePublished" content="2020-05-16T10:41:57&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/restfulsoaprpcsoa%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-05-16T10:41:57&#43;08:00" />
+<meta property="article:modified_time" content="2020-05-16T10:41:57&#43;08:00" />
+
+<meta itemprop="name" content="Restful、SOAP、RPC、gRPC、SOA、微服务之间的区别">
+<meta itemprop="description" content="Restful Restful是一种架构设计风格，提供了设计原则和约束条件，而不是架构，而满足这些约束条件和原则的应用程序或设计就是 Restful架构或服"><meta itemprop="datePublished" content="2020-05-16T10:41:57&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-16T10:41:57&#43;08:00" />
-<meta itemprop="wordCount" content="1892">
-
-
-
-<meta itemprop="keywords" content="微服务," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Restful、SOAP、RPC、SOA、微服务之间的区别"/>
+<meta itemprop="wordCount" content="2250">
+<meta itemprop="keywords" content="微服务架构," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Restful、SOAP、RPC、gRPC、SOA、微服务之间的区别"/>
 <meta name="twitter:description" content="Restful Restful是一种架构设计风格，提供了设计原则和约束条件，而不是架构，而满足这些约束条件和原则的应用程序或设计就是 Restful架构或服"/>
 
 <!--[if lte IE 9]>
@@ -126,15 +123,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Restful、SOAP、RPC、SOA、微服务之间的区别</h1>
+      <h1 class="post-title">Restful、SOAP、RPC、gRPC、SOA、微服务之间的区别</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2020-05-16 </span>
         <div class="post-category">
             <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 1892 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2250 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -147,6 +144,7 @@
     <li><a href="#restful">Restful</a></li>
     <li><a href="#soap">SOAP</a></li>
     <li><a href="#rpc">RPC</a></li>
+    <li><a href="#grpc">grpc</a></li>
     <li><a href="#soa">SOA</a></li>
     <li><a href="#微服务和-soa-的区别">微服务和 SOA 的区别</a></li>
     <li><a href="#为什么要使用微服务">为什么要使用微服务</a></li>
@@ -177,7 +175,42 @@
 <p>RPC 会隐藏底层的通讯细节（不需要直接处理Socket通讯或Http通讯）</p>
 <p>RPC 是一个请求响应模型。客户端发起请求，服务器返回响应（类似于Http的工作方式）</p>
 <p>RPC 在使用形式上像调用本地函数（或方法）一样去调用远程的函数（或方法）。</p>
-<h2 id="soa">SOA</h2>
+<blockquote>
+<p>对比 http 的优势：</p>
+</blockquote>
+<p>拥有更好的性能，省去了 HTTP 报头等一系列东西</p>
+<h2 id="grpc">grpc</h2>
+<p><a href="https://doc.oschina.net/grpc?t=58008">gRPC 官方文档中文版</a></p>
+<p>gRPC 一开始由 google 开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。</p>
+<blockquote>
+<p>gRPC 是什么</p>
+</blockquote>
+<p>在 gRPC 里客户端应用可以像调用本地对象一样直接调用另一台不同的机器上服务端应用的方法，使得您能够更容易地创建分布式应用和服务。与许多 RPC 系统类似，gRPC 也是基于以下理念：定义一个服务，指定其能够被远程调用的方法（包含参数和返回类型）。在服务端实现这个接口，并运行一个 gRPC 服务器来处理客户端调用。在客户端拥有一个存根能够像服务端一样的方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># upgrade golang 1.18</span>
+
+<span class="c1"># grpc upgrade：</span>
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
+go install github.com/golang/protobuf/protoc-gen-go@v1.5.2
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
+
+<span class="c1"># goctl upgrade：</span>
+go install github.com/zeromicro/go-zero/tools/goctl@v1.3.8
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="soa">SOA</h2>
 <p>SOA（Service-Oriented Architecture），中文全称：面向服务的架构。</p>
 <p>通俗点来讲，SOA提倡将不同应用程序的业务功能封装成“服务”并宿主起来，通常以接口和契约的形式暴露并提供给外界应用访问（通过交换消息），达到不同系统可重用的目的。</p>
 <p>SOA是一个组件模型，它能将不同的服务通过定义良好的接口和契约联系起来。服务是SOA的基石。</p>
@@ -218,6 +251,8 @@
 <p>平台随着业务的发展从 All in One 环境就可以满足业务需求（以Java来说，可能只是一两个war包就解决了）。发展到需要拆分多个应用，并且采用MVC的方式分离前后端，加快开发效率；在发展到服务越来越多，不得不将一些核心或共用的服务拆分出来，其实发展到此阶段，如果服务拆分的足够精细，并且独立运行，我觉得就可以将之理解为一个微服务了。</p>
 <h2 id="微服务本质">微服务本质</h2>
 <p>微服务在本质上，就是rpc。rpc有基于tcp的，http的，mq的等等。spring cloud是基于spring boot的，spring boot 实现的是http协议的rpc，算是rpc的一个子集。</p>
+<p>“微服务”强调的是服务的大小，它关注的是某一个点。而“微服务架构”则是一种架构思想，需要从整体上对软件系统进行通盘的考虑。</p>
+<p><a href="https://www.cnblogs.com/xishuai/p/microservices-and-service-mesh.html">微服务说明文章</a></p>
 <h2 id="转载声明">转载声明</h2>
 <blockquote>
 <p>作者：陈睿</p>
@@ -246,26 +281,16 @@
     <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
   </p>
 </div>
-<div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">赞赏支持</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
-        <span>微信打赏</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
-        <span>支付宝打赏</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+          <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">微服务架构</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">API Gateway</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/">
             <span class="next-text nav-default">Dubbo</span>
             <span class="next-text nav-mobile">下一篇</span>
@@ -280,8 +305,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-05-16 10:41:57 \x2b0800 CST',
-        title: 'Restful、SOAP、RPC、SOA、微服务之间的区别',
+        id: '2020-05-16 10:41:57 \u002b0800 CST',
+        title: 'Restful、SOAP、RPC、gRPC、SOA、微服务之间的区别',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
@@ -304,7 +329,7 @@
       <div class="social-links">
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
-  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -313,16 +338,16 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    主题 -
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy; 
-    2019 - 
-    2020
+    &copy;
+    2019 -
+    2023
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>OLTP和OLAP - ZsmHub - Blog</title>
+  <title>分布式事务 - ZsmHub - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="TCC 分布式事务 TCC 是 Try、Confirm、Cancel 三个词语的缩写。 TCC 分为 3 个阶段 Try 阶段：尝试执行，完成所有业务检查（一致性）, 预留必须业务" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
-<link rel="canonical" href="https://zsmhub.github.io/post/database/oltp%E5%92%8Colap/" />
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,20 +39,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="OLTP和OLAP" />
-<meta property="og:description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型" />
+<meta property="og:title" content="分布式事务" />
+<meta property="og:description" content="TCC 分布式事务 TCC 是 Try、Confirm、Cancel 三个词语的缩写。 TCC 分为 3 个阶段 Try 阶段：尝试执行，完成所有业务检查（一致性）, 预留必须业务" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/oltp%E5%92%8Colap/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-10-10T09:13:08&#43;08:00" />
-<meta property="article:modified_time" content="2020-10-10T09:13:08&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-22T09:09:30&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-22T09:09:30&#43;08:00" />
 
-<meta itemprop="name" content="OLTP和OLAP">
-<meta itemprop="description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型"><meta itemprop="datePublished" content="2020-10-10T09:13:08&#43;08:00" />
-<meta itemprop="dateModified" content="2020-10-10T09:13:08&#43;08:00" />
-<meta itemprop="wordCount" content="293">
-<meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="OLTP和OLAP"/>
-<meta name="twitter:description" content="根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型"/>
+<meta itemprop="name" content="分布式事务">
+<meta itemprop="description" content="TCC 分布式事务 TCC 是 Try、Confirm、Cancel 三个词语的缩写。 TCC 分为 3 个阶段 Try 阶段：尝试执行，完成所有业务检查（一致性）, 预留必须业务"><meta itemprop="datePublished" content="2021-07-22T09:09:30&#43;08:00" />
+<meta itemprop="dateModified" content="2021-07-22T09:09:30&#43;08:00" />
+<meta itemprop="wordCount" content="617">
+<meta itemprop="keywords" content="分布式事务," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="分布式事务"/>
+<meta name="twitter:description" content="TCC 分布式事务 TCC 是 Try、Confirm、Cancel 三个词语的缩写。 TCC 分为 3 个阶段 Try 阶段：尝试执行，完成所有业务检查（一致性）, 预留必须业务"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -123,15 +123,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">OLTP和OLAP</h1>
+      <h1 class="post-title">分布式事务</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-10-10 </span>
+        <span class="post-time"> 2021-07-22 </span>
         <div class="post-category">
-            <a href="/categories/database/"> database </a>
+            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
             </div>
-          <span class="more-meta"> 约 293 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 617 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -141,16 +141,58 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#oltp-vs-olap">OLTP vs OLAP</a></li>
+    <li><a href="#tcc-分布式事务">TCC 分布式事务</a></li>
+    <li><a href="#tcc-网络异常">TCC 网络异常</a></li>
+    <li><a href="#第三方库">第三方库</a></li>
+    <li><a href="#相关文章">相关文章</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。</p>
-<h2 id="oltp-vs-olap">OLTP vs OLAP</h2>
-<p>常见的 Oracle、MySQL 等数据库都属于 OLTP 类型，也就是 On-Line Transaction Processing，联机事务处理。OLTP 数据库处理请求和数据时对延迟要求很高，并且要保证数据的完整性和一致性。此类数据库是面向最终客户的，需要具备 7x24 不间断服务能力。</p>
-<p>OLAP 的含义是联机分析数据处理，这种数据库需要存储海量、但很少更新修改的数据，主要用于多维度历史数据分析统计目的。出于这种需求，OLAP 数据库需要确保足够高的查询效率，至少 90% 的请求要在很短的时间内返回。另一方面，OLAP 数据库并不是直接面对最终客户，而是更关注数据吞吐。</p>
+      <h2 id="tcc-分布式事务">TCC 分布式事务</h2>
+<p>TCC 是 Try、Confirm、Cancel 三个词语的缩写。</p>
+<blockquote>
+<p>TCC 分为 3 个阶段</p>
+</blockquote>
+<ul>
+<li>Try 阶段：尝试执行，完成所有业务检查（一致性）, 预留必须业务资源（准隔离性）</li>
+<li>Confirm 阶段：如果所有分支的 Try 都成功了，则走到 Confirm 阶段。Confirm 真正执行业务，不作任何业务检查，只使用 Try 阶段预留的业务资源</li>
+<li>Cancel 阶段：如果所有分支的 Try 有一个失败了，则走到 Cancel 阶段。Cancel 释放 Try 阶段预留的业务资源。</li>
+</ul>
+<blockquote>
+<p>TCC 分布式事务里，有 3 个角色，与经典的 XA 分布式事务一样：</p>
+</blockquote>
+<ul>
+<li>AP/应用程序，发起全局事务，定义全局事务包含哪些事务分支</li>
+<li>RM/资源管理器，负责分支事务各项资源的管理（相当于一个个微服务）</li>
+<li>TM/事务管理器，负责协调全局事务的正确执行，包括 Confirm，Cancel 的执行，并处理网络异常</li>
+</ul>
+<p>如果我们要进行一个类似于银行跨行转账的业务，转出（TransOut）和转入（TransIn）分别在不同的微服务里，一个成功完成的 TCC 事务典型的时序图如下：</p>
+<blockquote>
+<p>典型的 TCC 事务时序图</p>
+</blockquote>
+<p><img src="/images/2021/86bc518dbf5281f06f1048d86fd2c44d.jpg" alt="典型的 TCC 事务时序图"></p>
+<blockquote>
+<p>典型的 TCC 事务回滚时序图</p>
+</blockquote>
+<p><img src="/images/2021/557946af8fd37fffd492d77174d08ba2.jpg" alt="典型的 TCC 事务回滚时序图"></p>
+<h2 id="tcc-网络异常">TCC 网络异常</h2>
+<p>TCC 在整个全局事务的过程中，可能发生各类网络异常情况，典型的是空回滚、幂等、悬挂，由于 TCC 的异常情况，和 SAGA、可靠消息等事务模式有相近的地方。</p>
+<blockquote>
+<p>解决方案呢？？</p>
+</blockquote>
+<p>『TODO: 待处理』</p>
+<h2 id="第三方库">第三方库</h2>
+<ul>
+<li>seata 是阿里推出的一款开源分布式事务解决方案，目前有 AT、TCC、SAGA、XA 四种模式。</li>
+<li><a href="https://github.com/yedf/dtm">https://github.com/yedf/dtm</a></li>
+</ul>
+<h2 id="相关文章">相关文章</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/UmGnCM3SLWZUI0yMaTeqxA">用 Go 轻松完成一个 TCC 分布式事务，保姆级教程</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/388444465">分布式事务你不能不知的坑，一个函数调用帮你搞定它</a> 『TODO: 待阅读』</li>
+</ul>
 
     </div>
 
@@ -162,7 +204,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-10-10
+        2021-07-22
         
     </span>
   </p>
@@ -174,16 +216,16 @@
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/database/">database</a>
+          <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+        <a class="prev" href="/post/golang/http%E5%AE%A2%E6%88%B7%E7%AB%AF/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">微服务</span>
+            <span class="prev-text nav-default">Http客户端</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%82%9F%E9%81%93/">
-            <span class="next-text nav-default">悟道</span>
+        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%90%86%E8%B4%A2%E4%B9%8B%E8%B7%AF/">
+            <span class="next-text nav-default">理财之路</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -196,8 +238,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2020-10-10 09:13:08 \u002b0800 CST',
-        title: 'OLTP和OLAP',
+        id: '2021-07-22 09:09:30 \u002b0800 CST',
+        title: '分布式事务',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
         repo: 'zsmhub.github.io',
