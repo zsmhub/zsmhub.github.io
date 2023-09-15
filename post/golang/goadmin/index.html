@@ -49,7 +49,7 @@
 <meta itemprop="name" content="GoAdmin">
 <meta itemprop="description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"><meta itemprop="datePublished" content="2020-08-18T16:40:37&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-18T16:40:37&#43;08:00" />
-<meta itemprop="wordCount" content="884">
+<meta itemprop="wordCount" content="949">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="GoAdmin"/>
 <meta name="twitter:description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 884 字 </span>
+          <span class="more-meta"> 约 949 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -248,6 +248,21 @@ adm init -l cn
 </span><span class="lnt">45
 </span><span class="lnt">46
 </span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">GetOAMenuTable</span><span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="nx">table</span><span class="p">.</span><span class="nx">Table</span> <span class="p">{</span>
@@ -271,6 +286,11 @@ adm init -l cn
 
     <span class="nx">info</span><span class="p">.</span><span class="nf">SetTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nf">SetTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">).</span><span class="nf">SetSortField</span><span class="p">(</span><span class="s">&#34;order&#34;</span><span class="p">).</span><span class="nf">SetSortAsc</span><span class="p">()</span>
 
+    <span class="c1">// 重定义删除方法
+</span><span class="c1"></span>    <span class="nx">info</span><span class="p">.</span><span class="nf">SetDeleteFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ids</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HDel</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">ids</span><span class="o">...</span><span class="p">).</span><span class="nf">Err</span><span class="p">()</span>
+    <span class="p">})</span>
+
     <span class="nx">formList</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">GetForm</span><span class="p">()</span>
     <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Default</span><span class="p">).</span><span class="nf">FieldDisableWhenCreate</span><span class="p">()</span>
     <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单名&#34;</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
@@ -292,6 +312,16 @@ adm init -l cn
             <span class="nx">_</span> <span class="p">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">DelCache</span><span class="p">()</span>
         <span class="p">}()</span>
     <span class="p">}</span>
+
+    <span class="c1">// 重定义新增方法
+</span><span class="c1"></span>    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetInsertFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HSet</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">),</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;article_id&#34;</span><span class="p">)).</span><span class="nf">Err</span><span class="p">()</span>
+    <span class="p">})</span>
+
+    <span class="c1">// 重定义编辑方法
+</span><span class="c1"></span>    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetUpdateFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HSet</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">),</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;article_id&#34;</span><span class="p">)).</span><span class="nf">Err</span><span class="p">()</span>
+    <span class="p">})</span>
 
     <span class="nx">formList</span><span class="p">.</span><span class="nf">SetTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nf">SetTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span>
 
