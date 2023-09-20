@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="2186">
+<meta itemprop="wordCount" content="2190">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 2186 字 </span>
+          <span class="more-meta"> 约 2190 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -339,7 +339,7 @@ git branch -D test_branch <span class="c1"># 删除任意分支</span>
 git branch <span class="p">|</span> grep <span class="s1">&#39;zsm_&#39;</span> <span class="p">|</span> xargs git branch -d <span class="c1"># 批量删除已合并分支 『xargs 是一个强有力的命令，它能够捕获一个命令的输出，然后传递给另外一个命令。』</span>
 
 <span class="c1"># 拉取远程分支的 2 种方式</span>
-git fetch origin develop <span class="c1"># 拉取develop远程分支到本地</span>
+git fetch origin develop <span class="o">&amp;&amp;</span> git checkout develop <span class="c1"># 拉取develop远程分支到本地</span>
 git checkout -b develop origin/develop <span class="c1"># 本地创建并切换到 develop 分支</span>
 
 <span class="c1"># 将一个分支上的所有commit（修改）合并为同一个commit，然后合并到当前分支【注意gitlab的mr会自动勾选上squash选项，多个提交者信息会统一变为分支创建者】</span>
