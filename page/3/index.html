@@ -172,14 +172,14 @@
       <div class="post-category">
           <a href="/categories/golang/"> golang </a>
           </div>
-        <span class="more-meta"> 约 2076 字 </span>
+        <span class="more-meta"> 约 2138 字 </span>
         <span class="more-meta"> 预计阅读 5 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      GORM Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录. Assign(User{Age: 30}).FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库. 数据类型建议 时间戳字段：建议使用 int6
+      GORM FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环 Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未
     </div>
     <div class="read-more">
       <a href="/post/golang/go%E4%B9%8Bgorm/" class="read-more-link">阅读更多</a>
