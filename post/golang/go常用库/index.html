@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="11474">
+<meta itemprop="wordCount" content="11552">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 11474 字 </span>
-          <span class="more-meta"> 预计阅读 23 分钟 </span>
+          <span class="more-meta"> 约 11552 字 </span>
+          <span class="more-meta"> 预计阅读 24 分钟 </span>
         
       </div>
     </header>
@@ -2184,6 +2184,24 @@ v1 是基于当前时间戳、机器 MAC 地址生成的，因为 MAC 地址是�
 </span><span class="lnt">35
 </span><span class="lnt">36
 </span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// Round 四舍五入
@@ -2222,6 +2240,24 @@ v1 是基于当前时间戳、机器 MAC 地址生成的，因为 MAC 地址是�
     <span class="nx">decimalValue</span> <span class="o">:=</span> <span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromFloat</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
     <span class="nx">decimalValue</span> <span class="p">=</span> <span class="nx">decimalValue</span><span class="p">.</span><span class="nf">Mul</span><span class="p">(</span><span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromInt</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
     <span class="k">return</span> <span class="nx">decimalValue</span><span class="p">.</span><span class="nf">BigInt</span><span class="p">().</span><span class="nf">Int64</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// 两个浮点数相乘
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">FloatMulFloat</span><span class="p">(</span><span class="nx">f1</span><span class="p">,</span> <span class="nx">f2</span> <span class="kt">float64</span><span class="p">)</span> <span class="kt">float64</span> <span class="p">{</span>
+    <span class="nx">decimalValue1</span> <span class="o">:=</span> <span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromFloat</span><span class="p">(</span><span class="nx">f1</span><span class="p">)</span>
+    <span class="nx">decimalValue2</span> <span class="o">:=</span> <span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromFloat</span><span class="p">(</span><span class="nx">f2</span><span class="p">)</span>
+    <span class="nx">decimalValue</span> <span class="o">:=</span> <span class="nx">decimalValue1</span><span class="p">.</span><span class="nf">Mul</span><span class="p">(</span><span class="nx">decimalValue2</span><span class="p">)</span>
+    <span class="nx">ret</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">decimalValue</span><span class="p">.</span><span class="nf">Float64</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">ret</span>
+<span class="p">}</span>
+
+<span class="c1">// 两个浮点数相减
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">FloatSubFloat</span><span class="p">(</span><span class="nx">f1</span><span class="p">,</span> <span class="nx">f2</span> <span class="kt">float64</span><span class="p">)</span> <span class="kt">float64</span> <span class="p">{</span>
+    <span class="nx">decimalValue1</span> <span class="o">:=</span> <span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromFloat</span><span class="p">(</span><span class="nx">f1</span><span class="p">)</span>
+    <span class="nx">decimalValue2</span> <span class="o">:=</span> <span class="nx">decimal</span><span class="p">.</span><span class="nf">NewFromFloat</span><span class="p">(</span><span class="nx">f2</span><span class="p">)</span>
+    <span class="nx">decimalValue</span> <span class="o">:=</span> <span class="nx">decimalValue1</span><span class="p">.</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">decimalValue2</span><span class="p">)</span>
+    <span class="nx">ret</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">decimalValue</span><span class="p">.</span><span class="nf">Float64</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">ret</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -2391,7 +2427,7 @@ v1 是基于当前时间戳、机器 MAC 地址生成的，因为 MAC 地址是�
   <span class="copyright-year">
     &copy;
     2019 -
-    2023
+    2024
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
