@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go之GORM">
 <meta itemprop="description" content="GORM FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环 Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未"><meta itemprop="datePublished" content="2022-09-02T17:14:30&#43;08:00" />
 <meta itemprop="dateModified" content="2022-09-02T17:14:30&#43;08:00" />
-<meta itemprop="wordCount" content="2138">
+<meta itemprop="wordCount" content="2197">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go之GORM"/>
 <meta name="twitter:description" content="GORM FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环 Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2138 字 </span>
+          <span class="more-meta"> 约 2197 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -146,6 +146,7 @@
     <li><a href="#常用代码">常用代码</a></li>
     <li><a href="#gorm-create-返回的自增id不一定靠谱">gorm create 返回的自增ID不一定靠谱</a></li>
     <li><a href="#gorm-bulk">gorm-bulk</a></li>
+    <li><a href="#scan--left-join-的坑">scan + left join 的坑</a></li>
   </ul>
 </nav>
   </div>
@@ -653,6 +654,9 @@
 <p><img src="/images/2022/QQ20220902-171142.png" alt="错误示例"></p>
 <h2 id="gorm-bulk">gorm-bulk</h2>
 <p>gorm 的补充，支持批量插入、批量更新等【gorm2.0已支持这些功能： 利用clauses实现】</p>
+<h2 id="scan--left-join-的坑">scan + left join 的坑</h2>
+<p>要用 scan + left join，必须将可能为null的字段改成 <code>指针类型</code>，否则数据有多条的情况下，会出现数据错乱的情况。</p>
+<p><img src="/images/2024/Snipaste_2024-01-25_15-23-47.png" alt="隐形坑·示例"></p>
 
     </div>
 
