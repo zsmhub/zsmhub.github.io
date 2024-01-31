@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 30 Mar 2023 10:01:29 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Jan 2024 10:04:50 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何绕过网站的IP封锁</title>
+      <link>https://zsmhub.github.io/post/ai/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E7%BD%91%E7%AB%99%E7%9A%84ip%E5%B0%81%E9%94%81/</link>
+      <pubDate>Wed, 31 Jan 2024 10:04:50 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ai/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E7%BD%91%E7%AB%99%E7%9A%84ip%E5%B0%81%E9%94%81/</guid>
+      <description>chrome chrome浏览器要关闭quic 在浏览器输入框中输入：chrome://flags/#enable-quic Disable Experimental QUIC protocol</description>
+    </item>
+    
     <item>
       <title>mac搭建Stable Diffusion Webui</title>
       <link>https://zsmhub.github.io/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/</link>
