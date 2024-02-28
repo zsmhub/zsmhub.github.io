@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="11552">
+<meta itemprop="wordCount" content="11719">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 11552 字 </span>
+          <span class="more-meta"> 约 11719 字 </span>
           <span class="more-meta"> 预计阅读 24 分钟 </span>
         
       </div>
@@ -323,9 +323,6 @@
 <span class="nx">nowDayStart</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Month</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Day</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
 <span class="nx">nowDayEnd</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Month</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Day</span><span class="p">(),</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
 
-<span class="c1">// 获取7月1日的time
-</span><span class="c1"></span><span class="nx">month7Start</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
-
 <span class="c1">// 获取时间戳
 </span><span class="c1"></span><span class="nx">timeUnix</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span>              <span class="c1">//单位秒，10 位数
 </span><span class="c1"></span><span class="nx">timeUnixMill</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="mf">1e6</span>  <span class="c1">//单位毫秒，13 位数
@@ -337,8 +334,11 @@
 </span><span class="c1"></span><span class="nx">timestamp</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="nx">timestamp</span><span class="o">/</span><span class="mf">1e3</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span> <span class="c1">// 毫秒级时间戳转换成日期
 </span><span class="c1"></span><span class="nx">timestamp</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span> <span class="c1">// 纳秒级时间戳转换成日期
 </span><span class="c1"></span>
+<span class="c1">// 获取7月1日的time
+</span><span class="c1"></span><span class="nx">month7Start</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+
 <span class="c1">// 时间字符串转为 time.Time，再转时间戳 timeUnix := tTime.Unix()
-</span><span class="c1"></span><span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="s">&#34;2022-02-02 02:02:02&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span><span class="c1"></span><span class="nx">startTime</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="s">&#34;2024-02-28 10:24:26&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
 <span class="kd">func</span> <span class="nf">StringToTime</span><span class="p">(</span><span class="nx">t</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">location</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">LoadLocation</span><span class="p">(</span><span class="s">&#34;Asia/Shanghai&#34;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -1582,6 +1582,12 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// validator会自动校验struct内定义的变量的数据类型
@@ -1591,7 +1597,9 @@
     <span class="nx">IsMultiple</span>   <span class="kt">uint8</span> <span class="s">`form:&#34;is_multiple&#34; json:&#34;is_multiple&#34; validate:&#34;oneof=0 1&#34;`</span>
     <span class="nx">DeadlineTime</span> <span class="kt">string</span> <span class="s">`form:&#34;deadline_time&#34; json:&#34;deadline_time&#34; validate:&#34;required,len=16&#34;`</span>
     <span class="nx">Options</span>      <span class="p">[]</span><span class="kt">string</span> <span class="s">`form:&#34;options&#34; json:&#34;options&#34; validate:&#34;required,min=1,max=7,dive,min=1,max=7&#34;`</span> <span class="c1">// 切片最少1个最多7个，切片内的值最小为1最大为7
-</span><span class="c1"></span><span class="p">}</span>
+</span><span class="c1"></span>    <span class="nx">KeyWordType</span> <span class="kt">int8</span>   <span class="s">`json:&#34;key_word_type&#34; form:&#34;key_word_type&#34; query:&#34;key_word_type&#34; validate:&#34;required_with=KeyWord&#34;`</span>
+    <span class="nx">KeyWord</span>     <span class="kt">string</span> <span class="s">`json:&#34;key_word&#34; form:&#34;key_word&#34; query:&#34;key_word&#34;`</span>
+<span class="p">}</span>
 
 <span class="nx">dive</span><span class="p">:</span> <span class="nx">告诉验证者深入到</span><span class="s">`切片`</span><span class="nx">中</span><span class="err">，</span><span class="nx">并使用后面的验证标签验证切片的级别</span><span class="p">.</span> <span class="nx">还支持多维嵌套</span><span class="err">，</span><span class="nx">您要潜水的每个级别都将需要另一个潜水标签</span><span class="p">.</span> <span class="nx">潜水有一些子标签</span><span class="err">，</span><span class="s">&#34;键&#34;</span><span class="nx">和</span><span class="s">&#34;端键&#34;</span><span class="err">。</span>
 
@@ -1601,6 +1609,10 @@
 <span class="err">【</span><span class="nx">这个验证器可以用于onef</span><span class="p">=</span><span class="mi">0</span> <span class="mi">1</span><span class="nx">这样的判断</span><span class="err">】</span>
 
 <span class="nx">omitempty</span><span class="p">:</span> <span class="nx">允许条件验证</span><span class="err">，</span><span class="nx">例如</span><span class="err">，</span><span class="nx">如果该字段没有设置值</span><span class="err">（</span><span class="nx">由</span><span class="s">&#34;必需&#34;</span><span class="nx">验证器确定</span><span class="err">），</span><span class="nx">则其他验证</span><span class="err">（</span><span class="nx">例如min或max</span><span class="err">）</span><span class="nx">将不会运行</span><span class="err">，</span><span class="nx">但是如果设置了值</span><span class="err">，</span><span class="nx">验证将运行</span><span class="p">.</span>
+
+<span class="nx">required_with</span><span class="err">：</span><span class="nx">关联矫正</span><span class="err">，</span><span class="nx">如required_with</span><span class="p">=</span><span class="nx">Name</span> <span class="nx">若Name字段不为零值</span><span class="err">，</span><span class="nx">则当前字段不能为零值</span><span class="err">，</span><span class="nx">Field</span> <span class="nx">validate</span><span class="p">:</span><span class="s">&#34;required_with=Field1 Field2&#34;</span>
+
+<span class="nx">required_without</span><span class="err">：</span><span class="nx">其他字段其中一个为空</span><span class="err">，</span><span class="nx">则当前字段不能为空</span> <span class="nx">Field</span> <span class="err">`</span><span class="nx">validate</span><span class="p">:</span><span class="err">”</span><span class="nx">required_without</span><span class="p">=</span><span class="nx">Field1</span> <span class="nx">Field2</span><span class="err">”</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="githubcomtidwallgjson">github.com/tidwall/gjson</h3>
