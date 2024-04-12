@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 21 Feb 2024 14:54:16 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 10:16:48 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>other</title>
+      <link>https://zsmhub.github.io/categories/other/</link>
+      <pubDate>Fri, 12 Apr 2024 10:16:48 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/other/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>生活笔记</title>
       <link>https://zsmhub.github.io/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/</link>
@@ -113,15 +122,6 @@
       <pubDate>Thu, 29 Oct 2020 09:36:54 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>other</title>
-      <link>https://zsmhub.github.io/categories/other/</link>
-      <pubDate>Sat, 05 Sep 2020 09:07:09 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/other/</guid>
       <description></description>
     </item>
     
