@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用案例">
 <meta itemprop="description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"><meta itemprop="datePublished" content="2021-01-08T17:57:02&#43;08:00" />
 <meta itemprop="dateModified" content="2021-01-08T17:57:02&#43;08:00" />
-<meta itemprop="wordCount" content="2451">
+<meta itemprop="wordCount" content="2669">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用案例"/>
 <meta name="twitter:description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2451 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2669 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -157,6 +157,7 @@
     <li><a href="#url编码特殊处理">url编码特殊处理</a></li>
     <li><a href="#下载网络文件到本地">下载网络文件到本地</a></li>
     <li><a href="#获取链接后缀">获取链接后缀</a></li>
+    <li><a href="#用正则表达式处理html代码">用正则表达式处理html代码</a></li>
   </ul>
 </nav>
   </div>
@@ -1184,6 +1185,73 @@
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nf">Base</span><span class="p">(</span><span class="nx">url</span><span class="p">))</span> <span class="c1">// 输出 document.pdf
 </span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nf">Ext</span><span class="p">(</span><span class="nx">url</span><span class="p">))</span>  <span class="c1">// 输出 .pdf
 </span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="用正则表达式处理html代码">用正则表达式处理html代码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 去掉html代码中的标签，只保留纯文本
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">TrimHtml</span><span class="p">(</span><span class="nx">src</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="c1">//将HTML标签全转换成小写
+</span><span class="c1"></span>    <span class="nx">re</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`&lt;[\S\s]+?&gt;`</span><span class="p">)</span>
+    <span class="nx">src</span> <span class="p">=</span> <span class="nx">re</span><span class="p">.</span><span class="nf">ReplaceAllStringFunc</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">)</span>
+    <span class="c1">//去除STYLE
+</span><span class="c1"></span>    <span class="nx">re</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`&lt;style[\S\s]+?&lt;/style&gt;`</span><span class="p">)</span>
+    <span class="nx">src</span> <span class="p">=</span> <span class="nx">re</span><span class="p">.</span><span class="nf">ReplaceAllString</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+    <span class="c1">//去除SCRIPT
+</span><span class="c1"></span>    <span class="nx">re</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`&lt;script[\S\s]+?&lt;/script&gt;`</span><span class="p">)</span>
+    <span class="nx">src</span> <span class="p">=</span> <span class="nx">re</span><span class="p">.</span><span class="nf">ReplaceAllString</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+    <span class="c1">//去除所有尖括号内的HTML代码
+</span><span class="c1"></span>    <span class="nx">re</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`&lt;[\S\s]+?&gt;`</span><span class="p">)</span>
+    <span class="nx">src</span> <span class="p">=</span> <span class="nx">re</span><span class="p">.</span><span class="nf">ReplaceAllString</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+    <span class="c1">//去除连续的换行符
+</span><span class="c1"></span>    <span class="nx">re</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">Compile</span><span class="p">(</span><span class="s">`\s{2,}`</span><span class="p">)</span>
+    <span class="nx">src</span> <span class="p">=</span> <span class="nx">re</span><span class="p">.</span><span class="nf">ReplaceAllString</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="s">&#34;\n\n&#34;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSpace</span><span class="p">(</span><span class="nx">src</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 获取html代码中的图片链接
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">GetHtmlImages</span><span class="p">(</span><span class="nx">htmls</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">imgRE</span> <span class="p">=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">MustCompile</span><span class="p">(</span><span class="s">`&lt;img[^&gt;]+\bsrc=[&#34;&#39;]([^&#34;&#39;]+)[&#34;&#39;]`</span><span class="p">)</span>
+    <span class="nx">imgs</span> <span class="o">:=</span> <span class="nx">imgRE</span><span class="p">.</span><span class="nf">FindAllStringSubmatch</span><span class="p">(</span><span class="nx">htmls</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nx">out</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">imgs</span><span class="p">))</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">out</span> <span class="p">{</span>
+        <span class="nx">out</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">imgs</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">out</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div>

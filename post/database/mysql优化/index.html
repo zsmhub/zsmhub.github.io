@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 优化">
 <meta itemprop="description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"><meta itemprop="datePublished" content="2019-06-01T16:54:37&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-24T16:54:37&#43;08:00" />
-<meta itemprop="wordCount" content="2298">
+<meta itemprop="wordCount" content="2319">
 <meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 优化"/>
 <meta name="twitter:description" content="慢查询优化 根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』 使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 2298 字 </span>
+          <span class="more-meta"> 约 2319 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -172,7 +172,7 @@ select /*+ MAX_EXECUTION_TIME(1000) */ id from material limit 20
 <ol>
 <li>定期分析表： analyze table tablename; // 本语句用于分析和存储表的关键字分布，分析的结果将可以使得系统得到准确的统计信息，使得SQL能够生成正确的执行计划。</li>
 <li>定期检查表【处理很慢】：check table tablename; // 本语句用于检查一个或多个表是否有错误。</li>
-<li>定期优化表【处理很慢】：optimize table tablename;</li>
+<li>定期优化表【处理很慢】：ALTER TABLE table_name ENGINE=InnoDB; 对应innodb表，不支持optimize table tablename;</li>
 </ol>
 <p>操作前提：短时间出现大量数据删除、碎片占用足够大时才需要手动执行 optimize 命令。</p>
 <p>优点：进行碎片整理，减少磁盘占用，提高索引效率</p>

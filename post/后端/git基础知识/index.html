@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="2190">
+<meta itemprop="wordCount" content="2214">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 2190 字 </span>
+          <span class="more-meta"> 约 2214 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -323,13 +323,21 @@ git push origin :refs/tags/标签名 <span class="c1"># 删除远程标签</span
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">git config --global --edit <span class="c1"># 编辑全局变量文件</span>
 
 git log  <span class="c1"># 回顾下提交历史</span>
 git reflog  <span class="c1"># 用来记录你的每一次的提交版本命令</span>
+
 git commit --amend <span class="c1"># 重新编辑提交说明 或 在上一个commit中添加新更改的文件</span>
+git commit --amend --author<span class="o">=</span><span class="s2">&#34;mn &lt;mn@qq.com&gt;&#34;</span> <span class="c1"># 修改已提交的author信息</span>
+
+
 git pull  <span class="c1"># 拉取所有分支代码</span>
 git pull origin develop <span class="c1"># 拉取远程分支代码到当前分支</span>
 git checkout -b test_branch develop <span class="c1"># 在develop分支下创建新分支并切换分支</span>
