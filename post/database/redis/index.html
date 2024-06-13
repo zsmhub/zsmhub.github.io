@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Redis">
 <meta itemprop="description" content="缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使"><meta itemprop="datePublished" content="2019-01-03T22:38:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T22:38:49&#43;08:00" />
-<meta itemprop="wordCount" content="3740">
+<meta itemprop="wordCount" content="3801">
 <meta itemprop="keywords" content="redis," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Redis"/>
 <meta name="twitter:description" content="缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3740 字 </span>
+          <span class="more-meta"> 约 3801 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -199,22 +199,54 @@ keys 算法是遍历算法，复杂度是 O(n)，如果实例中有千万级以�
 所以要用 scan 代替 keys *</p>
 </blockquote>
 <ul>
-<li>dbsize: 当前库key的数量</li>
-<li>del key：删除一个key</li>
-<li>ttl // 查看生存时间</li>
-<li>select 1: 切换到库 1</li>
-<li>info: 查看 redis 基本信息，包含多少库，多少 keys</li>
-<li>keys * : 查看当前库已存在的所有key</li>
-<li>keys pattern：返回满足给定pattern的所有key，eg: keys third_app*</li>
-<li>help cmd： 查看cmd帮助，例如：help quit</li>
-<li>exists key：确认一个key是否存在</li>
-<li>type key：返回值的类型</li>
-<li>RPOPLPUSH source destination 【安全队列】
+<li>
+<p>dbsize: 当前库key的数量</p>
+</li>
+<li>
+<p>del key：删除一个key</p>
+</li>
+<li>
+<p>ttl // 查看生存时间</p>
+</li>
+<li>
+<p>select 1: 切换到库 1</p>
+</li>
+<li>
+<p>info: 查看 redis 基本信息，包含多少库，多少 keys</p>
+</li>
+<li>
+<p>keys * : 查看当前库已存在的所有key</p>
+</li>
+<li>
+<p>keys pattern：返回满足给定pattern的所有key，eg: keys third_app*</p>
+</li>
+<li>
+<p>help cmd： 查看cmd帮助，例如：help quit</p>
+</li>
+<li>
+<p>exists key：确认一个key是否存在</p>
+</li>
+<li>
+<p>type key：返回值的类型</p>
+</li>
+<li>
+<p>RPOPLPUSH source destination 【安全队列】
 命令 RPOPLPUSH 在一个原子时间内，执行以下两个动作：
 将列表 source 中的最后一个元素(尾元素)弹出，并返回给客户端。
-将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。</li>
-<li>flushdb  // 删除当前数据库中的所有Key</li>
-<li>flushall // 删除所有数据库中的key</li>
+将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。</p>
+</li>
+<li>
+<p>flushdb  // 删除当前数据库中的所有Key</p>
+</li>
+<li>
+<p>flushall // 删除所有数据库中的key</p>
+</li>
+<li>
+<p>expire key seconds：设置 key 在 n 秒后过期。</p>
+</li>
+<li>
+<p>ttl key （以秒为单位）或 pttl key （以毫秒为单位）来查看 key 还有多久过期。[-1 表示永不过期]</p>
+</li>
 </ul>
 <h2 id="scan">scan</h2>
 <p>SCAN cursor [MATCH pattern] [COUNT count]</p>
