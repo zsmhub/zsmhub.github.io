@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="2214">
+<meta itemprop="wordCount" content="2244">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 2214 字 </span>
+          <span class="more-meta"> 约 2244 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -327,6 +327,9 @@ git push origin :refs/tags/标签名 <span class="c1"># 删除远程标签</span
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">git config --global --edit <span class="c1"># 编辑全局变量文件</span>
@@ -352,6 +355,9 @@ git checkout -b develop origin/develop <span class="c1"># 本地创建并切换�
 
 <span class="c1"># 将一个分支上的所有commit（修改）合并为同一个commit，然后合并到当前分支【注意gitlab的mr会自动勾选上squash选项，多个提交者信息会统一变为分支创建者】</span>
 git merge --squash feature_name
+
+<span class="c1"># 删除本地develop分支</span>
+git checkout uat <span class="o">&amp;&amp;</span> git branch -D develop <span class="o">&amp;&amp;</span> git checkout -b develop
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="git-文件的三种状态">Git 文件的三种状态</h2>

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="GoAdmin">
 <meta itemprop="description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"><meta itemprop="datePublished" content="2020-08-18T16:40:37&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-18T16:40:37&#43;08:00" />
-<meta itemprop="wordCount" content="949">
+<meta itemprop="wordCount" content="1043">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="GoAdmin"/>
 <meta name="twitter:description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 949 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1043 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -292,11 +292,11 @@ adm init -l cn
     <span class="p">})</span>
 
     <span class="nx">formList</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">GetForm</span><span class="p">()</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Default</span><span class="p">).</span><span class="nf">FieldDisableWhenCreate</span><span class="p">()</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Default</span><span class="p">).</span><span class="nf">FieldDisableWhenCreate</span><span class="p">().</span><span class="nf">FieldHelpMsg</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
     <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单名&#34;</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
     <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;父级菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;parent_id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;0&#34;</span><span class="p">)</span>
     <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端标识&#34;</span><span class="p">,</span> <span class="s">&#34;slug&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;排序，小的排前面&#34;</span><span class="p">,</span> <span class="s">&#34;order&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Int</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Number</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">().</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;100&#34;</span><span class="p">)</span>
+    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;排序&#34;</span><span class="p">,</span> <span class="s">&#34;order&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Int</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Number</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">().</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;100&#34;</span><span class="p">).</span><span class="nf">FieldHelpMsg</span><span class="p">(</span><span class="s">&#34;&lt;p&gt;小的排前面&lt;/p&gt;&#34;</span><span class="p">)</span>
     <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;图标&#34;</span><span class="p">,</span> <span class="s">&#34;icon&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
     <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端跳转uri&#34;</span><span class="p">,</span> <span class="s">&#34;uri&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
 
