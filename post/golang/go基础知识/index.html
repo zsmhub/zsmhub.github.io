@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 基础知识">
 <meta itemprop="description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"><meta itemprop="datePublished" content="2020-03-15T17:46:46&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-14T17:46:46&#43;08:00" />
-<meta itemprop="wordCount" content="11344">
+<meta itemprop="wordCount" content="11406">
 <meta itemprop="keywords" content="入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 基础知识"/>
 <meta name="twitter:description" content="Go 简介 Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C&#43;&#43;、Java 和 C# 一样属于 C 系。 Go"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 11344 字 </span>
+          <span class="more-meta"> 约 11406 字 </span>
           <span class="more-meta"> 预计阅读 23 分钟 </span>
         
       </div>
@@ -157,6 +157,7 @@
     <li><a href="#启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</a></li>
     <li><a href="#生产环境下-golang-项目的部署方案supervisor">生产环境下 GoLang 项目的部署方案『supervisor』</a></li>
     <li><a href="#如何表示无穷大">如何表示无穷大</a></li>
+    <li><a href="#随机打乱数组randshuffle">随机打乱数组(rand.Shuffle)</a></li>
   </ul>
 </nav>
   </div>
@@ -2101,6 +2102,31 @@ yourProject/main/logic <span class="c1"># 执行后项目开始运行</span>
 </span><span class="c1"></span>    <span class="c1">// 负无穷大
 </span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nf">Inf</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1">// -Inf
 </span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="随机打乱数组randshuffle">随机打乱数组(rand.Shuffle)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
+   <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span> <span class="c1">//也可以是数组
+</span><span class="c1"></span>   <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+   <span class="nx">rand</span><span class="p">.</span><span class="nf">Shuffle</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">arr</span><span class="p">),</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+   <span class="p">})</span>
+   <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div>
