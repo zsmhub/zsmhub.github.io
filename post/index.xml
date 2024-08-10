@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 09 Aug 2024 09:22:06 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Aug 2024 10:03:22 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搜索引擎</title>
+      <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
+      <pubDate>Sat, 10 Aug 2024 10:03:22 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</guid>
+      <description>方案对比 对比/方案 mysql ES meilisearch 学习成本 低 高 低 部署维护 简单 复杂 简单 功能特性 少 多 一般 查询性能 低 高 高 meilisearch GitHub项目 meilisearch 文档</description>
+    </item>
+    
     <item>
       <title>游戏制作基础技能</title>
       <link>https://zsmhub.github.io/post/%E6%B8%B8%E6%88%8F/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E5%9F%BA%E7%A1%80%E6%8A%80%E8%83%BD/</link>
@@ -347,7 +356,7 @@
       <pubDate>Mon, 13 Sep 2021 07:55:16 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AF%BB%E5%8C%BB%E9%97%AE%E8%8D%AF/</guid>
-      <description>看病开药，要提前告知医生孩子是过敏体质，也要看清楚药的说明书有没有写过敏体质慎用 每次开药，都要嘱咐医生不要开中药或中成药，效果弱，又贵又难喝</description>
+      <description>每次开药，都要嘱咐医生不要开中药或中成药，效果弱，又贵又难喝 所谓戒口：是指肉类只能吃猪肉和鸡，青菜随意 定点相关 门诊定点更改流程：手机下载穗好</description>
     </item>
     
     <item>
