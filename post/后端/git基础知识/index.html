@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Git 基础知识">
 <meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="2244">
+<meta itemprop="wordCount" content="2252">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
 <meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 2244 字 </span>
+          <span class="more-meta"> 约 2252 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -233,9 +233,11 @@ git stash pop  <span class="c1"># 恢复工作现场并删除stash内容</span>
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard HEAD^  <span class="c1">#回退到上一个版本，HEAD^可以更改为commit版本号</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard &lt;old-commit-id&gt; <span class="c1"># 回滚</span>
+git reset --hard HEAD^  <span class="c1">#回退到上一个版本，HEAD^可以更改为commit版本号</span>
 git reset . <span class="c1"># 取消已贮存文件</span>
 git reset HEAD &lt;file&gt;  <span class="c1">#git暂存区add的file文件回退工作区</span>
 git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码仍然保留『代码保留在暂存区』</span>
