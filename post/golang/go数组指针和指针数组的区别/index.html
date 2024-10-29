@@ -188,10 +188,10 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">arrPtr</span> <span class="o">*</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span>        <span class="c1">// 创建一个指针 arrPtr，指向一个数组
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">arrPtr</span> <span class="o">*</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span>        <span class="c1">// 创建一个指针 arrPtr，指向一个数组
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">arr</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>  <span class="c1">// 创建一个数组并初始化
 </span><span class="c1"></span><span class="nx">arrPtr</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">arr</span>              <span class="c1">// 将数组 arr的地址赋值给arrPtr
-</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;将 arr 的内存地址赋值给数组指针 arrPtr,   arrPtr=&#34;</span><span class="p">,</span><span class="nx">ptr</span><span class="p">)</span>
+</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;将 arr 的内存地址赋值给数组指针 arrPtr, arrPtr=&#34;</span><span class="p">,</span> <span class="nx">arrPtr</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>输出为:</p>
@@ -303,7 +303,7 @@
 <h2 id="二指针数组">二.指针数组</h2>
 <p>它是一个数组，该数组的元素都为地址值</p>
 <h3 id="1语法-1">1.语法</h3>
-<p>var 变量名 [数组大小] * 数组类型：</p>
+<p>var 变量名 [数组大小]*数组类型：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
