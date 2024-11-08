@@ -49,7 +49,7 @@
 <meta itemprop="name" content="MacOs 使用心得">
 <meta itemprop="description" content="MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&gt; Command ⇧ ——&gt; Shift ⌥ ——&gt; Option ⌃ ——&gt; Control ↩︎ ——&gt; Return/Enter"><meta itemprop="datePublished" content="2020-05-24T13:30:56&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-24T13:30:56&#43;08:00" />
-<meta itemprop="wordCount" content="1750">
+<meta itemprop="wordCount" content="1836">
 <meta itemprop="keywords" content="macos," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MacOs 使用心得"/>
 <meta name="twitter:description" content="MacBook 键盘符号和修饰键说明 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ⌘ ——&gt; Command ⇧ ——&gt; Shift ⌥ ——&gt; Option ⌃ ——&gt; Control ↩︎ ——&gt; Return/Enter"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/macos/"> macos </a>
             </div>
-          <span class="more-meta"> 约 1750 字 </span>
+          <span class="more-meta"> 约 1836 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -149,6 +149,7 @@
     <li><a href="#安装源代码程序">安装源代码程序</a></li>
     <li><a href="#彻底关闭macos-catalina的系统更新提示">彻底关闭macOS Catalina的系统更新提示</a></li>
     <li><a href="#压缩包乱码">压缩包乱码</a></li>
+    <li><a href="#如何删除-macos-启动台多余的残留的图标">如何删除 MacOS 启动台多余的/残留的图标</a></li>
   </ul>
 </nav>
   </div>
@@ -373,7 +374,18 @@ sudo mount -uw /
 <p>将Mac上的压缩包传输到Windows，打开后文件会出现乱码。</p>
 <p>原因：Mac下默认文字编码是utf-8，而在WIN下是gbk。</p>
 <p>解决方法：将 .zip 的压缩包后缀名改为 .rar 或 .7z 格式，然后解压。</p>
-
+<h2 id="如何删除-macos-启动台多余的残留的图标">如何删除 MacOS 启动台多余的/残留的图标</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 终端执行以下命名即可，注意修改对应图标的名字</span>
+sqlite3 <span class="k">$(</span>sudo find /private/var/folders -name com.apple.dock.launchpad<span class="k">)</span>/db/db <span class="s2">&#34;DELETE FROM apps WHERE title=&#39;你要删除图标的名字&#39;;&#34;</span> <span class="o">&amp;&amp;</span> killall Dock
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

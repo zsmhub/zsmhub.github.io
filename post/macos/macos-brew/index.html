@@ -49,7 +49,7 @@
 <meta itemprop="name" content="MacOs 之 brew">
 <meta itemprop="description" content="brew 和 brew cask 区别 brew主要是用于安装没UI的软件。 brew cask主要用于安装有UI的软件。 brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Pa"><meta itemprop="datePublished" content="2020-05-24T13:46:00&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-24T13:46:00&#43;08:00" />
-<meta itemprop="wordCount" content="526">
+<meta itemprop="wordCount" content="579">
 <meta itemprop="keywords" content="macos," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MacOs 之 brew"/>
 <meta name="twitter:description" content="brew 和 brew cask 区别 brew主要是用于安装没UI的软件。 brew cask主要用于安装有UI的软件。 brew 是 MacOs 下的包管理工具，通过 Github 托管适合 Mac 的编译配置以及 Pa"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/macos/"> macos </a>
             </div>
-          <span class="more-meta"> 约 526 字 </span>
+          <span class="more-meta"> 约 579 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -161,9 +161,9 @@
 </ul>
 <h2 id="常用命令">常用命令</h2>
 <ul>
+<li>brew list # 显示所有的已安装的软件</li>
 <li>brew update &ndash;verbose # 更新brew可安装包，建议每次执行一下</li>
-<li>brew search php55 # 搜索php5.5</li>
-<li>brew tap # 查看安装的扩展列表</li>
+<li>brew search php55 # 搜索本地远程仓库的软件，已安装会显示绿色的勾</li>
 <li>brew install php55 # 安装php5.5</li>
 <li>brew uninstall php55 # 卸载php5.5</li>
 <li>brew upgrade php55 # 升级php5.5</li>
@@ -172,6 +172,9 @@
 <li>brew home    php55 # 访问php5.5官方网站</li>
 <li>brew services start/stop your-service # 管理服务，没怎么用它，ELK都有自己的启动脚本在安装目录的bin/下面，且基本上都会携带参数启动</li>
 <li>brew switch xxx@version # 多版本切换 (<a href="https://learnku.com/articles/51190">https://learnku.com/articles/51190</a>)</li>
+<li>brew cleanup -n           # 列出需要清理的内容</li>
+<li>brew cleanup              # 清理所有的过时软件</li>
+<li>brew outdated # 检测已经过时的软件</li>
 </ul>
 <h2 id="相同程序不同版本切换命令">相同程序不同版本切换命令</h2>
 <ul>
