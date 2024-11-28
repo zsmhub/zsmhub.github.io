@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Go 常用库">
 <meta itemprop="description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"><meta itemprop="datePublished" content="2020-05-26T16:54:52&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T16:54:52&#43;08:00" />
-<meta itemprop="wordCount" content="11963">
+<meta itemprop="wordCount" content="11991">
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go 常用库"/>
 <meta name="twitter:description" content="标准库 time 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 11963 字 </span>
+          <span class="more-meta"> 约 11991 字 </span>
           <span class="more-meta"> 预计阅读 24 分钟 </span>
         
       </div>
@@ -2356,7 +2356,7 @@ v1 是基于当前时间戳、机器 MAC 地址生成的，因为 MAC 地址是�
         <span class="k">return</span> <span class="nx">second</span><span class="p">,</span> <span class="nx">err</span>
     <span class="p">}</span>
 
-    <span class="c1">// 复杂命令，如多管道，必须使用 bash -c 来执行
+    <span class="c1">// 复杂命令，如多管道，必须使用 bash -c 来执行（ffmpeg -i /Users/xxx/Downloads/xxx.mp4 2&gt;&amp;1 | grep &#39;Duration&#39; | cut -d &#39; &#39; -f 4 | sed s/,//）
 </span><span class="c1"></span>    <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="nx">bashPath</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="o">+</span><span class="s">&#34; -i &#34;</span><span class="o">+</span><span class="nx">filepath</span><span class="o">+</span><span class="s">&#34; 2&gt;&amp;1 | grep &#39;Duration&#39; | cut -d &#39; &#39; -f 4 | sed s/,//&#34;</span><span class="p">)</span>
     <span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">CombinedOutput</span><span class="p">()</span>
     <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -2386,7 +2386,7 @@ v1 是基于当前时间戳、机器 MAC 地址生成的，因为 MAC 地址是�
     <span class="nx">t</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="nx">second</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="c1">// 获取音频时长-本地文件（eg：ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 /Users/xxx/Downloads/xxx.mp4）
+<span class="c1">// 获取音频宽高-本地文件（eg：ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 /Users/xxx/Downloads/xxx.mp4）
 </span><span class="c1"></span><span class="kd">func</span> <span class="nf">GetMediaSizeLocal</span><span class="p">(</span><span class="nx">filepath</span><span class="p">,</span> <span class="nx">ffprobePath</span><span class="p">,</span> <span class="nx">bashPath</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">int64</span><span class="p">,</span> <span class="kt">int64</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">int64</span>
 

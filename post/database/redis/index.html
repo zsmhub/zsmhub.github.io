@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Redis">
 <meta itemprop="description" content="缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使"><meta itemprop="datePublished" content="2019-01-03T22:38:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-07T22:38:49&#43;08:00" />
-<meta itemprop="wordCount" content="3801">
+<meta itemprop="wordCount" content="3825">
 <meta itemprop="keywords" content="redis," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Redis"/>
 <meta name="twitter:description" content="缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3801 字 </span>
+          <span class="more-meta"> 约 3825 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -346,6 +346,11 @@ redis-cli --bigkeys -i 0.1
 </ul>
 <h2 id="常用案例">常用案例</h2>
 <pre><code>```php
+// 设置缓存当天生效
+now := time.Now()
+expiration := time.Date(now.Year(), now.Month(), now.Day(), 23, 59, 59, 0, time.Local).Add(time.Second).Sub(now)
+db.Redis(db.DefaultRedis).Expire(key, expiration)
+
 // 设置一个带有生存时间和互斥锁的 key
 // 字符串：SET key value [EX seconds] [PX milliseconds] [NX|XX]
 function setTTLKey($key, $timeout = 300)
