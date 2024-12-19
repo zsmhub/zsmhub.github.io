@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Mysql 基础知识一">
 <meta itemprop="description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【for"><meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="3899">
+<meta itemprop="wordCount" content="4140">
 <meta itemprop="keywords" content="database,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql 基础知识一"/>
 <meta name="twitter:description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【for"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3899 字 </span>
-          <span class="more-meta"> 预计阅读 8 分钟 </span>
+          <span class="more-meta"> 约 4140 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
     </header>
@@ -149,6 +149,7 @@
     <li><a href="#mysql-性能">Mysql 性能</a></li>
     <li><a href="#ddl">DDL</a></li>
     <li><a href="#数据库设计三范式">数据库设计三范式</a></li>
+    <li><a href="#字段类型长度">字段类型长度</a></li>
   </ul>
 </nav>
   </div>
@@ -729,6 +730,22 @@ alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_
 <p>第三范式3NF</p>
 <p>定义：在第二范式的基础上，数据表中如果不存在非关键字段对任一候选关键字段的传递函数依赖则符合3NF。</p>
 </li>
+</ol>
+<h2 id="字段类型长度">字段类型长度</h2>
+<ul>
+<li>TINYTEXT = 255 bytes (2^8 bytes)</li>
+<li>TEXT = 64KB (2^16 bytes)</li>
+<li>MEDIUMTEXT = 16MB (2^24 bytes)</li>
+<li>LONGTEXT = 4GB (2^32 bytes)</li>
+</ul>
+<p>不同编码格式一个字符对应不同的字节（中英文符号与字母或汉字都作为字符，占用字节数都一一对应）：</p>
+<ol>
+<li>ASCII 码中，一个英文字母（不分大小写）为一个字节，一个中文汉字为两个字节。</li>
+<li>GBK编码中，英文字母一个字节，一个中文汉字两个字节。</li>
+<li>UTF-8 编码中，一个英文字母为一个字节，一个中文为三个字节。</li>
+<li>Unicode 编码中，一个英文为一个字节，一个中文为两个字节。</li>
+<li>UTF-16 编码中，一个英文字母字符或一个汉字字符存储都需要 2 个字节。</li>
+<li>UTF-32 编码中，世界上任何字符的存储都需要 4 个字节。</li>
 </ol>
 
     </div>
