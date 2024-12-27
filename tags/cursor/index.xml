@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>“cursor” on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/cursor/</link>
+    <description>Recent content in “cursor” on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Fri, 27 Dec 2024 15:13:25 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/cursor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cursor</title>
+      <link>https://zsmhub.github.io/post/ai/cursor/</link>
+      <pubDate>Fri, 27 Dec 2024 15:13:25 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ai/cursor/</guid>
+      <description>Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 后端使用技巧 文档生成</description>
+    </item>
+    
+  </channel>
+</rss>
