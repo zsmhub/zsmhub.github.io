@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>AI提示词模板 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="生成文案 1 你是一个视频文案专家，根据文案内容，生成与该文案对应的分镜主题的标题和口播文案（不是拍摄方法，是该段分镜可用于播报的文案），返回J" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="AI提示词模板" />
+<meta property="og:description" content="生成文案 1 你是一个视频文案专家，根据文案内容，生成与该文案对应的分镜主题的标题和口播文案（不是拍摄方法，是该段分镜可用于播报的文案），返回J" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-12-27T16:33:14&#43;08:00" />
+<meta property="article:modified_time" content="2024-12-27T16:33:14&#43;08:00" />
+
+<meta itemprop="name" content="AI提示词模板">
+<meta itemprop="description" content="生成文案 1 你是一个视频文案专家，根据文案内容，生成与该文案对应的分镜主题的标题和口播文案（不是拍摄方法，是该段分镜可用于播报的文案），返回J"><meta itemprop="datePublished" content="2024-12-27T16:33:14&#43;08:00" />
+<meta itemprop="dateModified" content="2024-12-27T16:33:14&#43;08:00" />
+<meta itemprop="wordCount" content="1986">
+<meta itemprop="keywords" content="“提示词”," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AI提示词模板"/>
+<meta name="twitter:description" content="生成文案 1 你是一个视频文案专家，根据文案内容，生成与该文案对应的分镜主题的标题和口播文案（不是拍摄方法，是该段分镜可用于播报的文案），返回J"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">AI提示词模板</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2024-12-27 </span>
+        <div class="post-category">
+            <a href="/categories/ai/"> “AI” </a>
+            </div>
+          <span class="more-meta"> 约 1986 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#生成文案">生成文案</a></li>
+    <li><a href="#json错别字修正">JSON错别字修正</a></li>
+    <li><a href="#小说二创">小说二创</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="生成文案">生成文案</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-txt" data-lang="txt">你是一个视频文案专家，根据文案内容，生成与该文案对应的分镜主题的标题和口播文案（不是拍摄方法，是该段分镜可用于播报的文案），返回JSON字符串数组: [{title: &#39;xxxx&#39;, content: &#39;yyyy&#39;}, ...]，不要markdown，围绕的主题和要求：主题：火锅店介绍，第一人称，用小红书探店风格，简洁，自然口语化表达，生成5个分镜
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-txt" data-lang="txt">你是一个广告文案填充助手，根据下方的JSON数组生成短文案（文案参考content字段、短文案长度参考len字段，设定一个中文字符的长度为1），填充到原始数据的相应位置中，不要解释，文案需要通顺，输出内容不要包含换行和markdown语法。输出格式: [{&#34;key&#34;: &#34;Text0&#34;, &#34;len&#34;: 5, &#34;text&#34;: &#34;xxx&#34;}, {&#34;key&#34;: &#34;Text1&#34;, &#34;len&#34;: 8, &#34;text&#34;: &#34;xxx&#34;}]
+
+JSON数组：[{&#34;content&#34;:&#34;保湿：特定的保湿成分，如带有保湿成分的产品，起到保湿效果。保养：针对不同肤质（中性、干性、油性皮肤）的保养建议，注意日常保湿、调节水油平衡的护理。保护：清洁要到位，避免使用过油的护肤品和粉底，不使用含有酒精成分较多的收敛水和爽肤水，避免用洗脸刷或频繁使用去角质产品。&#34;,&#34;limit&#34;:[{&#34;key&#34;:&#34;Text0&#34;,&#34;len&#34;:5},{&#34;key&#34;:&#34;Text1&#34;,&#34;len&#34;:7}]},{&#34;content&#34;:&#34;冰川沁润舒爽补水：产品通过冰川矿物水和多种植物精粹的融合，为肌肤提供深层次的水分补给，使肌肤感受到如浴甘露般的清盈沁爽。适用于多种肤质：产品考虑到不同肤质的需求，特别强调即使敏感肌肤也可以安心使用，前提是进行局部测试无异常反应。简便的使用方法：产品使用方法简单，适合忙碌的现代生活，通过湿敷的方式快速为肌肤补水，提升肌肤水润度。&#34;,&#34;limit&#34;:[{&#34;key&#34;:&#34;Text2&#34;,&#34;len&#34;:9},{&#34;key&#34;:&#34;Text3&#34;,&#34;len&#34;:4}]}]
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="json错别字修正">JSON错别字修正</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-txt" data-lang="txt">原始文稿：大家好，今天给大家分享一下我使用面膜的体验。首先，这款面膜的包装非常精美，打开后有淡淡的清香。敷在脸上非常服帖，精华液也非常充足。使用后感觉皮肤变得水润光滑，毛孔也有所收缩。连续使用一周后，皮肤明显变得更加细腻有光泽。强烈推荐给大家！
+
+参考上方原始文稿，修正JSON数组中每一句可能存在的错别字。请保持数组条数不变，句子分词、断句一致，智能修正错别字，但是不要修复语法、顺序等其他错误。
+
+[&#34;大家好，今天给大家分享衣下我使用面魔的体验。&#34;,&#34;首先这款面魔的包装非常精美，&#34;,&#34;打开后有淡淡的清香，&#34;,&#34;敷在脸上非常服帖，&#34;,&#34;精华液也非常充足，&#34;,&#34;使用后感觉皮肤变得水潤光滑，&#34;,&#34;毛孔也有所收缩，&#34;,&#34;连续使用一周后，&#34;,&#34;皮肤明显变得更加细腻有光泽，&#34;,&#34;强烈推荐给大家。&#34;]
+
+不要有多余解释，直接输出含10个元素的JSON数组：[&#34;text1&#34;, &#34;text2&#34;, ..., &#34;text10&#34;]
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="小说二创">小说二创</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-txt" data-lang="txt">帮我写一篇修仙小说，主角名字是一个美女，叫婉儿，字数不少于 3000 字，参考游戏《了不起的修仙模拟器》和小说《仙逆》进行二创改编。
+
+背景设定：
+随着此界天道演化进入末期，本就不稳的天道法则混乱加剧。种种奇诡的现象开始出现：或使阴阳颠倒，或使五行逆转，或使人心逐利，或使寿元疾逝……
+太始、太终、太真、太虚、太玄、太易、太极七种天道的相继变化将会彻底改变修仙界。修行之路再次变得诡谲难测。
+为了应对这些异动的天道，修行者将会面对意想不到的奇遇或挑战……
+
+人物设定：
+1. 婉儿：婉儿是王林的妻子，她与王林的爱情起始于她弱小无助之时，王林的出现犹如一道光，照亮了她的世界。王林不仅救了她的性命，还与她在修魔海有过三年朝夕相处、炼丹修炼的时光。婉儿深深地依恋于王林，甚至可以说，她的情感之深是不可动摇的。婉儿对王林的感情不仅仅是因为王林的痴情，更是在那弱小无助时互帮互助的感动，以及初恋情结。
+2. 王林：以心中之感动，逆仙而修，追求的不仅是长生，更多的是摆脱那背后的蝼蚁之身。他坚信道在人为，以平庸的资质踏入修真仙途，历经坎坷风雨，凭着其聪睿的心智，一步一步走向巅峰，凭一己之力，扬名修真界。
+3. 司徒南：是婉儿和王林的前辈
+
+门派设定；
+所属门派：昆仑宫，友好门派：青莲剑宗，敌对门派：殇魔宫
+
+出场人物：
+婉儿（昆仑宫）、王林（昆仑宫）、司徒南（青莲剑宗）、拓森（殇魔宫）
+
+地点设定：
+邪帝陵、龙脉洞窟
+
+注意点：
+婉儿喜欢叫王林为师兄
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2024-12-27
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/">“提示词”</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/ai/cursor/">
+            <span class="next-text nav-default">Cursor</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2024-12-27 16:33:14 \u002b0800 CST',
+        title: 'AI提示词模板',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy;
+    2019 -
+    2024
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

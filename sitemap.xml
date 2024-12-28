@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://zsmhub.github.io/categories/ai/</loc>
+    <loc>https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/</loc>
     <lastmod>2024-12-27T16:33:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -37,14 +37,14 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/</loc>
+    <loc>https://zsmhub.github.io/categories/ai/</loc>
     <lastmod>2024-12-27T16:33:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/post/ai/%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/</loc>
+    <loc>https://zsmhub.github.io/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/</loc>
     <lastmod>2024-12-27T16:33:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
