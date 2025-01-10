@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>其他 on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/categories/%E5%85%B6%E4%BB%96/</link>
+    <description>Recent content in 其他 on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Fri, 10 Jan 2025 11:10:41 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E5%85%B6%E4%BB%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mac导出微信语音</title>
+      <link>https://zsmhub.github.io/post/other/%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/</link>
+      <pubDate>Fri, 10 Jan 2025 11:10:41 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/</guid>
+      <description>在 mac 上导出微信语音比较简单，不需要借助其他工具。 收藏语音消息 先在微信中收藏语音消息，这样文件会出现在 Favorites 目录中，便于查找。 微信导出 在收藏中找一</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,35 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/</loc>
-    <lastmod>2024-12-27T16:33:14+08:00</lastmod>
+    <loc>https://zsmhub.github.io/categories/</loc>
+    <lastmod>2025-01-10T11:10:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/categories/</loc>
-    <lastmod>2024-12-27T16:33:14+08:00</lastmod>
+    <loc>https://zsmhub.github.io/post/other/%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/</loc>
+    <lastmod>2025-01-10T11:10:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2024-12-27T16:33:14+08:00</lastmod>
+    <lastmod>2025-01-10T11:10:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2024-12-27T16:33:14+08:00</lastmod>
+    <lastmod>2025-01-10T11:10:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zsmhub.github.io/</loc>
+    <lastmod>2025-01-10T11:10:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
+    <lastmod>2025-01-10T11:10:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/</loc>
+    <lastmod>2025-01-10T11:10:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/</loc>
     <lastmod>2024-12-27T16:33:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
