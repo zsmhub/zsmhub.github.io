@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>React - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZsmHub" /><meta name="description" content="基础概念 ECMAScript ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。 核心特性：使用 let 和 const 代替 var；箭" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/react/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="React" />
+<meta property="og:description" content="基础概念 ECMAScript ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。 核心特性：使用 let 和 const 代替 var；箭" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/react/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-02-04T16:39:46&#43;08:00" />
+<meta property="article:modified_time" content="2025-02-04T16:39:46&#43;08:00" />
+
+<meta itemprop="name" content="React">
+<meta itemprop="description" content="基础概念 ECMAScript ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。 核心特性：使用 let 和 const 代替 var；箭"><meta itemprop="datePublished" content="2025-02-04T16:39:46&#43;08:00" />
+<meta itemprop="dateModified" content="2025-02-04T16:39:46&#43;08:00" />
+<meta itemprop="wordCount" content="1271">
+<meta itemprop="keywords" content="“react”," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="React"/>
+<meta name="twitter:description" content="基础概念 ECMAScript ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。 核心特性：使用 let 和 const 代替 var；箭"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">React</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2025-02-04 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+            </div>
+          <span class="more-meta"> 约 1271 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础概念">基础概念</a></li>
+    <li><a href="#常用命令">常用命令</a></li>
+    <li><a href="#在-macos-上手动调整-react-版本到-18xx">在 macOS 上手动调整 React 版本到 18.x.x</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="基础概念">基础概念</h2>
+<ol>
+<li>
+<p>ECMAScript</p>
+<p>ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。</p>
+<p>核心特性：使用 let 和 const 代替 var；箭头函数；async 和 await等。</p>
+</li>
+<li>
+<p>JavaScript</p>
+<p>JavaScript（简称 JS）是一种前端编程语言，主要用于网页交互，JavaScript 是 ECMAScript 规范的一个实现。例如：</p>
+<ul>
+<li>动态更新内容（比如无刷新加载新数据）</li>
+<li>处理用户交互（点击按钮、表单输入等）</li>
+<li>动画和特效</li>
+<li>与服务器通信（获取或发送数据）</li>
+</ul>
+<p>它是Web 开发的核心语言，与 HTML、CSS 一起构成了现代网页的基础。</p>
+</li>
+<li>
+<p>TypeScript (TS)</p>
+<p>TypeScript 是由 Microsoft 开发的一个超集，它是在 JavaScript 的基础上增加了 <code>静态类型</code> 和 <code>类型检查</code>，并支持 ES6+ 的所有特性。</p>
+<p>TypeScript 引入了强类型的概念，你可以为变量、函数参数、返回值等指定明确的类型。编译时会检查类型错误，避免运行时的潜在问题。</p>
+<p>支持接口（interface）、类（class）、枚举（enum）、泛型（generics）等高级功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// 类型注解
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">name</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;John&#34;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">age</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+
+<span class="c1">// 定义一个函数并指定参数类型和返回类型
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">));</span>  <span class="c1">// TypeScript 会检查 greet 是否按预期使用
+</span><span class="c1"></span>
+<span class="c1">// 接口
+</span><span class="c1"></span><span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+    <span class="nx">age</span>: <span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">person</span>: <span class="kt">Person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;John&#34;</span><span class="p">,</span>
+    <span class="nx">age</span>: <span class="kt">30</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>React</p>
+<p><code>React</code> 是一个用于构建用户界面的 <code>JavaScript 框架</code>，由 Facebook 于 2013 年创建。它最初用于构建 Facebook 网站，后来成为开发web应用程序最流行的 JavaScript 框架之一。</p>
+<p>React 应用程序是由 组件 组成的。一个组件是 UI（用户界面）的一部分，它拥有自己的逻辑和外观。组件可以小到一个按钮，也可以大到整个页面。React 组件是返回标签的 JavaScript 函数</p>
+<blockquote>
+<p>JSX（JavaScript XML）</p>
+</blockquote>
+<p>JSX是 React 提供的一种语法扩展，让你可以在 JavaScript 代码中直接编写类似 HTML 的代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kr">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&#34;React&#34;</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">!</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;;</span>  <span class="c1">// 输出：Hello, React!
+</span><span class="c1"></span>
+<span class="c1">// 使用一个 &lt;div&gt; 包裹
+</span><span class="c1"></span><span class="k">return</span> <span class="p">(</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">World</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="c1">// 或者使用 Fragment（推荐）
+</span><span class="c1"></span><span class="k">return</span> <span class="p">(</span>
+<span class="p">&lt;&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Hello</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">World</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/&gt;</span>
+<span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>在 React 组件中使用 TypeScript</p>
+</blockquote>
+<p>每个包含 JSX 的文件都必须使用 .tsx 文件扩展名。这是一个 TypeScript 特定的扩展，告诉 TypeScript 该文件包含 JSX。</p>
+</li>
+<li>
+<p>React框架</p>
+<ul>
+<li>Ant Design Pro: 是基于 Ant Design 构建的一个企业级前端框架，主要针对管理后台系统、后台管理界面（Admin Dashboard）等复杂应用。</li>
+<li>Next.js: Next.js 是一个基于 React 的 框架（Framework），它对 React 进行了扩展，使其更适合用于 服务器端渲染（SSR）、静态站点生成（SSG）、SEO 友好 的应用开发。（Next.js = React + 服务器端渲染 + 静态生成 + 更强的 SEO + 更好的开发体验）</li>
+</ul>
+</li>
+<li>
+<p>node</p>
+<p>是一个基于 Chrome V8 引擎的 JS 运行环境。</p>
+</li>
+<li>
+<p>nvm</p>
+<p>node 版本管理器，也就是说：一个 nvm 可以管理多个 node 版本（包含 npm 与 npx），可以方便快捷的 安装、切换 不同版本的 node。</p>
+<p>如果你使用 nvm 来管理 Node.js 版本，npm 版本会随着 Node.js 版本的变化而变化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">nvm use v20 <span class="c1"># brew install node@20，然后使用nvm切换node版本</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="常用命令">常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 用脚手架新建初始化项目</span>
+npx create-react-app 项目名
+npx create-react-app 项目名 --template typescript
+
+<span class="c1"># 更新构建工具</span>
+npm install react-scripts@latest
+
+<span class="c1"># 检查 React 和 React DOM 的版本</span>
+npm list react react-dom
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="在-macos-上手动调整-react-版本到-18xx">在 macOS 上手动调整 React 版本到 18.x.x</h2>
+<ol>
+<li>
+<p>创建一个新的 React 项目</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">npx create-react-app test1
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>删除 node_modules 和 package-lock.json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> test1  <span class="c1"># 进入项目文件夹</span>
+
+rm -rf node_modules
+rm package-lock.json
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>手动调整 React 版本为 18.x.x</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">npm install react@18 react-dom@18
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>安装依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">npm install
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>验证 React 版本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">npm list react react-dom
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>运行项目</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">npm start
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2025-02-04
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/react/">“react”</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/other/%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/">
+            <span class="next-text nav-default">mac导出微信语音</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2025-02-04 16:39:46 \u002b0800 CST',
+        title: 'React',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy;
+    2019 -
+    2025
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZsmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

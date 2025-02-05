@@ -49,7 +49,7 @@
 <meta itemprop="name" content="前端开发">
 <meta itemprop="description" content="Sass 与 Less Sass背景 CSS 不是编程语言，虽然可以用它来开发网页样式，但是没有办法用它编程。SASS 的出现，让 CSS 实现了通过代码编程的方式来实现。 SASS 是"><meta itemprop="datePublished" content="2019-03-01T11:01:18&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-16T11:01:18&#43;08:00" />
-<meta itemprop="wordCount" content="920">
+<meta itemprop="wordCount" content="637">
 <meta itemprop="keywords" content="前端," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="前端开发"/>
 <meta name="twitter:description" content="Sass 与 Less Sass背景 CSS 不是编程语言，虽然可以用它来开发网页样式，但是没有办法用它编程。SASS 的出现，让 CSS 实现了通过代码编程的方式来实现。 SASS 是"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
             </div>
-          <span class="more-meta"> 约 920 字 </span>
+          <span class="more-meta"> 约 637 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -142,9 +142,8 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#sass-与-less">Sass 与 Less</a></li>
-    <li><a href="#npm-yarn-laravel-mix">NPM, Yarn, Laravel Mix</a></li>
+    <li><a href="#包管理工具">包管理工具</a></li>
     <li><a href="#macos-node-升级">MacOS Node 升级</a></li>
-    <li><a href="#常用命令">常用命令</a></li>
     <li><a href="#前端布局方案">前端布局方案</a></li>
   </ul>
 </nav>
@@ -167,42 +166,47 @@
 <li>less，是方便我们快速编写CSS的工具，它增强了CSS代码的扩展性和复用性。</li>
 <li>Less 可以运行在 Node 或浏览器端。</li>
 </ul>
-<h2 id="npm-yarn-laravel-mix">NPM, Yarn, Laravel Mix</h2>
-<p><a href="https://blog.csdn.net/qq_32614411/article/details/80894605">前端主流包管理工具对比</a></p>
+<h2 id="包管理工具">包管理工具</h2>
 <blockquote>
-<p>NPM</p>
+<p>npm</p>
 </blockquote>
-<ul>
-<li>NPM 是 Node.js（一个基于 Google V8 引擎的 JavaScript 运行环境）的<!-- raw HTML omitted -->包管理和任务管理<!-- raw HTML omitted -->工具。Composer 的一些概念也是从 NPM 中借鉴过来的，因此 NPM 也有个类似 composer.json 文件的 package.json 文件</li>
-<li>NPM 的任务管理功能，如npm run watch-poll, npm run dev等</li>
-</ul>
+<p>npm 是 Node.js 的包管理器，用于管理 JavaScript 项目所依赖的库和工具。它是 Node.js 的默认包管理工具，帮助开发者安装、升级、卸载和共享代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 查看npm最新版本</span>
+npm show npm version
+
+<span class="c1"># 查看本地当前版本</span>
+npm -v
+
+<span class="c1"># 更新npm到最新版</span>
+npm install -g npm@latest
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>yarn</p>
+</blockquote>
+<p>Yarn 是 Facebook 开发的另一个包管理工具，主要用于替代 npm，解决一些 npm 的性能和一致性问题。</p>
 <blockquote>
-<p>Yarn（主推yarn：yarn的确定性安装，可以避免很多潜在的问题，相对安全）</p>
+<p>pnpm</p>
 </blockquote>
-<ul>
-<li>Yarn 是经过重新设计的崭新的 npm <!-- raw HTML omitted -->包管理<!-- raw HTML omitted -->工具，它能让开发人员并行处理所有必须的操作，并添加了一些其他改进。</li>
-<li>运行速度得到了显著的提升，整个安装时间也变得更少</li>
-<li>像 npm 一样，yarn 使用本地缓存。与 npm 不同的是，yarn无需互联网连接就能安装本地缓存的依赖项，它提供了离线模式。</li>
-<li>允许合并项目中使用到的所有的包的许可证</li>
-</ul>
-<blockquote>
-<p>Laravel Mix</p>
-</blockquote>
-<ul>
-<li>Laravel Mix 一款前端<!-- raw HTML omitted -->任务自动化管理工具<!-- raw HTML omitted -->，使用了工作流的模式对制定好的任务依次执行。Mix 提供了简洁流畅的 API，让你能够为你的 Laravel 应用定义 Webpack 编译任务。Mix 支持许多常见的 CSS 与 JavaScript 预处理器，通过简单的调用，你可以轻松地管理前端资源。我们可以在 webpack.mix.js 文件中制定一些如资源文件的编译、压缩等任务。</li>
-</ul>
+<p>pnpm 是一个比 npm 和 yarn 更高效的包管理工具，主要解决了 磁盘占用大 和 安装速度慢 的问题。它通过 共享依赖 和 符号链接（symlink） 来优化安装流程，使其更快、更节省磁盘空间。</p>
+<p><img src="/images/2024/Snipaste_2025-02-04_16-42-41.png" alt="常用命令"></p>
 <h2 id="macos-node-升级">MacOS Node 升级</h2>
 <ul>
 <li>brew uninstall &ndash;ignore-dependencies node</li>
 <li>sudo rm -rf /usr/local/lib/node_modules/npm # 不做此操作，npm可能不会跟着升级</li>
 <li>brew install node</li>
-</ul>
-<h2 id="常用命令">常用命令</h2>
-<ul>
-<li>npm / yarn install &ndash;no-bin-links # 安装依赖包</li>
-<li>npm / yarn add [package]</li>
-<li>npm run dev # 将 .scss 等文件编译为 .css等静态文件</li>
-<li>npm run watch-poll # 在每次检测到 .scss 等文件发生更改时，自动将其编译为 .css 等静态文件</li>
 </ul>
 <h2 id="前端布局方案">前端布局方案</h2>
 <ol>

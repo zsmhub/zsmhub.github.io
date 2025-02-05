@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>“react” on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/react/</link>
+    <description>Recent content in “react” on ZsmHub - Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Tue, 04 Feb 2025 16:39:46 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React</title>
+      <link>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/react/</link>
+      <pubDate>Tue, 04 Feb 2025 16:39:46 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/react/</guid>
+      <description>基础概念 ECMAScript ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。 核心特性：使用 let 和 const 代替 var；箭</description>
+    </item>
+    
+  </channel>
+</rss>
