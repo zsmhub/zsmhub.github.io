@@ -49,7 +49,7 @@
 <meta itemprop="name" content="React">
 <meta itemprop="description" content="基础概念 ECMAScript ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。 核心特性：使用 let 和 const 代替 var；箭"><meta itemprop="datePublished" content="2025-02-04T16:39:46&#43;08:00" />
 <meta itemprop="dateModified" content="2025-02-04T16:39:46&#43;08:00" />
-<meta itemprop="wordCount" content="1271">
+<meta itemprop="wordCount" content="1333">
 <meta itemprop="keywords" content="“react”," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="React"/>
 <meta name="twitter:description" content="基础概念 ECMAScript ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。 核心特性：使用 let 和 const 代替 var；箭"/>
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
             </div>
-          <span class="more-meta"> 约 1271 字 </span>
+          <span class="more-meta"> 约 1333 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -279,7 +279,7 @@
 <li>
 <p>React框架</p>
 <ul>
-<li>Ant Design Pro: 是基于 Ant Design 构建的一个企业级前端框架，主要针对管理后台系统、后台管理界面（Admin Dashboard）等复杂应用。</li>
+<li>Ant Design Pro: 是基于 Ant Design 构建的一个企业级前端框架，主要针对管理后台系统、后台管理界面（Admin Dashboard）等复杂应用。Ant Design Pro 以 umi 作为脚手架，启动和开发与 umi 基本相同。</li>
 <li>Next.js: Next.js 是一个基于 React 的 框架（Framework），它对 React 进行了扩展，使其更适合用于 服务器端渲染（SSR）、静态站点生成（SSG）、SEO 友好 的应用开发。（Next.js = React + 服务器端渲染 + 静态生成 + 更强的 SEO + 更好的开发体验）</li>
 </ul>
 </li>
@@ -304,15 +304,18 @@
 <h2 id="常用命令">常用命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 用脚手架新建初始化项目</span>
@@ -324,6 +327,9 @@ npm install react-scripts@latest
 
 <span class="c1"># 检查 React 和 React DOM 的版本</span>
 npm list react react-dom
+
+<span class="c1"># 下载一个旧项目到本地，启动前需要执行安装node_module</span>
+yarn install
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="在-macos-上手动调整-react-版本到-18xx">在 macOS 上手动调整 React 版本到 18.x.x</h2>

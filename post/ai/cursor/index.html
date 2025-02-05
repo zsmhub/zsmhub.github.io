@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 后端使用技巧 文档生成" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 Chat Chat 允许用户与能够访" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="Cursor" />
-<meta property="og:description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 后端使用技巧 文档生成" />
+<meta property="og:description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 Chat Chat 允许用户与能够访" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://zsmhub.github.io/post/ai/cursor/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2024-12-27T15:13:25&#43;08:00" />
 <meta property="article:modified_time" content="2024-12-27T15:13:25&#43;08:00" />
 
 <meta itemprop="name" content="Cursor">
-<meta itemprop="description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 后端使用技巧 文档生成"><meta itemprop="datePublished" content="2024-12-27T15:13:25&#43;08:00" />
+<meta itemprop="description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 Chat Chat 允许用户与能够访"><meta itemprop="datePublished" content="2024-12-27T15:13:25&#43;08:00" />
 <meta itemprop="dateModified" content="2024-12-27T15:13:25&#43;08:00" />
-<meta itemprop="wordCount" content="220">
+<meta itemprop="wordCount" content="974">
 <meta itemprop="keywords" content="“cursor”," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cursor"/>
-<meta name="twitter:description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 后端使用技巧 文档生成"/>
+<meta name="twitter:description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 Chat Chat 允许用户与能够访"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/ai/"> AI </a>
             </div>
-          <span class="more-meta"> 约 220 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 974 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -141,6 +141,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#常用命令">常用命令</a></li>
     <li><a href="#后端使用技巧">后端使用技巧</a></li>
   </ul>
 </nav>
@@ -148,7 +149,42 @@
 </div>
     <div class="post-content">
       <p>Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。</p>
-<h2 id="后端使用技巧">后端使用技巧</h2>
+<p><img src="/images/2024/Snipaste_2025-02-05_15-22-38.png" alt="cursor主界面"></p>
+<blockquote>
+<p>Chat</p>
+</blockquote>
+<p>Chat 允许用户与能够访问代码库的 AI 进行对话。Chat 始终可以查看当前文件和光标位置，因此可以提出诸如“这里是否存在 bug？”等问题。使用“@”符号，可以将特定代码块或文件添加到上下文中。</p>
+<blockquote>
+<p>Composer</p>
+</blockquote>
+<p>Composer 是位于编辑器中的 AI 编码助手。它可以帮助您在不离开工作流程的情况下浏览代码、编写新功能和修改现有代码。</p>
+<ol>
+<li>
+<p>Agent 模式：是 Cursor 4.3 版本推出的一种革命性的 AI 代理系统，不仅是一个简单的代码助手，而是一个能够像真实程序员一样思考和工作的智能伙伴，能够自主完成复杂的编程任务，理解项目上下文，并提供持续的开发支持。　（目前只有 claude 支持 Agent 模式）</p>
+</li>
+<li>
+<p>Normal 模式：是一种用户主导的编程助手模式，通过提供用户明确的指令来执行任务，适用于需要精细控制的场景。</p>
+</li>
+</ol>
+<p>Normal 模式和 Agent 模式相比，最明显的差异是运作方式更偏被动，或者说是“受限”。Agent 模式可以自主地做出决策、执行任务，而 Normal 模式更像是一个工具，依赖用户明确的指令来完成任务。</p>
+<blockquote>
+<p>Accept</p>
+</blockquote>
+<p>在 AI 完成内容的生成和修改之后，对话框会有 3 个选项，Save all、Reject all、Accept all。</p>
+<p>Save all : AI 会将所有建议的更改保存到相应文件中，但不会关闭建议窗口，用户可以继续查看和编辑这些更改。这一功能适用于希望先保存更改但仍需进一步调整的情况。</p>
+<p>Reject all : 拒绝并放弃 AI 提供的所有建议和更改，文件将保持不变。此功能适用于 AI 的建议不符合预期时，用户可以重新开始的情况。</p>
+<p>Accept all : 接受并应用 AI 提供的所有建议更改，这些更改将直接保存到相应文件中。随后，建议窗口会自动关闭，表示此次编辑已完成。此功能适用于 AI 的建议符合预期的情况。</p>
+<p>使用建议：在接受修改前，先查看 AI 修改的内容，如果不符合需求可 Reject all，然后更改提示词，重新生成，符合预期的话，可以先 Save all，测试通过后 Accept all 应用所有更改。</p>
+<h2 id="常用命令">常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">Command+K: 快速打开聊天输入框，也可以选中一段代码后再按下该命令
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="后端使用技巧">后端使用技巧</h2>
 <ol>
 <li>文档生成：为这个 API 端点生成 Swagger 文档，包含：请求参数说明、响应格式、错误码说明、示例</li>
 <li>性能优化：分析并优化这段代码的性能：识别潜在的性能瓶颈、提供优化建议、添加缓存策略</li>
