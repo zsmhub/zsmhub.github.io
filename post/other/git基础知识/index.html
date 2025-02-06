@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="ZsmHub" /><meta name="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug docs: 仅仅修改了文档 ui: 修改了一下样式 style: 仅仅修改了空格、格式缩进" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.69.0 with theme even" />
+<meta name="generator" content="Hugo 0.82.0 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
@@ -35,27 +35,24 @@
 
 
 
-<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Git 基础知识" />
-<meta property="og:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修" />
+<meta property="og:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug docs: 仅仅修改了文档 ui: 修改了一下样式 style: 仅仅修改了空格、格式缩进" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
-<meta property="article:published_time" content="2019-10-02T21:05:31+08:00" />
-<meta property="article:modified_time" content="2020-05-09T16:05:31+08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-10-02T21:05:31&#43;08:00" />
+<meta property="article:modified_time" content="2020-05-09T16:05:31&#43;08:00" />
+
 <meta itemprop="name" content="Git 基础知识">
-<meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修">
-<meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
+<meta itemprop="description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug docs: 仅仅修改了文档 ui: 修改了一下样式 style: 仅仅修改了空格、格式缩进"><meta itemprop="datePublished" content="2019-10-02T21:05:31&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-09T16:05:31&#43;08:00" />
-<meta itemprop="wordCount" content="1488">
-
-
-
+<meta itemprop="wordCount" content="2260">
 <meta itemprop="keywords" content="git,入门," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git 基础知识"/>
-<meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 feat: 添加新特性 fix: 修复bug refactor: 代码重构，没有加新功能或者修复bug merge: 分支合并，解决冲突 docs: 仅仅修"/>
+<meta name="twitter:description" content="Git 简介 版本控制工具，分布式版本控制系统 git commit 注释标记 参考文章 feat: 添加新功能 fix: 修复bug docs: 仅仅修改了文档 ui: 修改了一下样式 style: 仅仅修改了空格、格式缩进"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/other/"> other </a>
             </div>
-          <span class="more-meta"> 约 1488 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 2260 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -146,16 +143,25 @@
   <ul>
     <li><a href="#git-简介">Git 简介</a></li>
     <li><a href="#git-commit-注释标记">git commit 注释标记</a></li>
+    <li><a href="#建立分支名规范">建立分支名规范</a></li>
     <li><a href="#git-remote">git remote</a></li>
     <li><a href="#git-stash">git stash</a></li>
     <li><a href="#代码回滚命令">代码回滚命令</a></li>
     <li><a href="#忽略跟踪">忽略跟踪</a></li>
+    <li><a href="#tag">tag</a></li>
     <li><a href="#其他常用命令">其他常用命令</a></li>
     <li><a href="#git-文件的三种状态">Git 文件的三种状态</a></li>
-    <li><a href="#git-多帐号配置">Git 多帐号配置</a></li>
     <li><a href="#git-常用分支">Git 常用分支</a></li>
-    <li><a href="#github上fork项目后如何同步更新原先项目的提交">github上fork项目后，如何同步更新原先项目的提交</a></li>
+    <li><a href="#git-多帐号配置">Git 多帐号配置</a></li>
     <li><a href="#配置信息">配置信息</a></li>
+    <li><a href="#公司变更-gitlab-地址后需执行的操作">公司变更 gitlab 地址后需执行的操作</a></li>
+    <li><a href="#分支开发流程图">分支开发流程图</a></li>
+    <li><a href="#github">GitHub</a>
+      <ul>
+        <li><a href="#fork项目后如何同步更新原先项目的提交">fork项目后，如何同步更新原先项目的提交</a></li>
+        <li><a href="#批量删除-github-仓库">批量删除 Github 仓库</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -164,14 +170,27 @@
       <h2 id="git-简介">Git 简介</h2>
 <p>版本控制工具，分布式版本控制系统</p>
 <h2 id="git-commit-注释标记">git commit 注释标记</h2>
+<p><a href="https://ruby-china.org/topics/15737">参考文章</a></p>
 <ul>
-<li>feat: 添加新特性</li>
+<li>feat: 添加新功能</li>
 <li>fix: 修复bug</li>
-<li>refactor: 代码重构，没有加新功能或者修复bug</li>
-<li>merge: 分支合并，解决冲突</li>
 <li>docs: 仅仅修改了文档</li>
-<li>style: 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑</li>
+<li>ui: 修改了一下样式</li>
+<li>style: 仅仅修改了空格、格式缩进等等，不改变代码逻辑</li>
+<li>refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代码变动)</li>
+<li>merge: 分支合并，解决冲突</li>
 <li>test: 增加测试用例</li>
+<li>debug: 增加调试日志</li>
+<li>chore: 构建过程、辅助工具的变动</li>
+<li>perf: 提高性能</li>
+</ul>
+<h2 id="建立分支名规范">建立分支名规范</h2>
+<blockquote>
+<p>模板：开发者姓名拼音首字母_feat/fix_功能名</p>
+</blockquote>
+<ul>
+<li>zs_feat_功能： 建立新功能分支</li>
+<li>zs_fix_修复内容：建立 bug 修复分支</li>
 </ul>
 <h2 id="git-remote">git remote</h2>
 <div class="highlight"><div class="chroma">
@@ -186,7 +205,7 @@
 <pre class="chroma"><code class="language-sh" data-lang="sh">git init <span class="c1"># 要对现有的某个项目开始用 Git 管理，只需到此项目所在的目录</span>
 git remote <span class="c1"># 查看远程库信息</span>
 git remote -v   <span class="c1"># 查看远程库详细信息</span>
-git remote add origin git@github.com:&lt;username&gt;/weibo.git  <span class="c1"># 本地 git 项目新增远程仓库地址，如github</span>
+git remote add origin git@github.com:&lt;username&gt;/weibo.git  <span class="c1"># 本地 git 项目添加远程仓库地址，如github</span>
 git remote set-url origin git@url.here  <span class="c1"># 修改远程仓库地址</span>
 </code></pre></td></tr></table>
 </div>
@@ -214,12 +233,16 @@ git stash pop  <span class="c1"># 恢复工作现场并删除stash内容</span>
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard HEAD^  <span class="c1">#回退到上一个版本，HEAD^可以更改为版本号</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard &lt;old-commit-id&gt; <span class="c1"># 回滚</span>
+git reset --hard HEAD^  <span class="c1">#回退到上一个版本，HEAD^可以更改为commit版本号</span>
 git reset . <span class="c1"># 取消已贮存文件</span>
 git reset HEAD &lt;file&gt;  <span class="c1">#git暂存区add的file文件回退工作区</span>
-git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码仍然保留</span>
+git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码仍然保留『代码保留在暂存区』</span>
+git reset --mixed HEAD^ <span class="c1"># 撤回commit操作，提交的代码仍然保留『代码保留在工作区』（常用点）</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -230,7 +253,7 @@ git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码�
 <p>git clean -f -d # 清理新建的新增且未提交项目，-f 是强制清理文件的设置，-d 选项命令连文件夹一并清除</p>
 </li>
 <li>
-<p>本地版本回退时，GitLab 上代码库回退方法</p>
+<p>版本回退：先本地版本回退，再强制 push 到 GitLab</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -238,7 +261,7 @@ git reset --soft HEAD^  <span class="c1"># 撤回commit操作，提交的代码�
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard &lt;old-commit-id&gt;
-git push -f &lt;remote-name&gt; &lt;branch-name&gt;  <span class="c1">#主要是加个-f参数</span>
+git push -f &lt;remote-name&gt; &lt;branch-name&gt;  <span class="c1">#git push -f origin uat，主要是加个-f参数『Settings-&gt;Repository-&gt;Protected branches: gilab:master默认分支是保护状态取消分支保护即可提交』</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -264,6 +287,23 @@ $ git update-index --no-assume-unchanged /path/to/file <span class="c1"># 恢复
 git ls-files -v <span class="p">|</span> grep <span class="s1">&#39;^h&#39;</span>  <span class="c1"># 查看所有被 update-index 忽略跟踪的文件</span>
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="tag">tag</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git tag -a <span class="s1">&#39;v0.0.1&#39;</span> -m <span class="s1">&#39;第一个版本的注释&#39;</span> <span class="c1"># 打 tag</span>
+git push --tags <span class="c1"># 推送 tag</span>
+git tag -d 标签名 <span class="c1"># 删除本地标签</span>
+git reset --hard v0.02<span class="o">(</span>版本的tag值<span class="o">)</span> <span class="c1"># 按tag 回滚</span>
+git push origin :refs/tags/标签名 <span class="c1"># 删除远程标签</span>
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="其他常用命令">其他常用命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -281,32 +321,51 @@ git ls-files -v <span class="p">|</span> grep <span class="s1">&#39;^h&#39;</spa
 </span><span class="lnt">12
 </span><span class="lnt">13
 </span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git log  <span class="c1"># 回顾下提交历史</span>
+<pre class="chroma"><code class="language-sh" data-lang="sh">git config --global --edit <span class="c1"># 编辑全局变量文件</span>
+
+git log  <span class="c1"># 回顾下提交历史</span>
 git reflog  <span class="c1"># 用来记录你的每一次的提交版本命令</span>
+
 git commit --amend <span class="c1"># 重新编辑提交说明 或 在上一个commit中添加新更改的文件</span>
+git commit --amend --author<span class="o">=</span><span class="s2">&#34;mn &lt;mn@qq.com&gt;&#34;</span> <span class="c1"># 修改已提交的author信息</span>
+
+
 git pull  <span class="c1"># 拉取所有分支代码</span>
 git pull origin develop <span class="c1"># 拉取远程分支代码到当前分支</span>
 git checkout -b test_branch develop <span class="c1"># 在develop分支下创建新分支并切换分支</span>
 
 git branch -d test_branch <span class="c1"># 删除已合并的分支</span>
 git branch -D test_branch <span class="c1"># 删除任意分支</span>
-git branch <span class="p">|</span> grep <span class="s1">&#39;zsm_&#39;</span> <span class="p">|</span> xargs git branch -d <span class="c1"># 批量删除已合并分支</span>
+git branch <span class="p">|</span> grep <span class="s1">&#39;zsm_&#39;</span> <span class="p">|</span> xargs git branch -d <span class="c1"># 批量删除已合并分支 『xargs 是一个强有力的命令，它能够捕获一个命令的输出，然后传递给另外一个命令。』</span>
 
 <span class="c1"># 拉取远程分支的 2 种方式</span>
-git fetch origin develop <span class="c1"># 拉取develop远程分支到本地</span>
+git fetch origin develop <span class="o">&amp;&amp;</span> git checkout develop <span class="c1"># 拉取develop远程分支到本地</span>
 git checkout -b develop origin/develop <span class="c1"># 本地创建并切换到 develop 分支</span>
+
+<span class="c1"># 将一个分支上的所有commit（修改）合并为同一个commit，然后合并到当前分支【注意gitlab的mr会自动勾选上squash选项，多个提交者信息会统一变为分支创建者】</span>
+git merge --squash feature_name
+
+<span class="c1"># 删除本地develop分支</span>
+git checkout uat <span class="o">&amp;&amp;</span> git branch -D develop <span class="o">&amp;&amp;</span> git checkout -b develop
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="git-文件的三种状态">Git 文件的三种状态</h2>
 <p>在Git中，文件只有三种状态，已修改，已暂存和已提交。</p>
 <p>这三个文件分别放在工作目录，暂存区域和git目录。当一个文件修改完毕之后，它仍然在工作目录；只有当它被add之后，才会进入暂存区域，文件状态变为已暂存；最后，当文件被 commit之后，它就会进去git目录区域。</p>
-<h2 id="git-多帐号配置">Git 多帐号配置</h2>
-<ol>
-<li>生成多个ssh秘钥，关联不同的git账号</li>
-<li>然后进入项目文件夹下，执行命令git config user.email &ldquo;your_email&rdquo;</li>
-</ol>
 <h2 id="git-常用分支">Git 常用分支</h2>
 <ul>
 <li>master：生产环境分支，不允许直接提交代码，只能从uat和hotfix分支合并</li>
@@ -315,7 +374,90 @@ git checkout -b develop origin/develop <span class="c1"># 本地创建并切换�
 <li>feature：新功能开发分支，从uat分支fork代码，开发完成后合并到develop测试，测试通过后合并到uat分支，然后删除重新fork</li>
 <li>hotfix：生产环境修复分支，从master分支fork代码，开发完成后合并到master，酌情合并到其它分支，然后删除重新fork</li>
 </ul>
-<h2 id="github上fork项目后如何同步更新原先项目的提交">github上fork项目后，如何同步更新原先项目的提交</h2>
+<h2 id="git-多帐号配置">Git 多帐号配置</h2>
+<ol>
+<li>
+<p>生成两个ssh秘钥，关联不同的git账号，一个用于github，一个用于公司</p>
+</li>
+<li>
+<p>秘钥校验配置：vi ~/.ssh/config</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># github</span>
+Host github.com
+HostName github.com
+User xxx@.com
+PreferredAuthentications publickey
+IdentityFile /Users/xxx/.ssh/id_rsa_github
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>然后进入项目文件夹下，执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git config user.name <span class="s2">&#34;your_name&#34;</span>
+git config user.email <span class="s2">&#34;your_email&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/2022/QQ20220811-111716.png" alt="~/.ssh"></p>
+</li>
+</ol>
+<h2 id="配置信息">配置信息</h2>
+<ol>
+<li>
+<p>用户名设置</p>
+<ul>
+<li>git config &ndash;system user.name &ldquo;hic&rdquo;</li>
+<li>git config &ndash;global user.name &ldquo;hic&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>电子邮件</p>
+<p>git config &ndash;global user.email &ldquo;<a href="mailto:hic@gmail.com">hic@gmail.com</a>&rdquo;</p>
+</li>
+<li>
+<p>查看配置信息</p>
+<p>git config -l</p>
+</li>
+<li>
+<p>如果要查看某个特定的环境变量，只要把它的名字放到最后即可</p>
+<p>git config user.name</p>
+</li>
+<li>
+<p>配置git 使其对文件名大小写敏感</p>
+<p>git config core.ignorecase false</p>
+</li>
+<li>
+<p>编辑/删除全局变量</p>
+<p>git config &ndash;global &ndash;edit</p>
+</li>
+<li>
+<p>添加全局变量，将 http 拉取代码的方式替换为 ssh 方式</p>
+<p>git config &ndash;global url.&ldquo;<a href="mailto:git@gitlab.xxx.cn">git@gitlab.xxx.cn</a>:&quot;.insteadOf &ldquo;<a href="http://gitlab.xxx.cn/%22">http://gitlab.xxx.cn/&quot;</a></p>
+</li>
+</ol>
+<h2 id="公司变更-gitlab-地址后需执行的操作">公司变更 gitlab 地址后需执行的操作</h2>
+<ol>
+<li>在新 gitlab 上 add ssh key「在本机执行命令：cat ~/.ssh/id_rsa.pub 即可获取ssh key」</li>
+<li>在本地代码库执行更换源命令：git remote set-url origin <a href="mailto:git@gitlab.xxx.com">git@gitlab.xxx.com</a>:xxx/对应项目名称.git</li>
+</ol>
+<h2 id="分支开发流程图">分支开发流程图</h2>
+<p><img src="/images/2021/Jietu20211231-110157.jpg" alt="分支开发流程图"></p>
+<h2 id="github">GitHub</h2>
+<h3 id="fork项目后如何同步更新原先项目的提交">fork项目后，如何同步更新原先项目的提交</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -332,32 +474,8 @@ git merge upstream/master
 git push
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="配置信息">配置信息</h2>
-<ol>
-<li>
-<p>用户名设置</p>
-<ul>
-<li>git config &ndash;system user.name &ldquo;hic&rdquo;</li>
-<li>git config &ndash;global user.name &ldquo;hic&rdquo;</li>
-</ul>
-</li>
-<li>
-<p>电子邮件</p>
-<p>git config &ndash;global user.email &ldquo;<a href="mailto:hic@gmail.com">hic@gmail.com</a>&rdquo;</p>
-</li>
-<li>
-<p>查看配置信息</p>
-<p>git config &ndash;list</p>
-</li>
-<li>
-<p>如果要查看某个特定的环境变量，只要把它的名字放到最后即可</p>
-<p>git config user.name</p>
-</li>
-<li>
-<p>配置git 使其对文件名大小写敏感</p>
-<p>git config core.ignorecase false</p>
-</li>
-</ol>
+</div><h3 id="批量删除-github-仓库">批量删除 Github 仓库</h3>
+<p><a href="https://github.com/itzhangbao/remove-repos">批量删除 Github 仓库</a></p>
 
     </div>
 
@@ -379,27 +497,13 @@ git push
     <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
   </p>
 </div>
-<div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">赞赏支持</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="/images/wechat-qr-code.png" alt="请先科学上网">
-        <span>微信打赏</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="/images/alipay-qr-code.png" alt="请先科学上网">
-        <span>支付宝打赏</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
           <a href="/tags/git/">git</a>
           <a href="/tags/%E5%85%A5%E9%97%A8/">入门</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/other/supervisor/">
+        <a class="prev" href="/post/%E5%90%8E%E7%AB%AF/supervisor/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">Supervisor</span>
             <span class="prev-text nav-mobile">上一篇</span>
@@ -418,7 +522,7 @@ git push
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: '2019-10-02 21:05:31 \x2b0800 CST',
+        id: '2019-10-02 21:05:31 \u002b0800 CST',
         title: 'Git 基础知识',
         clientID: 'fe63c88fe7fc18e38512',
         clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
@@ -442,7 +546,7 @@ git push
       <div class="social-links">
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
-  <a href="https://zsmhub.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -451,16 +555,16 @@ git push
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    主题 -
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy; 
-    2019 - 
-    2020
+    &copy;
+    2019 -
+    2025
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
