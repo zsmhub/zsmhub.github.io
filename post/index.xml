@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 04 Feb 2025 16:39:46 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Feb 2025 17:16:08 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>视频批量混剪方案</title>
+      <link>https://zsmhub.github.io/post/other/%E6%89%B9%E9%87%8F%E6%B7%B7%E5%89%AA%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Wed, 19 Feb 2025 17:16:08 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/other/%E6%89%B9%E9%87%8F%E6%B7%B7%E5%89%AA%E6%96%B9%E6%A1%88/</guid>
+      <description>阿里批量剪辑：timeline 批量混剪api: https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-submitmediaproducingjob?spm=a2c4g.11186623.0.0.51d642e9MCIpeN 批量混剪案例：https://help.aliyun.com/zh/ims/use-case</description>
+    </item>
+    
     <item>
       <title>React</title>
       <link>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/react/</link>
@@ -32,7 +41,7 @@
       <pubDate>Fri, 27 Dec 2024 16:33:14 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/</guid>
-      <description>生成文案 1 你是一个视频文案专家，根据文案内容，生成与该文案对应的分镜主题的标题和口播文案（不是拍摄方法，是该段分镜可用于播报的文案），返回J</description>
+      <description>生成文案 1 2 3 你是一个文案专家，以 没有如果 为主题写发人深思的一句话，不超过15字。 你是一个视频文案专家，根据文案内容，生成与该文案对应的分镜</description>
     </item>
     
     <item>
