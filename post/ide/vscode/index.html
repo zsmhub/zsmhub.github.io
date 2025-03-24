@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Vscode">
 <meta itemprop="description" content="常用快捷键 cmd&#43;P: 打开命令面板 直接输入文件名，跳转到文件 ? 列出当前可执行的动作 : 跳转到行数，也可以 Cmd&#43;G 直接进入 &gt; 显示并运行命令 @ 函数名跳转 光标『多点"><meta itemprop="datePublished" content="2019-06-19T21:04:16&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-19T21:04:16&#43;08:00" />
-<meta itemprop="wordCount" content="993">
+<meta itemprop="wordCount" content="1066">
 <meta itemprop="keywords" content="ide," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vscode"/>
 <meta name="twitter:description" content="常用快捷键 cmd&#43;P: 打开命令面板 直接输入文件名，跳转到文件 ? 列出当前可执行的动作 : 跳转到行数，也可以 Cmd&#43;G 直接进入 &gt; 显示并运行命令 @ 函数名跳转 光标『多点"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/ide/"> ide </a>
             </div>
-          <span class="more-meta"> 约 993 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1066 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -146,6 +146,7 @@
     <li><a href="#分屏">分屏</a></li>
     <li><a href="#常用扩展">常用扩展</a></li>
     <li><a href="#注意">注意</a></li>
+    <li><a href="#launchjson">launch.json</a></li>
   </ul>
 </nav>
   </div>
@@ -352,7 +353,65 @@
 <p>另外一致的行尾换行，有利于命令行工具的协同工作。</p>
 </li>
 </ol>
-
+<h2 id="launchjson">launch.json</h2>
+<p>调试go语言</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;0.2.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;configurations&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Debug logic_core.go&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;go&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;request&#34;</span><span class="p">:</span> <span class="s2">&#34;launch&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;mode&#34;</span><span class="p">:</span> <span class="s2">&#34;auto&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;program&#34;</span><span class="p">:</span> <span class="s2">&#34;${workspaceFolder}/main/logic_core.go&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;dlvFlags&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;--check-go-version=false&#34;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Debug logic_agent.go&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;go&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;request&#34;</span><span class="p">:</span> <span class="s2">&#34;launch&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;mode&#34;</span><span class="p">:</span> <span class="s2">&#34;auto&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;program&#34;</span><span class="p">:</span> <span class="s2">&#34;${workspaceFolder}/main/logic_agent.go&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;dlvFlags&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;--check-go-version=false&#34;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Cursor">
 <meta itemprop="description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 Chat Chat 允许用户与能够访"><meta itemprop="datePublished" content="2024-12-27T15:13:25&#43;08:00" />
 <meta itemprop="dateModified" content="2024-12-27T15:13:25&#43;08:00" />
-<meta itemprop="wordCount" content="1493">
+<meta itemprop="wordCount" content="1644">
 <meta itemprop="keywords" content="“cursor”," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cursor"/>
 <meta name="twitter:description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 Chat Chat 允许用户与能够访"/>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/ai/"> AI </a>
             </div>
-          <span class="more-meta"> 约 1493 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1644 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -144,6 +144,7 @@
     <li><a href="#常用命令">常用命令</a></li>
     <li><a href="#后端使用技巧">后端使用技巧</a></li>
     <li><a href="#根目录新建文件cursorrules">根目录新建文件.cursorrules</a></li>
+    <li><a href="#根目录新建文件cursorignore">根目录新建文件.cursorignore</a></li>
     <li><a href="#大模型使用技巧">大模型使用技巧</a></li>
     <li><a href="#cursor软件升级">cursor软件升级</a></li>
     <li><a href="#重置-cursor-ide-设备标识">重置 Cursor IDE 设备标识</a></li>
@@ -248,6 +249,26 @@
 ...
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="根目录新建文件cursorignore">根目录新建文件.cursorignore</h2>
+<p>在 Cursor 编程工具中，.cursorignore 文件的作用类似于 Git 里的 .gitignore 文件，主要用于指定哪些文件和目录应该被 Cursor 工具忽略，不进行索引和搜索等操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-txt" data-lang="txt"># 忽略所有 .env 文件，否则cursor会读取你的配置数据，如API密钥
+.env
+config.json
+
+# 忽略所有 .log 文件
+*.log
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="大模型使用技巧">大模型使用技巧</h2>
 <p>先用推理模型写方案，再用编程模型实现</p>
 <div class="highlight"><div class="chroma">
@@ -265,7 +286,8 @@
 </div><h2 id="cursor软件升级">cursor软件升级</h2>
 <p>去官网下载最新的cursor安装包，然后覆盖安装即可。</p>
 <h2 id="重置-cursor-ide-设备标识">重置 Cursor IDE 设备标识</h2>
-<p><a href="https://github.com/hamflx/cursor-reset">github脚本</a></p>
+<p><a href="https://github.com/hamflx/cursor-reset">更换机器ID</a></p>
+<p><a href="https://github.com/yuaotian/go-cursor-help">Cursor免费试用重置工具</a></p>
 
     </div>
 
