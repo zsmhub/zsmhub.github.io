@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 31 Jan 2024 10:04:50 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 14:12:52 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://zsmhub.github.io/post/ai/ai/</link>
+      <pubDate>Mon, 24 Mar 2025 14:12:52 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/post/ai/ai/</guid>
+      <description>AI Agent（智能体） AI Agent = LLM+Planning+Feedback+Tool use 在人工智能领域中，一个 Agent 通常指的是能够自主决策、执行任务并接收反馈的智能体。 LLM：语言模型（Languag</description>
+    </item>
+    
     <item>
       <title>如何绕过网站的IP封锁</title>
       <link>https://zsmhub.github.io/post/ai/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E7%BD%91%E7%AB%99%E7%9A%84ip%E5%B0%81%E9%94%81/</link>

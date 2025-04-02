@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 24 Feb 2025 11:35:11 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 14:12:52 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://zsmhub.github.io/categories/ai/</link>
+      <pubDate>Mon, 24 Mar 2025 14:12:52 +0800</pubDate>
+      
+      <guid>https://zsmhub.github.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>自媒体</title>
       <link>https://zsmhub.github.io/categories/%E8%87%AA%E5%AA%92%E4%BD%93/</link>
@@ -32,15 +41,6 @@
       <pubDate>Fri, 10 Jan 2025 11:10:41 +0800</pubDate>
       
       <guid>https://zsmhub.github.io/categories/%E5%85%B6%E4%BB%96/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>“AI”</title>
-      <link>https://zsmhub.github.io/categories/ai/</link>
-      <pubDate>Fri, 27 Dec 2024 16:33:14 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/categories/ai/</guid>
       <description></description>
     </item>
     
