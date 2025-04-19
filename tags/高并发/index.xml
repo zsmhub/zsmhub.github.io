@@ -4,18 +4,17 @@
     <title>高并发 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/</link>
     <description>Recent content in 高并发 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 06 Jul 2019 13:32:31 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Jul 2019 13:32:31 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>高并发处理</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/</link>
       <pubDate>Sat, 06 Jul 2019 13:32:31 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/</guid>
-      <description>高并发之问题描述 某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种</description>
+      <description>&lt;h2 id=&#34;高并发之问题描述&#34;&gt;高并发之问题描述&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种情况呢？生活给了我们答案：比如老式电闸都安装了保险丝，一旦有人使用超大功率的设备，保险丝就会烧断以保护各个电器不被强电流给烧坏。同理我们的接口也需要安装上“保险丝”，以防止非预期的请求对系统压力过大而引起的系统瘫痪，当流量过大时，可以采取拒绝或者引流等机制。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

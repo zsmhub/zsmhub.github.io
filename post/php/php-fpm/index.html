@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将客户端发送的数据作为输入，由Web服务器收集程序的输出并加上合适的头部，再发送回客户端。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/php-fpm/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="PHP-FPM" />
-<meta property="og:description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/php-fpm/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-09-02T16:04:33&#43;08:00" />
-<meta property="article:modified_time" content="2020-09-02T16:04:33&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/php-fpm/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="PHP-FPM">
+  <meta property="og:description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将客户端发送的数据作为输入，由Web服务器收集程序的输出并加上合适的头部，再发送回客户端。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-09-02T16:04:33+08:00">
+    <meta property="article:modified_time" content="2020-09-02T16:04:33+08:00">
+    <meta property="article:tag" content="Php-Fpm">
 
-<meta itemprop="name" content="PHP-FPM">
-<meta itemprop="description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将"><meta itemprop="datePublished" content="2020-09-02T16:04:33&#43;08:00" />
-<meta itemprop="dateModified" content="2020-09-02T16:04:33&#43;08:00" />
-<meta itemprop="wordCount" content="1536">
-<meta itemprop="keywords" content="php-fpm," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PHP-FPM"/>
-<meta name="twitter:description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将"/>
+  <meta itemprop="name" content="PHP-FPM">
+  <meta itemprop="description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将客户端发送的数据作为输入，由Web服务器收集程序的输出并加上合适的头部，再发送回客户端。">
+  <meta itemprop="datePublished" content="2020-09-02T16:04:33+08:00">
+  <meta itemprop="dateModified" content="2020-09-02T16:04:33+08:00">
+  <meta itemprop="wordCount" content="1536">
+  <meta itemprop="keywords" content="Php-Fpm">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PHP-FPM">
+  <meta name="twitter:description" content="PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将客户端发送的数据作为输入，由Web服务器收集程序的输出并加上合适的头部，再发送回客户端。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -168,8 +185,7 @@
 <p>PHP-FPM在5.4之后已经整合进入PHP源代码中，提供更好的PHP进程管理方式，可以有效控制内存和进程，平滑重载PHP配置。</p>
 <h2 id="最大进程数">最大进程数</h2>
 <blockquote>
-<p>如何控制子进程，为了高性能建议使用 pm static</p>
-</blockquote>
+<p>如何控制子进程，为了高性能建议使用 pm static</p></blockquote>
 <p>pm = dynamic: 子进程的数量根据以下配置动态设置 pm.max_children, pm.start_servers, pm.min_spare_servers, pm.max_spare_servers</p>
 <p>pm = ondemand: 进程在请求时按需创建，而不是动态的，其中 pm.start_servers 进程数量在服务启动时创建</p>
 <p>pm = static: 子进程的数量由 pm.max_children 决定</p>
@@ -187,39 +203,39 @@
 <p>其中的worker子进程实际处理连接请求，master主进程负责管理子进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">1. <span class="sb">`</span>master<span class="sb">`</span>进程，设置1s定时器，通过<span class="sb">`</span>socket<span class="sb">`</span>文件监听
-2. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>dynamic<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>数量&lt;<span class="sb">`</span>pm.min_spare_servers<span class="sb">`</span>，创建新的子进程
-3. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>dynamic<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>数量&gt;<span class="sb">`</span>pm.max_spare_servers<span class="sb">`</span>，杀死多余的空闲子进程
-4. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>ondemand<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>空闲时间&gt;<span class="sb">`</span>pm.process_idle_timeout<span class="sb">`</span>，杀死该空闲进程
-5. 当连接到达时，检测如果<span class="sb">`</span>worker<span class="sb">`</span>数量&gt;<span class="sb">`</span>pm.max_children<span class="sb">`</span>，打印<span class="sb">`</span>warning<span class="sb">`</span>日志，退出；如果无异常，使用<span class="sb">`</span>idle worker<span class="sb">`</span>服务，或者新建<span class="sb">`</span>worker<span class="sb">`</span>服务
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">1. <span class="sb">`</span>master<span class="sb">`</span>进程，设置1s定时器，通过<span class="sb">`</span>socket<span class="sb">`</span>文件监听
+</span></span><span class="line"><span class="cl">2. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>dynamic<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>数量&lt;<span class="sb">`</span>pm.min_spare_servers<span class="sb">`</span>，创建新的子进程
+</span></span><span class="line"><span class="cl">3. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>dynamic<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>数量&gt;<span class="sb">`</span>pm.max_spare_servers<span class="sb">`</span>，杀死多余的空闲子进程
+</span></span><span class="line"><span class="cl">4. 在<span class="sb">`</span><span class="nv">pm</span><span class="o">=</span>ondemand<span class="sb">`</span>时，如果<span class="sb">`</span>idle worker<span class="sb">`</span>空闲时间&gt;<span class="sb">`</span>pm.process_idle_timeout<span class="sb">`</span>，杀死该空闲进程
+</span></span><span class="line"><span class="cl">5. 当连接到达时，检测如果<span class="sb">`</span>worker<span class="sb">`</span>数量&gt;<span class="sb">`</span>pm.max_children<span class="sb">`</span>，打印<span class="sb">`</span>warning<span class="sb">`</span>日志，退出；如果无异常，使用<span class="sb">`</span>idle worker<span class="sb">`</span>服务，或者新建<span class="sb">`</span>worker<span class="sb">`</span>服务
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="保障基本安全">保障基本安全</h2>
 <p>我们为了避免PHP-FPM主进程由于某些糟糕的PHP代码挂掉，需要设置重启的全局配置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 如果在1min内有10个子进程被中断失效，重启主进程</span>
-<span class="nv">emergency_restart_threshold</span> <span class="o">=</span> <span class="m">10</span>
-<span class="nv">emergency_restart_interval</span> <span class="o">=</span> 1m
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 如果在1min内有10个子进程被中断失效，重启主进程</span>
+</span></span><span class="line"><span class="cl"><span class="nv">emergency_restart_threshold</span> <span class="o">=</span> <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="nv">emergency_restart_interval</span> <span class="o">=</span> 1m
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="进程数限制">进程数限制</h2>
 <p>此时如果我们分配全部的内存给PHP-FPM使用，那么进程数可以限制在157000/27 = 5814,但是由于我的服务器同时服务了很多内容，所以我们可以向下调整到512个进程数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -227,39 +243,39 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">process.max <span class="o">=</span> <span class="m">512</span>
-<span class="nv">pm</span> <span class="o">=</span> dynamic
-pm.max_children <span class="o">=</span> <span class="m">512</span>
-pm.start_servers <span class="o">=</span> <span class="m">16</span>
-pm.min_spare_servers <span class="o">=</span> <span class="m">8</span>
-pm.max_spare_serveres <span class="o">=</span> <span class="m">30</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">process.max <span class="o">=</span> <span class="m">512</span>
+</span></span><span class="line"><span class="cl"><span class="nv">pm</span> <span class="o">=</span> dynamic
+</span></span><span class="line"><span class="cl">pm.max_children <span class="o">=</span> <span class="m">512</span>
+</span></span><span class="line"><span class="cl">pm.start_servers <span class="o">=</span> <span class="m">16</span>
+</span></span><span class="line"><span class="cl">pm.min_spare_servers <span class="o">=</span> <span class="m">8</span>
+</span></span><span class="line"><span class="cl">pm.max_spare_serveres <span class="o">=</span> <span class="m">30</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="防止内存泄漏">防止内存泄漏</h2>
 <p>由于糟糕的插件和库，内存泄漏时有发生，所以我们需要对每一个子进程服务的请求数量做限制，防止无限制的内存泄漏：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">pm.max_requests <span class="o">=</span> <span class="m">1000</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pm.max_requests <span class="o">=</span> <span class="m">1000</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="php-fpm-执行命令">php-fpm 执行命令</h2>
 <p>如果上面的配置都按照你的实际需求和环境配置好了，不要忘记重启PHP-FPM服务。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">sudo systemctl start php-fpm      <span class="c1"># 启动php-fpm</span>
-sudo systemctl stop php-fpm       <span class="c1"># 停止php-fpm</span>
-sudo systemctl reload php-fpm     <span class="c1"># 重载php-fpm</span>
-sudo systemctl restart php-fpm    <span class="c1"># 重启php-fpm</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl start php-fpm      <span class="c1"># 启动php-fpm</span>
+</span></span><span class="line"><span class="cl">sudo systemctl stop php-fpm       <span class="c1"># 停止php-fpm</span>
+</span></span><span class="line"><span class="cl">sudo systemctl reload php-fpm     <span class="c1"># 重载php-fpm</span>
+</span></span><span class="line"><span class="cl">sudo systemctl restart php-fpm    <span class="c1"># 重启php-fpm</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考文章">参考文章</h2>
 <p><a href="https://segmentfault.com/a/1190000014735855">PHP-FPM 调优：为了高性能使用 pm static</a></p>
@@ -270,7 +286,7 @@ sudo systemctl restart php-fpm    <span class="c1"># 重启php-fpm</span>
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -342,22 +358,19 @@ sudo systemctl restart php-fpm    <span class="c1"># 重启php-fpm</span>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -371,7 +384,7 @@ sudo systemctl restart php-fpm    <span class="c1"># 重启php-fpm</span>
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

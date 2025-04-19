@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。
+无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自用户，用户可以在函数中yield一个状态。使用协程可以实现高效的并发任务。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/" />
@@ -35,24 +37,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Python 进程、线程和协程" />
-<meta property="og:description" content="基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-03-02T11:08:07&#43;08:00" />
-<meta property="article:modified_time" content="2019-03-10T11:08:07&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Python 进程、线程和协程">
+  <meta property="og:description" content="基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。
+无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自用户，用户可以在函数中yield一个状态。使用协程可以实现高效的并发任务。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-03-02T11:08:07+08:00">
+    <meta property="article:modified_time" content="2019-03-10T11:08:07+08:00">
+    <meta property="article:tag" content="Python">
 
-<meta itemprop="name" content="Python 进程、线程和协程">
-<meta itemprop="description" content="基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自"><meta itemprop="datePublished" content="2019-03-02T11:08:07&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-10T11:08:07&#43;08:00" />
-<meta itemprop="wordCount" content="2426">
-<meta itemprop="keywords" content="python," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python 进程、线程和协程"/>
-<meta name="twitter:description" content="基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自"/>
+  <meta itemprop="name" content="Python 进程、线程和协程">
+  <meta itemprop="description" content="基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。
+无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自用户，用户可以在函数中yield一个状态。使用协程可以实现高效的并发任务。">
+  <meta itemprop="datePublished" content="2019-03-02T11:08:07+08:00">
+  <meta itemprop="dateModified" content="2019-03-10T11:08:07+08:00">
+  <meta itemprop="wordCount" content="2427">
+  <meta itemprop="keywords" content="Python">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Python 进程、线程和协程">
+  <meta name="twitter:description" content="基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。
+无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自用户，用户可以在函数中yield一个状态。使用协程可以实现高效的并发任务。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +102,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +135,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -130,7 +151,7 @@
         <div class="post-category">
             <a href="/categories/python/"> python </a>
             </div>
-          <span class="more-meta"> 约 2426 字 </span>
+          <span class="more-meta"> 约 2427 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -154,20 +175,17 @@
 <p>无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自用户，用户可以在函数中yield一个状态。使用协程可以实现高效的并发任务。</p>
 <p>并发和并行一直是容易混淆的概念。并发通常指有多个任务需要同时进行，并行则是同一时刻有多个任务执行</p>
 <blockquote>
-<p>进程</p>
-</blockquote>
+<p>进程</p></blockquote>
 <p>进程(process)：对于操作系统来说，一个任务就是一个进程（Process），比如打开一个浏览器就是启动一个浏览器进程，打开一个记事本就启动了一个记事本进程，打开两个记事本就启动了两个记事本进程，打开一个Word就启动了一个Word进程。【缺点：进程切换开销大】</p>
 <p>多进程：进程数目一般=cpu数量*2+1</p>
 <p>多进程方式：from multiprocessing import Pool</p>
 <blockquote>
-<p>线程</p>
-</blockquote>
+<p>线程</p></blockquote>
 <p>线程(thread)：有些进程还不止同时干一件事，比如Word，它可以同时进行打字、拼写检查、打印等事情。在一个进程内部，要同时干多件事，就需要同时运行多个“子任务”，我们把进程内的这些“子任务”称为线程（Thread）。</p>
 <p>多线程：线程数目一般=cpu数量*2+1</p>
 <p>多线程实现方式：一个Master线程+多个Worker线程</p>
 <blockquote>
-<p>协程</p>
-</blockquote>
+<p>协程</p></blockquote>
 <p>单进程单线程的异步编程模型称为协程, 异步IO是通过将generator标记为coroutine后，和asyncio模块一起实现的。</p>
 <p>由一个线程执行，produce和consumer协作完成任务，所以称为“协程”</p>
 <p>协程(coroutine)：Python对协程的支持是通过generator实现的。。子程序就是协程的一种特例。</p>
@@ -180,7 +198,7 @@
 <p>yield: yield不但可以返回一个值，它还可以接收调用者发出的参数,如下斐波拉契数列的推算规则代码所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -199,31 +217,31 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
-    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">b</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="s1">&#39;done&#39;</span>
-
-<span class="k">def</span> <span class="nf">produce</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">max</span><span class="p">):</span>
-<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">None</span><span class="p">))</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">None</span><span class="p">))</span>
-    <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="n">produce</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="n">b</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span></span><span class="line"><span class="cl">        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;done&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">produce</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">max</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">produce</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>使用模块asyncio实现异步io：python3.5开始，async/await新语法替换yield from旧语法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -249,31 +267,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># yield from语法可以让我们方便地调用另一个generator</span>
-<span class="c1"># yield from=for i in &lt;可迭代对象&gt;: yield i 【把yield from理解为“递归调用Iterable并yield”】</span>
-
-<span class="kn">import</span> <span class="nn">asyncio</span>
-
-<span class="n">async</span> <span class="k">def</span> <span class="nf">wget</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;wget </span><span class="si">%s</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">host</span><span class="p">)</span>
-    <span class="n">connect</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">open_connection</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
-    <span class="n">reader</span><span class="p">,</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">await</span> <span class="n">connect</span>
-    <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;GET / HTTP/1.0</span><span class="se">\r\n</span><span class="s1">Host: </span><span class="si">%s</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">host</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
-    <span class="n">await</span> <span class="n">writer</span><span class="o">.</span><span class="n">drain</span><span class="p">()</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">await</span> <span class="n">reader</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">:</span>
-            <span class="k">break</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> header &gt; </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()))</span>
-    <span class="c1"># Ignore the body, close the socket</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
-<span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">wget</span><span class="p">(</span><span class="n">host</span><span class="p">)</span> <span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;www.sina.com.cn&#39;</span><span class="p">,</span> <span class="s1">&#39;www.sohu.com&#39;</span><span class="p">,</span> <span class="s1">&#39;www.163.com&#39;</span><span class="p">]]</span>
-<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">))</span>
-<span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># yield from语法可以让我们方便地调用另一个generator</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># yield from=for i in &lt;可迭代对象&gt;: yield i 【把yield from理解为“递归调用Iterable并yield”】</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">wget</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;wget </span><span class="si">%s</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">host</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">connect</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">open_connection</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">reader</span><span class="p">,</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">await</span> <span class="n">connect</span>
+</span></span><span class="line"><span class="cl">    <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;GET / HTTP/1.0</span><span class="se">\r\n</span><span class="s1">Host: </span><span class="si">%s</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">host</span>
+</span></span><span class="line"><span class="cl">    <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">writer</span><span class="o">.</span><span class="n">drain</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span> <span class="o">=</span> <span class="k">await</span> <span class="n">reader</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> header &gt; </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Ignore the body, close the socket</span>
+</span></span><span class="line"><span class="cl">    <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">wget</span><span class="p">(</span><span class="n">host</span><span class="p">)</span> <span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;www.sina.com.cn&#39;</span><span class="p">,</span> <span class="s1">&#39;www.sohu.com&#39;</span><span class="p">,</span> <span class="s1">&#39;www.163.com&#39;</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -326,7 +344,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -398,22 +416,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -427,7 +442,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -4,18 +4,17 @@
     <title>工作流 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
     <description>Recent content in 工作流 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 02 Jul 2020 09:09:47 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Jul 2020 09:09:47 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>工作流</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
       <pubDate>Thu, 02 Jul 2020 09:09:47 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
-      <description>概述 工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。 工作流[workflow]：在多个参与人</description>
+      <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;&#xA;&lt;p&gt;工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。&lt;/p&gt;&#xA;&lt;p&gt;工作流[workflow]：在多个参与人员之间按照事先定义好的规则传递信息、文档或任务的过程自动执行，从而实现某个预期的业务目标，或者促使该目标的实现。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

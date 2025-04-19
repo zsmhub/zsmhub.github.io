@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cursor - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="" /><meta name="description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。
+Chat
+Chat 允许用户与能够访问代码库的 AI 进行对话。Chat 始终可以查看当前文件和光标位置，因此可以提出诸如“这里是否存在 bug？”等问题。使用“@”符号，可以将特定代码块或文件添加到上下文中。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/ide/cursor/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:url" content="https://zsmhub.github.io/post/ide/cursor/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Cursor">
+  <meta property="og:description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。
+Chat
+Chat 允许用户与能够访问代码库的 AI 进行对话。Chat 始终可以查看当前文件和光标位置，因此可以提出诸如“这里是否存在 bug？”等问题。使用“@”符号，可以将特定代码块或文件添加到上下文中。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-12-27T15:13:25+08:00">
+    <meta property="article:modified_time" content="2024-12-27T15:13:25+08:00">
+    <meta property="article:tag" content="“Cursor”">
+
+  <meta itemprop="name" content="Cursor">
+  <meta itemprop="description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。
+Chat
+Chat 允许用户与能够访问代码库的 AI 进行对话。Chat 始终可以查看当前文件和光标位置，因此可以提出诸如“这里是否存在 bug？”等问题。使用“@”符号，可以将特定代码块或文件添加到上下文中。">
+  <meta itemprop="datePublished" content="2024-12-27T15:13:25+08:00">
+  <meta itemprop="dateModified" content="2024-12-27T15:13:25+08:00">
+  <meta itemprop="wordCount" content="1699">
+  <meta itemprop="keywords" content="“Cursor”">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cursor">
+  <meta name="twitter:description" content="Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。
+Chat
+Chat 允许用户与能够访问代码库的 AI 进行对话。Chat 始终可以查看当前文件和光标位置，因此可以提出诸如“这里是否存在 bug？”等问题。使用“@”符号，可以将特定代码块或文件添加到上下文中。">
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cursor</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2024-12-27 </span>
+        <div class="post-category">
+            <a href="/categories/ide/"> IDE </a>
+            </div>
+          <span class="more-meta"> 约 1699 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#常用命令">常用命令</a></li>
+    <li><a href="#后端使用技巧">后端使用技巧</a></li>
+    <li><a href="#根目录新建文件cursorrules">根目录新建文件.cursorrules</a></li>
+    <li><a href="#根目录新建文件cursorignore">根目录新建文件.cursorignore</a></li>
+    <li><a href="#大模型使用技巧">大模型使用技巧</a></li>
+    <li><a href="#cursor软件升级">cursor软件升级</a></li>
+    <li><a href="#重置-cursor-ide-设备标识">重置 Cursor IDE 设备标识</a></li>
+    <li><a href="#vscode扩展">VSCode扩展</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。</p>
+<p><img src="/images/2024/Snipaste_2025-02-05_15-22-38.png" alt="cursor主界面"></p>
+<blockquote>
+<p>Chat</p></blockquote>
+<p>Chat 允许用户与能够访问代码库的 AI 进行对话。Chat 始终可以查看当前文件和光标位置，因此可以提出诸如“这里是否存在 bug？”等问题。使用“@”符号，可以将特定代码块或文件添加到上下文中。</p>
+<blockquote>
+<p>Composer</p></blockquote>
+<p>Composer 是位于编辑器中的 AI 编码助手。它可以帮助您在不离开工作流程的情况下浏览代码、编写新功能和修改现有代码。</p>
+<ol>
+<li>
+<p>Agent 模式：是 Cursor 4.3 版本推出的一种革命性的 AI 代理系统，不仅是一个简单的代码助手，而是一个能够像真实程序员一样思考和工作的智能伙伴，能够自主完成复杂的编程任务，理解项目上下文，并提供持续的开发支持。　（目前只有 claude 支持 Agent 模式）</p>
+</li>
+<li>
+<p>Normal 模式：是一种用户主导的编程助手模式，通过提供用户明确的指令来执行任务，适用于需要精细控制的场景。</p>
+</li>
+</ol>
+<p>Normal 模式和 Agent 模式相比，最明显的差异是运作方式更偏被动，或者说是“受限”。Agent 模式可以自主地做出决策、执行任务，而 Normal 模式更像是一个工具，依赖用户明确的指令来完成任务。</p>
+<blockquote>
+<p>Accept</p></blockquote>
+<p>在 AI 完成内容的生成和修改之后，对话框会有 3 个选项，Save all、Reject all、Accept all。</p>
+<p>Save all : AI 会将所有建议的更改保存到相应文件中，但不会关闭建议窗口，用户可以继续查看和编辑这些更改。这一功能适用于希望先保存更改但仍需进一步调整的情况。</p>
+<p>Reject all : 拒绝并放弃 AI 提供的所有建议和更改，文件将保持不变。此功能适用于 AI 的建议不符合预期时，用户可以重新开始的情况。</p>
+<p>Accept all : 接受并应用 AI 提供的所有建议更改，这些更改将直接保存到相应文件中。随后，建议窗口会自动关闭，表示此次编辑已完成。此功能适用于 AI 的建议符合预期的情况。</p>
+<p>使用建议：在接受修改前，先查看 AI 修改的内容，如果不符合需求可 Reject all，然后更改提示词，重新生成，符合预期的话，可以先 Save all，测试通过后 Accept all 应用所有更改。</p>
+<h2 id="常用命令">常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Command+K: 快速打开聊天输入框，也可以选中一段代码后再按下该命令
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="后端使用技巧">后端使用技巧</h2>
+<ol>
+<li>文档生成：为这个 API 端点生成 Swagger 文档，包含：请求参数说明、响应格式、错误码说明、示例</li>
+<li>性能优化：分析并优化这段代码的性能：识别潜在的性能瓶颈、提供优化建议、添加缓存策略</li>
+<li>代码审查：让 AI 检查代码质量，寻找潜在的安全问题，确保代码符合最佳实践</li>
+<li>代码重构：重构这段代码，考虑：设计模式应用、代码复用、可维护性、可测试性</li>
+<li>API 开发</li>
+</ol>
+<h2 id="根目录新建文件cursorrules">根目录新建文件.cursorrules</h2>
+<p>cursor规则示例: <a href="https://cursor.directory/">https://cursor.directory/</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">你是一个 GO 开发专家，有丰富的项目经验，对 Go 语言有深入的理解，对项目有深入的了解
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">当前项目是一个Go项目，使用echo框架，使用MySQL数据库，缓存使用Redis和Memcached
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 关键原则
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">- 你需要读懂整个仓库代码，并根据需求修改代码
+</span></span><span class="line"><span class="cl">- 尽可能的为所有你加的代码添加目标注释，特别是有一定逻辑意义的代码
+</span></span><span class="line"><span class="cl">- 你写的代码，尽可能在关键位置加上注释，方法名，参数，返回值，功能描述，尽可能详细
+</span></span><span class="line"><span class="cl">- 特别是一些反复修改的BUG，需要详细描述解决方案
+</span></span><span class="line"><span class="cl">- 判断文件或函数顶部有没有描述信息，没有的话按下面要求加上描述信息（注释标记）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/**
+</span></span><span class="line"><span class="cl"> * @author AI
+</span></span><span class="line"><span class="cl"> * @description
+</span></span><span class="line"><span class="cl"> * @method
+</span></span><span class="line"><span class="cl"> * @param
+</span></span><span class="line"><span class="cl"> * @return
+</span></span><span class="line"><span class="cl"> */
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 文件目录
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="根目录新建文件cursorignore">根目录新建文件.cursorignore</h2>
+<p>在 Cursor 编程工具中，.cursorignore 文件的作用类似于 Git 里的 .gitignore 文件，主要用于指定哪些文件和目录应该被 Cursor 工具忽略，不进行索引和搜索等操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl"># 忽略所有 .env 文件，否则cursor会读取你的配置数据，如API密钥
+</span></span><span class="line"><span class="cl">.env
+</span></span><span class="line"><span class="cl">config.json
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 忽略所有 .log 文件
+</span></span><span class="line"><span class="cl">*.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="大模型使用技巧">大模型使用技巧</h2>
+<p>先用推理模型写方案，再用编程模型实现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">@xxx.tsx 分不同优化项目，给出多份详细的优化方案，写入到tmp目录，现在似乎存在频繁更新数据的问题，也可能是其他原因引起的性能问题，你检查下，给出详细的分步改进方案@tmp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@xxx.tsx 根据优化方案，逐步优化。每优化一个，停下来询问我是否继续
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="cursor软件升级">cursor软件升级</h2>
+<p>去官网下载最新的cursor安装包，然后覆盖安装即可。</p>
+<h2 id="重置-cursor-ide-设备标识">重置 Cursor IDE 设备标识</h2>
+<p><a href="https://github.com/hamflx/cursor-reset">更换机器ID</a></p>
+<p><a href="https://github.com/yeongpin/cursor-free-vip">cursor-free-vip</a></p>
+<p><a href="https://github.com/yuaotian/go-cursor-help">Cursor免费试用重置工具</a></p>
+<h2 id="vscode扩展">VSCode扩展</h2>
+<ul>
+<li>Go</li>
+<li>Python</li>
+<li>IntelliJ IDEA Keybindings</li>
+<li>markdownlint</li>
+<li>PHP Intelephense</li>
+<li>Stylelint</li>
+<li>vscode-icons</li>
+<li>YAML</li>
+<li>Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code</li>
+<li>Code Linters</li>
+<li>Code Runner</li>
+<li>Color Highlight</li>
+<li>ESLint</li>
+<li>Git History</li>
+<li>indent-rainbow</li>
+<li>JSON to Go</li>
+<li>Prettier - Code formatter</li>
+<li>Todo Tree</li>
+<li>Trailing Spaces</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2024-12-27
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cursor/">“cursor”</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">AI提示词模板</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%92%BB%E5%AD%94%E6%9C%BA%E5%85%B7/">
+            <span class="next-text nav-default">钻孔机具</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2024-12-27 15:13:25 \u002b0800 CST',
+        title: 'Cursor',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

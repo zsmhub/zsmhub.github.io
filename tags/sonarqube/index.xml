@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>sonarqube on ZsmHub - Blog</title>
+    <title>Sonarqube on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/sonarqube/</link>
-    <description>Recent content in sonarqube on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Sonarqube on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 15 Jun 2019 15:06:48 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/sonarqube/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jun 2019 15:06:48 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/sonarqube/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SonarQube 代码质量管理平台</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Sat, 15 Jun 2019 15:06:48 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</guid>
-      <description>SonarLint 与 SonarQube SonarLint 仅存在于 IDE（IntelliJ，Eclipse 和 Visual Studio）中。 其目的是在您键入代码时提供即时反馈。 为此，它专注于您要添加或更</description>
+      <description>&lt;h2 id=&#34;sonarlint-与-sonarqube&#34;&gt;SonarLint 与 SonarQube&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;SonarLint 仅存在于 IDE（IntelliJ，Eclipse 和 Visual Studio）中。 其目的是在您键入代码时提供即时反馈。 为此，它专注于您要添加或更新的代码。&lt;/li&gt;&#xA;&lt;li&gt;SonarQube 是一个用于管理源代码质量的开放平台，它可以从多个维度检测代码质量，可以快速的定位代码中潜在的或者明显的 Bug、错误。它支持包括 Java、Python、Php、C/C++、C#、HTML、JavaScript、PL/SQL、Objective C 等二十多种编程语言的代码质量管理与检测。可作为我们日常开发中检测代码质量的重要工具。为此，它会定期分析项目的所有源代码行。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;简单的说 SonarLint 是 SonarQube 的单机版本。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

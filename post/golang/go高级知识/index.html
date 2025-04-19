@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="代码编译过程 全局变量会进行全局初始化
+1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可能会出现重复，导致数据异常！
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" />
@@ -35,24 +37,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Go高级知识" />
-<meta property="og:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-08-30T15:57:50&#43;08:00" />
-<meta property="article:modified_time" content="2020-08-30T15:57:50&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Go高级知识">
+  <meta property="og:description" content="代码编译过程 全局变量会进行全局初始化
+1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可能会出现重复，导致数据异常！">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-08-30T15:57:50+08:00">
+    <meta property="article:modified_time" content="2020-08-30T15:57:50+08:00">
+    <meta property="article:tag" content="Golang">
 
-<meta itemprop="name" content="Go高级知识">
-<meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"><meta itemprop="datePublished" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="dateModified" content="2020-08-30T15:57:50&#43;08:00" />
-<meta itemprop="wordCount" content="1919">
-<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go高级知识"/>
-<meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可"/>
+  <meta itemprop="name" content="Go高级知识">
+  <meta itemprop="description" content="代码编译过程 全局变量会进行全局初始化
+1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可能会出现重复，导致数据异常！">
+  <meta itemprop="datePublished" content="2020-08-30T15:57:50+08:00">
+  <meta itemprop="dateModified" content="2020-08-30T15:57:50+08:00">
+  <meta itemprop="wordCount" content="1836">
+  <meta itemprop="keywords" content="Golang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Go高级知识">
+  <meta name="twitter:description" content="代码编译过程 全局变量会进行全局初始化
+1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可能会出现重复，导致数据异常！">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +102,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +135,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -130,7 +151,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 1919 字 </span>
+          <span class="more-meta"> 约 1836 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -144,7 +165,6 @@
     <li><a href="#代码编译过程">代码编译过程</a></li>
     <li><a href="#扇出和扇入">扇出和扇入</a></li>
     <li><a href="#死锁活锁和饥饿">死锁、活锁和饥饿</a></li>
-    <li><a href="#引入私有仓库报错的解决方案">引入私有仓库报错的解决方案</a></li>
     <li><a href="#跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</a></li>
     <li><a href="#golang-ast初探一个懒人源码分析工具">golang ast初探：一个懒人源码分析工具</a></li>
     <li><a href="#throw">throw</a></li>
@@ -161,13 +181,13 @@
 <p>全局变量会进行全局初始化</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">noticeRepository</span> <span class="kd">struct</span><span class="p">{}</span>
-<span class="kd">var</span> <span class="nx">Notice</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">noticeRepository</span><span class="p">{}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">noticeRepository</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">Notice</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">noticeRepository</span><span class="p">{}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -181,62 +201,21 @@
 <p><a href="https://www.bookstack.cn/read/For-learning-Go-Tutorial/spilt.3.src-chapter09-01.0.md">相关文章链接</a></p>
 <h2 id="死锁活锁和饥饿">死锁、活锁和饥饿</h2>
 <blockquote>
-<p>死锁</p>
-</blockquote>
+<p>死锁</p></blockquote>
 <p>死锁程序是所有并发进程 <em>彼此等待</em> 的程序。在这种情况下，如果没有外界的干预，这个程序将永远无陆恢复。</p>
 <blockquote>
-<p>活锁</p>
-</blockquote>
+<p>活锁</p></blockquote>
 <p>活锁是正在 <em>主动执行</em> 并发操作的程序，但是这些操作无战向前推进程序的状态。</p>
 <p>你曾经在走廊走向另一个人吗？她移动到一边让你通过，但你也做了同样的事情。所以你转到另一边，但她也是这样做的。想象一下这个情形永远持续下去，你就明白了活锁。</p>
 <blockquote>
-<p>饥饿</p>
-</blockquote>
+<p>饥饿</p></blockquote>
 <p>饥饿是在任何情况下，并发进程都无法获得执行工作所需的所有资源。</p>
 <p>饥饿通常意味着有一个或多个贪婪的并发进程，它们不公平地阻止一个或多个井发进程，以尽可能有效地完成工作，或者阻止全部并发进程。</p>
-<h2 id="引入私有仓库报错的解决方案">引入私有仓库报错的解决方案</h2>
-<ol>
-<li>
-<p>配置 git 全局变量</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git config --global url.ssh://git@gitlab.xxx.com/.insteadof https://gitlab.xxx.com/
-git config --global url.https://gitlab.xxx.com/.insteadof http://gitlab.xxx.com/
-</code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>全局生效：go env -w GOPRIVATE=gitlab.xxx.com [或当前终端生效：export GOPRIVATE=gitlab.xxx.com]</p>
-</li>
-<li>
-<p>go get <a href="mailto:gitlab.xxx.com/xxxx@v0.0.1">gitlab.xxx.com/xxxx@v0.0.1</a></p>
-</li>
-<li>
-<p>go mod tidy &amp;&amp; go mod vendor</p>
-</li>
-</ol>
-<blockquote>
-<p>go.mod 引入本地包</p>
-</blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">require <span class="s2">&#34;xxx/p&#34;</span> v0.0.0
-replace <span class="s2">&#34;xxx/p&#34;</span> <span class="o">=</span>&gt; <span class="s2">&#34;../p2&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</h2>
+<h2 id="跳出多重循环的高级-break-用法说明">跳出多重循环的高级 break 用法说明</h2>
 <p>在循环外使用 label 标记定义退出哪一层循环。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -248,17 +227,17 @@ replace <span class="s2">&#34;xxx/p&#34;</span> <span class="o">=</span>&gt; <sp
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">loop</span><span class="p">:</span>
-<span class="k">for</span> <span class="p">{</span>
- <span class="k">select</span><span class="p">{</span>
- <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">tick</span><span class="p">.</span><span class="nx">C</span><span class="p">:</span>
-  <span class="c1">//do someting
-</span><span class="c1"></span> <span class="k">case</span> <span class="o">&lt;-</span> <span class="nx">stop</span><span class="p">:</span>
-  <span class="k">break</span> <span class="nx">loop</span> <span class="c1">// 直接跳到 loop 标签位置，相当于退出 select 循环和 for 循环
-</span><span class="c1"></span> <span class="p">}</span>
-<span class="p">}</span>
-<span class="nf">doNext</span><span class="p">()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">loop</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="k">select</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">tick</span><span class="p">.</span><span class="nx">C</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//do someting</span>
+</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="o">&lt;-</span> <span class="nx">stop</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">break</span> <span class="nx">loop</span> <span class="c1">// 直接跳到 loop 标签位置，相当于退出 select 循环和 for 循环</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nf">doNext</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="golang-ast初探一个懒人源码分析工具">golang ast初探：一个懒人源码分析工具</h2>
 <p><a href="https://jodezer.github.io/2017/12/golang-ast%E5%88%9D%E6%8E%A2-%E4%B8%80%E4%B8%AA%E6%87%92%E4%BA%BA%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7">查看原文</a></p>
@@ -270,7 +249,7 @@ replace <span class="s2">&#34;xxx/p&#34;</span> <span class="o">=</span>&gt; <sp
 <p>再需要注意的一点是，go 语言中一个进程往往有很多 goroutinue 在同时进行，如果发生 throw 奔溃时，整个进程都会被关掉，如果通过日志，会发现打印了无数堆栈信息的日志（所有 goroutinue 的日志），这时候千万不要在堆栈日志上下功夫了，因为打印出来的都是正常日志，只需要查看日志中的 fatal 关键字即可找出真正的问题所在。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -281,16 +260,16 @@ replace <span class="s2">&#34;xxx/p&#34;</span> <span class="o">=</span>&gt; <sp
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">testmap</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
-<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="kc">true</span><span class="p">{</span>
-            <span class="nx">testmap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">10</span> <span class="c1">// fatal: sync: curcurent map writes
-</span><span class="c1"></span>        <span class="p">}</span>
-    <span class="p">}()</span>
-<span class="p">}</span>
-<span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">testmap</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="kc">true</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">testmap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">10</span> <span class="c1">// fatal: sync: curcurent map writes</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="uinptr--unsafepointer">uinptr &amp;&amp; unsafe.Pointer</h2>
 <p>两者都是数据类型。</p>
@@ -298,17 +277,15 @@ replace <span class="s2">&#34;xxx/p&#34;</span> <span class="o">=</span>&gt; <sp
 <p>unsafe.Pointer是特别定义的一种指针类型,它可以包含任意类型变量的地址。</p>
 <h2 id="静态代码分析工具">静态代码分析工具</h2>
 <blockquote>
-<p>pre-commit hook</p>
-</blockquote>
+<p>pre-commit hook</p></blockquote>
 <p>在项目开发中，我们都会使用到 git，因此我们可以将代码静态检查放在一个 git 触发点上，而不用每次写完代码手动去执行 golangci-lint run 等命令。这里，我们就需要用到 git hooks。</p>
 <p>git hooks 是 git 的一种钩子机制，可以让用户在 git 操作的各个阶段执行自定义的逻辑。git hooks 在项目根目录的 .git/hooks 下面配置，配置文件的名称是固定的，实质上就是一个个 shell 脚本。根据 git 执行体，钩子被分为客户端钩子和服务端钩子两类。</p>
 <p>客户端钩子包括：pre-commit、prepare-commit-msg、commit-msg、post-commit 等，主要用于控制客户端 git 的提交工作流。服务端钩子：pre-receive、post-receive、update，主要在服务端接收提交对象时、推送到服务器之前调用。</p>
 <blockquote>
-<p>使用go自带的vet工具，是比较简单的工具，无法递归检查整个服务的代码</p>
-</blockquote>
+<p>使用go自带的vet工具，是比较简单的工具，无法递归检查整个服务的代码</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -318,23 +295,22 @@ replace <span class="s2">&#34;xxx/p&#34;</span> <span class="o">=</span>&gt; <sp
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 分析单个文件或多个文件</span>
-go vet xxx.go xx2.go
-
-<span class="c1"># 一个包下所有源文件进行检测</span>
-go tool vet source/directory/*.go
-
-<span class="c1"># 利用vet对一个package进行检查,当然传入的包名必须是 相对路径 或者完整package</span>
-go vet ./source/repository
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 分析单个文件或多个文件</span>
+</span></span><span class="line"><span class="cl">go vet xxx.go xx2.go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 一个包下所有源文件进行检测</span>
+</span></span><span class="line"><span class="cl">go tool vet source/directory/*.go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 利用vet对一个package进行检查,当然传入的包名必须是 相对路径 或者完整package</span>
+</span></span><span class="line"><span class="cl">go vet ./source/repository
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>使用 golangci-lint</p>
-</blockquote>
+<p>使用 golangci-lint</p></blockquote>
 <p><a href="https://learnku.com/articles/59885#604f62">golangci-lint 代码检查</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -347,18 +323,18 @@ go vet ./source/repository
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># install</span>
-go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-
-<span class="c1"># golangci-lint 可以通过 -E/--enable 去开启指定 linter，或者 -D/--disable 禁止指定 linter。</span>
-golangci-lint run --disable-all -E errcheck
-
-<span class="c1"># 分析对整个服务代码</span>
-golangci-lint run &lt;<span class="o">=</span>&gt; golangci-lint run ./...
-
-<span class="c1"># 对某特定的文件或文件夹进行分析</span>
-golangci-lint run dir1 dir2/... dir3/file1.go
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># install</span>
+</span></span><span class="line"><span class="cl">go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># golangci-lint 可以通过 -E/--enable 去开启指定 linter，或者 -D/--disable 禁止指定 linter。</span>
+</span></span><span class="line"><span class="cl">golangci-lint run --disable-all -E errcheck
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 分析对整个服务代码</span>
+</span></span><span class="line"><span class="cl">golangci-lint run &lt;<span class="o">=</span>&gt; golangci-lint run ./...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 对某特定的文件或文件夹进行分析</span>
+</span></span><span class="line"><span class="cl">golangci-lint run dir1 dir2/... dir3/file1.go
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -366,7 +342,7 @@ golangci-lint run dir1 dir2/... dir3/file1.go
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -438,22 +414,19 @@ golangci-lint run dir1 dir2/... dir3/file1.go
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -467,7 +440,7 @@ golangci-lint run dir1 dir2/... dir3/file1.go
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -4,18 +4,17 @@
     <title>LB集群 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/lb%E9%9B%86%E7%BE%A4/</link>
     <description>Recent content in LB集群 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 26 May 2020 09:04:22 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/lb%E9%9B%86%E7%BE%A4/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 May 2020 09:04:22 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/lb%E9%9B%86%E7%BE%A4/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LB 集群</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Tue, 26 May 2020 09:04:22 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/</guid>
-      <description>简介 LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群. 负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。 原理 负载均衡的原理</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群.&lt;/p&gt;&#xA;&lt;p&gt;负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。&lt;/p&gt;&#xA;&lt;h2 id=&#34;原理&#34;&gt;原理&lt;/h2&gt;&#xA;&lt;p&gt;负载均衡的原理就是当用户的请求过来时，会直接发到分发器上，然后它把用户的请求根据预先设置好的算法，均衡的分发到后端真正的服务器（Real Server）上。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

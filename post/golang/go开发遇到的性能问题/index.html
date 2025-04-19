@@ -16,14 +16,19 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。 代码分析 测试环境：macbook pro macos Go 版本:" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。
+代码分析 测试环境：macbook pro macos
+Go 版本: 1.14
+json-iterator 版本: v1.1.9
+测试解析单次大 json 的情况
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/" />
@@ -35,24 +40,42 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Go 开发遇到的性能问题" />
-<meta property="og:description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。 代码分析 测试环境：macbook pro macos Go 版本:" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-05-09T14:32:23&#43;08:00" />
-<meta property="article:modified_time" content="2020-05-09T14:32:23&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Go 开发遇到的性能问题">
+  <meta property="og:description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。
+代码分析 测试环境：macbook pro macos
+Go 版本: 1.14
+json-iterator 版本: v1.1.9
+测试解析单次大 json 的情况">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-05-09T14:32:23+08:00">
+    <meta property="article:modified_time" content="2020-05-09T14:32:23+08:00">
+    <meta property="article:tag" content="性能">
 
-<meta itemprop="name" content="Go 开发遇到的性能问题">
-<meta itemprop="description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。 代码分析 测试环境：macbook pro macos Go 版本:"><meta itemprop="datePublished" content="2020-05-09T14:32:23&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-09T14:32:23&#43;08:00" />
-<meta itemprop="wordCount" content="653">
-<meta itemprop="keywords" content="性能," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go 开发遇到的性能问题"/>
-<meta name="twitter:description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。 代码分析 测试环境：macbook pro macos Go 版本:"/>
+  <meta itemprop="name" content="Go 开发遇到的性能问题">
+  <meta itemprop="description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。
+代码分析 测试环境：macbook pro macos
+Go 版本: 1.14
+json-iterator 版本: v1.1.9
+测试解析单次大 json 的情况">
+  <meta itemprop="datePublished" content="2020-05-09T14:32:23+08:00">
+  <meta itemprop="dateModified" content="2020-05-09T14:32:23+08:00">
+  <meta itemprop="wordCount" content="653">
+  <meta itemprop="keywords" content="性能">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Go 开发遇到的性能问题">
+  <meta name="twitter:description" content="原生 json 包效率低 原因 原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。
+代码分析 测试环境：macbook pro macos
+Go 版本: 1.14
+json-iterator 版本: v1.1.9
+测试解析单次大 json 的情况">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +114,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +147,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -160,81 +193,79 @@
 <p>Go 版本: 1.14</p>
 <p>json-iterator 版本: v1.1.9</p>
 <blockquote>
-<p>测试解析单次大 json 的情况</p>
-</blockquote>
+<p>测试解析单次大 json 的情况</p></blockquote>
 <table>
-<thead>
-<tr>
-<th>循环次数/耗时</th>
-<th>encoding/json</th>
-<th>json-iterator</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>json长度10</td>
-<td>239.665µs</td>
-<td>162.146µs</td>
-</tr>
-<tr>
-<td>json长度50</td>
-<td>231.41µs</td>
-<td>150.292µs</td>
-</tr>
-<tr>
-<td>json长度500</td>
-<td>735.36µs</td>
-<td>258.523µs</td>
-</tr>
-<tr>
-<td>json长度1,000</td>
-<td>1.346841ms</td>
-<td>379.458µs</td>
-</tr>
-<tr>
-<td>json长度10,000</td>
-<td>132.953435ms</td>
-<td>29.646291ms</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>循环次数/耗时</th>
+          <th>encoding/json</th>
+          <th>json-iterator</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>json长度10</td>
+          <td>239.665µs</td>
+          <td>162.146µs</td>
+      </tr>
+      <tr>
+          <td>json长度50</td>
+          <td>231.41µs</td>
+          <td>150.292µs</td>
+      </tr>
+      <tr>
+          <td>json长度500</td>
+          <td>735.36µs</td>
+          <td>258.523µs</td>
+      </tr>
+      <tr>
+          <td>json长度1,000</td>
+          <td>1.346841ms</td>
+          <td>379.458µs</td>
+      </tr>
+      <tr>
+          <td>json长度10,000</td>
+          <td>132.953435ms</td>
+          <td>29.646291ms</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
-<p>测试解析并发和大 json 的情况</p>
-</blockquote>
+<p>测试解析并发和大 json 的情况</p></blockquote>
 <table>
-<thead>
-<tr>
-<th>循环次数/耗时</th>
-<th>encoding/json</th>
-<th>json-iterator</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>循环10次，json长度100</td>
-<td>1.427445ms</td>
-<td>413.796µs</td>
-</tr>
-<tr>
-<td>循环50次，json长度500</td>
-<td>32.165554ms</td>
-<td>6.099719ms</td>
-</tr>
-<tr>
-<td>循环100次，json长度1,000</td>
-<td>131.037902ms</td>
-<td>23.466147ms</td>
-</tr>
-<tr>
-<td>循环1,000次，json长度10,000</td>
-<td>12.451799096s</td>
-<td>2.631567452s</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>循环次数/耗时</th>
+          <th>encoding/json</th>
+          <th>json-iterator</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>循环10次，json长度100</td>
+          <td>1.427445ms</td>
+          <td>413.796µs</td>
+      </tr>
+      <tr>
+          <td>循环50次，json长度500</td>
+          <td>32.165554ms</td>
+          <td>6.099719ms</td>
+      </tr>
+      <tr>
+          <td>循环100次，json长度1,000</td>
+          <td>131.037902ms</td>
+          <td>23.466147ms</td>
+      </tr>
+      <tr>
+          <td>循环1,000次，json长度10,000</td>
+          <td>12.451799096s</td>
+          <td>2.631567452s</td>
+      </tr>
+  </tbody>
 </table>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -301,72 +332,72 @@
 </span><span class="lnt">65
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;strings&#34;</span>
-    <span class="s">&#34;time&#34;</span>
-    <span class="s">&#34;encoding/json&#34;</span>
-    <span class="nx">jsoniter</span> <span class="s">&#34;github.com/json-iterator/go&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// 测试解析 json 的情况（可测试高并发和大json等情况）
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">num</span> <span class="o">:=</span> <span class="mi">500</span> <span class="c1">// json 长度
-</span><span class="c1"></span>    <span class="nx">num2</span> <span class="o">:=</span> <span class="mi">50</span> <span class="c1">// 循环解析次数
-</span><span class="c1"></span>
-    <span class="kd">var</span> <span class="nx">builder</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Builder</span>
-    <span class="nx">builder</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;[&#34;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">num</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
-            <span class="nx">builder</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;,&#34;</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="nx">builder</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;{\&#34;a\&#34;:100,\&#34;b\&#34;:1234567890123456789,\&#34;c\&#34;:\&#34;\&#34;,\&#34;d\&#34;:1.2}&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">builder</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;]&#34;</span><span class="p">)</span>
-    <span class="nx">jsonData</span> <span class="o">:=</span> <span class="nx">builder</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span>
-
-    <span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
-    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">num2</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nf">test_json</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">durationJson</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">)</span>
-
-    <span class="nx">start</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
-    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">num2</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nf">test_json</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">durationJsoniter</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">)</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;原生json耗时:&#34;</span><span class="p">,</span> <span class="nx">durationJson</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;jsoniter耗时:&#34;</span><span class="p">,</span> <span class="nx">durationJsoniter</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">test_json</span><span class="p">(</span><span class="nx">jsonData</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">flag</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 定义 json 结构通用类型
-</span><span class="c1"></span>    <span class="c1">// var m []interface{}
-</span><span class="c1"></span>
-    <span class="c1">// 定义 json 结构特定类型
-</span><span class="c1"></span>    <span class="kd">type</span> <span class="nx">mS</span> <span class="kd">struct</span> <span class="p">{</span>
-        <span class="nx">A</span> <span class="kt">uint32</span>  <span class="s">`json:&#34;a&#34;`</span>
-        <span class="nx">B</span> <span class="kt">uint64</span>  <span class="s">`json:&#34;b&#34;`</span>
-        <span class="nx">C</span> <span class="kt">string</span>  <span class="s">`json:&#34;c&#34;`</span>
-        <span class="nx">D</span> <span class="kt">float32</span> <span class="s">`json:&#34;d&#34;`</span>
-    <span class="p">}</span>
-    <span class="kd">var</span> <span class="nx">m</span> <span class="p">[]</span><span class="nx">mS</span>
-
-    <span class="k">if</span> <span class="nx">flag</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">m</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Unmarshal error: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">jsoniter</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">m</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Unmarshal error: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">jsoniter</span> <span class="s">&#34;github.com/json-iterator/go&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 测试解析 json 的情况（可测试高并发和大json等情况）</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">num</span> <span class="o">:=</span> <span class="mi">500</span> <span class="c1">// json 长度</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">num2</span> <span class="o">:=</span> <span class="mi">50</span> <span class="c1">// 循环解析次数</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">builder</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Builder</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">builder</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;[&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">num</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">builder</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">builder</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;{\&#34;a\&#34;:100,\&#34;b\&#34;:1234567890123456789,\&#34;c\&#34;:\&#34;\&#34;,\&#34;d\&#34;:1.2}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">builder</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="s">&#34;]&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">jsonData</span> <span class="o">:=</span> <span class="nx">builder</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">num2</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">test_json</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">durationJson</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">start</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">num2</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">test_json</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">durationJsoniter</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;原生json耗时:&#34;</span><span class="p">,</span> <span class="nx">durationJson</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;jsoniter耗时:&#34;</span><span class="p">,</span> <span class="nx">durationJsoniter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test_json</span><span class="p">(</span><span class="nx">jsonData</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">flag</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 定义 json 结构通用类型</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// var m []interface{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 定义 json 结构特定类型</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">mS</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">A</span> <span class="kt">uint32</span>  <span class="s">`json:&#34;a&#34;`</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">B</span> <span class="kt">uint64</span>  <span class="s">`json:&#34;b&#34;`</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">C</span> <span class="kt">string</span>  <span class="s">`json:&#34;c&#34;`</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">D</span> <span class="kt">float32</span> <span class="s">`json:&#34;d&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">m</span> <span class="p">[]</span><span class="nx">mS</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">flag</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">m</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Unmarshal error: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">jsoniter</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">m</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Unmarshal error: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -374,7 +405,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -446,22 +477,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -475,7 +503,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

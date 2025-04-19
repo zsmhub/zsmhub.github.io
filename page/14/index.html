@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ZsmHub - Blog" />
-<meta property="og:description" content="This is a site of zsmhub-blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zsmhub.github.io/" />
+<meta property="og:url" content="https://zsmhub.github.io/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="ZsmHub - Blog">
+  <meta property="og:description" content="This is a site of zsmhub-blog.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ZsmHub - Blog">
-<meta itemprop="description" content="This is a site of zsmhub-blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ZsmHub - Blog"/>
-<meta name="twitter:description" content="This is a site of zsmhub-blog."/>
+  <meta itemprop="name" content="ZsmHub - Blog">
+  <meta itemprop="description" content="This is a site of zsmhub-blog.">
+  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ZsmHub - Blog">
+  <meta name="twitter:description" content="This is a site of zsmhub-blog.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -88,12 +93,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -112,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -120,115 +135,356 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E9%99%90%E6%B5%81-%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/">账号层级限流-抢白名单功能</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/">Go 开发遇到的性能问题</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-04-21 </span>
+      <span class="post-time"> 2020-05-09 </span>
       <div class="post-category">
-          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          <a href="/categories/golang/"> golang </a>
           </div>
-        <span class="more-meta"> 约 881 字 </span>
+        <span class="more-meta"> 约 653 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      功能说明 应用场景 数据库高负荷时，在员工账号层级进行限流，目的是让数据库尽早缓冲过来 特色功能 支持临时 追加/减少 白名单名额 支持重置白名单 直接配置
+      <h2 id="原生-json-包效率低">原生 json 包效率低</h2>
+<h3 id="原因">原因</h3>
+<p>原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。</p>
+<h3 id="代码分析">代码分析</h3>
+<p>测试环境：macbook pro macos</p>
+<p>Go 版本: 1.14</p>
+<p>json-iterator 版本: v1.1.9</p>
+<blockquote>
+<p>测试解析单次大 json 的情况</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E9%99%90%E6%B5%81-%E6%8A%A2%E7%99%BD%E5%90%8D%E5%8D%95%E5%8A%9F%E8%83%BD/" class="read-more-link">阅读更多</a>
+      <a href="/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%94%B5%E5%95%86%E6%9E%B6%E6%9E%84/">电商架构</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/php/php%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/">PHP注释规范</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-04-21 </span>
+      <span class="post-time"> 2020-05-08 </span>
       <div class="post-category">
-          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          <a href="/categories/php/"> php </a>
           </div>
-        <span class="more-meta"> 约 14 字 </span>
+        <span class="more-meta"> 约 386 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      小米海外电商架构 点击查看原文
+      <h2 id="函数方法注释规范">函数/方法注释规范</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @param 定义函数或者方法的参数信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @return 定义函数或者方法的返回信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @throws 指明此函数可能抛出的错误异常,极其发生的情况
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @todo 指明应该改进或没有实现的地方
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @example 示例
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @deprecate 指明不推荐或者是废弃的信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @name 名字
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @author 函数作者的名字和邮箱地址
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @abstract 申明变量/类/方法
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @access 指明这个变量、类、函数/方法的存取权限
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @category 组织packages
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @copyright 指明版权信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @const 指明常量
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @exclude 指明当前的注释将不进行分析，不出现在文挡中
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @final 指明这是一个最终的类、方法、属性，禁止派生、修改。
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @global 指明在此函数中引用的全局变量
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @include 指明包含的文件的信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @link 定义在线连接
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @package 定义归属的包的信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @see 定义需要参考的函数、变量，并加入相应的超级连接。
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @since 指明该api函数或者方法是从哪个版本开始引入的
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @static 指明变量、类、函数是静态的。
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @var 定义说明变量/属性。
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @version 定义版本信息
+</span></span></span><span class="line"><span class="cl"><span class="sd">*/</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%94%B5%E5%95%86%E6%9E%B6%E6%9E%84/" class="read-more-link">阅读更多</a>
+      <a href="/post/php/php%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8C%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/">Go中的单元测试和基准测试</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">PHP 的一些坑</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-04-14 </span>
+      <span class="post-time"> 2020-05-07 </span>
       <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
+          <a href="/categories/php/"> php </a>
           </div>
-        <span class="more-meta"> 约 3063 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span class="more-meta"> 约 666 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码
+      <h2 id="大小写的坑">大小写的坑</h2>
+<p>mysql5.7 查询不区分大小写。</p>
+<p>php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理</p>
+<p>示例：array_udiff([&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], [&lsquo;A&rsquo;, &lsquo;b&rsquo;], &lsquo;strcasecmp&rsquo;) // 输出 c</p>
     </div>
     <div class="read-more">
-      <a href="/post/golang/go%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8C%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" class="read-more-link">阅读更多</a>
+      <a href="/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/">APP接入收发红包功能</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/">Mysql 主从复制延时案例</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-04-08 </span>
+      <span class="post-time"> 2020-05-07 </span>
       <div class="post-category">
-          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          <a href="/categories/database/"> database </a>
           </div>
-        <span class="more-meta"> 约 2155 字 </span>
+        <span class="more-meta"> 约 4314 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><img src="/images/2020/QQ20200531-164626@2x.png" alt="Mysql之主从复制读写分离"></p>
+<p><img src="/images/2020/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333038362f34363863316131342d653761642d333239302d396433642d3434616335303161373232372e6a7067.jpeg" alt="Mysql 之主从复制原理"></p>
+<p>MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。</p>
+<p>如果主从复制之间出现延时，就会影响主从数据的一致性。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/">Go 数组指针和指针数组的区别</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-05 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 2369 字 </span>
         <span class="more-meta"> 预计阅读 5 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      APP 如何接入收发红包功能 使用支付宝的现金红包方案 现金红包简介 现金红包- 开发入门 现金红包是基于支付宝的支付能力推出的一款针对收发红包场景的产品，
+      <h2 id="golang中数组指针和指针数组区别">Golang中数组指针和指针数组区别</h2>
+<p>区别二者，字面上只看<strong>后两个字</strong>即可：</p>
+<p><strong>数组指针</strong> ：它是一个指针，但是数据类型为数组，或者说指向数组</p>
+<p><strong>指针数组</strong> ：它是一个数组，该数组的元素都为地址值</p>
+<h2 id="一数组指针">一.数组指针</h2>
+<h3 id="1语法">1.语法</h3>
+<p>var 变量名  *[数组大小] 数组类型：</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/app%E6%8E%A5%E5%85%A5%E6%94%B6%E5%8F%91%E7%BA%A2%E5%8C%85%E5%8A%9F%E8%83%BD/" class="read-more-link">阅读更多</a>
+      <a href="/post/golang/go%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/%E9%98%BF%E9%87%8C%E4%BA%91mysql%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/">阿里云MySQL分析实例</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C/">理解并发与并行</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-03-29 </span>
+      <span class="post-time"> 2020-05-04 </span>
       <div class="post-category">
-          <a href="/categories/database/"> database </a>
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
           </div>
-        <span class="more-meta"> 约 446 字 </span>
+        <span class="more-meta"> 约 345 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      MySQL分析实例是 AnaylticDB MySQL (简称ADB)的一种标准适用场景，它可实现对MySQL的分析加速。针对RDS MySQL用户的复杂分析查询卡顿或者响应
+      <h2 id="并发与并行">并发与并行</h2>
+<blockquote>
+<p>例子</p></blockquote>
+<p>你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。</p>
+<p>你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发（不一定是同时的）。</p>
     </div>
     <div class="read-more">
-      <a href="/post/database/%E9%98%BF%E9%87%8C%E4%BA%91mysql%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">Hugo 使用教程</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-03 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/"> 博客 </a>
+          </div>
+        <span class="more-meta"> 约 815 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="hugo-是什么">Hugo 是什么</h2>
+<blockquote>
+<p>静态网站生成器</p></blockquote>
+<ul>
+<li>Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe）</li>
+<li>Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。</li>
+<li>Hugo内置web服务器，可以方便的用于本地调试。</li>
+</ul>
+<h2 id="安装命令">安装命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># v0.146</span>
+</span></span><span class="line"><span class="cl">brew install hugo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="hugo-常用命令">Hugo 常用命令</h2>
+<ul>
+<li>hugo new site quickstart // 新建一个博客网站</li>
+<li>hugo new post/xxx/xxx.md // 新建文章</li>
+<li>hugo server -D // Start the Hugo server</li>
+<li>hugo // 构建静态页面，不包含 draft=true 的文件</li>
+<li>hugo -D // 构建静态页面，包含 draft=true 的文件</li>
+</ul>
+<h2 id="hugo-项目目录">Hugo 项目目录</h2>
+<ul>
+<li>config.toml是网站的配置文件，这是一个TOML文件，全称是Tom’s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。</li>
+<li>theme 目录里放的是主题皮肤</li>
+<li>content 目录里放的是你写的markdown文章</li>
+<li>archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。</li>
+<li>static 目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png</li>
+<li>layouts 目录里放的是网站的模板文件</li>
+<li>public 存放所有静态页面的数据，如文章、图片</li>
+</ul>
+<h2 id="主题推荐">主题推荐</h2>
+<p>even：https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6/">IM-心跳机制</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-04-17 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
+          </div>
+        <span class="more-meta"> 约 1797 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>作为即时通讯应用，心跳机制是其网络通信技术底层中非常重要的一环，有没有心跳机制、心跳机制的算法实现好坏，都将直接影响即时通讯应用在应用层的表现——比如：实时性、断网自愈能力、弱网体验等等。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">IM-基础知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-04-16 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
+          </div>
+        <span class="more-meta"> 约 521 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="im-消息可靠性及一致性的解决方案">IM 消息可靠性及一致性的解决方案</h2>
+<p><a href="https://juejin.im/entry/597eca3bf265da3e2777e719">参考文章</a></p>
+<p>对于 IM 系统消息可靠性及一致性问题，通过消息重发机制保证消息成功被服务端接收，通过会话记录检查保证收取消息完整，从而保证整个消息发送过程的可靠性；使用 uuid 消息去重，参考向量时钟算法进行消息排序，为保证消息一致性提供一种解决方案。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/">数据传输方式汇总</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-04-10 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          </div>
+        <span class="more-meta"> 约 1349 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="json">json</h2>
+<p>JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。</p>
+<h2 id="yaml">yaml</h2>
+<p>YAML类似JSON，新的特性更强大，更适合人类阅读，也更紧凑。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -256,6 +512,8 @@
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
   
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -264,22 +522,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -293,7 +548,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

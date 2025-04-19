@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。） 比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。）
+比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花，这里的X花店就是5位顾客的代理，花店代理的是客户，隐藏的是客户。这就是我们常说的代理。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/" />
@@ -35,24 +37,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="正反向代理简介" />
-<meta property="og:description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。） 比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-07-09T21:33:12&#43;08:00" />
-<meta property="article:modified_time" content="2020-07-09T21:33:12&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="正反向代理简介">
+  <meta property="og:description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。）
+比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花，这里的X花店就是5位顾客的代理，花店代理的是客户，隐藏的是客户。这就是我们常说的代理。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-07-09T21:33:12+08:00">
+    <meta property="article:modified_time" content="2020-07-09T21:33:12+08:00">
+    <meta property="article:tag" content="代理">
 
-<meta itemprop="name" content="正反向代理简介">
-<meta itemprop="description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。） 比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花"><meta itemprop="datePublished" content="2020-07-09T21:33:12&#43;08:00" />
-<meta itemprop="dateModified" content="2020-07-09T21:33:12&#43;08:00" />
-<meta itemprop="wordCount" content="1671">
-<meta itemprop="keywords" content="代理," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="正反向代理简介"/>
-<meta name="twitter:description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。） 比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花"/>
+  <meta itemprop="name" content="正反向代理简介">
+  <meta itemprop="description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。）
+比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花，这里的X花店就是5位顾客的代理，花店代理的是客户，隐藏的是客户。这就是我们常说的代理。">
+  <meta itemprop="datePublished" content="2020-07-09T21:33:12+08:00">
+  <meta itemprop="dateModified" content="2020-07-09T21:33:12+08:00">
+  <meta itemprop="wordCount" content="1671">
+  <meta itemprop="keywords" content="代理">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="正反向代理简介">
+  <meta name="twitter:description" content="正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。）
+比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花，这里的X花店就是5位顾客的代理，花店代理的是客户，隐藏的是客户。这就是我们常说的代理。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +102,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +135,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -155,8 +176,7 @@
     <div class="post-content">
       <h2 id="正向代理">正向代理</h2>
 <blockquote>
-<p>正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。）</p>
-</blockquote>
+<p>正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。）</p></blockquote>
 <p><img src="/images/2021/QQ20210831-113313@2x.png" alt="正向代理"></p>
 <p>比如<code>X花店</code>代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花，这里的X花店就是5位顾客的代理，花店代理的是客户，隐藏的是客户。这就是我们常说的代理。</p>
 <p>正向代理隐藏了真实的请求客户端。服务端不知道真实的客户端是谁，客户端请求的服务都被代理服务器代替来请求，某些<code>科学上网工具</code>扮演的就是典型的正向代理角色。用浏览器访问 <code>http://www.google.com</code> 时被墙了，于是你可以在国外搭建一台代理服务器，让代理帮我去请求 <code>google.com</code>，代理把请求返回的相应结构再返回给我。</p>
@@ -165,8 +185,7 @@
 <p><img src="/images/2020/QQ20200709-214448@2x.png" alt="img"></p>
 <h2 id="反向代理">反向代理</h2>
 <blockquote>
-<p>反向代理隐藏了真实的服务端。（客户端不需要主动做代理设置，反向代理服务器需要设置客户端能访问的网站。）</p>
-</blockquote>
+<p>反向代理隐藏了真实的服务端。（客户端不需要主动做代理设置，反向代理服务器需要设置客户端能访问的网站。）</p></blockquote>
 <p><img src="/images/2021/QQ20210831-113148@2x.png" alt="反向代理"></p>
 <p>拨打<code>10086客服</code>电话，接线员可能有很多个，调度器会智能的分配一个接线员与你通话。这里的调度器就是一个代理，只不过他代理的是接线员，客户端不能确定真正与自己通话的人，隐藏与保护的是目标对象。</p>
 <p>反向代理隐藏了真实的服务端，当我们请求 <code>www.baidu.com</code> 的时候，就像拨打10086一样，背后可能有成千上万台服务器为我们服务，但具体是哪一台，你不知道，也不需要知道，你只需要知道反向代理服务器是谁就好了，<code>ww.baidu.com</code> 就是我们的反向代理服务器，反向代理服务器会帮我们把请求转发到真实的服务器那里去。<code>Nginx</code> 就是性能非常好的反向代理服务器，用来做负载均衡。</p>
@@ -174,15 +193,14 @@
 <p>反向代理中，proxy 和 server 同属一个 LAN，对 client 透明。</p>
 <p><img src="/images/2021/QQ20210831-113416@2x.png" alt="img"></p>
 <blockquote>
-<p>反向代理使用场景</p>
-</blockquote>
+<p>反向代理使用场景</p></blockquote>
 <p>负载均衡（Load balancing）： 反向代理可以提供负载均衡解决方案，将传入的流量均匀地分布在不同的服务器之间，以防止单个服务器过载。</p>
 <p>防止安全攻击： 由于真正的后端服务器永远不需要暴露公共 IP，所以 DDoS 等攻击只能针对反向代理进行， 这能确保在网络攻击中尽量多的保护你的资源，真正的后端服务器始终是安全的。</p>
 <p>缓存： 假设你的实际服务器与用户所在的地区距离比较远，那么你可以在当地部署反向代理，它可以缓存网站内容并为当地用户提供服务。</p>
 <p>SSL 加密： 由于与每个客户端的 SSL 通信会耗费大量的计算资源，因此可以使用反向代理处理所有与 SSL 相关的内容， 然后释放你真正服务器上的宝贵资源。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -224,47 +242,47 @@
 </span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// go简单实现反向代理
-</span><span class="c1"></span><span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;log&#34;</span>
-    <span class="s">&#34;net/http&#34;</span>
-    <span class="s">&#34;net/http/httputil&#34;</span>
-    <span class="s">&#34;net/url&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// NewProxy takes target host and creates a reverse proxy
-</span><span class="c1">// NewProxy 拿到 targetHost 后，创建一个反向代理
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NewProxy</span><span class="p">(</span><span class="nx">targetHost</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">httputil</span><span class="p">.</span><span class="nx">ReverseProxy</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">url</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">targetHost</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nx">httputil</span><span class="p">.</span><span class="nf">NewSingleHostReverseProxy</span><span class="p">(</span><span class="nx">url</span><span class="p">),</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="c1">// ProxyRequestHandler handles the http request using proxy
-</span><span class="c1">// ProxyRequestHandler 使用 proxy 处理请求
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">ProxyRequestHandler</span><span class="p">(</span><span class="nx">proxy</span> <span class="o">*</span><span class="nx">httputil</span><span class="p">.</span><span class="nx">ReverseProxy</span><span class="p">)</span> <span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">proxy</span><span class="p">.</span><span class="nf">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// initialize a reverse proxy and pass the actual backend server url here
-</span><span class="c1"></span>    <span class="c1">// 初始化反向代理并传入真正后端服务的地址
-</span><span class="c1"></span>    <span class="nx">proxy</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">NewProxy</span><span class="p">(</span><span class="s">&#34;http://my-api-server.com&#34;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="c1">// handle all requests to your server using the proxy
-</span><span class="c1"></span>    <span class="c1">// 使用 proxy 处理所有请求到你的服务
-</span><span class="c1"></span>    <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nf">ProxyRequestHandler</span><span class="p">(</span><span class="nx">proxy</span><span class="p">))</span>
-    <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;:8080&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">))</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// go简单实现反向代理</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http/httputil&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/url&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// NewProxy takes target host and creates a reverse proxy</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// NewProxy 拿到 targetHost 后，创建一个反向代理</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">NewProxy</span><span class="p">(</span><span class="nx">targetHost</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">httputil</span><span class="p">.</span><span class="nx">ReverseProxy</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">targetHost</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">httputil</span><span class="p">.</span><span class="nf">NewSingleHostReverseProxy</span><span class="p">(</span><span class="nx">url</span><span class="p">),</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ProxyRequestHandler handles the http request using proxy</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// ProxyRequestHandler 使用 proxy 处理请求</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">ProxyRequestHandler</span><span class="p">(</span><span class="nx">proxy</span> <span class="o">*</span><span class="nx">httputil</span><span class="p">.</span><span class="nx">ReverseProxy</span><span class="p">)</span> <span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">proxy</span><span class="p">.</span><span class="nf">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// initialize a reverse proxy and pass the actual backend server url here</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 初始化反向代理并传入真正后端服务的地址</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">proxy</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">NewProxy</span><span class="p">(</span><span class="s">&#34;http://my-api-server.com&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// handle all requests to your server using the proxy</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 使用 proxy 处理所有请求到你的服务</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">HandleFunc</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nf">ProxyRequestHandler</span><span class="p">(</span><span class="nx">proxy</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;:8080&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="内网穿透">内网穿透</h2>
 <ol>
@@ -298,7 +316,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -370,22 +388,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -399,7 +414,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

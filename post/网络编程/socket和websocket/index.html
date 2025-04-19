@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。
+网络编程无非简单来看就是 TCP编程 和 UDP编程。
+Socket 每一次建立 socket 连接后，都会生成一个 SessionId，便于标识通讯中的客户端和服务端。（SessionId 应保证分布式唯一）
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/" />
@@ -35,24 +38,37 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Socket &amp;&amp; WebSocket" />
-<meta property="og:description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-04-28T16:22:13&#43;08:00" />
-<meta property="article:modified_time" content="2022-05-25T16:22:13&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Socket && WebSocket">
+  <meta property="og:description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。
+网络编程无非简单来看就是 TCP编程 和 UDP编程。
+Socket 每一次建立 socket 连接后，都会生成一个 SessionId，便于标识通讯中的客户端和服务端。（SessionId 应保证分布式唯一）">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-04-28T16:22:13+08:00">
+    <meta property="article:modified_time" content="2022-05-25T16:22:13+08:00">
+    <meta property="article:tag" content="Socket">
+    <meta property="article:tag" content="Websocket">
 
-<meta itemprop="name" content="Socket &amp;&amp; WebSocket">
-<meta itemprop="description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。"><meta itemprop="datePublished" content="2019-04-28T16:22:13&#43;08:00" />
-<meta itemprop="dateModified" content="2022-05-25T16:22:13&#43;08:00" />
-<meta itemprop="wordCount" content="3279">
-<meta itemprop="keywords" content="socket,websocket," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Socket &amp;&amp; WebSocket"/>
-<meta name="twitter:description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。"/>
+  <meta itemprop="name" content="Socket && WebSocket">
+  <meta itemprop="description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。
+网络编程无非简单来看就是 TCP编程 和 UDP编程。
+Socket 每一次建立 socket 连接后，都会生成一个 SessionId，便于标识通讯中的客户端和服务端。（SessionId 应保证分布式唯一）">
+  <meta itemprop="datePublished" content="2019-04-28T16:22:13+08:00">
+  <meta itemprop="dateModified" content="2022-05-25T16:22:13+08:00">
+  <meta itemprop="wordCount" content="3279">
+  <meta itemprop="keywords" content="Socket,Websocket">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Socket && WebSocket">
+  <meta name="twitter:description" content="一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。
+网络编程无非简单来看就是 TCP编程 和 UDP编程。
+Socket 每一次建立 socket 连接后，都会生成一个 SessionId，便于标识通讯中的客户端和服务端。（SessionId 应保证分布式唯一）">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +107,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +140,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -183,15 +209,13 @@
 <p><img src="/images/2021/QQ20210830-165930@2x.png" alt="socket作用"></p>
 <h3 id="socket-类型">socket 类型</h3>
 <blockquote>
-<p>常用的 Socket 类型有两种：流式Socket（SOCK_STREAM）和数据报式Socket（SOCK_DGRAM）。</p>
-</blockquote>
+<p>常用的 Socket 类型有两种：流式Socket（SOCK_STREAM）和数据报式Socket（SOCK_DGRAM）。</p></blockquote>
 <ul>
 <li>流式，二进制流，是一种面向连接的 Socket，针对于面向连接的 TCP 服务应用。应用场景：im 通讯，安全</li>
 <li>数据报式 Socket 是一种无连接的 Socket，对应于无连接的 UDP 服务应用。应用场景：短信、视频直播，传输速度快</li>
 </ul>
 <blockquote>
-<p>简单对比一下</p>
-</blockquote>
+<p>简单对比一下</p></blockquote>
 <ul>
 <li>TCP：比较靠谱，面向连接，安全，可靠的传输方式 ，但是比较慢</li>
 <li>UDP：不是太靠谱，不可靠的，丢包不会重传，但是比较快</li>
@@ -230,11 +254,10 @@
 <h3 id="握手协议">握手协议</h3>
 <p>在第一步的时候进行了握手，这里来看一下请求的详情。</p>
 <blockquote>
-<p>客户端使用 http 请求升级切换到 Websocket 协议</p>
-</blockquote>
+<p>客户端使用 http 请求升级切换到 Websocket 协议</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -245,32 +268,32 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">// 客户端请求头：wss://xxx.com/socket.io/?EIO<span class="o">=</span>3<span class="p">&amp;</span><span class="nv">transport</span><span class="o">=</span>websocket
-GET / HTTP/1.1
-Connection: Upgrade // 指示这是一个升级请求
-Upgrade: websocket // 指定一项或多项协议名，按优先级排序，以逗号分隔。如升级为websocket协议
-Host: localhost:3000 // 请求host
-Origin: http://binnie.com // 请求来源
-Sec-WebSocket-Extensions: permessage-deflate<span class="p">;</span> client_max_window_bits // 用于指定一个或多个请求服务器使用的协议级WebSocket扩展。
-Sec-WebSocket-Key: sN9cRrP/n9NdMgdcy2VJFQ<span class="o">==</span> // 向服务器提供所需的信息，以确认客户端有权请求升级到 WebSocket。此请求升级的密钥。如果客户端愿意，它会添加它，并且服务器将在响应中包含它自己的密钥，客户端将在向您发送升级响应之前对其进行验证。【服务器响应的Sec-WebSocket-Accept标头将具有基于指定的计算的值key】
-Sec-WebSocket-Version: <span class="m">13</span> // 指定客户端希望使用的 WebSocket 协议版本，以便服务器可以确认其端是否支持该版本。<span class="o">[</span>目前 WebSocket 协议的最新最终版本是第 <span class="m">13</span> 版<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// 客户端请求头：wss://xxx.com/socket.io/?EIO<span class="o">=</span>3<span class="p">&amp;</span><span class="nv">transport</span><span class="o">=</span>websocket
+</span></span><span class="line"><span class="cl">GET / HTTP/1.1
+</span></span><span class="line"><span class="cl">Connection: Upgrade // 指示这是一个升级请求
+</span></span><span class="line"><span class="cl">Upgrade: websocket // 指定一项或多项协议名，按优先级排序，以逗号分隔。如升级为websocket协议
+</span></span><span class="line"><span class="cl">Host: localhost:3000 // 请求host
+</span></span><span class="line"><span class="cl">Origin: http://binnie.com // 请求来源
+</span></span><span class="line"><span class="cl">Sec-WebSocket-Extensions: permessage-deflate<span class="p">;</span> client_max_window_bits // 用于指定一个或多个请求服务器使用的协议级WebSocket扩展。
+</span></span><span class="line"><span class="cl">Sec-WebSocket-Key: sN9cRrP/n9NdMgdcy2VJFQ<span class="o">==</span> // 向服务器提供所需的信息，以确认客户端有权请求升级到 WebSocket。此请求升级的密钥。如果客户端愿意，它会添加它，并且服务器将在响应中包含它自己的密钥，客户端将在向您发送升级响应之前对其进行验证。【服务器响应的Sec-WebSocket-Accept标头将具有基于指定的计算的值key】
+</span></span><span class="line"><span class="cl">Sec-WebSocket-Version: <span class="m">13</span> // 指定客户端希望使用的 WebSocket 协议版本，以便服务器可以确认其端是否支持该版本。<span class="o">[</span>目前 WebSocket 协议的最新最终版本是第 <span class="m">13</span> 版<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">// 服务端响应头
-HTTP/1.1 <span class="m">101</span> Switching Protocols // <span class="nv">status_code</span><span class="o">=</span>101，表示握手成功，websocket连接已经建立完成。
-Upgrade: websocket // 与请求对应
-Connection: Upgrade
-Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span class="o">=</span> // 使用 Sec-WebSocket-Key 计算得来，为了尽量避免普通HTTP请求被误认为Websocket协议
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// 服务端响应头
+</span></span><span class="line"><span class="cl">HTTP/1.1 <span class="m">101</span> Switching Protocols // <span class="nv">status_code</span><span class="o">=</span>101，表示握手成功，websocket连接已经建立完成。
+</span></span><span class="line"><span class="cl">Upgrade: websocket // 与请求对应
+</span></span><span class="line"><span class="cl">Connection: Upgrade
+</span></span><span class="line"><span class="cl">Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span class="o">=</span> // 使用 Sec-WebSocket-Key 计算得来，为了尽量避免普通HTTP请求被误认为Websocket协议
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="帧格式">帧格式</h3>
 <p>WebSocket协议使用帧（Frame）收发数据【帧，听不懂？就是比特位！一位二进制数就是一比特位。值只有0和1，一字节是8比特位】</p>
@@ -292,8 +315,7 @@ Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span c
 <p>所以，websocket传递数据时最小的请求头为 FIN+RSV1-3+opcode+MASK+Payload len+Masking-key = 6 byte（字节），剩下的就都是实际数据，相比于http头部小得多。</p>
 <h3 id="websocket前后端通信的时候丢包怎么处理怎么监控">websocket前后端通信的时候，丢包怎么处理，怎么监控</h3>
 <blockquote>
-<p>todo: 待研究</p>
-</blockquote>
+<p>todo: 待研究</p></blockquote>
 <ul>
 <li>集群部署聊天(实现横向可扩展)</li>
 <li>采用消息确认机制，确认消息稳定的送达</li>
@@ -302,21 +324,17 @@ Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span c
 <p><a href="https://github.com/zsmhub/golang_practice_everyday/tree/master/ws_socket.io">点击前往查看源码示例</a></p>
 <p><a href="http://blog.rinchannow.top/socket-io-issues/">go-socket.io 踩坑记录</a></p>
 <blockquote>
-<p>概览</p>
-</blockquote>
+<p>概览</p></blockquote>
 <p><a href="https://socket.io/">socket.io</a> 本身是一个 Node.js 的包，使用 long polling 或者 websocket 的方式提供持续的网络连接服务。由于简单好用，很多开发者为其开发了不同语言的 SDK，比如 Java、C++、Go 等。</p>
 <p><a href="https://github.com/googollee/go-socket.io">go-socket.io</a> Golang版后端 socket.io 的实现框架。</p>
 <blockquote>
-<p>socket.io 优势</p>
-</blockquote>
+<p>socket.io 优势</p></blockquote>
 <p>socket.io 会自动选择合适双向通信协议，仅仅需要程序员对套接字的概念有所了解。</p>
 <blockquote>
-<p>socket.io 劣势</p>
-</blockquote>
+<p>socket.io 劣势</p></blockquote>
 <p>socket.io并不是一个基本的、独立的、能够回退到其它实时协议的WebSocket库，它实际上是一个依赖于其它实时传输协议的<code>自定义实时传输协议</code>的实现。该协议的协商部分使得支持<code>标准WebSocket的客户端</code>不能直接连接到Socket.io服务器，并且支持Socket.io的客户端也不能与非Socket.io框架的WebSocket或Comet服务器通信。因而，<code>Socket.io要求客户端与服务器端均须使用该框架。</code></p>
 <blockquote>
-<p>github.com/googollee/go-socket.io</p>
-</blockquote>
+<p>github.com/googollee/go-socket.io</p></blockquote>
 <p>WebSocket第三方框架，基于开源项目 github.com/gorilla/websocket 开发的。客户端代码只能用 socket.io 框架，这样就会存在 go-socket.io 与 socket.io 的兼容性问题。</p>
 <p><a href="mailto:github.com/googollee/go-socket.io@v1.6.1">github.com/googollee/go-socket.io@v1.6.1</a> 内存泄漏问题：</p>
 <ul>
@@ -325,8 +343,7 @@ Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span c
 <li>结果：目前系统socketio已经稳定1w连接/1G内存</li>
 </ul>
 <blockquote>
-<p>概念</p>
-</blockquote>
+<p>概念</p></blockquote>
 <ul>
 <li>
 <p>namespace 和 room 是同一个服务端socket多路复用的体现。</p>
@@ -353,8 +370,7 @@ Sec-WebSocket-Accept: <span class="nv">fFBooB7FAkLlXgRSz0BT3v4hq5s</span><span c
 1. WebSocket是双向通信协议，模拟Socket协议，可以双向发送或接受信息。HTTP是单向的。
 2. WebSocket是需要握手进行建立连接的。
 联系
-WebSocket在建立握手时，数据是通过HTTP传输的。但是建立之后，在真正传输时候是不需要HTTP协议的。</p>
-</blockquote>
+WebSocket在建立握手时，数据是通过HTTP传输的。但是建立之后，在真正传输时候是不需要HTTP协议的。</p></blockquote>
 <h2 id="参考文章">参考文章</h2>
 <ul>
 <li><a href="https://blog.csdn.net/qq_40099800/article/details/90901632">Socket和webSocket入门</a></li>
@@ -368,7 +384,7 @@ WebSocket在建立握手时，数据是通过HTTP传输的。但是建立之后�
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -441,22 +457,19 @@ WebSocket在建立握手时，数据是通过HTTP传输的。但是建立之后�
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -470,7 +483,7 @@ WebSocket在建立握手时，数据是通过HTTP传输的。但是建立之后�
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

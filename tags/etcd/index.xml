@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>etcd on ZsmHub - Blog</title>
+    <title>Etcd on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/etcd/</link>
-    <description>Recent content in etcd on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Etcd on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 06 May 2021 11:28:32 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/etcd/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 May 2021 11:28:32 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/etcd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用 etcd 实现 API 网关</title>
       <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0-etcd/</link>
       <pubDate>Thu, 06 May 2021 11:28:32 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0-etcd/</guid>
-      <description>应用场景 etcd 是一个高可用强一致性的键值仓库，在很多分布式系统架构中得到了广泛的应用，其最经典的使用场景就是服务发现。 etcd 的场景默认处理的数据都是</description>
+      <description>&lt;h2 id=&#34;应用场景&#34;&gt;应用场景&lt;/h2&gt;&#xA;&lt;p&gt;etcd 是一个高可用强一致性的键值仓库，在很多分布式系统架构中得到了广泛的应用，其最经典的使用场景就是服务发现。&lt;/p&gt;&#xA;&lt;p&gt;etcd 的场景默认处理的数据都是系统中的控制数据。所以etcd在系统中的角色不是其他NoSQL产品的替代品，更不能作为应用的主要数据存储。etcd中应该尽量只存储系统中服务的配置信息，对于应用数据只推荐把数据量很小，但是更新和访问频次都很高的数据存储在etcd中。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="循环定时功能 业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="循环定时功能 业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 // 计算出 weekdays 里距离 compareTime 最近的一个未来时间点 // weekdays: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now() func LatestTimeByWeekday(weekdays []int, hourMinute string, compareTime time.Time) (time.Time, error) { if len(weekdays) &lt;= 0 { return time.Time{}, errors.New(&#34;weekdays参数不能为空&#34;) } // 对比时间点为周几，默认周日设置为7 weekday := int(compareTime.Weekday()) if weekday == 0 { weekday = 7 } sort.Slice(weekdays, func(i, j int) bool { return weekdays[i] &lt; weekdays[j] }) getTime := func(addDay int) (time.Time, error) { date := compareTime.AddDate(0, 0, addDay).Format(&#34;2006-01-02 &#34;) &#43; hourMinute &#43; &#34;:00&#34; return time.ParseInLocation(&#34;2006-01-02 15:04:05&#34;, date, time.Local) } var tmpTimeArr []time.Time for _, v := range weekdays { if weekday == v { // 检查当天时间点符不符合条件 tmpTime, err := getTime(0) if err != nil { return time.Time{}, err } // 当天时间点不符合条件，直接取下一周的时间 if tmpTime.Before(compareTime) || tmpTime.Equal(compareTime) { tmpTime, err := getTime(7) if err != nil { return time.Time{}, err } tmpTimeArr = append(tmpTimeArr, tmpTime) } else { return tmpTime, nil } } else if weekday &lt; v { tmpTime, err := getTime(v - weekday) if err != nil { return time.Time{}, err } return tmpTime, nil } else { tmpTime, err := getTime(7 - weekday &#43; v) if err != nil { return time.Time{}, err } tmpTimeArr = append(tmpTimeArr, tmpTime) } } if len(tmpTimeArr) &gt; 0 { return tmpTimeArr[0], nil } return time.Time{}, errors.New(&#34;异常错误&#34;) } " /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/tool/" />
@@ -35,24 +36,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="工具类方法汇总" />
-<meta property="og:description" content="循环定时功能 业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/tool/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-04-07T15:34:51&#43;08:00" />
-<meta property="article:modified_time" content="2022-04-07T15:34:51&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/tool/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="工具类方法汇总">
+  <meta property="og:description" content="循环定时功能 业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 // 计算出 weekdays 里距离 compareTime 最近的一个未来时间点 // weekdays: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now() func LatestTimeByWeekday(weekdays []int, hourMinute string, compareTime time.Time) (time.Time, error) { if len(weekdays) &lt;= 0 { return time.Time{}, errors.New(&#34;weekdays参数不能为空&#34;) } // 对比时间点为周几，默认周日设置为7 weekday := int(compareTime.Weekday()) if weekday == 0 { weekday = 7 } sort.Slice(weekdays, func(i, j int) bool { return weekdays[i] &lt; weekdays[j] }) getTime := func(addDay int) (time.Time, error) { date := compareTime.AddDate(0, 0, addDay).Format(&#34;2006-01-02 &#34;) &#43; hourMinute &#43; &#34;:00&#34; return time.ParseInLocation(&#34;2006-01-02 15:04:05&#34;, date, time.Local) } var tmpTimeArr []time.Time for _, v := range weekdays { if weekday == v { // 检查当天时间点符不符合条件 tmpTime, err := getTime(0) if err != nil { return time.Time{}, err } // 当天时间点不符合条件，直接取下一周的时间 if tmpTime.Before(compareTime) || tmpTime.Equal(compareTime) { tmpTime, err := getTime(7) if err != nil { return time.Time{}, err } tmpTimeArr = append(tmpTimeArr, tmpTime) } else { return tmpTime, nil } } else if weekday &lt; v { tmpTime, err := getTime(v - weekday) if err != nil { return time.Time{}, err } return tmpTime, nil } else { tmpTime, err := getTime(7 - weekday &#43; v) if err != nil { return time.Time{}, err } tmpTimeArr = append(tmpTimeArr, tmpTime) } } if len(tmpTimeArr) &gt; 0 { return tmpTimeArr[0], nil } return time.Time{}, errors.New(&#34;异常错误&#34;) }">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-04-07T15:34:51+08:00">
+    <meta property="article:modified_time" content="2022-04-07T15:34:51+08:00">
+    <meta property="article:tag" content="工具类">
 
-<meta itemprop="name" content="工具类方法汇总">
-<meta itemprop="description" content="循环定时功能 业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28"><meta itemprop="datePublished" content="2022-04-07T15:34:51&#43;08:00" />
-<meta itemprop="dateModified" content="2022-04-07T15:34:51&#43;08:00" />
-<meta itemprop="wordCount" content="487">
-<meta itemprop="keywords" content="工具类," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="工具类方法汇总"/>
-<meta name="twitter:description" content="循环定时功能 业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28"/>
+  <meta itemprop="name" content="工具类方法汇总">
+  <meta itemprop="description" content="循环定时功能 业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 // 计算出 weekdays 里距离 compareTime 最近的一个未来时间点 // weekdays: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now() func LatestTimeByWeekday(weekdays []int, hourMinute string, compareTime time.Time) (time.Time, error) { if len(weekdays) &lt;= 0 { return time.Time{}, errors.New(&#34;weekdays参数不能为空&#34;) } // 对比时间点为周几，默认周日设置为7 weekday := int(compareTime.Weekday()) if weekday == 0 { weekday = 7 } sort.Slice(weekdays, func(i, j int) bool { return weekdays[i] &lt; weekdays[j] }) getTime := func(addDay int) (time.Time, error) { date := compareTime.AddDate(0, 0, addDay).Format(&#34;2006-01-02 &#34;) &#43; hourMinute &#43; &#34;:00&#34; return time.ParseInLocation(&#34;2006-01-02 15:04:05&#34;, date, time.Local) } var tmpTimeArr []time.Time for _, v := range weekdays { if weekday == v { // 检查当天时间点符不符合条件 tmpTime, err := getTime(0) if err != nil { return time.Time{}, err } // 当天时间点不符合条件，直接取下一周的时间 if tmpTime.Before(compareTime) || tmpTime.Equal(compareTime) { tmpTime, err := getTime(7) if err != nil { return time.Time{}, err } tmpTimeArr = append(tmpTimeArr, tmpTime) } else { return tmpTime, nil } } else if weekday &lt; v { tmpTime, err := getTime(v - weekday) if err != nil { return time.Time{}, err } return tmpTime, nil } else { tmpTime, err := getTime(7 - weekday &#43; v) if err != nil { return time.Time{}, err } tmpTimeArr = append(tmpTimeArr, tmpTime) } } if len(tmpTimeArr) &gt; 0 { return tmpTimeArr[0], nil } return time.Time{}, errors.New(&#34;异常错误&#34;) }">
+  <meta itemprop="datePublished" content="2022-04-07T15:34:51+08:00">
+  <meta itemprop="dateModified" content="2022-04-07T15:34:51+08:00">
+  <meta itemprop="wordCount" content="487">
+  <meta itemprop="keywords" content="工具类">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="工具类方法汇总">
+  <meta name="twitter:description" content="循环定时功能 业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 // 计算出 weekdays 里距离 compareTime 最近的一个未来时间点 // weekdays: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now() func LatestTimeByWeekday(weekdays []int, hourMinute string, compareTime time.Time) (time.Time, error) { if len(weekdays) &lt;= 0 { return time.Time{}, errors.New(&#34;weekdays参数不能为空&#34;) } // 对比时间点为周几，默认周日设置为7 weekday := int(compareTime.Weekday()) if weekday == 0 { weekday = 7 } sort.Slice(weekdays, func(i, j int) bool { return weekdays[i] &lt; weekdays[j] }) getTime := func(addDay int) (time.Time, error) { date := compareTime.AddDate(0, 0, addDay).Format(&#34;2006-01-02 &#34;) &#43; hourMinute &#43; &#34;:00&#34; return time.ParseInLocation(&#34;2006-01-02 15:04:05&#34;, date, time.Local) } var tmpTimeArr []time.Time for _, v := range weekdays { if weekday == v { // 检查当天时间点符不符合条件 tmpTime, err := getTime(0) if err != nil { return time.Time{}, err } // 当天时间点不符合条件，直接取下一周的时间 if tmpTime.Before(compareTime) || tmpTime.Equal(compareTime) { tmpTime, err := getTime(7) if err != nil { return time.Time{}, err } tmpTimeArr = append(tmpTimeArr, tmpTime) } else { return tmpTime, nil } } else if weekday &lt; v { tmpTime, err := getTime(v - weekday) if err != nil { return time.Time{}, err } return tmpTime, nil } else { tmpTime, err := getTime(7 - weekday &#43; v) if err != nil { return time.Time{}, err } tmpTimeArr = append(tmpTimeArr, tmpTime) } } if len(tmpTimeArr) &gt; 0 { return tmpTimeArr[0], nil } return time.Time{}, errors.New(&#34;异常错误&#34;) }">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +101,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +134,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -152,7 +172,7 @@
 <p><img src="/images/2022/QQ20220407-163853@2x.png" alt="重复定时截图"></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -216,69 +236,69 @@
 </span><span class="lnt">62
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 计算出 weekdays 里距离 compareTime 最近的一个未来时间点
-</span><span class="c1">// weekdays: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now()
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">LatestTimeByWeekday</span><span class="p">(</span><span class="nx">weekdays</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">hourMinute</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">compareTime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">weekdays</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;weekdays参数不能为空&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="c1">// 对比时间点为周几，默认周日设置为7
-</span><span class="c1"></span>    <span class="nx">weekday</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">.</span><span class="nf">Weekday</span><span class="p">())</span>
-    <span class="k">if</span> <span class="nx">weekday</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="nx">weekday</span> <span class="p">=</span> <span class="mi">7</span>
-    <span class="p">}</span>
-
-    <span class="nx">sort</span><span class="p">.</span><span class="nf">Slice</span><span class="p">(</span><span class="nx">weekdays</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">weekdays</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">&lt;</span> <span class="nx">weekdays</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
-    <span class="p">})</span>
-
-    <span class="nx">getTime</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">addDay</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">date</span> <span class="o">:=</span> <span class="nx">compareTime</span><span class="p">.</span><span class="nf">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">addDay</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 &#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">hourMinute</span> <span class="o">+</span> <span class="s">&#34;:00&#34;</span>
-        <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="nx">date</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="kd">var</span> <span class="nx">tmpTimeArr</span> <span class="p">[]</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
-    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">weekdays</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">weekday</span> <span class="o">==</span> <span class="nx">v</span> <span class="p">{</span>
-            <span class="c1">// 检查当天时间点符不符合条件
-</span><span class="c1"></span>            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
-            <span class="p">}</span>
-
-            <span class="c1">// 当天时间点不符合条件，直接取下一周的时间
-</span><span class="c1"></span>            <span class="k">if</span> <span class="nx">tmpTime</span><span class="p">.</span><span class="nf">Before</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">)</span> <span class="o">||</span> <span class="nx">tmpTime</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-                <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
-                <span class="p">}</span>
-                <span class="nx">tmpTimeArr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">,</span> <span class="nx">tmpTime</span><span class="p">)</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nx">tmpTime</span><span class="p">,</span> <span class="kc">nil</span>
-            <span class="p">}</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">weekday</span> <span class="p">&lt;</span> <span class="nx">v</span> <span class="p">{</span>
-            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="nx">v</span> <span class="o">-</span> <span class="nx">weekday</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="nx">tmpTime</span><span class="p">,</span> <span class="kc">nil</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="nx">weekday</span> <span class="o">+</span> <span class="nx">v</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
-            <span class="p">}</span>
-            <span class="nx">tmpTimeArr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">,</span> <span class="nx">tmpTime</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">tmpTimeArr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">nil</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;异常错误&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 计算出 weekdays 里距离 compareTime 最近的一个未来时间点</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// weekdays: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">LatestTimeByWeekday</span><span class="p">(</span><span class="nx">weekdays</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">hourMinute</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">compareTime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">weekdays</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;weekdays参数不能为空&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 对比时间点为周几，默认周日设置为7</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">weekday</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">.</span><span class="nf">Weekday</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">weekday</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">weekday</span> <span class="p">=</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">sort</span><span class="p">.</span><span class="nf">Slice</span><span class="p">(</span><span class="nx">weekdays</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">weekdays</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">&lt;</span> <span class="nx">weekdays</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">getTime</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">addDay</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">date</span> <span class="o">:=</span> <span class="nx">compareTime</span><span class="p">.</span><span class="nf">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">addDay</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 &#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">hourMinute</span> <span class="o">+</span> <span class="s">&#34;:00&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="nx">date</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">tmpTimeArr</span> <span class="p">[]</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">weekdays</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">weekday</span> <span class="o">==</span> <span class="nx">v</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 检查当天时间点符不符合条件</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 当天时间点不符合条件，直接取下一周的时间</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">tmpTime</span><span class="p">.</span><span class="nf">Before</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">)</span> <span class="o">||</span> <span class="nx">tmpTime</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">tmpTimeArr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">,</span> <span class="nx">tmpTime</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">tmpTime</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">weekday</span> <span class="p">&lt;</span> <span class="nx">v</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="nx">v</span> <span class="o">-</span> <span class="nx">weekday</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">tmpTime</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="nx">weekday</span> <span class="o">+</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">tmpTimeArr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">,</span> <span class="nx">tmpTime</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">tmpTimeArr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;异常错误&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -286,7 +306,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -358,22 +378,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -387,7 +404,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

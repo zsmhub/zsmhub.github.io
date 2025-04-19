@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="安装 brew install supervisor 安装完成后会有如下几个命令工具 supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="安装 brew install supervisor
+安装完成后会有如下几个命令工具
+supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所管理的进程作为自己的子进程来启动，而且可以在所管理的进程出现崩溃时自动重启 supervisorctl，用户与 Supervisor 交互的工具，方便用户管理子进程，可用来 stop、start、restart echo_supervisord_conf，输出默认配置 常用命令 1 2 3 4 5 6 7 supervisord -c /usr/supervisor/supervisord.conf // 启动 supervisor，通过 http://ip:9001/ 就可以查看supervisor的web界面 supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本 supervisorctl reload // 重启，每次更改了脚本代码后需要reload supervisorctl status // 查看进程启动状态 supervisor.ini 配置文件详解 1 2 3 4 5 6 7 8 9 10 11 12 [program:demotest] command=python demotest.py 10000 # 被监控的进程启动命令 directory=/root/ # 执行前要不要先cd到目录去，一般不用 priority=1 # 数字越高，优先级越高 numprocs=1 # 启动几个进程 autostart=true # 随着supervisord的启动而启动 autorestart=true # 自动重启。。当然要选上了 startretries=10 # 启动失败时的最多重试次数 exitcodes=0 # 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定） stopsignal=TERM # 用来杀死进程的信号，Default: TERM(即kill -15) stopwaitsecs=10 # 发送SIGKILL前的等待时间，Default: 10 redirect_stderr=true # 重定向stderr到stdout Linux kill -15
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/" />
@@ -35,24 +38,36 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Supervisor" />
-<meta property="og:description" content="安装 brew install supervisor 安装完成后会有如下几个命令工具 supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-10-05T15:15:06&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-30T15:15:06&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Supervisor">
+  <meta property="og:description" content="安装 brew install supervisor
+安装完成后会有如下几个命令工具
+supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所管理的进程作为自己的子进程来启动，而且可以在所管理的进程出现崩溃时自动重启 supervisorctl，用户与 Supervisor 交互的工具，方便用户管理子进程，可用来 stop、start、restart echo_supervisord_conf，输出默认配置 常用命令 1 2 3 4 5 6 7 supervisord -c /usr/supervisor/supervisord.conf // 启动 supervisor，通过 http://ip:9001/ 就可以查看supervisor的web界面 supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本 supervisorctl reload // 重启，每次更改了脚本代码后需要reload supervisorctl status // 查看进程启动状态 supervisor.ini 配置文件详解 1 2 3 4 5 6 7 8 9 10 11 12 [program:demotest] command=python demotest.py 10000 # 被监控的进程启动命令 directory=/root/ # 执行前要不要先cd到目录去，一般不用 priority=1 # 数字越高，优先级越高 numprocs=1 # 启动几个进程 autostart=true # 随着supervisord的启动而启动 autorestart=true # 自动重启。。当然要选上了 startretries=10 # 启动失败时的最多重试次数 exitcodes=0 # 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定） stopsignal=TERM # 用来杀死进程的信号，Default: TERM(即kill -15) stopwaitsecs=10 # 发送SIGKILL前的等待时间，Default: 10 redirect_stderr=true # 重定向stderr到stdout Linux kill -15">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-10-05T15:15:06+08:00">
+    <meta property="article:modified_time" content="2021-07-30T15:15:06+08:00">
+    <meta property="article:tag" content="Supervisor">
 
-<meta itemprop="name" content="Supervisor">
-<meta itemprop="description" content="安装 brew install supervisor 安装完成后会有如下几个命令工具 supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所"><meta itemprop="datePublished" content="2019-10-05T15:15:06&#43;08:00" />
-<meta itemprop="dateModified" content="2021-07-30T15:15:06&#43;08:00" />
-<meta itemprop="wordCount" content="789">
-<meta itemprop="keywords" content="supervisor," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Supervisor"/>
-<meta name="twitter:description" content="安装 brew install supervisor 安装完成后会有如下几个命令工具 supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所"/>
+  <meta itemprop="name" content="Supervisor">
+  <meta itemprop="description" content="安装 brew install supervisor
+安装完成后会有如下几个命令工具
+supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所管理的进程作为自己的子进程来启动，而且可以在所管理的进程出现崩溃时自动重启 supervisorctl，用户与 Supervisor 交互的工具，方便用户管理子进程，可用来 stop、start、restart echo_supervisord_conf，输出默认配置 常用命令 1 2 3 4 5 6 7 supervisord -c /usr/supervisor/supervisord.conf // 启动 supervisor，通过 http://ip:9001/ 就可以查看supervisor的web界面 supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本 supervisorctl reload // 重启，每次更改了脚本代码后需要reload supervisorctl status // 查看进程启动状态 supervisor.ini 配置文件详解 1 2 3 4 5 6 7 8 9 10 11 12 [program:demotest] command=python demotest.py 10000 # 被监控的进程启动命令 directory=/root/ # 执行前要不要先cd到目录去，一般不用 priority=1 # 数字越高，优先级越高 numprocs=1 # 启动几个进程 autostart=true # 随着supervisord的启动而启动 autorestart=true # 自动重启。。当然要选上了 startretries=10 # 启动失败时的最多重试次数 exitcodes=0 # 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定） stopsignal=TERM # 用来杀死进程的信号，Default: TERM(即kill -15) stopwaitsecs=10 # 发送SIGKILL前的等待时间，Default: 10 redirect_stderr=true # 重定向stderr到stdout Linux kill -15">
+  <meta itemprop="datePublished" content="2019-10-05T15:15:06+08:00">
+  <meta itemprop="dateModified" content="2021-07-30T15:15:06+08:00">
+  <meta itemprop="wordCount" content="789">
+  <meta itemprop="keywords" content="Supervisor">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Supervisor">
+  <meta name="twitter:description" content="安装 brew install supervisor
+安装完成后会有如下几个命令工具
+supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所管理的进程作为自己的子进程来启动，而且可以在所管理的进程出现崩溃时自动重启 supervisorctl，用户与 Supervisor 交互的工具，方便用户管理子进程，可用来 stop、start、restart echo_supervisord_conf，输出默认配置 常用命令 1 2 3 4 5 6 7 supervisord -c /usr/supervisor/supervisord.conf // 启动 supervisor，通过 http://ip:9001/ 就可以查看supervisor的web界面 supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本 supervisorctl reload // 重启，每次更改了脚本代码后需要reload supervisorctl status // 查看进程启动状态 supervisor.ini 配置文件详解 1 2 3 4 5 6 7 8 9 10 11 12 [program:demotest] command=python demotest.py 10000 # 被监控的进程启动命令 directory=/root/ # 执行前要不要先cd到目录去，一般不用 priority=1 # 数字越高，优先级越高 numprocs=1 # 启动几个进程 autostart=true # 随着supervisord的启动而启动 autorestart=true # 自动重启。。当然要选上了 startretries=10 # 启动失败时的最多重试次数 exitcodes=0 # 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定） stopsignal=TERM # 用来杀死进程的信号，Default: TERM(即kill -15) stopwaitsecs=10 # 发送SIGKILL前的等待时间，Default: 10 redirect_stderr=true # 重定向stderr到stdout Linux kill -15">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +106,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +139,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -161,7 +186,7 @@
 <h2 id="常用命令">常用命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -170,19 +195,19 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">supervisord -c /usr/supervisor/supervisord.conf // 启动 supervisor，通过 http://ip:9001/ 就可以查看supervisor的web界面
-
-supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本
-
-supervisorctl reload // 重启，每次更改了脚本代码后需要reload
-
-supervisorctl status // 查看进程启动状态
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">supervisord -c /usr/supervisor/supervisord.conf // 启动 supervisor，通过 http://ip:9001/ 就可以查看supervisor的web界面
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">supervisorctl reload // 重启，每次更改了脚本代码后需要reload
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">supervisorctl status // 查看进程启动状态
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="supervisorini-配置文件详解">supervisor.ini 配置文件详解</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -196,23 +221,22 @@ supervisorctl status // 查看进程启动状态
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>program:demotest<span class="o">]</span>
-<span class="nv">command</span><span class="o">=</span>python demotest.py <span class="m">10000</span>  <span class="c1"># 被监控的进程启动命令</span>
-<span class="nv">directory</span><span class="o">=</span>/root/                <span class="c1"># 执行前要不要先cd到目录去，一般不用</span>
-<span class="nv">priority</span><span class="o">=</span><span class="m">1</span>                    <span class="c1"># 数字越高，优先级越高</span>
-<span class="nv">numprocs</span><span class="o">=</span><span class="m">1</span>                    <span class="c1"># 启动几个进程</span>
-<span class="nv">autostart</span><span class="o">=</span><span class="nb">true</span>                <span class="c1"># 随着supervisord的启动而启动</span>
-<span class="nv">autorestart</span><span class="o">=</span><span class="nb">true</span>              <span class="c1"># 自动重启。。当然要选上了</span>
-<span class="nv">startretries</span><span class="o">=</span><span class="m">10</span>               <span class="c1"># 启动失败时的最多重试次数</span>
-<span class="nv">exitcodes</span><span class="o">=</span><span class="m">0</span>                   <span class="c1"># 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定）</span>
-<span class="nv">stopsignal</span><span class="o">=</span>TERM               <span class="c1"># 用来杀死进程的信号，Default: TERM(即kill -15)</span>
-<span class="nv">stopwaitsecs</span><span class="o">=</span><span class="m">10</span>               <span class="c1"># 发送SIGKILL前的等待时间，Default: 10</span>
-<span class="nv">redirect_stderr</span><span class="o">=</span><span class="nb">true</span>          <span class="c1"># 重定向stderr到stdout</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">[</span>program:demotest<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">command</span><span class="o">=</span>python demotest.py <span class="m">10000</span>  <span class="c1"># 被监控的进程启动命令</span>
+</span></span><span class="line"><span class="cl"><span class="nv">directory</span><span class="o">=</span>/root/                <span class="c1"># 执行前要不要先cd到目录去，一般不用</span>
+</span></span><span class="line"><span class="cl"><span class="nv">priority</span><span class="o">=</span><span class="m">1</span>                    <span class="c1"># 数字越高，优先级越高</span>
+</span></span><span class="line"><span class="cl"><span class="nv">numprocs</span><span class="o">=</span><span class="m">1</span>                    <span class="c1"># 启动几个进程</span>
+</span></span><span class="line"><span class="cl"><span class="nv">autostart</span><span class="o">=</span><span class="nb">true</span>                <span class="c1"># 随着supervisord的启动而启动</span>
+</span></span><span class="line"><span class="cl"><span class="nv">autorestart</span><span class="o">=</span><span class="nb">true</span>              <span class="c1"># 自动重启。。当然要选上了</span>
+</span></span><span class="line"><span class="cl"><span class="nv">startretries</span><span class="o">=</span><span class="m">10</span>               <span class="c1"># 启动失败时的最多重试次数</span>
+</span></span><span class="line"><span class="cl"><span class="nv">exitcodes</span><span class="o">=</span><span class="m">0</span>                   <span class="c1"># 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定）</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stopsignal</span><span class="o">=</span>TERM               <span class="c1"># 用来杀死进程的信号，Default: TERM(即kill -15)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stopwaitsecs</span><span class="o">=</span><span class="m">10</span>               <span class="c1"># 发送SIGKILL前的等待时间，Default: 10</span>
+</span></span><span class="line"><span class="cl"><span class="nv">redirect_stderr</span><span class="o">=</span><span class="nb">true</span>          <span class="c1"># 重定向stderr到stdout</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>Linux kill -15</p>
-</blockquote>
+<p>Linux kill -15</p></blockquote>
 <p>系统会发送一个SIGTERM的信号给对应的程序。当程序接收到该signal后，将会发生以下的事情</p>
 <ul>
 <li>程序立刻停止</li>
@@ -221,11 +245,10 @@ supervisorctl status // 查看进程启动状态
 </ul>
 <p>大部分程序接收到SIGTERM信号后，会先释放自己的资源，然后在停止。但是也有程序可以在接受到信号量后，做一些其他的事情，并且这些事情是可以配置的。如果程序正在等待IO，可能就不会立马做出相应。也就是说，SIGTERM多半是会被阻塞的。</p>
 <blockquote>
-<p>Laravel horizon.ini 配置示例</p>
-</blockquote>
+<p>Laravel horizon.ini 配置示例</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -240,20 +263,20 @@ supervisorctl status // 查看进程启动状态
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>program:horizon<span class="o">]</span>
-<span class="nv">command</span><span class="o">=</span>php /home/forge/artisan horizon
-<span class="nv">directory</span><span class="o">=</span>/home/forge/
-<span class="nv">numprocs</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">autostart</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">autorestart</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">user</span><span class="o">=</span>root
-<span class="nv">redirect_stderr</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">stdout_logfile</span><span class="o">=</span>/home/forge/app.com/horizon.log
-<span class="nv">stdout_logfile_maxbytes</span> <span class="o">=</span> 20MB
-<span class="nv">stdout_logfile_backups</span> <span class="o">=</span> <span class="m">3</span>
-<span class="nv">stopwaitsecs</span><span class="o">=</span><span class="m">3600</span>
-<span class="nv">process_name</span><span class="o">=</span>%<span class="o">(</span>program_name<span class="o">)</span>s_%<span class="o">(</span>process_num<span class="o">)</span>02d
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">[</span>program:horizon<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">command</span><span class="o">=</span>php /home/forge/artisan horizon
+</span></span><span class="line"><span class="cl"><span class="nv">directory</span><span class="o">=</span>/home/forge/
+</span></span><span class="line"><span class="cl"><span class="nv">numprocs</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">autostart</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">autorestart</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">user</span><span class="o">=</span>root
+</span></span><span class="line"><span class="cl"><span class="nv">redirect_stderr</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stdout_logfile</span><span class="o">=</span>/home/forge/app.com/horizon.log
+</span></span><span class="line"><span class="cl"><span class="nv">stdout_logfile_maxbytes</span> <span class="o">=</span> 20MB
+</span></span><span class="line"><span class="cl"><span class="nv">stdout_logfile_backups</span> <span class="o">=</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stopwaitsecs</span><span class="o">=</span><span class="m">3600</span>
+</span></span><span class="line"><span class="cl"><span class="nv">process_name</span><span class="o">=</span>%<span class="o">(</span>program_name<span class="o">)</span>s_%<span class="o">(</span>process_num<span class="o">)</span>02d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="supervisor-reload-后报错">supervisor reload 后报错</h2>
 <p>Exited too quickly (process log may have details)</p>
@@ -264,7 +287,7 @@ supervisorctl status // 查看进程启动状态
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -336,22 +359,19 @@ supervisorctl status // 查看进程启动状态
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -365,7 +385,7 @@ supervisorctl status // 查看进程启动状态
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。 Elasticsearch 是一个搜索和分析引" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="
+Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。
+Elasticsearch 是一个搜索和分析引擎，可扩展的高速体验，涵盖搜索、分析和存储。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/elasticstack/" />
@@ -35,24 +38,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ElasticStack" />
-<meta property="og:description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。 Elasticsearch 是一个搜索和分析引" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/elasticstack/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-06-16T08:55:16&#43;08:00" />
-<meta property="article:modified_time" content="2020-06-27T08:55:16&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/elasticstack/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="ElasticStack">
+  <meta property="og:description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。
+Elasticsearch 是一个搜索和分析引擎，可扩展的高速体验，涵盖搜索、分析和存储。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-06-16T08:55:16+08:00">
+    <meta property="article:modified_time" content="2020-06-27T08:55:16+08:00">
+    <meta property="article:tag" content="ElasticStack">
 
-<meta itemprop="name" content="ElasticStack">
-<meta itemprop="description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。 Elasticsearch 是一个搜索和分析引"><meta itemprop="datePublished" content="2020-06-16T08:55:16&#43;08:00" />
-<meta itemprop="dateModified" content="2020-06-27T08:55:16&#43;08:00" />
-<meta itemprop="wordCount" content="6478">
-<meta itemprop="keywords" content="ElasticStack," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ElasticStack"/>
-<meta name="twitter:description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。 Elasticsearch 是一个搜索和分析引"/>
+  <meta itemprop="name" content="ElasticStack">
+  <meta itemprop="description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。
+Elasticsearch 是一个搜索和分析引擎，可扩展的高速体验，涵盖搜索、分析和存储。">
+  <meta itemprop="datePublished" content="2020-06-16T08:55:16+08:00">
+  <meta itemprop="dateModified" content="2020-06-27T08:55:16+08:00">
+  <meta itemprop="wordCount" content="6477">
+  <meta itemprop="keywords" content="ElasticStack">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ElasticStack">
+  <meta name="twitter:description" content="Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。
+Elasticsearch 是一个搜索和分析引擎，可扩展的高速体验，涵盖搜索、分析和存储。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +103,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +136,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -130,7 +152,7 @@
         <div class="post-category">
             <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
             </div>
-          <span class="more-meta"> 约 6478 字 </span>
+          <span class="more-meta"> 约 6477 字 </span>
           <span class="more-meta"> 预计阅读 13 分钟 </span>
         
       </div>
@@ -249,7 +271,7 @@
 <p>写时分词发生在文档写入时，ES 会对文档进行分词后，将结果存入倒排索引，该部分最终会以文件的形式存储于磁盘上，不会因查询结束或者 ES 重启而丢失。『通常采用此方案』</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -270,26 +292,26 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">// 写时分词示例：title 字段采用英文分词器进行分词
-PUT /zsm-test
-<span class="o">{</span>
-    <span class="s2">&#34;settings&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;number_of_shards&#34;</span>: 1,
-        <span class="s2">&#34;number_of_replicas&#34;</span>: <span class="m">0</span>
-    <span class="o">}</span>,
-    <span class="s2">&#34;mappings&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;properties&#34;</span>: <span class="o">{</span>
-            <span class="s2">&#34;title&#34;</span>: <span class="o">{</span>
-                <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>,
-                <span class="s2">&#34;analyzer&#34;</span>: <span class="s2">&#34;english&#34;</span>
-            <span class="o">}</span>,
-            <span class="s2">&#34;category&#34;</span>: <span class="o">{</span>
-                <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// 写时分词示例：title 字段采用英文分词器进行分词
+</span></span><span class="line"><span class="cl">PUT /zsm-test
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;settings&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;number_of_shards&#34;</span>: 1,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;number_of_replicas&#34;</span>: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;mappings&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;properties&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;title&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;analyzer&#34;</span>: <span class="s2">&#34;english&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;category&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -318,13 +340,13 @@ PUT /zsm-test
 <p>中文分词器「非默认分词器，需自行安装」</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># use elasticsearch-plugin to install: replace 7.7.0 to your own elasticsearch version</span>
-elasticsearch-7.7.0/bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.7.0/elasticsearch-analysis-ik-7.7.0.zip
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># use elasticsearch-plugin to install: replace 7.7.0 to your own elasticsearch version</span>
+</span></span><span class="line"><span class="cl">elasticsearch-7.7.0/bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.7.0/elasticsearch-analysis-ik-7.7.0.zip
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -336,7 +358,7 @@ elasticsearch-7.7.0/bin/elasticsearch-plugin install https://github.com/medcl/el
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -354,23 +376,23 @@ elasticsearch-7.7.0/bin/elasticsearch-plugin install https://github.com/medcl/el
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">// 我们可以在索引时使用 ik_max_word，在搜索时使用 ik_smart。
-<span class="o">{</span>
-    <span class="s2">&#34;settings&#34;</span>:<span class="o">{</span>
-        <span class="s2">&#34;number_of_shards&#34;</span>: 1,
-        <span class="s2">&#34;number_of_replicas&#34;</span>: <span class="m">0</span>
-    <span class="o">}</span>,
-    <span class="s2">&#34;mappings&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;properties&#34;</span>: <span class="o">{</span>
-            <span class="s2">&#34;title&#34;</span>: <span class="o">{</span>
-                <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>,
-                <span class="s2">&#34;analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>,
-                <span class="s2">&#34;search_analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>
-            <span class="o">}</span>,
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// 我们可以在索引时使用 ik_max_word，在搜索时使用 ik_smart。
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;settings&#34;</span>:<span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;number_of_shards&#34;</span>: 1,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;number_of_replicas&#34;</span>: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;mappings&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;properties&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;title&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;search_analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -378,7 +400,7 @@ elasticsearch-7.7.0/bin/elasticsearch-plugin install https://github.com/medcl/el
 <p>我们可以在请求中添加 help 参数来查看每个操作返回结果字段的意义，如 curl -X GET &ldquo;localhost:9200/_cat/indices?help&rdquo;。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -402,33 +424,33 @@ elasticsearch-7.7.0/bin/elasticsearch-plugin install https://github.com/medcl/el
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 查看 es 版本号</span>
-curl -XGET localhost:9200
-
-<span class="c1"># 查看集群中的索引信息</span>
-GET /_cat/indices?v
-
-返回结果的主要字段意义：
-- health: 集群状态。集群共有green、yellow或red中的三种状态。green代表一切正常（集群功能齐全），yellow意味着所有的数据都是可用的，但是没有设置集群或某些复制没有被分配，red则代表因为某些原因，某些数据不可用。如果是red状态，则要引起高度注意，数据很有可能已经丢失
-- pri：主分片数量，英文全称为private
-- rep: 复制分片数量，英文全称为replica
-- docs.count：有效的文档数
-- docs.deleted：已删除的文档数
-
-<span class="c1"># 查看集群中的节点信息</span>
-GET /_cat/nodes?v
-
-<span class="c1"># # 分词拆分分析</span>
-POST /_analyze
-<span class="o">{</span>
-  <span class="s2">&#34;analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>,
-  <span class="s2">&#34;text&#34;</span>: <span class="s2">&#34;我问你在何方？你答你在天堂&#34;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 查看 es 版本号</span>
+</span></span><span class="line"><span class="cl">curl -XGET localhost:9200
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看集群中的索引信息</span>
+</span></span><span class="line"><span class="cl">GET /_cat/indices?v
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">返回结果的主要字段意义：
+</span></span><span class="line"><span class="cl">- health: 集群状态。集群共有green、yellow或red中的三种状态。green代表一切正常（集群功能齐全），yellow意味着所有的数据都是可用的，但是没有设置集群或某些复制没有被分配，red则代表因为某些原因，某些数据不可用。如果是red状态，则要引起高度注意，数据很有可能已经丢失
+</span></span><span class="line"><span class="cl">- pri：主分片数量，英文全称为private
+</span></span><span class="line"><span class="cl">- rep: 复制分片数量，英文全称为replica
+</span></span><span class="line"><span class="cl">- docs.count：有效的文档数
+</span></span><span class="line"><span class="cl">- docs.deleted：已删除的文档数
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看集群中的节点信息</span>
+</span></span><span class="line"><span class="cl">GET /_cat/nodes?v
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># # 分词拆分分析</span>
+</span></span><span class="line"><span class="cl">POST /_analyze
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;text&#34;</span>: <span class="s2">&#34;我问你在何方？你答你在天堂&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -491,72 +513,72 @@ POST /_analyze
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 索引相关</span>
-
-<span class="c1"># 查看索引结构构建信息</span>
-GET /index1/_mapping
-
-<span class="c1"># 建索引</span>
-PUT /index1
-<span class="o">{</span>
-  <span class="s2">&#34;settings&#34;</span>: <span class="o">{</span>
-    <span class="s2">&#34;number_of_shards&#34;</span>: 1, <span class="c1"># 设置主分片数</span>
-    <span class="s2">&#34;number_of_replicas&#34;</span>: <span class="m">0</span> <span class="c1"># 设置副本数</span>
-  <span class="o">}</span>,
-  <span class="s2">&#34;mappings&#34;</span>: <span class="o">{</span>
-    <span class="s2">&#34;properties&#34;</span>: <span class="o">{</span> <span class="c1"># 字段集合</span>
-      <span class="s2">&#34;title&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>,
-        <span class="s2">&#34;analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>,
-        <span class="s2">&#34;search_analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>
-      <span class="o">}</span>,
-      <span class="s2">&#34;msg_ids&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>
-      <span class="o">}</span>,
-      <span class="s2">&#34;user_id&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;integer&#34;</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1"># 删除索引</span>
-DELETE /index1
-
-<span class="c1"># 单个索引的数据列表查询</span>
-GET /index1/_search
-<span class="o">{</span>
-  <span class="c1"># 模糊搜索</span>
-  <span class="s2">&#34;query&#34;</span>: <span class="o">{</span>
-    <span class="s2">&#34;match&#34;</span>: <span class="o">{</span>
-      <span class="s2">&#34;question&#34;</span>: <span class="s2">&#34;问题&#34;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="c1"># 排序</span>
-  <span class="s2">&#34;sort&#34;</span>: <span class="o">[</span>
-    <span class="o">{</span>
-      <span class="s2">&#34;_score&#34;</span>: <span class="o">{</span> <span class="c1"># 命中率，越大越符合搜索要求</span>
-        <span class="s2">&#34;order&#34;</span>: <span class="s2">&#34;desc&#34;</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">]</span>,
-  <span class="s2">&#34;from&#34;</span>: 0,
-  <span class="s2">&#34;size&#34;</span>: <span class="m">10</span>
-<span class="o">}</span>
-
-<span class="c1"># 多重索引的数据列表查询</span>
-GET /index1,index2,index3/_search
-
-<span class="c1"># _all 关键字</span>
-GET /_all/_search
-
-<span class="c1"># 通配符( * , + , – )</span>
-GET /*_index/_search
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 索引相关</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看索引结构构建信息</span>
+</span></span><span class="line"><span class="cl">GET /index1/_mapping
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 建索引</span>
+</span></span><span class="line"><span class="cl">PUT /index1
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;settings&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;number_of_shards&#34;</span>: 1, <span class="c1"># 设置主分片数</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;number_of_replicas&#34;</span>: <span class="m">0</span> <span class="c1"># 设置副本数</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;mappings&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;properties&#34;</span>: <span class="o">{</span> <span class="c1"># 字段集合</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;title&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;search_analyzer&#34;</span>: <span class="s2">&#34;ik_max_word&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;msg_ids&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;text&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;user_id&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;type&#34;</span>: <span class="s2">&#34;integer&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除索引</span>
+</span></span><span class="line"><span class="cl">DELETE /index1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 单个索引的数据列表查询</span>
+</span></span><span class="line"><span class="cl">GET /index1/_search
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 模糊搜索</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;query&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;match&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;question&#34;</span>: <span class="s2">&#34;问题&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="c1"># 排序</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;sort&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;_score&#34;</span>: <span class="o">{</span> <span class="c1"># 命中率，越大越符合搜索要求</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;order&#34;</span>: <span class="s2">&#34;desc&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;from&#34;</span>: 0,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;size&#34;</span>: <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 多重索引的数据列表查询</span>
+</span></span><span class="line"><span class="cl">GET /index1,index2,index3/_search
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># _all 关键字</span>
+</span></span><span class="line"><span class="cl">GET /_all/_search
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 通配符( * , + , – )</span>
+</span></span><span class="line"><span class="cl">GET /*_index/_search
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -588,37 +610,37 @@ GET /*_index/_search
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 文档相关</span>
-
-<span class="c1"># 根据 id 查询 document</span>
-GET /intelligence_question_index/_doc/9
-
-<span class="c1"># create document</span>
-POST /intelligence_question_index/intelligence_question/14648 <span class="c1"># es6 版本: /index名称/type名称/id</span>
-POST /intelligence_question_index/_doc/14648 <span class="c1"># es7 版本</span>
-<span class="o">{</span>
-  <span class="s2">&#34;id&#34;</span>:14648,
-  <span class="s2">&#34;entity_id&#34;</span>:1109,
-  <span class="s2">&#34;question&#34;</span>:<span class="s2">&#34;你k看k看看k看看&#34;</span>,
-  <span class="s2">&#34;staff_id&#34;</span>:1111470,
-  <span class="s2">&#34;status&#34;</span>:1,
-  <span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2020-06-27 10:12:21&#34;</span>,
-  <span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2020-06-27 10:12:21&#34;</span>
-<span class="o">}</span>
-
-<span class="c1"># update document</span>
-POST /intelligence_question_index/intelligence_question/14648/_update <span class="c1"># es6 版本</span>
-POST /intelligence_question_index/_update/14648 <span class="c1"># es7 版本</span>
-<span class="o">{</span>
-  <span class="s2">&#34;doc&#34;</span>: <span class="o">{</span>
-    <span class="s2">&#34;question&#34;</span>: <span class="s2">&#34;你k看k看看k看看22222&#34;</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1"># delete document</span>
-DELETE /intelligence_question_index/intelligence_question/14648 <span class="c1"># es6 版本</span>
-DELETE /intelligence_question_index/_doc/14648 <span class="c1"># es7 版本</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 文档相关</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 根据 id 查询 document</span>
+</span></span><span class="line"><span class="cl">GET /intelligence_question_index/_doc/9
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># create document</span>
+</span></span><span class="line"><span class="cl">POST /intelligence_question_index/intelligence_question/14648 <span class="c1"># es6 版本: /index名称/type名称/id</span>
+</span></span><span class="line"><span class="cl">POST /intelligence_question_index/_doc/14648 <span class="c1"># es7 版本</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;id&#34;</span>:14648,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;entity_id&#34;</span>:1109,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;question&#34;</span>:<span class="s2">&#34;你k看k看看k看看&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;staff_id&#34;</span>:1111470,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;status&#34;</span>:1,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2020-06-27 10:12:21&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2020-06-27 10:12:21&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># update document</span>
+</span></span><span class="line"><span class="cl">POST /intelligence_question_index/intelligence_question/14648/_update <span class="c1"># es6 版本</span>
+</span></span><span class="line"><span class="cl">POST /intelligence_question_index/_update/14648 <span class="c1"># es7 版本</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;doc&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;question&#34;</span>: <span class="s2">&#34;你k看k看看k看看22222&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># delete document</span>
+</span></span><span class="line"><span class="cl">DELETE /intelligence_question_index/intelligence_question/14648 <span class="c1"># es6 版本</span>
+</span></span><span class="line"><span class="cl">DELETE /intelligence_question_index/_doc/14648 <span class="c1"># es7 版本</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="kibana">kibana</h2>
 <ol>
@@ -626,11 +648,10 @@ DELETE /intelligence_question_index/_doc/14648 <span class="c1"># es7 版本</sp
 </ol>
 <h2 id="install-on-macos-with-darwin">Install on macOS with darwin</h2>
 <blockquote>
-<p>可以指定安装版本</p>
-</blockquote>
+<p>可以指定安装版本</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -643,23 +664,23 @@ DELETE /intelligence_question_index/_doc/14648 <span class="c1"># es7 版本</sp
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">下载链接：https://www.elastic.co/downloads/past-releases#elasticsearch
-
-安装目录：cd ~/app
-
-tar -xzf elasticsearch-7.7.0-darwin-x86_64.tar.gz
-启动命令: ~/app/elasticsearch-7.7.0/bin/elasticsearch
-配置文件：vi ~/app/elasticsearch-7.7.0/config/elasticsearch.yml
-
-tar -xzf kibana-7.7.0-darwin-x86_64.tar.gz
-启动命令: ~/app/kibana-7.7.1/bin/kibana
-配置文件: vi ~/app/kibana-7.7.1/config/kibana.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">下载链接：https://www.elastic.co/downloads/past-releases#elasticsearch
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">安装目录：cd ~/app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">tar -xzf elasticsearch-7.7.0-darwin-x86_64.tar.gz
+</span></span><span class="line"><span class="cl">启动命令: ~/app/elasticsearch-7.7.0/bin/elasticsearch
+</span></span><span class="line"><span class="cl">配置文件：vi ~/app/elasticsearch-7.7.0/config/elasticsearch.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">tar -xzf kibana-7.7.0-darwin-x86_64.tar.gz
+</span></span><span class="line"><span class="cl">启动命令: ~/app/kibana-7.7.1/bin/kibana
+</span></span><span class="line"><span class="cl">配置文件: vi ~/app/kibana-7.7.1/config/kibana.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="install-on-macos-with-brew">Install on macOS with brew</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -680,30 +701,30 @@ tar -xzf kibana-7.7.0-darwin-x86_64.tar.gz
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Install Elasticsearch on macOS with Homebrew</span>
-brew tap elastic/tap
-brew install elastic/tap/elasticsearch-full
-
-<span class="c1"># To have launchd start elastic/tap/elasticsearch-full now and restart at login:</span>
-brew services start elastic/tap/elasticsearch-full
-brew services stop elastic/tap/elasticsearch-full
-
-<span class="c1"># Or, if you don&#39;t want/need a background service you can just run:</span>
-  elasticsearch
-
-<span class="c1"># 启动后访问以下链接</span>
-http://127.0.0.1:9200/
-
-<span class="c1"># 目录路径</span>
-Data:    /usr/local/var/lib/elasticsearch/elasticsearch_insomnia/
-Logs:    /usr/local/var/log/elasticsearch/elasticsearch_insomnia.log
-Plugins: /usr/local/var/elasticsearch/plugins/
-Config:  /usr/local/etc/elasticsearch/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># Install Elasticsearch on macOS with Homebrew</span>
+</span></span><span class="line"><span class="cl">brew tap elastic/tap
+</span></span><span class="line"><span class="cl">brew install elastic/tap/elasticsearch-full
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># To have launchd start elastic/tap/elasticsearch-full now and restart at login:</span>
+</span></span><span class="line"><span class="cl">brew services start elastic/tap/elasticsearch-full
+</span></span><span class="line"><span class="cl">brew services stop elastic/tap/elasticsearch-full
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Or, if you don&#39;t want/need a background service you can just run:</span>
+</span></span><span class="line"><span class="cl">  elasticsearch
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动后访问以下链接</span>
+</span></span><span class="line"><span class="cl">http://127.0.0.1:9200/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 目录路径</span>
+</span></span><span class="line"><span class="cl">Data:    /usr/local/var/lib/elasticsearch/elasticsearch_insomnia/
+</span></span><span class="line"><span class="cl">Logs:    /usr/local/var/log/elasticsearch/elasticsearch_insomnia.log
+</span></span><span class="line"><span class="cl">Plugins: /usr/local/var/elasticsearch/plugins/
+</span></span><span class="line"><span class="cl">Config:  /usr/local/etc/elasticsearch/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -721,28 +742,28 @@ Config:  /usr/local/etc/elasticsearch/
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Install Kibana on macOS with Homebrew</span>
-brew tap elastic/tap
-brew install elastic/tap/kibana-full
-
-<span class="c1"># To have launchd start elastic/tap/kibana-full now and restart at login:</span>
-brew services start elastic/tap/kibana-full
-brew services stop elastic/tap/kibana-full
-
-<span class="c1"># Or, if you don&#39;t want/need a background service you can just run:</span>
-kibana
-
-<span class="c1"># 启动后访问以下链接</span>
-http://127.0.0.1:5601/
-
-<span class="c1"># 目录路径</span>
-Config: /usr/local/etc/kibana/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># Install Kibana on macOS with Homebrew</span>
+</span></span><span class="line"><span class="cl">brew tap elastic/tap
+</span></span><span class="line"><span class="cl">brew install elastic/tap/kibana-full
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># To have launchd start elastic/tap/kibana-full now and restart at login:</span>
+</span></span><span class="line"><span class="cl">brew services start elastic/tap/kibana-full
+</span></span><span class="line"><span class="cl">brew services stop elastic/tap/kibana-full
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Or, if you don&#39;t want/need a background service you can just run:</span>
+</span></span><span class="line"><span class="cl">kibana
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动后访问以下链接</span>
+</span></span><span class="line"><span class="cl">http://127.0.0.1:5601/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 目录路径</span>
+</span></span><span class="line"><span class="cl">Config: /usr/local/etc/kibana/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="相关配置">相关配置</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -753,36 +774,34 @@ Config: /usr/local/etc/kibana/
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 配置 kibana</span>
-<span class="c1"># 打开配置文件</span>
-subl ~/app/kibana/config/kibana.yml
-
-<span class="c1"># 汉化：找到i18n.locale，如果没找到自行添加如下文本</span>
-i18n.locale: <span class="s2">&#34;zh-CN&#34;</span>
-
-<span class="c1"># 配置 elasticsearch url</span>
-elasticsearch.hosts: 默认值: <span class="s2">&#34;http://localhost:9200&#34;</span> 用来处理所有查询的 Elasticsearch 实例的 URL 。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 配置 kibana</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 打开配置文件</span>
+</span></span><span class="line"><span class="cl">subl ~/app/kibana/config/kibana.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 汉化：找到i18n.locale，如果没找到自行添加如下文本</span>
+</span></span><span class="line"><span class="cl">i18n.locale: <span class="s2">&#34;zh-CN&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 配置 elasticsearch url</span>
+</span></span><span class="line"><span class="cl">elasticsearch.hosts: 默认值: <span class="s2">&#34;http://localhost:9200&#34;</span> 用来处理所有查询的 Elasticsearch 实例的 URL 。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 配置 elasticsearch</span>
-<span class="c1"># 打开配置文件</span>
-subl ~/app/elasticsearch/config/elasticsearch.yml
-
-<span class="c1"># 设置支持远程访问</span>
-默认情况下，Elastic 只允许本机访问，如果需要远程访问，可以修改 Elastic 安装目录的 config/elasticsearch.yml 文件，去掉network.host的注释，将它的值改成 0.0.0.0 或者 具体 IP，然后重新启动 Elastic。
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 配置 elasticsearch</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 打开配置文件</span>
+</span></span><span class="line"><span class="cl">subl ~/app/elasticsearch/config/elasticsearch.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置支持远程访问</span>
+</span></span><span class="line"><span class="cl">默认情况下，Elastic 只允许本机访问，如果需要远程访问，可以修改 Elastic 安装目录的 config/elasticsearch.yml 文件，去掉network.host的注释，将它的值改成 0.0.0.0 或者 具体 IP，然后重新启动 Elastic。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="版本问题">版本问题</h2>
 <p>Kibana 的版本需要和 Elasticsearch 的版本一致。这是官方支持的配置。</p>
@@ -800,7 +819,7 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 <p>不过，你可以通过重写模型中的 searchableAs 方法来覆盖这一默认设置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -823,28 +842,28 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">Laravel\Scout\Searchable</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">use</span> <span class="nx">Searchable</span><span class="p">;</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 获取模型的索引名称.
-</span><span class="sd">     *
-</span><span class="sd">     * @return string
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">searchableAs</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;posts_index&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Laravel\Scout\Searchable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">Searchable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 获取模型的索引名称.
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return string
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">searchableAs</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;posts_index&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -852,7 +871,7 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 <p>默认情况下，模型以完整的 toArray 格式持久化到搜索索引，如果你想要自定义被持久化到搜索索引的数据，可以重写模型上的 toSearchableArray 方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -879,32 +898,32 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">Laravel\Scout\Searchable</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">use</span> <span class="nx">Searchable</span><span class="p">;</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 获取模型的索引数据数组，类似 mysql 需要搜索的表字段名
-</span><span class="sd">     *
-</span><span class="sd">     * @return array
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">toSearchableArray</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$array</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
-
-        <span class="c1"># 自定义数组...
-</span><span class="c1"></span>
-        <span class="k">return</span> <span class="nv">$array</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Laravel\Scout\Searchable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">Searchable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 获取模型的索引数据数组，类似 mysql 需要搜索的表字段名
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return array
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">toSearchableArray</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$array</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 自定义数组...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$array</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -912,7 +931,7 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 <p>默认情况下，Scout 会使用模型的主键作为唯一ID将其存储到搜索索引中。如果你需要自定义这个行为，可以在模型类中重写 getScoutKey 方法『默认使用 id 作为 key』：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -935,28 +954,28 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">Laravel\Scout\Searchable</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">use</span> <span class="nx">Searchable</span><span class="p">;</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * Get the value used to index the model.
-</span><span class="sd">     *
-</span><span class="sd">     * @return mixed
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getScoutKey</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">;</span> <span class="c1"># 返回 mysql 字段名
-</span><span class="c1"></span>    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Laravel\Scout\Searchable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Model</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">use</span> <span class="nx">Searchable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Get the value used to index the model.
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return mixed
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getScoutKey</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">;</span> <span class="c1"># 返回 mysql 字段名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -964,7 +983,7 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 <p>php artisan make:command InitEs</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -1081,127 +1100,126 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 </span><span class="lnt">115
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">App\Console\Commands</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Console\Command</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">InitEs</span> <span class="k">extends</span> <span class="nx">Command</span>
-<span class="p">{</span>
-    <span class="sd">/**
-</span><span class="sd">     * The name and signature of the console command.
-</span><span class="sd">     * @var string
-</span><span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$signature</span> <span class="o">=</span> <span class="s1">&#39;es:init {index} {--f}&#39;</span><span class="p">;</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * The console command description.
-</span><span class="sd">     * @var string
-</span><span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$description</span> <span class="o">=</span> <span class="s1">&#39;初始化es和创建索引&#39;</span><span class="p">;</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * Create a new command instance.
-</span><span class="sd">     * @return void
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * Execute the console command.
-</span><span class="sd">     * @return mixed
-</span><span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$index</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">argument</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">))</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">line</span><span class="p">(</span><span class="s1">&#39;请输入索引名,如 corpus_index&#39;</span><span class="p">);</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createTemplate</span><span class="p">(</span><span class="nv">$client</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createIndex</span><span class="p">(</span><span class="nv">$client</span><span class="p">,</span> <span class="nv">$index</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 创建索引
-</span><span class="sd">     * @param Client $client
-</span><span class="sd">     * @param $index
-</span><span class="sd">     */</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">createIndex</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$client</span><span class="p">,</span> <span class="nv">$index</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$url</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;scout.elasticsearch.hosts&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="nv">$index</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">option</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="p">[</span>
-            <span class="s1">&#39;json&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s1">&#39;settings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s1">&#39;refresh_interval&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5s&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;number_of_shards&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-                    <span class="s1">&#39;number_of_replicas&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
-                <span class="p">],</span>
-                <span class="s1">&#39;mappings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s1">&#39;_default_&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                        <span class="s1">&#39;_all&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                            <span class="s1">&#39;enabled&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
-                        <span class="p">]</span>
-                    <span class="p">]</span>
-                <span class="p">]</span>
-            <span class="p">]</span>
-        <span class="p">]);</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**
-</span><span class="sd">     * 创建模板
-</span><span class="sd">     * @param Client $client
-</span><span class="sd">     */</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">createTemplate</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$client</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$url</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;scout.elasticsearch.hosts&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="s1">&#39;_template/rtf&#39;</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">option</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="p">[</span>
-            <span class="s1">&#39;json&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                <span class="s1">&#39;template&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;settings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s1">&#39;number_of_shards&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
-                <span class="p">],</span>
-                <span class="s1">&#39;mappings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s1">&#39;_default_&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                        <span class="s1">&#39;_all&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                            <span class="s1">&#39;enabled&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
-                        <span class="p">],</span>
-                        <span class="s1">&#39;dynamic_templates&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                            <span class="p">[</span>
-                                <span class="s1">&#39;strings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                                    <span class="s1">&#39;match_mapping_type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;mapping&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                                        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span>
-                                        <span class="s1">&#39;analyzer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ik_max_word&#39;</span><span class="p">,</span><span class="c1">//ik_max_word  ik_smart
-</span><span class="c1"></span>                                        <span class="s1">&#39;ignore_above&#39;</span> <span class="o">=&gt;</span> <span class="mi">256</span><span class="p">,</span>
-                                        <span class="s1">&#39;fields&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                                            <span class="s1">&#39;keyword&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                                                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;keyword&#39;</span>
-                                            <span class="p">]</span>
-                                        <span class="p">]</span>
-                                    <span class="p">]</span>
-                                <span class="p">]</span>
-                            <span class="p">]</span>
-                        <span class="p">]</span>
-                    <span class="p">]</span>
-                <span class="p">]</span>
-            <span class="p">]</span>
-        <span class="p">]);</span>
-
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Console\Commands</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Console\Command</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">InitEs</span> <span class="k">extends</span> <span class="nx">Command</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * The name and signature of the console command.
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @var string
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="nv">$signature</span> <span class="o">=</span> <span class="s1">&#39;es:init {index} {--f}&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * The console command description.
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @var string
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="nv">$description</span> <span class="o">=</span> <span class="s1">&#39;初始化es和创建索引&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Create a new command instance.
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return void
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Execute the console command.
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return mixed
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$index</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">argument</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">line</span><span class="p">(</span><span class="s1">&#39;请输入索引名,如 corpus_index&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createTemplate</span><span class="p">(</span><span class="nv">$client</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createIndex</span><span class="p">(</span><span class="nv">$client</span><span class="p">,</span> <span class="nv">$index</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 创建索引
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param Client $client
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param $index
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">function</span> <span class="nf">createIndex</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$client</span><span class="p">,</span> <span class="nv">$index</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$url</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;scout.elasticsearch.hosts&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="nv">$index</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">option</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;json&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;settings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;refresh_interval&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5s&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;number_of_shards&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;number_of_replicas&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="p">],</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;mappings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;_default_&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                        <span class="s1">&#39;_all&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                            <span class="s1">&#39;enabled&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                <span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * 创建模板
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param Client $client
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">function</span> <span class="nf">createTemplate</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$client</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$url</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s1">&#39;scout.elasticsearch.hosts&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="s1">&#39;_template/rtf&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">option</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;json&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;template&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;settings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;number_of_shards&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="p">],</span>
+</span></span><span class="line"><span class="cl">                <span class="s1">&#39;mappings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;_default_&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                        <span class="s1">&#39;_all&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                            <span class="s1">&#39;enabled&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">                        <span class="s1">&#39;dynamic_templates&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                                <span class="s1">&#39;strings&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                                    <span class="s1">&#39;match_mapping_type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="s1">&#39;mapping&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                                        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                        <span class="s1">&#39;analyzer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ik_max_word&#39;</span><span class="p">,</span><span class="c1">//ik_max_word  ik_smart
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                        <span class="s1">&#39;ignore_above&#39;</span> <span class="o">=&gt;</span> <span class="mi">256</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                        <span class="s1">&#39;fields&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                                            <span class="s1">&#39;keyword&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                                                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;keyword&#39;</span>
+</span></span><span class="line"><span class="cl">                                            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                                        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                                    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">                <span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="三laravel-scout-索引批量导入删除">三、Laravel Scout 索引批量导入/删除</h3>
 <blockquote>
-<p>即 mysql 等数据库的已有数据导入 ES</p>
-</blockquote>
+<p>即 mysql 等数据库的已有数据导入 ES</p></blockquote>
 <ol>
 <li>
 <p>如果将 Scout 安装到了已存在的项目，可能该项目之前已经有了可以导入搜索驱动的数据库记录，Scout 提供了 Artisan 命令 import 用于导入所有已存在的数据到搜索索引：</p>
@@ -1215,17 +1233,17 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 <h3 id="四使用">四、使用</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span> <span class="nx">artisan</span> <span class="nx">init</span><span class="o">:</span><span class="nx">es</span> <span class="nx">article_index</span>
-<span class="nx">php</span> <span class="nx">artisan</span> <span class="nx">scout</span><span class="o">:</span><span class="nx">import</span> <span class="s2">&#34;App\Models\Article&#34;</span>
-
-<span class="nx">搜索的时候使用</span> <span class="nx">Article</span><span class="o">::</span><span class="na">search</span><span class="p">(</span><span class="s1">&#39;搜索词&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">php</span> <span class="nx">artisan</span> <span class="nx">init</span><span class="o">:</span><span class="nx">es</span> <span class="nx">article_index</span>
+</span></span><span class="line"><span class="cl"><span class="nx">php</span> <span class="nx">artisan</span> <span class="nx">scout</span><span class="o">:</span><span class="nx">import</span> <span class="s2">&#34;App\Models\Article&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">搜索的时候使用</span> <span class="nx">Article</span><span class="o">::</span><span class="na">search</span><span class="p">(</span><span class="s1">&#39;搜索词&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="学习文章">学习文章</h2>
 <p><a href="https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html">全文搜索引擎 Elasticsearch 入门教程</a></p>
@@ -1235,7 +1253,7 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -1307,22 +1325,19 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -1336,7 +1351,7 @@ subl ~/app/elasticsearch/config/elasticsearch.yml
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

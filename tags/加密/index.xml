@@ -4,18 +4,17 @@
     <title>加密 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%8A%A0%E5%AF%86/</link>
     <description>Recent content in 加密 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 02 Jan 2019 21:45:06 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%8A%A0%E5%AF%86/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Jan 2019 21:45:06 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%8A%A0%E5%AF%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>加密算法</title>
       <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</link>
       <pubDate>Wed, 02 Jan 2019 21:45:06 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</guid>
-      <description>对称加密算法 AES 高级加密标准（Advanced Encryption Standard，AES），在密码学中又称Rijndael 加密法，是美国联邦政府采用的一种区块</description>
+      <description>&lt;h2 id=&#34;对称加密算法&#34;&gt;对称加密算法&lt;/h2&gt;&#xA;&lt;h3 id=&#34;aes&#34;&gt;AES&lt;/h3&gt;&#xA;&lt;p&gt;高级加密标准（Advanced Encryption Standard，AES），在密码学中又称Rijndael 加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES（因为DES不安全了），已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院（NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日成为有效的标准。2006年，高级加密标准已然成为对称密钥加密中最流行的算法之一。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

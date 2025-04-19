@@ -4,27 +4,24 @@
     <title>程序员 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/</link>
     <description>Recent content in 程序员 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 17 Aug 2020 16:38:01 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Aug 2020 16:38:01 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>程序员必备的代码审查清单</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/</link>
       <pubDate>Mon, 17 Aug 2020 16:38:01 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/</guid>
-      <description>编码规范 编程思想由 MVC模式 转向 MBC模式，M：模型层，B: 业务逻辑层，C：控制器层 路由命名：一般以 纯小写 或 小写+中划线 命名，比较易读 变量名</description>
+      <description>&lt;h2 id=&#34;编码规范&#34;&gt;编码规范&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;编程思想由 MVC模式 转向 MBC模式，M：模型层，B: 业务逻辑层，C：控制器层&lt;/li&gt;&#xA;&lt;li&gt;路由命名：一般以 纯小写 或 小写+中划线 命名，比较易读&lt;/li&gt;&#xA;&lt;li&gt;变量名称使用小驼峰方案&lt;/li&gt;&#xA;&lt;li&gt;能不用 else 就不用，减少嵌套层数&lt;/li&gt;&#xA;&lt;li&gt;待处理代码加上 todo 做备注，容易找到待处理代码位置&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;常规项&#34;&gt;常规项&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;代码能够工作么？它有没有实现预期的功能，逻辑是否正确等。&lt;/li&gt;&#xA;&lt;li&gt;所有的代码是否简单易懂？&lt;/li&gt;&#xA;&lt;li&gt;代码符合你所遵循的编程规范么？这通常包括大括号的位置，变量名和函数名，行的长度，缩进，格式和注释。&lt;/li&gt;&#xA;&lt;li&gt;是否存在多余的或是重复的代码？&lt;/li&gt;&#xA;&lt;li&gt;代码是否尽可能的模块化了？&lt;/li&gt;&#xA;&lt;li&gt;是否有可以被替换的全局变量？&lt;/li&gt;&#xA;&lt;li&gt;是否有被注释掉的代码？&lt;/li&gt;&#xA;&lt;li&gt;循环是否设置了长度和正确的终止条件？&lt;/li&gt;&#xA;&lt;li&gt;是否有可以被库函数替代的代码？&lt;/li&gt;&#xA;&lt;li&gt;是否有可以删除的日志或调试代码？&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;安全&#34;&gt;安全&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;所有的数据输入是否都进行了检查（检测正确的类型，长度，格式和范围）并且进行了编码？&lt;/li&gt;&#xA;&lt;li&gt;在哪里使用了第三方工具，返回的错误是否被捕获？&lt;/li&gt;&#xA;&lt;li&gt;输出的值是否进行了检查并且编码？&lt;/li&gt;&#xA;&lt;li&gt;无效的参数值是否能够处理？&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;文档&#34;&gt;文档&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;是否有注释，并且描述了代码的意图？&lt;/li&gt;&#xA;&lt;li&gt;所有的函数都有注释吗？&lt;/li&gt;&#xA;&lt;li&gt;对非常规行为和边界情况处理是否有描述？&lt;/li&gt;&#xA;&lt;li&gt;第三方库的使用和函数是否有文档？&lt;/li&gt;&#xA;&lt;li&gt;数据结构和计量单位是否进行了解释？&lt;/li&gt;&#xA;&lt;li&gt;是否有未完成的代码？如果是的话，是不是应该移除，或者用合适的标记进行标记比如‘TODO’？&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;测试&#34;&gt;测试&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;代码是否可以测试？比如，不要添加太多的或是隐藏的依赖关系，不能够初始化对象，测试框架可以使用方法等。&lt;/li&gt;&#xA;&lt;li&gt;是否存在测试，它们是否可以被理解？比如，至少达到你满意的代码覆盖(code coverage)。&lt;/li&gt;&#xA;&lt;li&gt;单元测试是否真正的测试了代码是否可以完成预期的功能？&lt;/li&gt;&#xA;&lt;li&gt;是否检查了数组的“越界“错误？&lt;/li&gt;&#xA;&lt;li&gt;是否有可以被已经存在的API所替代的测试代码？&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
     <item>
       <title>开发者须知</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</link>
       <pubDate>Fri, 25 Jan 2019 15:42:14 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</guid>
-      <description>开发过程：SOLID五大设计原则 S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Pricipl</description>
+      <description>&lt;h2 id=&#34;开发过程solid五大设计原则&#34;&gt;开发过程：SOLID五大设计原则&lt;/h2&gt;&#xA;&lt;p&gt;S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Priciple)的首字母缩写。&lt;/p&gt;&#xA;&lt;p&gt;SRP: The Single Responsibility Principle 单一职责原则&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

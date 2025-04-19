@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优化加速组件。 Optimizer&#43; 将PHP代码预编译生成的脚本文件 Opcode 缓存在共享内存中供以后反复使用，从而避免了从磁盘读取代码再次编译的时间消耗。同时，它还应用了一些代码优化模式，使得代码执行更快。从而加速PHP的执行。 Opcache的生命周期 正常的php代码的执行过程如下
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Opcache与Opcode" />
-<meta property="og:description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-02-23T13:10:09&#43;08:00" />
-<meta property="article:modified_time" content="2019-02-23T13:10:09&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Opcache与Opcode">
+  <meta property="og:description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优化加速组件。 Optimizer&#43; 将PHP代码预编译生成的脚本文件 Opcode 缓存在共享内存中供以后反复使用，从而避免了从磁盘读取代码再次编译的时间消耗。同时，它还应用了一些代码优化模式，使得代码执行更快。从而加速PHP的执行。 Opcache的生命周期 正常的php代码的执行过程如下">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-02-23T13:10:09+08:00">
+    <meta property="article:modified_time" content="2019-02-23T13:10:09+08:00">
+    <meta property="article:tag" content="Php">
 
-<meta itemprop="name" content="Opcache与Opcode">
-<meta itemprop="description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优"><meta itemprop="datePublished" content="2019-02-23T13:10:09&#43;08:00" />
-<meta itemprop="dateModified" content="2019-02-23T13:10:09&#43;08:00" />
-<meta itemprop="wordCount" content="1465">
-<meta itemprop="keywords" content="php," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Opcache与Opcode"/>
-<meta name="twitter:description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优"/>
+  <meta itemprop="name" content="Opcache与Opcode">
+  <meta itemprop="description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优化加速组件。 Optimizer&#43; 将PHP代码预编译生成的脚本文件 Opcode 缓存在共享内存中供以后反复使用，从而避免了从磁盘读取代码再次编译的时间消耗。同时，它还应用了一些代码优化模式，使得代码执行更快。从而加速PHP的执行。 Opcache的生命周期 正常的php代码的执行过程如下">
+  <meta itemprop="datePublished" content="2019-02-23T13:10:09+08:00">
+  <meta itemprop="dateModified" content="2019-02-23T13:10:09+08:00">
+  <meta itemprop="wordCount" content="1465">
+  <meta itemprop="keywords" content="Php">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Opcache与Opcode">
+  <meta name="twitter:description" content="相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer&#43; ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优化加速组件。 Optimizer&#43; 将PHP代码预编译生成的脚本文件 Opcode 缓存在共享内存中供以后反复使用，从而避免了从磁盘读取代码再次编译的时间消耗。同时，它还应用了一些代码优化模式，使得代码执行更快。从而加速PHP的执行。 Opcache的生命周期 正常的php代码的执行过程如下">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -174,52 +191,45 @@
 <li>opcache.enable=1 (default &ldquo;1&rdquo;)</li>
 </ul>
 <blockquote>
-<p>OPcache打开/关闭开关。当设置为Off或者0时，会关闭Opcache, 代码没有被优化和缓存。</p>
-</blockquote>
+<p>OPcache打开/关闭开关。当设置为Off或者0时，会关闭Opcache, 代码没有被优化和缓存。</p></blockquote>
 <ul>
 <li>opcache.enable_cli=1 (default &ldquo;0&rdquo;)</li>
 </ul>
 <blockquote>
-<p>CLI环境下，PHP启用OPcache。这主要是为了测试和调试。从 PHP 7.1.2 开始，默认启用。</p>
-</blockquote>
+<p>CLI环境下，PHP启用OPcache。这主要是为了测试和调试。从 PHP 7.1.2 开始，默认启用。</p></blockquote>
 <ul>
 <li>opcache.memory_consumption=128 (default &ldquo;64&rdquo;)</li>
 </ul>
 <blockquote>
-<p>OPcache共享内存存储大小。用于存储预编译的opcode（以MB为单位）。</p>
-</blockquote>
+<p>OPcache共享内存存储大小。用于存储预编译的opcode（以MB为单位）。</p></blockquote>
 <ul>
 <li>opcache.validate_timestamps (default &ldquo;1&rdquo;)</li>
 </ul>
 <blockquote>
-<p>如果启用（设置为1），OPcache会在opcache.revalidate_freq设置的秒数去检测文件的时间戳（timestamp）检查脚本是否更新。</p>
-</blockquote>
+<p>如果启用（设置为1），OPcache会在opcache.revalidate_freq设置的秒数去检测文件的时间戳（timestamp）检查脚本是否更新。</p></blockquote>
 <ul>
 <li>opcache.revalidate_freq (default &ldquo;2&rdquo;)</li>
 </ul>
 <blockquote>
-<p>这个选项用于设置缓存的过期时间（单位是秒），当这个时间达到后，opcache会检查你的代码是否改变，如果改变了PHP会重新编译它，生成新的opcode，并且更新缓存。值为“0”表示每次请求都会检查你的PHP代码是否更新（这意味着会增加很多次stat系统调用，译注：stat系统调用是读取文件的状态，这里主要是获取最近修改时间，这个系统调用会发生磁盘I/O，所以必然会消耗一些CPU时间，当然系统调用本身也会消耗一些CPU时间）。可以在开发环境中把它设置为0，生产环境下不用管。</p>
-</blockquote>
+<p>这个选项用于设置缓存的过期时间（单位是秒），当这个时间达到后，opcache会检查你的代码是否改变，如果改变了PHP会重新编译它，生成新的opcode，并且更新缓存。值为“0”表示每次请求都会检查你的PHP代码是否更新（这意味着会增加很多次stat系统调用，译注：stat系统调用是读取文件的状态，这里主要是获取最近修改时间，这个系统调用会发生磁盘I/O，所以必然会消耗一些CPU时间，当然系统调用本身也会消耗一些CPU时间）。可以在开发环境中把它设置为0，生产环境下不用管。</p></blockquote>
 <ul>
 <li>opcache.max_accelerated_files (default &ldquo;2000&rdquo;)</li>
 </ul>
 <blockquote>
-<p>这个选项用于控制内存中最多可以缓存多少个PHP文件。这个选项必须得设置得足够大，大于你的项目中的所有PHP文件的总和。</p>
-</blockquote>
+<p>这个选项用于控制内存中最多可以缓存多少个PHP文件。这个选项必须得设置得足够大，大于你的项目中的所有PHP文件的总和。</p></blockquote>
 <ul>
 <li>opcache.interned_strings_buffer=8 (default &ldquo;4&rdquo;)</li>
 </ul>
 <blockquote>
 <p>这是一个很有用的选项，但是似乎完全没有文档说明。PHP使用了一种叫做字符串驻留（string interning）的技术来改善性能。例如，如果你在代码中使用了1000次字符串“foobar”，在PHP内部只会在第一使用这个字符串的时候分配一个不可变的内存区域来存储这个字符串，其他的999次使用都会直接指向这个内存区域。这个选项则会把这个特性提升一个层次——默认情况下这个不可变的内存区域只会存在于单个php-fpm的进程中，如果设置了这个选项，那么它将会在所有的php-fpm进程中共享。在比较大的应用中，这可以非常有效地节约内存，提高应用的性能。</p>
-<p>这个选项的值是以兆字节（megabytes）作为单位，如果把它设置为16，则表示16MB，默认是4MB，这是一个比较低的值。</p>
-</blockquote>
+<p>这个选项的值是以兆字节（megabytes）作为单位，如果把它设置为16，则表示16MB，默认是4MB，这是一个比较低的值。</p></blockquote>
 
     </div>
 
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -291,22 +301,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -320,7 +327,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

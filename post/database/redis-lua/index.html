@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前命令指定的Lua脚本包含的所有逻辑，其它客户端发送的命令将被阻塞，直到EVAL命令执行完毕为止。因此LUA脚本不宜编写一些过于复杂了逻辑，必须尽量保证Lua脚本的效率，否则会影响其它客户端。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/database/redis-lua/" />
@@ -35,24 +36,31 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="redis lua 脚本" />
-<meta property="og:description" content="原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/redis-lua/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-10-17T10:55:26&#43;08:00" />
-<meta property="article:modified_time" content="2023-10-17T10:55:26&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/redis-lua/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="redis lua 脚本">
+  <meta property="og:description" content="原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前命令指定的Lua脚本包含的所有逻辑，其它客户端发送的命令将被阻塞，直到EVAL命令执行完毕为止。因此LUA脚本不宜编写一些过于复杂了逻辑，必须尽量保证Lua脚本的效率，否则会影响其它客户端。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-10-17T10:55:26+08:00">
+    <meta property="article:modified_time" content="2023-10-17T10:55:26+08:00">
+    <meta property="article:tag" content="Redis">
+    <meta property="article:tag" content="Lua">
 
-<meta itemprop="name" content="redis lua 脚本">
-<meta itemprop="description" content="原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前"><meta itemprop="datePublished" content="2023-10-17T10:55:26&#43;08:00" />
-<meta itemprop="dateModified" content="2023-10-17T10:55:26&#43;08:00" />
-<meta itemprop="wordCount" content="587">
-<meta itemprop="keywords" content="redis,lua," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="redis lua 脚本"/>
-<meta name="twitter:description" content="原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前"/>
+  <meta itemprop="name" content="redis lua 脚本">
+  <meta itemprop="description" content="原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前命令指定的Lua脚本包含的所有逻辑，其它客户端发送的命令将被阻塞，直到EVAL命令执行完毕为止。因此LUA脚本不宜编写一些过于复杂了逻辑，必须尽量保证Lua脚本的效率，否则会影响其它客户端。">
+  <meta itemprop="datePublished" content="2023-10-17T10:55:26+08:00">
+  <meta itemprop="dateModified" content="2023-10-17T10:55:26+08:00">
+  <meta itemprop="wordCount" content="587">
+  <meta itemprop="keywords" content="Redis,Lua">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="redis lua 脚本">
+  <meta name="twitter:description" content="原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前命令指定的Lua脚本包含的所有逻辑，其它客户端发送的命令将被阻塞，直到EVAL命令执行完毕为止。因此LUA脚本不宜编写一些过于复杂了逻辑，必须尽量保证Lua脚本的效率，否则会影响其它客户端。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +99,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +132,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -156,23 +174,23 @@
 <h2 id="基础定义">基础定义</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">--- 局部变量
-<span class="nb">local</span> <span class="nv">age</span> <span class="o">=</span> <span class="m">18</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">--- 局部变量
+</span></span><span class="line"><span class="cl"><span class="nb">local</span> <span class="nv">age</span> <span class="o">=</span> <span class="m">18</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># call函数：执行命令错误时会向调用者直接返回一个错误</span>
-127.0.0.1:6379&gt; EVAL <span class="s2">&#34;return redis.call(&#39;GET&#39;,KEYS[1])&#34;</span> <span class="m">1</span> hello
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># call函数：执行命令错误时会向调用者直接返回一个错误</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; EVAL <span class="s2">&#34;return redis.call(&#39;GET&#39;,KEYS[1])&#34;</span> <span class="m">1</span> hello
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="eval命令">EVAL命令</h2>
 <p>Redis中使用EVAL命令来直接执行指定的Lua脚本。</p>
@@ -186,7 +204,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -199,23 +217,23 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 简单示例</span>
-127.0.0.1:6379&gt; <span class="nb">set</span> hello world
-OK
-127.0.0.1:6379&gt; get hello
-<span class="s2">&#34;world&#34;</span>
-127.0.0.1:6379&gt; EVAL <span class="s2">&#34;return redis.call(&#39;GET&#39;,KEYS[1])&#34;</span> <span class="m">1</span> hello
-<span class="s2">&#34;world&#34;</span>
-127.0.0.1:6379&gt; EVAL <span class="s2">&#34;return redis.call(&#39;GET&#39;,&#39;hello&#39;)&#34;</span>
-<span class="o">(</span>error<span class="o">)</span> ERR wrong number of arguments <span class="k">for</span> <span class="s1">&#39;eval&#39;</span> <span class="nb">command</span>
-127.0.0.1:6379&gt; EVAL <span class="s2">&#34;return redis.call(&#39;GET&#39;,&#39;hello&#39;)&#34;</span> <span class="m">0</span>
-<span class="s2">&#34;world&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 简单示例</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; <span class="nb">set</span> hello world
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; get hello
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;world&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; EVAL <span class="s2">&#34;return redis.call(&#39;GET&#39;,KEYS[1])&#34;</span> <span class="m">1</span> hello
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;world&#34;</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; EVAL <span class="s2">&#34;return redis.call(&#39;GET&#39;,&#39;hello&#39;)&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>error<span class="o">)</span> ERR wrong number of arguments <span class="k">for</span> <span class="s1">&#39;eval&#39;</span> <span class="nb">command</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; EVAL <span class="s2">&#34;return redis.call(&#39;GET&#39;,&#39;hello&#39;)&#34;</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;world&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="lua脚本示例">lua脚本示例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -235,25 +253,25 @@ OK
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//lua脚本，原子操作
-</span><span class="c1"></span><span class="nx">key</span> <span class="o">:=</span> <span class="s">&#34;cache_key&#34;</span>
-<span class="nx">userId</span> <span class="o">:=</span> <span class="mi">1</span>
-<span class="nx">coin</span> <span class="o">:=</span> <span class="mi">1</span>
-<span class="nx">expire</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="nf">Unix</span><span class="p">()</span>
-<span class="nx">script</span> <span class="o">:=</span> <span class="s">`
-</span><span class="s">local exists = redis.call(&#34;EXISTS&#34;, KEYS[1])
-</span><span class="s">if (exists==0)
-</span><span class="s">then
-</span><span class="s">    redis.call(&#34;HSET&#34;, KEYS[1], 0, 0)
-</span><span class="s">    redis.call(&#34;EXPIREAT&#34;, KEYS[1], ARGV[3])
-</span><span class="s">end
-</span><span class="s">return redis.call(&#34;HINCRBY&#34;, KEYS[1], ARGV[1], ARGV[2])
-</span><span class="s">`</span>
-<span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nx">DefaultRedis</span><span class="p">).</span><span class="nf">Eval</span><span class="p">(</span><span class="nx">script</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">key</span><span class="p">},</span> <span class="nx">userId</span><span class="p">,</span> <span class="nx">coin</span><span class="p">,</span> <span class="nx">expire</span><span class="p">).</span><span class="nf">Result</span><span class="p">()</span>
-<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">//lua脚本，原子操作</span>
+</span></span><span class="line"><span class="cl"><span class="nx">key</span> <span class="o">:=</span> <span class="s">&#34;cache_key&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">userId</span> <span class="o">:=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nx">coin</span> <span class="o">:=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nx">expire</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="nf">Unix</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nx">script</span> <span class="o">:=</span> <span class="s">`
+</span></span></span><span class="line"><span class="cl"><span class="s">local exists = redis.call(&#34;EXISTS&#34;, KEYS[1])
+</span></span></span><span class="line"><span class="cl"><span class="s">if (exists==0)
+</span></span></span><span class="line"><span class="cl"><span class="s">then
+</span></span></span><span class="line"><span class="cl"><span class="s">    redis.call(&#34;HSET&#34;, KEYS[1], 0, 0)
+</span></span></span><span class="line"><span class="cl"><span class="s">    redis.call(&#34;EXPIREAT&#34;, KEYS[1], ARGV[3])
+</span></span></span><span class="line"><span class="cl"><span class="s">end
+</span></span></span><span class="line"><span class="cl"><span class="s">return redis.call(&#34;HINCRBY&#34;, KEYS[1], ARGV[1], ARGV[2])
+</span></span></span><span class="line"><span class="cl"><span class="s">`</span>
+</span></span><span class="line"><span class="cl"><span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nx">DefaultRedis</span><span class="p">).</span><span class="nf">Eval</span><span class="p">(</span><span class="nx">script</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">key</span><span class="p">},</span> <span class="nx">userId</span><span class="p">,</span> <span class="nx">coin</span><span class="p">,</span> <span class="nx">expire</span><span class="p">).</span><span class="nf">Result</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考文章">参考文章</h2>
 <p><a href="https://segmentfault.com/a/1190000037518418">Redis Lua脚本完全入门</a></p>
@@ -263,7 +281,7 @@ OK
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -336,22 +354,19 @@ OK
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -365,7 +380,7 @@ OK
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

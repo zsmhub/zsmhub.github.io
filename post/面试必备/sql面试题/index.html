@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="SQL 问题总结文章 MySQL 三万字精华总结 &#43; 面试100 问，吊打面试官绰绰有余 面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="SQL 问题总结文章 MySQL 三万字精华总结 &#43; 面试100 问，吊打面试官绰绰有余
+面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条sql怎么写
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/" />
@@ -35,24 +37,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="SQL 面试题" />
-<meta property="og:description" content="SQL 问题总结文章 MySQL 三万字精华总结 &#43; 面试100 问，吊打面试官绰绰有余 面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-02-21T09:11:06&#43;08:00" />
-<meta property="article:modified_time" content="2020-02-21T09:11:06&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="SQL 面试题">
+  <meta property="og:description" content="SQL 问题总结文章 MySQL 三万字精华总结 &#43; 面试100 问，吊打面试官绰绰有余
+面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条sql怎么写">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-02-21T09:11:06+08:00">
+    <meta property="article:modified_time" content="2020-02-21T09:11:06+08:00">
+    <meta property="article:tag" content="面试题">
 
-<meta itemprop="name" content="SQL 面试题">
-<meta itemprop="description" content="SQL 问题总结文章 MySQL 三万字精华总结 &#43; 面试100 问，吊打面试官绰绰有余 面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用"><meta itemprop="datePublished" content="2020-02-21T09:11:06&#43;08:00" />
-<meta itemprop="dateModified" content="2020-02-21T09:11:06&#43;08:00" />
-<meta itemprop="wordCount" content="1077">
-<meta itemprop="keywords" content="面试题," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SQL 面试题"/>
-<meta name="twitter:description" content="SQL 问题总结文章 MySQL 三万字精华总结 &#43; 面试100 问，吊打面试官绰绰有余 面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用"/>
+  <meta itemprop="name" content="SQL 面试题">
+  <meta itemprop="description" content="SQL 问题总结文章 MySQL 三万字精华总结 &#43; 面试100 问，吊打面试官绰绰有余
+面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条sql怎么写">
+  <meta itemprop="datePublished" content="2020-02-21T09:11:06+08:00">
+  <meta itemprop="dateModified" content="2020-02-21T09:11:06+08:00">
+  <meta itemprop="wordCount" content="1077">
+  <meta itemprop="keywords" content="面试题">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SQL 面试题">
+  <meta name="twitter:description" content="SQL 问题总结文章 MySQL 三万字精华总结 &#43; 面试100 问，吊打面试官绰绰有余
+面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条sql怎么写">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +102,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +135,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -167,7 +188,7 @@
 <h2 id="解题答案">解题答案</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -232,70 +253,70 @@
 </span><span class="lnt">63
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">数据库表设计</span><span class="p">:</span>
-<span class="n">qian_dao_table</span><span class="err">：考勤签到记录表，包含字段：</span><span class="n">id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">time</span><span class="p">(</span><span class="err">考勤时间</span><span class="p">)</span>
-<span class="n">employee</span><span class="p">:</span> <span class="err">员工信息表，包含字段：</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">department_id</span>
-
-<span class="o">#</span> <span class="k">SQL</span> <span class="err">前提：</span>
-<span class="err">假设一周上班</span><span class="mi">5</span><span class="err">天，上班时间为周一至周五。</span>
-
-<span class="o">#</span> <span class="err">题目：</span>
-<span class="mi">1</span><span class="p">.</span> <span class="err">假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条</span><span class="n">sql怎么写</span>
-<span class="k">select</span>
-<span class="c1">-- 员工ID
-</span><span class="c1"></span><span class="n">user_id</span><span class="p">,</span>
-<span class="c1">-- 签到率
-</span><span class="c1"></span><span class="n">round</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">rate</span>
-<span class="k">from</span> <span class="n">qian_dao_table</span>
-<span class="k">where</span>
-<span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">&#39;2020-02-10&#39;</span>
-<span class="k">and</span> <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="s1">&#39;2020-02-14&#39;</span>
-<span class="k">group</span> <span class="k">by</span> <span class="n">user_id</span>
-
-
-<span class="mi">2</span><span class="p">.</span> <span class="err">假如公司分成若干个部门</span><span class="p">(</span><span class="err">员工从属于部门</span><span class="p">),</span> <span class="err">要列出每个部门上周的满勤率（员工上周签到率为</span><span class="mi">100</span><span class="o">%</span><span class="err">才算满勤），用一条</span><span class="n">sql怎么写</span>
-<span class="k">select</span>
-<span class="c1">-- 部门ID
-</span><span class="c1"></span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span>
-<span class="c1">-- 部门满勤率
-</span><span class="c1"></span><span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="o">`</span><span class="n">rate</span><span class="o">`=</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">/</span><span class="k">count</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">rate_department</span>
-<span class="k">from</span> <span class="n">employee</span> <span class="k">as</span> <span class="n">A</span>
-<span class="k">left</span> <span class="k">join</span> <span class="p">(</span><span class="k">select</span>
-    <span class="c1">-- 员工ID
-</span><span class="c1"></span>    <span class="n">user_id</span><span class="p">,</span>
-    <span class="c1">-- 签到率
-</span><span class="c1"></span>    <span class="n">round</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">rate</span>
-    <span class="k">from</span> <span class="n">qian_dao_table</span>
-    <span class="k">where</span>
-    <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">&#39;2020-02-10&#39;</span>
-    <span class="k">and</span> <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="s1">&#39;2020-02-14&#39;</span>
-    <span class="k">group</span> <span class="k">by</span> <span class="n">user_id</span>
-<span class="p">)</span> <span class="k">as</span> <span class="n">B</span>
-<span class="k">on</span> <span class="n">A</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">user_id</span>
-<span class="k">group</span> <span class="k">by</span> <span class="n">A</span><span class="p">.</span><span class="n">department_id</span>
-
-<span class="mi">3</span><span class="p">.</span> <span class="err">假如领导可以任意指定某一个部门周五也算正常休假，要列出每个部门上周的满勤率，用一条</span><span class="n">sql怎么写</span>
-<span class="o">#</span> <span class="err">假设设定部门</span> <span class="n">ID</span> <span class="err">等于</span> <span class="mi">10</span> <span class="err">时，该部门周五也算正常休假</span>
-<span class="k">select</span>
-<span class="c1">-- 部门ID
-</span><span class="c1"></span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span>
-<span class="c1">-- 部门满勤率
-</span><span class="c1"></span><span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="o">`</span><span class="n">rate</span><span class="o">`=</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">/</span><span class="k">count</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">rate_department</span>
-<span class="k">from</span> <span class="n">employee</span> <span class="k">as</span> <span class="n">A</span>
-<span class="k">left</span> <span class="k">join</span> <span class="p">(</span><span class="k">select</span>
-    <span class="c1">-- 员工ID
-</span><span class="c1"></span>    <span class="n">user_id</span><span class="p">,</span>
-    <span class="c1">-- 签到率
-</span><span class="c1"></span>    <span class="n">round</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="o">/</span><span class="k">if</span><span class="p">(</span><span class="n">department_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">rate</span>
-    <span class="k">from</span> <span class="n">qian_dao_table</span>
-    <span class="k">where</span>
-    <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">&#39;2020-02-10&#39;</span>
-    <span class="k">and</span> <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="s1">&#39;2020-02-14&#39;</span>
-    <span class="k">group</span> <span class="k">by</span> <span class="n">user_id</span>
-<span class="p">)</span> <span class="k">as</span> <span class="n">B</span>
-<span class="k">on</span> <span class="n">A</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">user_id</span>
-<span class="k">group</span> <span class="k">by</span> <span class="n">A</span><span class="p">.</span><span class="n">department_id</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">数据库表设计</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">qian_dao_table</span><span class="err">：考勤签到记录表，包含字段：</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="err">考勤时间</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">employee</span><span class="p">:</span><span class="w"> </span><span class="err">员工信息表，包含字段：</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">SQL</span><span class="w"> </span><span class="err">前提：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">假设一周上班</span><span class="mi">5</span><span class="err">天，上班时间为周一至周五。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">题目：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条</span><span class="n">sql怎么写</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 员工ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">user_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 签到率
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">round</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">qian_dao_table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-02-10&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">and</span><span class="w"> </span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s1">&#39;2020-02-14&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">user_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">假如公司分成若干个部门</span><span class="p">(</span><span class="err">员工从属于部门</span><span class="p">),</span><span class="w"> </span><span class="err">要列出每个部门上周的满勤率（员工上周签到率为</span><span class="mi">100</span><span class="o">%</span><span class="err">才算满勤），用一条</span><span class="n">sql怎么写</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 部门ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 部门满勤率
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="o">`</span><span class="n">rate</span><span class="o">`=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="o">/</span><span class="k">count</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rate_department</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- 员工ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="n">user_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- 签到率
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="n">round</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">qian_dao_table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-02-10&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">and</span><span class="w"> </span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s1">&#39;2020-02-14&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">user_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">user_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="mi">3</span><span class="p">.</span><span class="w"> </span><span class="err">假如领导可以任意指定某一个部门周五也算正常休假，要列出每个部门上周的满勤率，用一条</span><span class="n">sql怎么写</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">假设设定部门</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="err">等于</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="err">时，该部门周五也算正常休假</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 部门ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 部门满勤率
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="o">`</span><span class="n">rate</span><span class="o">`=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="o">/</span><span class="k">count</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rate_department</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- 员工ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="n">user_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- 签到率
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="n">round</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="o">/</span><span class="k">if</span><span class="p">(</span><span class="n">department_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">qian_dao_table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-02-10&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">and</span><span class="w"> </span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s1">&#39;2020-02-14&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">user_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">user_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="针对上述题目再追加条件">针对上述题目再追加条件</h2>
 <p>针对此题再追加条件：</p>
@@ -305,7 +326,7 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -343,43 +364,43 @@
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">数据库设计</span>
-<span class="err">新增表</span> <span class="n">department_workday</span><span class="err">：部门工作日列表，包含字段：</span><span class="n">id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">workday</span><span class="p">(</span><span class="err">工作日，使用整数</span><span class="mi">0</span><span class="o">~</span><span class="mi">6</span><span class="p">)</span>
-
-<span class="o">#</span> <span class="k">sql</span>
-<span class="k">select</span>
-<span class="c1">-- 部门ID
-</span><span class="c1"></span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span>
-<span class="c1">-- 部门满勤率
-</span><span class="c1"></span><span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="o">`</span><span class="n">rate</span><span class="o">`&gt;=</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">/</span><span class="k">count</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">rate_department</span>
-<span class="k">from</span> <span class="n">employee</span> <span class="k">as</span> <span class="n">A</span>
-<span class="k">left</span> <span class="k">join</span> <span class="p">(</span><span class="k">select</span>
-    <span class="c1">-- 员工ID
-</span><span class="c1"></span>    <span class="n">user_id</span><span class="p">,</span>
-    <span class="c1">-- 签到率
-</span><span class="c1"></span>    <span class="n">round</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
-        <span class="k">select</span>
-        <span class="c1">-- 计算该用户在某段时间内的工作日数量
-</span><span class="c1"></span>        <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">workday_num</span>
-        <span class="k">from</span> <span class="n">employee</span> <span class="k">as</span> <span class="k">C</span>
-        <span class="k">left</span> <span class="k">join</span> <span class="n">department_workday</span> <span class="k">as</span> <span class="n">D</span> <span class="k">on</span> <span class="k">C</span><span class="p">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">D</span><span class="p">.</span><span class="n">department_id</span>
-        <span class="k">where</span>
-        <span class="k">C</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">qian_dao_table</span><span class="p">.</span><span class="n">user_id</span>
-        <span class="k">and</span> <span class="n">D</span><span class="p">.</span><span class="n">workday</span> <span class="k">in</span> <span class="p">(</span><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2020-02-12&#39;</span><span class="p">,</span> <span class="s1">&#39;%w&#39;</span><span class="p">),</span> <span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2020-02-13&#39;</span><span class="p">,</span> <span class="s1">&#39;%w&#39;</span><span class="p">),</span> <span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2020-02-14&#39;</span><span class="p">,</span> <span class="s1">&#39;%w&#39;</span><span class="p">),</span> <span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2020-02-15&#39;</span><span class="p">,</span> <span class="s1">&#39;%w&#39;</span><span class="p">))</span>
-    <span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">rate</span>
-    <span class="k">from</span> <span class="n">qian_dao_table</span>
-    <span class="k">where</span>
-    <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">&#39;2020-02-12&#39;</span>
-    <span class="k">and</span> <span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="s1">&#39;2020-02-15&#39;</span>
-    <span class="k">group</span> <span class="k">by</span> <span class="n">user_id</span>
-<span class="p">)</span> <span class="k">as</span> <span class="n">B</span>
-<span class="k">on</span> <span class="n">A</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">user_id</span>
-<span class="k">group</span> <span class="k">by</span> <span class="n">A</span><span class="p">.</span><span class="n">department_id</span>
-
-<span class="o">#</span> <span class="err">注意</span>
-<span class="o">-</span> <span class="err">我这条</span><span class="n">sql会存在一个问题</span><span class="err">，如果用户在该部门的非工作日打卡，就会导致数据统计出现误差。</span>
-<span class="o">-</span> <span class="err">像这种复杂逻辑，一般用后端代码写会更好。</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">数据库设计</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">新增表</span><span class="w"> </span><span class="n">department_workday</span><span class="err">：部门工作日列表，包含字段：</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span><span class="p">,</span><span class="w"> </span><span class="n">workday</span><span class="p">(</span><span class="err">工作日，使用整数</span><span class="mi">0</span><span class="o">~</span><span class="mi">6</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">sql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 部门ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 部门满勤率
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">round</span><span class="p">(</span><span class="k">sum</span><span class="p">(</span><span class="k">if</span><span class="p">(</span><span class="n">B</span><span class="p">.</span><span class="o">`</span><span class="n">rate</span><span class="o">`&gt;=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="o">/</span><span class="k">count</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rate_department</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- 员工ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="n">user_id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">-- 签到率
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="n">round</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">-- 计算该用户在某段时间内的工作日数量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">        </span><span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">workday_num</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">C</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">department_workday</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">C</span><span class="p">.</span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D</span><span class="p">.</span><span class="n">department_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">C</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qian_dao_table</span><span class="p">.</span><span class="n">user_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">and</span><span class="w"> </span><span class="n">D</span><span class="p">.</span><span class="n">workday</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2020-02-12&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%w&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2020-02-13&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%w&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2020-02-14&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%w&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2020-02-15&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%w&#39;</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">qian_dao_table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-02-12&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">and</span><span class="w"> </span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s1">&#39;2020-02-15&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">user_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">user_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">department_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">注意</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-</span><span class="w"> </span><span class="err">我这条</span><span class="n">sql会存在一个问题</span><span class="err">，如果用户在该部门的非工作日打卡，就会导致数据统计出现误差。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">-</span><span class="w"> </span><span class="err">像这种复杂逻辑，一般用后端代码写会更好。</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -387,7 +408,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -459,22 +480,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -488,7 +506,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

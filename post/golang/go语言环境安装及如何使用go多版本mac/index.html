@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="go环境的卸载 pkg方式安装go？ 删除/usr/local下的go目录即可 1 sudo rm -rf /usr/local/go brew方式安装go? 1 brew uninstall go@1.14 使用brew安装 1 2 3 4 5" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="go环境的卸载 pkg方式安装go？
+删除/usr/local下的go目录即可
+1 2 3 4 5 6 7 8 9 10 sudo rm -rf /usr/local/go sudo rm -rf /etc/paths.d/go vim ~/.bash_profile 或 vim ~/.zshrc # 删除go的环境变量 # go环境变量 export GOROOT=/usr/local/go # Go的安装目录 export GOPATH=$HOME/go # 你的Go代码工作目录 export PATH=$PATH:$GOPATH/bin # 添加go命令所在路径 如果你是通过安装包的形式安装的go语言编译器，那么更新的方式也会非常简单，那就是直接下载新的go安装包。在安装新的时候，会自动删除掉旧的编译器。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8go%E5%A4%9A%E7%89%88%E6%9C%ACmac/" />
@@ -35,24 +38,36 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Go语言环境安装及如何使用Go多版本（Mac）" />
-<meta property="og:description" content="go环境的卸载 pkg方式安装go？ 删除/usr/local下的go目录即可 1 sudo rm -rf /usr/local/go brew方式安装go? 1 brew uninstall go@1.14 使用brew安装 1 2 3 4 5" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8go%E5%A4%9A%E7%89%88%E6%9C%ACmac/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-07-06T14:41:22&#43;08:00" />
-<meta property="article:modified_time" content="2022-07-06T14:41:22&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8go%E5%A4%9A%E7%89%88%E6%9C%ACmac/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Go语言环境安装及如何使用Go多版本（Mac）">
+  <meta property="og:description" content="go环境的卸载 pkg方式安装go？
+删除/usr/local下的go目录即可
+1 2 3 4 5 6 7 8 9 10 sudo rm -rf /usr/local/go sudo rm -rf /etc/paths.d/go vim ~/.bash_profile 或 vim ~/.zshrc # 删除go的环境变量 # go环境变量 export GOROOT=/usr/local/go # Go的安装目录 export GOPATH=$HOME/go # 你的Go代码工作目录 export PATH=$PATH:$GOPATH/bin # 添加go命令所在路径 如果你是通过安装包的形式安装的go语言编译器，那么更新的方式也会非常简单，那就是直接下载新的go安装包。在安装新的时候，会自动删除掉旧的编译器。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-07-06T14:41:22+08:00">
+    <meta property="article:modified_time" content="2022-07-06T14:41:22+08:00">
+    <meta property="article:tag" content="Golang">
 
-<meta itemprop="name" content="Go语言环境安装及如何使用Go多版本（Mac）">
-<meta itemprop="description" content="go环境的卸载 pkg方式安装go？ 删除/usr/local下的go目录即可 1 sudo rm -rf /usr/local/go brew方式安装go? 1 brew uninstall go@1.14 使用brew安装 1 2 3 4 5"><meta itemprop="datePublished" content="2022-07-06T14:41:22&#43;08:00" />
-<meta itemprop="dateModified" content="2022-07-06T14:41:22&#43;08:00" />
-<meta itemprop="wordCount" content="258">
-<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go语言环境安装及如何使用Go多版本（Mac）"/>
-<meta name="twitter:description" content="go环境的卸载 pkg方式安装go？ 删除/usr/local下的go目录即可 1 sudo rm -rf /usr/local/go brew方式安装go? 1 brew uninstall go@1.14 使用brew安装 1 2 3 4 5"/>
+  <meta itemprop="name" content="Go语言环境安装及如何使用Go多版本（Mac）">
+  <meta itemprop="description" content="go环境的卸载 pkg方式安装go？
+删除/usr/local下的go目录即可
+1 2 3 4 5 6 7 8 9 10 sudo rm -rf /usr/local/go sudo rm -rf /etc/paths.d/go vim ~/.bash_profile 或 vim ~/.zshrc # 删除go的环境变量 # go环境变量 export GOROOT=/usr/local/go # Go的安装目录 export GOPATH=$HOME/go # 你的Go代码工作目录 export PATH=$PATH:$GOPATH/bin # 添加go命令所在路径 如果你是通过安装包的形式安装的go语言编译器，那么更新的方式也会非常简单，那就是直接下载新的go安装包。在安装新的时候，会自动删除掉旧的编译器。">
+  <meta itemprop="datePublished" content="2022-07-06T14:41:22+08:00">
+  <meta itemprop="dateModified" content="2022-07-06T14:41:22+08:00">
+  <meta itemprop="wordCount" content="400">
+  <meta itemprop="keywords" content="Golang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Go语言环境安装及如何使用Go多版本（Mac）">
+  <meta name="twitter:description" content="go环境的卸载 pkg方式安装go？
+删除/usr/local下的go目录即可
+1 2 3 4 5 6 7 8 9 10 sudo rm -rf /usr/local/go sudo rm -rf /etc/paths.d/go vim ~/.bash_profile 或 vim ~/.zshrc # 删除go的环境变量 # go环境变量 export GOROOT=/usr/local/go # Go的安装目录 export GOPATH=$HOME/go # 你的Go代码工作目录 export PATH=$PATH:$GOPATH/bin # 添加go命令所在路径 如果你是通过安装包的形式安装的go语言编译器，那么更新的方式也会非常简单，那就是直接下载新的go安装包。在安装新的时候，会自动删除掉旧的编译器。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +106,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +139,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -130,7 +155,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 258 字 </span>
+          <span class="more-meta"> 约 400 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -157,29 +182,49 @@
 <p>删除/usr/local下的go目录即可</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">sudo rm -rf /usr/local/go
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo rm -rf /usr/local/go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo rm -rf /etc/paths.d/go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">vim ~/.bash_profile 或 vim ~/.zshrc <span class="c1"># 删除go的环境变量</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># go环境变量</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOROOT</span><span class="o">=</span>/usr/local/go  <span class="c1"># Go的安装目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span><span class="nv">$HOME</span>/go  <span class="c1"># 你的Go代码工作目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$GOPATH</span>/bin  <span class="c1"># 添加go命令所在路径</span>
+</span></span></code></pre></td></tr></table>
 </div>
-</div></li>
+</div><blockquote>
+<p>如果你是通过安装包的形式安装的go语言编译器，那么更新的方式也会非常简单，那就是直接下载新的go安装包。在安装新的时候，会自动删除掉旧的编译器。</p></blockquote>
+</li>
 <li>
 <p>brew方式安装go?</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">brew uninstall go@1.14
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">brew uninstall go@1.14
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
 <h2 id="使用brew安装">使用brew安装</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -187,24 +232,22 @@
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 查看go相关版本</span>
-brew search go
-
-<span class="c1"># 安装最新版本的go</span>
-brew install go
-
-<span class="c1"># 安装1.14版本的go</span>
-brew install go@1.14
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 查看go相关版本</span>
+</span></span><span class="line"><span class="cl">brew search go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装最新版本的go</span>
+</span></span><span class="line"><span class="cl">brew install go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装1.14版本的go</span>
+</span></span><span class="line"><span class="cl">brew install go@1.14
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="使用brew切换版本">使用brew切换版本</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -214,15 +257,15 @@ brew install go@1.14
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 解绑当前版本的绑定</span>
-brew unlink go
-
-<span class="c1"># 绑定新版本的关联关系</span>
-brew link go@1.14
-
-<span class="c1"># 查看版本号</span>
-go version
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 解绑当前版本的绑定</span>
+</span></span><span class="line"><span class="cl">brew unlink go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 绑定新版本的关联关系</span>
+</span></span><span class="line"><span class="cl">brew link go@1.14
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看版本号</span>
+</span></span><span class="line"><span class="cl">go version
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="goland-配置-gorootgo118-时报错">GoLand 配置 GOROOT=go1.18 时报错</h2>
 <p>error msg: “the selected directory is not a valid home for Go SDK ”</p>
@@ -232,24 +275,24 @@ go version
 <p>终端执行命令：go env | grep GOROOT</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">go env <span class="p">|</span> grep GOROOT
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">go env <span class="p">|</span> grep GOROOT
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>编辑 {GOROOT}/src/runtime/internal/sys/zversion.go 文件，尾部添加以下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">const <span class="nv">theVersion</span> <span class="o">=</span> <span class="sb">`</span>go1.18.4<span class="sb">`</span>
-var <span class="nv">buildVersion</span> <span class="o">=</span> theVersion
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">const <span class="nv">theVersion</span> <span class="o">=</span> <span class="sb">`</span>go1.18.4<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">var <span class="nv">buildVersion</span> <span class="o">=</span> theVersion
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -262,7 +305,7 @@ var <span class="nv">buildVersion</span> <span class="o">=</span> theVersion
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -334,22 +377,19 @@ var <span class="nv">buildVersion</span> <span class="o">=</span> theVersion
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -363,7 +403,7 @@ var <span class="nv">buildVersion</span> <span class="o">=</span> theVersion
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

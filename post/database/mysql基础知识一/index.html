@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【for" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【format格式说明：%m 月, 数字(01～12)；%c 月, 数字(1～12)】 date_format(&#39;2019-12-12 12:22:33&#39;, &#34;%Y-%m-%d&#34;) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y-%m-%d %H:%i:%s&#39;) -- 时间戳转换为日期格式 date_add(a.DUE_DAY, INTERVAL 90 day) -- 日期增加90天 UNIX_TIMESTAMP(&#39;2015-04-29&#39;) -- 日期转换成时间戳 UNIX_TIMESTAMP() -- 获取当前时间戳 DATE_SUB(CURDATE(), INTERVAL 15 DAY) -- 最近15天 DATE_SUB(CURDATE(), INTERVAL 1 YEAR) -- 最近1年 # 字符串合并 concat(s1, s2...sn) -- 字符串 s1,s2 等多个字符串合并为一个字符串 concat_ws(x, s1, s2...sn) -- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符 group_concat(column) -- 将某列的所有值合并成一个字符串 # 截取字符串 left(str, length)，即：left(被截取字符串， 截取长度) right(str, length)，即：right(被截取字符串， 截取长度) substring(str, pos, length)，即：substring(被截取字符串，从第几位开始截取，截取长度)，length非必填 substring_index(str, delim, count)，即：substring_index(被截取字符串，关键字，关键字出现的次数) SELECT SUBSTRING_INDEX(&#39;www.yuanrengu.com&#39;, &#39;.&#39;, 2); -- 截取第二个“.”之前的所有字符，如果关键字不存在，则返回整个字符串 SELECT SUBSTRING_INDEX(&#39;www.yuanrengu.com&#39;, &#39;.&#39;, -2); -- 截取倒数第二个“.”之后的所有字符 # 计算字段长度 SELECT LENGTH(&#39;www中国人民&#39;); -- 长度15『length(): 一个汉字是算三个字符，一个数字或字母算一个字符』 SELECT CHAR_LENGTH(&#39;www中国人民&#39;); -- 长度7 『char_length(): 不管汉字还是数字或者是字母都算是一个字符』 find_in_set(s1, s2) -- 返回在字符串s2中与s1匹配的字符串的位置(等于 0 表示找不到), SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;); locate(s1, s) -- 从字符串 s 中获取 s1 的开始位置，位置初始值为1，找不到则返回0 regexp -- 正则匹配，eg：select * from history where data regexp &#39;帐号的使用存在异常|操作太频繁&#39; format(number, decimal_places) -- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位 convert(value, type)/cast(value as 类型) -- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。 eg: convert(1.2456, decimal(10,2)) 或者 cast(1.2456 as decimal(10,2)) -- 保留小数后两位 IFNULL(expr1,expr2) -- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。 if(sva=1,&#34;男&#34;,&#34;女&#34;) # 替换字段内容 UPDATE `goods_file` SET `file` = replace (`file`,&#39;https://xxx.com&#39;,&#39;https://bbb.com&#39;); 常用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 -- 查询 sql_mode 『sql_mode 会影响 MySQL 支持的 SQL 语法以及它执行的数据验证检查』 SELECT @@GLOBAL.sql_mode global, @@SESSION.sql_mode session; SET sql_mode = &#39;&#39;; SET GLOBAL sql_mode = &#39;&#39;; -- 时区操作 show variables like &#34;%time_zone%&#34;; -- 查看时区 &gt; set global time_zone = &#39;&#43;8:00&#39;; -- 修改mysql全局时区为北京时间，即我们所在的东8区 &gt; set time_zone = &#39;&#43;8:00&#39;; -- 修改当前会话时区 &gt; flush privileges; -- 立即生效 SHOW BINLOG EVENTS LIMIT 0, 25; -- 查看 binlog 日志 ALTER TABLE tableName auto_increment=number; -- 设置表自增值 show full processlist; -- 显示所有用户正在运行的线程 show processlist; -- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。 explain/desc select * from table; -- 查看查询语句性能，即查看执行计划 desc table_name; -- 查看 table 等结构 show index from table_name; -- 查看索引信息 create index on table(id(10)); -- 增加前缀索引 -- 查询表所有字段的名称 select COLUMN_NAME from information_schema.COLUMNS where table_name = &#39;your_table_name&#39;; -- 查询一个表中所有字段的名字和注释 SELECT COLUMN_NAME, COLUMN_COMMENT FROM INFORMATION_SCHEMA.Columns WHERE table_name=&#39;provision&#39; AND table_schema=&#39;test&#39; -- 授权root用户新ip可以访问： GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;192.168.9.76&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; flush privileges; -- 刷新激活变更操作 -- 导出数据库『不用进入mysql命令界面』 mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名 -- 创建新用户并授权root用户所有权限且所有ip可以访问： GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; -- 创建新用户并授权root用户新ip可以访问某个数据库： GRANT ALL PRIVILEGES ON database_name.* TO &#39;root&#39;@&#39;192.168.9.76&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; -- 创建只读用户： GRANT SELECT ON *.* TO &#39;db_read&#39;@&#39;%&#39; IDENTIFIED BY &#39;A1ta939a@Qn*iTls&#39; json类型的字段查询 查询JSON中的数据用 column-&gt;path的形式，其中对象类型path的表示方式 $.path，数组类型的表示方式 $[index];
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/" />
@@ -35,24 +37,34 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Mysql 基础知识一" />
-<meta property="og:description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【for" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-01-09T22:13:42&#43;08:00" />
-<meta property="article:modified_time" content="2020-05-12T22:13:42&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Mysql 基础知识一">
+  <meta property="og:description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【format格式说明：%m 月, 数字(01～12)；%c 月, 数字(1～12)】 date_format(&#39;2019-12-12 12:22:33&#39;, &#34;%Y-%m-%d&#34;) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y-%m-%d %H:%i:%s&#39;) -- 时间戳转换为日期格式 date_add(a.DUE_DAY, INTERVAL 90 day) -- 日期增加90天 UNIX_TIMESTAMP(&#39;2015-04-29&#39;) -- 日期转换成时间戳 UNIX_TIMESTAMP() -- 获取当前时间戳 DATE_SUB(CURDATE(), INTERVAL 15 DAY) -- 最近15天 DATE_SUB(CURDATE(), INTERVAL 1 YEAR) -- 最近1年 # 字符串合并 concat(s1, s2...sn) -- 字符串 s1,s2 等多个字符串合并为一个字符串 concat_ws(x, s1, s2...sn) -- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符 group_concat(column) -- 将某列的所有值合并成一个字符串 # 截取字符串 left(str, length)，即：left(被截取字符串， 截取长度) right(str, length)，即：right(被截取字符串， 截取长度) substring(str, pos, length)，即：substring(被截取字符串，从第几位开始截取，截取长度)，length非必填 substring_index(str, delim, count)，即：substring_index(被截取字符串，关键字，关键字出现的次数) SELECT SUBSTRING_INDEX(&#39;www.yuanrengu.com&#39;, &#39;.&#39;, 2); -- 截取第二个“.”之前的所有字符，如果关键字不存在，则返回整个字符串 SELECT SUBSTRING_INDEX(&#39;www.yuanrengu.com&#39;, &#39;.&#39;, -2); -- 截取倒数第二个“.”之后的所有字符 # 计算字段长度 SELECT LENGTH(&#39;www中国人民&#39;); -- 长度15『length(): 一个汉字是算三个字符，一个数字或字母算一个字符』 SELECT CHAR_LENGTH(&#39;www中国人民&#39;); -- 长度7 『char_length(): 不管汉字还是数字或者是字母都算是一个字符』 find_in_set(s1, s2) -- 返回在字符串s2中与s1匹配的字符串的位置(等于 0 表示找不到), SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;); locate(s1, s) -- 从字符串 s 中获取 s1 的开始位置，位置初始值为1，找不到则返回0 regexp -- 正则匹配，eg：select * from history where data regexp &#39;帐号的使用存在异常|操作太频繁&#39; format(number, decimal_places) -- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位 convert(value, type)/cast(value as 类型) -- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。 eg: convert(1.2456, decimal(10,2)) 或者 cast(1.2456 as decimal(10,2)) -- 保留小数后两位 IFNULL(expr1,expr2) -- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。 if(sva=1,&#34;男&#34;,&#34;女&#34;) # 替换字段内容 UPDATE `goods_file` SET `file` = replace (`file`,&#39;https://xxx.com&#39;,&#39;https://bbb.com&#39;); 常用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 -- 查询 sql_mode 『sql_mode 会影响 MySQL 支持的 SQL 语法以及它执行的数据验证检查』 SELECT @@GLOBAL.sql_mode global, @@SESSION.sql_mode session; SET sql_mode = &#39;&#39;; SET GLOBAL sql_mode = &#39;&#39;; -- 时区操作 show variables like &#34;%time_zone%&#34;; -- 查看时区 &gt; set global time_zone = &#39;&#43;8:00&#39;; -- 修改mysql全局时区为北京时间，即我们所在的东8区 &gt; set time_zone = &#39;&#43;8:00&#39;; -- 修改当前会话时区 &gt; flush privileges; -- 立即生效 SHOW BINLOG EVENTS LIMIT 0, 25; -- 查看 binlog 日志 ALTER TABLE tableName auto_increment=number; -- 设置表自增值 show full processlist; -- 显示所有用户正在运行的线程 show processlist; -- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。 explain/desc select * from table; -- 查看查询语句性能，即查看执行计划 desc table_name; -- 查看 table 等结构 show index from table_name; -- 查看索引信息 create index on table(id(10)); -- 增加前缀索引 -- 查询表所有字段的名称 select COLUMN_NAME from information_schema.COLUMNS where table_name = &#39;your_table_name&#39;; -- 查询一个表中所有字段的名字和注释 SELECT COLUMN_NAME, COLUMN_COMMENT FROM INFORMATION_SCHEMA.Columns WHERE table_name=&#39;provision&#39; AND table_schema=&#39;test&#39; -- 授权root用户新ip可以访问： GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;192.168.9.76&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; flush privileges; -- 刷新激活变更操作 -- 导出数据库『不用进入mysql命令界面』 mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名 -- 创建新用户并授权root用户所有权限且所有ip可以访问： GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; -- 创建新用户并授权root用户新ip可以访问某个数据库： GRANT ALL PRIVILEGES ON database_name.* TO &#39;root&#39;@&#39;192.168.9.76&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; -- 创建只读用户： GRANT SELECT ON *.* TO &#39;db_read&#39;@&#39;%&#39; IDENTIFIED BY &#39;A1ta939a@Qn*iTls&#39; json类型的字段查询 查询JSON中的数据用 column-&gt;path的形式，其中对象类型path的表示方式 $.path，数组类型的表示方式 $[index];">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-01-09T22:13:42+08:00">
+    <meta property="article:modified_time" content="2020-05-12T22:13:42+08:00">
+    <meta property="article:tag" content="Database">
+    <meta property="article:tag" content="入门">
 
-<meta itemprop="name" content="Mysql 基础知识一">
-<meta itemprop="description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【for"><meta itemprop="datePublished" content="2019-01-09T22:13:42&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-12T22:13:42&#43;08:00" />
-<meta itemprop="wordCount" content="4140">
-<meta itemprop="keywords" content="database,入门," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mysql 基础知识一"/>
-<meta name="twitter:description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【for"/>
+  <meta itemprop="name" content="Mysql 基础知识一">
+  <meta itemprop="description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【format格式说明：%m 月, 数字(01～12)；%c 月, 数字(1～12)】 date_format(&#39;2019-12-12 12:22:33&#39;, &#34;%Y-%m-%d&#34;) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y-%m-%d %H:%i:%s&#39;) -- 时间戳转换为日期格式 date_add(a.DUE_DAY, INTERVAL 90 day) -- 日期增加90天 UNIX_TIMESTAMP(&#39;2015-04-29&#39;) -- 日期转换成时间戳 UNIX_TIMESTAMP() -- 获取当前时间戳 DATE_SUB(CURDATE(), INTERVAL 15 DAY) -- 最近15天 DATE_SUB(CURDATE(), INTERVAL 1 YEAR) -- 最近1年 # 字符串合并 concat(s1, s2...sn) -- 字符串 s1,s2 等多个字符串合并为一个字符串 concat_ws(x, s1, s2...sn) -- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符 group_concat(column) -- 将某列的所有值合并成一个字符串 # 截取字符串 left(str, length)，即：left(被截取字符串， 截取长度) right(str, length)，即：right(被截取字符串， 截取长度) substring(str, pos, length)，即：substring(被截取字符串，从第几位开始截取，截取长度)，length非必填 substring_index(str, delim, count)，即：substring_index(被截取字符串，关键字，关键字出现的次数) SELECT SUBSTRING_INDEX(&#39;www.yuanrengu.com&#39;, &#39;.&#39;, 2); -- 截取第二个“.”之前的所有字符，如果关键字不存在，则返回整个字符串 SELECT SUBSTRING_INDEX(&#39;www.yuanrengu.com&#39;, &#39;.&#39;, -2); -- 截取倒数第二个“.”之后的所有字符 # 计算字段长度 SELECT LENGTH(&#39;www中国人民&#39;); -- 长度15『length(): 一个汉字是算三个字符，一个数字或字母算一个字符』 SELECT CHAR_LENGTH(&#39;www中国人民&#39;); -- 长度7 『char_length(): 不管汉字还是数字或者是字母都算是一个字符』 find_in_set(s1, s2) -- 返回在字符串s2中与s1匹配的字符串的位置(等于 0 表示找不到), SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;); locate(s1, s) -- 从字符串 s 中获取 s1 的开始位置，位置初始值为1，找不到则返回0 regexp -- 正则匹配，eg：select * from history where data regexp &#39;帐号的使用存在异常|操作太频繁&#39; format(number, decimal_places) -- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位 convert(value, type)/cast(value as 类型) -- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。 eg: convert(1.2456, decimal(10,2)) 或者 cast(1.2456 as decimal(10,2)) -- 保留小数后两位 IFNULL(expr1,expr2) -- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。 if(sva=1,&#34;男&#34;,&#34;女&#34;) # 替换字段内容 UPDATE `goods_file` SET `file` = replace (`file`,&#39;https://xxx.com&#39;,&#39;https://bbb.com&#39;); 常用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 -- 查询 sql_mode 『sql_mode 会影响 MySQL 支持的 SQL 语法以及它执行的数据验证检查』 SELECT @@GLOBAL.sql_mode global, @@SESSION.sql_mode session; SET sql_mode = &#39;&#39;; SET GLOBAL sql_mode = &#39;&#39;; -- 时区操作 show variables like &#34;%time_zone%&#34;; -- 查看时区 &gt; set global time_zone = &#39;&#43;8:00&#39;; -- 修改mysql全局时区为北京时间，即我们所在的东8区 &gt; set time_zone = &#39;&#43;8:00&#39;; -- 修改当前会话时区 &gt; flush privileges; -- 立即生效 SHOW BINLOG EVENTS LIMIT 0, 25; -- 查看 binlog 日志 ALTER TABLE tableName auto_increment=number; -- 设置表自增值 show full processlist; -- 显示所有用户正在运行的线程 show processlist; -- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。 explain/desc select * from table; -- 查看查询语句性能，即查看执行计划 desc table_name; -- 查看 table 等结构 show index from table_name; -- 查看索引信息 create index on table(id(10)); -- 增加前缀索引 -- 查询表所有字段的名称 select COLUMN_NAME from information_schema.COLUMNS where table_name = &#39;your_table_name&#39;; -- 查询一个表中所有字段的名字和注释 SELECT COLUMN_NAME, COLUMN_COMMENT FROM INFORMATION_SCHEMA.Columns WHERE table_name=&#39;provision&#39; AND table_schema=&#39;test&#39; -- 授权root用户新ip可以访问： GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;192.168.9.76&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; flush privileges; -- 刷新激活变更操作 -- 导出数据库『不用进入mysql命令界面』 mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名 -- 创建新用户并授权root用户所有权限且所有ip可以访问： GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; -- 创建新用户并授权root用户新ip可以访问某个数据库： GRANT ALL PRIVILEGES ON database_name.* TO &#39;root&#39;@&#39;192.168.9.76&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; -- 创建只读用户： GRANT SELECT ON *.* TO &#39;db_read&#39;@&#39;%&#39; IDENTIFIED BY &#39;A1ta939a@Qn*iTls&#39; json类型的字段查询 查询JSON中的数据用 column-&gt;path的形式，其中对象类型path的表示方式 $.path，数组类型的表示方式 $[index];">
+  <meta itemprop="datePublished" content="2019-01-09T22:13:42+08:00">
+  <meta itemprop="dateModified" content="2020-05-12T22:13:42+08:00">
+  <meta itemprop="wordCount" content="4140">
+  <meta itemprop="keywords" content="Database,入门">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mysql 基础知识一">
+  <meta name="twitter:description" content="常用函数 数据库表的时间戳字段设计，建议使用 int64 类型
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 # 日期 【format格式说明：%m 月, 数字(01～12)；%c 月, 数字(1～12)】 date_format(&#39;2019-12-12 12:22:33&#39;, &#34;%Y-%m-%d&#34;) -- 日期格式化 FROM_UNIXTIME(&#39;时间戳&#39;,&#39;%Y-%m-%d %H:%i:%s&#39;) -- 时间戳转换为日期格式 date_add(a.DUE_DAY, INTERVAL 90 day) -- 日期增加90天 UNIX_TIMESTAMP(&#39;2015-04-29&#39;) -- 日期转换成时间戳 UNIX_TIMESTAMP() -- 获取当前时间戳 DATE_SUB(CURDATE(), INTERVAL 15 DAY) -- 最近15天 DATE_SUB(CURDATE(), INTERVAL 1 YEAR) -- 最近1年 # 字符串合并 concat(s1, s2...sn) -- 字符串 s1,s2 等多个字符串合并为一个字符串 concat_ws(x, s1, s2...sn) -- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符 group_concat(column) -- 将某列的所有值合并成一个字符串 # 截取字符串 left(str, length)，即：left(被截取字符串， 截取长度) right(str, length)，即：right(被截取字符串， 截取长度) substring(str, pos, length)，即：substring(被截取字符串，从第几位开始截取，截取长度)，length非必填 substring_index(str, delim, count)，即：substring_index(被截取字符串，关键字，关键字出现的次数) SELECT SUBSTRING_INDEX(&#39;www.yuanrengu.com&#39;, &#39;.&#39;, 2); -- 截取第二个“.”之前的所有字符，如果关键字不存在，则返回整个字符串 SELECT SUBSTRING_INDEX(&#39;www.yuanrengu.com&#39;, &#39;.&#39;, -2); -- 截取倒数第二个“.”之后的所有字符 # 计算字段长度 SELECT LENGTH(&#39;www中国人民&#39;); -- 长度15『length(): 一个汉字是算三个字符，一个数字或字母算一个字符』 SELECT CHAR_LENGTH(&#39;www中国人民&#39;); -- 长度7 『char_length(): 不管汉字还是数字或者是字母都算是一个字符』 find_in_set(s1, s2) -- 返回在字符串s2中与s1匹配的字符串的位置(等于 0 表示找不到), SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;); locate(s1, s) -- 从字符串 s 中获取 s1 的开始位置，位置初始值为1，找不到则返回0 regexp -- 正则匹配，eg：select * from history where data regexp &#39;帐号的使用存在异常|操作太频繁&#39; format(number, decimal_places) -- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位 convert(value, type)/cast(value as 类型) -- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。 eg: convert(1.2456, decimal(10,2)) 或者 cast(1.2456 as decimal(10,2)) -- 保留小数后两位 IFNULL(expr1,expr2) -- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。 if(sva=1,&#34;男&#34;,&#34;女&#34;) # 替换字段内容 UPDATE `goods_file` SET `file` = replace (`file`,&#39;https://xxx.com&#39;,&#39;https://bbb.com&#39;); 常用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 -- 查询 sql_mode 『sql_mode 会影响 MySQL 支持的 SQL 语法以及它执行的数据验证检查』 SELECT @@GLOBAL.sql_mode global, @@SESSION.sql_mode session; SET sql_mode = &#39;&#39;; SET GLOBAL sql_mode = &#39;&#39;; -- 时区操作 show variables like &#34;%time_zone%&#34;; -- 查看时区 &gt; set global time_zone = &#39;&#43;8:00&#39;; -- 修改mysql全局时区为北京时间，即我们所在的东8区 &gt; set time_zone = &#39;&#43;8:00&#39;; -- 修改当前会话时区 &gt; flush privileges; -- 立即生效 SHOW BINLOG EVENTS LIMIT 0, 25; -- 查看 binlog 日志 ALTER TABLE tableName auto_increment=number; -- 设置表自增值 show full processlist; -- 显示所有用户正在运行的线程 show processlist; -- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。 explain/desc select * from table; -- 查看查询语句性能，即查看执行计划 desc table_name; -- 查看 table 等结构 show index from table_name; -- 查看索引信息 create index on table(id(10)); -- 增加前缀索引 -- 查询表所有字段的名称 select COLUMN_NAME from information_schema.COLUMNS where table_name = &#39;your_table_name&#39;; -- 查询一个表中所有字段的名字和注释 SELECT COLUMN_NAME, COLUMN_COMMENT FROM INFORMATION_SCHEMA.Columns WHERE table_name=&#39;provision&#39; AND table_schema=&#39;test&#39; -- 授权root用户新ip可以访问： GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;192.168.9.76&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; flush privileges; -- 刷新激活变更操作 -- 导出数据库『不用进入mysql命令界面』 mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名 -- 创建新用户并授权root用户所有权限且所有ip可以访问： GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; -- 创建新用户并授权root用户新ip可以访问某个数据库： GRANT ALL PRIVILEGES ON database_name.* TO &#39;root&#39;@&#39;192.168.9.76&#39; IDENTIFIED BY &#39;password&#39; WITH GRANT OPTION; -- 创建只读用户： GRANT SELECT ON *.* TO &#39;db_read&#39;@&#39;%&#39; IDENTIFIED BY &#39;A1ta939a@Qn*iTls&#39; json类型的字段查询 查询JSON中的数据用 column-&gt;path的形式，其中对象类型path的表示方式 $.path，数组类型的表示方式 $[index];">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +103,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +136,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -159,7 +181,7 @@
 <p><code>数据库表的时间戳字段设计，建议使用 int64 类型</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -200,51 +222,51 @@
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">日期</span> <span class="err">【</span><span class="n">format格式说明</span><span class="err">：</span><span class="o">%</span><span class="n">m</span> <span class="err">月</span><span class="p">,</span> <span class="err">数字</span><span class="p">(</span><span class="mi">01</span><span class="err">～</span><span class="mi">12</span><span class="p">)</span><span class="err">；</span><span class="o">%</span><span class="k">c</span> <span class="err">月</span><span class="p">,</span> <span class="err">数字</span><span class="p">(</span><span class="mi">1</span><span class="err">～</span><span class="mi">12</span><span class="p">)</span><span class="err">】</span>
-<span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2019-12-12 12:22:33&#39;</span><span class="p">,</span> <span class="s2">&#34;%Y-%m-%d&#34;</span><span class="p">)</span>  <span class="c1">-- 日期格式化
-</span><span class="c1"></span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="s1">&#39;时间戳&#39;</span><span class="p">,</span><span class="s1">&#39;%Y-%m-%d %H:%i:%s&#39;</span><span class="p">)</span>   <span class="c1">-- 时间戳转换为日期格式
-</span><span class="c1"></span><span class="n">date_add</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">DUE_DAY</span><span class="p">,</span> <span class="nb">INTERVAL</span> <span class="mi">90</span> <span class="k">day</span><span class="p">)</span> <span class="c1">-- 日期增加90天
-</span><span class="c1"></span><span class="n">UNIX_TIMESTAMP</span><span class="p">(</span><span class="s1">&#39;2015-04-29&#39;</span><span class="p">)</span>  <span class="c1">-- 日期转换成时间戳
-</span><span class="c1"></span><span class="n">UNIX_TIMESTAMP</span><span class="p">()</span>  <span class="c1">-- 获取当前时间戳
-</span><span class="c1"></span><span class="n">DATE_SUB</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">15</span> <span class="k">DAY</span><span class="p">)</span> <span class="c1">-- 最近15天
-</span><span class="c1"></span><span class="n">DATE_SUB</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">1</span> <span class="k">YEAR</span><span class="p">)</span> <span class="c1">-- 最近1年
-</span><span class="c1"></span>
-<span class="o">#</span> <span class="err">字符串合并</span>
-<span class="n">concat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span>  <span class="c1">--  字符串 s1,s2 等多个字符串合并为一个字符串
-</span><span class="c1"></span><span class="n">concat_ws</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span>  <span class="c1">-- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符
-</span><span class="c1"></span><span class="n">group_concat</span><span class="p">(</span><span class="k">column</span><span class="p">)</span>  <span class="c1">-- 将某列的所有值合并成一个字符串
-</span><span class="c1"></span>
-<span class="o">#</span> <span class="err">截取字符串</span>
-<span class="k">left</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">left</span><span class="p">(</span><span class="err">被截取字符串，</span> <span class="err">截取长度</span><span class="p">)</span>
-<span class="k">right</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">right</span><span class="p">(</span><span class="err">被截取字符串，</span> <span class="err">截取长度</span><span class="p">)</span>
-<span class="k">substring</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">substring</span><span class="p">(</span><span class="err">被截取字符串，从第几位开始截取，截取长度</span><span class="p">)</span><span class="err">，</span><span class="n">length非必填</span>
-<span class="n">substring_index</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">delim</span><span class="p">,</span> <span class="k">count</span><span class="p">)</span><span class="err">，即：</span><span class="n">substring_index</span><span class="p">(</span><span class="err">被截取字符串，关键字，关键字出现的次数</span><span class="p">)</span>
-    <span class="k">SELECT</span> <span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="s1">&#39;www.yuanrengu.com&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">-- 截取第二个“.”之前的所有字符，如果关键字不存在，则返回整个字符串
-</span><span class="c1"></span>    <span class="k">SELECT</span> <span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="s1">&#39;www.yuanrengu.com&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">);</span> <span class="c1">-- 截取倒数第二个“.”之后的所有字符
-</span><span class="c1"></span>
-<span class="o">#</span> <span class="err">计算字段长度</span>
-<span class="k">SELECT</span> <span class="k">LENGTH</span><span class="p">(</span><span class="s1">&#39;www中国人民&#39;</span><span class="p">);</span> <span class="c1">-- 长度15『length(): 一个汉字是算三个字符，一个数字或字母算一个字符』
-</span><span class="c1"></span><span class="k">SELECT</span> <span class="k">CHAR_LENGTH</span><span class="p">(</span><span class="s1">&#39;www中国人民&#39;</span><span class="p">);</span> <span class="c1">-- 长度7 『char_length(): 不管汉字还是数字或者是字母都算是一个字符』
-</span><span class="c1"></span>
-<span class="n">find_in_set</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>  <span class="c1">-- 返回在字符串s2中与s1匹配的字符串的位置(等于 0 表示找不到),  SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;);
-</span><span class="c1"></span><span class="n">locate</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c1">-- 从字符串 s 中获取 s1 的开始位置，位置初始值为1，找不到则返回0
-</span><span class="c1"></span><span class="n">regexp</span> <span class="c1">-- 正则匹配，eg：select * from history where data regexp &#39;帐号的使用存在异常|操作太频繁&#39;
-</span><span class="c1"></span>
-<span class="n">format</span><span class="p">(</span><span class="nb">number</span><span class="p">,</span> <span class="n">decimal_places</span><span class="p">)</span>  <span class="c1">-- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位
-</span><span class="c1"></span><span class="k">convert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="k">type</span><span class="p">)</span><span class="o">/</span><span class="k">cast</span><span class="p">(</span><span class="n">value</span> <span class="k">as</span> <span class="err">类型</span><span class="p">)</span>  <span class="c1">-- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。
-</span><span class="c1"></span><span class="n">eg</span><span class="p">:</span> <span class="k">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span><span class="p">,</span> <span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="err">或者</span> <span class="k">cast</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span> <span class="k">as</span> <span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1">-- 保留小数后两位
-</span><span class="c1"></span>
-<span class="n">IFNULL</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">)</span> <span class="c1">-- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。
-</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">sva</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="s2">&#34;男&#34;</span><span class="p">,</span><span class="s2">&#34;女&#34;</span><span class="p">)</span>
-
-<span class="o">#</span> <span class="err">替换字段内容</span>
-<span class="k">UPDATE</span> <span class="o">`</span><span class="n">goods_file</span><span class="o">`</span> <span class="k">SET</span> <span class="o">`</span><span class="n">file</span><span class="o">`</span> <span class="o">=</span> <span class="k">replace</span> <span class="p">(</span><span class="o">`</span><span class="n">file</span><span class="o">`</span><span class="p">,</span><span class="s1">&#39;https://xxx.com&#39;</span><span class="p">,</span><span class="s1">&#39;https://bbb.com&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">日期</span><span class="w"> </span><span class="err">【</span><span class="n">format格式说明</span><span class="err">：</span><span class="o">%</span><span class="n">m</span><span class="w"> </span><span class="err">月</span><span class="p">,</span><span class="w"> </span><span class="err">数字</span><span class="p">(</span><span class="mi">01</span><span class="err">～</span><span class="mi">12</span><span class="p">)</span><span class="err">；</span><span class="o">%</span><span class="k">c</span><span class="w"> </span><span class="err">月</span><span class="p">,</span><span class="w"> </span><span class="err">数字</span><span class="p">(</span><span class="mi">1</span><span class="err">～</span><span class="mi">12</span><span class="p">)</span><span class="err">】</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2019-12-12 12:22:33&#39;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;%Y-%m-%d&#34;</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 日期格式化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="s1">&#39;时间戳&#39;</span><span class="p">,</span><span class="s1">&#39;%Y-%m-%d %H:%i:%s&#39;</span><span class="p">)</span><span class="w">   </span><span class="c1">-- 时间戳转换为日期格式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">date_add</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">DUE_DAY</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="k">day</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 日期增加90天
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UNIX_TIMESTAMP</span><span class="p">(</span><span class="s1">&#39;2015-04-29&#39;</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 日期转换成时间戳
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UNIX_TIMESTAMP</span><span class="p">()</span><span class="w">  </span><span class="c1">-- 获取当前时间戳
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DATE_SUB</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="k">DAY</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 最近15天
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DATE_SUB</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">YEAR</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 最近1年
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">字符串合并</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">concat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span><span class="w">  </span><span class="c1">--  字符串 s1,s2 等多个字符串合并为一个字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">concat_ws</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">group_concat</span><span class="p">(</span><span class="k">column</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 将某列的所有值合并成一个字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">截取字符串</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">left</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">left</span><span class="p">(</span><span class="err">被截取字符串，</span><span class="w"> </span><span class="err">截取长度</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">right</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">right</span><span class="p">(</span><span class="err">被截取字符串，</span><span class="w"> </span><span class="err">截取长度</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">substring</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">substring</span><span class="p">(</span><span class="err">被截取字符串，从第几位开始截取，截取长度</span><span class="p">)</span><span class="err">，</span><span class="n">length非必填</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">substring_index</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">delim</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">)</span><span class="err">，即：</span><span class="n">substring_index</span><span class="p">(</span><span class="err">被截取字符串，关键字，关键字出现的次数</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="s1">&#39;www.yuanrengu.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 截取第二个“.”之前的所有字符，如果关键字不存在，则返回整个字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="s1">&#39;www.yuanrengu.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 截取倒数第二个“.”之后的所有字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">计算字段长度</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">LENGTH</span><span class="p">(</span><span class="s1">&#39;www中国人民&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 长度15『length(): 一个汉字是算三个字符，一个数字或字母算一个字符』
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">CHAR_LENGTH</span><span class="p">(</span><span class="s1">&#39;www中国人民&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 长度7 『char_length(): 不管汉字还是数字或者是字母都算是一个字符』
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">find_in_set</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 返回在字符串s2中与s1匹配的字符串的位置(等于 0 表示找不到),  SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">locate</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 从字符串 s 中获取 s1 的开始位置，位置初始值为1，找不到则返回0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">regexp</span><span class="w"> </span><span class="c1">-- 正则匹配，eg：select * from history where data regexp &#39;帐号的使用存在异常|操作太频繁&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">format</span><span class="p">(</span><span class="nb">number</span><span class="p">,</span><span class="w"> </span><span class="n">decimal_places</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">convert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="k">type</span><span class="p">)</span><span class="o">/</span><span class="k">cast</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">类型</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">eg</span><span class="p">:</span><span class="w"> </span><span class="k">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span><span class="p">,</span><span class="w"> </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="err">或者</span><span class="w"> </span><span class="k">cast</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="w">  </span><span class="c1">-- 保留小数后两位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">IFNULL</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">sva</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="s2">&#34;男&#34;</span><span class="p">,</span><span class="s2">&#34;女&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">替换字段内容</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UPDATE</span><span class="w"> </span><span class="o">`</span><span class="n">goods_file</span><span class="o">`</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="o">`</span><span class="n">file</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">file</span><span class="o">`</span><span class="p">,</span><span class="s1">&#39;https://xxx.com&#39;</span><span class="p">,</span><span class="s1">&#39;https://bbb.com&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="常用命令">常用命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -290,57 +312,57 @@
 </span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 查询 sql_mode 『sql_mode 会影响 MySQL 支持的 SQL 语法以及它执行的数据验证检查』
-</span><span class="c1"></span><span class="k">SELECT</span> <span class="o">@@</span><span class="k">GLOBAL</span><span class="p">.</span><span class="n">sql_mode</span> <span class="k">global</span><span class="p">,</span> <span class="o">@@</span><span class="k">SESSION</span><span class="p">.</span><span class="n">sql_mode</span> <span class="k">session</span><span class="p">;</span>
-<span class="k">SET</span> <span class="n">sql_mode</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="k">SET</span> <span class="k">GLOBAL</span> <span class="n">sql_mode</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-
-<span class="c1">-- 时区操作
-</span><span class="c1"></span><span class="k">show</span> <span class="n">variables</span> <span class="k">like</span> <span class="s2">&#34;%time_zone%&#34;</span><span class="p">;</span> <span class="c1">-- 查看时区
-</span><span class="c1"></span><span class="o">&gt;</span> <span class="k">set</span> <span class="k">global</span> <span class="n">time_zone</span> <span class="o">=</span> <span class="s1">&#39;+8:00&#39;</span><span class="p">;</span> <span class="c1">-- 修改mysql全局时区为北京时间，即我们所在的东8区
-</span><span class="c1"></span><span class="o">&gt;</span> <span class="k">set</span> <span class="n">time_zone</span> <span class="o">=</span> <span class="s1">&#39;+8:00&#39;</span><span class="p">;</span> <span class="c1">-- 修改当前会话时区
-</span><span class="c1"></span><span class="o">&gt;</span> <span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span> <span class="c1">-- 立即生效
-</span><span class="c1"></span>
-<span class="k">SHOW</span> <span class="n">BINLOG</span> <span class="n">EVENTS</span> <span class="k">LIMIT</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">-- 查看 binlog 日志
-</span><span class="c1"></span>
-<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">tableName</span> <span class="n">auto_increment</span><span class="o">=</span><span class="nb">number</span><span class="p">;</span> <span class="c1">-- 设置表自增值
-</span><span class="c1"></span>
-<span class="k">show</span> <span class="k">full</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示所有用户正在运行的线程
-</span><span class="c1"></span><span class="k">show</span> <span class="n">processlist</span><span class="p">;</span> <span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
-</span><span class="c1"></span>
-<span class="k">explain</span><span class="o">/</span><span class="k">desc</span> <span class="k">select</span> <span class="o">*</span>  <span class="k">from</span> <span class="k">table</span><span class="p">;</span> <span class="c1">-- 查看查询语句性能，即查看执行计划
-</span><span class="c1"></span><span class="k">desc</span> <span class="k">table_name</span><span class="p">;</span>  <span class="c1">-- 查看 table 等结构
-</span><span class="c1"></span><span class="k">show</span> <span class="k">index</span> <span class="k">from</span> <span class="k">table_name</span><span class="p">;</span>  <span class="c1">-- 查看索引信息
-</span><span class="c1"></span><span class="k">create</span> <span class="k">index</span> <span class="k">on</span> <span class="k">table</span><span class="p">(</span><span class="n">id</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>  <span class="c1">-- 增加前缀索引
-</span><span class="c1"></span>
-<span class="c1">-- 查询表所有字段的名称
-</span><span class="c1"></span><span class="k">select</span> <span class="k">COLUMN_NAME</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">COLUMNS</span> <span class="k">where</span> <span class="k">table_name</span> <span class="o">=</span> <span class="s1">&#39;your_table_name&#39;</span><span class="p">;</span>
-
-<span class="c1">-- 查询一个表中所有字段的名字和注释
-</span><span class="c1"></span><span class="k">SELECT</span> <span class="k">COLUMN_NAME</span><span class="p">,</span> <span class="n">COLUMN_COMMENT</span> <span class="k">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">Columns</span> <span class="k">WHERE</span> <span class="k">table_name</span><span class="o">=</span><span class="s1">&#39;provision&#39;</span> <span class="k">AND</span> <span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;test&#39;</span>
-
-<span class="c1">-- 授权root用户新ip可以访问：
-</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
-<span class="n">flush</span> <span class="k">privileges</span><span class="p">;</span> <span class="c1">-- 刷新激活变更操作
-</span><span class="c1"></span>
-<span class="c1">-- 导出数据库『不用进入mysql命令界面』
-</span><span class="c1"></span><span class="n">mysqldump</span> <span class="o">-</span><span class="n">u</span> <span class="err">用户名</span> <span class="o">-</span><span class="n">p</span> <span class="err">数据库名</span> <span class="o">&gt;</span> <span class="err">导出的文件名</span>
-
-<span class="c1">-- 创建新用户并授权root用户所有权限且所有ip可以访问：
-</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
-
-<span class="c1">-- 创建新用户并授权root用户新ip可以访问某个数据库：
-</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">database_name</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span> <span class="k">WITH</span> <span class="k">GRANT</span> <span class="k">OPTION</span><span class="p">;</span>
-
-<span class="c1">-- 创建只读用户：
-</span><span class="c1"></span><span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="o">*</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;db_read&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;A1ta939a@Qn*iTls&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 查询 sql_mode 『sql_mode 会影响 MySQL 支持的 SQL 语法以及它执行的数据验证检查』
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="k">GLOBAL</span><span class="p">.</span><span class="n">sql_mode</span><span class="w"> </span><span class="k">global</span><span class="p">,</span><span class="w"> </span><span class="o">@@</span><span class="k">SESSION</span><span class="p">.</span><span class="n">sql_mode</span><span class="w"> </span><span class="k">session</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="n">sql_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">sql_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 时区操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s2">&#34;%time_zone%&#34;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 查看时区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&gt;</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">global</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;+8:00&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 修改mysql全局时区为北京时间，即我们所在的东8区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&gt;</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;+8:00&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 修改当前会话时区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&gt;</span><span class="w"> </span><span class="n">flush</span><span class="w"> </span><span class="k">privileges</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 立即生效
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SHOW</span><span class="w"> </span><span class="n">BINLOG</span><span class="w"> </span><span class="n">EVENTS</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 查看 binlog 日志
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tableName</span><span class="w"> </span><span class="n">auto_increment</span><span class="o">=</span><span class="nb">number</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 设置表自增值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">show</span><span class="w"> </span><span class="k">full</span><span class="w"> </span><span class="n">processlist</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 显示所有用户正在运行的线程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="n">processlist</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">explain</span><span class="o">/</span><span class="k">desc</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 查看查询语句性能，即查看执行计划
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">desc</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 查看 table 等结构
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 查看索引信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">table</span><span class="p">(</span><span class="n">id</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span><span class="w">  </span><span class="c1">-- 增加前缀索引
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 查询表所有字段的名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="k">COLUMN_NAME</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">COLUMNS</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;your_table_name&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 查询一个表中所有字段的名字和注释
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COLUMN_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">COLUMN_COMMENT</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">Columns</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">table_name</span><span class="o">=</span><span class="s1">&#39;provision&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 授权root用户新ip可以访问：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">flush</span><span class="w"> </span><span class="k">privileges</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 刷新激活变更操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 导出数据库『不用进入mysql命令界面』
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">mysqldump</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="err">用户名</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="err">数据库名</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="err">导出的文件名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建新用户并授权root用户所有权限且所有ip可以访问：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建新用户并授权root用户新ip可以访问某个数据库：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">database_name</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建只读用户：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;db_read&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;A1ta939a@Qn*iTls&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="json类型的字段查询">json类型的字段查询</h2>
 <p>查询JSON中的数据用 column-&gt;path的形式，其中对象类型path的表示方式 $.path，数组类型的表示方式 $[index];</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -373,43 +395,43 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">muscleape</span>
-<span class="p">(</span>
-  <span class="n">id</span>       <span class="n">TINYINT</span> <span class="n">UNSIGNED</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
-  <span class="n">category</span> <span class="n">JSON</span><span class="p">,</span>
-  <span class="n">tags</span>     <span class="n">JSON</span><span class="p">,</span>
-  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="p">);</span>
-
-<span class="c1">-- 直接插入字符串
-</span><span class="c1"></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">muscleape</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;{&#34;id&#34;: 1,&#34;name&#34;: &#34;muscleape&#34;, &#34;object&#34;: {&#34;a&#34;: 1, &#34;b&#34;: 2}}&#39;</span><span class="p">,</span><span class="s1">&#39;[1,2,3]&#39;</span><span class="p">);</span>
-<span class="c1">-- 使用JSON函数
-</span><span class="c1"></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">muscleape</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="n">JSON_OBJECT</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">&#34;name&#34;</span><span class="p">,</span><span class="s2">&#34;muscleape_q&#34;</span><span class="p">,</span> <span class="s2">&#34;object&#34;</span><span class="p">:</span> <span class="err">{</span><span class="s2">&#34;a&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="err">}</span><span class="p">),</span><span class="n">JSON_ARRAY</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
-<span class="c1">--
-</span><span class="c1"></span>
-<span class="c1">-- 查询 json 内容
-</span><span class="c1"></span><span class="k">SELECT</span>
-<span class="n">id</span><span class="p">,</span>
-<span class="n">category</span><span class="o">-&gt;</span><span class="s1">&#39;$.id&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">-&gt;</span><span class="s1">&#39;$.name&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">-&gt;</span><span class="s1">&#39;$.object.a&#39;</span><span class="p">,</span> <span class="p">,</span> <span class="n">category</span><span class="o">-&gt;</span><span class="s1">&#39;$.object.b&#39;</span>
-<span class="n">tags</span><span class="o">-&gt;</span><span class="s1">&#39;$[0]&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">-&gt;</span><span class="s1">&#39;$[2]&#39;</span>
-<span class="k">FROM</span> <span class="n">muscleape</span><span class="p">;</span>
-
-<span class="c1">-- 修改 JSON 中的某个字段，指定位置替换，JSON_REPLACE(json_doc, path, val[, path, val] ...)
-</span><span class="c1"></span><span class="k">update</span> <span class="n">t1</span> <span class="k">set</span> <span class="n">basic_info</span> <span class="o">=</span> <span class="n">JSON_REPLACE</span><span class="p">(</span><span class="n">basic_info</span><span class="p">,</span> <span class="s1">&#39;$.age&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">where</span> <span class="n">id</span> <span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="c1">-- 修改数组类型
-</span><span class="c1"></span><span class="k">update</span> <span class="n">t1</span> <span class="k">set</span> <span class="n">basic_info</span><span class="o">=</span><span class="n">JSON_REPLACE</span><span class="p">(</span><span class="n">basic_info</span><span class="p">,</span> <span class="s2">&#34;$.material_types&#34;</span><span class="p">,</span> <span class="n">json_array</span><span class="p">())</span>  <span class="k">where</span> <span class="n">JSON_TYPE</span><span class="p">(</span><span class="n">basic_info</span><span class="o">-&gt;</span><span class="s2">&#34;$.material_types&#34;</span><span class="p">)</span><span class="o">=</span><span class="s2">&#34;STRING&#34;</span>
-
-<span class="c1">-- 判断 json 中某个字段的数据类型
-</span><span class="c1"></span><span class="k">select</span> <span class="n">JSON_TYPE</span><span class="p">(</span><span class="s1">&#39;[1,2]&#39;</span><span class="p">);</span> <span class="c1">-- ARRAY
-</span><span class="c1"></span>
-<span class="c1">-- JSON_VALID 是否有效json格式，判断val是否为有效的json格式，是为1，不是为0。如果参数为NUL，则返回NULL。
-</span><span class="c1"></span><span class="k">SELECT</span> <span class="n">JSON_VALID</span><span class="p">(</span><span class="s1">&#39;{&#34;a&#34;: 1}&#39;</span><span class="p">);</span> <span class="c1">-- 1
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">muscleape</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">id</span><span class="w">       </span><span class="n">TINYINT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">category</span><span class="w"> </span><span class="n">JSON</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">tags</span><span class="w">     </span><span class="n">JSON</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 直接插入字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">muscleape</span><span class="w"> </span><span class="p">(</span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="n">tags</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;{&#34;id&#34;: 1,&#34;name&#34;: &#34;muscleape&#34;, &#34;object&#34;: {&#34;a&#34;: 1, &#34;b&#34;: 2}}&#39;</span><span class="p">,</span><span class="s1">&#39;[1,2,3]&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 使用JSON函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">muscleape</span><span class="w"> </span><span class="p">(</span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="n">tags</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_OBJECT</span><span class="p">(</span><span class="s2">&#34;id&#34;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">&#34;name&#34;</span><span class="p">,</span><span class="s2">&#34;muscleape_q&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;object&#34;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="s2">&#34;a&#34;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;b&#34;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="err">}</span><span class="p">),</span><span class="n">JSON_ARRAY</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">--
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 查询 json 内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">id</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">category</span><span class="o">-&gt;</span><span class="s1">&#39;$.id&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">-&gt;</span><span class="s1">&#39;$.name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">-&gt;</span><span class="s1">&#39;$.object.a&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">-&gt;</span><span class="s1">&#39;$.object.b&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">tags</span><span class="o">-&gt;</span><span class="s1">&#39;$[0]&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">tags</span><span class="o">-&gt;</span><span class="s1">&#39;$[2]&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">muscleape</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 修改 JSON 中的某个字段，指定位置替换，JSON_REPLACE(json_doc, path, val[, path, val] ...)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">update</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">basic_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JSON_REPLACE</span><span class="p">(</span><span class="n">basic_info</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$.age&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 修改数组类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">update</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">basic_info</span><span class="o">=</span><span class="n">JSON_REPLACE</span><span class="p">(</span><span class="n">basic_info</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;$.material_types&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">json_array</span><span class="p">())</span><span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">JSON_TYPE</span><span class="p">(</span><span class="n">basic_info</span><span class="o">-&gt;</span><span class="s2">&#34;$.material_types&#34;</span><span class="p">)</span><span class="o">=</span><span class="s2">&#34;STRING&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 判断 json 中某个字段的数据类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">JSON_TYPE</span><span class="p">(</span><span class="s1">&#39;[1,2]&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- ARRAY
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- JSON_VALID 是否有效json格式，判断val是否为有效的json格式，是为1，不是为0。如果参数为NUL，则返回NULL。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">JSON_VALID</span><span class="p">(</span><span class="s1">&#39;{&#34;a&#34;: 1}&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 1
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="常用案例">常用案例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -462,58 +484,58 @@
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 查询 mysql 版本号
-</span><span class="c1"></span><span class="k">select</span> <span class="k">version</span><span class="p">();</span>
-
-<span class="c1">-- 将某列的所有值合并成一个字符
-</span><span class="c1"></span><span class="k">select</span> <span class="n">group_concat</span><span class="p">(</span><span class="n">test_column</span><span class="p">)</span> <span class="k">from</span> <span class="n">test</span><span class="p">;</span>
-
-<span class="c1">-- 查询某张表的字段注释
-</span><span class="c1"></span><span class="k">select</span>
-<span class="k">COLUMN_NAME</span> <span class="err">字段名</span><span class="p">,</span>
-<span class="n">column_comment</span> <span class="err">字段说明</span><span class="p">,</span>
-<span class="n">column_type</span> <span class="err">字段类型</span><span class="p">,</span>
-<span class="n">column_key</span> <span class="err">约束</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span>
-<span class="k">where</span> <span class="n">table_schema</span> <span class="o">=</span> <span class="s1">&#39;数据库名&#39;</span>
-<span class="k">and</span> <span class="k">table_name</span> <span class="o">=</span> <span class="s1">&#39;表名&#39;</span><span class="p">;</span>
-
-<span class="c1">-- MySQL UPDATE JOIN 示例，可同时 update 多张表的字段 和 同时 update 多条记录
-</span><span class="c1"></span><span class="k">UPDATE</span> <span class="n">employees</span>
-    <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">merits</span> <span class="k">ON</span> <span class="n">employees</span><span class="p">.</span><span class="n">performance</span> <span class="o">=</span> <span class="n">merits</span><span class="p">.</span><span class="n">performance</span>
-<span class="k">SET</span>
-    <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">+</span> <span class="n">employees</span><span class="p">.</span><span class="n">salary</span> <span class="o">*</span> <span class="n">merits</span><span class="p">.</span><span class="n">percentage</span><span class="p">,</span>
-    <span class="n">merits</span><span class="p">.</span><span class="n">test</span> <span class="o">=</span> <span class="s2">&#34;666&#34;</span><span class="p">;</span>
-
-<span class="c1">-- mysql 5.7  自身表排名 update join 示例
-</span><span class="c1"></span><span class="k">UPDATE</span> <span class="n">rank_test</span>
-<span class="k">JOIN</span>  <span class="p">(</span><span class="k">select</span> <span class="n">id</span><span class="p">,</span> <span class="n">rank</span> <span class="k">from</span>
-	<span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="o">@</span><span class="n">curRank</span> <span class="p">:</span><span class="o">=</span> <span class="o">@</span><span class="n">curRank</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">AS</span> <span class="n">rank</span>
-    <span class="k">FROM</span> <span class="n">rank_test</span><span class="p">,</span>
-        <span class="p">(</span><span class="k">SELECT</span> <span class="o">@</span><span class="n">curRank</span> <span class="p">:</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">r</span>
-        <span class="k">WHERE</span> <span class="nb">date</span><span class="o">=</span><span class="s2">&#34;2021-03-30&#34;</span> <span class="k">AND</span> <span class="n">material_type</span> <span class="o">=</span> <span class="mi">22</span>
-        <span class="k">ORDER</span> <span class="k">BY</span>  <span class="n">score_delta</span> <span class="k">desc</span><span class="p">)</span> <span class="n">temp2</span>
-        <span class="p">)</span> <span class="n">temp</span> <span class="k">ON</span> <span class="n">rank_test</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">id</span>
-<span class="k">SET</span> <span class="n">rank_test</span><span class="p">.</span><span class="n">rank</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">rank</span><span class="p">;</span>
-
-<span class="c1">-- mysql 8.0  自身表排名 update join 示例
-</span><span class="c1"></span><span class="k">update</span> <span class="n">rank_test</span>
-<span class="k">join</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">rank</span><span class="p">()</span> <span class="n">over</span> <span class="p">(</span><span class="k">order</span> <span class="k">by</span> <span class="n">score_delta</span> <span class="k">desc</span><span class="p">)</span> <span class="k">as</span> <span class="n">rank2</span>
-	<span class="k">FROM</span> <span class="n">rank_test</span>
-	<span class="k">where</span> <span class="nb">date</span><span class="o">=</span><span class="s2">&#34;2021-03-29&#34;</span> <span class="k">and</span> <span class="n">material_type</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">temp</span>
-<span class="k">on</span> <span class="n">rank_test</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">id</span>
-<span class="k">set</span> <span class="n">rank_test</span><span class="p">.</span><span class="n">rank</span> <span class="o">=</span> <span class="n">temp</span><span class="p">.</span><span class="n">rank2</span><span class="p">;</span>
-
-<span class="c1">-- 查询某个数据库内哪些表包含个字段
-</span><span class="c1"></span><span class="k">select</span> <span class="n">tables</span><span class="p">.</span><span class="k">table_name</span><span class="p">,</span> <span class="n">group_concat</span><span class="p">(</span><span class="k">column_name</span> <span class="n">separator</span> <span class="s2">&#34;,&#34;</span><span class="p">),</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">table_rows</span>
-<span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="o">`</span><span class="n">TABLES</span><span class="o">`</span>
-<span class="k">join</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span> <span class="k">on</span> <span class="n">tables</span><span class="p">.</span><span class="n">table_schema</span><span class="o">=</span><span class="n">columns</span><span class="p">.</span><span class="n">table_schema</span> <span class="k">and</span> <span class="n">tables</span><span class="p">.</span><span class="k">table_name</span><span class="o">=</span><span class="n">columns</span><span class="p">.</span><span class="k">table_name</span>
-<span class="k">where</span>
-<span class="n">tables</span><span class="p">.</span><span class="n">table_schema</span><span class="o">=</span><span class="s2">&#34;database_name&#34;</span> <span class="c1">-- 数据库名
-</span><span class="c1"></span><span class="k">and</span> <span class="n">data_type</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span> <span class="c1">-- 搜索字段数据类型为 int 型
-</span><span class="c1"></span><span class="k">and</span> <span class="k">column_name</span> <span class="k">like</span> <span class="s1">&#39;%account_id&#39;</span> <span class="c1">-- 搜索字段名
-</span><span class="c1"></span><span class="k">group</span> <span class="k">by</span> <span class="n">tables</span><span class="p">.</span><span class="k">table_name</span>
-<span class="k">order</span> <span class="k">by</span> <span class="n">table_rows</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 查询 mysql 版本号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="k">version</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 将某列的所有值合并成一个字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">group_concat</span><span class="p">(</span><span class="n">test_column</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">test</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 查询某张表的字段注释
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">COLUMN_NAME</span><span class="w"> </span><span class="err">字段名</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">column_comment</span><span class="w"> </span><span class="err">字段说明</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">column_type</span><span class="w"> </span><span class="err">字段类型</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">column_key</span><span class="w"> </span><span class="err">约束</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;数据库名&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">and</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;表名&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- MySQL UPDATE JOIN 示例，可同时 update 多张表的字段 和 同时 update 多条记录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">employees</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">merits</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">employees</span><span class="p">.</span><span class="n">performance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merits</span><span class="p">.</span><span class="n">performance</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">employees</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">employees</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">employees</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">merits</span><span class="p">.</span><span class="n">percentage</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">merits</span><span class="p">.</span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;666&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- mysql 5.7  自身表排名 update join 示例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">rank_test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">JOIN</span><span class="w">  </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">rank</span><span class="w"> </span><span class="k">from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">curRank</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">curRank</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rank</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">rank_test</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">curRank</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">r</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="nb">date</span><span class="o">=</span><span class="s2">&#34;2021-03-30&#34;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">material_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w">  </span><span class="n">score_delta</span><span class="w"> </span><span class="k">desc</span><span class="p">)</span><span class="w"> </span><span class="n">temp2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">rank_test</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">.</span><span class="n">id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="n">rank_test</span><span class="p">.</span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">.</span><span class="n">rank</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- mysql 8.0  自身表排名 update join 示例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">update</span><span class="w"> </span><span class="n">rank_test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">rank</span><span class="p">()</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="p">(</span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">score_delta</span><span class="w"> </span><span class="k">desc</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rank2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">FROM</span><span class="w"> </span><span class="n">rank_test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">where</span><span class="w"> </span><span class="nb">date</span><span class="o">=</span><span class="s2">&#34;2021-03-29&#34;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">material_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">temp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">rank_test</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">.</span><span class="n">id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">set</span><span class="w"> </span><span class="n">rank_test</span><span class="p">.</span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">.</span><span class="n">rank2</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 查询某个数据库内哪些表包含个字段
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">tables</span><span class="p">.</span><span class="k">table_name</span><span class="p">,</span><span class="w"> </span><span class="n">group_concat</span><span class="p">(</span><span class="k">column_name</span><span class="w"> </span><span class="n">separator</span><span class="w"> </span><span class="s2">&#34;,&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">data_type</span><span class="p">,</span><span class="w"> </span><span class="n">table_rows</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="o">`</span><span class="n">TABLES</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tables</span><span class="p">.</span><span class="n">table_schema</span><span class="o">=</span><span class="n">columns</span><span class="p">.</span><span class="n">table_schema</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">tables</span><span class="p">.</span><span class="k">table_name</span><span class="o">=</span><span class="n">columns</span><span class="p">.</span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">tables</span><span class="p">.</span><span class="n">table_schema</span><span class="o">=</span><span class="s2">&#34;database_name&#34;</span><span class="w"> </span><span class="c1">-- 数据库名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">and</span><span class="w"> </span><span class="n">data_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;int&#39;</span><span class="w"> </span><span class="c1">-- 搜索字段数据类型为 int 型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">and</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%account_id&#39;</span><span class="w"> </span><span class="c1">-- 搜索字段名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">tables</span><span class="p">.</span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">table_rows</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="其他">其他</h2>
 <ol>
@@ -533,25 +555,25 @@
 <p>浮点数计算存在误差问题，如7.22f-7.0f = 0.21999979;  尽量避免做浮点数比较</p>
 </li>
 <li>
-<p>mysql终端连接方式：mysql -uroot -p&rsquo;password' &ndash;socket=/var/lib/mysql/mysql.sock</p>
+<p>mysql终端连接方式：mysql -uroot -p&rsquo;password&rsquo; &ndash;socket=/var/lib/mysql/mysql.sock</p>
 </li>
 <li>
 <p>linux 下 mysql 数据库密码修改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">-&gt; mysql -uroot -p
--&gt; Enter password: 【输入密码】
-mysql&gt; use mysql<span class="p">;</span>
-mysql&gt; update user <span class="nb">set</span> <span class="nv">authentication_string</span><span class="o">=</span>password<span class="o">(</span><span class="s2">&#34;test&#34;</span><span class="o">)</span> where <span class="nv">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
-mysql&gt; flush privileges<span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">-&gt; mysql -uroot -p
+</span></span><span class="line"><span class="cl">-&gt; Enter password: 【输入密码】
+</span></span><span class="line"><span class="cl">mysql&gt; use mysql<span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; update user <span class="nb">set</span> <span class="nv">authentication_string</span><span class="o">=</span>password<span class="o">(</span><span class="s2">&#34;test&#34;</span><span class="o">)</span> where <span class="nv">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; flush privileges<span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -584,15 +606,14 @@ mysql&gt; flush privileges<span class="p">;</span>
 <li>mysql8.0 默认排序规则：utf8mb4_0900_ai_ci</li>
 </ul>
 <blockquote>
-<p>utf8mb4_0900_ai_ci字段如何修改为大小写敏感</p>
-</blockquote>
+<p>utf8mb4_0900_ai_ci字段如何修改为大小写敏感</p></blockquote>
 <p>utf8mb4_0900_ai_ci, 中间的0900，它对应的是Unicode 9.0的规范，ai表示accent insensitivity，也就是“不区分音调”，而ci表示case insensitivity，也就是“不区分大小写”。</p>
 <p>mysql8.0默认排序规则是utf8mb4_0900_ai_ci，对大小写不敏感，如果有些字段对大小写敏感的话，需要改下排序规则，如<code>utf8mb4_0900_as_cs</code></p>
 <p><img src="/images/2021/v2-7db650666030c7a6711601f47fe5222a_1440w.jpg" alt="字符集后缀"></p>
 <p>mysql charset 和 collation 有多个级别的设置：服务器级、数据库级、表级、列级和连接级。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -605,18 +626,18 @@ mysql&gt; flush privileges<span class="p">;</span>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 查看当前数据库各个级别的排序规则</span>
-SHOW VARIABLES LIKE <span class="s1">&#39;collation_%&#39;</span><span class="p">;</span>
-
-<span class="c1"># 数据库级：修改数据库的默认排序规则</span>
-alter database xc  character <span class="nb">set</span> utf8mb4 collate utf8mb4_0900_as_cs<span class="p">;</span>
-
-<span class="c1"># 表级：修改表数据的字符集</span>
-alter table table_name character <span class="nb">set</span> utf8mb4 collate utf8mb4_0900_as_cs<span class="p">;</span>
-
-<span class="c1"># 列级：修改表内所有字段的字符集</span>
-alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs<span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 查看当前数据库各个级别的排序规则</span>
+</span></span><span class="line"><span class="cl">SHOW VARIABLES LIKE <span class="s1">&#39;collation_%&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 数据库级：修改数据库的默认排序规则</span>
+</span></span><span class="line"><span class="cl">alter database xc  character <span class="nb">set</span> utf8mb4 collate utf8mb4_0900_as_cs<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 表级：修改表数据的字符集</span>
+</span></span><span class="line"><span class="cl">alter table table_name character <span class="nb">set</span> utf8mb4 collate utf8mb4_0900_as_cs<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 列级：修改表内所有字段的字符集</span>
+</span></span><span class="line"><span class="cl">alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs<span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -631,7 +652,7 @@ alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_
 <h2 id="ddl">DDL</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -672,46 +693,46 @@ alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 查看已创建数据库的创建语句
-</span><span class="c1"></span><span class="k">show</span> <span class="k">create</span> <span class="k">database</span> <span class="n">database_name</span><span class="p">;</span>
-
-<span class="c1">-- 创建数据库
-</span><span class="c1"></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">`</span><span class="n">auto_audit</span><span class="o">`</span> <span class="cm">/*!40100 DEFAULT CHARACTER SET utf8 */</span>
-
-<span class="c1">-- 创建新表
-</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="k">table_name</span> <span class="p">(</span>
-    <span class="n">id</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
-    <span class="n">title</span> <span class="nb">text</span><span class="p">,</span>
-    <span class="nb">date</span> <span class="n">datetime</span> <span class="k">default</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="k">timestamp</span> <span class="k">timestamp</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">default</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
-    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
-    <span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
-
-<span class="c1">-- 重命名表
-</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">table_name_old</span> <span class="k">RENAME</span> <span class="n">table_name_new</span><span class="p">;</span>
-
-<span class="c1">-- 删除表
-</span><span class="c1"></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">table_name</span><span class="p">;</span>
-
-<span class="c1">-- 删除数据库
-</span><span class="c1"></span><span class="k">DROP</span> <span class="k">DATABASE</span> <span class="n">database_name</span><span class="p">;</span>
-
-<span class="c1">-- 增加字段
-</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">ADD</span> <span class="n">teacher_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
-
-<span class="c1">-- 编辑字段
-</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="n">CHANGE</span> <span class="n">name</span> <span class="n">stu_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="k">NULL</span><span class="p">;</span>
-
-<span class="c1">-- 删除字段
-</span><span class="c1"></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">student1</span> <span class="k">DROP</span> <span class="n">teacher_name</span><span class="p">;</span>
-
-<span class="c1">-- 从另一张表获取数据到新表
-</span><span class="c1"></span><span class="k">insert</span> <span class="k">into</span> <span class="n">tableA</span><span class="p">(</span><span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span><span class="p">)</span> <span class="p">(</span><span class="k">select</span> <span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span> <span class="k">from</span> <span class="n">tableB</span><span class="p">)</span>
-<span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> <span class="o">`</span><span class="n">fieldA</span><span class="o">`</span> <span class="o">=</span> <span class="k">VALUES</span><span class="p">(</span><span class="o">`</span><span class="n">fieldA</span><span class="o">`</span><span class="p">)</span>
-
-<span class="c1">-- 设置自动递增值
-</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="n">tablename</span> <span class="n">auto_increment</span><span class="o">=</span><span class="n">num</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 查看已创建数据库的创建语句
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">database_name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建数据库
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="o">`</span><span class="n">auto_audit</span><span class="o">`</span><span class="w"> </span><span class="cm">/*!40100 DEFAULT CHARACTER SET utf8 */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建新表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nb">date</span><span class="w"> </span><span class="n">datetime</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">timestamp</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 重命名表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">table_name_old</span><span class="w"> </span><span class="k">RENAME</span><span class="w"> </span><span class="n">table_name_new</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 删除表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 删除数据库
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">database_name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 增加字段
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">student1</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">teacher_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 编辑字段
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">student1</span><span class="w"> </span><span class="n">CHANGE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">stu_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 删除字段
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">student1</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="n">teacher_name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 从另一张表获取数据到新表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">tableA</span><span class="p">(</span><span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">fieldA</span><span class="p">,</span><span class="n">fieldB</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">tableB</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">DUPLICATE</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="o">`</span><span class="n">fieldA</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="o">`</span><span class="n">fieldA</span><span class="o">`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 设置自动递增值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="n">auto_increment</span><span class="o">=</span><span class="n">num</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="数据库设计三范式">数据库设计三范式</h2>
 <ol>
@@ -753,7 +774,7 @@ alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -826,22 +847,19 @@ alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -855,7 +873,7 @@ alter table table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

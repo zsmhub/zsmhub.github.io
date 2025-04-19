@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="基本命令 hostname -i: 查看服务器本地IP find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # fi" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="基本命令 hostname -i: 查看服务器本地IP
+find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt; - &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。 - &lt;指定条件&gt;： 所要搜索的文件的特征。 - &lt;指定动作&gt;： 对搜索结果进行特定的处理。 如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。 # find的使用实例： $ find ./ -name &#39;my*&#39; 搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。 $ find ./ -name &#39;my*&#39; -ls 搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。 $ find . -type f -mmin -10 搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件&#43;特殊文件&#43;目录。 nohup: 不挂断地运行命令，该命令的一般形式为：nohup command &amp;
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
@@ -35,24 +38,37 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Linux 基础知识" />
-<meta property="og:description" content="基本命令 hostname -i: 查看服务器本地IP find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # fi" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-01-01T17:32:56&#43;08:00" />
-<meta property="article:modified_time" content="2020-05-05T17:32:56&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Linux 基础知识">
+  <meta property="og:description" content="基本命令 hostname -i: 查看服务器本地IP
+find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt; - &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。 - &lt;指定条件&gt;： 所要搜索的文件的特征。 - &lt;指定动作&gt;： 对搜索结果进行特定的处理。 如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。 # find的使用实例： $ find ./ -name &#39;my*&#39; 搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。 $ find ./ -name &#39;my*&#39; -ls 搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。 $ find . -type f -mmin -10 搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件&#43;特殊文件&#43;目录。 nohup: 不挂断地运行命令，该命令的一般形式为：nohup command &amp;">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-01-01T17:32:56+08:00">
+    <meta property="article:modified_time" content="2020-05-05T17:32:56+08:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="入门">
 
-<meta itemprop="name" content="Linux 基础知识">
-<meta itemprop="description" content="基本命令 hostname -i: 查看服务器本地IP find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # fi"><meta itemprop="datePublished" content="2019-01-01T17:32:56&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-05T17:32:56&#43;08:00" />
-<meta itemprop="wordCount" content="5195">
-<meta itemprop="keywords" content="linux,入门," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Linux 基础知识"/>
-<meta name="twitter:description" content="基本命令 hostname -i: 查看服务器本地IP find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # fi"/>
+  <meta itemprop="name" content="Linux 基础知识">
+  <meta itemprop="description" content="基本命令 hostname -i: 查看服务器本地IP
+find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt; - &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。 - &lt;指定条件&gt;： 所要搜索的文件的特征。 - &lt;指定动作&gt;： 对搜索结果进行特定的处理。 如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。 # find的使用实例： $ find ./ -name &#39;my*&#39; 搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。 $ find ./ -name &#39;my*&#39; -ls 搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。 $ find . -type f -mmin -10 搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件&#43;特殊文件&#43;目录。 nohup: 不挂断地运行命令，该命令的一般形式为：nohup command &amp;">
+  <meta itemprop="datePublished" content="2019-01-01T17:32:56+08:00">
+  <meta itemprop="dateModified" content="2020-05-05T17:32:56+08:00">
+  <meta itemprop="wordCount" content="5201">
+  <meta itemprop="keywords" content="Linux,入门">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Linux 基础知识">
+  <meta name="twitter:description" content="基本命令 hostname -i: 查看服务器本地IP
+find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # find的使用格式如下： $ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt; - &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。 - &lt;指定条件&gt;： 所要搜索的文件的特征。 - &lt;指定动作&gt;： 对搜索结果进行特定的处理。 如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。 # find的使用实例： $ find ./ -name &#39;my*&#39; 搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。 $ find ./ -name &#39;my*&#39; -ls 搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。 $ find . -type f -mmin -10 搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件&#43;特殊文件&#43;目录。 nohup: 不挂断地运行命令，该命令的一般形式为：nohup command &amp;">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +107,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +140,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -130,7 +156,7 @@
         <div class="post-category">
             <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
             </div>
-          <span class="more-meta"> 约 5195 字 </span>
+          <span class="more-meta"> 约 5201 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
@@ -167,7 +193,7 @@
 <p>find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -187,32 +213,31 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># find的使用格式如下：</span>
-
-$ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;
-　　- &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。
-　　- &lt;指定条件&gt;： 所要搜索的文件的特征。
-　　- &lt;指定动作&gt;： 对搜索结果进行特定的处理。
-如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。
-
-<span class="c1"># find的使用实例：</span>
-
-$ find ./ -name <span class="s1">&#39;my*&#39;</span>
-搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。
-
-$ find ./ -name <span class="s1">&#39;my*&#39;</span> -ls
-搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。
-
-$ find . -type f -mmin -10
-搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件+特殊文件+目录。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># find的使用格式如下：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;
+</span></span><span class="line"><span class="cl">　　- &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。
+</span></span><span class="line"><span class="cl">　　- &lt;指定条件&gt;： 所要搜索的文件的特征。
+</span></span><span class="line"><span class="cl">　　- &lt;指定动作&gt;： 对搜索结果进行特定的处理。
+</span></span><span class="line"><span class="cl">如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># find的使用实例：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find ./ -name <span class="s1">&#39;my*&#39;</span>
+</span></span><span class="line"><span class="cl">搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find ./ -name <span class="s1">&#39;my*&#39;</span> -ls
+</span></span><span class="line"><span class="cl">搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find . -type f -mmin -10
+</span></span><span class="line"><span class="cl">搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件+特殊文件+目录。
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>nohup: 不挂断地运行命令，该命令的一般形式为：nohup command &amp;</p>
 <blockquote>
-<p>如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。nohup就是不挂起的意思(no hangup)。</p>
-</blockquote>
+<p>如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。nohup就是不挂起的意思(no hangup)。</p></blockquote>
 </li>
 <li>
 <p>dmesg: 查看系统日志错误</p>
@@ -221,11 +246,11 @@ $ find . -type f -mmin -10
 <p>tail命令用于输入文件中的尾部内容。tail命令默认在屏幕上显示指定文件的末尾10行。如果给定的文件不止一个，则在显示的每个文件前面加一个文件名标题。如果没有指定文件或者文件名为“-”，则读取标准输入。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">tail -f zsm.log  <span class="c1"># 显示文件最新追加的内容</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">tail -f zsm.log  <span class="c1"># 显示文件最新追加的内容</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -238,41 +263,41 @@ $ find . -type f -mmin -10
 <p>文件上传下载</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">yum install lrzsx
-sz path/to/file // 下载文件，默认下载位置看 secure 等设置
-rz -y // 按Enter键选择文件上传到当前目录
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">yum install lrzsx
+</span></span><span class="line"><span class="cl">sz path/to/file // 下载文件，默认下载位置看 secure 等设置
+</span></span><span class="line"><span class="cl">rz -y // 按Enter键选择文件上传到当前目录
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>sudo</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">sudo su // 当前用户切换为超级用户
-sudo su - www // 切换系统用户为 www 用户
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo su // 当前用户切换为超级用户
+</span></span><span class="line"><span class="cl">sudo su - www // 切换系统用户为 www 用户
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>ps 命令就是最基本同时也是非常强大的进程查看命令。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ps aux <span class="p">|</span> grep php // ps 与grep 常用组合用法，查找特定进程
-ps -A // 查看系统所有进程
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">ps aux <span class="p">|</span> grep php // ps 与grep 常用组合用法，查找特定进程
+</span></span><span class="line"><span class="cl">ps -A // 查看系统所有进程
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -282,107 +307,105 @@ ps -A // 查看系统所有进程
 <p>chmod：文件夹或文件授权</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">sudo chmod -R <span class="m">777</span> /var/www <span class="o">(</span>-R表示递归子文件夹及子文件<span class="o">)</span>
-
-chmod +x ./test.sh <span class="c1">#使脚本具有执行权限</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo chmod -R <span class="m">777</span> /var/www <span class="o">(</span>-R表示递归子文件夹及子文件<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">chmod +x ./test.sh <span class="c1">#使脚本具有执行权限</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>文件详细信息中 drwxr-xr-x 所代表的意思</p>
 <p>d ：第一位表示文件类型，d是目录文件. l是链接文件. -是普通文件. p是管道</p>
 <p>rwx ：第2-4位表示这个文件的属主拥有的权限。r是读【4】. w是写【2】. x是执行【1】（例子：777：表示所有用户和组拥有读写执行权限，766表示拥有文件用户拥有读写执行权限，而该用户组和其他用户只有读写权限）</p>
 <p>r-x ：第5-7位表示和这个文件属主所在同一个组的用户所具有的权限</p>
-<p>r-x ：第8-10位表示其他用户所具有的权限</p>
-</blockquote>
+<p>r-x ：第8-10位表示其他用户所具有的权限</p></blockquote>
 <blockquote>
 <p>权限的计算方法，使用二进制：</p>
 <p>例如“rwx”，二进制就是111，“2的2次方”+“2的1次方”+“2的0次方”=7；</p>
-<p>“r-x&quot;，二进制就是101，“2的2次方”+“0的1次方”+“2的0次方”=3</p>
-</blockquote>
+<p>“r-x&quot;，二进制就是101，“2的2次方”+“0的1次方”+“2的0次方”=3</p></blockquote>
 </li>
 <li>
 <p>chown：修改当前文件所有者</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">chown -R hadoop:hadoop path/to/file
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">chown -R hadoop:hadoop path/to/file
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>解压缩</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">tar -czf lnmp.tar.gz lnmp/   //将 lnmp 文件打包并且将其用 gzip 压缩，名字为 lnmp.tar.gz
-tar xvf lnmp.tar.gz  // 解压
-unzip wx.zip  // 解压
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">tar -czf lnmp.tar.gz lnmp/   //将 lnmp 文件打包并且将其用 gzip 压缩，名字为 lnmp.tar.gz
+</span></span><span class="line"><span class="cl">tar xvf lnmp.tar.gz  // 解压
+</span></span><span class="line"><span class="cl">unzip wx.zip  // 解压
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>telnet 命令有很多用途，比如确定远程服务的状态，比如确定远程服务器的某个端口是否能访问。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">telnet 63.172.25.18 <span class="m">3306</span> 回车  <span class="c1"># 测试3306端口是否能访问</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">telnet 63.172.25.18 <span class="m">3306</span> 回车  <span class="c1"># 测试3306端口是否能访问</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>监听端口是否启用/占用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">netstat -apn <span class="p">|</span> grep <span class="m">11211</span>   <span class="c1"># 监听11211端口是否启用，11211为memcached占用的端口</span>
-lsof -i:端口号 <span class="c1"># 用于查看某一端口的占用情况，比如查看8000端口使用情况，lsof -i:8000</span>
-lsof -iTCP:80 <span class="p">|</span> grep LISTEN <span class="c1"># 查看 80 端口被哪个应用占用了</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">netstat -apn <span class="p">|</span> grep <span class="m">11211</span>   <span class="c1"># 监听11211端口是否启用，11211为memcached占用的端口</span>
+</span></span><span class="line"><span class="cl">lsof -i:端口号 <span class="c1"># 用于查看某一端口的占用情况，比如查看8000端口使用情况，lsof -i:8000</span>
+</span></span><span class="line"><span class="cl">lsof -iTCP:80 <span class="p">|</span> grep LISTEN <span class="c1"># 查看 80 端口被哪个应用占用了</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>history</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">history</span> ：查看最新历史命令
-<span class="nb">history</span> <span class="p">|</span> more : 查看最初历史命令，可以搜索
-<span class="nb">history</span> <span class="p">|</span> more +100 : 从第100条命令开始看
-<span class="nb">history</span> <span class="p">|</span> grep php : 搜素php相关命令
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">history</span> ：查看最新历史命令
+</span></span><span class="line"><span class="cl"><span class="nb">history</span> <span class="p">|</span> more : 查看最初历史命令，可以搜索
+</span></span><span class="line"><span class="cl"><span class="nb">history</span> <span class="p">|</span> more +100 : 从第100条命令开始看
+</span></span><span class="line"><span class="cl"><span class="nb">history</span> <span class="p">|</span> grep php : 搜素php相关命令
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>wget: 是一个下载文件的工具</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">wget <span class="o">[</span>参数<span class="o">]</span> <span class="o">[</span>URL地址<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wget <span class="o">[</span>参数<span class="o">]</span> <span class="o">[</span>URL地址<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -392,30 +415,30 @@ lsof -iTCP:80 <span class="p">|</span> grep LISTEN <span class="c1"># 查看 80 
 <p>cp &amp; mv &amp; rm</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">cp -r sourse_file_path destinct_file_path // 复制文件夹及子文件到目标文件夹
-mv -i 源文件或目录 目标文件或目录 // 文件移动或重命名
-rm -rf direct/ // 删除文件夹或文件
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">cp -r sourse_file_path destinct_file_path // 复制文件夹及子文件到目标文件夹
+</span></span><span class="line"><span class="cl">mv -i 源文件或目录 目标文件或目录 // 文件移动或重命名
+</span></span><span class="line"><span class="cl">rm -rf direct/ // 删除文件夹或文件
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>服务器查看</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">查看硬盘使用情况：df -h（有时硬盘空间不够会导致服务器奔溃）
-查看cpu的方法: cat /proc/cpuinfo
-查看内存的方法: free -m 或者 cat /proc/meminfo
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">查看硬盘使用情况：df -h（有时硬盘空间不够会导致服务器奔溃）
+</span></span><span class="line"><span class="cl">查看cpu的方法: cat /proc/cpuinfo
+</span></span><span class="line"><span class="cl">查看内存的方法: free -m 或者 cat /proc/meminfo
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -431,7 +454,7 @@ rm -rf direct/ // 删除文件夹或文件
 <p>-X: 指定请求method</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -455,29 +478,29 @@ rm -rf direct/ // 删除文件夹或文件
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># get</span>
-curl -i -X GET http://127.0.0.1:9200
-
-<span class="c1"># post</span>
-curl -i -X POST http://127.0.0.1:8888/user/login -H <span class="s1">&#39;content-type: application/json&#39;</span> -d <span class="s1">&#39;{&#34;username&#34;:&#34;admin&#34;,&#34;password&#34;:&#34;123456&#34;}&#39;</span>
-
-<span class="c1"># 保存二进制内容到文件</span>
-curl --location <span class="s1">&#39;https://xxx/url/content&#39;</span> <span class="se">\
-</span><span class="se"></span>--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
-</span><span class="se"></span>--data <span class="s1">&#39;{
-</span><span class="s1">    &#34;url&#34;: &#34;https://i2.sinaimg.cn/travel/ul/2010/0102/U3325P704DT20100102104850.jpg&#34;
-</span><span class="s1">}&#39;</span> --output 111.png
-
-<span class="c1"># 安装命令</span>
-apk add curl
-
-<span class="c1"># 查ip/查IP地址：查询当前服务器ip</span>
-curl cip.cc
-curl -L ip.tool.lu
-
-<span class="c1"># 查看请求某个链接的响应时长</span>
-curl -o /dev/null -s -w %<span class="o">{</span>http_code<span class="o">}</span>---%<span class="o">{</span>content_type<span class="o">}</span>---%<span class="o">{</span>time_namelookup<span class="o">}</span>---%<span class="o">{</span>time_namelookup<span class="o">}</span>---%<span class="o">{</span>time_connect<span class="o">}</span>---%<span class="o">{</span>time_starttransfer<span class="o">}</span>---%<span class="o">{</span>time_total<span class="o">}</span>---%<span class="o">{</span>speed_download<span class="o">}</span><span class="s2">&#34;\n&#34;</span>  <span class="s2">&#34;https://www.baidu.com&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># get</span>
+</span></span><span class="line"><span class="cl">curl -i -X GET http://127.0.0.1:9200
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># post</span>
+</span></span><span class="line"><span class="cl">curl -i -X POST http://127.0.0.1:8888/user/login -H <span class="s1">&#39;content-type: application/json&#39;</span> -d <span class="s1">&#39;{&#34;username&#34;:&#34;admin&#34;,&#34;password&#34;:&#34;123456&#34;}&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 保存二进制内容到文件</span>
+</span></span><span class="line"><span class="cl">curl --location <span class="s1">&#39;https://xxx/url/content&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--data <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;url&#34;: &#34;https://i2.sinaimg.cn/travel/ul/2010/0102/U3325P704DT20100102104850.jpg&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">}&#39;</span> --output 111.png
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装命令</span>
+</span></span><span class="line"><span class="cl">apk add curl
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查ip/查IP地址：查询当前服务器ip</span>
+</span></span><span class="line"><span class="cl">curl cip.cc
+</span></span><span class="line"><span class="cl">curl -L ip.tool.lu
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看请求某个链接的响应时长</span>
+</span></span><span class="line"><span class="cl">curl -o /dev/null -s -w %<span class="o">{</span>http_code<span class="o">}</span>---%<span class="o">{</span>content_type<span class="o">}</span>---%<span class="o">{</span>time_namelookup<span class="o">}</span>---%<span class="o">{</span>time_namelookup<span class="o">}</span>---%<span class="o">{</span>time_connect<span class="o">}</span>---%<span class="o">{</span>time_starttransfer<span class="o">}</span>---%<span class="o">{</span>time_total<span class="o">}</span>---%<span class="o">{</span>speed_download<span class="o">}</span><span class="s2">&#34;\n&#34;</span>  <span class="s2">&#34;https://www.baidu.com&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -489,15 +512,15 @@ curl -o /dev/null -s -w %<span class="o">{</span>http_code<span class="o">}</spa
 <h2 id="crontab">crontab</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 脚本代码更新后，crontab 不用操作需重启</span>
-crontab -l <span class="c1"># 查看当前的计划任务</span>
-crontab -e <span class="c1"># 编辑计划任务</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 脚本代码更新后，crontab 不用操作需重启</span>
+</span></span><span class="line"><span class="cl">crontab -l <span class="c1"># 查看当前的计划任务</span>
+</span></span><span class="line"><span class="cl">crontab -e <span class="c1"># 编辑计划任务</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/2020/linux-crontab.png" alt="crontab"></p>
 <p>在以上各个字段中，还可以使用以下特殊字符：</p>
@@ -517,8 +540,7 @@ crontab -e <span class="c1"># 编辑计划任务</span>
 <h2 id="管道">管道</h2>
 <p>命令格式：命令A|命令B，即命令1的正确输出作为命令B的操作对象。</p>
 <blockquote>
-<p>多命令顺序执行</p>
-</blockquote>
+<p>多命令顺序执行</p></blockquote>
 <ol>
 <li>命令1；命令2：执行完1再执行2，命令之间没有任何逻辑联系</li>
 <li>命令1&amp;&amp;命令2：&amp;&amp;是一个“自私”符号，即命令1正确我命令2才执行，你错误了我2就不执行。</li>
@@ -541,46 +563,40 @@ crontab -e <span class="c1"># 编辑计划任务</span>
 <p>GNU Screen是一款由GNU计划开发的用于命令行终端切换的自由软件。用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。</p>
 <p>GNU Screen可以看作是窗口管理器的命令行界面版本。它提供了统一的管理多个会话的界面和相应的功能。</p>
 <blockquote>
-<p>会话恢复</p>
-</blockquote>
+<p>会话恢复</p></blockquote>
 <p>只要Screen本身没有终止，在其内部运行的会话都可以恢复。这一点对于远程登录的用户特别有用——即使网络连接中断，用户也不会失去对已经打开的命令行会话的控制。只要再次登录到主机上执行screen -r就可以恢复会话的运行。同样在暂时离开的时候，也可以执行分离命令detach，在保证里面的程序正常运行的情况下让Screen挂起（切换到后台）。这一点和图形界面下的VNC很相似。</p>
 <blockquote>
-<p>多窗口</p>
-</blockquote>
+<p>多窗口</p></blockquote>
 <p>在Screen环境下，所有的会话都独立的运行，并拥有各自的编号、输入、输出和窗口缓存。用户可以通过快捷键在不同的窗口下切换，并可以自由的重定向各个窗口的输入和输出。Screen实现了基本的文本操作，如复制粘贴等；还提供了类似滚动条的功能，可以查看窗口状况的历史记录。窗口还可以被分区和命名，还可以监视后台窗口的活动。</p>
 <blockquote>
-<p>会话共享</p>
-</blockquote>
+<p>会话共享</p></blockquote>
 <p>Screen可以让一个或多个用户从不同终端多次登录一个会话，并共享会话的所有特性（比如可以看到完全相同的输出）。它同时提供了窗口访问权限的机制，可以对窗口进行密码保护。</p>
 <blockquote>
-<p>常用 screen 参数</p>
-</blockquote>
+<p>常用 screen 参数</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">screen -S yourname <span class="c1"># 新建一个叫yourname的session，并进入这个session</span>
-screen -ls <span class="c1"># 列出当前所有的session</span>
-screen -r yourname <span class="c1"># 回到yourname这个session</span>
-screen -d yourname <span class="c1"># 远程detach某个session（挂起session，切换到后台）</span>
-screen -d -r yourname <span class="c1"># 结束当前session并回到yournamed这个session</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">screen -S yourname <span class="c1"># 新建一个叫yourname的session，并进入这个session</span>
+</span></span><span class="line"><span class="cl">screen -ls <span class="c1"># 列出当前所有的session</span>
+</span></span><span class="line"><span class="cl">screen -r yourname <span class="c1"># 回到yourname这个session</span>
+</span></span><span class="line"><span class="cl">screen -d yourname <span class="c1"># 远程detach某个session（挂起session，切换到后台）</span>
+</span></span><span class="line"><span class="cl">screen -d -r yourname <span class="c1"># 结束当前session并回到yournamed这个session</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>删除创建的screen session:</p>
-</blockquote>
+<p>删除创建的screen session:</p></blockquote>
 <ul>
 <li>在screen session中执行exit</li>
 <li>有时远程的进程没有响应，用screen -r过去也不能杀掉，这是想把会话中止，方法如下: screen -S some_name -X quit</li>
 </ul>
 <blockquote>
-<p>快捷键</p>
-</blockquote>
+<p>快捷键</p></blockquote>
 <p>Ctrl-a键 d键 -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里，每个 window 内运行的 process (无论是前台/后台)都在继续执行，即使 logout 也不影响。</p>
 </li>
 </ol>
@@ -589,19 +605,19 @@ screen -d -r yourname <span class="c1"># 结束当前session并回到yournamed�
 <p>使用 Git 和 rsync 更新生产环境代码的 ssh 脚本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/bash
-</span><span class="cp"></span><span class="nb">cd</span> /data/git/data/qy_admin/
-git pull
-chown -R www:www *
-/usr/bin/rsync -avzhP --delete --exclude<span class="o">=</span><span class="s1">&#39;.git/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.gitignore&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.svn/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.idea&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/cache/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/config/database.php&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/logs/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/controllers/defaultcontroller.php&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;upload/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;sql/&#39;</span> /data/git/data/qy_admin/  192.168.1.1:/data/wx/www/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">cd</span> /data/git/data/qy_admin/
+</span></span><span class="line"><span class="cl">git pull
+</span></span><span class="line"><span class="cl">chown -R www:www *
+</span></span><span class="line"><span class="cl">/usr/bin/rsync -avzhP --delete --exclude<span class="o">=</span><span class="s1">&#39;.git/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.gitignore&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.svn/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;.idea&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/cache/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/config/database.php&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/logs/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;application/controllers/defaultcontroller.php&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;upload/&#39;</span> --exclude<span class="o">=</span><span class="s1">&#39;sql/&#39;</span> /data/git/data/qy_admin/  192.168.1.1:/data/wx/www/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="用户和用户组">用户和用户组</h2>
 <ul>
@@ -624,8 +640,7 @@ chown -R www:www *
 <p>kill：杀死单个进程</p>
 <p>pkill: 看到pkill想到了什么？没错pgrep和kill！pkill＝pgrep+kill。</p>
 <blockquote>
-<p>下面是常用的信号：</p>
-</blockquote>
+<p>下面是常用的信号：</p></blockquote>
 <ul>
 <li>HUP 1 终端断线</li>
 <li>INT 2 中断（同 Ctrl + C）</li>
@@ -637,7 +652,7 @@ chown -R www:www *
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -647,33 +662,31 @@ chown -R www:www *
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 删除占用 443 端口的进程</span>
-<span class="nb">kill</span> -15 <span class="nv">$$</span><span class="o">(</span>lsof -t -i:443<span class="o">)</span> <span class="p">&amp;</span>
-
-<span class="c1"># -9 强制杀掉进程</span>
-<span class="nb">kill</span> –9 <span class="m">3268</span>
-
-<span class="c1">#删除 logic.go 这个名称的相关进程</span>
-pkill -f main/logic.go <span class="p">&amp;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 删除占用 443 端口的进程</span>
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> -15 <span class="nv">$$</span><span class="o">(</span>lsof -t -i:443<span class="o">)</span> <span class="p">&amp;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># -9 强制杀掉进程</span>
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> –9 <span class="m">3268</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#删除 logic.go 这个名称的相关进程</span>
+</span></span><span class="line"><span class="cl">pkill -f main/logic.go <span class="p">&amp;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="shell">shell</h2>
 <blockquote>
-<p>&amp;</p>
-</blockquote>
+<p>&amp;</p></blockquote>
 <p>&amp; 放在启动参数后面表示设置此进程为后台进程</p>
-<p>默认情况下，进程是前台进程，这时就把Shell给占据了，我们无法进行其他操作，对于那些没有交互的进程，很多时候，我们希望将其在后台启动，可以在启动参数的时候加一个'&amp;&lsquo;实现这个目的。</p>
+<p>默认情况下，进程是前台进程，这时就把Shell给占据了，我们无法进行其他操作，对于那些没有交互的进程，很多时候，我们希望将其在后台启动，可以在启动参数的时候加一个&rsquo;&amp;&lsquo;实现这个目的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git clone git@gitlab.xxx.cn:xxx/c.git rename-c <span class="p">&amp;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone git@gitlab.xxx.cn:xxx/c.git rename-c <span class="p">&amp;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>&amp;&amp;</p>
-</blockquote>
+<p>&amp;&amp;</p></blockquote>
 <p>shell 在执行某个命令的时候，会返回一个返回值，该返回值保存在 shell 变量 ? 中。当?中。当? == 0 时，表示执行成功；当 $? == 1 时（我认为是非0的数，返回值在0-255间），表示执行失败。</p>
 <p>command1 &amp;&amp; command2 [&amp;&amp; command3 &hellip;]</p>
 <ol>
@@ -682,20 +695,17 @@ pkill -f main/logic.go <span class="p">&amp;</span>
 <li>只要有一个命令返回假（命令返回值 $? == 1），后面的命令就不会被执行。</li>
 </ol>
 <blockquote>
-<p>||</p>
-</blockquote>
+<p>||</p></blockquote>
 <p>command1 || command2 [|| command3 &hellip;]</p>
 <p>1 命令之间使用 || 连接，实现 逻辑或的功能。
 2 只有在 || 左边的命令返回假（命令返回值 $? == 1），|| 右边的命令才会被执行。
 3 只要有一个命令返回真（命令返回值 $? == 0），后面的命令就不会被执行。</p>
 <blockquote>
-<p>;</p>
-</blockquote>
+<p>;</p></blockquote>
 <p>command1; command2 [; command3 &hellip;]</p>
 <p>分号是指无论前面的命令是否执行成功，都继续继续下一条命令。（等价于直接换行，变多条命令）</p>
 <blockquote>
-<p>\</p>
-</blockquote>
+<p>\</p></blockquote>
 <p>换行符，一行命令过长时建议换行</p>
 
     </div>
@@ -703,7 +713,7 @@ pkill -f main/logic.go <span class="p">&amp;</span>
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -776,22 +786,19 @@ pkill -f main/logic.go <span class="p">&amp;</span>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -805,7 +812,7 @@ pkill -f main/logic.go <span class="p">&amp;</span>
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

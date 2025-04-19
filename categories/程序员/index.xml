@@ -4,54 +4,45 @@
     <title>程序员 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/</link>
     <description>Recent content in 程序员 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 17 Aug 2020 16:38:01 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Aug 2020 16:38:01 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>程序员必备的代码审查清单</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/</link>
       <pubDate>Mon, 17 Aug 2020 16:38:01 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/</guid>
-      <description>编码规范 编程思想由 MVC模式 转向 MBC模式，M：模型层，B: 业务逻辑层，C：控制器层 路由命名：一般以 纯小写 或 小写+中划线 命名，比较易读 变量名</description>
+      <description>&lt;h2 id=&#34;编码规范&#34;&gt;编码规范&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;编程思想由 MVC模式 转向 MBC模式，M：模型层，B: 业务逻辑层，C：控制器层&lt;/li&gt;&#xA;&lt;li&gt;路由命名：一般以 纯小写 或 小写+中划线 命名，比较易读&lt;/li&gt;&#xA;&lt;li&gt;变量名称使用小驼峰方案&lt;/li&gt;&#xA;&lt;li&gt;能不用 else 就不用，减少嵌套层数&lt;/li&gt;&#xA;&lt;li&gt;待处理代码加上 todo 做备注，容易找到待处理代码位置&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;常规项&#34;&gt;常规项&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;代码能够工作么？它有没有实现预期的功能，逻辑是否正确等。&lt;/li&gt;&#xA;&lt;li&gt;所有的代码是否简单易懂？&lt;/li&gt;&#xA;&lt;li&gt;代码符合你所遵循的编程规范么？这通常包括大括号的位置，变量名和函数名，行的长度，缩进，格式和注释。&lt;/li&gt;&#xA;&lt;li&gt;是否存在多余的或是重复的代码？&lt;/li&gt;&#xA;&lt;li&gt;代码是否尽可能的模块化了？&lt;/li&gt;&#xA;&lt;li&gt;是否有可以被替换的全局变量？&lt;/li&gt;&#xA;&lt;li&gt;是否有被注释掉的代码？&lt;/li&gt;&#xA;&lt;li&gt;循环是否设置了长度和正确的终止条件？&lt;/li&gt;&#xA;&lt;li&gt;是否有可以被库函数替代的代码？&lt;/li&gt;&#xA;&lt;li&gt;是否有可以删除的日志或调试代码？&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;安全&#34;&gt;安全&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;所有的数据输入是否都进行了检查（检测正确的类型，长度，格式和范围）并且进行了编码？&lt;/li&gt;&#xA;&lt;li&gt;在哪里使用了第三方工具，返回的错误是否被捕获？&lt;/li&gt;&#xA;&lt;li&gt;输出的值是否进行了检查并且编码？&lt;/li&gt;&#xA;&lt;li&gt;无效的参数值是否能够处理？&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;文档&#34;&gt;文档&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;是否有注释，并且描述了代码的意图？&lt;/li&gt;&#xA;&lt;li&gt;所有的函数都有注释吗？&lt;/li&gt;&#xA;&lt;li&gt;对非常规行为和边界情况处理是否有描述？&lt;/li&gt;&#xA;&lt;li&gt;第三方库的使用和函数是否有文档？&lt;/li&gt;&#xA;&lt;li&gt;数据结构和计量单位是否进行了解释？&lt;/li&gt;&#xA;&lt;li&gt;是否有未完成的代码？如果是的话，是不是应该移除，或者用合适的标记进行标记比如‘TODO’？&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;测试&#34;&gt;测试&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;代码是否可以测试？比如，不要添加太多的或是隐藏的依赖关系，不能够初始化对象，测试框架可以使用方法等。&lt;/li&gt;&#xA;&lt;li&gt;是否存在测试，它们是否可以被理解？比如，至少达到你满意的代码覆盖(code coverage)。&lt;/li&gt;&#xA;&lt;li&gt;单元测试是否真正的测试了代码是否可以完成预期的功能？&lt;/li&gt;&#xA;&lt;li&gt;是否检查了数组的“越界“错误？&lt;/li&gt;&#xA;&lt;li&gt;是否有可以被已经存在的API所替代的测试代码？&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
     <item>
       <title>正反向代理简介</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/</link>
       <pubDate>Thu, 09 Jul 2020 21:33:12 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/</guid>
-      <description>正向代理 正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。） 比如X花店代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花</description>
+      <description>&lt;h2 id=&#34;正向代理&#34;&gt;正向代理&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。）&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2021/QQ20210831-113313@2x.png&#34; alt=&#34;正向代理&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;比如&lt;code&gt;X花店&lt;/code&gt;代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花，这里的X花店就是5位顾客的代理，花店代理的是客户，隐藏的是客户。这就是我们常说的代理。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>记一下互联网术语</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</link>
       <pubDate>Thu, 14 May 2020 09:12:26 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</guid>
-      <description>编程常用单词 tmp/temp: 临时对象 startAt/endAt: 开始时间/结束时间 prev/next: 上一个/下一个 职位 PM(Product Manager): 产品经理 AM(Account Manager): 客户经理 RD(Research &amp;amp; Develop): 研发 FE(Front End): 前端 指标 DAU(Daily Active Users): 日活跃数 响应时间(RT) :</description>
+      <description>&lt;h2 id=&#34;编程常用单词&#34;&gt;编程常用单词&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;tmp/temp: 临时对象&lt;/li&gt;&#xA;&lt;li&gt;startAt/endAt: 开始时间/结束时间&lt;/li&gt;&#xA;&lt;li&gt;prev/next: 上一个/下一个&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;职位&#34;&gt;职位&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;PM(Product Manager): 产品经理&lt;/li&gt;&#xA;&lt;li&gt;AM(Account Manager): 客户经理&lt;/li&gt;&#xA;&lt;li&gt;RD(Research &amp;amp; Develop): 研发&lt;/li&gt;&#xA;&lt;li&gt;FE(Front End): 前端&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;指标&#34;&gt;指标&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;DAU(Daily Active Users): 日活跃数&lt;/li&gt;&#xA;&lt;li&gt;响应时间(RT) : 响应时间是指系统对请求作出响应的时间。&lt;/li&gt;&#xA;&lt;li&gt;吞吐量(Throughput)：吞吐量是指系统在单位时间内处理请求的数量。&lt;/li&gt;&#xA;&lt;li&gt;并发用户数：并发用户数是指系统可以同时承载的正常使用系统功能的用户的数量。&lt;/li&gt;&#xA;&lt;li&gt;QPS每秒查询率(Query Per Second) ：每秒查询率QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。&lt;/li&gt;&#xA;&lt;li&gt;高可用（HA）：是分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计减少系统不能提供服务的时间。而服务器的可用性是指单位时间内（通常一年），服务器可以正常工作的时间比例。（可用性=平均故障间隔/（平均故障间隔 + 故障恢复平均时间））&lt;/li&gt;&#xA;&lt;li&gt;独立访问者数量（unique visitors，UV）、页面浏览数（page views，PV）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;程序员&#34;&gt;程序员&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;RPC(Remote Procedure Call): 远程过程调用，是一个计算机通信协议。该协议允许运行于一台计算机的程序调用另一台计算机的子程序，而程序员无需额外地为这个交互作用编程。值得注意是，两个或多个应用程序都分布在不同的服务器上，它们之间的调用都像是本地方法调用一样。&lt;/li&gt;&#xA;&lt;li&gt;PR 的全称是 Pull Request，经常用 Github 的同学对这个肯定很熟悉了。MR 的全称是 Merge Request，相信玩过 Gitlab 的同学都知道这个。『重点：pr 和 mr 本质上都是指合并代码请求，只是站在不同角度有不同的说法而已』&lt;/li&gt;&#xA;&lt;li&gt;SEO(Search Engine Optimization),中文是“搜索引擎优化”&lt;/li&gt;&#xA;&lt;li&gt;sso(Single sign-on)，单点登录&lt;/li&gt;&#xA;&lt;li&gt;OSS: 对象存储，OSS图片处理服务是阿里云OSS对外提供的海量、安全、低成本、高可靠的图片处理服务。您可以将原始图片上传保存在 OSS 上，通过简单的 RESTful 接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。&lt;/li&gt;&#xA;&lt;li&gt;CDN(Content Delivery Network): 内容分发网络&lt;/li&gt;&#xA;&lt;li&gt;WAF(Web Application Firewall): Web 应用防火墙&lt;/li&gt;&#xA;&lt;li&gt;负载均衡：制定策略做资源的分配&lt;/li&gt;&#xA;&lt;li&gt;uuid: Universally Unique Identifier，通用唯一识别码&lt;/li&gt;&#xA;&lt;li&gt;dto: data transfer object，数据传输对象&lt;/li&gt;&#xA;&lt;li&gt;dao: data access object，数据访问对象&lt;/li&gt;&#xA;&lt;li&gt;OOM: Out of memory，内存溢出&lt;/li&gt;&#xA;&lt;li&gt;DTS: 数据传输服务DTS（Data Transmission Service）支持RDBMS、NoSQL、OLAP等数据源间的数据交互，集数据同步、迁移、订阅、集成、加工于一体，助您构建安全、可扩展、高可用的数据架构。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;旅游相关&#34;&gt;旅游相关&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;在线旅游（OTA，全称为Online Travel Agency），是旅游电子商务行业的专业词语。OTA是在线旅行社，主要是各种旅游产品的代理商，如携程，而平台主要提供旅游信息搜索，为顾客提供旅游代理商，其中也包括OTA在内的旅游产品信息，如爱彼迎。&lt;/li&gt;&#xA;&lt;li&gt;房源静态信息：酒店的名称，地址，电话，房型等&lt;/li&gt;&#xA;&lt;li&gt;房源动态信息：价格、房量&lt;/li&gt;&#xA;&lt;li&gt;房态：入住、预离（离店日期为今天）、在住、远期（入住日期为今天之后）、离店、关停/软装（关停：暂停出售，软装：装修）&lt;/li&gt;&#xA;&lt;li&gt;酒店会有保留房，民宿是整租&lt;/li&gt;&#xA;&lt;li&gt;及时确单&lt;/li&gt;&#xA;&lt;li&gt;PMS: 酒店物业管理系统（Property management System，简称PMS）&lt;/li&gt;&#xA;&lt;li&gt;ARI数据：酒店动态数据，如房价、房态和房量&lt;/li&gt;&#xA;&lt;li&gt;CRS: 酒店中央预订系统（Common Reporting Standard，简称CRS）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;特殊编码&#34;&gt;特殊编码&lt;/h2&gt;&#xA;&lt;p&gt;\u2005：特殊的空格字符，群里@人时高亮需要用到&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>了解版本号</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</link>
       <pubDate>Wed, 01 Jan 2020 15:59:09 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</guid>
-      <description>版本号迭代规则 系统重构：主版本号+1 新增功能：次版本号+1 BUG修复：修订号+1 常见案例 版本号的规范可采用很多公司采用的这套：http://</description>
+      <description>&lt;h2 id=&#34;版本号迭代规则&#34;&gt;版本号迭代规则&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;系统重构：主版本号+1&lt;/li&gt;&#xA;&lt;li&gt;新增功能：次版本号+1&lt;/li&gt;&#xA;&lt;li&gt;BUG修复：修订号+1&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;常见案例&#34;&gt;常见案例&lt;/h2&gt;&#xA;&lt;p&gt;版本号的规范可采用很多公司采用的这套：http://semver.org/lang/zh-CN/&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>开发者须知</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</link>
       <pubDate>Fri, 25 Jan 2019 15:42:14 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/</guid>
-      <description>开发过程：SOLID五大设计原则 S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Pricipl</description>
+      <description>&lt;h2 id=&#34;开发过程solid五大设计原则&#34;&gt;开发过程：SOLID五大设计原则&lt;/h2&gt;&#xA;&lt;p&gt;S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Priciple)的首字母缩写。&lt;/p&gt;&#xA;&lt;p&gt;SRP: The Single Responsibility Principle 单一职责原则&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

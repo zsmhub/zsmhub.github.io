@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="XSS（跨站攻击） XSS 种类 Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="XSS（跨站攻击） XSS 种类
+Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意代码参数被 HTML 解析、执行。 Stored XSS: 持久型 XSS 漏洞，也被称为存储型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如发帖留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。 XSS防范方法
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/" />
@@ -35,24 +37,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Web 安全攻防总结" />
-<meta property="og:description" content="XSS（跨站攻击） XSS 种类 Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-01-02T17:25:01&#43;08:00" />
-<meta property="article:modified_time" content="2019-01-02T17:25:01&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Web 安全攻防总结">
+  <meta property="og:description" content="XSS（跨站攻击） XSS 种类
+Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意代码参数被 HTML 解析、执行。 Stored XSS: 持久型 XSS 漏洞，也被称为存储型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如发帖留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。 XSS防范方法">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-01-02T17:25:01+08:00">
+    <meta property="article:modified_time" content="2019-01-02T17:25:01+08:00">
+    <meta property="article:tag" content="Web安全">
 
-<meta itemprop="name" content="Web 安全攻防总结">
-<meta itemprop="description" content="XSS（跨站攻击） XSS 种类 Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意"><meta itemprop="datePublished" content="2019-01-02T17:25:01&#43;08:00" />
-<meta itemprop="dateModified" content="2019-01-02T17:25:01&#43;08:00" />
-<meta itemprop="wordCount" content="752">
-<meta itemprop="keywords" content="web安全," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Web 安全攻防总结"/>
-<meta name="twitter:description" content="XSS（跨站攻击） XSS 种类 Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意"/>
+  <meta itemprop="name" content="Web 安全攻防总结">
+  <meta itemprop="description" content="XSS（跨站攻击） XSS 种类
+Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意代码参数被 HTML 解析、执行。 Stored XSS: 持久型 XSS 漏洞，也被称为存储型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如发帖留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。 XSS防范方法">
+  <meta itemprop="datePublished" content="2019-01-02T17:25:01+08:00">
+  <meta itemprop="dateModified" content="2019-01-02T17:25:01+08:00">
+  <meta itemprop="wordCount" content="752">
+  <meta itemprop="keywords" content="Web安全">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Web 安全攻防总结">
+  <meta name="twitter:description" content="XSS（跨站攻击） XSS 种类
+Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意代码参数被 HTML 解析、执行。 Stored XSS: 持久型 XSS 漏洞，也被称为存储型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如发帖留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。 XSS防范方法">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +102,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +135,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -152,15 +173,13 @@
     <div class="post-content">
       <h2 id="xss跨站攻击">XSS（跨站攻击）</h2>
 <blockquote>
-<p>XSS 种类</p>
-</blockquote>
+<p>XSS 种类</p></blockquote>
 <ul>
 <li>Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意代码参数被 HTML 解析、执行。</li>
 <li>Stored XSS:  持久型 XSS 漏洞，也被称为存储型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如发帖留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。</li>
 </ul>
 <blockquote>
-<p>XSS防范方法</p>
-</blockquote>
+<p>XSS防范方法</p></blockquote>
 <ul>
 <li>第一种，对用户提交的数据进行过滤；</li>
 <li>第二种，Web 网页显示时对数据进行特殊处理，一般使用 htmlspecialchars() 输出。</li>
@@ -168,8 +187,7 @@
 <h2 id="csrf跨站请求伪造攻击">CSRF（跨站请求伪造攻击）</h2>
 <p>CSRF 到底能够干嘛呢？你可以这样简单的理解：攻击者可以盗用你的登陆信息，以你的身份模拟发送各种请求。攻击者只要借助少许的社会工程学的诡计，例如通过 QQ 等聊天软件发送的链接(有些还伪装成短域名，用户无法分辨)，攻击者就能迫使 Web 应用的用户去执行攻击者预设的操作。例如，当用户登录网络银行去查看其存款余额，在他没有退出时，就点击了一个 QQ 好友发来的链接，那么该用户银行帐户中的资金就有可能被转移到攻击者指定的帐户中。</p>
 <blockquote>
-<p>预防方法：</p>
-</blockquote>
+<p>预防方法：</p></blockquote>
 <p>CSRF 的防御可以从服务端和客户端两方面着手，防御效果是从服务端着手效果比较好，现在一般的 CSRF 防御也都在服务端进行。服务端的预防 CSRF 攻击的方式方法有多种，但思路上都是差不多的，主要从以下两个方面入手 :</p>
 <ol>
 <li>正确使用 GET，POST 请求和 cookie</li>
@@ -178,8 +196,7 @@
 <h2 id="sql注入漏洞">SQL注入漏洞</h2>
 <p>SQL 注入漏洞（SQL Injection）是 Web 开发中最常见的一种安全漏洞。可以用它来从数据库获取敏感信息，或者利用数据库的特性执行添加用户，导出文件等一系列恶意操作，甚至有可能获取数据库乃至系统用户最高权限。</p>
 <blockquote>
-<p>预防方法：</p>
-</blockquote>
+<p>预防方法：</p></blockquote>
 <ol>
 <li>转义过滤用户的输入</li>
 <li>Pdo/Mysqli prepare 的预处理完全能避免 sql 攻击 【参数化查询】</li>
@@ -193,7 +210,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -265,22 +282,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -294,7 +308,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】
+json的坑 []uint8 转 json 后，得不到想要的结果
+期待结果：[1, 2, 3] 输出结果：&ldquo;AQID&rdquo; 1 2 3 4 5 func main() { arr := []uint8{1, 2, 3} b, _ := json.Marshal(arr) fmt.Println(string(b)) } slice/map/channel本身就是引用类型 slice
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" />
@@ -35,24 +38,36 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Go的一些坑" />
-<meta property="og:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-11-13T11:17:51&#43;08:00" />
-<meta property="article:modified_time" content="2020-11-13T11:17:51&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Go的一些坑">
+  <meta property="og:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】
+json的坑 []uint8 转 json 后，得不到想要的结果
+期待结果：[1, 2, 3] 输出结果：“AQID” 1 2 3 4 5 func main() { arr := []uint8{1, 2, 3} b, _ := json.Marshal(arr) fmt.Println(string(b)) } slice/map/channel本身就是引用类型 slice">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-11-13T11:17:51+08:00">
+    <meta property="article:modified_time" content="2020-11-13T11:17:51+08:00">
+    <meta property="article:tag" content="坑">
 
-<meta itemprop="name" content="Go的一些坑">
-<meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"><meta itemprop="datePublished" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="dateModified" content="2020-11-13T11:17:51&#43;08:00" />
-<meta itemprop="wordCount" content="2766">
-<meta itemprop="keywords" content="坑," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go的一些坑"/>
-<meta name="twitter:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】 json的坑 []uint8 转 json 后，得不到想"/>
+  <meta itemprop="name" content="Go的一些坑">
+  <meta itemprop="description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】
+json的坑 []uint8 转 json 后，得不到想要的结果
+期待结果：[1, 2, 3] 输出结果：“AQID” 1 2 3 4 5 func main() { arr := []uint8{1, 2, 3} b, _ := json.Marshal(arr) fmt.Println(string(b)) } slice/map/channel本身就是引用类型 slice">
+  <meta itemprop="datePublished" content="2020-11-13T11:17:51+08:00">
+  <meta itemprop="dateModified" content="2020-11-13T11:17:51+08:00">
+  <meta itemprop="wordCount" content="2766">
+  <meta itemprop="keywords" content="坑">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Go的一些坑">
+  <meta name="twitter:description" content="代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option&#43;command&#43;L】
+json的坑 []uint8 转 json 后，得不到想要的结果
+期待结果：[1, 2, 3] 输出结果：“AQID” 1 2 3 4 5 func main() { arr := []uint8{1, 2, 3} b, _ := json.Marshal(arr) fmt.Println(string(b)) } slice/map/channel本身就是引用类型 slice">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +106,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +139,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -165,28 +190,27 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">uint8</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
-   <span class="nx">b</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
-   <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">b</span><span class="p">))</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">uint8</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">b</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">b</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="slicemapchannel本身就是引用类型">slice/map/channel本身就是引用类型</h2>
 <blockquote>
-<p>slice</p>
-</blockquote>
+<p>slice</p></blockquote>
 <p>绝对不要用指针指向 slice。切片本身已经是一个引用类型，所以它本身就是一个指针！！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -234,60 +258,59 @@
 </span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 一、同根
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">nums</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{}</span> <span class="c1">// array
-</span><span class="c1"></span>    <span class="nx">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;nums: %v , len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">nums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
-
-    <span class="nx">dnums</span> <span class="o">:=</span> <span class="nx">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1">// slice
-</span><span class="c1"></span>    <span class="nx">dnums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">5</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;nums: %v ,len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">nums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;dnums: %v, len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">dnums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">dnums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">dnums</span><span class="p">))</span>
-<span class="p">}</span>
-<span class="err">#</span> <span class="nx">输出结果</span>
-<span class="nx">nums</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="nx">len</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">nums</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="nx">len</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">dnums</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">0</span><span class="p">],</span> <span class="nx">len</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
-
-<span class="c1">// 二、时过境迁：随着 Slice 不断 append，内在的元素越来越多，终于触发了扩容。这时候内部就会重新申请一块内存空间，将原本的元素拷贝一份到新的内存空间上。此时其与原本的数组就没有任何关联关系了，再进行修改值也不会变动到原始数组。
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">nums</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{}</span>
-    <span class="nx">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;nums: %v , len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">nums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
-
-    <span class="nx">dnums</span> <span class="o">:=</span> <span class="nx">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-    <span class="nx">dnums</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">dnums</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span><span class="o">...</span><span class="p">)</span>
-    <span class="nx">dnums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;nums: %v ,len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">nums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;dnums: %v, len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">dnums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">dnums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">dnums</span><span class="p">))</span>
-<span class="p">}</span>
-<span class="err">#</span> <span class="nx">输出结果</span>
-<span class="nx">nums</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="nx">len</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">nums</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="nx">len</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
-<span class="nx">dnums</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">],</span> <span class="nx">len</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">6</span>
-
-<span class="c1">// 三、参数默认是引用传值
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">x</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
-    <span class="kd">func</span><span class="p">(</span><span class="nx">arr</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">7</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// [7 2 3]
-</span><span class="c1"></span>    <span class="p">}(</span><span class="nx">x</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// [7 2 3]
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 一、同根</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">nums</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{}</span> <span class="c1">// array</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;nums: %v , len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">nums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">dnums</span> <span class="o">:=</span> <span class="nx">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1">// slice</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dnums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;nums: %v ,len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">nums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;dnums: %v, len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">dnums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">dnums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">dnums</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">输出结果</span>
+</span></span><span class="line"><span class="cl"><span class="nx">nums</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="nx">len</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="nx">nums</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="nx">len</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="nx">dnums</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">0</span><span class="p">],</span> <span class="nx">len</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 二、时过境迁：随着 Slice 不断 append，内在的元素越来越多，终于触发了扩容。这时候内部就会重新申请一块内存空间，将原本的元素拷贝一份到新的内存空间上。此时其与原本的数组就没有任何关联关系了，再进行修改值也不会变动到原始数组。</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">nums</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;nums: %v , len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">nums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">dnums</span> <span class="o">:=</span> <span class="nx">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dnums</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">dnums</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span><span class="o">...</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dnums</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;nums: %v ,len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">nums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">nums</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;dnums: %v, len: %d, cap: %d\n&#34;</span><span class="p">,</span> <span class="nx">dnums</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">dnums</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">dnums</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">输出结果</span>
+</span></span><span class="line"><span class="cl"><span class="nx">nums</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="nx">len</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="nx">nums</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="nx">len</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="nx">dnums</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">],</span> <span class="nx">len</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">cap</span><span class="p">:</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 三、参数默认是引用传值</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">x</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span><span class="p">(</span><span class="nx">arr</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// [7 2 3]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}(</span><span class="nx">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// [7 2 3]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>map</p>
-</blockquote>
+<p>map</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -308,42 +331,42 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">persons</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
-    <span class="nx">persons</span><span class="p">[</span><span class="s">&#34;张三&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">19</span>
-
-    <span class="nx">mp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">persons</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;原始map的内存地址是：%p\n&#34;</span><span class="p">,</span> <span class="nx">mp</span><span class="p">)</span> <span class="c1">// 输出：原始map的内存地址是：0xc00000e028
-</span><span class="c1"></span>    <span class="nf">modify</span><span class="p">(</span><span class="nx">persons</span><span class="p">)</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map值被修改了，新值为:&#34;</span><span class="p">,</span> <span class="nx">persons</span><span class="p">)</span> <span class="c1">// 输出：map值被修改了，新值为: map[张三:20]
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">modify</span><span class="p">(</span><span class="nx">p</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;函数里接收到map的内存地址是：%p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)</span> <span class="c1">// 输出：函数里接收到map的内存地址是：0xc00000e038
-</span><span class="c1"></span>    <span class="nx">p</span><span class="p">[</span><span class="s">&#34;张三&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">20</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">persons</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">persons</span><span class="p">[</span><span class="s">&#34;张三&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">19</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">mp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">persons</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;原始map的内存地址是：%p\n&#34;</span><span class="p">,</span> <span class="nx">mp</span><span class="p">)</span> <span class="c1">// 输出：原始map的内存地址是：0xc00000e028</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">modify</span><span class="p">(</span><span class="nx">persons</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;map值被修改了，新值为:&#34;</span><span class="p">,</span> <span class="nx">persons</span><span class="p">)</span> <span class="c1">// 输出：map值被修改了，新值为: map[张三:20]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">modify</span><span class="p">(</span><span class="nx">p</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;函数里接收到map的内存地址是：%p\n&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)</span> <span class="c1">// 输出：函数里接收到map的内存地址是：0xc00000e038</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">p</span><span class="p">[</span><span class="s">&#34;张三&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="单引号">单引号</h2>
 <p>单引号在 Golang 表示一个字符，使用一个特殊类型 rune 表示字符型。rune 为 int32 的别名，它完全等价于 int32，习惯上用它来区别字符值和整数值。rune 表示字符的 Unicode 码值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">c</span> <span class="kt">rune</span> <span class="p">=</span> <span class="sc">&#39;你&#39;</span> <span class="c1">// 此处必须使用单引号，而且只能写一个字符，不能这样定义：var c rune = &#39;ab&#39;
-</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;c=%v ct=%T\n&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="c1">// 输出 c=20320 ct=int32 （字符’你’的 Unicode 码值是 0x4f60，十进制是 20320）
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">c</span> <span class="kt">rune</span> <span class="p">=</span> <span class="sc">&#39;你&#39;</span> <span class="c1">// 此处必须使用单引号，而且只能写一个字符，不能这样定义：var c rune = &#39;ab&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;c=%v ct=%T\n&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="c1">// 输出 c=20320 ct=int32 （字符’你’的 Unicode 码值是 0x4f60，十进制是 20320）</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="len--utf8runecountinstring">len &amp; utf8.RuneCountInString</h2>
 <p>Go 的内建函数 len() 返回的是字符串的 byte 数量(或unicode编码数量)；如果要得到字符串的字符数，可使用 &ldquo;unicode/utf8&rdquo; 包中的 RuneCountInString(str string) (n int)</p>
@@ -356,7 +379,7 @@ fmt.Println(len([]rune(x))) // 输出 6
 <h2 id="在一个值为-nil-的-channel-上发送和接收数据将永久阻塞">在一个值为 nil 的 channel 上发送和接收数据将永久阻塞</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -369,18 +392,18 @@ fmt.Println(len([]rune(x))) // 输出 6
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span> <span class="kt">int</span> <span class="c1">// 未初始化，值为 nil
-</span><span class="c1"></span>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="nx">i</span>
-        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Result: &#34;</span><span class="p">,</span> <span class="o">&lt;-</span><span class="nx">ch</span><span class="p">)</span>
-    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span> <span class="kt">int</span> <span class="c1">// 未初始化，值为 nil</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Result: &#34;</span><span class="p">,</span> <span class="o">&lt;-</span><span class="nx">ch</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="golang-没有全局异常捕获">golang 没有全局异常捕获</h2>
 <p>不能像其他语言那样，在最上层就可以捕获所有 exception</p>
@@ -390,27 +413,24 @@ fmt.Println(len([]rune(x))) // 输出 6
 <li>每个 goroutine 的子 goroutine 的异常也都需要分别捕获</li>
 </ul>
 <blockquote>
-<p>panic 和 recover 的组合有如下特性：</p>
-</blockquote>
+<p>panic 和 recover 的组合有如下特性：</p></blockquote>
 <p>Recover 是一个Go语言的内建函数，可以让进入宕机流程中的 goroutine 恢复过来，recover 仅在延迟函数 defer 中有效，在正常的执行过程中，调用 recover 会返回 nil 并且没有其他任何效果，如果当前的 goroutine 陷入恐慌，调用 recover 可以捕获到 panic 的输入值，并且恢复正常的执行。</p>
 <ul>
 <li>有 panic 没 recover，程序宕机。</li>
 <li>有 panic 也有 recover，程序不会宕机，执行完对应的 defer 后，从宕机点退出当前函数后继续执行。</li>
 </ul>
 <blockquote>
-<p>使用 supervisor 部署脚本</p>
-</blockquote>
+<p>使用 supervisor 部署脚本</p></blockquote>
 <p>协程内panic后，如果没有recover的话，主进程无法捕获协程的panic，主进程会直接挂掉。但我们是用supervisor运行主进程，supervisor会自动重启主进程，所以会出现主进程一直正常运行的情况。</p>
 <blockquote>
-<p>对于错误和异常是如何处理的？</p>
-</blockquote>
+<p>对于错误和异常是如何处理的？</p></blockquote>
 <ol>
 <li>对于错误，我们自己写代码处理掉</li>
 <li>对于异常（如协程上没有处理的 panic），系统会中断代码的运行，直接返回错误</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -424,32 +444,32 @@ fmt.Println(len([]rune(x))) // 输出 6
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 解决方案，定义一个通用的方法
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">GoSafe</span><span class="p">(</span><span class="nx">f</span> <span class="kd">func</span><span class="p">(),</span> <span class="nx">v</span> <span class="kd">interface</span><span class="p">{}){</span>
-    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="kd">interface</span><span class="p">{}){</span>
-        <span class="k">defer</span> <span class="kd">func</span><span class="p">(){</span>
-            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;panic: %+v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">}()</span>
-
-        <span class="nf">f</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
-    <span class="p">}(</span><span class="nx">v</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 解决方案，定义一个通用的方法</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">GoSafe</span><span class="p">(</span><span class="nx">f</span> <span class="kd">func</span><span class="p">(),</span> <span class="nx">v</span> <span class="kd">interface</span><span class="p">{}){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="kd">interface</span><span class="p">{}){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">defer</span> <span class="kd">func</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;panic: %+v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nf">f</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}(</span><span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="如何在http服务端程序中读取2次request-body">如何在http服务端程序中读取2次Request Body</h2>
 <p>在http服务端程序中,我想在真正处理Request Body之前将Body中的内容记录到日志中.</p>
 <p>实际上这一需求就是要在Request Body中读取2次数据，由于Body为<code>ReadCloser</code> 类型，读取一次之后就无法再次进行读取，就需要读取完之后对Body重新赋值来支持后续的读取操作, 网上一般都是这样实现的.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">bodyBytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">Body</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">NopCloser</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nf">NewBuffer</span><span class="p">(</span><span class="nx">bodyBytes</span><span class="p">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">bodyBytes</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">req</span><span class="p">.</span><span class="nx">Body</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">NopCloser</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nf">NewBuffer</span><span class="p">(</span><span class="nx">bodyBytes</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="超时退出导致goroutine泄漏问题">超时退出导致goroutine泄漏问题</h2>
 <p><code>做超时提前退出时，一定要注意代码中会不会出现 goroutine 泄漏！！！</code></p>
@@ -459,7 +479,7 @@ fmt.Println(len([]rune(x))) // 输出 6
 <p>解决这个 Bug 的办法很简单，就是将 unbuffered chan 改成容量为 1 的 chan（创建有缓冲区的channel），这样第 7 行就不会被阻塞了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -477,29 +497,29 @@ fmt.Println(len([]rune(x))) // 输出 6
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">process</span><span class="p">(</span><span class="nx">timeout</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-    <span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="c1">// 修改为：ch := make(chan bool, 1) 即可解决 goroutine 泄露问题
-</span><span class="c1"></span>
-    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// 模拟处理耗时的业务
-</span><span class="c1"></span>        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">((</span><span class="nx">timeout</span> <span class="o">+</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">))</span>
-        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="kc">true</span> <span class="c1">// 第7行，block，此处初选 goroutine 泄露
-</span><span class="c1"></span>        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exit goroutine&#34;</span><span class="p">)</span>
-    <span class="p">}()</span>
-    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">result</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nx">result</span>
-    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">timeout</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">false</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">process</span><span class="p">(</span><span class="nx">timeout</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="c1">// 修改为：ch := make(chan bool, 1) 即可解决 goroutine 泄露问题</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 模拟处理耗时的业务</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">((</span><span class="nx">timeout</span> <span class="o">+</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="kc">true</span> <span class="c1">// 第7行，block，此处初选 goroutine 泄露</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exit goroutine&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">result</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">result</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">timeout</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>设置缓冲区是一种方式，还有另一种方式：使用 select 尝试向信道 done 发送信号，如果发送失败，则说明缺少接收者(receiver)，即超时了，那么直接退出即可。</p>
 <p>select 优势：缓冲区不能够区分是否超时了，但是 select 可以（没有接收方，信道发送信号失败，则说明超时了）。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -521,31 +541,30 @@ fmt.Println(len([]rune(x))) // 输出 6
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">process</span><span class="p">(</span><span class="nx">timeout</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-    <span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="c1">// 修改为：ch := make(chan bool, 1) 即可解决 goroutine 泄露问题
-</span><span class="c1"></span>
-    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// 模拟处理耗时的业务
-</span><span class="c1"></span>        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">((</span><span class="nx">timeout</span> <span class="o">+</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">))</span>
-        <span class="k">select</span> <span class="p">{</span>
-            <span class="k">case</span> <span class="nx">ch</span> <span class="o">&lt;-</span><span class="kc">true</span><span class="p">:</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exit goroutine&#34;</span><span class="p">)</span>
-            <span class="k">default</span><span class="p">:</span>
-                <span class="k">return</span>
-        <span class="p">}</span>
-    <span class="p">}()</span>
-    <span class="k">select</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">result</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nx">result</span>
-    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">timeout</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">false</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">process</span><span class="p">(</span><span class="nx">timeout</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)</span> <span class="c1">// 修改为：ch := make(chan bool, 1) 即可解决 goroutine 泄露问题</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 模拟处理耗时的业务</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">((</span><span class="nx">timeout</span> <span class="o">+</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="nx">ch</span> <span class="o">&lt;-</span><span class="kc">true</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exit goroutine&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">result</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">result</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">timeout</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>强制 kill goroutine 可能吗？</p>
-</blockquote>
+<p>强制 kill goroutine 可能吗？</p></blockquote>
 <p>上面的例子，即时超时返回了，但是子协程仍在继续运行，直到自己退出。那么有可能在超时的时候，就强制关闭子协程吗？</p>
 <p>答案是不能，goroutine 只能自己退出，而不能被其他 goroutine 强制关闭或杀死。</p>
 <p>关于这个问题，Github 上也有讨论：</p>
@@ -561,7 +580,7 @@ fmt.Println(len([]rune(x))) // 输出 6
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -633,22 +652,19 @@ fmt.Println(len([]rune(x))) // 输出 6
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -662,7 +678,7 @@ fmt.Println(len([]rune(x))) // 输出 6
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

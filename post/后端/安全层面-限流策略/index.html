@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和acc" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和access.log,发现是API接口被刷,被恶意疯狂请求,最大一次大概120次/s。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="安全层面-限流策略" />
-<meta property="og:description" content="一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和acc" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-08-12T10:23:52&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-12T10:23:52&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="安全层面-限流策略">
+  <meta property="og:description" content="一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和access.log,发现是API接口被刷,被恶意疯狂请求,最大一次大概120次/s。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-08-12T10:23:52+08:00">
+    <meta property="article:modified_time" content="2021-08-12T10:23:52+08:00">
+    <meta property="article:tag" content="新球">
 
-<meta itemprop="name" content="安全层面-限流策略">
-<meta itemprop="description" content="一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和acc"><meta itemprop="datePublished" content="2021-08-12T10:23:52&#43;08:00" />
-<meta itemprop="dateModified" content="2021-08-12T10:23:52&#43;08:00" />
-<meta itemprop="wordCount" content="1307">
-<meta itemprop="keywords" content="新球," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="安全层面-限流策略"/>
-<meta name="twitter:description" content="一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和acc"/>
+  <meta itemprop="name" content="安全层面-限流策略">
+  <meta itemprop="description" content="一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和access.log,发现是API接口被刷,被恶意疯狂请求,最大一次大概120次/s。">
+  <meta itemprop="datePublished" content="2021-08-12T10:23:52+08:00">
+  <meta itemprop="dateModified" content="2021-08-12T10:23:52+08:00">
+  <meta itemprop="wordCount" content="1307">
+  <meta itemprop="keywords" content="新球">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="安全层面-限流策略">
+  <meta name="twitter:description" content="一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和access.log,发现是API接口被刷,被恶意疯狂请求,最大一次大概120次/s。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -172,7 +189,7 @@ user_agent,非正常信息或为空
 首先的话.就是控制单IP时间上的请求次数和IP连接数,配置如下:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -183,16 +200,16 @@ user_agent,非正常信息或为空
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">http <span class="o">{</span>
-    limit_req_zone <span class="nv">$binary_remote_addr</span> <span class="nv">zone</span><span class="o">=</span>one:1m <span class="nv">rate</span><span class="o">=</span>1r/s<span class="p">;</span>
-
-    server <span class="o">{</span>
-        location /api/ <span class="o">{</span>
-            limit_req <span class="nv">zone</span><span class="o">=</span>one <span class="nv">burst</span><span class="o">=</span>5<span class="p">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">http <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    limit_req_zone <span class="nv">$binary_remote_addr</span> <span class="nv">zone</span><span class="o">=</span>one:1m <span class="nv">rate</span><span class="o">=</span>1r/s<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        location /api/ <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            limit_req <span class="nv">zone</span><span class="o">=</span>one <span class="nv">burst</span><span class="o">=</span>5<span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>limit_req_zone主要控制单个IP的请求速率,使用漏桶算法来完成限制,limit_req_zone size,主要用于储存统计IP的请求信息,1M可以储存16000个IP,当每秒的请求超过了16000个的时候,其余访问都会被访问503 服务暂不可用。</p>
 <p>上面的模板设置了,每秒最大不超过1个请求,最大延迟请求不超过5个。</p>
@@ -201,7 +218,7 @@ user_agent,非正常信息或为空
 <p>限制完用户请求频率后,如果仍然还是存在很大的恶意请求,我们还可以进行并发数的限制。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -212,16 +229,16 @@ user_agent,非正常信息或为空
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">http <span class="o">{</span>
-    limit_conn_zone <span class="nv">$binary_remote_addr</span> <span class="nv">zone</span><span class="o">=</span>one:1m<span class="p">;</span>
-
-    server <span class="o">{</span>
-        location /api/ <span class="o">{</span>
-           limit_conn one 10<span class="p">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">http <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    limit_conn_zone <span class="nv">$binary_remote_addr</span> <span class="nv">zone</span><span class="o">=</span>one:1m<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        location /api/ <span class="o">{</span>
+</span></span><span class="line"><span class="cl">           limit_conn one 10<span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>limit_conn_zone：主要是用于控制请求并发数,频率不能太快。</p>
 <p>limit_conn_zone size跟limit_req_zone意思一致,可根据需要动态调控,上面的案例中,表示限制每个客户端IP最大并发连接数为10。</p>
@@ -229,32 +246,32 @@ user_agent,非正常信息或为空
 <p>当某个IP请求过于频繁或者需要完全杜绝该IP的访问时,可以通过nginx的deny配置来禁止黑名单中的IP访问。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">http <span class="o">{</span>
-    include blockip.conf<span class="p">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">http <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    include blockip.conf<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>黑名单配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">deny 195.91.112.66<span class="p">;</span>
-deny 192.168.2.100<span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">deny 195.91.112.66<span class="p">;</span>
+</span></span><span class="line"><span class="cl">deny 192.168.2.100<span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>被添加黑名单后,再次访问就会出现403禁止访问.</p>
 <h3 id="限制uauser-agent信息">限制UA(user-agent)信息</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -263,42 +280,42 @@ deny 192.168.2.100<span class="p">;</span>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">http <span class="o">{</span>
-    server <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="nv">$http_user_agent</span> ~* <span class="s2">&#34;curl&#34;</span><span class="o">)</span> <span class="o">{</span>
-          <span class="k">return</span> 403<span class="p">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">http <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    server <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="nv">$http_user_agent</span> ~* <span class="s2">&#34;curl&#34;</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> 403<span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面就禁止了ua信息为curl的客户端,直接返回403。</p>
 <p>禁止多个ua,通过|来隔断。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="k">if</span> <span class="o">(</span><span class="nv">$http_user_agent</span> ~* <span class="s2">&#34;curl|wget&#34;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">return</span> 403<span class="p">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="nv">$http_user_agent</span> ~* <span class="s2">&#34;curl|wget&#34;</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> 403<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="四限流策略laravel">(四)、限流策略(laravel)</h2>
 <p>在我们的laravel项目中,存在一个Throttle中间件,该策略,可以在应用层上面,有效抑制用户可以恶意请求,配置如下:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">Route::group<span class="o">([</span><span class="s1">&#39;middleware&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;throttle:30:1&#39;</span><span class="o">]</span>,function<span class="o">(){</span>
-    Route::any<span class="o">(</span><span class="s1">&#39;/login&#39;</span>, <span class="s1">&#39;LoginController@login&#39;</span><span class="o">)</span><span class="p">;</span>
-<span class="o">})</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Route::group<span class="o">([</span><span class="s1">&#39;middleware&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;throttle:30:1&#39;</span><span class="o">]</span>,function<span class="o">(){</span>
+</span></span><span class="line"><span class="cl">    Route::any<span class="o">(</span><span class="s1">&#39;/login&#39;</span>, <span class="s1">&#39;LoginController@login&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">})</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在throttle配置中,第一个参数控制了请求数,第二个参数用于控制请求频率,上面的配置表明,每个客户端IP每分钟最大请求30次 login路由。</p>
 <p>当客户端ip超出请求限制后,服务端就会返回429 Too Many Attempts.响应。</p>
@@ -307,15 +324,14 @@ deny 192.168.2.100<span class="p">;</span>
 <p>作者：葡萄酒不吐葡萄皮</p>
 <p>链接：https://segmentfault.com/a/1190000022812635?sort=newest###</p>
 <p>来源：segmentfault</p>
-<p>著作权归作者所有，任何形式的转载都请联系作者。</p>
-</blockquote>
+<p>著作权归作者所有，任何形式的转载都请联系作者。</p></blockquote>
 
     </div>
 
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -387,22 +403,19 @@ deny 192.168.2.100<span class="p">;</span>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -416,7 +429,7 @@ deny 192.168.2.100<span class="p">;</span>
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>redis on ZsmHub - Blog</title>
+    <title>Redis on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/redis/</link>
-    <description>Recent content in redis on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Redis on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 17 Oct 2023 10:55:26 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Oct 2023 10:55:26 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>redis lua 脚本</title>
       <link>https://zsmhub.github.io/post/database/redis-lua/</link>
       <pubDate>Tue, 17 Oct 2023 10:55:26 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/database/redis-lua/</guid>
-      <description>原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前</description>
+      <description>&lt;h2 id=&#34;原子执行&#34;&gt;原子执行&lt;/h2&gt;&#xA;&lt;p&gt;Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前命令指定的Lua脚本包含的所有逻辑，其它客户端发送的命令将被阻塞，直到EVAL命令执行完毕为止。因此LUA脚本不宜编写一些过于复杂了逻辑，必须尽量保证Lua脚本的效率，否则会影响其它客户端。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Redis</title>
       <link>https://zsmhub.github.io/post/database/redis/</link>
       <pubDate>Thu, 03 Jan 2019 22:38:49 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/database/redis/</guid>
-      <description>缓存分类 众所周知，不同的缓存速度是不同的，本地内存缓存 &amp;gt; redis/memcache &amp;gt; 磁盘缓存。 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使</description>
+      <description>&lt;h2 id=&#34;缓存分类&#34;&gt;缓存分类&lt;/h2&gt;&#xA;&lt;p&gt;众所周知，不同的缓存速度是不同的，本地内存缓存 &amp;gt; redis/memcache &amp;gt; 磁盘缓存。&lt;/p&gt;&#xA;&lt;p&gt;PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使用变量（如 map）实现本地内存缓存。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

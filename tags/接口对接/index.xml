@@ -4,18 +4,17 @@
     <title>接口对接 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5/</link>
     <description>Recent content in 接口对接 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 25 Dec 2019 21:44:01 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Dec 2019 21:44:01 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>接口对接安全性方案</title>
       <link>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/</link>
       <pubDate>Wed, 25 Dec 2019 21:44:01 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/</guid>
-      <description>接口对接安全性方案 鉴权（authentication）是指验证用户是否拥有访问系统的权利。 建立访问IP白名单 可以在nginx上配置只允许某些</description>
+      <description>&lt;h2 id=&#34;接口对接安全性方案&#34;&gt;接口对接安全性方案&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;鉴权（authentication）是指验证用户是否拥有访问系统的权利。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;建立访问IP白名单&#xA;可以在nginx上配置只允许某些固定IP可以访问 或者 在阿里云的服务器上直接配置IP白名单&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

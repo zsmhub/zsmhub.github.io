@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ZsmHub - Blog" />
-<meta property="og:description" content="This is a site of zsmhub-blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zsmhub.github.io/" />
+<meta property="og:url" content="https://zsmhub.github.io/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="ZsmHub - Blog">
+  <meta property="og:description" content="This is a site of zsmhub-blog.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ZsmHub - Blog">
-<meta itemprop="description" content="This is a site of zsmhub-blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ZsmHub - Blog"/>
-<meta name="twitter:description" content="This is a site of zsmhub-blog."/>
+  <meta itemprop="name" content="ZsmHub - Blog">
+  <meta itemprop="description" content="This is a site of zsmhub-blog.">
+  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ZsmHub - Blog">
+  <meta name="twitter:description" content="This is a site of zsmhub-blog.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -88,12 +93,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -112,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -120,115 +135,311 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%B4%A0%E6%8F%8F%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/">素描简单了解</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Git 基础知识</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-10-18 </span>
+      <span class="post-time"> 2019-10-02 </span>
       <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
+          <a href="/categories/other/"> other </a>
           </div>
-        <span class="more-meta"> 约 1222 字 </span>
+        <span class="more-meta"> 约 2260 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="git-简介">Git 简介</h2>
+<p>版本控制工具，分布式版本控制系统</p>
+<h2 id="git-commit-注释标记">git commit 注释标记</h2>
+<p><a href="https://ruby-china.org/topics/15737">参考文章</a></p>
+<ul>
+<li>feat: 添加新功能</li>
+<li>fix: 修复bug</li>
+<li>docs: 仅仅修改了文档</li>
+<li>style: 仅仅修改了空格、格式缩进等等，不改变代码逻辑</li>
+<li>refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代码变动)</li>
+<li>merge: 分支合并，解决冲突</li>
+<li>ui: 修改了一下样式</li>
+<li>test: 增加测试用例</li>
+<li>debug: 增加调试日志</li>
+<li>chore: 构建过程、辅助工具的变动</li>
+<li>perf: 提高性能</li>
+</ul>
+<h2 id="建立分支名规范">建立分支名规范</h2>
+<blockquote>
+<p>模板：开发者姓名拼音首字母_feat/fix_功能名</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/">Laravel 定时任务与常驻进程</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-09-04 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 2036 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="任务调度功能">任务调度功能</h2>
+<p>Laravel 命令行调度器允许你在 Laravel 中对命令调度进行清晰流畅的定义。且使用这个任务调度器时，你只需要在你的服务器上创建单个 Cron 入口接口。你的任务调度在 app/Console/Kernel.php 的 schedule 方法中进行定义。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/">Mysql 事务和锁</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-09-01 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 4508 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="事务是必须满足4个条件acid">事务是必须满足4个条件（ACID）</h2>
+<ul>
+<li>A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样</li>
+<li>C (Consistency) 一致性：在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏</li>
+<li>I (Isolation)隔离性：一个事务的执行不能其它事务干扰。即一个事务内部的操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能互相干扰</li>
+<li>D (Durability) 持久性：在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚</li>
+</ul>
+<h2 id="并发事务处理带来的问题">并发事务处理带来的问题</h2>
+<p>相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">Laravel 常用组件</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-08-01 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 1780 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="dingoapi">dingo/api</h2>
+<p>dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">composer require dingo/api
+</span></span><span class="line"><span class="cl">php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Dingo\Api\Provider\LaravelServiceProvider&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意点：</p></blockquote>
+<p>由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%85%A5%E9%97%A8/">Laravel 基础知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-08-01 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 6702 字 </span>
+        <span class="more-meta"> 预计阅读 14 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="php-框架运行的核心三步">php 框架运行的核心三步</h2>
+<ol>
+<li>从入口进入 index.php</li>
+<li>解析 url，匹配路由</li>
+<li>根据路由，调用控制器，渲染视图</li>
+</ol>
+<blockquote>
+<p>tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/laravel%E5%85%A5%E9%97%A8/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/web%E5%AE%89%E5%85%A8/%E9%BB%91%E5%AE%A2%E5%85%A5%E4%BE%B5/">黑客入侵</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-07-16 </span>
+      <div class="post-category">
+          <a href="/categories/web-%E5%AE%89%E5%85%A8/"> Web 安全 </a>
+          </div>
+        <span class="more-meta"> 约 1397 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      素描的定义 使用单一色彩表现明度变化的绘画。 素描是绘画的基础，绘画的骨骼；也是最节制、最需要理智来协助的艺术。 素描学习成长路线 第一阶段：素描石
+      <h2 id="前提">前提</h2>
+<p>网站被黑首先要检查搜索引擎页面收录情况，很多网站被黑页面会被修改标题后跳转，黑客通过挂马跳转到自己的网站，被跳转的页面已博彩和色情网站居多，黑客通过这种方式来截取流量，确认网站被黑之后应该迅速采取修复手段和后期预防手段，首先应该停止网站的运行，避免更多页面出现问题，然后清除被黑的内容，将被黑的页面设置为404，并通过搜索引擎的后台进行死链提交，还需要技术人员通过检测被黑的时间以及排除出被黑的原因及时把漏洞补上，常规的操作是更改网站关键密码，比如服务器、数据库、网站管理的密码、修复系统的补丁，代码层面的漏洞需要程序人员去检测后修复。</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%B4%A0%E6%8F%8F%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/" class="read-more-link">阅读更多</a>
+      <a href="/post/web%E5%AE%89%E5%85%A8/%E9%BB%91%E5%AE%A2%E5%85%A5%E4%BE%B5/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/">高并发处理</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-10-12 </span>
+      <span class="post-time"> 2019-07-06 </span>
       <div class="post-category">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
           </div>
-        <span class="more-meta"> 约 903 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1242 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们
+      <h2 id="高并发之问题描述">高并发之问题描述</h2>
+<blockquote>
+<p>某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种情况呢？生活给了我们答案：比如老式电闸都安装了保险丝，一旦有人使用超大功率的设备，保险丝就会烧断以保护各个电器不被强电流给烧坏。同理我们的接口也需要安装上“保险丝”，以防止非预期的请求对系统压力过大而引起的系统瘫痪，当流量过大时，可以采取拒绝或者引流等机制。</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/oltp%E5%92%8Colap/">OLTP和OLAP</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/database/nosql%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/">NoSQL 简单了解</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-10-10 </span>
+      <span class="post-time"> 2019-06-29 </span>
       <div class="post-category">
           <a href="/categories/database/"> database </a>
           </div>
-        <span class="more-meta"> 约 293 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="more-meta"> 约 1270 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。 OLTP vs OLAP 常见的 Oracle、MySQL 等数据库都属于 OLTP 类型
+      <p>NoSQL 数据库与传统的关系型数据库相比，它具有操作简单、完全免费、源码公开、随时下载等特点，并可以用于各种商业目的。</p>
+<p>这使 NoSQL 产品广泛应用于各种大型门户网站和专业网站，大大降低了运营成本。其中风头最劲的莫过于 MongoDB 了。</p>
     </div>
     <div class="read-more">
-      <a href="/post/database/oltp%E5%92%8Colap/" class="read-more-link">阅读更多</a>
+      <a href="/post/database/nosql%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%82%9F%E9%81%93/">悟道</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/ide/vscode/">Vscode</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-09-18 </span>
+      <span class="post-time"> 2019-06-19 </span>
       <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
+          <a href="/categories/ide/"> ide </a>
           </div>
-        <span class="more-meta"> 约 2729 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span class="more-meta"> 约 1124 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      禅 佛说，苦非苦，乐非乐，只是一时的执念而已。执于一念，将受困于一念；一念放下，会自在于心间。有些人，有些事，只可遇而不可求，既然这样，何不将
+      <h2 id="常用快捷键">常用快捷键</h2>
+<ul>
+<li>
+<p>cmd+P: 打开命令面板</p>
+<blockquote>
+<ol>
+<li>直接输入文件名，跳转到文件</li>
+<li>? 列出当前可执行的动作</li>
+<li>: 跳转到行数，也可以 Cmd+G 直接进入</li>
+<li>&gt; 显示并运行命令</li>
+<li>@ 函数名跳转</li>
+</ol></blockquote>
+</li>
+<li>
+<p>光标『多点编辑』</p>
+<blockquote>
+<ol>
+<li>option+click或option+cmd+up/option+cmd+down</li>
+<li>cmd+D: 搜索并选中下一个匹配值</li>
+<li>批量设置光标：cmd+shift+鼠标左键 或 cmd+鼠标左键</li>
+</ol></blockquote>
+</li>
+<li>
+<p>shift+cmd+; : 查找历史命令</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%82%9F%E9%81%93/" class="read-more-link">阅读更多</a>
+      <a href="/post/ide/vscode/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/">可视化工具</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/">SonarQube 代码质量管理平台</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-09-05 </span>
+      <span class="post-time"> 2019-06-15 </span>
       <div class="post-category">
-          <a href="/categories/other/"> other </a>
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
           </div>
-        <span class="more-meta"> 约 201 字 </span>
+        <span class="more-meta"> 约 441 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Metabase 概述 Metabase可以帮助你把数据库中的数据更好的呈现给更多人，数据分析人员通过建立一个”查询“（Metabase中定义为Questio
+      <h2 id="sonarlint-与-sonarqube">SonarLint 与 SonarQube</h2>
+<ul>
+<li>SonarLint 仅存在于 IDE（IntelliJ，Eclipse 和 Visual Studio）中。 其目的是在您键入代码时提供即时反馈。 为此，它专注于您要添加或更新的代码。</li>
+<li>SonarQube 是一个用于管理源代码质量的开放平台，它可以从多个维度检测代码质量，可以快速的定位代码中潜在的或者明显的 Bug、错误。它支持包括 Java、Python、Php、C/C++、C#、HTML、JavaScript、PL/SQL、Objective C 等二十多种编程语言的代码质量管理与检测。可作为我们日常开发中检测代码质量的重要工具。为此，它会定期分析项目的所有源代码行。</li>
+</ul>
+<p>简单的说 SonarLint 是 SonarQube 的单机版本。</p>
     </div>
     <div class="read-more">
-      <a href="/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -256,6 +467,8 @@
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
   
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -264,22 +477,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -293,7 +503,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

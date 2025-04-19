@@ -4,63 +4,52 @@
     <title>面试题 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
     <description>Recent content in 面试题 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 14 May 2020 09:23:17 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 May 2020 09:23:17 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大牛面试记录</title>
       <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%A4%A7%E7%89%9B%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Thu, 14 May 2020 09:23:17 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E5%A4%A7%E7%89%9B%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</guid>
-      <description>心得 本来想找PHP的，误打误撞发现广州的Golang和PHP混合用的公司还蛮多。 面试过程 看你简历里也有用过Go，Go和PHP在运行的时候有什</description>
+      <description>&lt;h2 id=&#34;心得&#34;&gt;心得&lt;/h2&gt;&#xA;&lt;p&gt;本来想找PHP的，误打误撞发现广州的Golang和PHP混合用的公司还蛮多。&lt;/p&gt;&#xA;&lt;h2 id=&#34;面试过程&#34;&gt;面试过程&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;看你简历里也有用过Go，Go和PHP在运行的时候有什么区别和优势？&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Golang 面试题</title>
       <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
       <pubDate>Sun, 22 Mar 2020 09:22:50 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      <description>常见问题 垃圾回收、内存模型、内存调优、并发 参考文章 go语言面试题 Golang面试问题汇总</description>
+      <description>&lt;h2 id=&#34;常见问题&#34;&gt;常见问题&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;垃圾回收、内存模型、内存调优、并发&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;参考文章&#34;&gt;参考文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://wen.topgoer.com/docs/gomianshiti/mianshiti&#34;&gt;go语言面试题&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/KeKe-Li/data-structures-questions/blob/master/src/chapter05/golang.01.md&#34;&gt;Golang面试问题汇总&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>经典案例</title>
       <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/</link>
       <pubDate>Fri, 21 Feb 2020 22:28:05 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/</guid>
-      <description>php vs go php 优点 array 结构无所不能，很强大 php 缺点 弱类型语言，同样的逻辑，写法过于多样，导致后期维护成本高。比如参数可定义可不定义，返回值可定义可不定</description>
+      <description>&lt;h2 id=&#34;php-vs-go&#34;&gt;php vs go&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;php 优点&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;array 结构无所不能，很强大&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;php 缺点&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;弱类型语言，同样的逻辑，写法过于多样，导致后期维护成本高。比如参数可定义可不定义，返回值可定义可不定义&lt;/li&gt;&#xA;&lt;li&gt;语言自身没有很好的支持并行运算&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;go 优点&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>SQL 面试题</title>
       <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
       <pubDate>Fri, 21 Feb 2020 09:11:06 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      <description>SQL 问题总结文章 MySQL 三万字精华总结 + 面试100 问，吊打面试官绰绰有余 面试题 假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用</description>
+      <description>&lt;h2 id=&#34;sql-问题总结文章&#34;&gt;SQL 问题总结文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/MCFHNOQnTtJ6MGVjM3DP4A&#34;&gt;MySQL 三万字精华总结 + 面试100 问，吊打面试官绰绰有余&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;面试题&#34;&gt;面试题&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条sql怎么写&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>面试汇总</title>
       <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</link>
       <pubDate>Sun, 09 Feb 2020 09:43:27 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</guid>
-      <description>题库 2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总 参考原文 如何避坑公司 话说正规的公司是怎么样的</description>
+      <description>&lt;h2 id=&#34;题库&#34;&gt;题库&lt;/h2&gt;&#xA;&lt;p&gt;2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/0voice/interview_internal_reference&#34;&gt;参考原文&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;如何避坑公司&#34;&gt;如何避坑公司&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;话说正规的公司是怎么样的？&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;面试通过后，入职前必须让入职公司提前发 offer 邮件, offer 就是聘用通知书&lt;/li&gt;&#xA;&lt;li&gt;入职当天办理入职相关手续，去签入职合同&lt;/li&gt;&#xA;&lt;li&gt;入职后一般都要问清楚如何考勤&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;找公司经验&#34;&gt;找公司经验&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;一般毕业生不考虑创业公司，创业公司有很多缺点，如容易倒闭，容易拖欠工资等，千万不要轻易相信公司那些人画大饼，画大饼就是说出很多你加入本公司的好处&lt;/li&gt;&#xA;&lt;li&gt;投简历前，先上 百度或知乎 等平台查查这家公司或学校的基本信息，如员工人数，公司评价等，看好后再投简历也不迟&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/57298422&#34;&gt;跳槽找工作避坑指南（2019版）&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>中高级PHP面试题</title>
       <link>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
       <pubDate>Sun, 09 Feb 2020 09:28:00 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      <description>前言 定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。 建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就</description>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。&lt;/p&gt;&#xA;&lt;p&gt;建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就问得出来。面试题只是帮助我们了解自己技术方面的缺陷，背几个面试题对自己没有任何帮助。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

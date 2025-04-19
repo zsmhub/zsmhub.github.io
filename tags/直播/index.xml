@@ -4,18 +4,17 @@
     <title>直播 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E7%9B%B4%E6%92%AD/</link>
     <description>Recent content in 直播 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 26 Aug 2021 16:46:41 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E7%9B%B4%E6%92%AD/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Aug 2021 16:46:41 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E7%9B%B4%E6%92%AD/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>直播开发</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/</link>
       <pubDate>Thu, 26 Aug 2021 16:46:41 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/</guid>
-      <description>腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称</description>
+      <description>&lt;h2 id=&#34;腾讯云直播&#34;&gt;腾讯云直播&lt;/h2&gt;&#xA;&lt;p&gt;使用腾讯 云直播·标准直播 产品进行直播需求开发&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/product/lvb/developer&#34;&gt;产品文档&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;推流&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称为“RTMP 发布”。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;拉流&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;即直播播放，指已实现直播推流之后，用指定地址将腾讯视频云服务器中的视频源和音频源拉取播放的过程。其视频源是实时生成的，有人推流直播才有意义，一旦主播停播，直播 URL 也就失效了。而且由于是实时直播，所以播放器在播直播视频的时候是没有进度条的。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

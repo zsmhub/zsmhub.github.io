@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="免费许可证计划 官网-开源开发许可证 用开源项目申请JetBrains正版授权-教程 常用快捷键 GoLand快捷键说明文章 Goland 快捷键整理 1 2 3 4 5 6" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="免费许可证计划 官网-开源开发许可证
+用开源项目申请JetBrains正版授权-教程
+常用快捷键 GoLand快捷键说明文章 Goland 快捷键整理 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 Double shift: 查找任何东西（包括代码、文件路径） command &#43; shift &#43; f: 查找函数/代码位置 command &#43; , : 打开ide配置 command &#43; option &#43; L: 代码格式化（默认1个tab会转换为4个空格） command &#43; B: 跳转函数定义位置，第二次按回到调用位置 command &#43; L: 在当前文件跳转到某一行的指定处 command &#43; D: duplicate current line command &#43; C: copy current line command &#43; delete: 删除当前行 command &#43; E: 打开最近浏览过的的文件 command &#43; Shift &#43; 加号: 展开所以代码块 command &#43; Shift &#43; 减号: 折叠所有代码块 command &#43; [ : 光标回退到上个光标位置 command &#43; ] : 光标回退到后个光标位置 command &#43; option &#43; / : 块注释 command &#43; n : 代码生成快捷键 control &#43; g: 选中下一个相同的文本，可同时编辑 control &#43; J: 快速查看代码相关文档 control &#43; R / control&#43;shift&#43;R: go run test.go command &#43; ctrl &#43; g: 选中文件中所有相同的内容 shift &#43; esc: 关闭 Run 窗口 Tab / Shift &#43; Tab: 缩进代码 / 反缩进代码 # 自定义快捷键 option &#43; L: 选中当前行 [setting-kaymap -&gt; select line at caset] option &#43; 鼠标左键：设置多个光标，同时编辑多个地方 # 方向键 control&#43;p: 光标向上移动一行 control&#43;n: 光标向下移动一行 control&#43;b: 光标向左移动一格 control&#43;f: 光标向右移动一格 PHPStorm 常用插件 SonarLint: 代码静态提示
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/ide/jetbrains/" />
@@ -35,24 +38,36 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="JetBrains" />
-<meta property="og:description" content="免费许可证计划 官网-开源开发许可证 用开源项目申请JetBrains正版授权-教程 常用快捷键 GoLand快捷键说明文章 Goland 快捷键整理 1 2 3 4 5 6" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/ide/jetbrains/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-05-19T21:09:40&#43;08:00" />
-<meta property="article:modified_time" content="2020-05-19T21:09:40&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/ide/jetbrains/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="JetBrains">
+  <meta property="og:description" content="免费许可证计划 官网-开源开发许可证
+用开源项目申请JetBrains正版授权-教程
+常用快捷键 GoLand快捷键说明文章 Goland 快捷键整理 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 Double shift: 查找任何东西（包括代码、文件路径） command &#43; shift &#43; f: 查找函数/代码位置 command &#43; , : 打开ide配置 command &#43; option &#43; L: 代码格式化（默认1个tab会转换为4个空格） command &#43; B: 跳转函数定义位置，第二次按回到调用位置 command &#43; L: 在当前文件跳转到某一行的指定处 command &#43; D: duplicate current line command &#43; C: copy current line command &#43; delete: 删除当前行 command &#43; E: 打开最近浏览过的的文件 command &#43; Shift &#43; 加号: 展开所以代码块 command &#43; Shift &#43; 减号: 折叠所有代码块 command &#43; [ : 光标回退到上个光标位置 command &#43; ] : 光标回退到后个光标位置 command &#43; option &#43; / : 块注释 command &#43; n : 代码生成快捷键 control &#43; g: 选中下一个相同的文本，可同时编辑 control &#43; J: 快速查看代码相关文档 control &#43; R / control&#43;shift&#43;R: go run test.go command &#43; ctrl &#43; g: 选中文件中所有相同的内容 shift &#43; esc: 关闭 Run 窗口 Tab / Shift &#43; Tab: 缩进代码 / 反缩进代码 # 自定义快捷键 option &#43; L: 选中当前行 [setting-kaymap -&gt; select line at caset] option &#43; 鼠标左键：设置多个光标，同时编辑多个地方 # 方向键 control&#43;p: 光标向上移动一行 control&#43;n: 光标向下移动一行 control&#43;b: 光标向左移动一格 control&#43;f: 光标向右移动一格 PHPStorm 常用插件 SonarLint: 代码静态提示">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-05-19T21:09:40+08:00">
+    <meta property="article:modified_time" content="2020-05-19T21:09:40+08:00">
+    <meta property="article:tag" content="Ide">
 
-<meta itemprop="name" content="JetBrains">
-<meta itemprop="description" content="免费许可证计划 官网-开源开发许可证 用开源项目申请JetBrains正版授权-教程 常用快捷键 GoLand快捷键说明文章 Goland 快捷键整理 1 2 3 4 5 6"><meta itemprop="datePublished" content="2020-05-19T21:09:40&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-19T21:09:40&#43;08:00" />
-<meta itemprop="wordCount" content="1051">
-<meta itemprop="keywords" content="ide," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="JetBrains"/>
-<meta name="twitter:description" content="免费许可证计划 官网-开源开发许可证 用开源项目申请JetBrains正版授权-教程 常用快捷键 GoLand快捷键说明文章 Goland 快捷键整理 1 2 3 4 5 6"/>
+  <meta itemprop="name" content="JetBrains">
+  <meta itemprop="description" content="免费许可证计划 官网-开源开发许可证
+用开源项目申请JetBrains正版授权-教程
+常用快捷键 GoLand快捷键说明文章 Goland 快捷键整理 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 Double shift: 查找任何东西（包括代码、文件路径） command &#43; shift &#43; f: 查找函数/代码位置 command &#43; , : 打开ide配置 command &#43; option &#43; L: 代码格式化（默认1个tab会转换为4个空格） command &#43; B: 跳转函数定义位置，第二次按回到调用位置 command &#43; L: 在当前文件跳转到某一行的指定处 command &#43; D: duplicate current line command &#43; C: copy current line command &#43; delete: 删除当前行 command &#43; E: 打开最近浏览过的的文件 command &#43; Shift &#43; 加号: 展开所以代码块 command &#43; Shift &#43; 减号: 折叠所有代码块 command &#43; [ : 光标回退到上个光标位置 command &#43; ] : 光标回退到后个光标位置 command &#43; option &#43; / : 块注释 command &#43; n : 代码生成快捷键 control &#43; g: 选中下一个相同的文本，可同时编辑 control &#43; J: 快速查看代码相关文档 control &#43; R / control&#43;shift&#43;R: go run test.go command &#43; ctrl &#43; g: 选中文件中所有相同的内容 shift &#43; esc: 关闭 Run 窗口 Tab / Shift &#43; Tab: 缩进代码 / 反缩进代码 # 自定义快捷键 option &#43; L: 选中当前行 [setting-kaymap -&gt; select line at caset] option &#43; 鼠标左键：设置多个光标，同时编辑多个地方 # 方向键 control&#43;p: 光标向上移动一行 control&#43;n: 光标向下移动一行 control&#43;b: 光标向左移动一格 control&#43;f: 光标向右移动一格 PHPStorm 常用插件 SonarLint: 代码静态提示">
+  <meta itemprop="datePublished" content="2020-05-19T21:09:40+08:00">
+  <meta itemprop="dateModified" content="2020-05-19T21:09:40+08:00">
+  <meta itemprop="wordCount" content="1051">
+  <meta itemprop="keywords" content="Ide">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JetBrains">
+  <meta name="twitter:description" content="免费许可证计划 官网-开源开发许可证
+用开源项目申请JetBrains正版授权-教程
+常用快捷键 GoLand快捷键说明文章 Goland 快捷键整理 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 Double shift: 查找任何东西（包括代码、文件路径） command &#43; shift &#43; f: 查找函数/代码位置 command &#43; , : 打开ide配置 command &#43; option &#43; L: 代码格式化（默认1个tab会转换为4个空格） command &#43; B: 跳转函数定义位置，第二次按回到调用位置 command &#43; L: 在当前文件跳转到某一行的指定处 command &#43; D: duplicate current line command &#43; C: copy current line command &#43; delete: 删除当前行 command &#43; E: 打开最近浏览过的的文件 command &#43; Shift &#43; 加号: 展开所以代码块 command &#43; Shift &#43; 减号: 折叠所有代码块 command &#43; [ : 光标回退到上个光标位置 command &#43; ] : 光标回退到后个光标位置 command &#43; option &#43; / : 块注释 command &#43; n : 代码生成快捷键 control &#43; g: 选中下一个相同的文本，可同时编辑 control &#43; J: 快速查看代码相关文档 control &#43; R / control&#43;shift&#43;R: go run test.go command &#43; ctrl &#43; g: 选中文件中所有相同的内容 shift &#43; esc: 关闭 Run 窗口 Tab / Shift &#43; Tab: 缩进代码 / 反缩进代码 # 自定义快捷键 option &#43; L: 选中当前行 [setting-kaymap -&gt; select line at caset] option &#43; 鼠标左键：设置多个光标，同时编辑多个地方 # 方向键 control&#43;p: 光标向上移动一行 control&#43;n: 光标向下移动一行 control&#43;b: 光标向左移动一格 control&#43;f: 光标向右移动一格 PHPStorm 常用插件 SonarLint: 代码静态提示">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +106,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +139,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -170,7 +195,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -209,44 +234,44 @@
 </span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">Double shift: 查找任何东西（包括代码、文件路径）
-
-<span class="nb">command</span> + <span class="nb">shift</span> + f: 查找函数/代码位置
-<span class="nb">command</span> + , : 打开ide配置
-<span class="nb">command</span> + option + L: 代码格式化（默认1个tab会转换为4个空格）
-<span class="nb">command</span> + B: 跳转函数定义位置，第二次按回到调用位置
-<span class="nb">command</span> + L: 在当前文件跳转到某一行的指定处
-<span class="nb">command</span> + D: duplicate current line
-<span class="nb">command</span> + C: copy current line
-<span class="nb">command</span> + delete: 删除当前行
-<span class="nb">command</span> + E: 打开最近浏览过的的文件
-<span class="nb">command</span> + Shift + 加号: 展开所以代码块
-<span class="nb">command</span> + Shift + 减号: 折叠所有代码块
-<span class="nb">command</span> + <span class="o">[</span> : 光标回退到上个光标位置
-<span class="nb">command</span> + <span class="o">]</span> : 光标回退到后个光标位置
-<span class="nb">command</span> + option + / : 块注释
-<span class="nb">command</span> + n : 代码生成快捷键
-
-control + g: 选中下一个相同的文本，可同时编辑
-control + J: 快速查看代码相关文档
-control + R / control+shift+R: go run test.go
-
-<span class="nb">command</span> + ctrl + g: 选中文件中所有相同的内容
-
-<span class="nb">shift</span> + esc: 关闭 Run 窗口
-
-Tab / Shift + Tab: 缩进代码 / 反缩进代码
-
-<span class="c1"># 自定义快捷键</span>
-option + L: 选中当前行 <span class="o">[</span>setting-kaymap -&gt; <span class="k">select</span> line at caset<span class="o">]</span>
-option + 鼠标左键：设置多个光标，同时编辑多个地方
-
-<span class="c1"># 方向键</span>
-control+p: 光标向上移动一行
-control+n: 光标向下移动一行
-control+b: 光标向左移动一格
-control+f: 光标向右移动一格
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Double shift: 查找任何东西（包括代码、文件路径）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + <span class="nb">shift</span> + f: 查找函数/代码位置
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + , : 打开ide配置
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + option + L: 代码格式化（默认1个tab会转换为4个空格）
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + B: 跳转函数定义位置，第二次按回到调用位置
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + L: 在当前文件跳转到某一行的指定处
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + D: duplicate current line
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + C: copy current line
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + delete: 删除当前行
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + E: 打开最近浏览过的的文件
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + Shift + 加号: 展开所以代码块
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + Shift + 减号: 折叠所有代码块
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + <span class="o">[</span> : 光标回退到上个光标位置
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + <span class="o">]</span> : 光标回退到后个光标位置
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + option + / : 块注释
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + n : 代码生成快捷键
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">control + g: 选中下一个相同的文本，可同时编辑
+</span></span><span class="line"><span class="cl">control + J: 快速查看代码相关文档
+</span></span><span class="line"><span class="cl">control + R / control+shift+R: go run test.go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> + ctrl + g: 选中文件中所有相同的内容
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">shift</span> + esc: 关闭 Run 窗口
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Tab / Shift + Tab: 缩进代码 / 反缩进代码
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 自定义快捷键</span>
+</span></span><span class="line"><span class="cl">option + L: 选中当前行 <span class="o">[</span>setting-kaymap -&gt; <span class="k">select</span> line at caset<span class="o">]</span>
+</span></span><span class="line"><span class="cl">option + 鼠标左键：设置多个光标，同时编辑多个地方
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 方向键</span>
+</span></span><span class="line"><span class="cl">control+p: 光标向上移动一行
+</span></span><span class="line"><span class="cl">control+n: 光标向下移动一行
+</span></span><span class="line"><span class="cl">control+b: 光标向左移动一格
+</span></span><span class="line"><span class="cl">control+f: 光标向右移动一格
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="phpstorm-常用插件">PHPStorm 常用插件</h2>
 <ul>
@@ -257,11 +282,11 @@ control+f: 光标向右移动一格
 <p>PHP Inspections: 进行代码静态分析</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">option + Shift + I to inspect current file with current profile
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">option + Shift + I to inspect current file with current profile
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -279,34 +304,31 @@ control+f: 光标向右移动一格
 <li>
 <p>Go Linter 静态代码检查</p>
 <blockquote>
-<p>常用命令</p>
-</blockquote>
+<p>常用命令</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 我们在程序根目录中执行 golangci-lint run 命令，它等效于 golangci-lint run ./...</span>
-golangci-lint run
-
-<span class="c1"># 查看帮助文档</span>
-golangci-lint <span class="nb">help</span> linters
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 我们在程序根目录中执行 golangci-lint run 命令，它等效于 golangci-lint run ./...</span>
+</span></span><span class="line"><span class="cl">golangci-lint run
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看帮助文档</span>
+</span></span><span class="line"><span class="cl">golangci-lint <span class="nb">help</span> linters
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>需手动做下配置</p>
-</blockquote>
+<p>需手动做下配置</p></blockquote>
 <p><img src="/images/2020/QQ20200804-142546@2x.png" alt="Go Linter配置"></p>
 </li>
 </ul>
 <h2 id="常用配置">常用配置</h2>
 <blockquote>
-<p>在没有项目的界面上设置，才会全局使用，不用每个项目都配置</p>
-</blockquote>
+<p>在没有项目的界面上设置，才会全局使用，不用每个项目都配置</p></blockquote>
 <p>Go -&gt; Go Modules: 修改 Proxy 为 <code>https://goproxy.io,direct</code></p>
 <p>Go -&gt; GOOPATH</p>
 <h2 id="go-开发的坑">Go 开发的坑</h2>
@@ -315,8 +337,7 @@ golangci-lint <span class="nb">help</span> linters
 <p>Go 代码格式化的坑：</p>
 <blockquote>
 <p>golang 自带的 go fmt 默认是是 tab 缩进，</p>
-<p>而 goland IDE 的格式化默认是空格缩进【快捷键：option+command+L】</p>
-</blockquote>
+<p>而 goland IDE 的格式化默认是空格缩进【快捷键：option+command+L】</p></blockquote>
 </li>
 <li>
 <p>取消拖拽代码的功能：在 Editor –&gt; General 中看到一项叫 Enable Drag’n’Drop functionality in Editor，取消勾选</p>
@@ -325,8 +346,7 @@ golangci-lint <span class="nb">help</span> linters
 <h2 id="ide-配置">IDE 配置</h2>
 <h3 id="tools---file-watchers">Tools -&gt; File Watchers</h3>
 <blockquote>
-<p>注意：每次添加新项目时，都需要手动重新设置</p>
-</blockquote>
+<p>注意：每次添加新项目时，都需要手动重新设置</p></blockquote>
 <ul>
 <li>添加 go fmt // 文件保存时代码自动格式化【暂不使用】</li>
 <li>添加 golangci-lint // 常用的静态检查工具，官方自带的是 golint，二者都安装代码检查效果更好</li>
@@ -335,7 +355,7 @@ golangci-lint <span class="nb">help</span> linters
 <p>添加代码模板，快捷键输出对应代码模板</p>
 <p>例子：</p>
 <ol>
-<li>gorm-string =&gt; gorm:&ldquo;type:varchar(30);not null;default:'';comment:;&rdquo; json:&quot;$FIELD_NAME$&quot;</li>
+<li>gorm-string =&gt; gorm:&ldquo;type:varchar(30);not null;default:&rsquo;&rsquo;;comment:;&rdquo; json:&quot;$FIELD_NAME$&quot;</li>
 <li>jfqv =&gt; json:&quot;$FIELD_NAME$&quot; form:&quot;$FIELD_NAME$&quot; query:&quot;$FIELD_NAME$&quot; validate:&ldquo;required&rdquo;</li>
 </ol>
 <p><img src="/images/2023/WX20230208-170529.png" alt="步骤一"></p>
@@ -351,7 +371,7 @@ golangci-lint <span class="nb">help</span> linters
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -423,22 +443,19 @@ golangci-lint <span class="nb">help</span> linters
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -452,7 +469,7 @@ golangci-lint <span class="nb">help</span> linters
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

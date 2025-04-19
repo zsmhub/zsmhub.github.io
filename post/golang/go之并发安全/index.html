@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单，而且不容易出错。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Go之并发安全" />
-<meta property="og:description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-08-23T20:57:43&#43;08:00" />
-<meta property="article:modified_time" content="2022-05-23T20:57:43&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Go之并发安全">
+  <meta property="og:description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单，而且不容易出错。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-08-23T20:57:43+08:00">
+    <meta property="article:modified_time" content="2022-05-23T20:57:43+08:00">
+    <meta property="article:tag" content="并发安全">
 
-<meta itemprop="name" content="Go之并发安全">
-<meta itemprop="description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单"><meta itemprop="datePublished" content="2020-08-23T20:57:43&#43;08:00" />
-<meta itemprop="dateModified" content="2022-05-23T20:57:43&#43;08:00" />
-<meta itemprop="wordCount" content="4017">
-<meta itemprop="keywords" content="并发安全," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go之并发安全"/>
-<meta name="twitter:description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单"/>
+  <meta itemprop="name" content="Go之并发安全">
+  <meta itemprop="description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单，而且不容易出错。">
+  <meta itemprop="datePublished" content="2020-08-23T20:57:43+08:00">
+  <meta itemprop="dateModified" content="2022-05-23T20:57:43+08:00">
+  <meta itemprop="wordCount" content="4017">
+  <meta itemprop="keywords" content="并发安全">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Go之并发安全">
+  <meta name="twitter:description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单，而且不容易出错。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -175,8 +192,7 @@
 <h2 id="分段锁concurrentmapmap读写锁syncmap的效率测试">分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</h2>
 <p><a href="https://blog.csdn.net/yzf279533105/article/details/98636679">原文：go 分段锁ConcurrentMap，map+读写锁，sync.map的效率测试</a></p>
 <blockquote>
-<p>效率测试结论：</p>
-</blockquote>
+<p>效率测试结论：</p></blockquote>
 <ol>
 <li>go 自带的 map 不是多协程安全的</li>
 <li>分段锁 ConcurrentMap 是多协程安全的，且效率最高；sync.map 效率次之，传统的 map + 读写锁效率最低</li>
@@ -190,7 +206,7 @@
 <p>Golang 在运行时会在 map 的增改删查过程中检测是否有并发读写的情况，当发现并发读写时直接异常退出。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -263,83 +279,83 @@
 </span><span class="lnt">71
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;sync&#34;</span>
-    <span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">//题目
-</span><span class="c1">//如果我们列出10以下所有能够被3或者5整除的自然数，那么我们得到的是3，5，6和9。这四个数的和是23。
-</span><span class="c1">//那么请计算1000以下（不包括1000）的所有能够被3或者5整除的自然数的和。
-</span><span class="c1">//
-</span><span class="c1">//这个题目的一个思路就是：
-</span><span class="c1">//
-</span><span class="c1">//(1) 先计算1000以下所有能够被3整除的整数的和A，
-</span><span class="c1">//(2) 然后计算1000以下所有能够被5整除的整数和B，
-</span><span class="c1">//(3) 然后再计算1000以下所有能够被3和5整除的整数和C，
-</span><span class="c1">//(4) 使用A+B-C就得到了最后的结果。
-</span><span class="c1"></span>
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">sum</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
-    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
-
-    <span class="nx">limit</span> <span class="o">:=</span> <span class="mi">1000</span> <span class="c1">// 最大数
-</span><span class="c1"></span>    <span class="nx">startTime</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
-
-    <span class="nx">divider3</span> <span class="o">:=</span> <span class="mi">3</span>
-    <span class="nx">divider5</span> <span class="o">:=</span> <span class="mi">5</span>
-    <span class="nx">divider15</span> <span class="o">:=</span> <span class="mi">15</span>
-
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider3</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
-    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider5</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
-    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider15</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span> <span class="c1">// 此处阻塞，等所有协程跑完才会执行下面的代码
-</span><span class="c1"></span>
-    <span class="nx">sum3</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider3</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider3</span><span class="p">)</span>
-        <span class="k">return</span>
-    <span class="p">}</span>
-
-    <span class="nx">sum5</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider5</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider5</span><span class="p">)</span>
-        <span class="k">return</span>
-    <span class="p">}</span>
-
-    <span class="nx">sum15</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider15</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider15</span><span class="p">)</span>
-        <span class="k">return</span>
-    <span class="p">}</span>
-
-    <span class="nx">total</span> <span class="o">:=</span> <span class="nx">sum3</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="nx">sum5</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span> <span class="o">-</span> <span class="nx">sum15</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span>
-
-    <span class="nx">endTime</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;耗时：&#34;</span><span class="p">,</span> <span class="nx">endTime</span><span class="p">.</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">startTime</span><span class="p">))</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;计算结果：&#34;</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">num</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">divider</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">sum</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-    <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="nx">value</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">value</span> <span class="p">&lt;</span> <span class="nx">num</span><span class="p">;</span> <span class="nx">value</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">value</span><span class="o">%</span><span class="nx">divider</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-            <span class="nx">total</span> <span class="o">+=</span> <span class="nx">value</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">sum</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="nx">divider</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//题目</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//如果我们列出10以下所有能够被3或者5整除的自然数，那么我们得到的是3，5，6和9。这四个数的和是23。</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//那么请计算1000以下（不包括1000）的所有能够被3或者5整除的自然数的和。</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//这个题目的一个思路就是：</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//(1) 先计算1000以下所有能够被3整除的整数的和A，</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//(2) 然后计算1000以下所有能够被5整除的整数和B，</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//(3) 然后再计算1000以下所有能够被3和5整除的整数和C，</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//(4) 使用A+B-C就得到了最后的结果。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">sum</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">limit</span> <span class="o">:=</span> <span class="mi">1000</span> <span class="c1">// 最大数</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">startTime</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">divider3</span> <span class="o">:=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">divider5</span> <span class="o">:=</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">divider15</span> <span class="o">:=</span> <span class="mi">15</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider3</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider5</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">limit</span><span class="p">,</span> <span class="nx">divider15</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">sum</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span> <span class="c1">// 此处阻塞，等所有协程跑完才会执行下面的代码</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">sum3</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">sum5</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">sum15</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">divider15</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;数据异常，没获取到key:&#34;</span><span class="p">,</span> <span class="nx">divider15</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">total</span> <span class="o">:=</span> <span class="nx">sum3</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span> <span class="o">+</span> <span class="nx">sum5</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span> <span class="o">-</span> <span class="nx">sum15</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">endTime</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;耗时：&#34;</span><span class="p">,</span> <span class="nx">endTime</span><span class="p">.</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">startTime</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;计算结果：&#34;</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">get_sum_of_divisible</span><span class="p">(</span><span class="nx">num</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">divider</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">sum</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">value</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">value</span> <span class="p">&lt;</span> <span class="nx">num</span><span class="p">;</span> <span class="nx">value</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">value</span><span class="o">%</span><span class="nx">divider</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">total</span> <span class="o">+=</span> <span class="nx">value</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sum</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="nx">divider</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="并发限流案例">并发限流案例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -382,48 +398,48 @@
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">nextId</span> <span class="kt">uint64</span>
-    <span class="nx">limit</span>  <span class="kt">int</span> <span class="p">=</span> <span class="mi">1000</span>
-    <span class="nx">endAt</span>      <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02&#34;</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{},</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// 限制最高并发10
-</span><span class="c1"></span><span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
-
-<span class="k">for</span> <span class="p">{</span>
-    <span class="nx">data</span> <span class="o">:=</span> <span class="nf">GetList</span><span class="p">(</span><span class="nx">nextId</span><span class="p">,</span> <span class="nx">endAt</span><span class="p">,</span> <span class="nx">limit</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
-        <span class="k">break</span>
-    <span class="p">}</span>
-
-    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">data</span> <span class="p">{</span>
-        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="kd">struct</span><span class="p">{}{}</span>
-        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="nx">nextId</span> <span class="p">&lt;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span> <span class="p">{</span>
-            <span class="nx">nextId</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span>
-        <span class="p">}</span>
-
-        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="nx">model_interact</span><span class="p">.</span><span class="nx">Rabbit</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">defer</span> <span class="nb">recover</span><span class="p">()</span>
-            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-            <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-                <span class="o">&lt;-</span><span class="nx">ch</span>
-            <span class="p">}()</span>
-            <span class="nf">UpdateByUserId</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">UserId</span><span class="p">,</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span>
-                <span class="s">&#34;challenge_chance&#34;</span><span class="p">:</span>        <span class="nx">gorm</span><span class="p">.</span><span class="nf">Expr</span><span class="p">(</span><span class="s">&#34;challenge_chance+?&#34;</span><span class="p">,</span> <span class="nx">model_interact</span><span class="p">.</span><span class="nx">RabbitMaxChallengeTimes</span><span class="p">),</span>
-            <span class="p">})</span>
-        <span class="p">}(</span><span class="nx">v</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">&lt;</span> <span class="nx">limit</span> <span class="p">{</span>
-        <span class="k">break</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">nextId</span> <span class="kt">uint64</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">limit</span>  <span class="kt">int</span> <span class="p">=</span> <span class="mi">1000</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">endAt</span>      <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{},</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// 限制最高并发10</span>
+</span></span><span class="line"><span class="cl"><span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span> <span class="o">:=</span> <span class="nf">GetList</span><span class="p">(</span><span class="nx">nextId</span><span class="p">,</span> <span class="nx">endAt</span><span class="p">,</span> <span class="nx">limit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">data</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="kd">struct</span><span class="p">{}{}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">nextId</span> <span class="p">&lt;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">nextId</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Id</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="nx">model_interact</span><span class="p">.</span><span class="nx">Rabbit</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">defer</span> <span class="nb">recover</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;-</span><span class="nx">ch</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">UpdateByUserId</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">UserId</span><span class="p">,</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;challenge_chance&#34;</span><span class="p">:</span>        <span class="nx">gorm</span><span class="p">.</span><span class="nf">Expr</span><span class="p">(</span><span class="s">&#34;challenge_chance+?&#34;</span><span class="p">,</span> <span class="nx">model_interact</span><span class="p">.</span><span class="nx">RabbitMaxChallengeTimes</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}(</span><span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">&lt;</span> <span class="nx">limit</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="互斥锁的执行顺序">互斥锁的执行顺序</h2>
 <p>如果 Mutex 已经被一个 goroutine 获取了锁，其它等待中的 goroutine 们只能一直等待。那么，等这个锁释放后，等待中的 goroutine 中哪一个会优先获取 Mutex 呢？</p>
@@ -449,12 +465,11 @@
 <p>SingleFlight 是 Go 开发组提供的一个扩展并发原语。它的作用是，在处理多个 goroutine 同时调用同一个函数的时候，只让一个 goroutine 去调用这个函数，等到这个 goroutine 返回结果的时候，再把结果返回给这几个同时调用的 goroutine，这样可以减少并发调用的数量。</p>
 <p>使用场景: 如防缓存击穿、减少并发读库以提高性能、减少并发写相同数据以提高性能。</p>
 <blockquote>
-<p>标准库中的 sync.Once 也可以保证并发的 goroutine 只会执行一次函数 f，那么，SingleFlight 和 sync.Once 有什么区别呢？</p>
-</blockquote>
+<p>标准库中的 sync.Once 也可以保证并发的 goroutine 只会执行一次函数 f，那么，SingleFlight 和 sync.Once 有什么区别呢？</p></blockquote>
 <p>其实，sync.Once 不是只在并发的时候保证只有一个 goroutine 执行函数 f，而是会保证永远只执行一次，而 SingleFlight 是每次调用都重新执行，并且在多个请求同时调用的时候只有一个执行。它们两个面对的场景是不同的，sync.Once 主要是用在单次初始化场景中，而 SingleFlight 主要用在合并并发请求的场景中，尤其是缓存场景。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -501,59 +516,59 @@
 </span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;golang.org/x/sync/singleflight&#34;</span>
-    <span class="s">&#34;sync&#34;</span>
-    <span class="s">&#34;sync/atomic&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// 防缓存击穿代码示例
-</span><span class="c1"></span>
-<span class="kd">var</span> <span class="nx">count</span> <span class="p">=</span> <span class="nb">int64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">a</span><span class="p">()</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//time.Sleep(time.Millisecond * 500) // 去掉注释可查看高并发取值情况
-</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">count</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">g</span> <span class="o">:=</span> <span class="nx">singleflight</span><span class="p">.</span><span class="nx">Group</span><span class="p">{}</span>
-
-    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
-
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-
-            <span class="c1">// 直接返回结果集
-</span><span class="c1"></span>            <span class="nx">val</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">shared</span> <span class="o">:=</span> <span class="nx">g</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="s">&#34;cache_key_name&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">// Do方法执行一个函数，并返回函数执行的结果。你需要提供一个 key，对于同一个 key，在同一时间只有一个在执行，同一个 key 并发的请求会等待。第一个执行的请求返回的结果，就是它的返回结果。函数 fn 是一个无参的函数，返回一个结果或者 error，而 Do 方法会返回函数执行的结果或者是 error，shared 会指示运行结果是否返回给多个请求。
-</span><span class="c1"></span>            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-                <span class="k">return</span>
-            <span class="p">}</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;index: %d, val: %d, shared: %v\n&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">shared</span><span class="p">)</span>
-
-            <span class="c1">// 返回值为 channel 方式
-</span><span class="c1"></span>            <span class="c1">//result := g.DoChan(&#34;cache_key_name2&#34;, a)
-</span><span class="c1"></span>            <span class="c1">//ret, _ := &lt;-result
-</span><span class="c1"></span>            <span class="c1">//fmt.Printf(&#34;channel-&gt;index: %d, val: %d, shared: %v\n&#34;, j, ret.Val, ret.Shared)
-</span><span class="c1"></span>        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;golang.org/x/sync/singleflight&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync/atomic&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 防缓存击穿代码示例</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">count</span> <span class="p">=</span> <span class="nb">int64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">a</span><span class="p">()</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//time.Sleep(time.Millisecond * 500) // 去掉注释可查看高并发取值情况</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">count</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">g</span> <span class="o">:=</span> <span class="nx">singleflight</span><span class="p">.</span><span class="nx">Group</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 直接返回结果集</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">val</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">shared</span> <span class="o">:=</span> <span class="nx">g</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="s">&#34;cache_key_name&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">// Do方法执行一个函数，并返回函数执行的结果。你需要提供一个 key，对于同一个 key，在同一时间只有一个在执行，同一个 key 并发的请求会等待。第一个执行的请求返回的结果，就是它的返回结果。函数 fn 是一个无参的函数，返回一个结果或者 error，而 Do 方法会返回函数执行的结果或者是 error，shared 会指示运行结果是否返回给多个请求。</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;index: %d, val: %d, shared: %v\n&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">shared</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 返回值为 channel 方式</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//result := g.DoChan(&#34;cache_key_name2&#34;, a)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//ret, _ := &lt;-result</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//fmt.Printf(&#34;channel-&gt;index: %d, val: %d, shared: %v\n&#34;, j, ret.Val, ret.Shared)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="semaphore">semaphore</h3>
 <p>信号量（Semaphore）是用来控制多个 goroutine 同时访问多个资源的并发原语。（实际上，我们还有很多方法实现信号量，比较典型的就是使用 Channel 来实现。）</p>
 <p>信号量是按照先入先出的方式唤醒调用者。当释放 100 个资源的时候，如果第一个等待者需要 101 个资源，那么，队列中的所有等待者都会继续等待，即使有的等待者只需要 1 个资源。这样做的目的是避免饥饿，否则的话，资源可能总是被那些请求资源数小的调用者获取，这样一来，请求资源数巨大的调用者，就没有机会获得资源了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -581,39 +596,39 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 使用信号量限制 goroutine 并发数
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="p">(</span>
-        <span class="nx">semaWeight</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">3</span>  <span class="c1">// 最多同时运行 n 个 goroutine
-</span><span class="c1"></span>        <span class="nx">total</span>            <span class="p">=</span> <span class="mi">20</span> <span class="c1">// 总共需要执行的协程数量
-</span><span class="c1"></span>        <span class="nx">sema</span>             <span class="p">=</span> <span class="nx">semaphore</span><span class="p">.</span><span class="nf">NewWeighted</span><span class="p">(</span><span class="nx">semaWeight</span><span class="p">)</span>
-        <span class="nx">ctx</span>              <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
-    <span class="p">)</span>
-
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">total</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sema</span><span class="p">.</span><span class="nf">Acquire</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;sema acquire err: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-            <span class="k">continue</span>
-        <span class="p">}</span>
-
-        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;go func: %d, time: %d\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">())</span>
-            <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-            <span class="nx">sema</span><span class="p">.</span><span class="nf">Release</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sema</span><span class="p">.</span><span class="nf">Acquire</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">semaWeight</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;sema acquire err: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 使用信号量限制 goroutine 并发数</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">semaWeight</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">3</span>  <span class="c1">// 最多同时运行 n 个 goroutine</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">total</span>            <span class="p">=</span> <span class="mi">20</span> <span class="c1">// 总共需要执行的协程数量</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sema</span>             <span class="p">=</span> <span class="nx">semaphore</span><span class="p">.</span><span class="nf">NewWeighted</span><span class="p">(</span><span class="nx">semaWeight</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span>              <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">total</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sema</span><span class="p">.</span><span class="nf">Acquire</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;sema acquire err: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;go func: %d, time: %d\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">sema</span><span class="p">.</span><span class="nf">Release</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sema</span><span class="p">.</span><span class="nf">Acquire</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">semaWeight</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;sema acquire err: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="errgroup">errgroup</h3>
 <p>处理任务编排：分组执行一批相同的或类似的任务。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -646,45 +661,44 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">g</span> <span class="o">:=</span> <span class="nx">errgroup</span><span class="p">.</span><span class="nx">Group</span><span class="p">{}</span>
-    <span class="nx">result</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">error</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// 保存成功或者失败的结果
-</span><span class="c1"></span>
-    <span class="nx">g</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exec #1&#34;</span><span class="p">)</span>
-        <span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="kc">nil</span>
-        <span class="k">return</span> <span class="kc">nil</span>
-    <span class="p">})</span>
-
-    <span class="nx">g</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exec #2&#34;</span><span class="p">)</span>
-        <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;failed to exec #2&#34;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="p">})</span>
-
-    <span class="nx">g</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exec #3&#34;</span><span class="p">)</span>
-        <span class="nx">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;failed to exec #3&#34;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="p">})</span>
-
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">g</span><span class="p">.</span><span class="nf">Wait</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;failed: %v\n&#34;</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;successfully exec all&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">g</span> <span class="o">:=</span> <span class="nx">errgroup</span><span class="p">.</span><span class="nx">Group</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">result</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">error</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// 保存成功或者失败的结果</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">g</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exec #1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">g</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exec #2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;failed to exec #2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">g</span><span class="p">.</span><span class="nf">Go</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;exec #3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;failed to exec #3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">g</span><span class="p">.</span><span class="nf">Wait</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;failed: %v\n&#34;</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;successfully exec all&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="循环栅栏-cyclicbarrier">循环栅栏 CyclicBarrier</h2>
 <p><code>github.com/marusama/cyclicbarrier</code></p>
 <p>CyclicBarrier允许一组 goroutine 彼此等待，到达一个共同的执行点。同时，因为它可以被重复使用，所以叫循环栅栏。具体的机制是，大家都在栅栏前等待，等全部都到齐了，就抬起栅栏放行。</p>
 <blockquote>
-<p>CyclicBarrier 和 WaitGroup 的功能有点类似，但使用场景不同。CyclicBarrier 和 WaitGroup 各自的使用场景：</p>
-</blockquote>
+<p>CyclicBarrier 和 WaitGroup 的功能有点类似，但使用场景不同。CyclicBarrier 和 WaitGroup 各自的使用场景：</p></blockquote>
 <ul>
 <li>等待同一组 goroutine 同时执行：CyclicBarrier 更适合用在“固定数量的 goroutine 等待同一个执行点”的场景中，而且在放行 goroutine 之后，CyclicBarrier 可以重复利用。</li>
 <li>等待同一组 goroutine 都完成：WaitGroup 更适合用在“一个 goroutine 等待一组 goroutine 到达同一个执行点”的场景中，或者是不需要重用的场景中。</li>
@@ -694,11 +708,10 @@
 <p>有一个名叫大自然的搬运工的工厂，生产一种叫做一氧化二氢的神秘液体。这种液体的分子是由一个氧原子和两个氢原子组成的，也就是水。</p>
 <p>这个工厂有多条生产线，每条生产线负责生产氧原子或者是氢原子，每条生产线由一个 goroutine 负责。</p>
 <p>这些生产线会通过一个栅栏，只有一个氧原子生产线和两个氢原子生产线都准备好，才能生成出一个水分子，否则所有的生产线都会处于等待状态。也就是说，一个水分子必须由三个不同的生产线提供原子，而且水分子是一个一个按照顺序产生的，每生产一个水分子，就会打印出 HHO、HOH、OHH 三种形式的其中一种。HHH、OOH、OHO、HOO、OOO 都是不允许的。</p>
-<p>生产线中氢原子的生产线为 2N 条，氧原子的生产线为 N 条。</p>
-</blockquote>
+<p>生产线中氢原子的生产线为 2N 条，氧原子的生产线为 N 条。</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -734,45 +747,45 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">water</span>
-<span class="kn">import</span> <span class="p">(</span>
-  <span class="s">&#34;context&#34;</span>
-  <span class="s">&#34;github.com/marusama/cyclicbarrier&#34;</span>
-  <span class="s">&#34;golang.org/x/sync/semaphore&#34;</span>
-<span class="p">)</span>
-<span class="c1">// 定义水分子合成的辅助数据结构
-</span><span class="c1"></span><span class="kd">type</span> <span class="nx">H2O</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">semaH</span> <span class="o">*</span><span class="nx">semaphore</span><span class="p">.</span><span class="nx">Weighted</span> <span class="c1">// 氢原子的信号量
-</span><span class="c1"></span>  <span class="nx">semaO</span> <span class="o">*</span><span class="nx">semaphore</span><span class="p">.</span><span class="nx">Weighted</span> <span class="c1">// 氧原子的信号量
-</span><span class="c1"></span>  <span class="nx">b</span>     <span class="nx">cyclicbarrier</span><span class="p">.</span><span class="nx">CyclicBarrier</span> <span class="c1">// 循环栅栏，用来控制合成
-</span><span class="c1"></span><span class="p">}</span>
-<span class="kd">func</span> <span class="nf">New</span><span class="p">()</span> <span class="o">*</span><span class="nx">H2O</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="o">&amp;</span><span class="nx">H2O</span><span class="p">{</span>
-    <span class="nx">semaH</span><span class="p">:</span> <span class="nx">semaphore</span><span class="p">.</span><span class="nf">NewWeighted</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="c1">//氢原子需要两个
-</span><span class="c1"></span>    <span class="nx">semaO</span><span class="p">:</span> <span class="nx">semaphore</span><span class="p">.</span><span class="nf">NewWeighted</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="c1">// 氧原子需要一个
-</span><span class="c1"></span>    <span class="nx">b</span><span class="p">:</span>     <span class="nx">cyclicbarrier</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>  <span class="c1">// 需要三个原子才能合成
-</span><span class="c1"></span>  <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">h2o</span> <span class="o">*</span><span class="nx">H2O</span><span class="p">)</span> <span class="nf">hydrogen</span><span class="p">(</span><span class="nx">releaseHydrogen</span> <span class="kd">func</span><span class="p">())</span> <span class="p">{</span>
-  <span class="nx">h2o</span><span class="p">.</span><span class="nx">semaH</span><span class="p">.</span><span class="nf">Acquire</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
-
-  <span class="nf">releaseHydrogen</span><span class="p">()</span> <span class="c1">// 输出H
-</span><span class="c1"></span>  <span class="nx">h2o</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nf">Await</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">())</span> <span class="c1">//等待栅栏放行
-</span><span class="c1"></span>  <span class="nx">h2o</span><span class="p">.</span><span class="nx">semaH</span><span class="p">.</span><span class="nf">Release</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// 释放氢原子空槽
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">h2o</span> <span class="o">*</span><span class="nx">H2O</span><span class="p">)</span> <span class="nf">oxygen</span><span class="p">(</span><span class="nx">releaseOxygen</span> <span class="kd">func</span><span class="p">())</span> <span class="p">{</span>
-  <span class="nx">h2o</span><span class="p">.</span><span class="nx">semaO</span><span class="p">.</span><span class="nf">Acquire</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
-
-  <span class="nf">releaseOxygen</span><span class="p">()</span> <span class="c1">// 输出O
-</span><span class="c1"></span>  <span class="nx">h2o</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nf">Await</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">())</span> <span class="c1">//等待栅栏放行
-</span><span class="c1"></span>  <span class="nx">h2o</span><span class="p">.</span><span class="nx">semaO</span><span class="p">.</span><span class="nf">Release</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// 释放氢原子空槽
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">water</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;github.com/marusama/cyclicbarrier&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;golang.org/x/sync/semaphore&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 定义水分子合成的辅助数据结构</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">H2O</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">semaH</span> <span class="o">*</span><span class="nx">semaphore</span><span class="p">.</span><span class="nx">Weighted</span> <span class="c1">// 氢原子的信号量</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">semaO</span> <span class="o">*</span><span class="nx">semaphore</span><span class="p">.</span><span class="nx">Weighted</span> <span class="c1">// 氧原子的信号量</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">b</span>     <span class="nx">cyclicbarrier</span><span class="p">.</span><span class="nx">CyclicBarrier</span> <span class="c1">// 循环栅栏，用来控制合成</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">New</span><span class="p">()</span> <span class="o">*</span><span class="nx">H2O</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">&amp;</span><span class="nx">H2O</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">semaH</span><span class="p">:</span> <span class="nx">semaphore</span><span class="p">.</span><span class="nf">NewWeighted</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="c1">//氢原子需要两个</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">semaO</span><span class="p">:</span> <span class="nx">semaphore</span><span class="p">.</span><span class="nf">NewWeighted</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="c1">// 氧原子需要一个</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">b</span><span class="p">:</span>     <span class="nx">cyclicbarrier</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>  <span class="c1">// 需要三个原子才能合成</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">h2o</span> <span class="o">*</span><span class="nx">H2O</span><span class="p">)</span> <span class="nf">hydrogen</span><span class="p">(</span><span class="nx">releaseHydrogen</span> <span class="kd">func</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">h2o</span><span class="p">.</span><span class="nx">semaH</span><span class="p">.</span><span class="nf">Acquire</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">releaseHydrogen</span><span class="p">()</span> <span class="c1">// 输出H</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">h2o</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nf">Await</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">())</span> <span class="c1">//等待栅栏放行</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">h2o</span><span class="p">.</span><span class="nx">semaH</span><span class="p">.</span><span class="nf">Release</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// 释放氢原子空槽</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">h2o</span> <span class="o">*</span><span class="nx">H2O</span><span class="p">)</span> <span class="nf">oxygen</span><span class="p">(</span><span class="nx">releaseOxygen</span> <span class="kd">func</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">h2o</span><span class="p">.</span><span class="nx">semaO</span><span class="p">.</span><span class="nf">Acquire</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">releaseOxygen</span><span class="p">()</span> <span class="c1">// 输出O</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">h2o</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nf">Await</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">())</span> <span class="c1">//等待栅栏放行</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">h2o</span><span class="p">.</span><span class="nx">semaO</span><span class="p">.</span><span class="nf">Release</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// 释放氢原子空槽</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -843,76 +856,76 @@
 </span><span class="lnt">69
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">water</span>
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;math/rand&#34;</span>
-    <span class="s">&#34;sort&#34;</span>
-    <span class="s">&#34;sync&#34;</span>
-    <span class="s">&#34;testing&#34;</span>
-    <span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-<span class="kd">func</span> <span class="nf">TestWaterFactory</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//用来存放水分子结果的channel
-</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span> <span class="kt">string</span>
-    <span class="nx">releaseHydrogen</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="s">&#34;H&#34;</span>
-    <span class="p">}</span>
-    <span class="nx">releaseOxygen</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="s">&#34;O&#34;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// 300个原子，300个goroutine,每个goroutine并发的产生一个原子
-</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">N</span> <span class="p">=</span> <span class="mi">100</span>
-    <span class="nx">ch</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">N</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
-
-
-    <span class="nx">h2o</span> <span class="o">:=</span> <span class="nf">New</span><span class="p">()</span>
-
-    <span class="c1">// 用来等待所有的goroutine完成
-</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">N</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-
-    <span class="c1">// 200个氢原子goroutine
-</span><span class="c1"></span>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
-            <span class="nx">h2o</span><span class="p">.</span><span class="nf">hydrogen</span><span class="p">(</span><span class="nx">releaseHydrogen</span><span class="p">)</span>
-            <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-        <span class="p">}()</span>
-    <span class="p">}</span>
-    <span class="c1">// 100个氧原子goroutine
-</span><span class="c1"></span>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
-            <span class="nx">h2o</span><span class="p">.</span><span class="nf">oxygen</span><span class="p">(</span><span class="nx">releaseOxygen</span><span class="p">)</span>
-            <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-        <span class="p">}()</span>
-    <span class="p">}</span>
-
-    <span class="c1">//等待所有的goroutine执行完
-</span><span class="c1"></span>    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
-
-    <span class="c1">// 结果中肯定是300个原子
-</span><span class="c1"></span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">ch</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">N</span><span class="o">*</span><span class="mi">3</span> <span class="p">{</span>
-        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;expect %d atom but got %d&#34;</span><span class="p">,</span> <span class="nx">N</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">ch</span><span class="p">))</span>
-    <span class="p">}</span>
-
-    <span class="c1">// 每三个原子一组，分别进行检查。要求这一组原子中必须包含两个氢原子和一个氧原子，这样才能正确组成一个水分子。
-</span><span class="c1"></span>    <span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
-        <span class="nx">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
-        <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
-        <span class="nx">sort</span><span class="p">.</span><span class="nf">Strings</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-
-
-        <span class="nx">water</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nx">water</span> <span class="o">!=</span> <span class="s">&#34;HHO&#34;</span> <span class="p">{</span>
-            <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;expect a water molecule but got %s&#34;</span><span class="p">,</span> <span class="nx">water</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">water</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;math/rand&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sort&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;testing&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestWaterFactory</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//用来存放水分子结果的channel</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">releaseHydrogen</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="s">&#34;H&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">releaseOxygen</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ch</span> <span class="o">&lt;-</span> <span class="s">&#34;O&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 300个原子，300个goroutine,每个goroutine并发的产生一个原子</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">N</span> <span class="p">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ch</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">N</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">h2o</span> <span class="o">:=</span> <span class="nf">New</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 用来等待所有的goroutine完成</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">N</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 200个氢原子goroutine</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">h2o</span><span class="p">.</span><span class="nf">hydrogen</span><span class="p">(</span><span class="nx">releaseHydrogen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 100个氧原子goroutine</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">h2o</span><span class="p">.</span><span class="nf">oxygen</span><span class="p">(</span><span class="nx">releaseOxygen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//等待所有的goroutine执行完</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 结果中肯定是300个原子</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">ch</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">N</span><span class="o">*</span><span class="mi">3</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;expect %d atom but got %d&#34;</span><span class="p">,</span> <span class="nx">N</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">ch</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 每三个原子一组，分别进行检查。要求这一组原子中必须包含两个氢原子和一个氧原子，这样才能正确组成一个水分子。</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">s</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sort</span><span class="p">.</span><span class="nf">Strings</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">water</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">water</span> <span class="o">!=</span> <span class="s">&#34;HHO&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;expect a water molecule but got %s&#34;</span><span class="p">,</span> <span class="nx">water</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -920,7 +933,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -992,22 +1005,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -1021,7 +1031,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

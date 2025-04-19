@@ -4,18 +4,17 @@
     <title>动态追踪 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA/</link>
     <description>Recent content in 动态追踪 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 10 Nov 2019 16:06:01 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Nov 2019 16:06:01 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>动态追踪技术</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Sun, 10 Nov 2019 16:06:01 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</guid>
-      <description>简介 动态追踪技术通常是基于操作系统内核来实现的。是一种调试技术。 作用 用于排查线上出现的诡异问题，如网站运行缓慢、超时、CPU占用率高 优点 动态</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;动态追踪技术通常是基于操作系统内核来实现的。是一种调试技术。&lt;/p&gt;&#xA;&lt;h2 id=&#34;作用&#34;&gt;作用&lt;/h2&gt;&#xA;&lt;p&gt;用于排查线上出现的诡异问题，如网站运行缓慢、超时、CPU占用率高&lt;/p&gt;&#xA;&lt;h2 id=&#34;优点&#34;&gt;优点&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;动态追踪技术一般是不需要目标应用来配合的。&lt;/li&gt;&#xA;&lt;li&gt;自身的性能损耗极小&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;dtrace&#34;&gt;DTrace&lt;/h2&gt;&#xA;&lt;p&gt;DTrace 是一个非常通用的调试平台，它提供了一种很像 C 语言的脚本语言，叫做 D。基于 DTrace 的调试工具都是使用这种语言编写的。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

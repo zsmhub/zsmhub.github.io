@@ -4,18 +4,17 @@
     <title>微信多开 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%A4%9A%E5%BC%80/</link>
     <description>Recent content in 微信多开 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 12 Apr 2024 10:16:48 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%A4%9A%E5%BC%80/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Apr 2024 10:16:48 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%A4%9A%E5%BC%80/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微信多开</title>
       <link>https://zsmhub.github.io/post/other/%E5%BE%AE%E4%BF%A1%E5%A4%9A%E5%BC%80/</link>
       <pubDate>Fri, 12 Apr 2024 10:16:48 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/other/%E5%BE%AE%E4%BF%A1%E5%A4%9A%E5%BC%80/</guid>
-      <description>windows微信多开 在桌面上选择“微信快捷图标”，然后单击鼠标右键，选择“属性”，复制微信的安装路径 在桌面上新建一个 &amp;ldquo;微信多开</description>
+      <description>&lt;h2 id=&#34;windows微信多开&#34;&gt;windows微信多开&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;在桌面上选择“微信快捷图标”，然后单击鼠标右键，选择“属性”，复制微信的安装路径&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2024/WechatIMG75765.jpg&#34; alt=&#34;微信安装路径&#34;&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;在桌面上新建一个 &amp;ldquo;微信多开.bat&amp;rdquo; 文件，保存以下代码（想多开几个就复制几行的start部分）&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

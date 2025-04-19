@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>“cursor” on ZsmHub - Blog</title>
+    <title>“Cursor” on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/cursor/</link>
-    <description>Recent content in “cursor” on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in “Cursor” on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 27 Dec 2024 15:13:25 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/cursor/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Dec 2024 15:13:25 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/cursor/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cursor</title>
-      <link>https://zsmhub.github.io/post/ai/cursor/</link>
+      <link>https://zsmhub.github.io/post/ide/cursor/</link>
       <pubDate>Fri, 27 Dec 2024 15:13:25 +0800</pubDate>
-      
-      <guid>https://zsmhub.github.io/post/ai/cursor/</guid>
-      <description>Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。 Chat Chat 允许用户与能够访</description>
+      <guid>https://zsmhub.github.io/post/ide/cursor/</guid>
+      <description>&lt;p&gt;Cursor 是一个基于 AI 的代码编辑器，是一个强大的工具，熟练使用可以显著提高编码效率。建议从简单的任务开始，逐步探索更多高级功能。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2024/Snipaste_2025-02-05_15-22-38.png&#34; alt=&#34;cursor主界面&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Chat&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Chat 允许用户与能够访问代码库的 AI 进行对话。Chat 始终可以查看当前文件和光标位置，因此可以提出诸如“这里是否存在 bug？”等问题。使用“@”符号，可以将特定代码块或文件添加到上下文中。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

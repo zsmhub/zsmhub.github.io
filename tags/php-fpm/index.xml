@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>php-fpm on ZsmHub - Blog</title>
+    <title>Php-Fpm on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/php-fpm/</link>
-    <description>Recent content in php-fpm on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Php-Fpm on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 02 Sep 2020 16:04:33 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/php-fpm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Sep 2020 16:04:33 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/php-fpm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PHP-FPM</title>
       <link>https://zsmhub.github.io/post/php/php-fpm/</link>
       <pubDate>Wed, 02 Sep 2020 16:04:33 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/php/php-fpm/</guid>
-      <description>PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将</description>
+      <description>&lt;h2 id=&#34;php-fpm&#34;&gt;PHP-FPM&lt;/h2&gt;&#xA;&lt;p&gt;CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将客户端发送的数据作为输入，由Web服务器收集程序的输出并加上合适的头部，再发送回客户端。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

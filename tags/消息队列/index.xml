@@ -4,27 +4,24 @@
     <title>消息队列 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</link>
     <description>Recent content in 消息队列 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 10 Aug 2020 09:22:30 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Feb 2022 10:50:45 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>专业的MQ</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%B8%93%E4%B8%9A%E7%9A%84mq/</link>
       <pubDate>Mon, 10 Aug 2020 09:22:30 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%B8%93%E4%B8%9A%E7%9A%84mq/</guid>
-      <description>一个专业的消息队列，必须要做到两点： 消息不丢 消息可堆积 PHP+ActiveMQ+Stomp ActiveMQ 是由 Apache 出品的一款开源消息中间件，旨在为应用程序提供高效、可扩展、稳定、安全的企业级</description>
+      <description>&lt;p&gt;一个专业的消息队列，必须要做到两点：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;消息不丢&lt;/li&gt;&#xA;&lt;li&gt;消息可堆积&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phpactivemqstomp&#34;&gt;PHP+ActiveMQ+Stomp&lt;/h2&gt;&#xA;&lt;p&gt;ActiveMQ 是由 Apache 出品的一款开源消息中间件，旨在为应用程序提供高效、可扩展、稳定、安全的企业级消息通信。&#xA;它的设计目标是提供标准的、面向消息的、多语言的应用集成消息通信中间件。ActiveMQ 实现了 JMS 1.1 并提供了很多附加的特性，比如 JMX 管理、主从管理、消息组通信、消息优先级、延迟接收消息、虚拟接收者、消息持久化、消息队列监控等等。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>NSQ-分布式实时消息处理平台</title>
       <link>https://zsmhub.github.io/post/golang/nsq-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Sun, 28 Jun 2020 10:50:45 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/golang/nsq-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0/</guid>
-      <description>NSQ 简介 NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2020/v2-b266260a17702af4509f6c7d2ba40d4a_r.jpg&#34; alt=&#34;NSQ 架构&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;nsq-简介&#34;&gt;NSQ 简介&lt;/h2&gt;&#xA;&lt;p&gt;NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模地处理每天数以十亿计级别的消息。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

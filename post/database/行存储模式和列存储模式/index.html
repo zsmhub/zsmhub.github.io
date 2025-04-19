@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="行存储和列存储，是数据库底层组织数据的方式。（和文档型、K-V 型，时序型等概念不在一个层次） 行存储 行存储系统以行的方式来组织数据。 1 2 3 4 5" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="行存储和列存储，是数据库底层组织数据的方式。（和文档型、K-V 型，时序型等概念不在一个层次）
+行存储 行存储系统以行的方式来组织数据。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 [ { &#34;title&#34;: &#34;Oriented Column Store&#34;, &#34;author&#34;: &#34;Alex&#34;, &#34;publish_time&#34;: 1508423456, &#34;like_num&#34;: 1024 },{ &#34;title&#34;: &#34;Apache Druid&#34;, &#34;author&#34;: &#34;Bob&#34;, &#34;publish_time&#34;: 1504423069, &#34;like_num&#34;: 10 },{ &#34;title&#34;: &#34;Algorithm&#34;, &#34;author&#34;: &#34;Casey&#34;, &#34;publish_time&#34;: 1512523069, &#34;like_num&#34;: 16 } ] " /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/database/%E8%A1%8C%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%88%97%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F/" />
@@ -35,24 +37,36 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="行存储模式和列存储模式" />
-<meta property="og:description" content="行存储和列存储，是数据库底层组织数据的方式。（和文档型、K-V 型，时序型等概念不在一个层次） 行存储 行存储系统以行的方式来组织数据。 1 2 3 4 5" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/%E8%A1%8C%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%88%97%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-05-10T09:38:42&#43;08:00" />
-<meta property="article:modified_time" content="2021-05-10T09:38:42&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/%E8%A1%8C%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%88%97%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="行存储模式和列存储模式">
+  <meta property="og:description" content="行存储和列存储，是数据库底层组织数据的方式。（和文档型、K-V 型，时序型等概念不在一个层次）
+行存储 行存储系统以行的方式来组织数据。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 [ { &#34;title&#34;: &#34;Oriented Column Store&#34;, &#34;author&#34;: &#34;Alex&#34;, &#34;publish_time&#34;: 1508423456, &#34;like_num&#34;: 1024 },{ &#34;title&#34;: &#34;Apache Druid&#34;, &#34;author&#34;: &#34;Bob&#34;, &#34;publish_time&#34;: 1504423069, &#34;like_num&#34;: 10 },{ &#34;title&#34;: &#34;Algorithm&#34;, &#34;author&#34;: &#34;Casey&#34;, &#34;publish_time&#34;: 1512523069, &#34;like_num&#34;: 16 } ]">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-05-10T09:38:42+08:00">
+    <meta property="article:modified_time" content="2021-05-10T09:38:42+08:00">
+    <meta property="article:tag" content="Database">
 
-<meta itemprop="name" content="行存储模式和列存储模式">
-<meta itemprop="description" content="行存储和列存储，是数据库底层组织数据的方式。（和文档型、K-V 型，时序型等概念不在一个层次） 行存储 行存储系统以行的方式来组织数据。 1 2 3 4 5"><meta itemprop="datePublished" content="2021-05-10T09:38:42&#43;08:00" />
-<meta itemprop="dateModified" content="2021-05-10T09:38:42&#43;08:00" />
-<meta itemprop="wordCount" content="1427">
-<meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="行存储模式和列存储模式"/>
-<meta name="twitter:description" content="行存储和列存储，是数据库底层组织数据的方式。（和文档型、K-V 型，时序型等概念不在一个层次） 行存储 行存储系统以行的方式来组织数据。 1 2 3 4 5"/>
+  <meta itemprop="name" content="行存储模式和列存储模式">
+  <meta itemprop="description" content="行存储和列存储，是数据库底层组织数据的方式。（和文档型、K-V 型，时序型等概念不在一个层次）
+行存储 行存储系统以行的方式来组织数据。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 [ { &#34;title&#34;: &#34;Oriented Column Store&#34;, &#34;author&#34;: &#34;Alex&#34;, &#34;publish_time&#34;: 1508423456, &#34;like_num&#34;: 1024 },{ &#34;title&#34;: &#34;Apache Druid&#34;, &#34;author&#34;: &#34;Bob&#34;, &#34;publish_time&#34;: 1504423069, &#34;like_num&#34;: 10 },{ &#34;title&#34;: &#34;Algorithm&#34;, &#34;author&#34;: &#34;Casey&#34;, &#34;publish_time&#34;: 1512523069, &#34;like_num&#34;: 16 } ]">
+  <meta itemprop="datePublished" content="2021-05-10T09:38:42+08:00">
+  <meta itemprop="dateModified" content="2021-05-10T09:38:42+08:00">
+  <meta itemprop="wordCount" content="1427">
+  <meta itemprop="keywords" content="Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="行存储模式和列存储模式">
+  <meta name="twitter:description" content="行存储和列存储，是数据库底层组织数据的方式。（和文档型、K-V 型，时序型等概念不在一个层次）
+行存储 行存储系统以行的方式来组织数据。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 [ { &#34;title&#34;: &#34;Oriented Column Store&#34;, &#34;author&#34;: &#34;Alex&#34;, &#34;publish_time&#34;: 1508423456, &#34;like_num&#34;: 1024 },{ &#34;title&#34;: &#34;Apache Druid&#34;, &#34;author&#34;: &#34;Bob&#34;, &#34;publish_time&#34;: 1504423069, &#34;like_num&#34;: 10 },{ &#34;title&#34;: &#34;Algorithm&#34;, &#34;author&#34;: &#34;Casey&#34;, &#34;publish_time&#34;: 1512523069, &#34;like_num&#34;: 16 } ]">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +105,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +138,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -155,7 +179,7 @@
 <p>行存储系统以行的方式来组织数据。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -175,25 +199,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[</span>
-  <span class="p">{</span>
-    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Oriented Column Store&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Alex&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;publish_time&#34;</span><span class="p">:</span> <span class="mi">1508423456</span><span class="p">,</span>
-    <span class="nt">&#34;like_num&#34;</span><span class="p">:</span> <span class="mi">1024</span>
-  <span class="p">},{</span>
-    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Apache Druid&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Bob&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;publish_time&#34;</span><span class="p">:</span> <span class="mi">1504423069</span><span class="p">,</span>
-    <span class="nt">&#34;like_num&#34;</span><span class="p">:</span> <span class="mi">10</span>
-  <span class="p">},{</span>
-    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Algorithm&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Casey&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;publish_time&#34;</span><span class="p">:</span> <span class="mi">1512523069</span><span class="p">,</span>
-    <span class="nt">&#34;like_num&#34;</span><span class="p">:</span> <span class="mi">16</span>
-  <span class="p">}</span>
-<span class="p">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Oriented Column Store&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Alex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;publish_time&#34;</span><span class="p">:</span> <span class="mi">1508423456</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;like_num&#34;</span><span class="p">:</span> <span class="mi">1024</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Apache Druid&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Bob&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;publish_time&#34;</span><span class="p">:</span> <span class="mi">1504423069</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;like_num&#34;</span><span class="p">:</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;Algorithm&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Casey&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;publish_time&#34;</span><span class="p">:</span> <span class="mi">1512523069</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;like_num&#34;</span><span class="p">:</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/2021/QQ20210510-094613.png" alt="行存储方式"></p>
 <p>行存储将会以上图方式将数据存储在磁盘上。行存储利于数据一行一行的写入，写入一条数据记录时，只需要将数据追加到已有数据记录后面即可。</p>
@@ -211,13 +235,11 @@
 <p>依然假设磁盘一次可以读取 3 个方框的数据(实际按 byte 读取)。可以看出按列存储组织数据的方式，只需要 1 次磁盘操作就可以完成。</p>
 <p>在程序的世界里，我们学会了，任何的选择和倾向都是有代价的。空间换时间，时间换空间，一致性可用性相互平衡等。选择列式存储必然也有不利的一面。首先就表现在数据写入上。</p>
 <blockquote>
-<p>列存储缺点</p>
-</blockquote>
+<p>列存储缺点</p></blockquote>
 <p><img src="/images/2021/QQ20210510-100202.png" alt="写入慢"></p>
 <p>当一条新数据到来，需要将每一列存储到对应的位置。这样就需要多次写磁盘操作。（当然真实的数据库不会出现图中”挤一挤“、”挪一挪“的情况，数据库会将不同列数据组织在不同的地方；对于多次写操作的问题，大部分存储系统会通过缓冲来降低这种情况带来的不足）</p>
 <blockquote>
-<p>列模存储优势</p>
-</blockquote>
+<p>列模存储优势</p></blockquote>
 <ul>
 <li>自动索引</li>
 </ul>
@@ -227,54 +249,52 @@
 </ul>
 <p>利于压缩有两个原因。一来你会发现大部分列数据基数其实是重复的，拿上面的数据来说，因为同一个 author 会发表多篇博客，所以 author 列出现的所有值的基数肯定是小于博客数量的，因此在 author 列的存储上其实是不需要存储博客数量这么大的数据量的；二来相同的列数据类型一致，这样利于数据结构填充的优化和压缩，而且对于数字列这种数据类型可以采取更多有利的算法去压缩存储。</p>
 <blockquote>
-<p>总结</p>
-</blockquote>
+<p>总结</p></blockquote>
 <p>读写均慢，但利于大数据及的数据聚合操作。</p>
 <h2 id="对比">对比</h2>
 <table>
-<thead>
-<tr>
-<th>Row-Store</th>
-<th>Column-Store</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>因为按一行一行写和读取数据，因此读取数据时往往需要读取那些不必要的列</td>
-<td>可以只读取必要的列</td>
-</tr>
-<tr>
-<td>易于按记录读写数据</td>
-<td>对一个一个记录的数据写入和读取都较慢</td>
-</tr>
-<tr>
-<td>适合 OLTP 系统</td>
-<td>适合 OLAP 系统</td>
-</tr>
-<tr>
-<td>不利于大数据集的聚合统计操作</td>
-<td>利于大数据集的数据聚合操作</td>
-</tr>
-<tr>
-<td>不利于压缩数据</td>
-<td>利于压缩数据</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Row-Store</th>
+          <th>Column-Store</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>因为按一行一行写和读取数据，因此读取数据时往往需要读取那些不必要的列</td>
+          <td>可以只读取必要的列</td>
+      </tr>
+      <tr>
+          <td>易于按记录读写数据</td>
+          <td>对一个一个记录的数据写入和读取都较慢</td>
+      </tr>
+      <tr>
+          <td>适合 OLTP 系统</td>
+          <td>适合 OLAP 系统</td>
+      </tr>
+      <tr>
+          <td>不利于大数据集的聚合统计操作</td>
+          <td>利于大数据集的数据聚合操作</td>
+      </tr>
+      <tr>
+          <td>不利于压缩数据</td>
+          <td>利于压缩数据</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="转载声明">转载声明</h2>
 <blockquote>
 <p>作者：码哥字节</p>
 <p>链接：https://juejin.cn/post/6844904118872440840</p>
 <p>来源：掘金</p>
-<p>著作权归作者所有，任何形式的转载都请联系作者</p>
-</blockquote>
+<p>著作权归作者所有，任何形式的转载都请联系作者</p></blockquote>
 
     </div>
 
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -346,22 +366,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -375,7 +392,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

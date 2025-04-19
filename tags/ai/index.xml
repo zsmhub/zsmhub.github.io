@@ -4,45 +4,38 @@
     <title>AI on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/ai/</link>
     <description>Recent content in AI on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 24 Mar 2025 14:12:52 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 14:12:52 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://zsmhub.github.io/post/ai/ai/</link>
       <pubDate>Mon, 24 Mar 2025 14:12:52 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/ai/ai/</guid>
-      <description>AI Agent（智能体） AI Agent = LLM+Planning+Feedback+Tool use 在人工智能领域中，一个 Agent 通常指的是能够自主决策、执行任务并接收反馈的智能体。 LLM：语言模型（Languag</description>
+      <description>&lt;h2 id=&#34;ai-agent智能体&#34;&gt;AI Agent（智能体）&lt;/h2&gt;&#xA;&lt;p&gt;AI Agent = LLM+Planning+Feedback+Tool use&lt;/p&gt;&#xA;&lt;p&gt;在人工智能领域中，一个 Agent 通常指的是能够自主决策、执行任务并接收反馈的智能体。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;LLM：语言模型（Language Model），即一种能够理解和生成自然语言的算法&lt;/li&gt;&#xA;&lt;li&gt;Planning：规划能力，即 Agent 能够制定行动计划以达成目标&lt;/li&gt;&#xA;&lt;li&gt;Feedback：表示 Agent 能够通过与环境互动来获取信息和调整自己的行为&lt;/li&gt;&#xA;&lt;li&gt;Tool use：表示 Agent 能够使用各种工具和技术来完成任务&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
     <item>
       <title>如何绕过网站的IP封锁</title>
       <link>https://zsmhub.github.io/post/ai/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E7%BD%91%E7%AB%99%E7%9A%84ip%E5%B0%81%E9%94%81/</link>
       <pubDate>Wed, 31 Jan 2024 10:04:50 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/ai/%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E7%BD%91%E7%AB%99%E7%9A%84ip%E5%B0%81%E9%94%81/</guid>
-      <description>chrome chrome浏览器要关闭quic 在浏览器输入框中输入：chrome://flags/#enable-quic Disable Experimental QUIC protocol</description>
+      <description>&lt;h2 id=&#34;chrome&#34;&gt;chrome&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;chrome浏览器要关闭quic&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;在浏览器输入框中输入：chrome://flags/#enable-quic&lt;/li&gt;&#xA;&lt;li&gt;Disable Experimental QUIC protocol&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
-    
     <item>
       <title>mac搭建Stable Diffusion Webui</title>
       <link>https://zsmhub.github.io/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/</link>
       <pubDate>Thu, 30 Mar 2023 10:01:29 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/</guid>
-      <description>mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 2 cd ~/go/src/zsmhub/stable-diffusion-webui ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com https://huggingface.co prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 LoRA 可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加</description>
+      <description>&lt;h2 id=&#34;mac安装教程&#34;&gt;mac安装教程&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon&#34;&gt;https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;启动命令&#34;&gt;启动命令&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/go/src/zsmhub/stable-diffusion-webui&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./webui.sh --skip-torch-cuda-test --precision full --no-half&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;绘画模型下载平台&#34;&gt;绘画模型下载平台&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;模型，别人训练好的绘画范本&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://civitai.com&#34;&gt;https://civitai.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://huggingface.co/models&#34;&gt;https://huggingface.co&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;prompt-生成器&#34;&gt;prompt 生成器&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.atoolbox.net/Category.php?Id=32&#34;&gt;http://www.atoolbox.net/Category.php?Id=32&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;lora&#34;&gt;LoRA&lt;/h2&gt;&#xA;&lt;p&gt;可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加入 LoRA 引用，即能大幅改变算图的结果，甚至也能同时套用多个 LoRA 来取得混合风格。使用上比单纯更换 model 或作 checkpoint merge 更有弹性且多变。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>玩转AI WORLD</title>
       <link>https://zsmhub.github.io/post/ai/%E7%8E%A9%E8%BD%ACai/</link>
       <pubDate>Thu, 02 Mar 2023 15:14:30 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/ai/%E7%8E%A9%E8%BD%ACai/</guid>
-      <description>AI写文案 ChatGPT: https://chat.openai.com/chat AI生成图片 AI绘图平台·midjourney 先用邮箱在 discord 社交平台 上注册一个账号 访问 https://www.midjourne</description>
+      <description>&lt;h2 id=&#34;ai写文案&#34;&gt;AI写文案&lt;/h2&gt;&#xA;&lt;p&gt;ChatGPT: &lt;a href=&#34;https://chat.openai.com/chat&#34;&gt;https://chat.openai.com/chat&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2023/WX20230302-164450.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;ai生成图片&#34;&gt;AI生成图片&lt;/h2&gt;&#xA;&lt;h3 id=&#34;ai绘图平台midjourney&#34;&gt;AI绘图平台·midjourney&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;先用邮箱在 &lt;a href=&#34;https://discord.com/register&#34;&gt;discord 社交平台&lt;/a&gt; 上注册一个账号&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;访问 &lt;a href=&#34;https://www.midjourney.com/app&#34;&gt;https://www.midjourney.com/app&lt;/a&gt;，然后点击 sign in 按钮，即会跳转到 discord 进行授权登录&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;在 discord 选择 NERCOMMER ROOMS 下的其中一个频道 （最好在该频道下建一个子区，避免和别人的消息混在一起）&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

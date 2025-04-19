@@ -4,18 +4,17 @@
     <title>微服务 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
     <description>Recent content in 微服务 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 12 Oct 2020 11:38:53 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Apr 2021 11:38:53 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微服务</title>
       <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Mon, 12 Oct 2020 11:38:53 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
-      <description>为什么要用微服务 小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。 为什么说做好微服务很难 要想做好微服务，我们</description>
+      <description>&lt;h2 id=&#34;为什么要用微服务&#34;&gt;为什么要用微服务&lt;/h2&gt;&#xA;&lt;p&gt;小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。&lt;/p&gt;&#xA;&lt;h2 id=&#34;为什么说做好微服务很难&#34;&gt;为什么说做好微服务很难&lt;/h2&gt;&#xA;&lt;p&gt;要想做好微服务，我们需要理解和掌握的知识点非常多，从几个维度上来说：&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

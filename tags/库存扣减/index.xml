@@ -4,18 +4,17 @@
     <title>库存扣减 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F/</link>
     <description>Recent content in 库存扣减 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 09 Mar 2023 15:08:49 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Mar 2023 15:08:49 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>库存扣减方案</title>
       <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F%E6%96%B9%E6%A1%88/</link>
       <pubDate>Thu, 09 Mar 2023 15:08:49 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F%E6%96%B9%E6%A1%88/</guid>
-      <description>设计流程图 设计思路 为了扛住高并发，我这里在两个地方做了库存扣减，第一个使用redis做预扣库存，第二个是数据库扣除实际库存； 用户提交订单时，</description>
+      <description>&lt;h2 id=&#34;设计流程图&#34;&gt;设计流程图&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2023/0472aa9a49b44c8ea52e752f6322a463.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;设计思路&#34;&gt;设计思路&lt;/h2&gt;&#xA;&lt;p&gt;为了扛住高并发，我这里在两个地方做了库存扣减，第一个使用redis做预扣库存，第二个是数据库扣除实际库存；&lt;/p&gt;&#xA;&lt;p&gt;用户提交订单时，做的是reids中库存预扣，只有当实际支付完成后，才会做数据库层的库存扣减。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

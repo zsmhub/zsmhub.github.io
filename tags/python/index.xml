@@ -1,48 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on ZsmHub - Blog</title>
+    <title>Python on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/python/</link>
-    <description>Recent content in python on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Python on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 02 Mar 2019 11:08:07 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 May 2019 10:05:13 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python 进程、线程和协程</title>
       <link>https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/</link>
       <pubDate>Sat, 02 Mar 2019 11:08:07 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/</guid>
-      <description>基本概念 什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自</description>
+      <description>&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;&#xA;&lt;p&gt;什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。&lt;/p&gt;&#xA;&lt;p&gt;无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自用户，用户可以在函数中yield一个状态。使用协程可以实现高效的并发任务。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Python 常用的 package 和 module</title>
       <link>https://zsmhub.github.io/post/python/python%E5%B8%B8%E7%94%A8%E7%9A%84package%E5%92%8Cmodule/</link>
       <pubDate>Fri, 15 Feb 2019 10:05:13 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/python/python%E5%B8%B8%E7%94%A8%E7%9A%84package%E5%92%8Cmodule/</guid>
-      <description>简介 Python 是通过 module 组织代码的，一个 py 文件就是一个 module，module 又是通过 package 来组织的，package 是一个包含 init.py 的文件夹，代码，modu</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;Python 是通过 module 组织代码的，一个 py 文件就是一个 module，module 又是通过 package 来组织的，package 是一个包含 &lt;strong&gt;init&lt;/strong&gt;.py 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 &lt;strong&gt;init&lt;/strong&gt;.py 的 module。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Python 基础知识</title>
       <link>https://zsmhub.github.io/post/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 06 Feb 2019 10:05:13 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>python 简介 在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。 越低级的语言</description>
+      <description>&lt;h2 id=&#34;python-简介&#34;&gt;python 简介&lt;/h2&gt;&#xA;&lt;p&gt;在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。&lt;/p&gt;&#xA;&lt;p&gt;越低级的语言，越贴近计算机，抽象程度低，执行效率高，比如C语言；越高级的语言，越贴近计算，抽象程度高，执行效率低，比如Python语言。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Python学习汇总</title>
       <link>https://zsmhub.github.io/post/python/python%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/</link>
       <pubDate>Wed, 06 Feb 2019 09:57:29 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/python/python%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/</guid>
-      <description>学习资料 Python 3教程-廖雪峰 Python初学者书籍、视频、资料、社区推荐</description>
+      <description>&lt;h2 id=&#34;学习资料&#34;&gt;学习资料&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.liaoxuefeng.com/wiki/1016959663602400&#34;&gt;Python 3教程-廖雪峰&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/Yixiaohan/codeparkshare&#34;&gt;Python初学者书籍、视频、资料、社区推荐&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

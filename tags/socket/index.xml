@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>socket on ZsmHub - Blog</title>
+    <title>Socket on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/socket/</link>
-    <description>Recent content in socket on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Socket on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 28 Apr 2019 16:22:13 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/socket/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 May 2022 16:22:13 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/socket/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Socket &amp;&amp; WebSocket</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/</link>
       <pubDate>Sun, 28 Apr 2019 16:22:13 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/</guid>
-      <description>一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。</description>
+      <description>&lt;p&gt;一般&lt;code&gt;网络编程&lt;/code&gt;都叫&lt;code&gt;Socket编程&lt;/code&gt;，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。&lt;/p&gt;&#xA;&lt;p&gt;网络编程无非简单来看就是 TCP编程 和 UDP编程。&lt;/p&gt;&#xA;&lt;h2 id=&#34;socket&#34;&gt;Socket&lt;/h2&gt;&#xA;&lt;p&gt;每一次建立 socket 连接后，都会生成一个 SessionId，便于标识通讯中的客户端和服务端。（SessionId 应保证分布式唯一）&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

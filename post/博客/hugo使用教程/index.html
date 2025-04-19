@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="Hugo 是什么 静态网站生成器
+Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。 Hugo内置web服务器，可以方便的用于本地调试。 安装命令 1 2 # v0.146 brew install hugo Hugo 常用命令 hugo new site quickstart // 新建一个博客网站 hugo new post/xxx/xxx.md // 新建文章 hugo server -D // Start the Hugo server hugo // 构建静态页面，不包含 draft=true 的文件 hugo -D // 构建静态页面，包含 draft=true 的文件 Hugo 项目目录 config.toml是网站的配置文件，这是一个TOML文件，全称是Tom’s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。 theme 目录里放的是主题皮肤 content 目录里放的是你写的markdown文章 archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。 static 目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png layouts 目录里放的是网站的模板文件 public 存放所有静态页面的数据，如文章、图片 主题推荐 even：https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" />
@@ -35,24 +37,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Hugo 使用教程" />
-<meta property="og:description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-05-03T20:45:07&#43;08:00" />
-<meta property="article:modified_time" content="2020-05-03T20:45:07&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Hugo 使用教程">
+  <meta property="og:description" content="Hugo 是什么 静态网站生成器
+Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。 Hugo内置web服务器，可以方便的用于本地调试。 安装命令 1 2 # v0.146 brew install hugo Hugo 常用命令 hugo new site quickstart // 新建一个博客网站 hugo new post/xxx/xxx.md // 新建文章 hugo server -D // Start the Hugo server hugo // 构建静态页面，不包含 draft=true 的文件 hugo -D // 构建静态页面，包含 draft=true 的文件 Hugo 项目目录 config.toml是网站的配置文件，这是一个TOML文件，全称是Tom’s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。 theme 目录里放的是主题皮肤 content 目录里放的是你写的markdown文章 archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。 static 目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png layouts 目录里放的是网站的模板文件 public 存放所有静态页面的数据，如文章、图片 主题推荐 even：https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-05-03T20:45:07+08:00">
+    <meta property="article:modified_time" content="2020-05-03T20:45:07+08:00">
+    <meta property="article:tag" content="博客">
 
-<meta itemprop="name" content="Hugo 使用教程">
-<meta itemprop="description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的"><meta itemprop="datePublished" content="2020-05-03T20:45:07&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-03T20:45:07&#43;08:00" />
-<meta itemprop="wordCount" content="720">
-<meta itemprop="keywords" content="博客," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hugo 使用教程"/>
-<meta name="twitter:description" content="Hugo 是什么 静态网站生成器 Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的"/>
+  <meta itemprop="name" content="Hugo 使用教程">
+  <meta itemprop="description" content="Hugo 是什么 静态网站生成器
+Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。 Hugo内置web服务器，可以方便的用于本地调试。 安装命令 1 2 # v0.146 brew install hugo Hugo 常用命令 hugo new site quickstart // 新建一个博客网站 hugo new post/xxx/xxx.md // 新建文章 hugo server -D // Start the Hugo server hugo // 构建静态页面，不包含 draft=true 的文件 hugo -D // 构建静态页面，包含 draft=true 的文件 Hugo 项目目录 config.toml是网站的配置文件，这是一个TOML文件，全称是Tom’s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。 theme 目录里放的是主题皮肤 content 目录里放的是你写的markdown文章 archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。 static 目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png layouts 目录里放的是网站的模板文件 public 存放所有静态页面的数据，如文章、图片 主题推荐 even：https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md">
+  <meta itemprop="datePublished" content="2020-05-03T20:45:07+08:00">
+  <meta itemprop="dateModified" content="2020-05-03T20:45:07+08:00">
+  <meta itemprop="wordCount" content="815">
+  <meta itemprop="keywords" content="博客">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hugo 使用教程">
+  <meta name="twitter:description" content="Hugo 是什么 静态网站生成器
+Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe） Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。 Hugo内置web服务器，可以方便的用于本地调试。 安装命令 1 2 # v0.146 brew install hugo Hugo 常用命令 hugo new site quickstart // 新建一个博客网站 hugo new post/xxx/xxx.md // 新建文章 hugo server -D // Start the Hugo server hugo // 构建静态页面，不包含 draft=true 的文件 hugo -D // 构建静态页面，包含 draft=true 的文件 Hugo 项目目录 config.toml是网站的配置文件，这是一个TOML文件，全称是Tom’s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。 theme 目录里放的是主题皮肤 content 目录里放的是你写的markdown文章 archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。 static 目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png layouts 目录里放的是网站的模板文件 public 存放所有静态页面的数据，如文章、图片 主题推荐 even：https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +102,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +135,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -130,7 +151,7 @@
         <div class="post-category">
             <a href="/categories/%E5%8D%9A%E5%AE%A2/"> 博客 </a>
             </div>
-          <span class="more-meta"> 约 720 字 </span>
+          <span class="more-meta"> 约 815 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -142,6 +163,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#hugo-是什么">Hugo 是什么</a></li>
+    <li><a href="#安装命令">安装命令</a></li>
     <li><a href="#hugo-常用命令">Hugo 常用命令</a></li>
     <li><a href="#hugo-项目目录">Hugo 项目目录</a></li>
     <li><a href="#主题推荐">主题推荐</a></li>
@@ -157,15 +179,26 @@
     <div class="post-content">
       <h2 id="hugo-是什么">Hugo 是什么</h2>
 <blockquote>
-<p>静态网站生成器</p>
-</blockquote>
+<p>静态网站生成器</p></blockquote>
 <ul>
 <li>Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe）</li>
 <li>Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。</li>
 <li>Hugo内置web服务器，可以方便的用于本地调试。</li>
 </ul>
-<h2 id="hugo-常用命令">Hugo 常用命令</h2>
+<h2 id="安装命令">安装命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># v0.146</span>
+</span></span><span class="line"><span class="cl">brew install hugo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="hugo-常用命令">Hugo 常用命令</h2>
 <ul>
+<li>hugo new site quickstart // 新建一个博客网站</li>
 <li>hugo new post/xxx/xxx.md // 新建文章</li>
 <li>hugo server -D // Start the Hugo server</li>
 <li>hugo // 构建静态页面，不包含 draft=true 的文件</li>
@@ -182,40 +215,38 @@
 <li>public 存放所有静态页面的数据，如文章、图片</li>
 </ul>
 <h2 id="主题推荐">主题推荐</h2>
-<ul>
-<li>even</li>
-</ul>
+<p>even：https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md</p>
 <h2 id="如何修改主题">如何修改主题</h2>
 <p>如果需要调整更改主题，需要在 themes/even 目录下重新 build</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> themes/even <span class="o">&amp;&amp;</span> npm i <span class="o">&amp;&amp;</span> npm start
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> themes/even <span class="o">&amp;&amp;</span> npm i <span class="o">&amp;&amp;</span> npm start
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="如何添加分类和标签">如何添加分类和标签</h2>
 <p>在 your project/config.toml 尾部追加以下代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 分类和标签</span>
-<span class="o">[</span>taxonomies<span class="o">]</span>
-<span class="nv">tag</span> <span class="o">=</span> <span class="s2">&#34;tags&#34;</span>
-<span class="nv">category</span> <span class="o">=</span> <span class="s2">&#34;categories
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 分类和标签</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>taxonomies<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">tag</span> <span class="o">=</span> <span class="s2">&#34;tags&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">category</span> <span class="o">=</span> <span class="s2">&#34;categories
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="markdown-模板示例">Markdown 模板示例</h2>
 <p>修改文件： your project/archetypes/default.md</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -226,16 +257,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">---
-title: <span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
-date: <span class="o">{{</span> .Date <span class="o">}}</span>
-lastmod: <span class="o">{{</span> .Date <span class="o">}}</span>
-draft: <span class="nb">false</span>
-tags: <span class="o">[</span> <span class="s2">&#34;博客&#34;</span> <span class="o">]</span>
-categories: <span class="o">[</span> <span class="s2">&#34;博客&#34;</span> <span class="o">]</span>
-comment: <span class="nb">true</span>
----
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: <span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
+</span></span><span class="line"><span class="cl">date: <span class="o">{{</span> .Date <span class="o">}}</span>
+</span></span><span class="line"><span class="cl">lastmod: <span class="o">{{</span> .Date <span class="o">}}</span>
+</span></span><span class="line"><span class="cl">draft: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl">tags: <span class="o">[</span> <span class="s2">&#34;博客&#34;</span> <span class="o">]</span>
+</span></span><span class="line"><span class="cl">categories: <span class="o">[</span> <span class="s2">&#34;博客&#34;</span> <span class="o">]</span>
+</span></span><span class="line"><span class="cl">comment: <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">---
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="github-pages-适配">Github Pages 适配</h2>
 <ol>
@@ -246,17 +277,17 @@ comment: <span class="nb">true</span>
 <p>.gitignore 配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 原始文章仓库</span>
-
-.DS_Store
-/public
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 原始文章仓库</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">.DS_Store
+</span></span><span class="line"><span class="cl">/public
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -266,15 +297,15 @@ comment: <span class="nb">true</span>
 <h2 id="常用发版命令">常用发版命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;blog commit&#39;</span> <span class="o">&amp;&amp;</span> git push origin master
-
-hugo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ./public <span class="o">&amp;&amp;</span> git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;blog commit&#39;</span> <span class="o">&amp;&amp;</span> git push origin master <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ../
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;blog commit&#39;</span> <span class="o">&amp;&amp;</span> git push origin master
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hugo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ./public <span class="o">&amp;&amp;</span> git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;blog commit&#39;</span> <span class="o">&amp;&amp;</span> git push origin master <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ../
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -282,7 +313,7 @@ hugo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ./public <span
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -354,22 +385,19 @@ hugo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ./public <span
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -383,7 +411,7 @@ hugo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ./public <span
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

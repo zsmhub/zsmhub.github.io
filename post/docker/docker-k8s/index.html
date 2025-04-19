@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/docker/docker-k8s/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="k8s简介" />
-<meta property="og:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/docker/docker-k8s/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-02-01T14:36:09&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-15T14:36:09&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/docker/docker-k8s/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="k8s简介">
+  <meta property="og:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-02-01T14:36:09+08:00">
+    <meta property="article:modified_time" content="2021-07-15T14:36:09+08:00">
+    <meta property="article:tag" content="K8s">
 
-<meta itemprop="name" content="k8s简介">
-<meta itemprop="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"><meta itemprop="datePublished" content="2019-02-01T14:36:09&#43;08:00" />
-<meta itemprop="dateModified" content="2021-07-15T14:36:09&#43;08:00" />
-<meta itemprop="wordCount" content="3930">
-<meta itemprop="keywords" content="k8s," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="k8s简介"/>
-<meta name="twitter:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效"/>
+  <meta itemprop="name" content="k8s简介">
+  <meta itemprop="description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。">
+  <meta itemprop="datePublished" content="2019-02-01T14:36:09+08:00">
+  <meta itemprop="dateModified" content="2021-07-15T14:36:09+08:00">
+  <meta itemprop="wordCount" content="3930">
+  <meta itemprop="keywords" content="K8s">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="k8s简介">
+  <meta name="twitter:description" content="k8s 简介 Kubernetes是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -166,8 +183,7 @@
 <p>K8S，就是基于容器的集群管理平台，它的全称，是kubernetes。</p>
 <p>k8s集群主要包括两个部分：一个Master节点（主节点），一群Node节点（计算节点）</p>
 <blockquote>
-<p>常见用法</p>
-</blockquote>
+<p>常见用法</p></blockquote>
 <p>Namespace(虚拟集群，一个项目独立部署在一个namespace下)-&gt;Deployment资源对象(高级Pod控制器，一个logic进程服务)-&gt;Pod(副本，一个进程下分配多少个pod)</p>
 <h2 id="k8s实现平滑发布">k8s实现平滑发布</h2>
 <p>k8s部署是通过<code>金丝雀发布</code>（灰度发布），可实现平滑发布。</p>
@@ -198,8 +214,7 @@
 <li>
 <p>容器组或副本（Pod/replicas）</p>
 <blockquote>
-<p>容器组（Pod）是最小、最简单的 Kubernetes 对象</p>
-</blockquote>
+<p>容器组（Pod）是最小、最简单的 Kubernetes 对象</p></blockquote>
 <p>容器组，是 Kubernetes 最基本的操作单元。一个 Pod 代表着集群中运行的一个进程，它内部封装了一个或多个紧密相关的容器（docker），如filebeat日志容器、主程序容器。</p>
 <p>【可以这样简单理解：一个 go logic 服务就是一个 pod，部署多个 pod 可以实现负载均衡，而每个 pod 包含一个 go logic 服务】</p>
 <blockquote>
@@ -207,8 +222,7 @@
 <p>请不要混淆以下两个概念：</p>
 <p>重启 Pod 中的容器
 重启 Pod
-Pod 本身并不会运行，Pod 仅仅是容器运行的一个环境</p>
-</blockquote>
+Pod 本身并不会运行，Pod 仅仅是容器运行的一个环境</p></blockquote>
 </li>
 <li>
 <p>Job</p>
@@ -227,7 +241,7 @@ Pod 本身并不会运行，Pod 仅仅是容器运行的一个环境</p>
 <h2 id="pod定义文件yaml">Pod定义文件yaml</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -241,19 +255,19 @@ Pod 本身并不会运行，Pod 仅仅是容器运行的一个环境</p>
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-  labels:
-    app: nginx
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    ports:
-    - containerPort: <span class="m">80</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">kind: Pod
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: nginx
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    app: nginx
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  containers:
+</span></span><span class="line"><span class="cl">  - name: nginx
+</span></span><span class="line"><span class="cl">    image: nginx
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">    - containerPort: <span class="m">80</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -264,8 +278,7 @@ spec:
 <p>如果多个容器在同一Pod下他们公用一个IP所以不能出现重复的端口号,比如在一个Pod下运行两个nginx就会有一个容器异常,一个Pod下的多个容器可以使用localhost来访问对方端口</p>
 <p>因为Pod是最小的单元如果在Pod中容器出现异常终止了是不会重启,在实际使用场景下基本<code>不会直接使用 Pod 而是使用 Deployment 部署自己的应用</code></p>
 <blockquote>
-<p>Deployment 优点</p>
-</blockquote>
+<p>Deployment 优点</p></blockquote>
 <ul>
 <li>Deployment 拥有更加灵活强大的升级、回滚功能,并且支持滚动更新</li>
 <li>使用 Deployment 升级 Pod 只需要定义 Pod 的最终状态，k8s 会为你执行必要的操作(RC要自己定义如何操作)</li>
@@ -287,8 +300,7 @@ spec:
 </li>
 </ul>
 <blockquote>
-<p>滚动升级策略:</p>
-</blockquote>
+<p>滚动升级策略:</p></blockquote>
 <ul>
 <li>maxSurge: 允许最多同时创建Pod的数量或比例（pod 超过期望数量则 kill 掉），</li>
 <li>maxUnavailable: 允许不可用的Pod数量或比例(非 running 状态的 Pod 为不可用)</li>
@@ -298,8 +310,7 @@ spec:
 <p><a href="https://prometheus.fuckcloudnative.io/">Prometheus 中文文档</a></p>
 <p>随着容器技术的迅速发展，Kubernetes 已然成为大家追捧的容器集群管理系统。Prometheus 作为生态圈 Cloud Native Computing Foundation（简称：CNCF）中的重要一员,其活跃度仅次于 Kubernetes, 现已广泛用于 Kubernetes 集群的监控系统中。</p>
 <blockquote>
-<p>使用场景</p>
-</blockquote>
+<p>使用场景</p></blockquote>
 <p>Prometheus 适用于记录文本格式的时间序列，它既适用于以机器为中心的监控，也适用于高度动态的面向服务架构的监控。在微服务的世界中，它对多维数据收集和查询的支持有特殊优势。Prometheus 是专为提高系统可靠性而设计的，它可以在断电期间快速诊断问题，每个 Prometheus Server 都是相互独立的，不依赖于网络存储或其他远程服务。当基础架构出现故障时，你可以通过 Prometheus 快速定位故障点，而且不会消耗大量的基础架构资源。</p>
 <h2 id="snat和dnat">SNAT和DNAT</h2>
 <p>SNAT 是源地址转换</p>
@@ -334,12 +345,10 @@ spec:
 <li>go fasthttp是建立tcp连接，会报 &ldquo;dialing to the given TCP address timed out&rdquo;，3秒没建立连接超时就异常了</li>
 </ol>
 <blockquote>
-<p>问题定位：</p>
-</blockquote>
+<p>问题定位：</p></blockquote>
 <p>k8s集群的节点是默认通过 SNAT 将流量转发出去的；运维测试通过 SNAT 的节点访问非 k8s 项目的接口很慢。但试了下一台节点绑定了公网IP，不走SNAT 网关，访问出去就很快。</p>
 <blockquote>
-<p>解决方案：</p>
-</blockquote>
+<p>解决方案：</p></blockquote>
 <p>扩容 SNAT</p>
 <h2 id="kubernetes-网络疑难杂症排查分享">Kubernetes 网络疑难杂症排查分享</h2>
 <p><a href="https://imroc.cc/post/201908/troubleshooting-with-kubernetes-network/#lb-%E5%8E%8B%E6%B5%8B-cps-%E4%BD%8E">点击查看文章</a></p>
@@ -353,7 +362,7 @@ spec:
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -425,22 +434,19 @@ spec:
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -454,7 +460,7 @@ spec:
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

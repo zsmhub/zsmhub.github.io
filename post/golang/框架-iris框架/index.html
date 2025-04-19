@@ -16,14 +16,18 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="官方文档 Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。 Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。 Iris 为您提供构建面向服务的应用程序" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="官方文档
+Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。
+Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。
+Iris 为您提供构建面向服务的应用程序的结构。 用 Iris 构建微服务很容易。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/%E6%A1%86%E6%9E%B6-iris%E6%A1%86%E6%9E%B6/" />
@@ -35,24 +39,39 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Iris 框架" />
-<meta property="og:description" content="官方文档 Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。 Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。 Iris 为您提供构建面向服务的应用程序" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/%E6%A1%86%E6%9E%B6-iris%E6%A1%86%E6%9E%B6/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-04-01T22:02:25&#43;08:00" />
-<meta property="article:modified_time" content="2020-04-01T22:02:25&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/%E6%A1%86%E6%9E%B6-iris%E6%A1%86%E6%9E%B6/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Iris 框架">
+  <meta property="og:description" content="官方文档
+Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。
+Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。
+Iris 为您提供构建面向服务的应用程序的结构。 用 Iris 构建微服务很容易。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-04-01T22:02:25+08:00">
+    <meta property="article:modified_time" content="2020-04-01T22:02:25+08:00">
+    <meta property="article:tag" content="Golang">
 
-<meta itemprop="name" content="Iris 框架">
-<meta itemprop="description" content="官方文档 Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。 Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。 Iris 为您提供构建面向服务的应用程序"><meta itemprop="datePublished" content="2020-04-01T22:02:25&#43;08:00" />
-<meta itemprop="dateModified" content="2020-04-01T22:02:25&#43;08:00" />
-<meta itemprop="wordCount" content="544">
-<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Iris 框架"/>
-<meta name="twitter:description" content="官方文档 Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。 Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。 Iris 为您提供构建面向服务的应用程序"/>
+  <meta itemprop="name" content="Iris 框架">
+  <meta itemprop="description" content="官方文档
+Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。
+Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。
+Iris 为您提供构建面向服务的应用程序的结构。 用 Iris 构建微服务很容易。">
+  <meta itemprop="datePublished" content="2020-04-01T22:02:25+08:00">
+  <meta itemprop="dateModified" content="2020-04-01T22:02:25+08:00">
+  <meta itemprop="wordCount" content="544">
+  <meta itemprop="keywords" content="Golang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Iris 框架">
+  <meta name="twitter:description" content="官方文档
+Iris 简介 Iris 是一个拥有 MVC 架构模式的 Go Web 框架。
+Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。
+Iris 为您提供构建面向服务的应用程序的结构。 用 Iris 构建微服务很容易。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +110,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +143,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -159,7 +188,7 @@
 <h2 id="iris-入门示例">Iris 入门示例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -222,78 +251,78 @@
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// main.go
-</span><span class="c1"></span><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;github.com/kataras/iris&#34;</span>
-    <span class="s">&#34;strconv&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// // 管理员列表-免权限判断
-</span><span class="c1"></span>    <span class="c1">// Router.Get(&#34;managers&#34;, xxx.getAnswerAuth)
-</span><span class="c1"></span>
-    <span class="c1">// // 管理员权限判断示例代码
-</span><span class="c1"></span>    <span class="c1">// Router.Use(func(ctx iris.Context) {
-</span><span class="c1"></span>    <span class="c1">//     auth := ctx.Values().Get(&#34;user&#34;).(model.User)
-</span><span class="c1"></span>
-    <span class="c1">//     managers := repository.xxx.GetAnswerManagers()
-</span><span class="c1"></span>    <span class="c1">//     if _, ok := managers[auth.Id]; !ok {
-</span><span class="c1"></span>    <span class="c1">//         ctx.JSON(response.FailCode(&#34;您没有权限访问！&#34;, http.StatusBadRequest))
-</span><span class="c1"></span>    <span class="c1">//         return
-</span><span class="c1"></span>    <span class="c1">//     }
-</span><span class="c1"></span>
-    <span class="c1">//     ctx.Next()
-</span><span class="c1"></span>    <span class="c1">// })
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">app</span> <span class="o">:=</span> <span class="nx">iris</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
-
-    <span class="c1">// 解决前端 AJAX 的 CORS 的跨域资源共享问题
-</span><span class="c1"></span>    <span class="nx">app</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">iris</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Origin&#34;</span><span class="p">,</span> <span class="s">&#34;*&#34;</span><span class="p">)</span>
-        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Credentials&#34;</span><span class="p">,</span> <span class="s">&#34;true&#34;</span><span class="p">)</span>
-        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Headers&#34;</span><span class="p">,</span> <span class="s">&#34;*&#34;</span><span class="p">)</span>
-        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Headers&#34;</span><span class="p">,</span> <span class="s">&#34;Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, X-Access-Token,Token&#34;</span><span class="p">)</span>
-        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Methods&#34;</span><span class="p">,</span> <span class="s">&#34;POST, OPTIONS, GET, PUT, DELETE&#34;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Method</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#34;OPTIONS&#34;</span> <span class="p">{</span>
-            <span class="nx">ctx</span><span class="p">.</span><span class="nf">StatusCode</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">)</span>
-            <span class="k">return</span>
-        <span class="p">}</span>
-
-        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Next</span><span class="p">()</span>
-    <span class="p">})</span>
-
-    <span class="c1">// 解决预检问题
-</span><span class="c1"></span>    <span class="nx">app</span><span class="p">.</span><span class="nf">AllowMethods</span><span class="p">(</span><span class="nx">iris</span><span class="p">.</span><span class="nx">MethodOptions</span><span class="p">)</span>
-
-    <span class="c1">// 设置路由
-</span><span class="c1"></span>    <span class="nx">app</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;/user/{id:uint32}&#34;</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">iris</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">id</span> <span class="o">:=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Params</span><span class="p">().</span><span class="nf">GetUint32</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span> <span class="c1">// 获取动态路由参数
-</span><span class="c1"></span>        <span class="nx">ctx</span><span class="p">.</span><span class="nf">StatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="c1">// 设置 HTTP 状态码
-</span><span class="c1"></span>        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;my custom header&#34;</span><span class="p">)</span> <span class="c1">// 设置 Header
-</span><span class="c1"></span>        <span class="nx">ctx</span><span class="p">.</span><span class="nf">JSON</span><span class="p">(</span><span class="nx">iris</span><span class="p">.</span><span class="nx">Map</span><span class="p">{</span>
-            <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;user id is&#34;</span> <span class="o">+</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatUint</span><span class="p">(</span><span class="nb">uint64</span><span class="p">(</span><span class="nx">id</span><span class="p">),</span> <span class="mi">10</span><span class="p">),</span>
-        <span class="p">})</span>
-    <span class="p">})</span>
-
-    <span class="c1">// listen and serve on http://0.0.0.0:8080.
-</span><span class="c1"></span>    <span class="nx">app</span><span class="p">.</span><span class="nf">Run</span><span class="p">(</span><span class="nx">iris</span><span class="p">.</span><span class="nf">Addr</span><span class="p">(</span><span class="s">&#34;:8080&#34;</span><span class="p">))</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// main.go</span>
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/kataras/iris&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strconv&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// // 管理员列表-免权限判断</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Router.Get(&#34;managers&#34;, xxx.getAnswerAuth)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// // 管理员权限判断示例代码</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Router.Use(func(ctx iris.Context) {</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//     auth := ctx.Values().Get(&#34;user&#34;).(model.User)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//     managers := repository.xxx.GetAnswerManagers()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//     if _, ok := managers[auth.Id]; !ok {</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//         ctx.JSON(response.FailCode(&#34;您没有权限访问！&#34;, http.StatusBadRequest))</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//         return</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//     }</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//     ctx.Next()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// })</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">app</span> <span class="o">:=</span> <span class="nx">iris</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解决前端 AJAX 的 CORS 的跨域资源共享问题</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">app</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">iris</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Origin&#34;</span><span class="p">,</span> <span class="s">&#34;*&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Credentials&#34;</span><span class="p">,</span> <span class="s">&#34;true&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Headers&#34;</span><span class="p">,</span> <span class="s">&#34;*&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Headers&#34;</span><span class="p">,</span> <span class="s">&#34;Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, X-Access-Token,Token&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;Access-Control-Allow-Methods&#34;</span><span class="p">,</span> <span class="s">&#34;POST, OPTIONS, GET, PUT, DELETE&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Method</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#34;OPTIONS&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ctx</span><span class="p">.</span><span class="nf">StatusCode</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Next</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解决预检问题</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">app</span><span class="p">.</span><span class="nf">AllowMethods</span><span class="p">(</span><span class="nx">iris</span><span class="p">.</span><span class="nx">MethodOptions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 设置路由</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">app</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;/user/{id:uint32}&#34;</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">iris</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">id</span> <span class="o">:=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Params</span><span class="p">().</span><span class="nf">GetUint32</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span> <span class="c1">// 获取动态路由参数</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">StatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="c1">// 设置 HTTP 状态码</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">Header</span><span class="p">(</span><span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;my custom header&#34;</span><span class="p">)</span> <span class="c1">// 设置 Header</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ctx</span><span class="p">.</span><span class="nf">JSON</span><span class="p">(</span><span class="nx">iris</span><span class="p">.</span><span class="nx">Map</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;user id is&#34;</span> <span class="o">+</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatUint</span><span class="p">(</span><span class="nb">uint64</span><span class="p">(</span><span class="nx">id</span><span class="p">),</span> <span class="mi">10</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// listen and serve on http://0.0.0.0:8080.</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">app</span><span class="p">.</span><span class="nf">Run</span><span class="p">(</span><span class="nx">iris</span><span class="p">.</span><span class="nf">Addr</span><span class="p">(</span><span class="s">&#34;:8080&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 启动项目，在浏览器输入 http://localhost:8080，即可看到页面效果
-</span><span class="c1"></span><span class="k">go</span> <span class="nx">run</span> <span class="nx">main</span><span class="p">.</span><span class="k">go</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 启动项目，在浏览器输入 http://localhost:8080，即可看到页面效果</span>
+</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">run</span> <span class="nx">main</span><span class="p">.</span><span class="k">go</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="iris-的一些坑">Iris 的一些坑</h2>
 <ol>
@@ -306,19 +335,19 @@
 <p>代码不够简洁，一个报错代码竟然要 3 行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nf">StatusCode</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">)</span>
-    <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">JSON</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nf">Fail</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()))</span>
-    <span class="k">return</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ctx</span><span class="p">.</span><span class="nf">StatusCode</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">JSON</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nf">Fail</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="学习资料">学习资料</h2>
 <p><a href="https://learnku.com/docs/iris-go/10">Iris 框架中文文档</a></p>
@@ -330,7 +359,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -402,22 +431,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -431,7 +457,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

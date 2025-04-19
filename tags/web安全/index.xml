@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>web安全 on ZsmHub - Blog</title>
+    <title>Web安全 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/web%E5%AE%89%E5%85%A8/</link>
-    <description>Recent content in web安全 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Web安全 on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 25 Dec 2019 21:44:01 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/web%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Dec 2019 21:44:01 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/web%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>接口对接安全性方案</title>
       <link>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/</link>
       <pubDate>Wed, 25 Dec 2019 21:44:01 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/</guid>
-      <description>接口对接安全性方案 鉴权（authentication）是指验证用户是否拥有访问系统的权利。 建立访问IP白名单 可以在nginx上配置只允许某些</description>
+      <description>&lt;h2 id=&#34;接口对接安全性方案&#34;&gt;接口对接安全性方案&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;鉴权（authentication）是指验证用户是否拥有访问系统的权利。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;建立访问IP白名单&#xA;可以在nginx上配置只允许某些固定IP可以访问 或者 在阿里云的服务器上直接配置IP白名单&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Web 安全攻防总结</title>
       <link>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/</link>
       <pubDate>Wed, 02 Jan 2019 17:25:01 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/</guid>
-      <description>XSS（跨站攻击） XSS 种类 Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意</description>
+      <description>&lt;h2 id=&#34;xss跨站攻击&#34;&gt;XSS（跨站攻击）&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;XSS 种类&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意代码参数被 HTML 解析、执行。&lt;/li&gt;&#xA;&lt;li&gt;Stored XSS:  持久型 XSS 漏洞，也被称为存储型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如发帖留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;XSS防范方法&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,18 +4,17 @@
     <title>Mysql 主从复制 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/mysql-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</link>
     <description>Recent content in Mysql 主从复制 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 07 May 2020 09:34:49 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/mysql-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 May 2020 09:34:49 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/mysql-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mysql 主从复制延时案例</title>
       <link>https://zsmhub.github.io/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/</link>
       <pubDate>Thu, 07 May 2020 09:34:49 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/</guid>
-      <description>MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。 如果主从复制之间出现</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2020/QQ20200531-164626@2x.png&#34; alt=&#34;Mysql之主从复制读写分离&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2020/687474703a2f2f646c2e69746579652e636f6d2f75706c6f61642f6174746163686d656e742f303038302f333038362f34363863316131342d653761642d333239302d396433642d3434616335303161373232372e6a7067.jpeg&#34; alt=&#34;Mysql 之主从复制原理&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出现会降低主从读写分离的价值，不利于数据实时性较高的业务使用 MySQL。&lt;/p&gt;&#xA;&lt;p&gt;如果主从复制之间出现延时，就会影响主从数据的一致性。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

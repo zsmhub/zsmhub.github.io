@@ -4,18 +4,17 @@
     <title>微信语音 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/</link>
     <description>Recent content in 微信语音 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 10 Jan 2025 11:10:41 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Jan 2025 11:10:41 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>mac导出微信语音</title>
       <link>https://zsmhub.github.io/post/other/%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/</link>
       <pubDate>Fri, 10 Jan 2025 11:10:41 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/other/%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3/</guid>
-      <description>在 mac 上导出微信语音比较简单，不需要借助其他工具。 收藏语音消息 先在微信中收藏语音消息，这样文件会出现在 Favorites 目录中，便于查找。 微信导出 在收藏中找一</description>
+      <description>&lt;p&gt;在 mac 上导出微信语音比较简单，不需要借助其他工具。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;收藏语音消息&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;先在微信中收藏语音消息，这样文件会出现在 Favorites 目录中，便于查找。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;微信导出&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;在收藏中找一张图片，右键选择“在 Finder 中显示”，会打开其在收藏中的目录，在同级目录中可以找到所需的语音文件（*.silk）。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

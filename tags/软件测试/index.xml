@@ -4,45 +4,38 @@
     <title>软件测试 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</link>
     <description>Recent content in 软件测试 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 14 Apr 2021 10:42:55 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Apr 2021 10:42:55 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go中的单元测试和基准测试</title>
       <link>https://zsmhub.github.io/post/golang/go%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8C%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Wed, 14 Apr 2021 10:42:55 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/golang/go%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8C%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/</guid>
-      <description>TDD Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码</description>
+      <description>&lt;h2 id=&#34;tdd&#34;&gt;TDD&lt;/h2&gt;&#xA;&lt;p&gt;Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码确定需要编写什么产品代码。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>AB压力测试</title>
       <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Fri, 10 Jan 2020 21:01:48 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/ab%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</guid>
-      <description>ApacheBench 是 Apache 服务器自带的一个web压力测试工具，简称ab。ab又是一个命令行工具，对发起负载的本机要求很低，根据ab命令可以创建很多的并发访问线程</description>
+      <description>&lt;p&gt;ApacheBench 是 Apache 服务器自带的一个web压力测试工具，简称ab。ab又是一个命令行工具，对发起负载的本机要求很低，根据ab命令可以创建很多的并发访问线程，模拟多个访问者同时对某一URL地址进行访问，因此可以用来测试目标服务器的负载压力。总的来说ab工具小巧简单，上手学习较快，可以提供需要的基本性能指标，但是没有图形化结果，不能监控。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>软件测试分类</title>
       <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/</link>
       <pubDate>Mon, 06 Jan 2020 20:54:06 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/</guid>
-      <description>在软件测试中UT，IT，ST，UAT指单元测试，集成测试，系统测试 ，用户接受测试。 UT-单元测试 Unit Test 单元测试任务包括： 1、模块接口测试； 2、</description>
+      <description>&lt;p&gt;在软件测试中UT，IT，ST，UAT指单元测试，集成测试，系统测试 ，用户接受测试。&lt;/p&gt;&#xA;&lt;h2 id=&#34;ut-单元测试&#34;&gt;UT-单元测试&lt;/h2&gt;&#xA;&lt;p&gt;Unit Test&lt;/p&gt;&#xA;&lt;p&gt;单元测试任务包括：&lt;/p&gt;&#xA;&lt;p&gt;1、模块接口测试；&lt;/p&gt;&#xA;&lt;p&gt;2、模块局部数据结构测试；&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>黑白灰盒测试简介</title>
       <link>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E9%BB%91%E7%99%BD%E7%81%B0%E7%9B%92%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/</link>
       <pubDate>Wed, 30 Jan 2019 22:02:20 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E9%BB%91%E7%99%BD%E7%81%B0%E7%9B%92%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/</guid>
-      <description>黑盒测试 黑盒测试也称功能测试或数据驱动测试，它是在已知产品所应具有的功能，通过测试来检测每个功能是否都能正常使用，在测试时，把程序看作一个不</description>
+      <description>&lt;h2 id=&#34;黑盒测试&#34;&gt;黑盒测试&lt;/h2&gt;&#xA;&lt;p&gt;黑盒测试也称功能测试或数据驱动测试，它是在已知产品所应具有的功能，通过测试来检测每个功能是否都能正常使用，在测试时，把程序看作一个不能打开的黑盆子，在完全不考虑程序内部结构和内部特性的情况下，测试者在程序接口进行测试，它只检查程序功能是否按照需求规格说明书的规定正常使用，程序是否能适当地接收输入数锯而产生正确的输出信息，并且保持外部信息（如数据库或文件）的完整性。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

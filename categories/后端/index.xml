@@ -4,198 +4,157 @@
     <title>后端 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/</link>
     <description>Recent content in 后端 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 19 May 2022 10:49:38 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 May 2022 10:49:38 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Session和Cookie</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/session%E5%92%8Ccookie/</link>
       <pubDate>Thu, 19 May 2022 10:49:38 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/session%E5%92%8Ccookie/</guid>
-      <description>session与cookie属于一种会话控制技术，常用在身份识别，登录验证，数据传输等。 cookie，是在本地计算机保存一些用户操作的历史信</description>
+      <description>&lt;p&gt;session与cookie属于一种&lt;code&gt;会话控制技术&lt;/code&gt;，常用在身份识别，登录验证，数据传输等。&lt;/p&gt;&#xA;&lt;p&gt;cookie，是在本地计算机保存一些用户操作的历史信息（当然包括登录信息），并在用户再次访问该站点时浏览器通过 HTTP 协议将本地 cookie 内容发送给服务器，从而完成验证，或继续上一步操作。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>直播开发</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/</link>
       <pubDate>Thu, 26 Aug 2021 16:46:41 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/</guid>
-      <description>腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称</description>
+      <description>&lt;h2 id=&#34;腾讯云直播&#34;&gt;腾讯云直播&lt;/h2&gt;&#xA;&lt;p&gt;使用腾讯 云直播·标准直播 产品进行直播需求开发&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/product/lvb/developer&#34;&gt;产品文档&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;推流&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称为“RTMP 发布”。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;拉流&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;即直播播放，指已实现直播推流之后，用指定地址将腾讯视频云服务器中的视频源和音频源拉取播放的过程。其视频源是实时生成的，有人推流直播才有意义，一旦主播停播，直播 URL 也就失效了。而且由于是实时直播，所以播放器在播直播视频的时候是没有进度条的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>安全层面-限流策略</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/</link>
       <pubDate>Thu, 12 Aug 2021 10:23:52 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/</guid>
-      <description>一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和acc</description>
+      <description>&lt;h2 id=&#34;一问题背景&#34;&gt;一、问题背景&lt;/h2&gt;&#xA;&lt;p&gt;最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和access.log,发现是API接口被刷,被恶意疯狂请求,最大一次大概120次/s。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>项目部署与发布</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/</link>
       <pubDate>Wed, 07 Jul 2021 09:26:58 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/</guid>
-      <description>目前我们的k8s部署是通过金丝雀发布（灰度发布）， 发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod 旧版本的Pod继续运行</description>
+      <description>&lt;p&gt;目前我们的k8s部署是通过金丝雀发布（灰度发布），&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod&lt;/li&gt;&#xA;&lt;li&gt;旧版本的Pod继续运行10秒但不接受新的请求，方便旧pod的异步任务数据处理，10秒后再Kill掉旧版本的Pod。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;部署流程：服务重启 =&amp;gt; 10秒灰度发布，新旧pod共存 =&amp;gt; 新pod依次替代旧pod，旧pod移除调度，等待10秒后发送kill -15信号量给程序 =&amp;gt; 程序接受信号量并终止，删除旧pod&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>面向故障编程</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Thu, 27 May 2021 11:11:52 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/</guid>
-      <description>Bug与故障 Bug Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此</description>
+      <description>&lt;h2 id=&#34;bug与故障&#34;&gt;Bug与故障&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Bug&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此时叫做漏洞。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>CDN-内容分发网络</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/cdn-%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Tue, 25 May 2021 11:16:12 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/cdn-%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C/</guid>
-      <description>内容分发网络（Content Delivery Network，CDN）通过将站点内容发布至遍布全球的海量加速节点，使其用户可就近获取所需内容，避免因网络拥堵</description>
+      <description>&lt;p&gt;内容分发网络（Content Delivery Network，CDN）通过将站点内容发布至遍布全球的海量加速节点，使其用户可就近获取所需内容，避免因网络拥堵、跨运营商、跨地域、跨境等因素带来的网络不稳定、访问延迟高等问题，有效提升下载速度、降低响应时间，提供流畅的用户体验。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Http</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/http/</link>
       <pubDate>Thu, 13 May 2021 09:23:19 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/http/</guid>
-      <description>http状态码 优雅地使用 301 搞懂 HTTP 重定向 - 如何优雅地使用 301 浏览器收到 301永久重定向 后，认为这是一个可以缓存的资源，下次请求该链接是就不再向服</description>
+      <description>&lt;h2 id=&#34;http状态码&#34;&gt;http状态码&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;优雅地使用 301&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1762070&#34;&gt;搞懂 HTTP 重定向 - 如何优雅地使用 301&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;浏览器收到 301永久重定向 后，认为这是一个可以缓存的资源，下次请求该链接是就不再向服务器发起请求。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>位运算使用技巧</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Thu, 31 Dec 2020 09:55:21 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
-      <description>位运算概览 符号 描述 运算规则 &amp;amp; 与 两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp;amp; 选中标签的用户</description>
+      <description>&lt;h2 id=&#34;位运算概览&#34;&gt;位运算概览&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;符号&lt;/th&gt;&#xA;          &lt;th&gt;描述&lt;/th&gt;&#xA;          &lt;th&gt;运算规则&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;amp;&lt;/td&gt;&#xA;          &lt;td&gt;与&lt;/td&gt;&#xA;          &lt;td&gt;两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp;amp; 选中标签的用户bitmap】&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;|&lt;/td&gt;&#xA;          &lt;td&gt;或&lt;/td&gt;&#xA;          &lt;td&gt;两个位都为0时，结果才为0 【选中A或B标签的用户bitmap=选中A标签的用户bitmap&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;^&lt;/td&gt;&#xA;          &lt;td&gt;异或&lt;/td&gt;&#xA;          &lt;td&gt;两个位相同为0，相异为1【可用于取非数据，如不包含某个标签的用户bitmap=全量用户bitmap ^ 包含某个标签的用户bitmap】&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;~&lt;/td&gt;&#xA;          &lt;td&gt;取反&lt;/td&gt;&#xA;          &lt;td&gt;0变1，1变0&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;laquo;&lt;/td&gt;&#xA;          &lt;td&gt;左移(每左移 1 位就乘以 2)&lt;/td&gt;&#xA;          &lt;td&gt;各二进位全部左移若干位，高位丢弃，低位补0 【2的10次方=1024】&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;raquo;&lt;/td&gt;&#xA;          &lt;td&gt;右移(每右移 1 位就除以 2)&lt;/td&gt;&#xA;          &lt;td&gt;各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;优点&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>专业的MQ</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%B8%93%E4%B8%9A%E7%9A%84mq/</link>
       <pubDate>Mon, 10 Aug 2020 09:22:30 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%B8%93%E4%B8%9A%E7%9A%84mq/</guid>
-      <description>一个专业的消息队列，必须要做到两点： 消息不丢 消息可堆积 PHP+ActiveMQ+Stomp ActiveMQ 是由 Apache 出品的一款开源消息中间件，旨在为应用程序提供高效、可扩展、稳定、安全的企业级</description>
+      <description>&lt;p&gt;一个专业的消息队列，必须要做到两点：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;消息不丢&lt;/li&gt;&#xA;&lt;li&gt;消息可堆积&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phpactivemqstomp&#34;&gt;PHP+ActiveMQ+Stomp&lt;/h2&gt;&#xA;&lt;p&gt;ActiveMQ 是由 Apache 出品的一款开源消息中间件，旨在为应用程序提供高效、可扩展、稳定、安全的企业级消息通信。&#xA;它的设计目标是提供标准的、面向消息的、多语言的应用集成消息通信中间件。ActiveMQ 实现了 JMS 1.1 并提供了很多附加的特性，比如 JMX 管理、主从管理、消息组通信、消息优先级、延迟接收消息、虚拟接收者、消息持久化、消息队列监控等等。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>工作流</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
       <pubDate>Thu, 02 Jul 2020 09:09:47 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
-      <description>概述 工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。 工作流[workflow]：在多个参与人</description>
+      <description>&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;&#xA;&lt;p&gt;工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。&lt;/p&gt;&#xA;&lt;p&gt;工作流[workflow]：在多个参与人员之间按照事先定义好的规则传递信息、文档或任务的过程自动执行，从而实现某个预期的业务目标，或者促使该目标的实现。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ElasticStack</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/elasticstack/</link>
       <pubDate>Tue, 16 Jun 2020 08:55:16 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/elasticstack/</guid>
-      <description>Elastic Stack “ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。 Elasticsearch 是一个搜索和分析引</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2020/2111_20190919085503769.png&#34; alt=&#34;Elastic 产品生态&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2020/2111_v2-3b578fddb1221bcdb250fcfdf3b070a2_r.jpg&#34; alt=&#34;推荐架构&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;elastic-stack&#34;&gt;Elastic Stack&lt;/h2&gt;&#xA;&lt;p&gt;“ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。&lt;/p&gt;&#xA;&lt;p&gt;Elasticsearch 是一个搜索和分析引擎，可扩展的高速体验，涵盖搜索、分析和存储。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>LB 集群</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Tue, 26 May 2020 09:04:22 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/</guid>
-      <description>简介 LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群. 负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。 原理 负载均衡的原理</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;LB 集群是 Load Balance 集群的简写，翻译成中文就是负载均衡集群.&lt;/p&gt;&#xA;&lt;p&gt;负载均衡的应用场景为高访问量的业务，提高应用程序的可用性和可靠性。&lt;/p&gt;&#xA;&lt;h2 id=&#34;原理&#34;&gt;原理&lt;/h2&gt;&#xA;&lt;p&gt;负载均衡的原理就是当用户的请求过来时，会直接发到分发器上，然后它把用户的请求根据预先设置好的算法，均衡的分发到后端真正的服务器（Real Server）上。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>数据传输方式汇总</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/</link>
       <pubDate>Fri, 10 Apr 2020 15:02:25 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/</guid>
-      <description>json JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。 yaml YAML类似JSON，新的特性更强大，更适合人</description>
+      <description>&lt;h2 id=&#34;json&#34;&gt;json&lt;/h2&gt;&#xA;&lt;p&gt;JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。&lt;/p&gt;&#xA;&lt;h2 id=&#34;yaml&#34;&gt;yaml&lt;/h2&gt;&#xA;&lt;p&gt;YAML类似JSON，新的特性更强大，更适合人类阅读，也更紧凑。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>动态追踪技术</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Sun, 10 Nov 2019 16:06:01 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF/</guid>
-      <description>简介 动态追踪技术通常是基于操作系统内核来实现的。是一种调试技术。 作用 用于排查线上出现的诡异问题，如网站运行缓慢、超时、CPU占用率高 优点 动态</description>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;动态追踪技术通常是基于操作系统内核来实现的。是一种调试技术。&lt;/p&gt;&#xA;&lt;h2 id=&#34;作用&#34;&gt;作用&lt;/h2&gt;&#xA;&lt;p&gt;用于排查线上出现的诡异问题，如网站运行缓慢、超时、CPU占用率高&lt;/p&gt;&#xA;&lt;h2 id=&#34;优点&#34;&gt;优点&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;动态追踪技术一般是不需要目标应用来配合的。&lt;/li&gt;&#xA;&lt;li&gt;自身的性能损耗极小&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;dtrace&#34;&gt;DTrace&lt;/h2&gt;&#xA;&lt;p&gt;DTrace 是一个非常通用的调试平台，它提供了一种很像 C 语言的脚本语言，叫做 D。基于 DTrace 的调试工具都是使用这种语言编写的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Supervisor</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/</link>
       <pubDate>Sat, 05 Oct 2019 15:15:06 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/supervisor/</guid>
-      <description>安装 brew install supervisor 安装完成后会有如下几个命令工具 supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所</description>
+      <description>&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;&#xA;&lt;p&gt;brew install supervisor&lt;/p&gt;&#xA;&lt;p&gt;安装完成后会有如下几个命令工具&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所管理的进程作为自己的子进程来启动，而且可以在所管理的进程出现崩溃时自动重启&lt;/li&gt;&#xA;&lt;li&gt;supervisorctl，用户与 Supervisor 交互的工具，方便用户管理子进程，可用来 stop、start、restart&lt;/li&gt;&#xA;&lt;li&gt;echo_supervisord_conf，输出默认配置&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;常用命令&#34;&gt;常用命令&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;supervisord -c /usr/supervisor/supervisord.conf // 启动 supervisor，通过 http://ip:9001/ 就可以查看supervisor的web界面&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;supervisorctl reload // 重启，每次更改了脚本代码后需要reload&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;supervisorctl status // 查看进程启动状态&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;supervisorini-配置文件详解&#34;&gt;supervisor.ini 配置文件详解&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;program:demotest&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;python demotest.py &lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 被监控的进程启动命令&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;directory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/root/                &lt;span class=&#34;c1&#34;&gt;# 执行前要不要先cd到目录去，一般不用&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;priority&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;                    &lt;span class=&#34;c1&#34;&gt;# 数字越高，优先级越高&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;numprocs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;                    &lt;span class=&#34;c1&#34;&gt;# 启动几个进程&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;autostart&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;                &lt;span class=&#34;c1&#34;&gt;# 随着supervisord的启动而启动&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;autorestart&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;              &lt;span class=&#34;c1&#34;&gt;# 自动重启。。当然要选上了&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;startretries&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;               &lt;span class=&#34;c1&#34;&gt;# 启动失败时的最多重试次数&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;exitcodes&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;                   &lt;span class=&#34;c1&#34;&gt;# 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定）&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;stopsignal&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;TERM               &lt;span class=&#34;c1&#34;&gt;# 用来杀死进程的信号，Default: TERM(即kill -15)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;stopwaitsecs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;               &lt;span class=&#34;c1&#34;&gt;# 发送SIGKILL前的等待时间，Default: 10&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;redirect_stderr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;          &lt;span class=&#34;c1&#34;&gt;# 重定向stderr到stdout&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;blockquote&gt;&#xA;&lt;p&gt;Linux kill -15&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>高并发处理</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/</link>
       <pubDate>Sat, 06 Jul 2019 13:32:31 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86/</guid>
-      <description>高并发之问题描述 某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种</description>
+      <description>&lt;h2 id=&#34;高并发之问题描述&#34;&gt;高并发之问题描述&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;某天A君突然发现自己的接口请求量突然涨到之前的10倍，没多久该接口几乎不可使用，并引发连锁反应导致整个系统崩溃。如何应对这种情况呢？生活给了我们答案：比如老式电闸都安装了保险丝，一旦有人使用超大功率的设备，保险丝就会烧断以保护各个电器不被强电流给烧坏。同理我们的接口也需要安装上“保险丝”，以防止非预期的请求对系统压力过大而引起的系统瘫痪，当流量过大时，可以采取拒绝或者引流等机制。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>SonarQube 代码质量管理平台</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Sat, 15 Jun 2019 15:06:48 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</guid>
-      <description>SonarLint 与 SonarQube SonarLint 仅存在于 IDE（IntelliJ，Eclipse 和 Visual Studio）中。 其目的是在您键入代码时提供即时反馈。 为此，它专注于您要添加或更</description>
+      <description>&lt;h2 id=&#34;sonarlint-与-sonarqube&#34;&gt;SonarLint 与 SonarQube&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;SonarLint 仅存在于 IDE（IntelliJ，Eclipse 和 Visual Studio）中。 其目的是在您键入代码时提供即时反馈。 为此，它专注于您要添加或更新的代码。&lt;/li&gt;&#xA;&lt;li&gt;SonarQube 是一个用于管理源代码质量的开放平台，它可以从多个维度检测代码质量，可以快速的定位代码中潜在的或者明显的 Bug、错误。它支持包括 Java、Python、Php、C/C++、C#、HTML、JavaScript、PL/SQL、Objective C 等二十多种编程语言的代码质量管理与检测。可作为我们日常开发中检测代码质量的重要工具。为此，它会定期分析项目的所有源代码行。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;简单的说 SonarLint 是 SonarQube 的单机版本。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>持续集成工作流</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
       <pubDate>Mon, 27 May 2019 13:41:28 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
-      <description>互联网软件的开发和发布，已经形成了一套标准流程。 持续集成 持续集成（Continuous integration，简称CI）指的是，频繁地（一天</description>
+      <description>&lt;p&gt;互联网软件的开发和发布，已经形成了一套标准流程。&lt;/p&gt;&#xA;&lt;h2 id=&#34;持续集成&#34;&gt;持续集成&lt;/h2&gt;&#xA;&lt;p&gt;持续集成（Continuous integration，简称CI）指的是，频繁地（一天多次）将代码集成到主干。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Restful架构</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Wed, 01 May 2019 15:44:01 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/</guid>
-      <description>什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个</description>
+      <description>&lt;h2 id=&#34;什么是restful架构&#34;&gt;什么是RESTful架构&lt;/h2&gt;&#xA;&lt;p&gt;用 URL 定位资源，用 HTTP 动词描述操作&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;每一个URI代表一种资源；&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;客户端和服务器之间，传递这种资源的某种表现层；&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;客户端通过五个HTTP动词，对服务器端资源进行操作，实现&amp;quot;表现层状态转化&amp;quot;。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>DevOps 与 NoOps</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</link>
       <pubDate>Mon, 29 Apr 2019 21:17:55 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</guid>
-      <description>DevOps DevOps是开发和运维的融合，是开发和运维工程师共同协作，定义应用从设计到交付全生命周期过程的实践。 NoOps NoOps的意思是无须操作。它的理</description>
+      <description>&lt;h2 id=&#34;devops&#34;&gt;DevOps&lt;/h2&gt;&#xA;&lt;p&gt;DevOps是开发和运维的融合，是开发和运维工程师共同协作，定义应用从设计到交付全生命周期过程的实践。&lt;/p&gt;&#xA;&lt;h2 id=&#34;noops&#34;&gt;NoOps&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;NoOps的意思是无须操作。它的理念是去掉所有的平台管理部分，从而降低开发人员与基础设施之间的摩擦。&lt;/li&gt;&#xA;&lt;li&gt;NoOps的目的是定义一个不需要开发与运维相结合，就可以使流程顺利进行的过程。NoOps有一个目标：通过设计使所有东西都可以完成部署，而不需要任何人参与。&lt;/li&gt;&#xA;&lt;li&gt;NoOps大致的方法如下：开发人员将代码提交到代码库就已经完成了全部的部署。看起来与连续交付非常相似，但它所包含的范围更大，这里面不仅有应用程序，还包含了基础设施的部署。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;其实无所谓DevOps或NoOps。最根本的驱动是：用尽可能少的维护工作，去创建智能的基础设施，并将一切自动化。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OAuth 与 OpenID</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/</link>
       <pubDate>Wed, 17 Apr 2019 15:23:38 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/</guid>
-      <description>概念 开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用</description>
+      <description>&lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;&#xA;&lt;p&gt;开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用户名和密码提供给第三方应用。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

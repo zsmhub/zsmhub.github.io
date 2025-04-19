@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>lua on ZsmHub - Blog</title>
+    <title>Lua on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/lua/</link>
-    <description>Recent content in lua on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Lua on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 17 Oct 2023 10:55:26 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/lua/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Oct 2023 10:55:26 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/lua/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>redis lua 脚本</title>
       <link>https://zsmhub.github.io/post/database/redis-lua/</link>
       <pubDate>Tue, 17 Oct 2023 10:55:26 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/database/redis-lua/</guid>
-      <description>原子执行 Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前</description>
+      <description>&lt;h2 id=&#34;原子执行&#34;&gt;原子执行&lt;/h2&gt;&#xA;&lt;p&gt;Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前命令指定的Lua脚本包含的所有逻辑，其它客户端发送的命令将被阻塞，直到EVAL命令执行完毕为止。因此LUA脚本不宜编写一些过于复杂了逻辑，必须尽量保证Lua脚本的效率，否则会影响其它客户端。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

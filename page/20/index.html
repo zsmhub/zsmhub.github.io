@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ZsmHub - Blog" />
-<meta property="og:description" content="This is a site of zsmhub-blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zsmhub.github.io/" />
+<meta property="og:url" content="https://zsmhub.github.io/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="ZsmHub - Blog">
+  <meta property="og:description" content="This is a site of zsmhub-blog.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ZsmHub - Blog">
-<meta itemprop="description" content="This is a site of zsmhub-blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ZsmHub - Blog"/>
-<meta name="twitter:description" content="This is a site of zsmhub-blog."/>
+  <meta itemprop="name" content="ZsmHub - Blog">
+  <meta itemprop="description" content="This is a site of zsmhub-blog.">
+  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ZsmHub - Blog">
+  <meta name="twitter:description" content="This is a site of zsmhub-blog.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -88,12 +93,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -112,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -120,115 +135,662 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/">实战案例总结</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E9%BB%91%E7%99%BD%E7%81%B0%E7%9B%92%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/">黑白灰盒测试简介</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-08-06 </span>
+      <span class="post-time"> 2019-01-30 </span>
       <div class="post-category">
-          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"> 软件测试 </a>
           </div>
-        <span class="more-meta"> 约 967 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1068 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      根据nginx的access_log分析接口请求 access_log：指的是访问日志，我们通过访问日志可以获取用户的 IP、请求处理的时间、接
+      <h2 id="黑盒测试">黑盒测试</h2>
+<p>黑盒测试也称功能测试或数据驱动测试，它是在已知产品所应具有的功能，通过测试来检测每个功能是否都能正常使用，在测试时，把程序看作一个不能打开的黑盆子，在完全不考虑程序内部结构和内部特性的情况下，测试者在程序接口进行测试，它只检查程序功能是否按照需求规格说明书的规定正常使用，程序是否能适当地接收输入数锯而产生正确的输出信息，并且保持外部信息（如数据库或文件）的完整性。</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E9%BB%91%E7%99%BD%E7%81%B0%E7%9B%92%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AD%95%E5%A6%87%E7%9B%B8%E5%85%B3/">孕妇相关</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/">开发者须知</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-08-04 </span>
+      <span class="post-time"> 2019-01-25 </span>
       <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
+          <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/"> 程序员 </a>
           </div>
-        <span class="more-meta"> 约 3599 字 </span>
-        <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <span class="more-meta"> 约 1140 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      孕妇忌讳 不能吃：龙眼，薏米，山楂，人参，凉茶，祛湿茶等 有甲减的孕妇不能吃海苔、紫菜、瑶柱、海虾等海产品 甲减孕妇注意 优甲乐过量可能导致的问题：
+      <h2 id="开发过程solid五大设计原则">开发过程：SOLID五大设计原则</h2>
+<p>S.O.L.I.D 是面向对象设计(OOD)和面向对象编程(OOP)中的几个重要编码原则(Programming Priciple)的首字母缩写。</p>
+<p>SRP: The Single Responsibility Principle 单一职责原则</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AD%95%E5%A6%87%E7%9B%B8%E5%85%B3/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%BC%80%E5%8F%91%E8%80%85%E9%A1%BB%E7%9F%A5/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88/">监控系统方案</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/">Mysql 基础知识一</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-08-03 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
-          </div>
-        <span class="more-meta"> 约 720 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      StatsD + Grafana + InfluxDB 使用 StatsD + Grafana + InfluxDB 搭建 Node.js 监控系统 StatsD 是一个使用 Node.js 开发的简单的网络守护进程，通过 UDP 或者 TCP 方式侦听各种统计信息，包括计数器和定时器，并发送聚
-    </div>
-    <div class="read-more">
-      <a href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/tablestore/">大数据表设计-TableStore</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-08-02 </span>
+      <span class="post-time"> 2019-01-09 </span>
       <div class="post-category">
           <a href="/categories/database/"> database </a>
           </div>
-        <span class="more-meta"> 约 4297 字 </span>
+        <span class="more-meta"> 约 4140 字 </span>
         <span class="more-meta"> 预计阅读 9 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      简介 表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存
+      <h2 id="常用函数">常用函数</h2>
+<p><code>数据库表的时间戳字段设计，建议使用 int64 类型</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">日期</span><span class="w"> </span><span class="err">【</span><span class="n">format格式说明</span><span class="err">：</span><span class="o">%</span><span class="n">m</span><span class="w"> </span><span class="err">月</span><span class="p">,</span><span class="w"> </span><span class="err">数字</span><span class="p">(</span><span class="mi">01</span><span class="err">～</span><span class="mi">12</span><span class="p">)</span><span class="err">；</span><span class="o">%</span><span class="k">c</span><span class="w"> </span><span class="err">月</span><span class="p">,</span><span class="w"> </span><span class="err">数字</span><span class="p">(</span><span class="mi">1</span><span class="err">～</span><span class="mi">12</span><span class="p">)</span><span class="err">】</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;2019-12-12 12:22:33&#39;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;%Y-%m-%d&#34;</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 日期格式化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">FROM_UNIXTIME</span><span class="p">(</span><span class="s1">&#39;时间戳&#39;</span><span class="p">,</span><span class="s1">&#39;%Y-%m-%d %H:%i:%s&#39;</span><span class="p">)</span><span class="w">   </span><span class="c1">-- 时间戳转换为日期格式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">date_add</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">DUE_DAY</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="k">day</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 日期增加90天
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UNIX_TIMESTAMP</span><span class="p">(</span><span class="s1">&#39;2015-04-29&#39;</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 日期转换成时间戳
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">UNIX_TIMESTAMP</span><span class="p">()</span><span class="w">  </span><span class="c1">-- 获取当前时间戳
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DATE_SUB</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="k">DAY</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 最近15天
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DATE_SUB</span><span class="p">(</span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">YEAR</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 最近1年
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">字符串合并</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">concat</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span><span class="w">  </span><span class="c1">--  字符串 s1,s2 等多个字符串合并为一个字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">concat_ws</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">...</span><span class="n">sn</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 同 CONCAT(s1,s2,...) 函数，但是每个字符串直接要加上 x，x 可以是分隔符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">group_concat</span><span class="p">(</span><span class="k">column</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 将某列的所有值合并成一个字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">截取字符串</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">left</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">left</span><span class="p">(</span><span class="err">被截取字符串，</span><span class="w"> </span><span class="err">截取长度</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">right</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">right</span><span class="p">(</span><span class="err">被截取字符串，</span><span class="w"> </span><span class="err">截取长度</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">substring</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="k">length</span><span class="p">)</span><span class="err">，即：</span><span class="k">substring</span><span class="p">(</span><span class="err">被截取字符串，从第几位开始截取，截取长度</span><span class="p">)</span><span class="err">，</span><span class="n">length非必填</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">substring_index</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">delim</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">)</span><span class="err">，即：</span><span class="n">substring_index</span><span class="p">(</span><span class="err">被截取字符串，关键字，关键字出现的次数</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="s1">&#39;www.yuanrengu.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 截取第二个“.”之前的所有字符，如果关键字不存在，则返回整个字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">SUBSTRING_INDEX</span><span class="p">(</span><span class="s1">&#39;www.yuanrengu.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 截取倒数第二个“.”之后的所有字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">计算字段长度</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">LENGTH</span><span class="p">(</span><span class="s1">&#39;www中国人民&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 长度15『length(): 一个汉字是算三个字符，一个数字或字母算一个字符』
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">CHAR_LENGTH</span><span class="p">(</span><span class="s1">&#39;www中国人民&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- 长度7 『char_length(): 不管汉字还是数字或者是字母都算是一个字符』
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">find_in_set</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 返回在字符串s2中与s1匹配的字符串的位置(等于 0 表示找不到),  SELECT FIND_IN_SET(&#34;c&#34;, &#34;a,cb,c,d,e&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">locate</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 从字符串 s 中获取 s1 的开始位置，位置初始值为1，找不到则返回0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">regexp</span><span class="w"> </span><span class="c1">-- 正则匹配，eg：select * from history where data regexp &#39;帐号的使用存在异常|操作太频繁&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">format</span><span class="p">(</span><span class="nb">number</span><span class="p">,</span><span class="w"> </span><span class="n">decimal_places</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 浮点数格式化, 会出现千分位的浮点数，使用convert/cast不会出现千分位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">convert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="k">type</span><span class="p">)</span><span class="o">/</span><span class="k">cast</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">类型</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 数据类型转换，可用来获取一个类型的值，并产生另一个类型的值。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">eg</span><span class="p">:</span><span class="w"> </span><span class="k">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span><span class="p">,</span><span class="w"> </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="err">或者</span><span class="w"> </span><span class="k">cast</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">2456</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="w">  </span><span class="c1">-- 保留小数后两位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">IFNULL</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 如果 expr1 不是 NULL，IFNULL() 返回 expr1，否则它返回 expr2。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">sva</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="s2">&#34;男&#34;</span><span class="p">,</span><span class="s2">&#34;女&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">替换字段内容</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UPDATE</span><span class="w"> </span><span class="o">`</span><span class="n">goods_file</span><span class="o">`</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="o">`</span><span class="n">file</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">file</span><span class="o">`</span><span class="p">,</span><span class="s1">&#39;https://xxx.com&#39;</span><span class="p">,</span><span class="s1">&#39;https://bbb.com&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="常用命令">常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 查询 sql_mode 『sql_mode 会影响 MySQL 支持的 SQL 语法以及它执行的数据验证检查』
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="k">GLOBAL</span><span class="p">.</span><span class="n">sql_mode</span><span class="w"> </span><span class="k">global</span><span class="p">,</span><span class="w"> </span><span class="o">@@</span><span class="k">SESSION</span><span class="p">.</span><span class="n">sql_mode</span><span class="w"> </span><span class="k">session</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="n">sql_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">sql_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 时区操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s2">&#34;%time_zone%&#34;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 查看时区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&gt;</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">global</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;+8:00&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 修改mysql全局时区为北京时间，即我们所在的东8区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&gt;</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;+8:00&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 修改当前会话时区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&gt;</span><span class="w"> </span><span class="n">flush</span><span class="w"> </span><span class="k">privileges</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 立即生效
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SHOW</span><span class="w"> </span><span class="n">BINLOG</span><span class="w"> </span><span class="n">EVENTS</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 查看 binlog 日志
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tableName</span><span class="w"> </span><span class="n">auto_increment</span><span class="o">=</span><span class="nb">number</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 设置表自增值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">show</span><span class="w"> </span><span class="k">full</span><span class="w"> </span><span class="n">processlist</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 显示所有用户正在运行的线程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="n">processlist</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 显示当前用户正在运行的线程，需要注意的是，除了 root 用户能看到所有正在运行的线程外，其他用户都只能看到自己正在运行的线程，看不到其它用户正在运行的线程。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">explain</span><span class="o">/</span><span class="k">desc</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 查看查询语句性能，即查看执行计划
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">desc</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 查看 table 等结构
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">show</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 查看索引信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">table</span><span class="p">(</span><span class="n">id</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span><span class="w">  </span><span class="c1">-- 增加前缀索引
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 查询表所有字段的名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="k">COLUMN_NAME</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">COLUMNS</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;your_table_name&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 查询一个表中所有字段的名字和注释
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COLUMN_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">COLUMN_COMMENT</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">Columns</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">table_name</span><span class="o">=</span><span class="s1">&#39;provision&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 授权root用户新ip可以访问：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">flush</span><span class="w"> </span><span class="k">privileges</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 刷新激活变更操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 导出数据库『不用进入mysql命令界面』
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">mysqldump</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="err">用户名</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="err">数据库名</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="err">导出的文件名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建新用户并授权root用户所有权限且所有ip可以访问：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建新用户并授权root用户新ip可以访问某个数据库：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">database_name</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.9.76&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建只读用户：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;db_read&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;A1ta939a@Qn*iTls&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="json类型的字段查询">json类型的字段查询</h2>
+<p>查询JSON中的数据用 column-&gt;path的形式，其中对象类型path的表示方式 $.path，数组类型的表示方式 $[index];</p>
     </div>
     <div class="read-more">
-      <a href="/post/database/tablestore/" class="read-more-link">阅读更多</a>
+      <a href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E5%92%8Cmariadb/">Mysql 和 MariaDB</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/database/memcached/">Memcached</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-07-27 </span>
+      <span class="post-time"> 2019-01-04 </span>
       <div class="post-category">
           <a href="/categories/database/"> database </a>
           </div>
-        <span class="more-meta"> 约 184 字 </span>
+        <span class="more-meta"> 约 835 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>Memcached 是一个自由开源的，高性能，分布式内存对象缓存系统。</p>
+<p>Memcached 是一种基于内存的 key-value 存储，用来存储小块的任意数据（字符串、对象）。</p>
+<p>Memcached 官方网站：http://memcached.org/</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/memcached/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/redis/">Redis</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-03 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 3825 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="缓存分类">缓存分类</h2>
+<p>众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。</p>
+<p>PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使用变量（如 map）实现本地内存缓存。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/redis/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-02 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
+          </div>
+        <span class="more-meta"> 约 817 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="对称加密算法">对称加密算法</h2>
+<h3 id="aes">AES</h3>
+<p>高级加密标准（Advanced Encryption Standard，AES），在密码学中又称Rijndael 加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES（因为DES不安全了），已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院（NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日成为有效的标准。2006年，高级加密标准已然成为对称密钥加密中最流行的算法之一。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/">常用算法</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-02 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
+          </div>
+        <span class="more-meta"> 约 301 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Mysql 和 MariaDB 的关系 MariaDB 数据库管理系统是 MySQL 的一个分支，主要由开源社区在维护，采用GPL授权许可。 开发这个分支的原因之一是：甲骨文公司收购了 MySQL 后，有将 MySQL
+      <h2 id="常见算法">常见算法</h2>
+<p>快速排序，二分法查找，深度优先搜索，广度优先搜索</p>
+<h2 id="区间重合算法">区间重合算法</h2>
+<p>时间重合判断逻辑：</p>
+<ul>
+<li>开始时间s1、s2</li>
+<li>结束时间e1、e2</li>
+<li>只要满足s1 &lt;= e2 &amp;&amp; e1 &gt;= s2，则区间会出现重合。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * 时间段重合判断
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @param array $data 日期数组
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @param string $fieldStart 开始日期字段名
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @param string $fieldEnd 结束日期字段名
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @return bool true为重合，false为不重合
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">is_time_cross</span><span class="p">(</span><span class="k">array</span> <span class="nv">$data</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$fieldStart</span> <span class="o">=</span> <span class="s1">&#39;start_day&#39;</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$fieldEnd</span> <span class="o">=</span> <span class="s1">&#39;end_day&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 按开始日期排序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">array_multisort</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">array_column</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$fieldStart</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">SORT_ASC</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$data</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 冒泡判断是否满足时间段重合的条件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$num</span> <span class="o">=</span> <span class="nx">count</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$num</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$pre</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="nv">$i</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$current</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">strtotime</span><span class="p">(</span><span class="nv">$pre</span><span class="p">[</span><span class="nv">$fieldStart</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="nx">strtotime</span><span class="p">(</span><span class="nv">$current</span><span class="p">[</span><span class="nv">$fieldEnd</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nx">strtotime</span><span class="p">(</span><span class="nv">$current</span><span class="p">[</span><span class="nv">$fieldStart</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="nx">strtotime</span><span class="p">(</span><span class="nv">$pre</span><span class="p">[</span><span class="nv">$fieldEnd</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 测试例子
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$data</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;start_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;end_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2019-01-31&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;start_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2018-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;end_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2018-01-31&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;start_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2019-03-01&#39;</span><span class="p">,</span> <span class="s1">&#39;end_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2019-05-31&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;start_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2019-10-01&#39;</span><span class="p">,</span> <span class="s1">&#39;end_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2019-10-31&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="s1">&#39;start_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2019-04-01&#39;</span><span class="p">,</span> <span class="s1">&#39;end_day&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2019-04-10&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nx">var_dump</span><span class="p">(</span><span class="nx">is_time_cross</span><span class="p">(</span><span class="nv">$data</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
     <div class="read-more">
-      <a href="/post/database/mysql%E5%92%8Cmariadb/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/">Web 安全攻防总结</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-02 </span>
+      <div class="post-category">
+          <a href="/categories/web-%E5%AE%89%E5%85%A8/"> web 安全 </a>
+          </div>
+        <span class="more-meta"> 约 752 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="xss跨站攻击">XSS（跨站攻击）</h2>
+<blockquote>
+<p>XSS 种类</p></blockquote>
+<ul>
+<li>Reflected XSS: 非持久型 XSS 漏洞，也叫反射型 XSS 漏洞，一般是通过给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，特有的恶意代码参数被 HTML 解析、执行。</li>
+<li>Stored XSS:  持久型 XSS 漏洞，也被称为存储型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如发帖留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。</li>
+</ul>
+<blockquote>
+<p>XSS防范方法</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/web%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Linux 基础知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-01 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
+          </div>
+        <span class="more-meta"> 约 5201 字 </span>
+        <span class="more-meta"> 预计阅读 11 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="基本命令">基本命令</h2>
+<ul>
+<li>
+<p>hostname -i: 查看服务器本地IP</p>
+</li>
+<li>
+<p>find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># find的使用格式如下：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;
+</span></span><span class="line"><span class="cl">　　- &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。
+</span></span><span class="line"><span class="cl">　　- &lt;指定条件&gt;： 所要搜索的文件的特征。
+</span></span><span class="line"><span class="cl">　　- &lt;指定动作&gt;： 对搜索结果进行特定的处理。
+</span></span><span class="line"><span class="cl">如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># find的使用实例：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find ./ -name <span class="s1">&#39;my*&#39;</span>
+</span></span><span class="line"><span class="cl">搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find ./ -name <span class="s1">&#39;my*&#39;</span> -ls
+</span></span><span class="line"><span class="cl">搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find . -type f -mmin -10
+</span></span><span class="line"><span class="cl">搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件+特殊文件+目录。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>nohup: 不挂断地运行命令，该命令的一般形式为：nohup command &amp;</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/lnmp%E7%9F%A5%E8%AF%86/">PHP 开发环境之 Lnmp</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-01 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 1234 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="install">Install</h2>
+<ul>
+<li>
+<p>Linux 一键搭建 Lnmp 环境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 教程</span>
+</span></span><span class="line"><span class="cl">https://github.com/licess/lnmp OR https://lnmp.org
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>MacOs 一键搭建 Lnmp 环境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 教程</span>
+</span></span><span class="line"><span class="cl">https://github.com/yeszao/dnmp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 常用命令</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> ~/dnmp
+</span></span><span class="line"><span class="cl">$ docker-compose build <span class="c1"># 镜像构建</span>
+</span></span><span class="line"><span class="cl">$ docker-compose up -d                      <span class="c1"># 创建并且后台运行方式启动所有容器</span>
+</span></span><span class="line"><span class="cl">$ docker-compose up -d nginx php  mysql     <span class="c1"># 创建并且已后台运行的方式启动nginx、php、mysql容器</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ docker-compose start php                  <span class="c1"># 启动服务</span>
+</span></span><span class="line"><span class="cl">$ docker-compose stop php                   <span class="c1"># 停止服务</span>
+</span></span><span class="line"><span class="cl">$ docker-compose restart php                <span class="c1"># 重启服务</span>
+</span></span><span class="line"><span class="cl">$ docker-compose build php                  <span class="c1"># 构建或者重新构建服务</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ docker-compose rm php                     <span class="c1"># 删除并且停止php容器</span>
+</span></span><span class="line"><span class="cl">$ docker-compose down                       <span class="c1"># 停止并删除容器，网络，图像和挂载卷</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="配置文件">配置文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">nginx 配置文件路径：
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/nginx/conf/vhost
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql 安装路径
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /etc/mysql/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">php配置文件路径：php --ini <span class="o">[</span>disable_functions: 禁用函数配置<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">php-fpm配置文件：/usr/local/php/etc/php-fpm.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Redis 配置文件：/usr/local/redis/etc/redis.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="lnmp-日志文件">LNMP 日志文件</h2>
+<ol>
+<li>
+<p>Nginx</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/lnmp%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -256,6 +818,8 @@
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
   
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -264,22 +828,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -293,7 +854,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

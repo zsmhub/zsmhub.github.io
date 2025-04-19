@@ -4,18 +4,17 @@
     <title>AppleScript on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/applescript/</link>
     <description>Recent content in AppleScript on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 18 Jul 2022 17:00:40 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/applescript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jul 2022 17:00:40 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/applescript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AppleScript</title>
       <link>https://zsmhub.github.io/post/macos/applescript/</link>
       <pubDate>Mon, 18 Jul 2022 17:00:40 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/macos/applescript/</guid>
-      <description>什么是 AppleScript 点击查看官方文档 脚本语言有很多种，你可能听说过的 Shell Script、Python 和 JavaScript，都是其中的代表。而 AppleScript 则是 macOS 下提供</description>
+      <description>&lt;h2 id=&#34;什么是-applescript&#34;&gt;什么是 AppleScript&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://help.apple.com/applescript/mac/10.9/#apscrpt1001&#34;&gt;点击查看官方文档&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;脚本语言有很多种，你可能听说过的 Shell Script、Python 和 JavaScript，都是其中的代表。而 AppleScript 则是 macOS 下提供的系统级别的脚本语言。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

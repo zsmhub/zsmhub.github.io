@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。 Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库ppro" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。
+Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库pprof。
+性能分析和采集在计算机性能调试领域使用的术语是profile，或者有时候也会使用profiling代表性能分析这个行为。所以pprof名字里的prof来源于对单词profile的缩写，profile这个单词的原意是画像，那么针对程序性能的画像就是应用使用 CPU 和内存等等这些资源的情况。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/" />
@@ -35,24 +38,36 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Go 性能分析工具" />
-<meta property="og:description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。 Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库ppro" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-03-29T14:26:32&#43;08:00" />
-<meta property="article:modified_time" content="2022-03-29T14:26:32&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Go 性能分析工具">
+  <meta property="og:description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。
+Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库pprof。
+性能分析和采集在计算机性能调试领域使用的术语是profile，或者有时候也会使用profiling代表性能分析这个行为。所以pprof名字里的prof来源于对单词profile的缩写，profile这个单词的原意是画像，那么针对程序性能的画像就是应用使用 CPU 和内存等等这些资源的情况。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-03-29T14:26:32+08:00">
+    <meta property="article:modified_time" content="2022-03-29T14:26:32+08:00">
+    <meta property="article:tag" content="Pprof">
 
-<meta itemprop="name" content="Go 性能分析工具">
-<meta itemprop="description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。 Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库ppro"><meta itemprop="datePublished" content="2022-03-29T14:26:32&#43;08:00" />
-<meta itemprop="dateModified" content="2022-03-29T14:26:32&#43;08:00" />
-<meta itemprop="wordCount" content="1424">
-<meta itemprop="keywords" content="pprof," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go 性能分析工具"/>
-<meta name="twitter:description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。 Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库ppro"/>
+  <meta itemprop="name" content="Go 性能分析工具">
+  <meta itemprop="description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。
+Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库pprof。
+性能分析和采集在计算机性能调试领域使用的术语是profile，或者有时候也会使用profiling代表性能分析这个行为。所以pprof名字里的prof来源于对单词profile的缩写，profile这个单词的原意是画像，那么针对程序性能的画像就是应用使用 CPU 和内存等等这些资源的情况。">
+  <meta itemprop="datePublished" content="2022-03-29T14:26:32+08:00">
+  <meta itemprop="dateModified" content="2022-03-29T14:26:32+08:00">
+  <meta itemprop="wordCount" content="1424">
+  <meta itemprop="keywords" content="Pprof">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Go 性能分析工具">
+  <meta name="twitter:description" content="一、PProf 简介 pprof 是用于可视化和分析性能分析数据的工具。
+Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库pprof。
+性能分析和采集在计算机性能调试领域使用的术语是profile，或者有时候也会使用profiling代表性能分析这个行为。所以pprof名字里的prof来源于对单词profile的缩写，profile这个单词的原意是画像，那么针对程序性能的画像就是应用使用 CPU 和内存等等这些资源的情况。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +106,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +139,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -165,7 +190,7 @@
 <p>runtime/pprof：采集程序（非 Server）的运行数据进行分析（如果你的应用是工具类应用，执行完任务就结束退出，可以使用 <code>runtime/pprof</code> ）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -181,21 +206,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="nx">runtime</span><span class="o">/</span><span class="nx">pprof</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// cpu
-</span><span class="c1"></span>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="o">*</span><span class="nx">cpuprofile</span><span class="p">)</span>
-    <span class="o">...</span>
-    <span class="nx">pprof</span><span class="p">.</span><span class="nf">StartCPUProfile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
-    <span class="k">defer</span> <span class="nx">pprof</span><span class="p">.</span><span class="nf">StopCPUProfile</span><span class="p">()</span>
-
-    <span class="c1">// memory
-</span><span class="c1"></span>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="o">*</span><span class="nx">memprofile</span><span class="p">)</span>
-    <span class="nx">pprof</span><span class="p">.</span><span class="nf">WriteHeapProfile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
-    <span class="nx">f</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">runtime</span><span class="o">/</span><span class="nx">pprof</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// cpu</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="o">*</span><span class="nx">cpuprofile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">pprof</span><span class="p">.</span><span class="nf">StartCPUProfile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">pprof</span><span class="p">.</span><span class="nf">StopCPUProfile</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// memory</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="o">*</span><span class="nx">memprofile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">pprof</span><span class="p">.</span><span class="nf">WriteHeapProfile</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -229,12 +254,11 @@
 </li>
 </ol>
 <blockquote>
-<p>使用web方式分析数据</p>
-</blockquote>
+<p>使用web方式分析数据</p></blockquote>
 <p>当然一般线上不可能把 pprof 相关端口/路由开放出来，因为有很大的安全风险。所以，我们一般在线上机器 profile 生成文件，将文件下载到本地分析。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -247,18 +271,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># web方式查看 cpu 30秒内的占用情况</span>
-go tool pprof -http<span class="o">=</span><span class="s2">&#34;:8080&#34;</span> https://xxx.com/debug/pprof/profile?seconds<span class="o">=</span><span class="m">30</span>
-
-<span class="c1"># web方式查看 memory 30秒内占用情况</span>
-go tool pprof -http<span class="o">=</span><span class="s2">&#34;:8080&#34;</span> https://xxx.com/debug/pprof/heap?seconds<span class="o">=</span><span class="m">30</span>
-
-<span class="c1"># web方式查看 goroutine 30秒内的占用情况</span>
-go tool pprof -http<span class="o">=</span><span class="s2">&#34;:8080&#34;</span> https://xxx.com/debug/pprof/goroutine?seconds<span class="o">=</span><span class="m">30</span>
-
-<span class="c1"># 查看火焰图</span>
-http://localhost:8080/ui/flamegraph
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># web方式查看 cpu 30秒内的占用情况</span>
+</span></span><span class="line"><span class="cl">go tool pprof -http<span class="o">=</span><span class="s2">&#34;:8080&#34;</span> https://xxx.com/debug/pprof/profile?seconds<span class="o">=</span><span class="m">30</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># web方式查看 memory 30秒内占用情况</span>
+</span></span><span class="line"><span class="cl">go tool pprof -http<span class="o">=</span><span class="s2">&#34;:8080&#34;</span> https://xxx.com/debug/pprof/heap?seconds<span class="o">=</span><span class="m">30</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># web方式查看 goroutine 30秒内的占用情况</span>
+</span></span><span class="line"><span class="cl">go tool pprof -http<span class="o">=</span><span class="s2">&#34;:8080&#34;</span> https://xxx.com/debug/pprof/goroutine?seconds<span class="o">=</span><span class="m">30</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看火焰图</span>
+</span></span><span class="line"><span class="cl">http://localhost:8080/ui/flamegraph
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/2022/QQ20220329-174314@2x.png" alt="web ui 火焰图位置"></p>
 <h2 id="二即时效能分析工具-pyroscope">二、即时效能分析工具 Pyroscope</h2>
@@ -267,7 +291,7 @@ http://localhost:8080/ui/flamegraph
 <p><a href="https://pyroscope.io/docs/docker-compose/">Pyroscope文档</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -320,58 +344,58 @@ http://localhost:8080/ui/flamegraph
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">metric</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;github.com/pyroscope-io/pyroscope/pkg/agent/profiler&#34;</span>
-    <span class="s">&#34;github.com/sirupsen/logrus&#34;</span>
-    <span class="s">&#34;sync&#34;</span>
-    <span class="s">&#34;xxx/config&#34;</span>
-    <span class="s">&#34;xxx/lib/logger&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">type</span> <span class="nx">pyroscopeMetric</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">po</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
-    <span class="nx">p</span>  <span class="o">*</span><span class="nx">profiler</span><span class="p">.</span><span class="nx">Profiler</span>
-<span class="p">}</span>
-
-<span class="kd">var</span> <span class="nx">PyroScopeMetric</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">pyroscopeMetric</span><span class="p">)</span>
-
-<span class="kd">type</span> <span class="nx">PyroscopeOpts</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">ApplicationName</span> <span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">pyroscopeMetric</span><span class="p">)</span> <span class="nf">Start</span><span class="p">(</span><span class="nx">opts</span> <span class="nx">PyroscopeOpts</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">po</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">logrus</span><span class="p">.</span><span class="nf">SetLevel</span><span class="p">(</span><span class="nx">logrus</span><span class="p">.</span><span class="nx">PanicLevel</span><span class="p">)</span>
-        <span class="nx">pyroscope</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">profiler</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="nx">profiler</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-            <span class="nx">ApplicationName</span><span class="p">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">ApplicationName</span><span class="p">,</span>
-            <span class="nx">ServerAddress</span><span class="p">:</span>   <span class="nx">config</span><span class="p">.</span><span class="nx">PyAddress</span><span class="p">,</span>
-        <span class="p">})</span>
-        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-            <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-            <span class="k">return</span>
-        <span class="p">}</span>
-        <span class="nx">m</span><span class="p">.</span><span class="nx">p</span> <span class="p">=</span> <span class="nx">pyroscope</span>
-    <span class="p">})</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">pyroscopeMetric</span><span class="p">)</span> <span class="nf">Stop</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">m</span><span class="p">.</span><span class="nx">p</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="k">return</span>
-    <span class="p">}</span>
-    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// logic等进程启用即時效能分析工具
-</span><span class="c1"></span><span class="nx">helper</span><span class="p">.</span><span class="nf">SafeGo</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">metric</span><span class="p">.</span><span class="nx">PyroScopeMetric</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="nx">metric</span><span class="p">.</span><span class="nx">PyroscopeOpts</span><span class="p">{</span><span class="nx">ApplicationName</span><span class="p">:</span> <span class="s">&#34;xxx.logic&#34;</span><span class="p">})</span>
-<span class="p">})</span>
-<span class="k">defer</span> <span class="nx">metric</span><span class="p">.</span><span class="nx">PyroScopeMetric</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">metric</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/pyroscope-io/pyroscope/pkg/agent/profiler&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/sirupsen/logrus&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;xxx/config&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;xxx/lib/logger&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">pyroscopeMetric</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">po</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">p</span>  <span class="o">*</span><span class="nx">profiler</span><span class="p">.</span><span class="nx">Profiler</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">PyroScopeMetric</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">pyroscopeMetric</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">PyroscopeOpts</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ApplicationName</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">pyroscopeMetric</span><span class="p">)</span> <span class="nf">Start</span><span class="p">(</span><span class="nx">opts</span> <span class="nx">PyroscopeOpts</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nx">po</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">logrus</span><span class="p">.</span><span class="nf">SetLevel</span><span class="p">(</span><span class="nx">logrus</span><span class="p">.</span><span class="nx">PanicLevel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">pyroscope</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">profiler</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="nx">profiler</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ApplicationName</span><span class="p">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">ApplicationName</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ServerAddress</span><span class="p">:</span>   <span class="nx">config</span><span class="p">.</span><span class="nx">PyAddress</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">m</span><span class="p">.</span><span class="nx">p</span> <span class="p">=</span> <span class="nx">pyroscope</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">pyroscopeMetric</span><span class="p">)</span> <span class="nf">Stop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">m</span><span class="p">.</span><span class="nx">p</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// logic等进程启用即時效能分析工具</span>
+</span></span><span class="line"><span class="cl"><span class="nx">helper</span><span class="p">.</span><span class="nf">SafeGo</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">metric</span><span class="p">.</span><span class="nx">PyroScopeMetric</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="nx">metric</span><span class="p">.</span><span class="nx">PyroscopeOpts</span><span class="p">{</span><span class="nx">ApplicationName</span><span class="p">:</span> <span class="s">&#34;xxx.logic&#34;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="k">defer</span> <span class="nx">metric</span><span class="p">.</span><span class="nx">PyroScopeMetric</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考文章">参考文章</h2>
 <ul>
@@ -384,7 +408,7 @@ http://localhost:8080/ui/flamegraph
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -456,22 +480,19 @@ http://localhost:8080/ui/flamegraph
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -485,7 +506,7 @@ http://localhost:8080/ui/flamegraph
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

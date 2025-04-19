@@ -16,14 +16,18 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作
+每一个URI代表一种资源；
+客户端和服务器之间，传递这种资源的某种表现层；
+客户端通过五个HTTP动词，对服务器端资源进行操作，实现&quot;表现层状态转化&quot;。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/" />
@@ -35,24 +39,39 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Restful架构" />
-<meta property="og:description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-05-01T15:44:01&#43;08:00" />
-<meta property="article:modified_time" content="2020-01-08T15:44:01&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Restful架构">
+  <meta property="og:description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作
+每一个URI代表一种资源；
+客户端和服务器之间，传递这种资源的某种表现层；
+客户端通过五个HTTP动词，对服务器端资源进行操作，实现&#34;表现层状态转化&#34;。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-05-01T15:44:01+08:00">
+    <meta property="article:modified_time" content="2020-01-08T15:44:01+08:00">
+    <meta property="article:tag" content="Restful">
 
-<meta itemprop="name" content="Restful架构">
-<meta itemprop="description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个"><meta itemprop="datePublished" content="2019-05-01T15:44:01&#43;08:00" />
-<meta itemprop="dateModified" content="2020-01-08T15:44:01&#43;08:00" />
-<meta itemprop="wordCount" content="1022">
-<meta itemprop="keywords" content="restful," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Restful架构"/>
-<meta name="twitter:description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作 每一个URI代表一种资源； 客户端和服务器之间，传递这种资源的某种表现层； 客户端通过五个"/>
+  <meta itemprop="name" content="Restful架构">
+  <meta itemprop="description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作
+每一个URI代表一种资源；
+客户端和服务器之间，传递这种资源的某种表现层；
+客户端通过五个HTTP动词，对服务器端资源进行操作，实现&#34;表现层状态转化&#34;。">
+  <meta itemprop="datePublished" content="2019-05-01T15:44:01+08:00">
+  <meta itemprop="dateModified" content="2020-01-08T15:44:01+08:00">
+  <meta itemprop="wordCount" content="1022">
+  <meta itemprop="keywords" content="Restful">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Restful架构">
+  <meta name="twitter:description" content="什么是RESTful架构 用 URL 定位资源，用 HTTP 动词描述操作
+每一个URI代表一种资源；
+客户端和服务器之间，传递这种资源的某种表现层；
+客户端通过五个HTTP动词，对服务器端资源进行操作，实现&#34;表现层状态转化&#34;。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +110,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +143,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -169,7 +198,7 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -186,22 +215,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">- GET /zoos：列出所有动物园
-- POST /zoos：新建一个动物园
-- GET /zoos/ID：获取某个指定动物园的信息
-- PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）
-- PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）
-- DELETE /zoos/ID：删除某个动物园
-- GET /zoos/ID/animals：列出某个指定动物园的所有动物
-- DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
-5. 接口返回结果
-- GET /collection：返回资源对象的列表（数组）
-- GET /collection/resource：返回单个资源对象
-- POST /collection：返回新生成的资源对象
-- PUT /collection/resource：返回完整的资源对象
-- PATCH /collection/resource：返回完整的资源对象
-- DELETE /collection/resource：返回一个空文档
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">- GET /zoos：列出所有动物园
+</span></span><span class="line"><span class="cl">- POST /zoos：新建一个动物园
+</span></span><span class="line"><span class="cl">- GET /zoos/ID：获取某个指定动物园的信息
+</span></span><span class="line"><span class="cl">- PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）
+</span></span><span class="line"><span class="cl">- PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）
+</span></span><span class="line"><span class="cl">- DELETE /zoos/ID：删除某个动物园
+</span></span><span class="line"><span class="cl">- GET /zoos/ID/animals：列出某个指定动物园的所有动物
+</span></span><span class="line"><span class="cl">- DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
+</span></span><span class="line"><span class="cl">5. 接口返回结果
+</span></span><span class="line"><span class="cl">- GET /collection：返回资源对象的列表（数组）
+</span></span><span class="line"><span class="cl">- GET /collection/resource：返回单个资源对象
+</span></span><span class="line"><span class="cl">- POST /collection：返回新生成的资源对象
+</span></span><span class="line"><span class="cl">- PUT /collection/resource：返回完整的资源对象
+</span></span><span class="line"><span class="cl">- PATCH /collection/resource：返回完整的资源对象
+</span></span><span class="line"><span class="cl">- DELETE /collection/resource：返回一个空文档
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="restful架构有一些典型的设计误区">RESTful架构有一些典型的设计误区</h2>
 <ol>
@@ -236,7 +265,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -308,22 +337,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -337,7 +363,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

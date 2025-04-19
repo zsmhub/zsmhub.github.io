@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：admin，密码：admin # 用命令安装扩展 go get github.com/GoAdminGroup/go-admin/adm # 根据指示填写就可以初始化一个项目模板 adm init -l cn # 执行以下命令运行： &gt; make serve # 使用工具快速生成数据模型文件 http://doc.go-admin.cn/zh/plugins/admin/ 1. adm generate -l cn // 注意：选择表格的时候，按空格选择，不是按回车 2. 使用在线生成工具 // 注意：输出路径为本地文件绝对路径 一些坑 K8S部署环境下，不支持多个Pod部署，否则非GET方式的接口会出现以下错误提示【todo 具体原因不知：有空再查下】
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/goadmin/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="GoAdmin" />
-<meta property="og:description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/goadmin/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-08-18T16:40:37&#43;08:00" />
-<meta property="article:modified_time" content="2020-08-18T16:40:37&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/goadmin/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="GoAdmin">
+  <meta property="og:description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：admin，密码：admin # 用命令安装扩展 go get github.com/GoAdminGroup/go-admin/adm # 根据指示填写就可以初始化一个项目模板 adm init -l cn # 执行以下命令运行： &gt; make serve # 使用工具快速生成数据模型文件 http://doc.go-admin.cn/zh/plugins/admin/ 1. adm generate -l cn // 注意：选择表格的时候，按空格选择，不是按回车 2. 使用在线生成工具 // 注意：输出路径为本地文件绝对路径 一些坑 K8S部署环境下，不支持多个Pod部署，否则非GET方式的接口会出现以下错误提示【todo 具体原因不知：有空再查下】">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-08-18T16:40:37+08:00">
+    <meta property="article:modified_time" content="2020-08-18T16:40:37+08:00">
+    <meta property="article:tag" content="Golang">
 
-<meta itemprop="name" content="GoAdmin">
-<meta itemprop="description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"><meta itemprop="datePublished" content="2020-08-18T16:40:37&#43;08:00" />
-<meta itemprop="dateModified" content="2020-08-18T16:40:37&#43;08:00" />
-<meta itemprop="wordCount" content="1101">
-<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="GoAdmin"/>
-<meta name="twitter:description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad"/>
+  <meta itemprop="name" content="GoAdmin">
+  <meta itemprop="description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：admin，密码：admin # 用命令安装扩展 go get github.com/GoAdminGroup/go-admin/adm # 根据指示填写就可以初始化一个项目模板 adm init -l cn # 执行以下命令运行： &gt; make serve # 使用工具快速生成数据模型文件 http://doc.go-admin.cn/zh/plugins/admin/ 1. adm generate -l cn // 注意：选择表格的时候，按空格选择，不是按回车 2. 使用在线生成工具 // 注意：输出路径为本地文件绝对路径 一些坑 K8S部署环境下，不支持多个Pod部署，否则非GET方式的接口会出现以下错误提示【todo 具体原因不知：有空再查下】">
+  <meta itemprop="datePublished" content="2020-08-18T16:40:37+08:00">
+  <meta itemprop="dateModified" content="2020-08-18T16:40:37+08:00">
+  <meta itemprop="wordCount" content="1101">
+  <meta itemprop="keywords" content="Golang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GoAdmin">
+  <meta name="twitter:description" content="准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：admin，密码：admin # 用命令安装扩展 go get github.com/GoAdminGroup/go-admin/adm # 根据指示填写就可以初始化一个项目模板 adm init -l cn # 执行以下命令运行： &gt; make serve # 使用工具快速生成数据模型文件 http://doc.go-admin.cn/zh/plugins/admin/ 1. adm generate -l cn // 注意：选择表格的时候，按空格选择，不是按回车 2. 使用在线生成工具 // 注意：输出路径为本地文件绝对路径 一些坑 K8S部署环境下，不支持多个Pod部署，否则非GET方式的接口会出现以下错误提示【todo 具体原因不知：有空再查下】">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -152,7 +169,7 @@
       <h2 id="准备工作">准备工作</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -170,23 +187,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 访问并登陆：</span>
-- 登陆：http://127.0.0.1:9033/admin/login
-- 账号：admin，密码：admin
-
-<span class="c1"># 用命令安装扩展</span>
-go get github.com/GoAdminGroup/go-admin/adm
-
-<span class="c1"># 根据指示填写就可以初始化一个项目模板</span>
-adm init -l cn
-
-<span class="c1"># 执行以下命令运行：</span>
-&gt; make serve
-
-<span class="c1"># 使用工具快速生成数据模型文件 http://doc.go-admin.cn/zh/plugins/admin/</span>
-1. adm generate -l cn // 注意：选择表格的时候，按空格选择，不是按回车
-2. 使用在线生成工具 // 注意：输出路径为本地文件绝对路径
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 访问并登陆：</span>
+</span></span><span class="line"><span class="cl">- 登陆：http://127.0.0.1:9033/admin/login
+</span></span><span class="line"><span class="cl">- 账号：admin，密码：admin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 用命令安装扩展</span>
+</span></span><span class="line"><span class="cl">go get github.com/GoAdminGroup/go-admin/adm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 根据指示填写就可以初始化一个项目模板</span>
+</span></span><span class="line"><span class="cl">adm init -l cn
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 执行以下命令运行：</span>
+</span></span><span class="line"><span class="cl">&gt; make serve
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用工具快速生成数据模型文件 http://doc.go-admin.cn/zh/plugins/admin/</span>
+</span></span><span class="line"><span class="cl">1. adm generate -l cn // 注意：选择表格的时候，按空格选择，不是按回车
+</span></span><span class="line"><span class="cl">2. 使用在线生成工具 // 注意：输出路径为本地文件绝对路径
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="一些坑">一些坑</h2>
 <ol>
@@ -201,7 +218,7 @@ adm init -l cn
 <h2 id="常用代码示例">常用代码示例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -273,77 +290,77 @@ adm init -l cn
 </span><span class="lnt">70
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">GetOAMenuTable</span><span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="nx">table</span><span class="p">.</span><span class="nx">Table</span> <span class="p">{</span>
-    <span class="nx">m</span> <span class="o">:=</span> <span class="nx">table</span><span class="p">.</span><span class="nf">NewDefaultTable</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nf">DefaultConfigWithDriverAndConnection</span><span class="p">(</span><span class="s">&#34;mysql&#34;</span><span class="p">,</span> <span class="nx">table</span><span class="p">.</span><span class="nx">DefaultConnectionName</span><span class="p">))</span>
-    <span class="nx">tableName</span> <span class="o">:=</span> <span class="s">&#34;menu&#34;</span>
-    <span class="nx">title</span> <span class="o">:=</span> <span class="s">&#34;OA系统菜单&#34;</span>
-
-    <span class="nx">info</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">GetInfo</span><span class="p">()</span>
-
-    <span class="nx">info</span><span class="p">.</span><span class="nf">HideDetailButton</span><span class="p">()</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nf">HideFilterArea</span><span class="p">()</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nf">SetDefaultPageSize</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-
-    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">).</span><span class="nf">FieldFilterable</span><span class="p">().</span><span class="nf">FieldSortable</span><span class="p">()</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单名&#34;</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">).</span><span class="nf">FieldFilterable</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">FilterType</span><span class="p">{</span><span class="nx">Operator</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">FilterOperatorLike</span><span class="p">})</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;父级菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;parent_id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">)</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端标识&#34;</span><span class="p">,</span> <span class="s">&#34;slug&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;排序&#34;</span><span class="p">,</span> <span class="s">&#34;order&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Int</span><span class="p">).</span><span class="nf">FieldSortable</span><span class="p">()</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;图标&#34;</span><span class="p">,</span> <span class="s">&#34;icon&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
-    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端跳转uri&#34;</span><span class="p">,</span> <span class="s">&#34;uri&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
-
-    <span class="nx">info</span><span class="p">.</span><span class="nf">SetTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nf">SetTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">).</span><span class="nf">SetSortField</span><span class="p">(</span><span class="s">&#34;order&#34;</span><span class="p">).</span><span class="nf">SetSortAsc</span><span class="p">()</span>
-
-    <span class="c1">// 重定义删除方法
-</span><span class="c1"></span>    <span class="nx">info</span><span class="p">.</span><span class="nf">SetDeleteFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ids</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HDel</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">ids</span><span class="o">...</span><span class="p">).</span><span class="nf">Err</span><span class="p">()</span>
-    <span class="p">})</span>
-
-    <span class="nx">formList</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">GetForm</span><span class="p">()</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Default</span><span class="p">).</span><span class="nf">FieldDisableWhenCreate</span><span class="p">().</span><span class="nf">FieldHelpMsg</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单名&#34;</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;父级菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;parent_id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;0&#34;</span><span class="p">)</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端标识&#34;</span><span class="p">,</span> <span class="s">&#34;slug&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;排序&#34;</span><span class="p">,</span> <span class="s">&#34;order&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Int</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Number</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">().</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;100&#34;</span><span class="p">).</span><span class="nf">FieldHelpMsg</span><span class="p">(</span><span class="s">&#34;&lt;p&gt;小的排前面&lt;/p&gt;&#34;</span><span class="p">)</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;图标&#34;</span><span class="p">,</span> <span class="s">&#34;icon&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端跳转uri&#34;</span><span class="p">,</span> <span class="s">&#34;uri&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
-
-    <span class="c1">// 增改hook
-</span><span class="c1"></span>    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetPostHook</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="nx">_</span> <span class="p">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">DelCache</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">nil</span>
-    <span class="p">})</span>
-
-    <span class="c1">// 删除hook
-</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Path</span><span class="p">(),</span> <span class="s">&#34;/admin/delete/oa_menu&#34;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">_</span> <span class="p">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">DelCache</span><span class="p">()</span>
-        <span class="p">}()</span>
-    <span class="p">}</span>
-
-    <span class="c1">// 重定义新增方法
-</span><span class="c1"></span>    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetInsertFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HSet</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">),</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;article_id&#34;</span><span class="p">)).</span><span class="nf">Err</span><span class="p">()</span>
-    <span class="p">})</span>
-
-    <span class="c1">// 重定义编辑方法
-</span><span class="c1"></span>    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetUpdateFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HSet</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">),</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;article_id&#34;</span><span class="p">)).</span><span class="nf">Err</span><span class="p">()</span>
-    <span class="p">})</span>
-
-    <span class="c1">// NULL设置：config字段为空时删除该变量，借此达到设置为 NULL 的目的
-</span><span class="c1"></span>    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetPostValidator</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
-            <span class="nx">values</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="kc">nil</span>
-    <span class="p">})</span>
-
-    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nf">SetTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="nx">m</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">GetOAMenuTable</span><span class="p">(</span><span class="nx">ctx</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="nx">table</span><span class="p">.</span><span class="nx">Table</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span> <span class="o">:=</span> <span class="nx">table</span><span class="p">.</span><span class="nf">NewDefaultTable</span><span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nf">DefaultConfigWithDriverAndConnection</span><span class="p">(</span><span class="s">&#34;mysql&#34;</span><span class="p">,</span> <span class="nx">table</span><span class="p">.</span><span class="nx">DefaultConnectionName</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">tableName</span> <span class="o">:=</span> <span class="s">&#34;menu&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">title</span> <span class="o">:=</span> <span class="s">&#34;OA系统菜单&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">GetInfo</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">HideDetailButton</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">HideFilterArea</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">SetDefaultPageSize</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">).</span><span class="nf">FieldFilterable</span><span class="p">().</span><span class="nf">FieldSortable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单名&#34;</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">).</span><span class="nf">FieldFilterable</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">FilterType</span><span class="p">{</span><span class="nx">Operator</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">FilterOperatorLike</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;父级菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;parent_id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端标识&#34;</span><span class="p">,</span> <span class="s">&#34;slug&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;排序&#34;</span><span class="p">,</span> <span class="s">&#34;order&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Int</span><span class="p">).</span><span class="nf">FieldSortable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;图标&#34;</span><span class="p">,</span> <span class="s">&#34;icon&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端跳转uri&#34;</span><span class="p">,</span> <span class="s">&#34;uri&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">SetTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nf">SetTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">).</span><span class="nf">SetSortField</span><span class="p">(</span><span class="s">&#34;order&#34;</span><span class="p">).</span><span class="nf">SetSortAsc</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 重定义删除方法</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">info</span><span class="p">.</span><span class="nf">SetDeleteFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ids</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HDel</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">ids</span><span class="o">...</span><span class="p">).</span><span class="nf">Err</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">GetForm</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Default</span><span class="p">).</span><span class="nf">FieldDisableWhenCreate</span><span class="p">().</span><span class="nf">FieldHelpMsg</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;菜单名&#34;</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;父级菜单ID&#34;</span><span class="p">,</span> <span class="s">&#34;parent_id&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Bigint</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端标识&#34;</span><span class="p">,</span> <span class="s">&#34;slug&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;排序&#34;</span><span class="p">,</span> <span class="s">&#34;order&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Int</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Number</span><span class="p">).</span><span class="nf">FieldMust</span><span class="p">().</span><span class="nf">FieldDefault</span><span class="p">(</span><span class="s">&#34;100&#34;</span><span class="p">).</span><span class="nf">FieldHelpMsg</span><span class="p">(</span><span class="s">&#34;&lt;p&gt;小的排前面&lt;/p&gt;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;图标&#34;</span><span class="p">,</span> <span class="s">&#34;icon&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">AddField</span><span class="p">(</span><span class="s">&#34;前端跳转uri&#34;</span><span class="p">,</span> <span class="s">&#34;uri&#34;</span><span class="p">,</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Varchar</span><span class="p">,</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 增改hook</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetPostHook</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">_</span> <span class="p">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">DelCache</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 删除hook</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Path</span><span class="p">(),</span> <span class="s">&#34;/admin/delete/oa_menu&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">_</span> <span class="p">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">Menu</span><span class="p">{}.</span><span class="nf">DelCache</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 重定义新增方法</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetInsertFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HSet</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">),</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;article_id&#34;</span><span class="p">)).</span><span class="nf">Err</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 重定义编辑方法</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetUpdateFn</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">db2</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db2</span><span class="p">.</span><span class="nx">Redis</span><span class="p">).</span><span class="nf">HSet</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">),</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;article_id&#34;</span><span class="p">)).</span><span class="nf">Err</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// NULL设置：config字段为空时删除该变量，借此达到设置为 NULL 的目的</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetPostValidator</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">values</span> <span class="nx">form2</span><span class="p">.</span><span class="nx">Values</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">values</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">values</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">formList</span><span class="p">.</span><span class="nf">SetTable</span><span class="p">(</span><span class="nx">tableName</span><span class="p">).</span><span class="nf">SetTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">m</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -351,7 +368,7 @@ adm init -l cn
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -423,22 +440,19 @@ adm init -l cn
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -452,7 +466,7 @@ adm init -l cn
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

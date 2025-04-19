@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ZsmHub - Blog" />
-<meta property="og:description" content="This is a site of zsmhub-blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zsmhub.github.io/" />
+<meta property="og:url" content="https://zsmhub.github.io/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="ZsmHub - Blog">
+  <meta property="og:description" content="This is a site of zsmhub-blog.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ZsmHub - Blog">
-<meta itemprop="description" content="This is a site of zsmhub-blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ZsmHub - Blog"/>
-<meta name="twitter:description" content="This is a site of zsmhub-blog."/>
+  <meta itemprop="name" content="ZsmHub - Blog">
+  <meta itemprop="description" content="This is a site of zsmhub-blog.">
+  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ZsmHub - Blog">
+  <meta name="twitter:description" content="This is a site of zsmhub-blog.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -88,12 +93,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -112,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -120,115 +135,358 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/php%E5%92%8Cgo%E5%AF%B9%E6%AF%94/">php和go对比</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/">Mysql 基础知识二</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-03-17 </span>
+      <span class="post-time"> 2020-04-03 </span>
       <div class="post-category">
-          <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
+          <a href="/categories/database/"> database </a>
           </div>
-        <span class="more-meta"> 约 230 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="more-meta"> 约 1579 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      php 优缺点 优点 php 支持泛型 php 支持 in_array php 同个函数的数组返回值，key可以随意变化 缺点，可维护性差 数据类型没有强制要求提前声明，同个变量可以支持多种数
+      <h2 id="一基础知识">一、基础知识</h2>
+<ol>
+<li>表存储引擎必须用InnoDB</li>
+<li>字符集必须使用utf8mb4 （utf8不是真utf8）</li>
+<li>禁止使用存储过程、视图、触发器、Event</li>
+<li>命名规则：库、表、字段列都必须小写，用 _ 分隔</li>
+<li>表必须有主键，默认推荐使用unsignd整形，命名为id，自增</li>
+<li>字段必须为not null，原则上每个字段必须有默认值</li>
+<li>合理建立索引</li>
+<li>三范式与反范式（业务出发，权衡利弊、适当冗余）</li>
+<li>分库分表：垂直拆分（分库）、水平拆分（分表）
+分表：垂直分割（一表变多表，结构相同）、水平分割（大表拆小表）</li>
+<li>数据库集群：主从架构</li>
+</ol>
+<h2 id="二事务锁索引数据库性能的死亡三角">二、事务、锁、索引，数据库性能的死亡三角</h2>
+<p>A. 事务</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/php%E5%92%8Cgo%E5%AF%B9%E6%AF%94/" class="read-more-link">阅读更多</a>
+      <a href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/%E5%B8%B8%E7%94%A8%E6%A1%88%E4%BE%8B/">Go 常用案例</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/golang/%E6%A1%86%E6%9E%B6-iris%E6%A1%86%E6%9E%B6/">Iris 框架</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-01-08 </span>
+      <span class="post-time"> 2020-04-01 </span>
       <div class="post-category">
           <a href="/categories/golang/"> golang </a>
           </div>
-        <span class="more-meta"> 约 3201 字 </span>
+        <span class="more-meta"> 约 544 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><a href="https://www.iris-go.com/docs/#/">官方文档</a></p>
+<h2 id="iris-简介">Iris 简介</h2>
+<p>Iris 是一个拥有 MVC 架构模式的 Go Web 框架。</p>
+<p>Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。</p>
+<p>Iris 为您提供构建面向服务的应用程序的结构。 用 Iris 构建微服务很容易。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/%E6%A1%86%E6%9E%B6-iris%E6%A1%86%E6%9E%B6/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/">Golang 面试题</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-03-22 </span>
+      <div class="post-category">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
+          </div>
+        <span class="more-meta"> 约 44 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="常见问题">常见问题</h2>
+<ol>
+<li>垃圾回收、内存模型、内存调优、并发</li>
+</ol>
+<h2 id="参考文章">参考文章</h2>
+<p><a href="http://wen.topgoer.com/docs/gomianshiti/mianshiti">go语言面试题</a></p>
+<p><a href="https://github.com/KeKe-Li/data-structures-questions/blob/master/src/chapter05/golang.01.md">Golang面试问题汇总</a></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Go 基础知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-03-15 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 10686 字 </span>
+        <span class="more-meta"> 预计阅读 22 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="go-简介">Go 简介</h2>
+<p>Go 语言起源 2007 年，并于 2009 年正式对外发布，其是谷歌公司的一个开源项目。Go 语言并不是凭空而造的，而是和 C++、Java 和 C# 一样属于 C 系。</p>
+<p>Go 语言本身是由 C 语言开发的，而不是 Go 语言。但 Go 在 1.5 版本开始自举。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/">队列与栈</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-03-01 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
+          </div>
+        <span class="more-meta"> 约 956 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="队列">队列</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 队列：FIFO即First in First Out,先进先出</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="栈">栈</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 栈：LIFO即Last in First Out,后进先出</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">LifoQueue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="n">LifoQueue</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="queue介绍">queue介绍</h2>
+<p>在python中，多个线程之间的数据是共享的，多个线程进行数据交换的时候，不能够保证数据的安全性和一致性，所以当多个线程需要进行数据交换的时候，队列就出现了，队列可以完美解决线程间的数据交换，保证线程间数据的安全性和一致性</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/">经典案例</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-02-21 </span>
+      <div class="post-category">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
+          </div>
+        <span class="more-meta"> 约 3318 字 </span>
         <span class="more-meta"> 预计阅读 7 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算
+      <h2 id="php-vs-go">php vs go</h2>
+<blockquote>
+<p>php 优点</p></blockquote>
+<ul>
+<li>array 结构无所不能，很强大</li>
+</ul>
+<blockquote>
+<p>php 缺点</p></blockquote>
+<ul>
+<li>弱类型语言，同样的逻辑，写法过于多样，导致后期维护成本高。比如参数可定义可不定义，返回值可定义可不定义</li>
+<li>语言自身没有很好的支持并行运算</li>
+</ul>
+<blockquote>
+<p>go 优点</p>
     </div>
     <div class="read-more">
-      <a href="/post/golang/%E5%B8%B8%E7%94%A8%E6%A1%88%E4%BE%8B/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">位运算使用技巧</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/">SQL 面试题</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-12-31 </span>
+      <span class="post-time"> 2020-02-21 </span>
       <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
           </div>
-        <span class="more-meta"> 约 1564 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 1077 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      位运算概览 符号 描述 运算规则 &amp; 与 两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp; 选中标签的用户
+      <h2 id="sql-问题总结文章">SQL 问题总结文章</h2>
+<p><a href="https://mp.weixin.qq.com/s/MCFHNOQnTtJ6MGVjM3DP4A">MySQL 三万字精华总结 + 面试100 问，吊打面试官绰绰有余</a></p>
+<h2 id="面试题">面试题</h2>
+<ol>
+<li>
+<p>假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条sql怎么写</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-micro/">Go Micro</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-12-18 </span>
+      <span class="post-time"> 2020-02-15 </span>
       <div class="post-category">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
           </div>
-        <span class="more-meta"> 约 126 字 </span>
+        <span class="more-meta"> 约 2866 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="设计模式简介">设计模式简介</h2>
+<p>设计模式一套被反复使用，多数人知晓的代码设计经验的总结，实现可重用代码，使代码更容易被理解，保证代码可靠性。</p>
+<blockquote>
+<p>总体来说，设计模式分为三大类：</p></blockquote>
+<ul>
+<li>创建型模式（五种）：单例模式、工厂模式、抽象工厂模式、创建者模式、原型模式</li>
+<li>结构型模式（七种）：适配器模式、代理模式、装饰器模式、外观模式、桥接模式、组合模式、享元模式</li>
+<li>行为型模式（十一种）：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</li>
+</ul>
+<blockquote>
+<p>算法执行的步骤是稳定不变的，但是具体的某些算法可能存在变化的场景。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/">面试汇总</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-02-09 </span>
+      <div class="post-category">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
+          </div>
+        <span class="more-meta"> 约 280 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      micro 常用的几个命令 micro server //启动服务端 micro login //登录服务 user: admin pass: micro micro new XXX //新建服务 micro services //服务列表 micro run XXX //挂载服务 micro status //查看服务状态 micro logs XXX //
+      <h2 id="题库">题库</h2>
+<p>2019年最新总结，阿里，腾讯，百度，美团，头条等技术面试题目，以及答案，专家出题人分析汇总</p>
+<p><a href="https://github.com/0voice/interview_internal_reference">参考原文</a></p>
+<h2 id="如何避坑公司">如何避坑公司</h2>
+<blockquote>
+<p>话说正规的公司是怎么样的？</p></blockquote>
+<ol>
+<li>面试通过后，入职前必须让入职公司提前发 offer 邮件, offer 就是聘用通知书</li>
+<li>入职当天办理入职相关手续，去签入职合同</li>
+<li>入职后一般都要问清楚如何考勤</li>
+</ol>
+<h2 id="找公司经验">找公司经验</h2>
+<ol>
+<li>一般毕业生不考虑创业公司，创业公司有很多缺点，如容易倒闭，容易拖欠工资等，千万不要轻易相信公司那些人画大饼，画大饼就是说出很多你加入本公司的好处</li>
+<li>投简历前，先上 百度或知乎 等平台查查这家公司或学校的基本信息，如员工人数，公司评价等，看好后再投简历也不迟</li>
+</ol>
+<p><a href="https://zhuanlan.zhihu.com/p/57298422">跳槽找工作避坑指南（2019版）</a></p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-micro/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/">无限极分类树</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/">中高级PHP面试题</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-11-19 </span>
+      <span class="post-time"> 2020-02-09 </span>
       <div class="post-category">
-          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
           </div>
-        <span class="more-meta"> 约 1554 字 </span>
+        <span class="more-meta"> 约 1650 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      分类树 一般的分类树状结构有两种方式： 一种是adjacency list，也就是是id，parent_id这种形式。 另一种是nested set，
+      <h2 id="前言">前言</h2>
+<p>定位大概是中高级，这个阶段主要考察的是原理相关的东西，语法层面几乎不会问。</p>
+<p>建议不要去背面试题，因为大部分问题都会追问，是不是理解了一问就问得出来。面试题只是帮助我们了解自己技术方面的缺陷，背几个面试题对自己没有任何帮助。</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB%E6%A0%91/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E4%B8%AD%E9%AB%98%E7%BA%A7php%E9%9D%A2%E8%AF%95%E9%A2%98/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -256,6 +514,8 @@
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
   
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -264,22 +524,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -293,7 +550,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>openai on ZsmHub - Blog</title>
+    <title>Openai on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/openai/</link>
-    <description>Recent content in openai on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Openai on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 02 Mar 2023 15:14:30 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/openai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Mar 2023 15:14:30 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/openai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>玩转AI WORLD</title>
       <link>https://zsmhub.github.io/post/ai/%E7%8E%A9%E8%BD%ACai/</link>
       <pubDate>Thu, 02 Mar 2023 15:14:30 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/ai/%E7%8E%A9%E8%BD%ACai/</guid>
-      <description>AI写文案 ChatGPT: https://chat.openai.com/chat AI生成图片 AI绘图平台·midjourney 先用邮箱在 discord 社交平台 上注册一个账号 访问 https://www.midjourne</description>
+      <description>&lt;h2 id=&#34;ai写文案&#34;&gt;AI写文案&lt;/h2&gt;&#xA;&lt;p&gt;ChatGPT: &lt;a href=&#34;https://chat.openai.com/chat&#34;&gt;https://chat.openai.com/chat&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2023/WX20230302-164450.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;ai生成图片&#34;&gt;AI生成图片&lt;/h2&gt;&#xA;&lt;h3 id=&#34;ai绘图平台midjourney&#34;&gt;AI绘图平台·midjourney&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;先用邮箱在 &lt;a href=&#34;https://discord.com/register&#34;&gt;discord 社交平台&lt;/a&gt; 上注册一个账号&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;访问 &lt;a href=&#34;https://www.midjourney.com/app&#34;&gt;https://www.midjourney.com/app&lt;/a&gt;，然后点击 sign in 按钮，即会跳转到 discord 进行授权登录&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;在 discord 选择 NERCOMMER ROOMS 下的其中一个频道 （最好在该频道下建一个子区，避免和别人的消息混在一起）&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

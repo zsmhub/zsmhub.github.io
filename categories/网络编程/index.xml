@@ -4,72 +4,59 @@
     <title>网络编程 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
     <description>Recent content in 网络编程 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 29 Oct 2020 09:36:54 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 May 2022 16:22:13 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>http和https</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http%E5%92%8Chttps/</link>
       <pubDate>Thu, 29 Oct 2020 09:36:54 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/http%E5%92%8Chttps/</guid>
-      <description>网络传输 互联网传输的三个非常重要的特点：延时、丢包、抖动。 延时和抖动天生就紧密相连，但它们其实并不同。延时是 数据 从网络上的一个端点移动到另一</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2020/QQ20201029-093740.png&#34; alt=&#34;HTTP的通信技术发展史&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;网络传输&#34;&gt;网络传输&lt;/h2&gt;&#xA;&lt;p&gt;互联网传输的三个非常重要的特点：延时、丢包、抖动。&lt;/p&gt;&#xA;&lt;p&gt;延时和抖动天生就紧密相连，但它们其实并不同。延时是 &lt;em&gt;数据&lt;/em&gt; 从网络上的一个端点移动到另一个端点所花费的时间，这是一个受多种因素影响的复杂的值。另一方面，抖动是两个 &lt;em&gt;数据包&lt;/em&gt; 之间的延时差异。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>IO - 同步异步，阻塞非阻塞</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%92%8C%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E/</link>
       <pubDate>Sun, 16 Aug 2020 14:54:25 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%92%8C%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E/</guid>
-      <description>同步(Sync)/异步(Async)，阻塞(Block)/非阻塞(Unblock) 两者定义的针对目标不同，异步同步是针对 响应 本身的，阻塞非阻</description>
+      <description>&lt;p&gt;同步(Sync)/异步(Async)，阻塞(Block)/非阻塞(Unblock)&lt;/p&gt;&#xA;&lt;p&gt;两者定义的针对目标不同，异步同步是针对 &lt;em&gt;响应&lt;/em&gt; 本身的，阻塞非阻塞是针对 &lt;em&gt;请求&lt;/em&gt; 本身的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>理解并发与并行</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C/</link>
       <pubDate>Mon, 04 May 2020 18:15:11 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C/</guid>
-      <description>并发与并行 例子 你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。 你吃饭吃到一半，电话来了，你停了下来接了</description>
+      <description>&lt;h2 id=&#34;并发与并行&#34;&gt;并发与并行&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;例子&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。&lt;/p&gt;&#xA;&lt;p&gt;你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发（不一定是同时的）。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>IM-心跳机制</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Fri, 17 Apr 2020 20:56:26 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6/</guid>
-      <description>作为即时通讯应用，心跳机制是其网络通信技术底层中非常重要的一环，有没有心跳机制、心跳机制的算法实现好坏，都将直接影响即时通讯应用在应用层的表</description>
+      <description>&lt;p&gt;作为即时通讯应用，心跳机制是其网络通信技术底层中非常重要的一环，有没有心跳机制、心跳机制的算法实现好坏，都将直接影响即时通讯应用在应用层的表现——比如：实时性、断网自愈能力、弱网体验等等。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>IM-基础知识</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 16 Apr 2020 20:53:50 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>IM 消息可靠性及一致性的解决方案 参考文章 对于 IM 系统消息可靠性及一致性问题，通过消息重发机制保证消息成功被服务端接收，通过会话记录检查保证收取消</description>
+      <description>&lt;h2 id=&#34;im-消息可靠性及一致性的解决方案&#34;&gt;IM 消息可靠性及一致性的解决方案&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://juejin.im/entry/597eca3bf265da3e2777e719&#34;&gt;参考文章&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;对于 IM 系统消息可靠性及一致性问题，通过消息重发机制保证消息成功被服务端接收，通过会话记录检查保证收取消息完整，从而保证整个消息发送过程的可靠性；使用 uuid 消息去重，参考向量时钟算法进行消息排序，为保证消息一致性提供一种解决方案。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Socket &amp;&amp; WebSocket</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/</link>
       <pubDate>Sun, 28 Apr 2019 16:22:13 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/</guid>
-      <description>一般网络编程都叫Socket编程，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。 网络编程无非简单来看就是 TCP编程 和 UDP编程。</description>
+      <description>&lt;p&gt;一般&lt;code&gt;网络编程&lt;/code&gt;都叫&lt;code&gt;Socket编程&lt;/code&gt;，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。&lt;/p&gt;&#xA;&lt;p&gt;网络编程无非简单来看就是 TCP编程 和 UDP编程。&lt;/p&gt;&#xA;&lt;h2 id=&#34;socket&#34;&gt;Socket&lt;/h2&gt;&#xA;&lt;p&gt;每一次建立 socket 连接后，都会生成一个 SessionId，便于标识通讯中的客户端和服务端。（SessionId 应保证分布式唯一）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>TCP/IP</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</link>
       <pubDate>Sun, 28 Apr 2019 11:30:44 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</guid>
-      <description>协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，</description>
+      <description>&lt;h2 id=&#34;协议的概念&#34;&gt;协议的概念&lt;/h2&gt;&#xA;&lt;p&gt;从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2020/QQ20201020-114448.png&#34; alt=&#34;协议如同人与人的对话&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;osi-参考模型和-tcpip-协议&#34;&gt;OSI 参考模型和 TCP/IP 协议&lt;/h2&gt;&#xA;&lt;p&gt;网络分层架构目的：为了减少协议设计的复杂性，大多数网络模型均采用分层的方式来组织。每一层都有自己的功能，就想建筑物一样，每一层都靠下一层支持。每一层利用下一层提供的服务来为上一层提供服务，本层服务的实现细节对上层屏蔽。好处：分工明确。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

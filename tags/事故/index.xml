@@ -4,18 +4,17 @@
     <title>事故 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E4%BA%8B%E6%95%85/</link>
     <description>Recent content in 事故 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 15 Mar 2022 10:57:57 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E4%BA%8B%E6%95%85/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 10:57:57 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E4%BA%8B%E6%95%85/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>线上事故记录</title>
       <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Tue, 15 Mar 2022 10:57:57 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/</guid>
-      <description>一、数据库宕机 事故时间：2020-08-25 事故描述： 大量慢查询 阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大</description>
+      <description>&lt;h2 id=&#34;一数据库宕机&#34;&gt;一、数据库宕机&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;事故时间：2020-08-25&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;事故描述：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;大量慢查询&lt;/li&gt;&#xA;&lt;li&gt;阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承受不住请求压力，主库宕机，备胎主库也失效。&lt;/li&gt;&#xA;&lt;li&gt;主从延迟严重，从库失效，全部查询堆在主库，这样也会导致主库宕机。（比如删除大量数据、更新大量数据的时候）&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;事故错误日志:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

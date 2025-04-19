@@ -4,45 +4,38 @@
     <title>后端 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%90%8E%E7%AB%AF/</link>
     <description>Recent content in 后端 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 19 May 2022 10:49:38 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 May 2022 10:49:38 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Session和Cookie</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/session%E5%92%8Ccookie/</link>
       <pubDate>Thu, 19 May 2022 10:49:38 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/session%E5%92%8Ccookie/</guid>
-      <description>session与cookie属于一种会话控制技术，常用在身份识别，登录验证，数据传输等。 cookie，是在本地计算机保存一些用户操作的历史信</description>
+      <description>&lt;p&gt;session与cookie属于一种&lt;code&gt;会话控制技术&lt;/code&gt;，常用在身份识别，登录验证，数据传输等。&lt;/p&gt;&#xA;&lt;p&gt;cookie，是在本地计算机保存一些用户操作的历史信息（当然包括登录信息），并在用户再次访问该站点时浏览器通过 HTTP 协议将本地 cookie 内容发送给服务器，从而完成验证，或继续上一步操作。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>项目部署与发布</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/</link>
       <pubDate>Wed, 07 Jul 2021 09:26:58 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/</guid>
-      <description>目前我们的k8s部署是通过金丝雀发布（灰度发布）， 发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod 旧版本的Pod继续运行</description>
+      <description>&lt;p&gt;目前我们的k8s部署是通过金丝雀发布（灰度发布），&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;发布新版本时，当新版本的Pod全部启动成功后，依次替换旧版本的pod&lt;/li&gt;&#xA;&lt;li&gt;旧版本的Pod继续运行10秒但不接受新的请求，方便旧pod的异步任务数据处理，10秒后再Kill掉旧版本的Pod。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;部署流程：服务重启 =&amp;gt; 10秒灰度发布，新旧pod共存 =&amp;gt; 新pod依次替代旧pod，旧pod移除调度，等待10秒后发送kill -15信号量给程序 =&amp;gt; 程序接受信号量并终止，删除旧pod&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>面向故障编程</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Thu, 27 May 2021 11:11:52 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/</guid>
-      <description>Bug与故障 Bug Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此</description>
+      <description>&lt;h2 id=&#34;bug与故障&#34;&gt;Bug与故障&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Bug&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Bug 是指在软件运行中因为程序本身有错误而造成的功能不正常、死机、数据丢失、非正常中断等现象。有些程序错误会造成计算机安全隐患，此时叫做漏洞。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>位运算使用技巧</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Thu, 31 Dec 2020 09:55:21 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
-      <description>位运算概览 符号 描述 运算规则 &amp;amp; 与 两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp;amp; 选中标签的用户</description>
+      <description>&lt;h2 id=&#34;位运算概览&#34;&gt;位运算概览&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;符号&lt;/th&gt;&#xA;          &lt;th&gt;描述&lt;/th&gt;&#xA;          &lt;th&gt;运算规则&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;amp;&lt;/td&gt;&#xA;          &lt;td&gt;与&lt;/td&gt;&#xA;          &lt;td&gt;两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp;amp; 选中标签的用户bitmap】&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;|&lt;/td&gt;&#xA;          &lt;td&gt;或&lt;/td&gt;&#xA;          &lt;td&gt;两个位都为0时，结果才为0 【选中A或B标签的用户bitmap=选中A标签的用户bitmap&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;^&lt;/td&gt;&#xA;          &lt;td&gt;异或&lt;/td&gt;&#xA;          &lt;td&gt;两个位相同为0，相异为1【可用于取非数据，如不包含某个标签的用户bitmap=全量用户bitmap ^ 包含某个标签的用户bitmap】&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;~&lt;/td&gt;&#xA;          &lt;td&gt;取反&lt;/td&gt;&#xA;          &lt;td&gt;0变1，1变0&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;laquo;&lt;/td&gt;&#xA;          &lt;td&gt;左移(每左移 1 位就乘以 2)&lt;/td&gt;&#xA;          &lt;td&gt;各二进位全部左移若干位，高位丢弃，低位补0 【2的10次方=1024】&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&amp;raquo;&lt;/td&gt;&#xA;          &lt;td&gt;右移(每右移 1 位就除以 2)&lt;/td&gt;&#xA;          &lt;td&gt;各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;优点&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

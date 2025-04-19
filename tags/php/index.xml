@@ -1,57 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>php on ZsmHub - Blog</title>
+    <title>Php on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/php/</link>
-    <description>Recent content in php on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Php on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 07 May 2020 16:00:02 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 May 2020 16:00:02 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PHP 的一些坑</title>
       <link>https://zsmhub.github.io/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</link>
       <pubDate>Thu, 07 May 2020 16:00:02 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</guid>
-      <description>大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 示例：array_udiff([&amp;lsquo;a</description>
+      <description>&lt;h2 id=&#34;大小写的坑&#34;&gt;大小写的坑&lt;/h2&gt;&#xA;&lt;p&gt;mysql5.7 查询不区分大小写。&lt;/p&gt;&#xA;&lt;p&gt;php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理&lt;/p&gt;&#xA;&lt;p&gt;示例：array_udiff([&amp;lsquo;a&amp;rsquo;, &amp;lsquo;b&amp;rsquo;, &amp;lsquo;c&amp;rsquo;], [&amp;lsquo;A&amp;rsquo;, &amp;lsquo;b&amp;rsquo;], &amp;lsquo;strcasecmp&amp;rsquo;) // 输出 c&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Composer</title>
       <link>https://zsmhub.github.io/post/php/composer/</link>
       <pubDate>Wed, 03 Apr 2019 21:50:58 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/php/composer/</guid>
-      <description>pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理</description>
+      <description>&lt;h2 id=&#34;pear&#34;&gt;pear&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具&lt;/li&gt;&#xA;&lt;li&gt;phar: php档案包&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;composer&#34;&gt;Composer&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;概念：用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。Composer 是多平台的，我们努力使它在 Windows 、 Linux 以及 OSX 平台上运行的同样出色。&lt;/li&gt;&#xA;&lt;li&gt;composer扩展包平台： &lt;a href=&#34;https://packagist.org/&#34;&gt;https://packagist.org/&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;~和^的意思很接近，在x.y的情况下是一样的都是代表x.y &amp;lt;= 版本号 &amp;lt; (x+1).0，但是在版本号是x.y.z的情况下有区别，举个例子吧：&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;~1.2.3 代表 1.2.3 &amp;lt;= 版本号 &amp;lt; 1.3.0&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>PHP 面向对象编程</title>
       <link>https://zsmhub.github.io/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Sat, 09 Mar 2019 13:22:34 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</guid>
-      <description>PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。 OOP（Object Oriented Programmin</description>
+      <description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;OOP（Object Oriented Programming）：面向对象编程，三大特性：封装、继承、多态。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Opcache与Opcode</title>
       <link>https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/</link>
       <pubDate>Sat, 23 Feb 2019 13:10:09 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/php/opcache%E4%B8%8Eopcode/</guid>
-      <description>相关文章 Opcode是啥以及如何使用好Opcache 啥是Opcache Opcache 的前生是 Optimizer+ ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优</description>
+      <description>&lt;h2 id=&#34;相关文章&#34;&gt;相关文章&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.zybuluo.com/phper/note/1016714&#34;&gt;Opcode是啥以及如何使用好Opcache&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;啥是opcache&#34;&gt;啥是Opcache&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Opcache 的前生是 Optimizer+ ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优化加速组件。 Optimizer+ 将PHP代码预编译生成的脚本文件 Opcode 缓存在共享内存中供以后反复使用，从而避免了从磁盘读取代码再次编译的时间消耗。同时，它还应用了一些代码优化模式，使得代码执行更快。从而加速PHP的执行。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;opcache的生命周期&#34;&gt;Opcache的生命周期&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;正常的php代码的执行过程如下&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>PHP 开发环境之 Lnmp</title>
       <link>https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Jan 2019 13:55:39 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/</guid>
-      <description>Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且</description>
+      <description>&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Linux 一键搭建 Lnmp 环境&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 教程&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://github.com/licess/lnmp OR https://lnmp.org&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;MacOs 一键搭建 Lnmp 环境&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 教程&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://github.com/yeszao/dnmp&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 常用命令&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/dnmp&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose build &lt;span class=&#34;c1&#34;&gt;# 镜像构建&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose up -d                      &lt;span class=&#34;c1&#34;&gt;# 创建并且后台运行方式启动所有容器&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose up -d nginx php  mysql     &lt;span class=&#34;c1&#34;&gt;# 创建并且已后台运行的方式启动nginx、php、mysql容器&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose start php                  &lt;span class=&#34;c1&#34;&gt;# 启动服务&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose stop php                   &lt;span class=&#34;c1&#34;&gt;# 停止服务&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose restart php                &lt;span class=&#34;c1&#34;&gt;# 重启服务&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose build php                  &lt;span class=&#34;c1&#34;&gt;# 构建或者重新构建服务&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose rm php                     &lt;span class=&#34;c1&#34;&gt;# 删除并且停止php容器&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ docker-compose down                       &lt;span class=&#34;c1&#34;&gt;# 停止并删除容器，网络，图像和挂载卷&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;配置文件&#34;&gt;配置文件&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nginx 配置文件路径：&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/local/nginx/conf/vhost&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mysql 安装路径&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /etc/mysql/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php配置文件路径：php --ini &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;disable_functions: 禁用函数配置&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;php-fpm配置文件：/usr/local/php/etc/php-fpm.conf&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Redis 配置文件：/usr/local/redis/etc/redis.conf&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;lnmp-日志文件&#34;&gt;LNMP 日志文件&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Nginx&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

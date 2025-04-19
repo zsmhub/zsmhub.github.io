@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/" />
@@ -35,24 +36,31 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Laravel 基础知识" />
-<meta property="og:description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-08-01T13:50:49&#43;08:00" />
-<meta property="article:modified_time" content="2020-05-05T13:50:49&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel%E5%85%A5%E9%97%A8/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Laravel 基础知识">
+  <meta property="og:description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-08-01T13:50:49+08:00">
+    <meta property="article:modified_time" content="2020-05-05T13:50:49+08:00">
+    <meta property="article:tag" content="入门">
+    <meta property="article:tag" content="Laravel">
 
-<meta itemprop="name" content="Laravel 基础知识">
-<meta itemprop="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器"><meta itemprop="datePublished" content="2019-08-01T13:50:49&#43;08:00" />
-<meta itemprop="dateModified" content="2020-05-05T13:50:49&#43;08:00" />
-<meta itemprop="wordCount" content="6702">
-<meta itemprop="keywords" content="入门,Laravel," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Laravel 基础知识"/>
-<meta name="twitter:description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器"/>
+  <meta itemprop="name" content="Laravel 基础知识">
+  <meta itemprop="description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。">
+  <meta itemprop="datePublished" content="2019-08-01T13:50:49+08:00">
+  <meta itemprop="dateModified" content="2020-05-05T13:50:49+08:00">
+  <meta itemprop="wordCount" content="6702">
+  <meta itemprop="keywords" content="入门,Laravel">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Laravel 基础知识">
+  <meta name="twitter:description" content="php 框架运行的核心三步 从入口进入 index.php 解析 url，匹配路由 根据路由，调用控制器，渲染视图 tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +99,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +132,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -171,14 +189,12 @@
 <li>根据路由，调用控制器，渲染视图</li>
 </ol>
 <blockquote>
-<p>tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。</p>
-</blockquote>
+<p>tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。</p></blockquote>
 <h2 id="laravel">Laravel</h2>
 <blockquote>
 <p>发音：</p>
 <p>Laravel: /ˈlærəvel/【/let 罗 否/】</p>
-<p>Lumen: /lu 门/</p>
-</blockquote>
+<p>Lumen: /lu 门/</p></blockquote>
 <ul>
 <li>Laravel 是个功能齐全的全栈框架，学习她相当于你在学习成为全栈工程师。</li>
 <li>框架知识分类</li>
@@ -191,13 +207,12 @@
 <li>
 <p>框架使用知识 —— 如用户注册登录、邮件发送、数据模型的 CRUD、用户数据获取等</p>
 </li>
-</ol>
-</blockquote>
+</ol></blockquote>
 <h3 id="artisan">Artisan</h3>
 <p>Artisan 是 Laravel 内置的命令行接口。它提供了一些有用的命令协助您开发，它是由强大的 Symfony Console 组件所驱动。利用它，我们可以快速的新建 Controller、Model等类。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -215,23 +230,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">&gt; php artisan optimize <span class="c1"># 重置配置和路由的缓存文件，使用了此命令后不要在config目录外使用env()函数『众所周知，Laravel 的路由组件是出了名的慢』</span>
-&gt; php artisan optimize:clear <span class="c1"># 清空本地路由和配置缓存</span>
-&gt; php artisan list  <span class="c1"># 查看所有artisan命令&lt;br/&gt;</span>
-&gt; php artisan make:model Models/User --migration <span class="c1"># 创建 Eloquent 模型类和迁移类</span>
-&gt; php artisan make:migration create_categories_table <span class="c1"># 生成迁移类，常用规则：create_(数据表名称)_table, add_字段名称_to_xx_table, seed_(数据表名称)_table</span>
-&gt; php artisan make:seeder seed_categories_data <span class="c1"># 生成数据填充类[一般是用来生成假数据，开发测试时使用的]</span>
-&gt; php artisan migrate <span class="c1"># 数据库迁移</span>
-&gt; php artisan db:seed <span class="c1"># 往数据库填充假数据</span>
-&gt; php artisan migrate:refresh --seed <span class="c1"># 刷新数据库结构、清除已有数据并执行数据填充</span>
-&gt; php artisan lang:publish zh-CN <span class="c1"># 发布语言文件到项目里</span>
-&gt; php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Intervention\Image\ImageServiceProviderLaravelRecent&#34;</span> <span class="c1"># 复制某个扩展的配置文件到config文件夹下</span>
-&gt; php artisan make:auth
-&gt; php artisan make:scaffold Topic --schema<span class="o">=</span><span class="s2">&#34;title:string:index,body:text,user_id:bigInteger:unsigned:index,category_id:integer:unsigned:index&#34;</span> <span class="c1"># 资源脚手架：代码生成器，一键生成表 Topic 的模型、表、控制路、路由、视图等</span>
-&gt; php artisan queue:listen <span class="c1"># 常驻进程：启动队列系统并进入监听状态</span>
-&gt; php artisan make:command CalculateActiveUser --command<span class="o">=</span>larabbs:calculate-active-user <span class="c1"># 创建 Artisan 命令</span>
-- php artisan tinker <span class="c1"># 启动交互式shell</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">&gt; php artisan optimize <span class="c1"># 重置配置和路由的缓存文件，使用了此命令后不要在config目录外使用env()函数『众所周知，Laravel 的路由组件是出了名的慢』</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan optimize:clear <span class="c1"># 清空本地路由和配置缓存</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan list  <span class="c1"># 查看所有artisan命令&lt;br/&gt;</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan make:model Models/User --migration <span class="c1"># 创建 Eloquent 模型类和迁移类</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan make:migration create_categories_table <span class="c1"># 生成迁移类，常用规则：create_(数据表名称)_table, add_字段名称_to_xx_table, seed_(数据表名称)_table</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan make:seeder seed_categories_data <span class="c1"># 生成数据填充类[一般是用来生成假数据，开发测试时使用的]</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan migrate <span class="c1"># 数据库迁移</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan db:seed <span class="c1"># 往数据库填充假数据</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan migrate:refresh --seed <span class="c1"># 刷新数据库结构、清除已有数据并执行数据填充</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan lang:publish zh-CN <span class="c1"># 发布语言文件到项目里</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Intervention\Image\ImageServiceProviderLaravelRecent&#34;</span> <span class="c1"># 复制某个扩展的配置文件到config文件夹下</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan make:auth
+</span></span><span class="line"><span class="cl">&gt; php artisan make:scaffold Topic --schema<span class="o">=</span><span class="s2">&#34;title:string:index,body:text,user_id:bigInteger:unsigned:index,category_id:integer:unsigned:index&#34;</span> <span class="c1"># 资源脚手架：代码生成器，一键生成表 Topic 的模型、表、控制路、路由、视图等</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan queue:listen <span class="c1"># 常驻进程：启动队列系统并进入监听状态</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan make:command CalculateActiveUser --command<span class="o">=</span>larabbs:calculate-active-user <span class="c1"># 创建 Artisan 命令</span>
+</span></span><span class="line"><span class="cl">- php artisan tinker <span class="c1"># 启动交互式shell</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="other">OTHER</h3>
 <ol>
@@ -246,30 +261,28 @@
 </li>
 </ul>
 <blockquote>
-<p>app()： app(SlugTranslateHandler::class) =&gt; 获取应用实例</p>
-</blockquote>
+<p>app()： app(SlugTranslateHandler::class) =&gt; 获取应用实例</p></blockquote>
 <ul>
 <li>类别名</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">// config/app.php 示例
-在 config.aliases 加上 <span class="s1">&#39;Auth&#39;</span> <span class="o">=</span>&gt; Illuminate<span class="se">\S</span>upport<span class="se">\F</span>acades<span class="se">\A</span>uth::class 后
-在整个项目上可以直接用 <span class="se">\A</span>uth::id<span class="o">()</span> 方式获取当前用户id，可减少 use 的使用。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// config/app.php 示例
+</span></span><span class="line"><span class="cl">在 config.aliases 加上 <span class="s1">&#39;Auth&#39;</span> <span class="o">=</span>&gt; Illuminate<span class="se">\S</span>upport<span class="se">\F</span>acades<span class="se">\A</span>uth::class 后
+</span></span><span class="line"><span class="cl">在整个项目上可以直接用 <span class="se">\A</span>uth::id<span class="o">()</span> 方式获取当前用户id，可减少 use 的使用。
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>.editorconfig文件：代码风格配置</p>
 <p><a href="https://learnku.com/articles/24174">详解链接</a></p>
 <blockquote>
-<p>配置好代码风格后，在vs code上安装扩展EditorConfig for VS Code，这样就可以了。</p>
-</blockquote>
+<p>配置好代码风格后，在vs code上安装扩展EditorConfig for VS Code，这样就可以了。</p></blockquote>
 </li>
 <li>
 <p>tinker: 是 Laravel 包含的一个强大 REPL，REPL 是 Read Eval Print Loop 的缩写，它是一种交互式 shell（即可交互式的编程环境），它接受单个用户输入，运行它们，并将结果返回给用户。</p>
@@ -283,15 +296,14 @@
 <blockquote>
 <ul>
 <li>上面代码将等同于：</li>
-<li>Route::get('/users', &lsquo;UsersController@index&rsquo;)-&gt;name(&lsquo;users.index&rsquo;); // 列表</li>
-<li>Route::get('/users/{user}', &lsquo;UsersController@show&rsquo;)-&gt;name(&lsquo;users.show&rsquo;);  // 信息展示页面</li>
-<li>Route::get('/users/create', &lsquo;UsersController@create&rsquo;)-&gt;name(&lsquo;users.create&rsquo;);  // 新增页面</li>
-<li>Route::post('/users', &lsquo;UsersController@store&rsquo;)-&gt;name(&lsquo;users.store&rsquo;);  // 保存新增功能</li>
-<li>Route::get('/users/{user}/edit', &lsquo;UsersController@edit&rsquo;)-&gt;name(&lsquo;users.edit&rsquo;);  // 编辑页面</li>
-<li>Route::patch('/users/{user}', &lsquo;UsersController@update&rsquo;)-&gt;name(&lsquo;users.update&rsquo;);  // 保存编辑功能</li>
-<li>Route::delete('/users/{user}', &lsquo;UsersController@destroy&rsquo;)-&gt;name(&lsquo;users.destroy&rsquo;);  // 删除功能</li>
-</ul>
-</blockquote>
+<li>Route::get(&rsquo;/users&rsquo;, &lsquo;UsersController@index&rsquo;)-&gt;name(&lsquo;users.index&rsquo;); // 列表</li>
+<li>Route::get(&rsquo;/users/{user}&rsquo;, &lsquo;UsersController@show&rsquo;)-&gt;name(&lsquo;users.show&rsquo;);  // 信息展示页面</li>
+<li>Route::get(&rsquo;/users/create&rsquo;, &lsquo;UsersController@create&rsquo;)-&gt;name(&lsquo;users.create&rsquo;);  // 新增页面</li>
+<li>Route::post(&rsquo;/users&rsquo;, &lsquo;UsersController@store&rsquo;)-&gt;name(&lsquo;users.store&rsquo;);  // 保存新增功能</li>
+<li>Route::get(&rsquo;/users/{user}/edit&rsquo;, &lsquo;UsersController@edit&rsquo;)-&gt;name(&lsquo;users.edit&rsquo;);  // 编辑页面</li>
+<li>Route::patch(&rsquo;/users/{user}&rsquo;, &lsquo;UsersController@update&rsquo;)-&gt;name(&lsquo;users.update&rsquo;);  // 保存编辑功能</li>
+<li>Route::delete(&rsquo;/users/{user}&rsquo;, &lsquo;UsersController@destroy&rsquo;)-&gt;name(&lsquo;users.destroy&rsquo;);  // 删除功能</li>
+</ul></blockquote>
 <p><img src="/images/2020/QQ20201121-091226.png" alt="路由动态参数全局约束"></p>
 </li>
 <li>
@@ -299,14 +311,12 @@
 <blockquote>
 <p>php artisan make:policy UserPolicy</p>
 <p>blade使用授权策略：@can(&lsquo;授权策略类的函数&rsquo;, &lsquo;授权策略类对应模型的实例&rsquo;)，eg: @can(&lsquo;update&rsquo;, $user) @endcan</p>
-<p>控制器端使用授权策略：$this-&gt;authorize(&lsquo;update&rsquo;, $user);</p>
-</blockquote>
+<p>控制器端使用授权策略：$this-&gt;authorize(&lsquo;update&rsquo;, $user);</p></blockquote>
 <blockquote>
 <p>Gates 和 Policies</p>
 <p>Laravel 授权的方式主要分两种：Gates 和策略（Policies）。</p>
 <p>Gates 和策略的关系像路由和控制器的。Gates 提供基于路由的授权方式；而策略将针对某个资源的操作逻辑组织起来，放在一个地方管理</p>
-<p>我们不需要在「项目里的授权，是选择使用 Gates，还是选择使用策略呢？」这个问题上纠结。许多项目里，都会混用这两种授权方式，而且运行良好。基本上，使用 Gates 的地方都是资源不相关的，比如查看管理员面板页；相反，策略是资源相关的，当你是具体授权某个资源的操作权限时，使用策略是没错啦。</p>
-</blockquote>
+<p>我们不需要在「项目里的授权，是选择使用 Gates，还是选择使用策略呢？」这个问题上纠结。许多项目里，都会混用这两种授权方式，而且运行良好。基本上，使用 Gates 的地方都是资源不相关的，比如查看管理员面板页；相反，策略是资源相关的，当你是具体授权某个资源的操作权限时，使用策略是没错啦。</p></blockquote>
 </li>
 <li>
 <p>隐性路由模型绑定：传输id，Laravel框架直接去获取id的实例对象</p>
@@ -314,8 +324,7 @@
 <li>
 <p>关联方法 Vs. 动态属性</p>
 <blockquote>
-<p>动态属性: eg: 模型类可以全局使用$this-&gt;数据库字段名</p>
-</blockquote>
+<p>动态属性: eg: 模型类可以全局使用$this-&gt;数据库字段名</p></blockquote>
 <p><img src="/images/2020/QQ20200103-162558@2x.png" alt="参考图片"></p>
 </li>
 <li>
@@ -325,7 +334,7 @@
 <p>Eloquent 模型约定</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -335,15 +344,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// $fillable 可以看作批量赋值的「白名单」, 你也可以使用 $guarded 属性来实现。 $guarded 属性包含的是不允许批量赋值的数组。也就是说， $guarded 从功能上将更像是一个「黑名单」。
-</span><span class="c1"></span>
-<span class="k">protected</span> <span class="nv">$connection</span> <span class="o">=</span> <span class="s1">&#39;mysql_middle_office&#39;</span><span class="p">;</span>
-<span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">&#39;oat_customer&#39;</span><span class="p">;</span>
-<span class="k">protected</span> <span class="nv">$guarded</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;customer_id&#39;</span><span class="p">];</span>
-<span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s1">&#39;customer_id&#39;</span><span class="p">;</span> <span class="c1">// Eloquent 也会假设每个数据表都有一个名为 id 的主键列。你可以定义一个受保护的 $primaryKey 属性来重写约定。
-</span><span class="c1"></span><span class="k">public</span> <span class="nv">$incrementing</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">// 如果您希望使用非递增或非数字的主键则需要设置公共的 $incrementing 属性设置为 false。
-</span><span class="c1"></span><span class="k">protected</span> <span class="nv">$keyType</span> <span class="o">=</span> <span class="s1">&#39;string&#39;</span><span class="p">;</span> <span class="c1">// 如果你的主键不是一个整数，你需要将模型上受保护的 $keyType 属性设置为 string
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// $fillable 可以看作批量赋值的「白名单」, 你也可以使用 $guarded 属性来实现。 $guarded 属性包含的是不允许批量赋值的数组。也就是说， $guarded 从功能上将更像是一个「黑名单」。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">protected</span> <span class="nv">$connection</span> <span class="o">=</span> <span class="s1">&#39;mysql_middle_office&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">&#39;oat_customer&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">protected</span> <span class="nv">$guarded</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;customer_id&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s1">&#39;customer_id&#39;</span><span class="p">;</span> <span class="c1">// Eloquent 也会假设每个数据表都有一个名为 id 的主键列。你可以定义一个受保护的 $primaryKey 属性来重写约定。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="nv">$incrementing</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">// 如果您希望使用非递增或非数字的主键则需要设置公共的 $incrementing 属性设置为 false。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">protected</span> <span class="nv">$keyType</span> <span class="o">=</span> <span class="s1">&#39;string&#39;</span><span class="p">;</span> <span class="c1">// 如果你的主键不是一个整数，你需要将模型上受保护的 $keyType 属性设置为 string
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -355,7 +364,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -379,29 +388,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// 预加载方式1
-</span><span class="c1">// 此循环将执行一个查询，用于获取全部书籍，然后为每本书执行获取作者的查询。如果我们有 25 本书，此循环将运行 26 个查询：1 个用于查询书籍，25 个附加查询用于查询每本书的作者。
-</span><span class="c1">// 谢天谢地，我们能够使用预加载将操作压缩到只有 2 个查询。在查询时，可以使用 with 方法指定想要预加载的关联(de方法名)
-</span><span class="c1"></span>
-<span class="c1">// $books = App\Book::all();  // 懒加载
-</span><span class="c1"></span><span class="nv">$books</span> <span class="o">=</span> <span class="nx">App\Book</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>  <span class="c1">// 预加载
-</span><span class="c1"></span>
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$books</span> <span class="k">as</span> <span class="nv">$book</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="nv">$book</span><span class="o">-&gt;</span><span class="na">author</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// 执行预加载的sql示例
-</span><span class="c1">// select * from books
-</span><span class="c1">// select * from authors where id in (1, 2, 3, 4, 5, ...)
-</span><span class="c1"></span>
-<span class="c1">// 预加载方式2：有可能你还希望在模型加载完成后在进行渴求式加载。举例来说，如果你想要根据某个条件动态决定是否加载关联数据，那么 load 方法对你来说会非常有用
-</span><span class="c1"></span><span class="nv">$books</span> <span class="o">=</span> <span class="nx">App\Book</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nv">$someCondition</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$books</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;publisher&#39;</span><span class="p">);</span>
-    <span class="c1">// $book-&gt;loadMissing(&#39;author&#39;, &#39;publisher&#39;);  // 希望关联关系仅在尚未加载时才去加载，以避免无效重复加载
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// 预加载方式1
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 此循环将执行一个查询，用于获取全部书籍，然后为每本书执行获取作者的查询。如果我们有 25 本书，此循环将运行 26 个查询：1 个用于查询书籍，25 个附加查询用于查询每本书的作者。
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 谢天谢地，我们能够使用预加载将操作压缩到只有 2 个查询。在查询时，可以使用 with 方法指定想要预加载的关联(de方法名)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// $books = App\Book::all();  // 懒加载
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$books</span> <span class="o">=</span> <span class="nx">App\Book</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>  <span class="c1">// 预加载
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="nv">$books</span> <span class="k">as</span> <span class="nv">$book</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="nv">$book</span><span class="o">-&gt;</span><span class="na">author</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 执行预加载的sql示例
+</span></span></span><span class="line"><span class="cl"><span class="c1">// select * from books
+</span></span></span><span class="line"><span class="cl"><span class="c1">// select * from authors where id in (1, 2, 3, 4, 5, ...)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 预加载方式2：有可能你还希望在模型加载完成后在进行渴求式加载。举例来说，如果你想要根据某个条件动态决定是否加载关联数据，那么 load 方法对你来说会非常有用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$books</span> <span class="o">=</span> <span class="nx">App\Book</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nv">$someCondition</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$books</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;publisher&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// $book-&gt;loadMissing(&#39;author&#39;, &#39;publisher&#39;);  // 希望关联关系仅在尚未加载时才去加载，以避免无效重复加载
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>访问器&amp;修改器：当你在 Eloquent 模型实例中获取或设置某些属性值的时候，访问器和修改器允许你对 Eloquent 属性值进行格式化。</li>
@@ -410,7 +419,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -437,39 +446,39 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$user</span> <span class="o">=</span> <span class="nx">App\Models\User</span><span class="o">::</span><span class="na">first</span><span class="p">();</span>
-
-<span class="c1">#  Laravel 5.8 查询存放反斜杠内容字段，需特殊处理
-</span><span class="c1"></span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;mall_order_infos.order_type&#39;</span><span class="p">,</span> <span class="s1">&#39;like&#39;</span><span class="p">,</span> <span class="s1">&#39;App\\Models\\Activity\\PreOrder&#39;</span><span class="p">);</span>
-
-<span class="c1"># 使用 isDirty() 方法确定模型或给定属性是否已被修改
-</span><span class="c1"></span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Michael&#39;</span><span class="p">;</span>
-<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isDirty</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span> <span class="c1"># true
-</span><span class="c1"></span>
-<span class="c1"># 获取记录的原始属性
-</span><span class="c1"></span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getOriginal</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
-
-<span class="c1"># Laravel 的模型可以通过 query 方法获取一个 Builder 实例，这种写法在一些场景下是有用的，比如说自定义过滤器
-</span><span class="c1"></span><span class="nv">$query</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">query</span><span class="p">();</span>
-<span class="k">if</span><span class="p">(</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">name</span> <span class="p">){</span>
-    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1"># 打印执行 SQL 日志
-</span><span class="c1"></span><span class="nx">DB</span><span class="o">::</span><span class="na">enableQueryLog</span><span class="p">();</span>
-<span class="nx">dd</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">getQueryLog</span><span class="p">());</span>
-
-<span class="c1"># 打印 SQL 语句
-</span><span class="c1"></span><span class="nv">$sql</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">toSql</span><span class="p">();</span>
-<span class="nx">dd</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$user</span> <span class="o">=</span> <span class="nx">App\Models\User</span><span class="o">::</span><span class="na">first</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#  Laravel 5.8 查询存放反斜杠内容字段，需特殊处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;mall_order_infos.order_type&#39;</span><span class="p">,</span> <span class="s1">&#39;like&#39;</span><span class="p">,</span> <span class="s1">&#39;App\\Models\\Activity\\PreOrder&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 isDirty() 方法确定模型或给定属性是否已被修改
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Michael&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isDirty</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span> <span class="c1"># true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 获取记录的原始属性
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getOriginal</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Laravel 的模型可以通过 query 方法获取一个 Builder 实例，这种写法在一些场景下是有用的，比如说自定义过滤器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$query</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">query</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">name</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 打印执行 SQL 日志
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">DB</span><span class="o">::</span><span class="na">enableQueryLog</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">dd</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">getQueryLog</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 打印 SQL 语句
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$sql</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">toSql</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">dd</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>模型观察器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -495,38 +504,38 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1"># 模型观察器
-</span><span class="c1"></span><span class="o">-</span> <span class="nx">对模型的生命周期内的多个时间点进行监控，分别有</span> <span class="o">~</span><span class="nx">ing</span> <span class="nx">和</span> <span class="o">~</span><span class="nx">ed</span> <span class="nx">事件</span>
-<span class="c1">// creating, created, updating, updated, saving,
-</span><span class="c1">// saved,  deleting, deleted, restoring, restored
-</span><span class="c1"></span><span class="o">-</span> <span class="nx">每个监控方法接收</span> <span class="nx">model</span> <span class="nx">作为唯一参数</span>
-<span class="c1"># 使用观察器
-</span><span class="c1"></span><span class="o">-</span> <span class="nx">创建观察器文件，一个普通类，不需要继承什么</span>
-<span class="o">-</span> <span class="nx">针对需要的事件，编写对应的</span> <span class="o">~</span><span class="nx">ing</span> <span class="nx">或</span> <span class="o">~</span><span class="nx">ed</span> <span class="nx">方法，方法接收</span> <span class="nx">model</span> <span class="nx">作为唯一参数</span>
-<span class="c1"># 在 AppServiceProvider 中注册
-</span><span class="c1">// 在 boot 方法中
-</span><span class="c1"></span><span class="nx">YourModel</span><span class="o">::</span><span class="na">observe</span><span class="p">(</span><span class="nx">YourModelObserver</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<span class="c1"># 在模型下的 boot 方法中实现
-</span><span class="c1"></span><span class="nx">无论模型何时初始化，静态</span> <span class="nx">boot</span><span class="p">()</span> <span class="nx">方法自动执行，所以它是一个添加行为或者绑定事件的理想所在。比如，在我们当前的案例中，模型中发生删除事件时自动删除一个相关图片。</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">boot</span><span class="p">();</span>
-
-        <span class="c1">//当删除时触发
-</span><span class="c1"></span>        <span class="nx">self</span><span class="o">::</span><span class="na">deleted</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$model</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="nx">Cache</span><span class="o">::</span><span class="na">forget</span><span class="p">(</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;cache_keys.account&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="nv">$model</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
-            <span class="nx">Cache</span><span class="o">::</span><span class="na">forget</span><span class="p">(</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;cache_keys.account_wxid&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="nv">$model</span><span class="o">-&gt;</span><span class="na">wxid</span><span class="p">);</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># 模型观察器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">-</span> <span class="nx">对模型的生命周期内的多个时间点进行监控，分别有</span> <span class="o">~</span><span class="nx">ing</span> <span class="nx">和</span> <span class="o">~</span><span class="nx">ed</span> <span class="nx">事件</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// creating, created, updating, updated, saving,
+</span></span></span><span class="line"><span class="cl"><span class="c1">// saved,  deleting, deleted, restoring, restored
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">-</span> <span class="nx">每个监控方法接收</span> <span class="nx">model</span> <span class="nx">作为唯一参数</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用观察器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">-</span> <span class="nx">创建观察器文件，一个普通类，不需要继承什么</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="nx">针对需要的事件，编写对应的</span> <span class="o">~</span><span class="nx">ing</span> <span class="nx">或</span> <span class="o">~</span><span class="nx">ed</span> <span class="nx">方法，方法接收</span> <span class="nx">model</span> <span class="nx">作为唯一参数</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 在 AppServiceProvider 中注册
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 在 boot 方法中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">YourModel</span><span class="o">::</span><span class="na">observe</span><span class="p">(</span><span class="nx">YourModelObserver</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 在模型下的 boot 方法中实现
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">无论模型何时初始化，静态</span> <span class="nx">boot</span><span class="p">()</span> <span class="nx">方法自动执行，所以它是一个添加行为或者绑定事件的理想所在。比如，在我们当前的案例中，模型中发生删除事件时自动删除一个相关图片。</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">parent</span><span class="o">::</span><span class="na">boot</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//当删除时触发
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">self</span><span class="o">::</span><span class="na">deleted</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$model</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">Cache</span><span class="o">::</span><span class="na">forget</span><span class="p">(</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;cache_keys.account&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="nv">$model</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">Cache</span><span class="o">::</span><span class="na">forget</span><span class="p">(</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;cache_keys.account_wxid&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="nv">$model</span><span class="o">-&gt;</span><span class="na">wxid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>Laravel Job 和 事件系统</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -535,21 +544,21 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">- Job 和 队列 结合
-Job既可以用作同步，也可以用作异步。
-如果你想延迟执行一个操作，或者这个过程需要花费一段时间，那么就可以选择用Job，例如上传一个比较大的文件。
-Job一般用在正在处理的事情。比如我们去银行办理业务，很多人排队等待，我们可以把这条队看成一个队列queue,把每一个人看成一个Job，服务人员会帮我们一个接一个的处理业务。办完了一个业务，系统会叫号叫到下一个人，执行下一个Job。每个人需要办理的业务都不一样，这就是每个Job需要完成的任务。
-
-- Event
-事件监听可以允许参与不同的角色。事件监听可以认为是特定事件发生的一个Job,一旦事件创建，监听器就会触发。事件可以理解成“当...”，“就...”。 一个事件可以被多个监听器监听，比如登录后，系统既要发送邮件，又要发送短信，这个时候，就可以建立一个登录事件，事件触发后，同事被发送邮件和发送短信监听到。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">- Job 和 队列 结合
+</span></span><span class="line"><span class="cl">Job既可以用作同步，也可以用作异步。
+</span></span><span class="line"><span class="cl">如果你想延迟执行一个操作，或者这个过程需要花费一段时间，那么就可以选择用Job，例如上传一个比较大的文件。
+</span></span><span class="line"><span class="cl">Job一般用在正在处理的事情。比如我们去银行办理业务，很多人排队等待，我们可以把这条队看成一个队列queue,把每一个人看成一个Job，服务人员会帮我们一个接一个的处理业务。办完了一个业务，系统会叫号叫到下一个人，执行下一个Job。每个人需要办理的业务都不一样，这就是每个Job需要完成的任务。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">- Event
+</span></span><span class="line"><span class="cl">事件监听可以允许参与不同的角色。事件监听可以认为是特定事件发生的一个Job,一旦事件创建，监听器就会触发。事件可以理解成“当...”，“就...”。 一个事件可以被多个监听器监听，比如登录后，系统既要发送邮件，又要发送短信，这个时候，就可以建立一个登录事件，事件触发后，同事被发送邮件和发送短信监听到。
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>表单请求验证类：将表单字段验证逻辑从控制器中解耦</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -559,15 +568,15 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">App\Http\Requests\UserRequest</span><span class="p">;</span>
-
-<span class="c1">// 消息提示：with(&#39;success&#39;, &#39;...&#39;) &lt;=&gt; session()-&gt;flash(&#39;success&#39;, &#39;...&#39;)
-</span><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">UserRequest</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">());</span>
-    <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">&#39;users.show&#39;</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="s1">&#39;个人资料更新成功！&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">App\Http\Requests\UserRequest</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 消息提示：with(&#39;success&#39;, &#39;...&#39;) &lt;=&gt; session()-&gt;flash(&#39;success&#39;, &#39;...&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">UserRequest</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">&#39;users.show&#39;</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="s1">&#39;个人资料更新成功！&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -581,7 +590,7 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -666,97 +675,97 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </span><span class="lnt">83
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1"># 案例
-</span><span class="c1"># app/Services/SocketIO/WeChat.php
-</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">App\Services\SocketIO</span><span class="p">;</span>
-
-<span class="sd">/**
-</span><span class="sd">* socket io 版的事件接口
-</span><span class="sd">* Class WeChat
-</span><span class="sd">* @package App\Services\SocketIO
-</span><span class="sd">*/</span>
-<span class="k">class</span> <span class="nc">WeChat</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="no">TEXT_MSG_TYPE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//文本
-</span><span class="c1"></span>    <span class="k">const</span> <span class="no">IMAGE_MSG_TYPE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//图片
-</span><span class="c1"></span>    <span class="k">const</span> <span class="no">AUDIO_MSG_TYPE</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//音频
-</span><span class="c1"></span>    <span class="k">const</span> <span class="no">VIDEO_MSG_TYPE</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//视频
-</span><span class="c1"></span>    <span class="k">const</span> <span class="no">NAMECARD_MSG_TYPE</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//名片
-</span><span class="c1"></span>    <span class="k">const</span> <span class="no">EMOJI_MSG_TYPE</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//表情
-</span><span class="c1"></span>
-    <span class="sd">/**
-</span><span class="sd">    * 获取消息类型对应的uri
-</span><span class="sd">    * @return array
-</span><span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getMsgTypeUris</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="nx">self</span><span class="o">::</span><span class="na">TEXT_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_message_v2&#39;</span><span class="p">,</span>
-            <span class="nx">self</span><span class="o">::</span><span class="na">IMAGE_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_image_v2&#39;</span><span class="p">,</span>
-            <span class="nx">self</span><span class="o">::</span><span class="na">EMOJI_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_emoji_v2&#39;</span><span class="p">,</span>
-            <span class="nx">self</span><span class="o">::</span><span class="na">NAMECARD_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_namecard&#39;</span><span class="p">,</span>
-            <span class="nx">self</span><span class="o">::</span><span class="na">CHATROOM_INVITE_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/invite_friend_to_chatroom&#39;</span><span class="p">,</span>
-            <span class="nx">self</span><span class="o">::</span><span class="na">VIDEO_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_video&#39;</span><span class="p">,</span>
-        <span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-
-<span class="c1"># app/Facades/WeChat.php
-</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">App\Facades</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Facade</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">WeChat</span> <span class="k">extends</span> <span class="nx">Facade</span>
-<span class="p">{</span>
-    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getFacadeAccessor</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s1">&#39;WeChat&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1"># app/Providers/AppServiceProvider.php: 将服务绑定到服务容器中
-</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">App\Services\SocketIO\WeChat</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">AppServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
-<span class="p">{</span>
-    <span class="sd">/**
-</span><span class="sd">    * Register any application services.
-</span><span class="sd">    * @return void
-</span><span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">singleton</span><span class="p">(</span><span class="s1">&#39;WeChat&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">WeChat</span><span class="p">();</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1"># config/app.php
-</span><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
-    <span class="s1">&#39;providers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="nx">App\Providers\AppServiceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="s1">&#39;aliases&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s1">&#39;WeChat&#39;</span> <span class="o">=&gt;</span> <span class="nx">App\Facades\WeChat</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-    <span class="p">],</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># 案例
+</span></span></span><span class="line"><span class="cl"><span class="c1"># app/Services/SocketIO/WeChat.php
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Services\SocketIO</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">* socket io 版的事件接口
+</span></span></span><span class="line"><span class="cl"><span class="sd">* Class WeChat
+</span></span></span><span class="line"><span class="cl"><span class="sd">* @package App\Services\SocketIO
+</span></span></span><span class="line"><span class="cl"><span class="sd">*/</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">WeChat</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="no">TEXT_MSG_TYPE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//文本
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">const</span> <span class="no">IMAGE_MSG_TYPE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//图片
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">const</span> <span class="no">AUDIO_MSG_TYPE</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//音频
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">const</span> <span class="no">VIDEO_MSG_TYPE</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//视频
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">const</span> <span class="no">NAMECARD_MSG_TYPE</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//名片
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">const</span> <span class="no">EMOJI_MSG_TYPE</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//表情
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">    * 获取消息类型对应的uri
+</span></span></span><span class="line"><span class="cl"><span class="sd">    * @return array
+</span></span></span><span class="line"><span class="cl"><span class="sd">    */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getMsgTypeUris</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">self</span><span class="o">::</span><span class="na">TEXT_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_message_v2&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">self</span><span class="o">::</span><span class="na">IMAGE_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_image_v2&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">self</span><span class="o">::</span><span class="na">EMOJI_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_emoji_v2&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">self</span><span class="o">::</span><span class="na">NAMECARD_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_namecard&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">self</span><span class="o">::</span><span class="na">CHATROOM_INVITE_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/invite_friend_to_chatroom&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">self</span><span class="o">::</span><span class="na">VIDEO_MSG_TYPE</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/send_video&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># app/Facades/WeChat.php
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Facades</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Facade</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">WeChat</span> <span class="k">extends</span> <span class="nx">Facade</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getFacadeAccessor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;WeChat&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># app/Providers/AppServiceProvider.php: 将服务绑定到服务容器中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">App\Services\SocketIO\WeChat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AppServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">    * Register any application services.
+</span></span></span><span class="line"><span class="cl"><span class="sd">    * @return void
+</span></span></span><span class="line"><span class="cl"><span class="sd">    */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">singleton</span><span class="p">(</span><span class="s1">&#39;WeChat&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">new</span> <span class="nx">WeChat</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># config/app.php
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;providers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">App\Providers\AppServiceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;aliases&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;WeChat&#39;</span> <span class="o">=&gt;</span> <span class="nx">App\Facades\WeChat</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>消息通知类</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -782,38 +791,37 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="k">use</span> <span class="nx">Illuminate\Notifications\Notifiable</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Foundation\Auth\User</span> <span class="k">as</span> <span class="nx">Authenticatable</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Auth\MustVerifyEmail</span> <span class="k">as</span> <span class="nx">MustVerifyEmailTrait</span>
-<span class="k">use</span> <span class="nx">Auth</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span> <span class="k">implements</span> <span class="nx">MustVerifyEmailContract</span>
-<span class="p">{</span>
-    <span class="c1">// use Notifiable;
-</span><span class="c1"></span>
-    <span class="c1">// trait 中的 notify 方法重命名为 laravelNotify
-</span><span class="c1"></span>    <span class="k">use</span> <span class="nx">Notifiable</span> <span class="p">{</span>
-        <span class="nx">notify</span> <span class="k">as</span> <span class="k">protected</span> <span class="nx">laravelNotify</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-
-<span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">notify</span><span class="p">();</span>  <span class="c1">// 推送消息通知
-</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">notifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span> <span class="c1">// 获取该用户所有的通知列表
-</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">readNotifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>  <span class="c1">// 获取已读的通知列表
-</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">unreadNotifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>  <span class="c1">// 获取未读的通知列表
-</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">unreadNotifications</span><span class="o">-&gt;</span><span class="na">markAsRead</span><span class="p">();</span>  <span class="c1">// 将未读标记为已读
-</span><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">readNotifications</span><span class="o">-&gt;</span><span class="na">markAsRead</span><span class="p">();</span>  <span class="c1">// 将已读标记为纬度
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Notifications\Notifiable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Foundation\Auth\User</span> <span class="k">as</span> <span class="nx">Authenticatable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Auth\MustVerifyEmail</span> <span class="k">as</span> <span class="nx">MustVerifyEmailTrait</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Auth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span> <span class="k">implements</span> <span class="nx">MustVerifyEmailContract</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// use Notifiable;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// trait 中的 notify 方法重命名为 laravelNotify
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">use</span> <span class="nx">Notifiable</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">notify</span> <span class="k">as</span> <span class="k">protected</span> <span class="nx">laravelNotify</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">notify</span><span class="p">();</span>  <span class="c1">// 推送消息通知
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">notifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span> <span class="c1">// 获取该用户所有的通知列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">readNotifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>  <span class="c1">// 获取已读的通知列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">unreadNotifications</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>  <span class="c1">// 获取未读的通知列表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">unreadNotifications</span><span class="o">-&gt;</span><span class="na">markAsRead</span><span class="p">();</span>  <span class="c1">// 将未读标记为已读
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">readNotifications</span><span class="o">-&gt;</span><span class="na">markAsRead</span><span class="p">();</span>  <span class="c1">// 将已读标记为纬度
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>Services层：使用 Traits 来为数据模型瘦身</p>
 <blockquote>
-<p>namespace Models/Traits;</p>
-</blockquote>
+<p>namespace Models/Traits;</p></blockquote>
 </li>
 <li>
 <p>本地化（或者多语言系统处理方案）</p>
@@ -833,7 +841,7 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 <p>开发环境记录程序执行的 sql 语句方案</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -847,38 +855,38 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// App\Providers\AppServiceProvider
-</span><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">env</span><span class="p">(</span><span class="s1">&#39;APP_ENV&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">DB</span><span class="o">::</span><span class="na">listen</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$sql</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s2">&#34;?&#34;</span><span class="p">,</span> <span class="s2">&#34;&#39;%s&#39;&#34;</span><span class="p">,</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">sql</span><span class="p">);</span>
-            <span class="nv">$sql</span> <span class="o">=</span> <span class="nx">vsprintf</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">bindings</span><span class="p">);</span>
-            <span class="nv">$sql</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\\</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
-            <span class="nx">Log</span><span class="o">::</span><span class="na">info</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// App\Providers\AppServiceProvider
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">env</span><span class="p">(</span><span class="s1">&#39;APP_ENV&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">DB</span><span class="o">::</span><span class="na">listen</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$sql</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s2">&#34;?&#34;</span><span class="p">,</span> <span class="s2">&#34;&#39;%s&#39;&#34;</span><span class="p">,</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">sql</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$sql</span> <span class="o">=</span> <span class="nx">vsprintf</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">bindings</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$sql</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\\</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">Log</span><span class="o">::</span><span class="na">info</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>Laravel 指定日志文件记录任意日志</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Log</span><span class="p">;</span>
-
-<span class="nx">Log</span><span class="o">::</span><span class="na">getMonolog</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">popHandler</span><span class="p">();</span>
-<span class="nx">Log</span><span class="o">::</span><span class="na">useFiles</span><span class="p">(</span><span class="nx">storage_path</span><span class="p">(</span><span class="s1">&#39;logs/data_info_market.log&#39;</span><span class="p">),</span> <span class="s1">&#39;info&#39;</span><span class="p">);</span>
-<span class="nx">Log</span><span class="o">::</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;==&gt;id=1111&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Log</span><span class="o">::</span><span class="na">getMonolog</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">popHandler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Log</span><span class="o">::</span><span class="na">useFiles</span><span class="p">(</span><span class="nx">storage_path</span><span class="p">(</span><span class="s1">&#39;logs/data_info_market.log&#39;</span><span class="p">),</span> <span class="s1">&#39;info&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Log</span><span class="o">::</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;==&gt;id=1111&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -908,8 +916,7 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </ol>
 <h3 id="中间件">中间件</h3>
 <blockquote>
-<p>Laravel 中间件提供了一种方便的机制来过滤进入应用的 HTTP 请求。类似CI框架的钩子。</p>
-</blockquote>
+<p>Laravel 中间件提供了一种方便的机制来过滤进入应用的 HTTP 请求。类似CI框架的钩子。</p></blockquote>
 <ol>
 <li>auth: 控制已登录用户才能访问的函数</li>
 <li>guest：控制游客才能访问的函数</li>
@@ -929,7 +936,7 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 <li>Request::url() == route(&lsquo;categories.show&rsquo;, 4 ) // 判断当前请求链接和某路由是否一致</li>
 <li>Blade 语法 {{ }} 会自动调用 PHP htmlspecialchars 函数来避免 XSS 攻击。</li>
 <li>Blade 的 {!! !!} 语法是直接数据，不会对数据做任何处理。</li>
-<li>@include(&lsquo;layouts._header&rsquo;, []) , @includeWhen(Auth::check(), &lsquo;layouts._header&rsquo;, [])</li>
+<li>@include(&rsquo;layouts._header&rsquo;, []) , @includeWhen(Auth::check(), &rsquo;layouts._header&rsquo;, [])</li>
 </ul>
 <h2 id="项目实践案例">项目实践案例</h2>
 <ol>
@@ -948,7 +955,7 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -957,14 +964,14 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">environment</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">(</span><span class="nx">\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">// ...
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">environment</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">app</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">(</span><span class="nx">\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -979,7 +986,7 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 <p>mergeBindings方式查询 和 子连接查询</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1030,63 +1037,63 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </span><span class="lnt">49
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// mergeBindings方式查询
-</span><span class="c1"></span><span class="nv">$subQuery</span> <span class="o">=</span> <span class="nx">MemberActivity</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="nx">MemberActivity</span><span class="o">::</span><span class="na">getMonthTableName</span><span class="p">(</span><span class="nx">strtotime</span><span class="p">(</span><span class="s1">&#39;-1 month&#39;</span><span class="p">)))</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;chatroom_id&#39;</span><span class="p">,</span> <span class="nv">$chatroomId</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="s1">&#39;member_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">])</span>
-    <span class="o">-&gt;</span><span class="na">orderByDesc</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
-<span class="nv">$query</span> <span class="o">=</span> <span class="nx">MemberActivity</span><span class="o">::</span><span class="na">table</span><span class="p">()</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;chatroom_id&#39;</span><span class="p">,</span> <span class="nv">$chatroomId</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="s1">&#39;member_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">])</span>
-    <span class="o">-&gt;</span><span class="na">orderByDesc</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">union</span><span class="p">(</span><span class="nv">$subQuery</span><span class="p">);</span>
-<span class="nv">$queryUnionSql</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">toSql</span><span class="p">();</span>
-<span class="nv">$lastActivityData</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">connection</span><span class="p">(</span><span class="s2">&#34;mysql_big_data&#34;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">table</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;(</span><span class="si">$queryUnionSql</span><span class="s2">) as temp&#34;</span><span class="p">))</span>
-    <span class="o">-&gt;</span><span class="na">mergeBindings</span><span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">())</span> <span class="c1">// 子查询语句参数实例化
-</span><span class="c1"></span>    <span class="o">-&gt;</span><span class="na">groupBy</span><span class="p">(</span><span class="s1">&#39;member_id&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">pluck</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;member_id&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
-
-<span class="c1">// 子连接查询
-</span><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getTraceLatestList</span><span class="p">(</span><span class="k">array</span> <span class="nv">$ownerAccountIds</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$bindAccountIds</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
-<span class="p">{</span>
-    <span class="nv">$subQuery</span> <span class="o">=</span> <span class="nx">\App\Models\Trace</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
-        <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;max(id) max_id&#34;</span><span class="p">))</span>
-        <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;account_id&#39;</span><span class="p">,</span> <span class="nv">$ownerAccountIds</span><span class="p">)</span>
-        <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;target_account_id&#39;</span><span class="p">,</span> <span class="nv">$bindAccountIds</span><span class="p">)</span>
-        <span class="o">-&gt;</span><span class="na">groupBy</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;concat(account_id, &#39;-&#39;, target_account_id)&#34;</span><span class="p">));</span>
-
-    <span class="nv">$ret</span> <span class="o">=</span> <span class="nx">\App\Models\Trace</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
-        <span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="nx">DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;concat(traces.account_id, &#39;-&#39;, traces.target_account_id) as account_key&#34;</span><span class="p">),</span> <span class="s1">&#39;traces.content&#39;</span><span class="p">])</span>
-        <span class="o">-&gt;</span><span class="na">joinSub</span><span class="p">(</span><span class="nv">$subQuery</span><span class="p">,</span> <span class="s1">&#39;sub&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$join</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$join</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">&#39;traces.id&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="s1">&#39;sub.max_id&#39;</span><span class="p">);</span>
-        <span class="p">})</span>
-        <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;traces.account_id&#39;</span><span class="p">,</span> <span class="nv">$ownerAccountIds</span><span class="p">)</span>
-        <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;traces.target_account_id&#39;</span><span class="p">,</span> <span class="nv">$bindAccountIds</span><span class="p">)</span>
-        <span class="o">-&gt;</span><span class="na">pluck</span><span class="p">(</span><span class="s1">&#39;traces.content&#39;</span><span class="p">,</span> <span class="s1">&#39;account_key&#39;</span><span class="p">)</span>
-        <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
-
-    <span class="k">return</span> <span class="nv">$ret</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// 子查询案例
-</span><span class="c1"></span> <span class="nv">$data</span> <span class="o">=</span> <span class="nx">TableA</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$fields</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span>
-        <span class="s1">&#39;customer_id&#39;</span><span class="p">,</span>
-        <span class="nx">TableB</span><span class="o">::</span><span class="na">query</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;account_id&#39;</span><span class="p">,</span> <span class="nv">$ownerAccountIds</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="s1">&#39;customer_id&#39;</span><span class="p">])</span>
-    <span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">orderByDesc</span><span class="p">(</span><span class="s1">&#39;customer_id&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">paginate</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;per_page&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// mergeBindings方式查询
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$subQuery</span> <span class="o">=</span> <span class="nx">MemberActivity</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="nx">MemberActivity</span><span class="o">::</span><span class="na">getMonthTableName</span><span class="p">(</span><span class="nx">strtotime</span><span class="p">(</span><span class="s1">&#39;-1 month&#39;</span><span class="p">)))</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;chatroom_id&#39;</span><span class="p">,</span> <span class="nv">$chatroomId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="s1">&#39;member_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">orderByDesc</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$query</span> <span class="o">=</span> <span class="nx">MemberActivity</span><span class="o">::</span><span class="na">table</span><span class="p">()</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;chatroom_id&#39;</span><span class="p">,</span> <span class="nv">$chatroomId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="s1">&#39;member_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">orderByDesc</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">union</span><span class="p">(</span><span class="nv">$subQuery</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$queryUnionSql</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">toSql</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$lastActivityData</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">connection</span><span class="p">(</span><span class="s2">&#34;mysql_big_data&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">table</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;(</span><span class="si">$queryUnionSql</span><span class="s2">) as temp&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">mergeBindings</span><span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">())</span> <span class="c1">// 子查询语句参数实例化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">-&gt;</span><span class="na">groupBy</span><span class="p">(</span><span class="s1">&#39;member_id&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">pluck</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;member_id&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 子连接查询
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getTraceLatestList</span><span class="p">(</span><span class="k">array</span> <span class="nv">$ownerAccountIds</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$bindAccountIds</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$subQuery</span> <span class="o">=</span> <span class="nx">\App\Models\Trace</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;max(id) max_id&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;account_id&#39;</span><span class="p">,</span> <span class="nv">$ownerAccountIds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;target_account_id&#39;</span><span class="p">,</span> <span class="nv">$bindAccountIds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">groupBy</span><span class="p">(</span><span class="nx">DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;concat(account_id, &#39;-&#39;, target_account_id)&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nv">$ret</span> <span class="o">=</span> <span class="nx">\App\Models\Trace</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="nx">DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;concat(traces.account_id, &#39;-&#39;, traces.target_account_id) as account_key&#34;</span><span class="p">),</span> <span class="s1">&#39;traces.content&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">joinSub</span><span class="p">(</span><span class="nv">$subQuery</span><span class="p">,</span> <span class="s1">&#39;sub&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$join</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$join</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">&#39;traces.id&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="s1">&#39;sub.max_id&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;traces.account_id&#39;</span><span class="p">,</span> <span class="nv">$ownerAccountIds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;traces.target_account_id&#39;</span><span class="p">,</span> <span class="nv">$bindAccountIds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">pluck</span><span class="p">(</span><span class="s1">&#39;traces.content&#39;</span><span class="p">,</span> <span class="s1">&#39;account_key&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$ret</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 子查询案例
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="nv">$data</span> <span class="o">=</span> <span class="nx">TableA</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="nv">$fields</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;customer_id&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">TableB</span><span class="o">::</span><span class="na">query</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">whereIn</span><span class="p">(</span><span class="s1">&#39;account_id&#39;</span><span class="p">,</span> <span class="nv">$ownerAccountIds</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span><span class="s1">&#39;customer_id&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">orderByDesc</span><span class="p">(</span><span class="s1">&#39;customer_id&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">paginate</span><span class="p">(</span><span class="nv">$params</span><span class="p">[</span><span class="s1">&#39;per_page&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>Laravel 数据库模式非 ORM 模式 获取的数据数组化方式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1098,36 +1105,36 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$data</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">connection</span><span class="p">(</span><span class="s2">&#34;mysql&#34;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">table</span><span class="p">(</span><span class="s2">&#34;table_name&#34;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">orderByDesc</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">take</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">map</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$x</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 关键地方
-</span><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="k">array</span><span class="p">)</span> <span class="nv">$x</span><span class="p">;</span>
-    <span class="p">})</span>
-    <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$data</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">connection</span><span class="p">(</span><span class="s2">&#34;mysql&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">table</span><span class="p">(</span><span class="s2">&#34;table_name&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">orderByDesc</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">take</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">map</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$x</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 关键地方
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="p">(</span><span class="k">array</span><span class="p">)</span> <span class="nv">$x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>迁移文件表添加表注释</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">\DB</span><span class="o">::</span><span class="na">statement</span><span class="p">(</span><span class="s2">&#34;ALTER TABLE `categories` comment &#39;帖子分类&#39;&#34;</span><span class="p">);</span>
-
-<span class="c1">// 创建时间和更新时间
-</span><span class="c1"></span><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">timestamp</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">useCurrent</span><span class="p">();</span>
-<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">timestamp</span><span class="p">(</span><span class="s1">&#39;updated_at&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">default</span><span class="p">(</span><span class="nx">\DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s1">&#39;CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP&#39;</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">\DB</span><span class="o">::</span><span class="na">statement</span><span class="p">(</span><span class="s2">&#34;ALTER TABLE `categories` comment &#39;帖子分类&#39;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 创建时间和更新时间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">timestamp</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">useCurrent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">timestamp</span><span class="p">(</span><span class="s1">&#39;updated_at&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">default</span><span class="p">(</span><span class="nx">\DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s1">&#39;CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP&#39;</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1137,7 +1144,7 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 <p>Laravel 查询语句指定索引( mysql 强制索引)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1145,13 +1152,13 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$agents</span> <span class="o">=</span> <span class="nx">Agent</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
-    <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">\DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s1">&#39;`agent` FORCE INDEX (`index_test`)&#39;</span><span class="p">));</span>
-    <span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="nx">\DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s1">&#39;`user` FORCE INDEX (`user_id`)&#39;</span><span class="p">),</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$join</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$staffId</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$join</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">&#39;agent.user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="s1">&#39;user.user_id&#39;</span><span class="p">);</span>
-    <span class="p">})</span>
-    <span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$agents</span> <span class="o">=</span> <span class="nx">Agent</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">\DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s1">&#39;`agent` FORCE INDEX (`index_test`)&#39;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="nx">\DB</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s1">&#39;`user` FORCE INDEX (`user_id`)&#39;</span><span class="p">),</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$join</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$staffId</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$join</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">&#39;agent.user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="s1">&#39;user.user_id&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1161,49 +1168,49 @@ Job一般用在正在处理的事情。比如我们去银行办理业务，很�
 <p>方法一: 安装器安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 缺点不能安装指定版本，默认安装最新版本</span>
-
-composer global require <span class="s2">&#34;laravel/laravel-installer&#34;</span>
-
-lumen new <span class="nb">test</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 缺点不能安装指定版本，默认安装最新版本</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">composer global require <span class="s2">&#34;laravel/laravel-installer&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">lumen new <span class="nb">test</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>方法二：通过 Composer Create-Project 命令安装，可以指定版本号</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/www/
-
-composer create-project laravel/laravel <span class="nb">test</span> --prefer-dist <span class="s1">&#39;5.8.*&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> ~/www/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">composer create-project laravel/laravel <span class="nb">test</span> --prefer-dist <span class="s1">&#39;5.8.*&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>查看版本号</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/www/your_project
-
-php ./artisan
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> ~/www/your_project
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">php ./artisan
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1212,31 +1219,30 @@ php ./artisan
 <li>
 <p>修改配置文件 .env</p>
 <blockquote>
-<p>包括数据库配置、邮箱配置、redis配置、时区配置等</p>
-</blockquote>
+<p>包括数据库配置、邮箱配置、redis配置、时区配置等</p></blockquote>
 </li>
 <li>
 <p>组件安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">composer install
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">composer install
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>数据库表迁移和数据填充</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 执行数据库迁移和数据填充</span>
-php artisan migrate:refresh --seed
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 执行数据库迁移和数据填充</span>
+</span></span><span class="line"><span class="cl">php artisan migrate:refresh --seed
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1246,15 +1252,15 @@ php artisan migrate:refresh --seed
 <p>框架安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/Code/
-
-composer create-project laravel/laravel laravel-test --prefer-dist <span class="s1">&#39;5.8.*&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> ~/Code/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">composer create-project laravel/laravel laravel-test --prefer-dist <span class="s1">&#39;5.8.*&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1264,27 +1270,26 @@ composer create-project laravel/laravel laravel-test --prefer-dist <span class="
 <p>统一代码风格</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># .editorconfig 文件添加以下代码</span>
-<span class="o">[</span>*.<span class="o">{</span>js,html,blade.php,css,scss<span class="o">}]</span>
-<span class="nv">indent_style</span> <span class="o">=</span> space
-<span class="nv">indent_size</span> <span class="o">=</span> <span class="m">2</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># .editorconfig 文件添加以下代码</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*.<span class="o">{</span>js,html,blade.php,css,scss<span class="o">}]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">indent_style</span> <span class="o">=</span> space
+</span></span><span class="line"><span class="cl"><span class="nv">indent_size</span> <span class="o">=</span> <span class="m">2</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>修改配置文件 .env</p>
 <blockquote>
-<p>包括数据库配置、邮箱配置、redis配置、时区配置、语言包配置等</p>
-</blockquote>
+<p>包括数据库配置、邮箱配置、redis配置、时区配置、语言包配置等</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1301,42 +1306,42 @@ composer create-project laravel/laravel laravel-test --prefer-dist <span class="
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 配置时区</span>
-1. .env 文件添加：TIMEZONE<span class="o">=</span><span class="s2">&#34;asia/shanghai&#34;</span>
-2. 更改 config/app.php : <span class="s1">&#39;timezone&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;TIMEZONE&#39;</span>, <span class="s1">&#39;UTC&#39;</span><span class="o">)</span>,
-
-<span class="c1"># 添加中文语言包</span>
-1. composer require <span class="s2">&#34;overtrue/laravel-lang:~3.0&#34;</span>
-
-2. 安装成功后，在 config/app.php 文件中将以下这一行：
-Illuminate<span class="se">\T</span>ranslation<span class="se">\T</span>ranslationServiceProvider::class,
-替换为：
-Overtrue<span class="se">\L</span>aravelLang<span class="se">\T</span>ranslationServiceProvider::class,
-
-3. .env 文件添加 : <span class="nv">LOCALE</span><span class="o">=</span><span class="s2">&#34;zh-CN&#34;</span>
-
-4. 更改 config/app.php : <span class="s1">&#39;locale&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;LOCALE&#39;</span>, <span class="s1">&#39;en&#39;</span><span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 配置时区</span>
+</span></span><span class="line"><span class="cl">1. .env 文件添加：TIMEZONE<span class="o">=</span><span class="s2">&#34;asia/shanghai&#34;</span>
+</span></span><span class="line"><span class="cl">2. 更改 config/app.php : <span class="s1">&#39;timezone&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;TIMEZONE&#39;</span>, <span class="s1">&#39;UTC&#39;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加中文语言包</span>
+</span></span><span class="line"><span class="cl">1. composer require <span class="s2">&#34;overtrue/laravel-lang:~3.0&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. 安装成功后，在 config/app.php 文件中将以下这一行：
+</span></span><span class="line"><span class="cl">Illuminate<span class="se">\T</span>ranslation<span class="se">\T</span>ranslationServiceProvider::class,
+</span></span><span class="line"><span class="cl">替换为：
+</span></span><span class="line"><span class="cl">Overtrue<span class="se">\L</span>aravelLang<span class="se">\T</span>ranslationServiceProvider::class,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3. .env 文件添加 : <span class="nv">LOCALE</span><span class="o">=</span><span class="s2">&#34;zh-CN&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. 更改 config/app.php : <span class="s1">&#39;locale&#39;</span> <span class="o">=</span>&gt; env<span class="o">(</span><span class="s1">&#39;LOCALE&#39;</span>, <span class="s1">&#39;en&#39;</span><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>数据库表迁移和数据填充</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 执行数据库迁移和数据填充</span>
-php artisan migrate:refresh --seed
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 执行数据库迁移和数据填充</span>
+</span></span><span class="line"><span class="cl">php artisan migrate:refresh --seed
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>基础布局</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1362,38 +1367,38 @@ php artisan migrate:refresh --seed
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Models</span>
-mkdir app/Models
-mv app/User.php app/Models/User.php
-在执行上面的操作之后，我们还需要执行下面这两个操作：
-1、修改 Models/User.php 文件，更改 namespace 为我们新创建的文件夹路径。
-2、编辑器全局搜索 App<span class="se">\U</span>ser 替换为 App<span class="se">\M</span>odels<span class="se">\U</span>ser。
-
-<span class="c1"># Views</span>
-rm resources/views/welcome.blade.php
-
-mkdir resources/views/layouts
-touch resources/views/layouts/app.blade.php
-touch resources/views/layouts/_header.blade.php
-touch resources/views/layouts/_footer.blade.php
-
-mkdir resources/views/shared
-touch resources/views/shared/_messages.blade.php
-
-<span class="c1"># 运行Laravel Mix</span>
-vi resources/sass/app.scss <span class="o">=</span>&gt; 删除 Fonts
-vi ./webpack.mix.js <span class="o">=</span>&gt; 加上 version<span class="o">()</span>，解决浏览器对静态文件的缓存问题
-yarn config <span class="nb">set</span> registry https://registry.npm.taobao.org
-yarn <span class="nv">install</span> <span class="o">=</span>&gt; 安装依赖
-npm run watch-poll
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># Models</span>
+</span></span><span class="line"><span class="cl">mkdir app/Models
+</span></span><span class="line"><span class="cl">mv app/User.php app/Models/User.php
+</span></span><span class="line"><span class="cl">在执行上面的操作之后，我们还需要执行下面这两个操作：
+</span></span><span class="line"><span class="cl">1、修改 Models/User.php 文件，更改 namespace 为我们新创建的文件夹路径。
+</span></span><span class="line"><span class="cl">2、编辑器全局搜索 App<span class="se">\U</span>ser 替换为 App<span class="se">\M</span>odels<span class="se">\U</span>ser。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Views</span>
+</span></span><span class="line"><span class="cl">rm resources/views/welcome.blade.php
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mkdir resources/views/layouts
+</span></span><span class="line"><span class="cl">touch resources/views/layouts/app.blade.php
+</span></span><span class="line"><span class="cl">touch resources/views/layouts/_header.blade.php
+</span></span><span class="line"><span class="cl">touch resources/views/layouts/_footer.blade.php
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mkdir resources/views/shared
+</span></span><span class="line"><span class="cl">touch resources/views/shared/_messages.blade.php
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行Laravel Mix</span>
+</span></span><span class="line"><span class="cl">vi resources/sass/app.scss <span class="o">=</span>&gt; 删除 Fonts
+</span></span><span class="line"><span class="cl">vi ./webpack.mix.js <span class="o">=</span>&gt; 加上 version<span class="o">()</span>，解决浏览器对静态文件的缓存问题
+</span></span><span class="line"><span class="cl">yarn config <span class="nb">set</span> registry https://registry.npm.taobao.org
+</span></span><span class="line"><span class="cl">yarn <span class="nv">install</span> <span class="o">=</span>&gt; 安装依赖
+</span></span><span class="line"><span class="cl">npm run watch-poll
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>加上授权策略自动发现的逻辑(Laravel 5.8)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1401,20 +1406,20 @@ npm run watch-poll
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// 自动授权默认会假设 Model 模型文件直接存放在 app 目录下，鉴于我们已将模型存放目录修改为 app/Models，接下来还需自定义自动授权注册的规则，修改 boot() 方法：
-</span><span class="c1">// 在 app/Providers/AuthServiceProvider.php 中的 boot 方法中加上授权策略自动发现的逻辑
-</span><span class="c1"></span><span class="nx">Gate</span><span class="o">::</span><span class="na">guessPolicyNamesUsing</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$modelClass</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 动态返回模型对应的策略名称，如：// &#39;App\Models\User&#39; =&gt; &#39;App\Policies\UserPolicy&#39;,
-</span><span class="c1"></span>    <span class="k">return</span> <span class="s1">&#39;App\Policies\\&#39;</span><span class="o">.</span><span class="nx">class_basename</span><span class="p">(</span><span class="nv">$modelClass</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;Policy&#39;</span><span class="p">;</span>
-<span class="p">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// 自动授权默认会假设 Model 模型文件直接存放在 app 目录下，鉴于我们已将模型存放目录修改为 app/Models，接下来还需自定义自动授权注册的规则，修改 boot() 方法：
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 在 app/Providers/AuthServiceProvider.php 中的 boot 方法中加上授权策略自动发现的逻辑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Gate</span><span class="o">::</span><span class="na">guessPolicyNamesUsing</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$modelClass</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 动态返回模型对应的策略名称，如：// &#39;App\Models\User&#39; =&gt; &#39;App\Policies\UserPolicy&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="s1">&#39;App\Policies\\&#39;</span><span class="o">.</span><span class="nx">class_basename</span><span class="p">(</span><span class="nv">$modelClass</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;Policy&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>项目部署相关命令「可选」</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1452,43 +1457,43 @@ npm run watch-poll
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 迁移队列任务执行失败记录表</span>
-php artisan queue:failed-table
-php artisan migrate
-
-<span class="c1"># 迁移通知消息表</span>
-php artisan notifications:table
-
-<span class="c1"># 安装 redis 依赖包</span>
-composer require predis/predis <span class="s2">&#34;~1.0&#34;</span>
-
-<span class="c1"># 安装 HTMLPurifier，HTMLPurifier 本身就是一个独立的项目，运用『白名单机制』对 HTML 文本信息进行 XSS 过滤。这种过滤机制可以有效地防止各种 XSS 变种攻击。</span>
-composer require <span class="s2">&#34;mews/purifier:~2.0&#34;</span>
-php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Mews\Purifier\PurifierServiceProvider&#34;</span>
-
-<span class="c1"># 构建系统管理员后台</span>
-composer require <span class="s2">&#34;summerblue/administrator:~1.1&#34;</span>
-php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Frozennode\Administrator\AdministratorServiceProvider&#34;</span>
-
-<span class="c1"># Laravel开发者工具类</span>
-1. 代码生成器
-&gt; composer require <span class="s2">&#34;summerblue/generator:~1.0&#34;</span> --dev
-
-2. 调试工具
-&gt; composer require <span class="s2">&#34;barryvdh/laravel-debugbar:~3.2&#34;</span> --dev
-
-3. 账号切换工具：测试用户权限将会很方便
-&gt; composer require <span class="s2">&#34;viacreative/sudo-su:~1.1&#34;</span> --dev
-
-4. 安装 Horizon， Horizon 是 Laravel 生态圈里的一员，默认只能在 <span class="nb">local</span> 环境中访问仪表盘，为 Laravel Redis 队列提供了一个漂亮的仪表板，允许我们很方便地查看和管理 Redis 队列任务执行的情况。
-&gt; composer require <span class="s2">&#34;laravel/horizon:~3.1&#34;</span> --dev
-&gt; php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Laravel\Horizon\HorizonServiceProvider&#34;</span> <span class="c1"># 至此安装完毕，浏览器打开 http://hosts/horizon 访问控制台：</span>
-&gt; php artisan horizon <span class="c1"># 队列监控，用来代替 Laravel 自带的 artisan queue:listen，需要常驻运行</span>
-&gt; Tip: 需要注意的是，artisan horizon 队列工作的守护进程是一个常驻进程，它不会在你的代码改变时进行重启，当我们修改代码以后，需要在命令行中对其进行重启操作。
-
-5. 查询日志组件：可以查看sql的输出
-composer require overtrue/laravel-query-logger --dev
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 迁移队列任务执行失败记录表</span>
+</span></span><span class="line"><span class="cl">php artisan queue:failed-table
+</span></span><span class="line"><span class="cl">php artisan migrate
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 迁移通知消息表</span>
+</span></span><span class="line"><span class="cl">php artisan notifications:table
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装 redis 依赖包</span>
+</span></span><span class="line"><span class="cl">composer require predis/predis <span class="s2">&#34;~1.0&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装 HTMLPurifier，HTMLPurifier 本身就是一个独立的项目，运用『白名单机制』对 HTML 文本信息进行 XSS 过滤。这种过滤机制可以有效地防止各种 XSS 变种攻击。</span>
+</span></span><span class="line"><span class="cl">composer require <span class="s2">&#34;mews/purifier:~2.0&#34;</span>
+</span></span><span class="line"><span class="cl">php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Mews\Purifier\PurifierServiceProvider&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 构建系统管理员后台</span>
+</span></span><span class="line"><span class="cl">composer require <span class="s2">&#34;summerblue/administrator:~1.1&#34;</span>
+</span></span><span class="line"><span class="cl">php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Frozennode\Administrator\AdministratorServiceProvider&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Laravel开发者工具类</span>
+</span></span><span class="line"><span class="cl">1. 代码生成器
+</span></span><span class="line"><span class="cl">&gt; composer require <span class="s2">&#34;summerblue/generator:~1.0&#34;</span> --dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. 调试工具
+</span></span><span class="line"><span class="cl">&gt; composer require <span class="s2">&#34;barryvdh/laravel-debugbar:~3.2&#34;</span> --dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3. 账号切换工具：测试用户权限将会很方便
+</span></span><span class="line"><span class="cl">&gt; composer require <span class="s2">&#34;viacreative/sudo-su:~1.1&#34;</span> --dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. 安装 Horizon， Horizon 是 Laravel 生态圈里的一员，默认只能在 <span class="nb">local</span> 环境中访问仪表盘，为 Laravel Redis 队列提供了一个漂亮的仪表板，允许我们很方便地查看和管理 Redis 队列任务执行的情况。
+</span></span><span class="line"><span class="cl">&gt; composer require <span class="s2">&#34;laravel/horizon:~3.1&#34;</span> --dev
+</span></span><span class="line"><span class="cl">&gt; php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Laravel\Horizon\HorizonServiceProvider&#34;</span> <span class="c1"># 至此安装完毕，浏览器打开 http://hosts/horizon 访问控制台：</span>
+</span></span><span class="line"><span class="cl">&gt; php artisan horizon <span class="c1"># 队列监控，用来代替 Laravel 自带的 artisan queue:listen，需要常驻运行</span>
+</span></span><span class="line"><span class="cl">&gt; Tip: 需要注意的是，artisan horizon 队列工作的守护进程是一个常驻进程，它不会在你的代码改变时进行重启，当我们修改代码以后，需要在命令行中对其进行重启操作。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">5. 查询日志组件：可以查看sql的输出
+</span></span><span class="line"><span class="cl">composer require overtrue/laravel-query-logger --dev
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1496,7 +1501,7 @@ composer require overtrue/laravel-query-logger --dev
 <p>Laravel IDE Helper 是一个极其好用的代码提示及补全工具，可以给编写代码带来极大的便利。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1504,13 +1509,13 @@ composer require overtrue/laravel-query-logger --dev
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 安装 larave-ide-helper#</span>
-<span class="c1"># 如果只想在开发环境安装请加上 --dev</span>
-composer require barryvdh/laravel-ide-helper
-
-php artisan ide-helper:generate - 为 Facades 生成注释
-php artisan ide-helper:meta - 生成 PhpStorm Meta file
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 安装 larave-ide-helper#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 如果只想在开发环境安装请加上 --dev</span>
+</span></span><span class="line"><span class="cl">composer require barryvdh/laravel-ide-helper
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">php artisan ide-helper:generate - 为 Facades 生成注释
+</span></span><span class="line"><span class="cl">php artisan ide-helper:meta - 生成 PhpStorm Meta file
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -1518,7 +1523,7 @@ php artisan ide-helper:meta - 生成 PhpStorm Meta file
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -1591,22 +1596,19 @@ php artisan ide-helper:meta - 生成 PhpStorm Meta file
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -1620,7 +1622,7 @@ php artisan ide-helper:meta - 生成 PhpStorm Meta file
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ZsmHub - Blog" />
-<meta property="og:description" content="This is a site of zsmhub-blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zsmhub.github.io/" />
+<meta property="og:url" content="https://zsmhub.github.io/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="ZsmHub - Blog">
+  <meta property="og:description" content="This is a site of zsmhub-blog.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ZsmHub - Blog">
-<meta itemprop="description" content="This is a site of zsmhub-blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ZsmHub - Blog"/>
-<meta name="twitter:description" content="This is a site of zsmhub-blog."/>
+  <meta itemprop="name" content="ZsmHub - Blog">
+  <meta itemprop="description" content="This is a site of zsmhub-blog.">
+  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ZsmHub - Blog">
+  <meta name="twitter:description" content="This is a site of zsmhub-blog.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -88,12 +93,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -112,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -120,115 +135,314 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/php/php-fpm/">PHP-FPM</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">PHP 常用函数</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-09-02 </span>
+      <span class="post-time"> 2019-06-03 </span>
       <div class="post-category">
           <a href="/categories/php/"> php </a>
           </div>
-        <span class="more-meta"> 约 1536 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 2462 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      PHP-FPM CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将
+      <h2 id="时间函数">时间函数</h2>
+<ol>
+<li>
+<p>常用代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;PRC&#39;</span><span class="p">);</span> <span class="c1">//默认时区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">echo</span> <span class="s2">&#34;今天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">time</span><span class="p">()),</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;昨天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;-1 day&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;明天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 day&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一周后:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 week&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一周零两天四小时两秒后:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d G:H:s&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 week 2 days 4 hours 2 seconds&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;下个星期四:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;next Thursday&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;上个周一:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;last Monday&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一个月前:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;last month&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一个月后:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 month&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;十年后:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+10 year&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>一天前：换算成小时为单位，当前时间减去24h后，为一天前</p>
     </div>
     <div class="read-more">
-      <a href="/post/php/php-fpm/" class="read-more-link">阅读更多</a>
+      <a href="/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/">Go高级知识</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E4%BC%98%E5%8C%96/">Mysql 优化</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-08-30 </span>
+      <span class="post-time"> 2019-06-01 </span>
       <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
+          <a href="/categories/database/"> database </a>
           </div>
-        <span class="more-meta"> 约 1919 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 2319 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      代码编译过程 全局变量会进行全局初始化 1 2 type noticeRepository struct{} var Notice = &amp;noticeRepository{} model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可
+      <h2 id="慢查询优化">慢查询优化</h2>
+<ol>
+<li>根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』</li>
+<li>使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、rows、filtered 这三个字段，rows 越小表示扫描记录数越少，filtered 越大表示过滤效果越好。</li>
+</ol>
+<blockquote>
+<p>限制 SQL 的最大执行时间</p>
     </div>
     <div class="read-more">
-      <a href="/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+      <a href="/post/database/mysql%E4%BC%98%E5%8C%96/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/">Go之并发安全</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/">持续集成工作流</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-08-23 </span>
+      <span class="post-time"> 2019-05-27 </span>
       <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
           </div>
-        <span class="more-meta"> 约 4017 字 </span>
-        <span class="more-meta"> 预计阅读 9 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/goadmin/">GoAdmin</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-08-18 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 1101 字 </span>
+        <span class="more-meta"> 约 1133 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      准备工作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 访问并登陆： - 登陆：http://127.0.0.1:9033/admin/login - 账号：ad
+      <p>互联网软件的开发和发布，已经形成了一套标准流程。</p>
+<h2 id="持续集成">持续集成</h2>
+<p>持续集成（Continuous integration，简称CI）指的是，频繁地（一天多次）将代码集成到主干。</p>
     </div>
     <div class="read-more">
-      <a href="/post/golang/goadmin/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/">程序员必备的代码审查清单</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/">Restful架构</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2020-08-17 </span>
+      <span class="post-time"> 2019-05-01 </span>
       <div class="post-category">
-          <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/"> 程序员 </a>
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
           </div>
-        <span class="more-meta"> 约 694 字 </span>
+        <span class="more-meta"> 约 1022 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="什么是restful架构">什么是RESTful架构</h2>
+<p>用 URL 定位资源，用 HTTP 动词描述操作</p>
+<ol>
+<li>
+<p>每一个URI代表一种资源；</p>
+</li>
+<li>
+<p>客户端和服务器之间，传递这种资源的某种表现层；</p>
+</li>
+<li>
+<p>客户端通过五个HTTP动词，对服务器端资源进行操作，实现&quot;表现层状态转化&quot;。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/">DevOps 与 NoOps</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-04-29 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          </div>
+        <span class="more-meta"> 约 709 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      编码规范 编程思想由 MVC模式 转向 MBC模式，M：模型层，B: 业务逻辑层，C：控制器层 路由命名：一般以 纯小写 或 小写+中划线 命名，比较易读 变量名
+      <h2 id="devops">DevOps</h2>
+<p>DevOps是开发和运维的融合，是开发和运维工程师共同协作，定义应用从设计到交付全生命周期过程的实践。</p>
+<h2 id="noops">NoOps</h2>
+<ul>
+<li>NoOps的意思是无须操作。它的理念是去掉所有的平台管理部分，从而降低开发人员与基础设施之间的摩擦。</li>
+<li>NoOps的目的是定义一个不需要开发与运维相结合，就可以使流程顺利进行的过程。NoOps有一个目标：通过设计使所有东西都可以完成部署，而不需要任何人参与。</li>
+<li>NoOps大致的方法如下：开发人员将代码提交到代码库就已经完成了全部的部署。看起来与连续交付非常相似，但它所包含的范围更大，这里面不仅有应用程序，还包含了基础设施的部署。</li>
+</ul>
+<blockquote>
+<p>其实无所谓DevOps或NoOps。最根本的驱动是：用尽可能少的维护工作，去创建智能的基础设施，并将一切自动化。</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/">Socket &amp;&amp; WebSocket</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-04-28 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
+          </div>
+        <span class="more-meta"> 约 3279 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>一般<code>网络编程</code>都叫<code>Socket编程</code>，网络编程通常采用的是经典的客户端-服务器模型(CS 模型)。</p>
+<p>网络编程无非简单来看就是 TCP编程 和 UDP编程。</p>
+<h2 id="socket">Socket</h2>
+<p>每一次建立 socket 连接后，都会生成一个 SessionId，便于标识通讯中的客户端和服务端。（SessionId 应保证分布式唯一）</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/socket%E5%92%8Cwebsocket/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/">TCP/IP</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-04-28 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
+          </div>
+        <span class="more-meta"> 约 3824 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="协议的概念">协议的概念</h2>
+<p>从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。</p>
+<p><img src="/images/2020/QQ20201020-114448.png" alt="协议如同人与人的对话"></p>
+<h2 id="osi-参考模型和-tcpip-协议">OSI 参考模型和 TCP/IP 协议</h2>
+<p>网络分层架构目的：为了减少协议设计的复杂性，大多数网络模型均采用分层的方式来组织。每一层都有自己的功能，就想建筑物一样，每一层都靠下一层支持。每一层利用下一层提供的服务来为上一层提供服务，本层服务的实现细节对上层屏蔽。好处：分工明确。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/">OAuth 与 OpenID</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-04-17 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          </div>
+        <span class="more-meta"> 约 1253 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="概念">概念</h2>
+<p>开放授权（OAuth）是一个开放标准，允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用户名和密码提供给第三方应用。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%90%8E%E7%AB%AF/oauth%E4%B8%8Eopenid/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/composer/">Composer</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-04-03 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 1428 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="pear">pear</h2>
+<ul>
+<li>pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具</li>
+<li>phar: php档案包</li>
+</ul>
+<h2 id="composer">Composer</h2>
+<ol>
+<li>概念：用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。Composer 是多平台的，我们努力使它在 Windows 、 Linux 以及 OSX 平台上运行的同样出色。</li>
+<li>composer扩展包平台： <a href="https://packagist.org/">https://packagist.org/</a></li>
+<li>~和^的意思很接近，在x.y的情况下是一样的都是代表x.y &lt;= 版本号 &lt; (x+1).0，但是在版本号是x.y.z的情况下有区别，举个例子吧：
+<blockquote>
+<p>~1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 1.3.0</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/composer/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">SQL Server 基础知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-03-28 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 512 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="sql-server">SQL Server</h2>
+<p>SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。</p>
+<p>SQL Server 主要是和 MySQL 和 Oracle 二者竞争。</p>
+<h2 id="系统数据库system-databases">系统数据库（System Databases）</h2>
+<p>SQL Server 有五个系统数据库：</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -256,6 +470,8 @@
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
   
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -264,22 +480,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -293,7 +506,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

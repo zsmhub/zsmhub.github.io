@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现基于SSL的安全链接。服务器也会为安全接入的每个客户端验证它所具有的操作权限。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/database/mysql%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Mysql高级知识" />
-<meta property="og:description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-07-12T13:51:13&#43;08:00" />
-<meta property="article:modified_time" content="2020-07-12T13:51:13&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Mysql高级知识">
+  <meta property="og:description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现基于SSL的安全链接。服务器也会为安全接入的每个客户端验证它所具有的操作权限。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-07-12T13:51:13+08:00">
+    <meta property="article:modified_time" content="2020-07-12T13:51:13+08:00">
+    <meta property="article:tag" content="Database">
 
-<meta itemprop="name" content="Mysql高级知识">
-<meta itemprop="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安"><meta itemprop="datePublished" content="2020-07-12T13:51:13&#43;08:00" />
-<meta itemprop="dateModified" content="2020-07-12T13:51:13&#43;08:00" />
-<meta itemprop="wordCount" content="7009">
-<meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mysql高级知识"/>
-<meta name="twitter:description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安"/>
+  <meta itemprop="name" content="Mysql高级知识">
+  <meta itemprop="description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现基于SSL的安全链接。服务器也会为安全接入的每个客户端验证它所具有的操作权限。">
+  <meta itemprop="datePublished" content="2020-07-12T13:51:13+08:00">
+  <meta itemprop="dateModified" content="2020-07-12T13:51:13+08:00">
+  <meta itemprop="wordCount" content="7021">
+  <meta itemprop="keywords" content="Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mysql高级知识">
+  <meta name="twitter:description" content="MySQL 架构 连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现基于SSL的安全链接。服务器也会为安全接入的每个客户端验证它所具有的操作权限。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -130,8 +147,8 @@
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 7009 字 </span>
-          <span class="more-meta"> 预计阅读 14 分钟 </span>
+          <span class="more-meta"> 约 7021 字 </span>
+          <span class="more-meta"> 预计阅读 15 分钟 </span>
         
       </div>
     </header>
@@ -165,8 +182,7 @@
 <p>引擎层：第三层存储引擎层，存储引擎真正的负责了MySQL中数据的存储和提取，服务器通过API与存储引擎进行通信。不同的存储引擎具有的功能不同，这样我们可以根据自己的实际需要进行选取</p>
 <p>存储层：第四层为数据存储层，主要是将数据存储在运行于该设备的文件系统之上，并完成与存储引擎的交互</p>
 <blockquote>
-<p>联想提问问题：画出 MySQL 架构图？ or MySQL 的查询流程具体是？ or 一条SQL语句在MySQL中如何执行的？</p>
-</blockquote>
+<p>联想提问问题：画出 MySQL 架构图？ or MySQL 的查询流程具体是？ or 一条SQL语句在MySQL中如何执行的？</p></blockquote>
 <p>客户端请求 &mdash;&gt; 连接器（验证用户身份，给予权限）  &mdash;&gt; 查询缓存（存在缓存则直接返回，不存在则执行后续操作） &mdash;&gt; 分析器（对SQL进行词法分析和语法分析操作）  &mdash;&gt; 优化器（主要对执行的sql优化选择最优的执行方案方法）  &mdash;&gt; 执行器（执行时会先看用户是否有执行权限，有才去使用这个引擎提供的接口） &mdash;&gt; 去引擎层获取数据返回（如果开启查询缓存则会缓存查询结果）</p>
 <p><img src="/images/2020/QQ20200712-135810@2x.png" alt="Mysql 架构图"></p>
 <h2 id="mysql-多表连接执行顺序">MySQL 多表连接执行顺序</h2>
@@ -177,67 +193,63 @@
 <p>连表顺序，不是两两联合之后，再去联合第三张表，而是驱动表的一条记录穿到底，匹配完所有关连表之后，再取驱动表的下一条记录重复连表操作。</p>
 <p>多表连接并过滤条件完毕后，再执行 order by 、limit 等操作。</p>
 <blockquote>
-<p>Mysql 执行顺序</p>
-</blockquote>
+<p>Mysql 执行顺序</p></blockquote>
 <p><img src="/images/2020/mysql4.jpeg" alt="sql执行顺序"></p>
 <h2 id="存储引擎">存储引擎</h2>
 <blockquote>
-<p>InnoDB 对比 MyISAM</p>
-</blockquote>
+<p>InnoDB 对比 MyISAM</p></blockquote>
 <table>
-<thead>
-<tr>
-<th>对比项</th>
-<th>MyISAM</th>
-<th>InnoDB</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>主外键</td>
-<td>不支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>事务</td>
-<td>不支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>行表锁</td>
-<td>表锁，即使操作一条记录也会锁住整个表，不适合高并发的操作</td>
-<td>行锁,操作时只锁某一行，不对其它行有影响，适合高并发的操作</td>
-</tr>
-<tr>
-<td>缓存</td>
-<td>只缓存索引，不缓存真实数据</td>
-<td>不仅缓存索引还要缓存真实数据，对内存要求较高，而且内存大小对性能有决定性的影响</td>
-</tr>
-<tr>
-<td>表空间</td>
-<td>小</td>
-<td>大</td>
-</tr>
-<tr>
-<td>关注点</td>
-<td>性能</td>
-<td>事务</td>
-</tr>
-<tr>
-<td>默认安装</td>
-<td>是</td>
-<td>是</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>对比项</th>
+          <th>MyISAM</th>
+          <th>InnoDB</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>主外键</td>
+          <td>不支持</td>
+          <td>支持</td>
+      </tr>
+      <tr>
+          <td>事务</td>
+          <td>不支持</td>
+          <td>支持</td>
+      </tr>
+      <tr>
+          <td>行表锁</td>
+          <td>表锁，即使操作一条记录也会锁住整个表，不适合高并发的操作</td>
+          <td>行锁,操作时只锁某一行，不对其它行有影响，适合高并发的操作</td>
+      </tr>
+      <tr>
+          <td>缓存</td>
+          <td>只缓存索引，不缓存真实数据</td>
+          <td>不仅缓存索引还要缓存真实数据，对内存要求较高，而且内存大小对性能有决定性的影响</td>
+      </tr>
+      <tr>
+          <td>表空间</td>
+          <td>小</td>
+          <td>大</td>
+      </tr>
+      <tr>
+          <td>关注点</td>
+          <td>性能</td>
+          <td>事务</td>
+      </tr>
+      <tr>
+          <td>默认安装</td>
+          <td>是</td>
+          <td>是</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
-<p>一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15,16,17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15 ？</p>
-</blockquote>
+<p>一张表，里面有ID自增主键，当insert了17条记录之后，删除了第15,16,17条记录，再把Mysql重启，再insert一条记录，这条记录的ID是18还是15 ？</p></blockquote>
 <p>如果表的类型是MyISAM，那么是18。因为MyISAM表会把自增主键的最大ID 记录到数据文件中，重启MySQL自增主键的最大ID也不会丢失；</p>
 <p>如果表的类型是InnoDB，那么是15。因为InnoDB 表只是把自增主键的最大ID记录到内存中，所以重启数据库或对表进行OPTION操作，都会导致最大ID丢失。</p>
 <blockquote>
-<p>哪个存储引擎执行 select count(*) 更快，为什么?</p>
-</blockquote>
+<p>哪个存储引擎执行 select count(*) 更快，为什么?</p></blockquote>
 <p>MyISAM更快，因为MyISAM内部维护了一个计数器，可以直接调取。</p>
 <ul>
 <li>
@@ -253,29 +265,25 @@
 <p><img src="/images/2020/mysql2.jpeg" alt="日期数据类型"></p>
 <p><img src="/images/2020/mysql3.jpeg" alt="字符串数据类型"></p>
 <blockquote>
-<p>BLOB和TEXT有什么区别？</p>
-</blockquote>
+<p>BLOB和TEXT有什么区别？</p></blockquote>
 <p>BLOB是一个二进制对象，可以容纳可变数量的数据。有四种类型的BLOB：TINYBLOB、BLOB、MEDIUMBLO和 LONGBLOB</p>
 <p>TEXT是一个不区分大小写的BLOB。四种TEXT类型：TINYTEXT、TEXT、MEDIUMTEXT 和 LONGTEXT。</p>
 <p>BLOB 保存二进制数据（如图片、声音），TEXT 保存字符数据。</p>
 <h2 id="索引">索引</h2>
 <blockquote>
-<p>优势</p>
-</blockquote>
+<p>优势</p></blockquote>
 <ul>
 <li>提高数据检索效率，降低数据库IO成本</li>
 <li>降低数据排序的成本，降低CPU的消耗</li>
 </ul>
 <blockquote>
-<p>劣势</p>
-</blockquote>
+<p>劣势</p></blockquote>
 <ul>
 <li>索引也是一张表，保存了主键和索引字段，并指向实体表的记录，所以也需要占用内存</li>
 <li>虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件每次更新添加了索引列的字段， 都会调整因为更新所带来的键值变化后的索引信息</li>
 </ul>
 <blockquote>
-<p>索引分类</p>
-</blockquote>
+<p>索引分类</p></blockquote>
 <ul>
 <li>
 <p>从数据结构角度：B+树索引，Hash索引，Full-Text全文索引，R-Tree索引</p>
@@ -284,25 +292,24 @@
 <p>从逻辑角度：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">&gt; - 主键索引：主键索引是一种特殊的唯一索引，不允许有空值
-&gt; - 普通索引或者单列索引：每个索引只包含单个列，一个表可以有多个单列索引
-&gt; - 多列索引（复合索引、联合索引）：复合索引指多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用复合索引时遵循最左前缀原则，* 且联合索引的字段可以是任意顺序的 *
-&gt; - 唯一索引或者非唯一索引
-&gt; - 空间索引：空间索引是对空间数据类型的字段建立的索引，MYSQL中的空间数据类型有4种，分别是GEOMETRY、POINT、LINESTRING、POLYGON。MYSQL使用SPATIAL关键字进行扩展，使得能够用于创建正规索引类型的语法创建空间索引。创建空间索引的列，必须将其声明为NOT NULL，空间索引只能在存储引擎为MYISAM的表中创建
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">&gt; - 主键索引：主键索引是一种特殊的唯一索引，不允许有空值
+</span></span><span class="line"><span class="cl">&gt; - 普通索引或者单列索引：每个索引只包含单个列，一个表可以有多个单列索引
+</span></span><span class="line"><span class="cl">&gt; - 多列索引（复合索引、联合索引）：复合索引指多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用复合索引时遵循最左前缀原则，* 且联合索引的字段可以是任意顺序的 *
+</span></span><span class="line"><span class="cl">&gt; - 唯一索引或者非唯一索引
+</span></span><span class="line"><span class="cl">&gt; - 空间索引：空间索引是对空间数据类型的字段建立的索引，MYSQL中的空间数据类型有4种，分别是GEOMETRY、POINT、LINESTRING、POLYGON。MYSQL使用SPATIAL关键字进行扩展，使得能够用于创建正规索引类型的语法创建空间索引。创建空间索引的列，必须将其声明为NOT NULL，空间索引只能在存储引擎为MYISAM的表中创建
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
 <blockquote>
-<p>建索引案例</p>
-</blockquote>
+<p>建索引案例</p></blockquote>
 <ul>
 <li>
 <p>hash索引</p>
@@ -318,7 +325,7 @@
 <p>选择前缀/后缀长度的原则是：区分度高 + 占用空间少，常用的字符长度为4，具体可以执行 sql 后再选择：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -335,28 +342,27 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 前缀索引截取长度判断
-</span><span class="c1"></span><span class="k">SELECT</span>
-<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">LEFT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">3</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L3</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">LEFT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">4</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L4</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">LEFT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">5</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L5</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span> <span class="n">FieldA</span> <span class="p">)</span> <span class="k">AS</span> <span class="k">all</span>
-<span class="k">FROM</span> <span class="n">t</span><span class="p">;</span>
-
-<span class="c1">-- 后缀索引截取长度判断
-</span><span class="c1"></span><span class="k">SELECT</span>
-<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">RIGHT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">3</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L3</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">RIGHT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">4</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L4</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span> <span class="k">DISTINCT</span> <span class="k">RIGHT</span> <span class="p">(</span> <span class="n">FieldA</span><span class="p">,</span> <span class="mi">5</span> <span class="p">)</span> <span class="p">)</span> <span class="k">AS</span> <span class="n">L5</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span> <span class="n">FieldA</span> <span class="p">)</span> <span class="k">AS</span> <span class="k">all</span>
-<span class="k">FROM</span> <span class="n">t</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 前缀索引截取长度判断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">count</span><span class="p">(</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">FieldA</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">L3</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">count</span><span class="p">(</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">FieldA</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">L4</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">count</span><span class="p">(</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">FieldA</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">L5</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">count</span><span class="p">(</span><span class="w"> </span><span class="n">FieldA</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 后缀索引截取长度判断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">count</span><span class="p">(</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">FieldA</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">L3</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">count</span><span class="p">(</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">FieldA</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">L4</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">count</span><span class="p">(</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">FieldA</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">L5</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">count</span><span class="p">(</span><span class="w"> </span><span class="n">FieldA</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
 <blockquote>
-<p>哪些情况需要创建索引</p>
-</blockquote>
+<p>哪些情况需要创建索引</p></blockquote>
 <ol>
 <li>主键自动建立唯一索引</li>
 <li>频繁作为查询条件的字段</li>
@@ -366,8 +372,7 @@
 <li>查询中统计或分组字段</li>
 </ol>
 <blockquote>
-<p>哪些情况不要创建索引</p>
-</blockquote>
+<p>哪些情况不要创建索引</p></blockquote>
 <ol>
 <li>表记录太少</li>
 <li>经常增删改的表</li>
@@ -377,8 +382,7 @@
 </ol>
 <h2 id="mysql-查询">MySQL 查询</h2>
 <blockquote>
-<p>count(*) 和 count(1)和count(列名)区别</p>
-</blockquote>
+<p>count(*) 和 count(1)和count(列名)区别</p></blockquote>
 <p>执行效果上：</p>
 <ol>
 <li>count(*)包括了所有的列，相当于行数，在统计结果的时候，不会忽略列值为NULL</li>
@@ -393,17 +397,14 @@
 </ol>
 <p>总结：count(主键) 优于 count(1) 优于 count(*)</p>
 <blockquote>
-<p>mysql 的内连接、左连接、右连接有什么区别？什么是内连接、外连接、交叉连接、笛卡尔积呢？</p>
-</blockquote>
+<p>mysql 的内连接、左连接、右连接有什么区别？什么是内连接、外连接、交叉连接、笛卡尔积呢？</p></blockquote>
 <p><img src="/images/2020/mysql5.jpeg" alt="join 图"></p>
 <h2 id="性能分析">性能分析</h2>
 <blockquote>
-<p>MySQL常见性能分析手段</p>
-</blockquote>
+<p>MySQL常见性能分析手段</p></blockquote>
 <p>在优化MySQL时，通常需要对数据库进行分析，常见的分析手段有慢查询日志，EXPLAIN 分析查询，profiling分析以及show命令查询系统状态及系统变量，通过定位分析性能的瓶颈，才能更好的优化数据库系统的性能。</p>
 <blockquote>
-<p>性能下降SQL慢 执行时间长 等待时间长 原因分析</p>
-</blockquote>
+<p>性能下降SQL慢 执行时间长 等待时间长 原因分析</p></blockquote>
 <ol>
 <li>查询语句写的烂</li>
 <li>索引失效（单值、复合）</li>
@@ -411,12 +412,11 @@
 <li>服务器调优及各个参数设置（缓冲、线程数等）</li>
 </ol>
 <blockquote>
-<p>性能瓶颈定位</p>
-</blockquote>
+<p>性能瓶颈定位</p></blockquote>
 <p>我们可以通过 show 命令查看 MySQL 状态及变量，找到系统的瓶颈：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -429,22 +429,21 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">Mysql&gt; show status ——显示状态信息（扩展show status like ‘XXX’）
-
-Mysql&gt; show variables ——显示系统变量（扩展show variables like ‘XXX’）
-
-Mysql&gt; show innodb status ——显示InnoDB存储引擎的状态
-
-Mysql&gt; show processlist ——查看当前SQL执行，包括执行状态、是否锁表等
-
-Shell&gt; mysqladmin variables -u username -p password——显示系统变量
-
-Shell&gt; mysqladmin extended-status -u username -p password——显示状态信息
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Mysql&gt; show status ——显示状态信息（扩展show status like ‘XXX’）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Mysql&gt; show variables ——显示系统变量（扩展show variables like ‘XXX’）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Mysql&gt; show innodb status ——显示InnoDB存储引擎的状态
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Mysql&gt; show processlist ——查看当前SQL执行，包括执行状态、是否锁表等
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Shell&gt; mysqladmin variables -u username -p password——显示系统变量
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Shell&gt; mysqladmin extended-status -u username -p password——显示状态信息
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>Explain(执行计划)</p>
-</blockquote>
+<p>Explain(执行计划)</p></blockquote>
 <p>是什么：使用 Explain 关键字可以模拟优化器执行SQL查询语句，从而知道 MySQL 是如何处理你的 SQL 语句的。分析你的查询语句或是表结构的性能瓶颈</p>
 <p>能干吗：</p>
 <ul>
@@ -481,14 +480,13 @@ Shell&gt; mysqladmin extended-status -u username -p password——显示状态�
 <li>存储引擎不能使用索引中范围条件右边的列</li>
 <li>尽量使用覆盖索引(只访问索引的查询(索引列和查询列一致))，减少select
 i- s null ,is not null 也无法使用索引</li>
-<li>like &ldquo;xxxx%&rdquo; 是可以用到索引的，like &ldquo;%xxxx&rdquo; 则不行(like &ldquo;%xxx%&rdquo; 同理)。like以通配符开头('%abc&hellip;')索引失效会变成全表扫描的操作，</li>
+<li>like &ldquo;xxxx%&rdquo; 是可以用到索引的，like &ldquo;%xxxx&rdquo; 则不行(like &ldquo;%xxx%&rdquo; 同理)。like以通配符开头(&rsquo;%abc&hellip;&rsquo;)索引失效会变成全表扫描的操作，</li>
 <li>字符串不加单引号索引失效</li>
 <li>少用or，用它来连接时会索引失效</li>
 <li>&lt;，&lt;=，=，&gt;，&gt;=，BETWEEN，IN 可用到索引，&lt;&gt;，not in ，!= 则不行，会导致全表扫描</li>
 </ul>
 <blockquote>
-<p>一般性建议</p>
-</blockquote>
+<p>一般性建议</p></blockquote>
 <ul>
 <li>
 <p>对于单键索引，尽量选择针对当前query过滤性更好的索引</p>
@@ -515,8 +513,7 @@ i- s null ,is not null 也无法使用索引</li>
 <p><img src="/images/2020/QQ20201107-105046@2x.png" alt="表存储结构"></p>
 <p><img src="https://segmentfault.com/a/1190000019582491" alt="MySQL 5.7 的 JSON 类型"></p>
 <blockquote>
-<p>JSON 类型的优点</p>
-</blockquote>
+<p>JSON 类型的优点</p></blockquote>
 <ul>
 <li>JSON 类型在 MySQL 内部以特殊的二进制方式存放，类似于 PostgreSQL 的 JSONB 类型。最大占用空间和 longtext 或者 longblob 一样，都是<code>4G</code>。</li>
 <li>SON数据类型，会自动校验数据是否为JSON格式，如果不是JSON格式数据，则会报错。</li>
@@ -525,14 +522,13 @@ i- s null ,is not null 也无法使用索引</li>
 <li>可以修改特定的键值，(如果之前在MySQL中存储过JSON格式字符串的小伙伴，应该经历过每次修改一个值，都要将整个JSON字符串更新一遍的尴尬。)</li>
 </ul>
 <blockquote>
-<p>JSON 类型的缺点</p>
-</blockquote>
+<p>JSON 类型的缺点</p></blockquote>
 <ul>
 <li>JSON列与其他二进制类型列一样是无法创建索引。</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -546,19 +542,19 @@ i- s null ,is not null 也无法使用索引</li>
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">查看字段类型，是</span><span class="n">JSONObject类型还是JSONArray类型</span>
-<span class="k">select</span> <span class="n">JSON_TYPE</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">JSON_TYPE</span><span class="p">(</span><span class="n">val_arr</span><span class="p">)</span> <span class="k">from</span> <span class="n">json_data</span>
-
-<span class="o">#</span> <span class="n">JSONObject</span> <span class="p">[</span><span class="k">like</span> <span class="err">查询</span><span class="p">]</span><span class="err">，注意</span> <span class="o">`</span><span class="err">双引号</span><span class="o">`</span><span class="err">。『可以看到，对于</span> <span class="n">string</span> <span class="err">类型的</span> <span class="n">JSON</span> <span class="err">值，使用</span> <span class="o">-&gt;</span> <span class="err">获取的都是被双引号包裹的字符串，</span><span class="n">MySQL</span> <span class="err">支持</span> <span class="k">column</span><span class="o">-&gt;&gt;</span><span class="n">path</span> <span class="err">语法，通过</span> <span class="o">-&gt;&gt;</span> <span class="err">操作符获取纯量（</span><span class="n">scalar</span><span class="err">）』</span>
-<span class="k">select</span> <span class="o">*</span><span class="p">,</span> <span class="n">val</span><span class="o">-&gt;</span><span class="s1">&#39;$.input_3&#39;</span> <span class="k">from</span> <span class="n">json_data</span> <span class="k">where</span> <span class="n">val</span><span class="o">-&gt;</span><span class="s1">&#39;$.input_3&#39;</span> <span class="k">like</span> <span class="s1">&#39;&#34;333自两地分%&#39;</span>
-<span class="k">select</span> <span class="o">*</span><span class="p">,</span> <span class="n">val</span><span class="o">-&gt;&gt;</span><span class="s1">&#39;$.input_3&#39;</span> <span class="k">from</span> <span class="n">json_data</span> <span class="k">where</span> <span class="n">val</span><span class="o">-&gt;&gt;</span><span class="s1">&#39;$.input_3&#39;</span> <span class="k">like</span> <span class="s1">&#39;333自两地分%&#39;</span> <span class="o">#</span> <span class="err">不需要分号</span>
-
-<span class="o">#</span> <span class="n">JSONObject</span> <span class="p">[</span><span class="o">=</span> <span class="err">查询</span><span class="p">]</span>
-<span class="k">select</span> <span class="o">*</span><span class="p">,</span> <span class="n">val</span><span class="o">-&gt;</span><span class="s1">&#39;$.num&#39;</span> <span class="k">from</span> <span class="n">json_data</span> <span class="k">where</span> <span class="n">val</span><span class="o">-&gt;</span><span class="s1">&#39;$.num&#39;</span><span class="o">=</span><span class="mi">3</span>
-
-<span class="o">#</span> <span class="n">JSONArray</span> <span class="p">[</span><span class="k">like</span> <span class="err">查询</span><span class="p">]</span><span class="err">，注意</span> <span class="o">`</span><span class="p">[</span><span class="s2">&#34;`
-</span><span class="s2">select val_arr-&gt;&#39;$[*].input_0&#39; from json_data where val_arr-&gt;&#39;$[*].input_0&#39; like &#39;[&#34;</span><span class="mi">000</span><span class="o">%</span><span class="s1">&#39;
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">查看字段类型，是</span><span class="n">JSONObject类型还是JSONArray类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">JSON_TYPE</span><span class="p">(</span><span class="n">val</span><span class="p">),</span><span class="w"> </span><span class="n">JSON_TYPE</span><span class="p">(</span><span class="n">val_arr</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">json_data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">JSONObject</span><span class="w"> </span><span class="p">[</span><span class="k">like</span><span class="w"> </span><span class="err">查询</span><span class="p">]</span><span class="err">，注意</span><span class="w"> </span><span class="o">`</span><span class="err">双引号</span><span class="o">`</span><span class="err">。『可以看到，对于</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="err">类型的</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="err">值，使用</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">获取的都是被双引号包裹的字符串，</span><span class="n">MySQL</span><span class="w"> </span><span class="err">支持</span><span class="w"> </span><span class="k">column</span><span class="o">-&gt;&gt;</span><span class="n">path</span><span class="w"> </span><span class="err">语法，通过</span><span class="w"> </span><span class="o">-&gt;&gt;</span><span class="w"> </span><span class="err">操作符获取纯量（</span><span class="n">scalar</span><span class="err">）』</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">-&gt;</span><span class="s1">&#39;$.input_3&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">json_data</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">val</span><span class="o">-&gt;</span><span class="s1">&#39;$.input_3&#39;</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;&#34;333自两地分%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">-&gt;&gt;</span><span class="s1">&#39;$.input_3&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">json_data</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">val</span><span class="o">-&gt;&gt;</span><span class="s1">&#39;$.input_3&#39;</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;333自两地分%&#39;</span><span class="w"> </span><span class="o">#</span><span class="w"> </span><span class="err">不需要分号</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">JSONObject</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="w"> </span><span class="err">查询</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">-&gt;</span><span class="s1">&#39;$.num&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">json_data</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">val</span><span class="o">-&gt;</span><span class="s1">&#39;$.num&#39;</span><span class="o">=</span><span class="mi">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">JSONArray</span><span class="w"> </span><span class="p">[</span><span class="k">like</span><span class="w"> </span><span class="err">查询</span><span class="p">]</span><span class="err">，注意</span><span class="w"> </span><span class="o">`</span><span class="p">[</span><span class="s2">&#34;`
+</span></span></span><span class="line"><span class="cl"><span class="s2">select val_arr-&gt;&#39;$[*].input_0&#39; from json_data where val_arr-&gt;&#39;$[*].input_0&#39; like &#39;[&#34;</span><span class="mi">000</span><span class="o">%</span><span class="s1">&#39;
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="mysql-配置">Mysql 配置</h2>
 <ol>
@@ -568,23 +564,22 @@ i- s null ,is not null 也无法使用索引</li>
 <p>wait_timeout 过大有弊端，其体现就是MySQL里大量的SLEEP进程无法及时释放，拖累系统性能，不过也不能把这个指设置的过小，否则你可能会遭遇到“MySQL has gone away”之类的问题，通常来说，我觉得把wait_timeout设置为10是个不错的选择，但某些情况下可能也会出问题，比如说有一个CRON脚本， 其中两次SQL查询的间隔时间大于10秒的话，那么这个设置就有问题了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">set</span> <span class="k">global</span> <span class="n">wait_timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span>
-
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="k">global</span> <span class="n">variables</span> <span class="k">like</span> <span class="s1">&#39;wait_timeout&#39;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">global</span><span class="w"> </span><span class="n">wait_timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="k">global</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;wait_timeout&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
 <h2 id="窗口函数">窗口函数</h2>
 <p>MySQL从8.0开始支持窗口函数，这个功能在大多商业数据库中早已支持，也叫分析函数。</p>
 <blockquote>
-<p>语法简介</p>
-</blockquote>
+<p>语法简介</p></blockquote>
 <p>语法：函数名([参数]) over(partition by [分组字段] order by [排序字段] asc/desc rows/range between 起始位置 and 结束位置)</p>
 <p>函数解读：函数分为两个部分，</p>
 <p>第一部分是函数名称，开窗函数的数量较少，只有11个窗口函数+聚合函数（所有聚合函数都可以用作开窗函数），根据函数性质，有的要写参数，有的不需要写参数；</p>
@@ -594,92 +589,90 @@ i- s null ,is not null 也无法使用索引</li>
 <p>3.第三个参数 rows/range between 起始位置 and 结束位置，这个参数仅针对滑动窗口函数有用，是在当前窗口下分出更小的子窗口。其中起始位置和结束位置可写：current row 边界是当前行，unbounded preceding 边界是分区中的第一行，unbounded following 边界是分区中的最后一行，expr preceding 边界是当前行减去expr的值，expr following 边界是当前行加上expr的值。rows是基于行数，range是基于值的大小，到讲解到滑动窗口函数时再详细介绍。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">//</span> <span class="err">示例</span>
-<span class="k">SELECT</span>
-    <span class="o">*</span><span class="p">,</span> <span class="n">RANK</span><span class="p">()</span> <span class="n">OVER</span><span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">cid</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">score</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="s1">&#39;rank&#39;</span>
-<span class="k">FROM</span>
-    <span class="n">scores</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="w"> </span><span class="err">示例</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;rank&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">scores</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>窗口函数小结</p>
-</blockquote>
+<p>窗口函数小结</p></blockquote>
 <table>
-<thead>
-<tr>
-<th>类别</th>
-<th>函数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>排序</td>
-<td>ROW_NUMBER（连续排名）</td>
-<td>为表中的每一行分配一个序号，可以指定分组（也可以不指定）及排序字段</td>
-</tr>
-<tr>
-<td>/</td>
-<td>DENSE_RANK（同分同名，不跳级）</td>
-<td>根据排序字段为每个分组中的每一行分配一个序号。 排名值相同时，序号相同，序号中没有间隙（1,1,2,3这种）</td>
-</tr>
-<tr>
-<td>/</td>
-<td>RANK（同分同名，跳级）</td>
-<td>根据排序字段为每个分组中的每一行分配一个序号。 排名值相同时，序号相同，但序号中存在间隙（1,1,3,4这种）</td>
-</tr>
-<tr>
-<td>/</td>
-<td>NTILE</td>
-<td>根据排序字段为每个分组中根据指定字段的排序再分成对应的组</td>
-</tr>
-<tr>
-<td>分布</td>
-<td>PERCENT_RANK</td>
-<td>计算各分组或结果集中行的百分数等级</td>
-</tr>
-<tr>
-<td>/</td>
-<td>CUME_DIST</td>
-<td>计算某个值在一组有序的数据中累计的分布</td>
-</tr>
-<tr>
-<td>前后</td>
-<td>LEAD</td>
-<td>返回分组中当前行之后的第N行的值。如果不存在对应行，则返回NULL。比如N=1时，第一名对应的值是第二名的，最后一名结果是NULL</td>
-</tr>
-<tr>
-<td>/</td>
-<td>LAG</td>
-<td>返回分组中当前行之前的第N行的值。如果不存在对应行，则返回NULL。比如N=1时，第一名对应的值是是NUL，最后一名结果是倒数第2的值</td>
-</tr>
-<tr>
-<td>首尾中</td>
-<td>FIRST_VALUE</td>
-<td>返回每个分组中第一名对应的字段（或表达式）的值，例如本文中可以是第一名的分数、学号等任意字段的值</td>
-</tr>
-<tr>
-<td>/</td>
-<td>LAST_VALUE</td>
-<td>返回每个分组中最后一名对应的字段（或表达式）的值，例如本文中可以是最后一名的分数、学号等任意字段的值</td>
-</tr>
-<tr>
-<td>/</td>
-<td>NTH_VALUE</td>
-<td>返回每个分组中排名第N的对应字段（或表达式）的值，但小于N的行对应的值是NULL</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>类别</th>
+          <th>函数</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>排序</td>
+          <td>ROW_NUMBER（连续排名）</td>
+          <td>为表中的每一行分配一个序号，可以指定分组（也可以不指定）及排序字段</td>
+      </tr>
+      <tr>
+          <td>/</td>
+          <td>DENSE_RANK（同分同名，不跳级）</td>
+          <td>根据排序字段为每个分组中的每一行分配一个序号。 排名值相同时，序号相同，序号中没有间隙（1,1,2,3这种）</td>
+      </tr>
+      <tr>
+          <td>/</td>
+          <td>RANK（同分同名，跳级）</td>
+          <td>根据排序字段为每个分组中的每一行分配一个序号。 排名值相同时，序号相同，但序号中存在间隙（1,1,3,4这种）</td>
+      </tr>
+      <tr>
+          <td>/</td>
+          <td>NTILE</td>
+          <td>根据排序字段为每个分组中根据指定字段的排序再分成对应的组</td>
+      </tr>
+      <tr>
+          <td>分布</td>
+          <td>PERCENT_RANK</td>
+          <td>计算各分组或结果集中行的百分数等级</td>
+      </tr>
+      <tr>
+          <td>/</td>
+          <td>CUME_DIST</td>
+          <td>计算某个值在一组有序的数据中累计的分布</td>
+      </tr>
+      <tr>
+          <td>前后</td>
+          <td>LEAD</td>
+          <td>返回分组中当前行之后的第N行的值。如果不存在对应行，则返回NULL。比如N=1时，第一名对应的值是第二名的，最后一名结果是NULL</td>
+      </tr>
+      <tr>
+          <td>/</td>
+          <td>LAG</td>
+          <td>返回分组中当前行之前的第N行的值。如果不存在对应行，则返回NULL。比如N=1时，第一名对应的值是是NUL，最后一名结果是倒数第2的值</td>
+      </tr>
+      <tr>
+          <td>首尾中</td>
+          <td>FIRST_VALUE</td>
+          <td>返回每个分组中第一名对应的字段（或表达式）的值，例如本文中可以是第一名的分数、学号等任意字段的值</td>
+      </tr>
+      <tr>
+          <td>/</td>
+          <td>LAST_VALUE</td>
+          <td>返回每个分组中最后一名对应的字段（或表达式）的值，例如本文中可以是最后一名的分数、学号等任意字段的值</td>
+      </tr>
+      <tr>
+          <td>/</td>
+          <td>NTH_VALUE</td>
+          <td>返回每个分组中排名第N的对应字段（或表达式）的值，但小于N的行对应的值是NULL</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
-<p>参考文章</p>
-</blockquote>
+<p>参考文章</p></blockquote>
 <p><a href="https://zhuanlan.zhihu.com/p/137908870">MySQL8.0窗口函数之排名函数（rank、dense_rank）的使用</a></p>
 <h2 id="参考文章">参考文章</h2>
 <p><a href="https://mp.weixin.qq.com/s/MCFHNOQnTtJ6MGVjM3DP4A">MySQL 三万字精华总结 + 面试100 问，吊打面试官绰绰有余</a></p>
@@ -689,7 +682,7 @@ i- s null ,is not null 也无法使用索引</li>
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -761,22 +754,19 @@ i- s null ,is not null 也无法使用索引</li>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -790,7 +780,7 @@ i- s null ,is not null 也无法使用索引</li>
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

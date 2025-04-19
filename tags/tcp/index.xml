@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tcp on ZsmHub - Blog</title>
+    <title>Tcp on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/tcp/</link>
-    <description>Recent content in tcp on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Tcp on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sun, 28 Apr 2019 11:30:44 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Apr 2019 11:30:44 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TCP/IP</title>
       <link>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</link>
       <pubDate>Sun, 28 Apr 2019 11:30:44 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/tcp-ip/</guid>
-      <description>协议的概念 从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。 OSI 参考模型和 TCP/IP 协议 网络分层架构目的：为了减少协议设计的复杂性，</description>
+      <description>&lt;h2 id=&#34;协议的概念&#34;&gt;协议的概念&lt;/h2&gt;&#xA;&lt;p&gt;从应用的角度出发，协议可理解为『规则』，是数据传输和数据解释的规则。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://zsmhub.github.io/images/2020/QQ20201020-114448.png&#34; alt=&#34;协议如同人与人的对话&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;osi-参考模型和-tcpip-协议&#34;&gt;OSI 参考模型和 TCP/IP 协议&lt;/h2&gt;&#xA;&lt;p&gt;网络分层架构目的：为了减少协议设计的复杂性，大多数网络模型均采用分层的方式来组织。每一层都有自己的功能，就想建筑物一样，每一层都靠下一层支持。每一层利用下一层提供的服务来为上一层提供服务，本层服务的实现细节对上层屏蔽。好处：分工明确。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

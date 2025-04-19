@@ -16,14 +16,19 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="登录流程 产品原型 后端流程图 友盟一键登录文档 一键登录接口文档：点击前往 服务端签名机制：点击前往 微信授权登录 api 文档 点击前往 1 2 3 4 5 6 7 8 9 10 11" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="登录流程 产品原型
+后端流程图
+友盟一键登录文档
+一键登录接口文档：点击前往 服务端签名机制：点击前往 微信授权登录 api 文档
+点击前往
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 // 一个user对应多个wechat: 多个微信账号授权可以绑定到同一个手机号 CREATE TABLE `user_wechat` ( `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT, `user_id` bigint(20) unsigned NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;userId&#39;, `unionid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;用户统一标识，针对一个微信开放平台帐号下的应用同一用户唯一&#39;, `openid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;普通用户的标识，对当前开发者帐号唯一&#39;, `nickname` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;昵称&#39;, `gender` tinyint(3) unsigned NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;性别：1男 2女&#39;, `province` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;省份&#39;, `city` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;城市&#39;, `country` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;国家&#39;, `avatar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;头像&#39;, `privilege` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;用户特权信息&#39;, `access_token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39;, `refresh_token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39;, `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`id`), UNIQUE KEY `uix_user_wechat_openid` (`openid`), KEY `idx_user_wechat_user_id` (`user_id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT=&#39;微信账号信息表&#39;; " /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%B8%B8%E8%A7%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%B1%87%E6%80%BB/" />
@@ -35,24 +40,45 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="常见功能流程图汇总" />
-<meta property="og:description" content="登录流程 产品原型 后端流程图 友盟一键登录文档 一键登录接口文档：点击前往 服务端签名机制：点击前往 微信授权登录 api 文档 点击前往 1 2 3 4 5 6 7 8 9 10 11" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%B8%B8%E8%A7%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%B1%87%E6%80%BB/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-05-17T15:21:36&#43;08:00" />
-<meta property="article:modified_time" content="2021-05-17T15:21:36&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%B8%B8%E8%A7%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%B1%87%E6%80%BB/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="常见功能流程图汇总">
+  <meta property="og:description" content="登录流程 产品原型
+后端流程图
+友盟一键登录文档
+一键登录接口文档：点击前往 服务端签名机制：点击前往 微信授权登录 api 文档
+点击前往
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 // 一个user对应多个wechat: 多个微信账号授权可以绑定到同一个手机号 CREATE TABLE `user_wechat` ( `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT, `user_id` bigint(20) unsigned NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;userId&#39;, `unionid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;用户统一标识，针对一个微信开放平台帐号下的应用同一用户唯一&#39;, `openid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;普通用户的标识，对当前开发者帐号唯一&#39;, `nickname` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;昵称&#39;, `gender` tinyint(3) unsigned NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;性别：1男 2女&#39;, `province` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;省份&#39;, `city` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;城市&#39;, `country` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;国家&#39;, `avatar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;头像&#39;, `privilege` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;用户特权信息&#39;, `access_token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39;, `refresh_token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39;, `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`id`), UNIQUE KEY `uix_user_wechat_openid` (`openid`), KEY `idx_user_wechat_user_id` (`user_id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT=&#39;微信账号信息表&#39;;">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-05-17T15:21:36+08:00">
+    <meta property="article:modified_time" content="2021-05-17T15:21:36+08:00">
+    <meta property="article:tag" content="实战案例">
 
-<meta itemprop="name" content="常见功能流程图汇总">
-<meta itemprop="description" content="登录流程 产品原型 后端流程图 友盟一键登录文档 一键登录接口文档：点击前往 服务端签名机制：点击前往 微信授权登录 api 文档 点击前往 1 2 3 4 5 6 7 8 9 10 11"><meta itemprop="datePublished" content="2021-05-17T15:21:36&#43;08:00" />
-<meta itemprop="dateModified" content="2021-05-17T15:21:36&#43;08:00" />
-<meta itemprop="wordCount" content="454">
-<meta itemprop="keywords" content="实战案例," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="常见功能流程图汇总"/>
-<meta name="twitter:description" content="登录流程 产品原型 后端流程图 友盟一键登录文档 一键登录接口文档：点击前往 服务端签名机制：点击前往 微信授权登录 api 文档 点击前往 1 2 3 4 5 6 7 8 9 10 11"/>
+  <meta itemprop="name" content="常见功能流程图汇总">
+  <meta itemprop="description" content="登录流程 产品原型
+后端流程图
+友盟一键登录文档
+一键登录接口文档：点击前往 服务端签名机制：点击前往 微信授权登录 api 文档
+点击前往
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 // 一个user对应多个wechat: 多个微信账号授权可以绑定到同一个手机号 CREATE TABLE `user_wechat` ( `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT, `user_id` bigint(20) unsigned NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;userId&#39;, `unionid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;用户统一标识，针对一个微信开放平台帐号下的应用同一用户唯一&#39;, `openid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;普通用户的标识，对当前开发者帐号唯一&#39;, `nickname` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;昵称&#39;, `gender` tinyint(3) unsigned NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;性别：1男 2女&#39;, `province` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;省份&#39;, `city` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;城市&#39;, `country` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;国家&#39;, `avatar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;头像&#39;, `privilege` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;用户特权信息&#39;, `access_token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39;, `refresh_token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39;, `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`id`), UNIQUE KEY `uix_user_wechat_openid` (`openid`), KEY `idx_user_wechat_user_id` (`user_id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT=&#39;微信账号信息表&#39;;">
+  <meta itemprop="datePublished" content="2021-05-17T15:21:36+08:00">
+  <meta itemprop="dateModified" content="2021-05-17T15:21:36+08:00">
+  <meta itemprop="wordCount" content="454">
+  <meta itemprop="keywords" content="实战案例">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="常见功能流程图汇总">
+  <meta name="twitter:description" content="登录流程 产品原型
+后端流程图
+友盟一键登录文档
+一键登录接口文档：点击前往 服务端签名机制：点击前往 微信授权登录 api 文档
+点击前往
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 // 一个user对应多个wechat: 多个微信账号授权可以绑定到同一个手机号 CREATE TABLE `user_wechat` ( `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT, `user_id` bigint(20) unsigned NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;userId&#39;, `unionid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;用户统一标识，针对一个微信开放平台帐号下的应用同一用户唯一&#39;, `openid` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;普通用户的标识，对当前开发者帐号唯一&#39;, `nickname` varchar(100) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;昵称&#39;, `gender` tinyint(3) unsigned NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;性别：1男 2女&#39;, `province` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;省份&#39;, `city` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;城市&#39;, `country` varchar(60) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;国家&#39;, `avatar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;头像&#39;, `privilege` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39; COMMENT &#39;用户特权信息&#39;, `access_token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39;, `refresh_token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT &#39;&#39;, `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`id`), UNIQUE KEY `uix_user_wechat_openid` (`openid`), KEY `idx_user_wechat_user_id` (`user_id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT=&#39;微信账号信息表&#39;;">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +117,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +150,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -149,27 +185,23 @@
     <div class="post-content">
       <h2 id="登录流程">登录流程</h2>
 <blockquote>
-<p>产品原型</p>
-</blockquote>
+<p>产品原型</p></blockquote>
 <p><img src="/images/2021/QQ20210517-152031.png" alt="产品原型"></p>
 <blockquote>
-<p>后端流程图</p>
-</blockquote>
+<p>后端流程图</p></blockquote>
 <p><img src="/images/2021/QQ20210522-165434.png" alt="后端流程图"></p>
 <blockquote>
-<p>友盟一键登录文档</p>
-</blockquote>
+<p>友盟一键登录文档</p></blockquote>
 <ol>
 <li>一键登录接口文档：<a href="https://developer.umeng.com/docs/143070/detail/144783">点击前往</a></li>
 <li>服务端签名机制：<a href="https://developer.umeng.com/docs/143070/detail/144785">点击前往</a></li>
 </ol>
 <blockquote>
-<p>微信授权登录 api 文档</p>
-</blockquote>
+<p>微信授权登录 api 文档</p></blockquote>
 <p><a href="https://developers.weixin.qq.com/doc/oplatform/Mobile_App/WeChat_Login/Authorized_API_call_UnionID.html">点击前往</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -192,28 +224,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">//</span> <span class="err">一个</span><span class="n">user对应多个wechat</span><span class="p">:</span> <span class="err">多个微信账号授权可以绑定到同一个手机号</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">user_wechat</span><span class="o">`</span> <span class="p">(</span>
-  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">bigint</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">user_id</span><span class="o">`</span> <span class="nb">bigint</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;userId&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">unionid</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;用户统一标识，针对一个微信开放平台帐号下的应用同一用户唯一&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">openid</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;普通用户的标识，对当前开发者帐号唯一&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">nickname</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;昵称&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">gender</span><span class="o">`</span> <span class="n">tinyint</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;性别：1男 2女&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">province</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;省份&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">city</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;城市&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">country</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;国家&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">avatar</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;头像&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">privilege</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span> <span class="k">COMMENT</span> <span class="s1">&#39;用户特权信息&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">access_token</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">refresh_token</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_general_ci</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">created_at</span><span class="o">`</span> <span class="n">datetime</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
-  <span class="o">`</span><span class="n">updated_at</span><span class="o">`</span> <span class="n">datetime</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
-  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
-  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="o">`</span><span class="n">uix_user_wechat_openid</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">openid</span><span class="o">`</span><span class="p">),</span>
-  <span class="k">KEY</span> <span class="o">`</span><span class="n">idx_user_wechat_user_id</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">user_id</span><span class="o">`</span><span class="p">)</span>
-<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span> <span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_general_ci</span> <span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;微信账号信息表&#39;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">//</span><span class="w"> </span><span class="err">一个</span><span class="n">user对应多个wechat</span><span class="p">:</span><span class="w"> </span><span class="err">多个微信账号授权可以绑定到同一个手机号</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">user_wechat</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="nb">bigint</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">user_id</span><span class="o">`</span><span class="w"> </span><span class="nb">bigint</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;0&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;userId&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">unionid</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;用户统一标识，针对一个微信开放平台帐号下的应用同一用户唯一&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">openid</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;普通用户的标识，对当前开发者帐号唯一&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">nickname</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;昵称&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">gender</span><span class="o">`</span><span class="w"> </span><span class="n">tinyint</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;0&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;性别：1男 2女&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">province</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;省份&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">city</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;城市&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">country</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;国家&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">avatar</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;头像&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">privilege</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;用户特权信息&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">access_token</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">refresh_token</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">created_at</span><span class="o">`</span><span class="w"> </span><span class="n">datetime</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="o">`</span><span class="n">updated_at</span><span class="o">`</span><span class="w"> </span><span class="n">datetime</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">uix_user_wechat_openid</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">openid</span><span class="o">`</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">idx_user_wechat_user_id</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">user_id</span><span class="o">`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_general_ci</span><span class="w"> </span><span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;微信账号信息表&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -221,7 +253,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -293,22 +325,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -322,7 +351,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

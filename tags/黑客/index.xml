@@ -4,18 +4,17 @@
     <title>黑客 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E9%BB%91%E5%AE%A2/</link>
     <description>Recent content in 黑客 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 16 Jul 2019 15:55:54 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E9%BB%91%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Jul 2019 15:55:54 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E9%BB%91%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>黑客入侵</title>
       <link>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E9%BB%91%E5%AE%A2%E5%85%A5%E4%BE%B5/</link>
       <pubDate>Tue, 16 Jul 2019 15:55:54 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/web%E5%AE%89%E5%85%A8/%E9%BB%91%E5%AE%A2%E5%85%A5%E4%BE%B5/</guid>
-      <description>前提 网站被黑首先要检查搜索引擎页面收录情况，很多网站被黑页面会被修改标题后跳转，黑客通过挂马跳转到自己的网站，被跳转的页面已博彩和色情网站居</description>
+      <description>&lt;h2 id=&#34;前提&#34;&gt;前提&lt;/h2&gt;&#xA;&lt;p&gt;网站被黑首先要检查搜索引擎页面收录情况，很多网站被黑页面会被修改标题后跳转，黑客通过挂马跳转到自己的网站，被跳转的页面已博彩和色情网站居多，黑客通过这种方式来截取流量，确认网站被黑之后应该迅速采取修复手段和后期预防手段，首先应该停止网站的运行，避免更多页面出现问题，然后清除被黑的内容，将被黑的页面设置为404，并通过搜索引擎的后台进行死链提交，还需要技术人员通过检测被黑的时间以及排除出被黑的原因及时把漏洞补上，常规的操作是更改网站关键密码，比如服务器、数据库、网站管理的密码、修复系统的补丁，代码层面的漏洞需要程序人员去检测后修复。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

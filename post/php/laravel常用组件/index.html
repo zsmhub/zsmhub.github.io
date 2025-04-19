@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&amp;#34;Dingo\Api\Provider\LaravelServiceProvider&amp;#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。
+1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点：
+由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" />
@@ -35,24 +38,36 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Laravel 常用组件" />
-<meta property="og:description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-08-01T14:15:47&#43;08:00" />
-<meta property="article:modified_time" content="2020-04-04T14:15:47&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Laravel 常用组件">
+  <meta property="og:description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。
+1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点：
+由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-08-01T14:15:47+08:00">
+    <meta property="article:modified_time" content="2020-04-04T14:15:47+08:00">
+    <meta property="article:tag" content="Laravel">
 
-<meta itemprop="name" content="Laravel 常用组件">
-<meta itemprop="description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存"><meta itemprop="datePublished" content="2019-08-01T14:15:47&#43;08:00" />
-<meta itemprop="dateModified" content="2020-04-04T14:15:47&#43;08:00" />
-<meta itemprop="wordCount" content="1780">
-<meta itemprop="keywords" content="Laravel," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Laravel 常用组件"/>
-<meta name="twitter:description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。 1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点： 由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存"/>
+  <meta itemprop="name" content="Laravel 常用组件">
+  <meta itemprop="description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。
+1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点：
+由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。">
+  <meta itemprop="datePublished" content="2019-08-01T14:15:47+08:00">
+  <meta itemprop="dateModified" content="2020-04-04T14:15:47+08:00">
+  <meta itemprop="wordCount" content="1780">
+  <meta itemprop="keywords" content="Laravel">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Laravel 常用组件">
+  <meta name="twitter:description" content="dingo/api dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。
+1 2 composer require dingo/api php artisan vendor:publish --provider=&#34;Dingo\Api\Provider\LaravelServiceProvider&#34; 注意点：
+由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +106,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +139,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -160,22 +185,20 @@
 <p>dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">composer require dingo/api
-php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Dingo\Api\Provider\LaravelServiceProvider&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">composer require dingo/api
+</span></span><span class="line"><span class="cl">php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Dingo\Api\Provider\LaravelServiceProvider&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>注意点：</p>
-</blockquote>
+<p>注意点：</p></blockquote>
 <p>由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。</p>
 <p>路由交给 DingoApi 来处理了，所以模型绑定的中间件并没有注册上。需要手动增加 bindings 中间件。【否则会导致隐形路由模型绑定功能失效】</p>
 <blockquote>
-<p>使用 Accept 头来指定我们需要访问的 API 版本</p>
-</blockquote>
+<p>使用 Accept 头来指定我们需要访问的 API 版本</p></blockquote>
 <p>Accept: application/&lt;API_STANDARDS_TREE&gt;.&lt;API_SUBTYPE&gt;.v1+json</p>
 <p>API_STANDARDS_TREE 有是三个值可选</p>
 <ul>
@@ -184,11 +207,10 @@ php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#
 <li>vnd 对外发布的，开放给所有用户</li>
 </ul>
 <blockquote>
-<p>是否有 N+1 问题呢？</p>
-</blockquote>
+<p>是否有 N+1 问题呢？</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -201,36 +223,36 @@ php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">dingo api V2.2.3: 该版本的查询是会存在 N+1 问题的，因为目前 Dingo 最新的版本引入了一个 Bug ——
-https://github.com/dingo/api/issues/1645 ，有兴趣的同学可以关注一下这个 Bug，在这个 Bug 修复之前，我们 include 如果太深了，则会出现 N+1 问题，因为我们使用 topic.user 这样的深层嵌套。
-
-解决方法有这么几个：
-
-- 持续关注这个 Bug，等待 Bug 解决；
-- 安装回 Dingo 2.0.0 以下的版本；
-- 关闭 Dingo 的预加载，手动处理预加载的问题。
-
-这里可以暂时使用第三种:先来关闭 Dingo 的预加载。
-app<span class="o">(</span><span class="se">\D</span>ingo<span class="se">\A</span>pi<span class="se">\T</span>ransformer<span class="se">\F</span>actory::class<span class="o">)</span>-&gt;disableEagerLoading<span class="o">()</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">dingo api V2.2.3: 该版本的查询是会存在 N+1 问题的，因为目前 Dingo 最新的版本引入了一个 Bug ——
+</span></span><span class="line"><span class="cl">https://github.com/dingo/api/issues/1645 ，有兴趣的同学可以关注一下这个 Bug，在这个 Bug 修复之前，我们 include 如果太深了，则会出现 N+1 问题，因为我们使用 topic.user 这样的深层嵌套。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">解决方法有这么几个：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">- 持续关注这个 Bug，等待 Bug 解决；
+</span></span><span class="line"><span class="cl">- 安装回 Dingo 2.0.0 以下的版本；
+</span></span><span class="line"><span class="cl">- 关闭 Dingo 的预加载，手动处理预加载的问题。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">这里可以暂时使用第三种:先来关闭 Dingo 的预加载。
+</span></span><span class="line"><span class="cl">app<span class="o">(</span><span class="se">\D</span>ingo<span class="se">\A</span>pi<span class="se">\T</span>ransformer<span class="se">\F</span>actory::class<span class="o">)</span>-&gt;disableEagerLoading<span class="o">()</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="socialiteproviders">socialiteproviders</h2>
 <p>由于 Laravel 本身自带的 socialite 不包含微信、qq等第三方登录驱动，故 socialiteproviders 提供了更多的第三方登录方式，基本上你需要的，都能在这里找到。socialiteproviders算是对 socialite 的补充。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 微信</span>
-composer require socialiteproviders/weixin
-
-<span class="c1"># qq</span>
-composer require socialiteproviders/qq
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 微信</span>
+</span></span><span class="line"><span class="cl">composer require socialiteproviders/weixin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># qq</span>
+</span></span><span class="line"><span class="cl">composer require socialiteproviders/qq
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="jwt">jwt</h2>
 <p><a href="https://learnku.com/articles/17883">JWT 超详细分析</a></p>
@@ -244,18 +266,16 @@ composer require socialiteproviders/qq
 <li>Oauth2.0：定义在 RFC 6750 中的一种授权规范，但这其实并不是一种 token，只是其中也有用到 token</li>
 </ul>
 <blockquote>
-<p>Oauth2.0 &amp;&amp; JWT:两者其实并不是一个层面的东西。Oauth2.0 是一个方便的第三方授权规范，而 JWT 是一个 token 结构规范。</p>
-</blockquote>
+<p>Oauth2.0 &amp;&amp; JWT:两者其实并不是一个层面的东西。Oauth2.0 是一个方便的第三方授权规范，而 JWT 是一个 token 结构规范。</p></blockquote>
 <blockquote>
 <p>JWT 是 JSON Web Token 的缩写，是一个非常轻巧的规范，这个规范允许我们使用 JWT 在用户和服务器之间传递安全可靠的信息。</p>
 <p>JWT 由头部（header）、载荷（payload）与签名（signature）组成。</p>
 <p>用户登录后生成的 token 不需要保存在数据库，直接根据前端传递过来的 token 判断用户的登录状态。</p>
 <p>JWT 生成的 Token 包含 token 生效时间和一个签名，利用签名可以验证数据是否被篡改，然后再获取 token 里携带的生效时间判断 token 是否有效。</p>
-<p>刷新 Token 就是将旧 Token 放入黑名单，然后生成一个新的 Token。</p>
-</blockquote>
+<p>刷新 Token 就是将旧 Token 放入黑名单，然后生成一个新的 Token。</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -270,20 +290,20 @@ composer require socialiteproviders/qq
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">composer require tymon/jwt-auth:1.0.0-rc.4.1
-
-JWT 生成 token 的四个优点
-- 防 CSRF
-- 适合移动应用
-- 无状态
-- 编码数据
-&gt; 前两个是 token 的优势，后两个是 JWT 独特的优势。
-
-JWT 前后端 token 过期时的交互流程：
-1. 用户请求一个业务接口时，如果后端发现 token 失效了，就返回 token 失效的信息，
-2. 前端界面提示网络有问题、稍后重试等提示，并调用续签 token 接口
-3. 用户再发起一次业务请求时，前端直接携带新的 token 去请求服务器
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">composer require tymon/jwt-auth:1.0.0-rc.4.1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">JWT 生成 token 的四个优点
+</span></span><span class="line"><span class="cl">- 防 CSRF
+</span></span><span class="line"><span class="cl">- 适合移动应用
+</span></span><span class="line"><span class="cl">- 无状态
+</span></span><span class="line"><span class="cl">- 编码数据
+</span></span><span class="line"><span class="cl">&gt; 前两个是 token 的优势，后两个是 JWT 独特的优势。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">JWT 前后端 token 过期时的交互流程：
+</span></span><span class="line"><span class="cl">1. 用户请求一个业务接口时，如果后端发现 token 失效了，就返回 token 失效的信息，
+</span></span><span class="line"><span class="cl">2. 前端界面提示网络有问题、稍后重试等提示，并调用续签 token 接口
+</span></span><span class="line"><span class="cl">3. 用户再发起一次业务请求时，前端直接携带新的 token 去请求服务器
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="fractal">Fractal</h2>
 <p>api 输出结果处理层，也可以选择官方的 eloquent-resources</p>
@@ -297,25 +317,24 @@ JWT 前后端 token 过期时的交互流程：
 <p>DataArraySerializer 结构类似 eloquent-resources 的 Data Wrapping</p>
 <p>ArraySerializer 结构类似 eloquent-resources 的 withoutWrapping</p>
 <p>JsonApiSerializer 结构出自 JSON-API，是一套 json 接口响应规范。</p>
-<p>我们常用的结构是 DataArraySerializer 和 ArraySerializer</p>
-</blockquote>
+<p>我们常用的结构是 DataArraySerializer 和 ArraySerializer</p></blockquote>
 </li>
 <li>
 <p>DingoApi 已经安装了 Fractal，并且做了很多整合，基本解决了 N+1 问题，我们可以快速的开始使用。但是它返回的单资源的数据结构为 DataArraySerializer，我们可以使用以下扩展包将 dingo/api 的单资源数据结构更改为 ArraySerializer，减少嵌套层数。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">composer require liyu/dingo-serializer-switch
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">composer require liyu/dingo-serializer-switch
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>用法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -328,18 +347,18 @@ JWT 前后端 token 过期时的交互流程：
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 返回单个资源</span>
-<span class="k">return</span> <span class="nv">$this</span>-&gt;response-&gt;item<span class="o">(</span><span class="nv">$topics</span>, new TopicTransformer<span class="o">())</span>-&gt;setStatusCode<span class="o">(</span>201<span class="o">)</span><span class="p">;</span>
-
-<span class="c1"># 返回多个资源</span>
-<span class="nv">$this</span>-&gt;response-&gt;collection<span class="o">(</span>Topics::all<span class="o">()</span>, new TopicTransformer<span class="o">())</span><span class="p">;</span>
-
-<span class="c1"># 返回列表分页数据</span>
-<span class="nv">$this</span>-&gt;response-&gt;paginator<span class="o">(</span><span class="nv">$topics</span>, new TopicTransformer<span class="o">())</span><span class="p">;</span>
-
-<span class="c1"># 返回空数据</span>
-<span class="nv">$this</span>-&gt;response-&gt;noContent<span class="o">()</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 返回单个资源</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="nv">$this</span>-&gt;response-&gt;item<span class="o">(</span><span class="nv">$topics</span>, new TopicTransformer<span class="o">())</span>-&gt;setStatusCode<span class="o">(</span>201<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 返回多个资源</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$this</span>-&gt;response-&gt;collection<span class="o">(</span>Topics::all<span class="o">()</span>, new TopicTransformer<span class="o">())</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 返回列表分页数据</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$this</span>-&gt;response-&gt;paginator<span class="o">(</span><span class="nv">$topics</span>, new TopicTransformer<span class="o">())</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 返回空数据</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$this</span>-&gt;response-&gt;noContent<span class="o">()</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -347,25 +366,24 @@ JWT 前后端 token 过期时的交互流程：
 <p>查询日志扩展</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">composer require overtrue/laravel-query-logger --dev
-
-<span class="c1"># 日志路径</span>
-<span class="nb">cd</span> ./storage/logs
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">composer require overtrue/laravel-query-logger --dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 日志路径</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ./storage/logs
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="barryvdhlaravel-cors">barryvdh/laravel-cors</h2>
 <p>解决跨域问题</p>
 <h2 id="encorelaravel-admin">encore/laravel-admin</h2>
 <p>后台管理系统</p>
 <blockquote>
-<p>app/Http/Kernel.php</p>
-</blockquote>
+<p>app/Http/Kernel.php</p></blockquote>
 <p>需要注释掉中间件：ConvertEmptyStringsToNull::class，否则选填字段为空且字段设置为 not null 时，会报错：<code>Column 'xxx' cannot be null</code></p>
 <h2 id="guzzlehttpguzzle">guzzlehttp/guzzle</h2>
 <p>Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services.</p>
@@ -382,7 +400,7 @@ JWT 前后端 token 过期时的交互流程：
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -454,22 +472,19 @@ JWT 前后端 token 过期时的交互流程：
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -483,7 +498,7 @@ JWT 前后端 token 过期时的交互流程：
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

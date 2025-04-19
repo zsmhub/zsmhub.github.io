@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样 C (Consistency) 一致性：在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏 I (Isolation)隔离性：一个事务的执行不能其它事务干扰。即一个事务内部的操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能互相干扰 D (Durability) 持久性：在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚 并发事务处理带来的问题 相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Mysql 事务和锁" />
-<meta property="og:description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-09-01T17:12:23&#43;08:00" />
-<meta property="article:modified_time" content="2019-09-01T17:12:23&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Mysql 事务和锁">
+  <meta property="og:description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样 C (Consistency) 一致性：在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏 I (Isolation)隔离性：一个事务的执行不能其它事务干扰。即一个事务内部的操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能互相干扰 D (Durability) 持久性：在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚 并发事务处理带来的问题 相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-09-01T17:12:23+08:00">
+    <meta property="article:modified_time" content="2019-09-01T17:12:23+08:00">
+    <meta property="article:tag" content="Database">
 
-<meta itemprop="name" content="Mysql 事务和锁">
-<meta itemprop="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中"><meta itemprop="datePublished" content="2019-09-01T17:12:23&#43;08:00" />
-<meta itemprop="dateModified" content="2019-09-01T17:12:23&#43;08:00" />
-<meta itemprop="wordCount" content="4508">
-<meta itemprop="keywords" content="database," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Mysql 事务和锁"/>
-<meta name="twitter:description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中"/>
+  <meta itemprop="name" content="Mysql 事务和锁">
+  <meta itemprop="description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样 C (Consistency) 一致性：在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏 I (Isolation)隔离性：一个事务的执行不能其它事务干扰。即一个事务内部的操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能互相干扰 D (Durability) 持久性：在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚 并发事务处理带来的问题 相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。">
+  <meta itemprop="datePublished" content="2019-09-01T17:12:23+08:00">
+  <meta itemprop="dateModified" content="2019-09-01T17:12:23+08:00">
+  <meta itemprop="wordCount" content="4508">
+  <meta itemprop="keywords" content="Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mysql 事务和锁">
+  <meta name="twitter:description" content="事务是必须满足4个条件（ACID） A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样 C (Consistency) 一致性：在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏 I (Isolation)隔离性：一个事务的执行不能其它事务干扰。即一个事务内部的操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能互相干扰 D (Durability) 持久性：在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚 并发事务处理带来的问题 相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -170,44 +187,43 @@
 </ul>
 <blockquote>
 <p>个人觉得多个select时，不用放入一个事务，select查询本身不需要事务提交。而如果在修改数据时，不提交事务，则会修改失败。</p>
-<p>select只是用来进行查询操作，不需要事务回滚，因为select不会对数据库的产生持久化的修改，没有必要在数据发生不一致的时候进行回滚。如果要防止数据的不一致情况，可以通过修改事务的隔离级别实现，如设置隔离级别为RC或RR</p>
-</blockquote>
+<p>select只是用来进行查询操作，不需要事务回滚，因为select不会对数据库的产生持久化的修改，没有必要在数据发生不一致的时候进行回滚。如果要防止数据的不一致情况，可以通过修改事务的隔离级别实现，如设置隔离级别为RC或RR</p></blockquote>
 <h2 id="事务的隔离级别">事务的隔离级别</h2>
 <table>
-<thead>
-<tr>
-<th>隔离级别</th>
-<th>脏读（Dirty Read）</th>
-<th>不可重复读（NonRepeatable Read）</th>
-<th>幻读（Phantom Read）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>未提交读（Read uncommitted）</td>
-<td>可能</td>
-<td>可能</td>
-<td>可能</td>
-</tr>
-<tr>
-<td>已提交读（Read committed）</td>
-<td>不可能</td>
-<td>可能</td>
-<td>可能</td>
-</tr>
-<tr>
-<td>可重复读（Repeatable read）</td>
-<td>不可能</td>
-<td>不可能</td>
-<td>可能</td>
-</tr>
-<tr>
-<td>可串行化（Serializable）</td>
-<td>不可能</td>
-<td>不可能</td>
-<td>不可能</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>隔离级别</th>
+          <th>脏读（Dirty Read）</th>
+          <th>不可重复读（NonRepeatable Read）</th>
+          <th>幻读（Phantom Read）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>未提交读（Read uncommitted）</td>
+          <td>可能</td>
+          <td>可能</td>
+          <td>可能</td>
+      </tr>
+      <tr>
+          <td>已提交读（Read committed）</td>
+          <td>不可能</td>
+          <td>可能</td>
+          <td>可能</td>
+      </tr>
+      <tr>
+          <td>可重复读（Repeatable read）</td>
+          <td>不可能</td>
+          <td>不可能</td>
+          <td>可能</td>
+      </tr>
+      <tr>
+          <td>可串行化（Serializable）</td>
+          <td>不可能</td>
+          <td>不可能</td>
+          <td>不可能</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>Oracle 默认级别是 RC『已提交读』；InnoDB 默认级别是：RR『可重复读』。【TIP: InnoDB 的 RR 级别利用 Next-key 锁解决了幻读问题，相当于 Serializable 级别了】</li>
@@ -216,11 +232,10 @@
 <li>set autocommit=0;  //设置不自动提交事务</li>
 </ul>
 <blockquote>
-<p>查询当前数据库的事务隔离级别</p>
-</blockquote>
+<p>查询当前数据库的事务隔离级别</p></blockquote>
 <ul>
-<li>mysql5.7: SHOW VARIABLES LIKE &lsquo;tx_isolation&rsquo;;</li>
-<li>mysql8.0: show variables like &lsquo;transaction_isolation&rsquo;;</li>
+<li>mysql5.7: SHOW VARIABLES LIKE &rsquo;tx_isolation&rsquo;;</li>
+<li>mysql8.0: show variables like &rsquo;transaction_isolation';</li>
 </ul>
 <h2 id="锁模式innodb-有三种行锁的算法">锁模式(InnoDB 有三种行锁的算法)</h2>
 <ol>
@@ -232,13 +247,13 @@
 <p>在通过 主键索引 与 唯一索引 对数据行进行 UPDATE 操作时，也会对该行数据加记录锁：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- id 列为主键列或唯一索引列
-</span><span class="c1"></span><span class="k">UPDATE</span> <span class="k">SET</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">50</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- id 列为主键列或唯一索引列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">UPDATE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -266,43 +281,37 @@
 </ol>
 <h2 id="innodb共享锁和排他锁">InnoDB共享锁和排他锁</h2>
 <blockquote>
-<p>InnoDB 行锁是通过给索引上的索引项加锁来实现的，不是针对记录加的锁。</p>
-</blockquote>
+<p>InnoDB 行锁是通过给索引上的索引项加锁来实现的，不是针对记录加的锁。</p></blockquote>
 <p>在没有索引的情况下，InnoDB会对所有记录都加锁。</p>
 <p>意向锁是InnoDB自动加的，不需用户干预。对于UPDATE、DELETE、INSERT语句，InnoDB会自动给涉及数据集加排他锁(X)；对于普通SELECT语句，InnoDB不会加任何锁，事务可以通过以下语句显示给记录集加共享锁或排他锁。</p>
 <blockquote>
-<p>共享锁作用：在你正在读的行设置一个共享锁，其他session也可以读这些行，但是直到你读完这些行，事务提交释放锁之后，其他sesstion才能更改这些行。如果你要读取的行正在被其他session修改，那么读取会卡住，直到其他session修改完毕，读取才能继续，并且读到的是最新版本的数据。</p>
-</blockquote>
+<p>共享锁作用：在你正在读的行设置一个共享锁，其他session也可以读这些行，但是直到你读完这些行，事务提交释放锁之后，其他sesstion才能更改这些行。如果你要读取的行正在被其他session修改，那么读取会卡住，直到其他session修改完毕，读取才能继续，并且读到的是最新版本的数据。</p></blockquote>
 <p>共享锁(S，读锁): select * from table_name where &hellip; lock in share mode;</p>
 <blockquote>
-<p>排他锁作用：对于select的数据，会对这些行及其相关行加锁，效果和用update更新这些行时是一样的。其他对这些数据进行操作，无论是select、update也好，上面提到的SELECT … LOCK IN SHARE MODE也好，甚至在某些事务隔离级别下读取这些数据也好，所有这些操作都会被阻塞。</p>
-</blockquote>
+<p>排他锁作用：对于select的数据，会对这些行及其相关行加锁，效果和用update更新这些行时是一样的。其他对这些数据进行操作，无论是select、update也好，上面提到的SELECT … LOCK IN SHARE MODE也好，甚至在某些事务隔离级别下读取这些数据也好，所有这些操作都会被阻塞。</p></blockquote>
 <p>排他锁(X，写锁): select * from table_name where &hellip; for update;</p>
 <blockquote>
-<p>select … lock in share mode的使用场景</p>
-</blockquote>
+<p>select … lock in share mode的使用场景</p></blockquote>
 <p>引用mysql官网的例子，有两张表：parent表和child表，向child表插入数据时，要保证child的parent在parent表中存在，删除parent表时，会将parent以及该parent的child都删掉。一般的操作是先select，得到parentId，然后向child中插入一条数据(关联parentId)，但是这样是有问题的，如果select之后，插入之前，另一个session将parent删掉了，那么向child表中插入的数据并不会受到影响，最终造成该child没有parent的状况。</p>
 <p>根据上面提到的特性，select时用select … lock in share mode就能解决这个问题。<code>其实select … lock in share mode 在平时用到的场景很少很少，用的比较多的还是select … for update。</code></p>
 <blockquote>
-<p>select … for update的使用场景</p>
-</blockquote>
+<p>select … for update的使用场景</p></blockquote>
 <p>账户表中有一个字段money，取出来后，将money更新(比如加上一个值)后再存进去。对于这个场景，如果两个session同时select，比如都取出来的是100，然后都加30, 都变成130，然后都update money，最终money的值是130，与预期的160不符。这个时候用select … for update 就能完美解决这个问题，这时因为两个session不能同时select … for update。</p>
 <blockquote>
-<p>思考</p>
-</blockquote>
+<p>思考</p></blockquote>
 <p>上述select … for update的场景如果使用select … lock in share mode会怎样？</p>
 <p>答案是，会很大概率造成死锁，造成死锁的原因是：session A和session B同时select lock in share mode, 这时都未提交事务，session A 继续执行update操作，此时因为session B事务还没提交，锁还没释放，所以session A的update操作会被阻塞，等待session B释放锁，同样的，session B此时也在等待session A提交事务释放锁，这就发生了死锁。</p>
 <p><code>所以 lock in share mode 使用时要仔细检查，确认该场景是否真的适用且不会发生死锁。</code></p>
 <h2 id="myisam表锁">MyISAM表锁</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">lock</span> <span class="k">table</span> <span class="k">table_name</span> <span class="k">read</span><span class="p">;</span>  <span class="o">//</span><span class="err">读锁</span>
-<span class="k">lock</span> <span class="k">table</span> <span class="k">table_name</span> <span class="k">write</span><span class="p">;</span>  <span class="o">//</span><span class="err">写锁</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">lock</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">read</span><span class="p">;</span><span class="w">  </span><span class="o">//</span><span class="err">读锁</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">lock</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">write</span><span class="p">;</span><span class="w">  </span><span class="o">//</span><span class="err">写锁</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="死锁">死锁</h2>
 <p><a href="https://www.aneasystone.com/archives/2017/12/solving-dead-locks-three.html">解决死锁之路 - 常见 SQL 语句的加锁分析</a></p>
@@ -312,8 +321,7 @@
 <li>死锁是指两个或多个事务在同一资源上相互占用，并请求锁定对方占用的资源，从而导致恶性循环</li>
 <li>当事务试图以不同的顺序锁定资源时，就可能产生死锁。多个事务同时锁定同一个资源时也可能会产生死锁</li>
 <li>锁的行为和顺序和存储引擎相关。以同样的顺序执行语句，有些存储引擎会产生死锁有些不会——死锁有双重原因：真正的数据冲突；存储引擎的实现方式。</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <ul>
 <li>两个事务都需要获得对方持有的排他锁才能继续完成事务，这种循环锁等待就是典型的死锁。</li>
 <li>发生死锁后，InnoDB一般都能自动检测到，并使一个事务释放并回退，另一个事务获得锁，继续完成事务。</li>
@@ -321,8 +329,7 @@
 <li>通常来说，死锁都是应用设计的问题，通过调整业务流程、数据库对象设计、事务大小，以及范根数据库的SQL语句，绝大部分死锁都是可以避免。</li>
 </ul>
 <blockquote>
-<p>同一事务中，mysql在insert后，可以直接select到刚插入的数据。</p>
-</blockquote>
+<p>同一事务中，mysql在insert后，可以直接select到刚插入的数据。</p></blockquote>
 <p>如果出现死锁，可以用 show engine innodb status;命令来确定最后一个死锁产生的原因。返回结果中包括死锁相关事务的详细信息，如引发死锁的 SQL 语句，事务已经获得的锁，正在等待什么锁，以及被回滚的事务等。据此可以分析死锁产生的原因和改进措施。</p>
 
     </div>
@@ -330,7 +337,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -402,22 +409,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -431,7 +435,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

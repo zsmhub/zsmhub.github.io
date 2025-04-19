@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mariadb on ZsmHub - Blog</title>
+    <title>Mariadb on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/mariadb/</link>
-    <description>Recent content in mariadb on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Mariadb on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 27 Jul 2020 15:13:43 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Jul 2020 15:13:43 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mysql 和 MariaDB</title>
       <link>https://zsmhub.github.io/post/database/mysql%E5%92%8Cmariadb/</link>
       <pubDate>Mon, 27 Jul 2020 15:13:43 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/database/mysql%E5%92%8Cmariadb/</guid>
-      <description>Mysql 和 MariaDB 的关系 MariaDB 数据库管理系统是 MySQL 的一个分支，主要由开源社区在维护，采用GPL授权许可。 开发这个分支的原因之一是：甲骨文公司收购了 MySQL 后，有将 MySQL</description>
+      <description>&lt;h2 id=&#34;mysql-和-mariadb-的关系&#34;&gt;Mysql 和 MariaDB 的关系&lt;/h2&gt;&#xA;&lt;p&gt;MariaDB 数据库管理系统是 MySQL 的一个分支，主要由开源社区在维护，采用GPL授权许可。&lt;/p&gt;&#xA;&lt;p&gt;开发这个分支的原因之一是：甲骨文公司收购了 MySQL 后，有将 MySQL 闭源的潜在风险，因此社区采用分支的方式来避开这个风险。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

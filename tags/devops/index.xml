@@ -4,18 +4,17 @@
     <title>DevOps on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/devops/</link>
     <description>Recent content in DevOps on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Mon, 29 Apr 2019 21:17:55 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Apr 2019 21:17:55 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DevOps 与 NoOps</title>
       <link>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</link>
       <pubDate>Mon, 29 Apr 2019 21:17:55 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/</guid>
-      <description>DevOps DevOps是开发和运维的融合，是开发和运维工程师共同协作，定义应用从设计到交付全生命周期过程的实践。 NoOps NoOps的意思是无须操作。它的理</description>
+      <description>&lt;h2 id=&#34;devops&#34;&gt;DevOps&lt;/h2&gt;&#xA;&lt;p&gt;DevOps是开发和运维的融合，是开发和运维工程师共同协作，定义应用从设计到交付全生命周期过程的实践。&lt;/p&gt;&#xA;&lt;h2 id=&#34;noops&#34;&gt;NoOps&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;NoOps的意思是无须操作。它的理念是去掉所有的平台管理部分，从而降低开发人员与基础设施之间的摩擦。&lt;/li&gt;&#xA;&lt;li&gt;NoOps的目的是定义一个不需要开发与运维相结合，就可以使流程顺利进行的过程。NoOps有一个目标：通过设计使所有东西都可以完成部署，而不需要任何人参与。&lt;/li&gt;&#xA;&lt;li&gt;NoOps大致的方法如下：开发人员将代码提交到代码库就已经完成了全部的部署。看起来与连续交付非常相似，但它所包含的范围更大，这里面不仅有应用程序，还包含了基础设施的部署。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;其实无所谓DevOps或NoOps。最根本的驱动是：用尽可能少的维护工作，去创建智能的基础设施，并将一切自动化。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ZsmHub - Blog" />
-<meta property="og:description" content="This is a site of zsmhub-blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zsmhub.github.io/" />
+<meta property="og:url" content="https://zsmhub.github.io/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="ZsmHub - Blog">
+  <meta property="og:description" content="This is a site of zsmhub-blog.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ZsmHub - Blog">
-<meta itemprop="description" content="This is a site of zsmhub-blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ZsmHub - Blog"/>
-<meta name="twitter:description" content="This is a site of zsmhub-blog."/>
+  <meta itemprop="name" content="ZsmHub - Blog">
+  <meta itemprop="description" content="This is a site of zsmhub-blog.">
+  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ZsmHub - Blog">
+  <meta name="twitter:description" content="This is a site of zsmhub-blog.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -88,12 +93,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -112,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -120,115 +135,982 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%84%BF%E6%97%B6%E8%A1%97%E6%9C%BA%E6%B8%B8%E6%88%8F/">儿时街机游戏</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/tool/">工具类方法汇总</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2023-05-23 </span>
+      <span class="post-time"> 2022-04-07 </span>
       <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
+          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
           </div>
-        <span class="more-meta"> 约 154 字 </span>
+        <span class="more-meta"> 约 487 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      三国战纪 按键介绍 A，攻击 B，跳跃/道具换面 C，开关道具菜单 D，使用选中道具 游戏版本推荐 三国战纪·一统中原，分青版(入门)和无双版(升阶) 三国
+      <h2 id="循环定时功能">循环定时功能</h2>
+<p>业务场景：如某个提醒功能，可以设定重复定时，设定周一某个时间点循环提醒。</p>
+<p><img src="/images/2022/QQ20220407-163853@2x.png" alt="重复定时截图"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 计算出 weekdays 里距离 compareTime 最近的一个未来时间点</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// weekdays: [1,2,3,4,5,6,7]周一、周二...周日, houMinute: 时分，compareTime：对比时间点，一般设置为time.Now()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">LatestTimeByWeekday</span><span class="p">(</span><span class="nx">weekdays</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">hourMinute</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">compareTime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">weekdays</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;weekdays参数不能为空&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 对比时间点为周几，默认周日设置为7</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">weekday</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">.</span><span class="nf">Weekday</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">weekday</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">weekday</span> <span class="p">=</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">sort</span><span class="p">.</span><span class="nf">Slice</span><span class="p">(</span><span class="nx">weekdays</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">weekdays</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">&lt;</span> <span class="nx">weekdays</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">getTime</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">addDay</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">date</span> <span class="o">:=</span> <span class="nx">compareTime</span><span class="p">.</span><span class="nf">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">addDay</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 &#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">hourMinute</span> <span class="o">+</span> <span class="s">&#34;:00&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="nx">date</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">tmpTimeArr</span> <span class="p">[]</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">weekdays</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">weekday</span> <span class="o">==</span> <span class="nx">v</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 检查当天时间点符不符合条件</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 当天时间点不符合条件，直接取下一周的时间</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">tmpTime</span><span class="p">.</span><span class="nf">Before</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">)</span> <span class="o">||</span> <span class="nx">tmpTime</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">compareTime</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">tmpTimeArr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">,</span> <span class="nx">tmpTime</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">tmpTime</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">weekday</span> <span class="p">&lt;</span> <span class="nx">v</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="nx">v</span> <span class="o">-</span> <span class="nx">weekday</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">tmpTime</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">tmpTime</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getTime</span><span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="nx">weekday</span> <span class="o">+</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">tmpTimeArr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">,</span> <span class="nx">tmpTime</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">tmpTimeArr</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">tmpTimeArr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;异常错误&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
     <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%84%BF%E6%97%B6%E8%A1%97%E6%9C%BA%E6%B8%B8%E6%88%8F/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/tool/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/">mac搭建Stable Diffusion Webui</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/">Go 性能分析工具</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2023-03-30 </span>
+      <span class="post-time"> 2022-03-29 </span>
       <div class="post-category">
-          <a href="/categories/ai/"> AI </a>
+          <a href="/categories/golang/"> golang </a>
           </div>
-        <span class="more-meta"> 约 773 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1424 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      mac安装教程 https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon 启动命令 1 2 cd ~/go/src/zsmhub/stable-diffusion-webui ./webui.sh --skip-torch-cuda-test --precision full --no-half 绘画模型下载平台 模型，别人训练好的绘画范本 https://civitai.com https://huggingface.co prompt 生成器 http://www.atoolbox.net/Category.php?Id=32 LoRA 可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加
+      <h2 id="一pprof-简介">一、PProf 简介</h2>
+<p>pprof 是用于可视化和分析性能分析数据的工具。</p>
+<p>Golang是一个非常注重性能的语言，因此语言的内置库里就自带了性能分析库pprof。</p>
+<p>性能分析和采集在计算机性能调试领域使用的术语是<code>profile</code>，或者有时候也会使用profiling代表性能分析这个行为。所以pprof名字里的prof来源于对单词profile的缩写，profile这个单词的原意是画像，那么针对程序性能的画像就是应用使用 CPU 和内存等等这些资源的情况。</p>
     </div>
     <div class="read-more">
-      <a href="/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/" class="read-more-link">阅读更多</a>
+      <a href="/post/golang/go%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F%E6%96%B9%E6%A1%88/">库存扣减方案</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/golang/%E7%AE%80%E5%8D%95%E7%9A%84excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/">简单的excel导入导出</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2023-03-09 </span>
+      <span class="post-time"> 2022-03-16 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 1874 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="excel导入导出代码">excel导入导出代码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">tool</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;errors&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/360EntSecGroup-Skylar/excelize/v2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;mime/multipart&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strconv&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">maxCharCount</span>     <span class="p">=</span> <span class="mi">26</span>       <span class="c1">// maxCharCount 最多26个字符A-Z</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">defaultSheetName</span> <span class="p">=</span> <span class="s">&#34;Sheet1&#34;</span> <span class="c1">// 默认Sheet名称</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Excel</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">SheetName</span> <span class="kt">string</span>          <span class="c1">// sheetName，默认为Sheet1</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Headers</span>   <span class="p">[]</span><span class="kt">string</span>        <span class="c1">// 表头</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Rows</span>      <span class="p">[][]</span><span class="kd">interface</span><span class="p">{}</span> <span class="c1">// 表数据</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">Excel</span><span class="p">)</span> <span class="nf">SetDefaultSheetName</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">m</span><span class="p">.</span><span class="nx">SheetName</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">m</span><span class="p">.</span><span class="nx">SheetName</span> <span class="p">=</span> <span class="nx">defaultSheetName</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 从文件流读取 Excel Sheet1 的所有数据</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">Excel</span><span class="p">)</span> <span class="nf">ReadExcelFromStream</span><span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">multipart</span><span class="p">.</span><span class="nx">FileHeader</span><span class="p">)</span> <span class="p">([][]</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">rows</span> <span class="p">[][]</span><span class="kt">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">src</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Open</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">src</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 兆字节转为字节进行比较大小</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">maxFileSize</span> <span class="o">:=</span> <span class="nb">int64</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// 默认最大上传 2 M</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Size</span> <span class="p">&gt;</span> <span class="nx">maxFileSize</span><span class="o">*</span><span class="mf">1e6</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;文件大小不能超过 &#34;</span> <span class="o">+</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatInt</span><span class="p">(</span><span class="nx">maxFileSize</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#34; M&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">ff</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">excelize</span><span class="p">.</span><span class="nf">OpenReader</span><span class="p">(</span><span class="nx">src</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#34;zip: not a valid zip file&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;无效文件，注意不支持加密的EXCEL文件&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 获取 Sheet1 上所有单元格</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rows</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ff</span><span class="p">.</span><span class="nf">GetRows</span><span class="p">(</span><span class="nx">ff</span><span class="p">.</span><span class="nf">GetSheetName</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 导出excel到浏览器</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="nx">Excel</span><span class="p">)</span> <span class="nf">ExportToWeb</span><span class="p">()</span> <span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">exportExcel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">buffer</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">WriteToBuffer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">buffer</span><span class="p">.</span><span class="nf">Bytes</span><span class="p">(),</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 导出excel到本地服务器</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// path 文件导出路径，建议使用绝对路径</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// filename 文件名，需带上后缀</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="nx">Excel</span><span class="p">)</span> <span class="nf">ExportToPath</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">filename</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">filePath</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">exportExcel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">filePath</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">filePath</span> <span class="p">=</span> <span class="nx">path</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span> <span class="o">+</span> <span class="nx">filename</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">SaveAs</span><span class="p">(</span><span class="nx">filePath</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">filePath</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">filePath</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// exportExcel 导出Excel文件</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// sheetName 工作表名称</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// headers 列名切片， 表头</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// rows 数据切片，是一个二维数组</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="nx">Excel</span><span class="p">)</span> <span class="nf">exportExcel</span><span class="p">()</span> <span class="p">(</span><span class="o">*</span><span class="nx">excelize</span><span class="p">.</span><span class="nx">File</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nf">SetDefaultSheetName</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span> <span class="o">:=</span> <span class="nx">excelize</span><span class="p">.</span><span class="nf">NewFile</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sheetIndex</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">NewSheet</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">SheetName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">maxColumnRowNameLen</span> <span class="o">:=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="nx">strconv</span><span class="p">.</span><span class="nf">Itoa</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">Rows</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">columnCount</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">Headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">columnCount</span> <span class="p">&gt;</span> <span class="nx">maxCharCount</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">maxColumnRowNameLen</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">columnCount</span> <span class="p">&gt;</span> <span class="nx">maxCharCount</span><span class="o">*</span><span class="nx">maxCharCount</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">maxColumnRowNameLen</span> <span class="o">+=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">columnNames</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">columnCount</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">header</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">m</span><span class="p">.</span><span class="nx">Headers</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">columnName</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">getColumnName</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">maxColumnRowNameLen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">columnNames</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">columnNames</span><span class="p">,</span> <span class="nx">columnName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 初始化excel表头，这里的index从1开始要注意</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">curColumnName</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">getColumnRowName</span><span class="p">(</span><span class="nx">columnName</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">SetCellValue</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">SheetName</span><span class="p">,</span> <span class="nx">curColumnName</span><span class="p">,</span> <span class="nx">header</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">rowIndex</span><span class="p">,</span> <span class="nx">row</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">m</span><span class="p">.</span><span class="nx">Rows</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">columnIndex</span><span class="p">,</span> <span class="nx">columnName</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">columnNames</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 从第二行开始</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">SetCellValue</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">SheetName</span><span class="p">,</span> <span class="nx">m</span><span class="p">.</span><span class="nf">getColumnRowName</span><span class="p">(</span><span class="nx">columnName</span><span class="p">,</span> <span class="nx">rowIndex</span><span class="o">+</span><span class="mi">2</span><span class="p">),</span> <span class="nx">row</span><span class="p">[</span><span class="nx">columnIndex</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span><span class="p">.</span><span class="nf">SetActiveSheet</span><span class="p">(</span><span class="nx">sheetIndex</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">f</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// getColumnName 生成列名</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Excel的列名规则是从A-Z往后排;超过Z以后用两个字母表示，比如AA,AB,AC;两个字母不够以后用三个字母表示，比如AAA,AAB,AAC</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 这里做数字到列名的映射：0 -&gt; A, 1 -&gt; B, 2 -&gt; C</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// maxColumnRowNameLen 表示名称框的最大长度，假设数据是10行，1000列，则最后一个名称框是J1000(如果有表头，则是J1001),是4位</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 这里根据 maxColumnRowNameLen 生成切片，后面生成名称框的时候可以复用这个切片，而无需扩容</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="nx">Excel</span><span class="p">)</span> <span class="nf">getColumnName</span><span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="nx">maxColumnRowNameLen</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">byte</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">const</span> <span class="nx">A</span> <span class="p">=</span> <span class="sc">&#39;A&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">column</span> <span class="p">&lt;</span> <span class="nx">maxCharCount</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 第一次就分配好切片的容量</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">slice</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxColumnRowNameLen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">append</span><span class="p">(</span><span class="nx">slice</span><span class="p">,</span> <span class="nb">byte</span><span class="p">(</span><span class="nx">A</span><span class="o">+</span><span class="nx">column</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 递归生成类似AA,AB,AAA,AAB这种形式的列名</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">append</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">getColumnName</span><span class="p">(</span><span class="nx">column</span><span class="o">/</span><span class="nx">maxCharCount</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nx">maxColumnRowNameLen</span><span class="p">),</span> <span class="nb">byte</span><span class="p">(</span><span class="nx">A</span><span class="o">+</span><span class="nx">column</span><span class="o">%</span><span class="nx">maxCharCount</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// getColumnRowName 生成名称框</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Excel的名称框是用A1,A2,B1,B2来表示的，这里需要传入前一步生成的列名切片，然后直接加上行索引来生成名称框，就无需每次分配内存</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">Excel</span><span class="p">)</span> <span class="nf">getColumnRowName</span><span class="p">(</span><span class="nx">columnName</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">rowIndex</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">columnRowName</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">l</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">columnName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">columnName</span> <span class="p">=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">AppendInt</span><span class="p">(</span><span class="nx">columnName</span><span class="p">,</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">rowIndex</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">columnRowName</span> <span class="p">=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">columnName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 将列名恢复回去</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">columnName</span> <span class="p">=</span> <span class="nx">columnName</span><span class="p">[:</span><span class="nx">l</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="web端调用示例">WEB端调用示例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">controller</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bytes&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/labstack/echo/v4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;xxx/lib/tool&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">xxxController</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">XxxController</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">xxxController</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Router</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/export&#34;</span><span class="p">,</span> <span class="nx">AuthCorpController</span><span class="p">.</span><span class="nx">Export</span><span class="p">).</span><span class="nx">Name</span> <span class="p">=</span> <span class="s">&#34;导出excel&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">xxxController</span><span class="p">)</span> <span class="nf">Export</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">excelHeaders</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;姓名&#34;</span><span class="p">,</span> <span class="s">&#34;性别&#34;</span><span class="p">,</span> <span class="s">&#34;年龄&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">excelRows</span>    <span class="p">=</span> <span class="p">[][]</span><span class="kd">interface</span><span class="p">{}{</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="s">&#34;张三&#34;</span><span class="p">,</span> <span class="s">&#34;女&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span><span class="s">&#34;李四&#34;</span><span class="p">,</span> <span class="s">&#34;男&#34;</span><span class="p">,</span> <span class="mi">19</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">b</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">tool</span><span class="p">.</span><span class="nx">Excel</span><span class="p">{</span><span class="nx">Headers</span><span class="p">:</span> <span class="nx">excelHeaders</span><span class="p">,</span> <span class="nx">Rows</span><span class="p">:</span> <span class="nx">excelRows</span><span class="p">}.</span><span class="nf">ExportToWeb</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nf">Response</span><span class="p">().</span><span class="nf">Header</span><span class="p">().</span><span class="nf">Set</span><span class="p">(</span><span class="nx">echo</span><span class="p">.</span><span class="nx">HeaderContentDisposition</span><span class="p">,</span> <span class="s">&#34;attachment; filename=students.xlsx&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Stream</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">MIMEOctetStream</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">b</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="csv导入">csv导入</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">tool</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bytes&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/csv&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;errors&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;golang.org/x/text/encoding/simplifiedchinese&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;golang.org/x/text/transform&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;io&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;mime/multipart&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strconv&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Csv</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 从文件流读取 csv 的所有数据</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="nx">Csv</span><span class="p">)</span> <span class="nf">ReadCsvFromStream</span><span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">multipart</span><span class="p">.</span><span class="nx">FileHeader</span><span class="p">)</span> <span class="p">([][]</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">rows</span> <span class="p">[][]</span><span class="kt">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">src</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Open</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">src</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 兆字节转为字节进行比较大小</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">maxFileSize</span> <span class="o">:=</span> <span class="nb">int64</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// 默认最大上传 2 M</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Size</span> <span class="p">&gt;</span> <span class="nx">maxFileSize</span><span class="o">*</span><span class="mf">1e6</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;文件大小不能超过 &#34;</span> <span class="o">+</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatInt</span><span class="p">(</span><span class="nx">maxFileSize</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#34; M&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 初始化一个 csv reader，并通过这个 reader 从 csv 文件读取数据</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">reader</span> <span class="o">:=</span> <span class="nx">csv</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">transform</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">src</span><span class="p">),</span> <span class="nx">simplifiedchinese</span><span class="p">.</span><span class="nx">GBK</span><span class="p">.</span><span class="nf">NewDecoder</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 设置返回记录中每行数据期望的字段数，-1 表示返回所有字段</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">reader</span><span class="p">.</span><span class="nx">FieldsPerRecord</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 通过 readAll 方法返回 csv 文件中的所有内容</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rows</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">reader</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 从文件流读取不规范 csv 的所有数据</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="nx">Csv</span><span class="p">)</span> <span class="nf">ReadIllegalCsvFromSteam</span><span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">multipart</span><span class="p">.</span><span class="nx">FileHeader</span><span class="p">)</span> <span class="p">([][]</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">rows</span> <span class="p">[][]</span><span class="kt">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">src</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nf">Open</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">src</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 兆字节转为字节进行比较大小</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">maxFileSize</span> <span class="o">:=</span> <span class="nb">int64</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// 默认最大上传 2 M</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Size</span> <span class="p">&gt;</span> <span class="nx">maxFileSize</span><span class="o">*</span><span class="mf">1e6</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;文件大小不能超过 &#34;</span> <span class="o">+</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">FormatInt</span><span class="p">(</span><span class="nx">maxFileSize</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#34; M&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 直接复制文件内容</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">buf</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">Copy</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">buf</span><span class="p">,</span> <span class="nx">transform</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">bufio</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">src</span><span class="p">),</span> <span class="nx">simplifiedchinese</span><span class="p">.</span><span class="nx">GBK</span><span class="p">.</span><span class="nf">NewDecoder</span><span class="p">()));</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">contents</span> <span class="o">:=</span> <span class="nx">buf</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">slice</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">contents</span><span class="p">,</span> <span class="s">&#34;\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">slice</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">records</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">ReplaceAll</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="s">&#34;=\&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;\&#34;&#34;</span><span class="p">),</span> <span class="s">&#34;,&#34;</span><span class="p">)</span> <span class="c1">// 去掉不合法的等号</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">kk</span><span class="p">,</span> <span class="nx">vv</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">records</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">records</span><span class="p">[</span><span class="nx">kk</span><span class="p">]</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Trim</span><span class="p">(</span><span class="nx">vv</span><span class="p">,</span> <span class="s">&#34;\&#34;&#34;</span><span class="p">)</span> <span class="c1">// 去除前后的双引号</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">rows</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">rows</span><span class="p">,</span> <span class="nx">records</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">rows</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/%E7%AE%80%E5%8D%95%E7%9A%84excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/">线上事故记录</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2022-03-15 </span>
       <div class="post-category">
           <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
           </div>
-        <span class="more-meta"> 约 956 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1245 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      设计流程图 设计思路 为了扛住高并发，我这里在两个地方做了库存扣减，第一个使用redis做预扣库存，第二个是数据库扣除实际库存； 用户提交订单时，
+      <h2 id="一数据库宕机">一、数据库宕机</h2>
+<ol>
+<li>
+<p>事故时间：2020-08-25</p>
+</li>
+<li>
+<p>事故描述：</p>
+<ol>
+<li>大量慢查询</li>
+<li>阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承受不住请求压力，主库宕机，备胎主库也失效。</li>
+<li>主从延迟严重，从库失效，全部查询堆在主库，这样也会导致主库宕机。（比如删除大量数据、更新大量数据的时候）</li>
+</ol>
+</li>
+<li>
+<p>事故错误日志:</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F%E6%96%B9%E6%A1%88/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/ai/%E7%8E%A9%E8%BD%ACai/">玩转AI WORLD</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/">多系统对接-签名校验案例(GO)</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2023-03-02 </span>
-      <div class="post-category">
-          <a href="/categories/ai/"> AI </a>
-          </div>
-        <span class="more-meta"> 约 814 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      AI写文案 ChatGPT: https://chat.openai.com/chat AI生成图片 AI绘图平台·midjourney 先用邮箱在 discord 社交平台 上注册一个账号 访问 https://www.midjourne
-    </div>
-    <div class="read-more">
-      <a href="/post/ai/%E7%8E%A9%E8%BD%ACai/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%BE%AE%E4%BF%A1%E8%A7%86%E9%A2%91%E5%8F%B7/">微信视频号</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2023-01-16 </span>
+      <span class="post-time"> 2022-03-15 </span>
       <div class="post-category">
           <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
           </div>
-        <span class="more-meta"> 约 579 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1508 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      视频号小店 &amp; 视频号助手 视频号橱窗：相当于店铺前端 视频号小店：视频号小店是专门对电商推出的专业平台 视频号助手：单个视频号的后台助手 一个视频号小
+      <h2 id="接口通讯规范">接口通讯规范</h2>
+<ul>
+<li>
+<p>签名规则：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 签名有效期暂定为 600 秒</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">platform</span> <span class="p">=</span> <span class="s">&#34;baidu&#34;</span>     <span class="c1">// 对接平台，正式测试环境保持一致</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">secret</span> <span class="p">=</span> <span class="s">&#34;test_123456&#34;</span>   <span class="c1">// 测试环境密钥，生产环境密钥私聊</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">requestTime</span> <span class="p">=</span> <span class="mi">1640163102</span> <span class="c1">// 秒级时间戳</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">loginStaffId</span> <span class="p">=</span> <span class="mi">123</span> <span class="c1">// 请求员工ID，便于权限控制</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 生成签名</span>
+</span></span><span class="line"><span class="cl"><span class="nx">sign</span> <span class="o">:=</span> <span class="nf">Md5</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d-%s-%s-%d&#34;</span><span class="p">,</span> <span class="nx">requestTime</span><span class="p">,</span> <span class="nx">platform</span><span class="p">,</span> <span class="nx">secret</span><span class="p">,</span> <span class="nx">loginStaffId</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>数据规范：</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%BE%AE%E4%BF%A1%E8%A7%86%E9%A2%91%E5%8F%B7/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/">企业微信自建应用代开发</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2022-03-14 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          </div>
+        <span class="more-meta"> 约 171 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="企业微信开发汇总">企业微信开发汇总</h2>
+<p><a href="https://github.com/liyuexi/qywx">关于企业微信的所有，如开源企业微信sdk</a></p>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA5ODcyODY0Nw==&amp;action=getalbum&amp;album_id=2167362871330930690#wechat_redirect">企业微信开发自建应用代开发篇</a></p>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&amp;album_id=1503367187451936773&amp;__biz=MzA5ODcyODY0Nw==#wechat_redirect">企业微信开发第三方应用开发篇</a></p>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA5ODcyODY0Nw==&amp;action=getalbum&amp;album_id=1745513894715916289#wechat_redirect">企业微信开发自建内部应用开发篇</a></p>
+<h2 id="自建应用代开发上线流程">自建应用代开发上线流程</h2>
+<p><a href="https://mp.weixin.qq.com/s/CY7BHSZbOaODgGH0lOuV8w">应用代开发上线流程，只看此文就够了(上)</a></p>
+<p><a href="https://mp.weixin.qq.com/s/2Dh6gl0a7lbe5DeAQ4JO2g">应用代开发上线流程，只看此文就够了(中)</a></p>
+<p><a href="https://mp.weixin.qq.com/s/jsHZfDN0RngSlrLY52vrcQ">应用代开发上线流程，只看此文就够了(下)</a></p>
+<h2 id="疑问">疑问</h2>
+<ol>
+<li>自建应用代开发，服务商怎么获取授权企业的会话存档接口？</li>
+</ol>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%92%8C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F/">稳定排序和不稳定排序</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2022-03-10 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
+          </div>
+        <span class="more-meta"> 约 2310 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%92%8C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/other/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/">Git分支管理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2022-03-07 </span>
+      <div class="post-category">
+          <a href="/categories/other/"> other </a>
+          </div>
+        <span class="more-meta"> 约 448 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="git分支管理及发版合并流程">GIT分支管理及发版合并流程</h2>
+<p>主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支), yourname_feature(功能分支), yourname_hotfix(修复分支)</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/other/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">企业微信第三方应用开发</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-09-24 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          </div>
+        <span class="more-meta"> 约 5594 字 </span>
+        <span class="more-meta"> 预计阅读 12 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="术语介绍">术语介绍</h2>
+<ol>
+<li>
+<p>corpid</p>
+<p>每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看</p>
+</li>
+<li>
+<p>provider_secret</p>
+<p>作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%A5%AE%E8%8C%B6%E4%B9%8B%E9%81%93/">饮茶之道</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-09-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
+          </div>
+        <span class="more-meta"> 约 2315 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="茶分六色">茶分六色</h2>
+<p>按茶叶的发酵程度排序：绿茶，黄茶，白茶，青茶，红茶，黑茶</p>
+<hr>
+<h2 id="绿茶抗氧化降火">绿茶——抗氧化、降火</h2>
+<p>绿茶是这六种茶中唯一的<code>不发酵茶</code>，保留了较多的天然物质；而鲜叶采摘后高温迅速杀青，遏制茶多酚的氧化，其抗氧化功能也是较强的。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%A5%AE%E8%8C%B6%E4%B9%8B%E9%81%93/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -256,6 +1138,8 @@
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
   
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -264,22 +1148,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -293,7 +1174,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

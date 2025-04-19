@@ -4,18 +4,17 @@
     <title>搜索引擎 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
     <description>Recent content in 搜索引擎 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 10 Aug 2024 10:03:22 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Aug 2024 10:03:22 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>搜索引擎</title>
       <link>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
       <pubDate>Sat, 10 Aug 2024 10:03:22 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</guid>
-      <description>方案对比 对比/方案 mysql ES meilisearch 学习成本 低 高 低 部署维护 简单 复杂 简单 功能特性 少 多 一般 查询性能 低 高 高 meilisearch GitHub项目 meilisearch 文档</description>
+      <description>&lt;h2 id=&#34;方案对比&#34;&gt;方案对比&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;对比/方案&lt;/th&gt;&#xA;          &lt;th&gt;mysql&lt;/th&gt;&#xA;          &lt;th&gt;ES&lt;/th&gt;&#xA;          &lt;th&gt;meilisearch&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;学习成本&lt;/td&gt;&#xA;          &lt;td&gt;低&lt;/td&gt;&#xA;          &lt;td&gt;高&lt;/td&gt;&#xA;          &lt;td&gt;低&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;部署维护&lt;/td&gt;&#xA;          &lt;td&gt;简单&lt;/td&gt;&#xA;          &lt;td&gt;复杂&lt;/td&gt;&#xA;          &lt;td&gt;简单&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;功能特性&lt;/td&gt;&#xA;          &lt;td&gt;少&lt;/td&gt;&#xA;          &lt;td&gt;多&lt;/td&gt;&#xA;          &lt;td&gt;一般&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;查询性能&lt;/td&gt;&#xA;          &lt;td&gt;低&lt;/td&gt;&#xA;          &lt;td&gt;高&lt;/td&gt;&#xA;          &lt;td&gt;高&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;meilisearch&#34;&gt;meilisearch&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/meilisearch/meilisearch&#34;&gt;GitHub项目&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.meilisearch.com/docs/learn/fine_tuning_results/filtering&#34;&gt;meilisearch 文档&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

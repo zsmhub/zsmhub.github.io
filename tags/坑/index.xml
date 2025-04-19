@@ -4,27 +4,24 @@
     <title>坑 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%9D%91/</link>
     <description>Recent content in 坑 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 13 Nov 2020 11:17:51 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%9D%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Nov 2020 11:17:51 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%9D%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go的一些坑</title>
       <link>https://zsmhub.github.io/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</link>
       <pubDate>Fri, 13 Nov 2020 11:17:51 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</guid>
-      <description>代码格式化 golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option+command+L】 json的坑 []uint8 转 json 后，得不到想</description>
+      <description>&lt;h2 id=&#34;代码格式化&#34;&gt;代码格式化&lt;/h2&gt;&#xA;&lt;p&gt;golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option+command+L】&lt;/p&gt;&#xA;&lt;h2 id=&#34;json的坑&#34;&gt;json的坑&lt;/h2&gt;&#xA;&lt;p&gt;[]uint8 转 json 后，得不到想要的结果&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;期待结果：[1, 2, 3]&lt;/li&gt;&#xA;&lt;li&gt;输出结果：&amp;ldquo;AQID&amp;rdquo;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;nx&#34;&gt;arr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;uint8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;nx&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Marshal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;nx&#34;&gt;fmt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;slicemapchannel本身就是引用类型&#34;&gt;slice/map/channel本身就是引用类型&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;slice&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>PHP 的一些坑</title>
       <link>https://zsmhub.github.io/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</link>
       <pubDate>Thu, 07 May 2020 16:00:02 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</guid>
-      <description>大小写的坑 mysql5.7 查询不区分大小写。 php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理 示例：array_udiff([&amp;lsquo;a</description>
+      <description>&lt;h2 id=&#34;大小写的坑&#34;&gt;大小写的坑&lt;/h2&gt;&#xA;&lt;p&gt;mysql5.7 查询不区分大小写。&lt;/p&gt;&#xA;&lt;p&gt;php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理&lt;/p&gt;&#xA;&lt;p&gt;示例：array_udiff([&amp;lsquo;a&amp;rsquo;, &amp;lsquo;b&amp;rsquo;, &amp;lsquo;c&amp;rsquo;], [&amp;lsquo;A&amp;rsquo;, &amp;lsquo;b&amp;rsquo;], &amp;lsquo;strcasecmp&amp;rsquo;) // 输出 c&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

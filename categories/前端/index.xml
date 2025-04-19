@@ -4,27 +4,24 @@
     <title>前端 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/categories/%E5%89%8D%E7%AB%AF/</link>
     <description>Recent content in 前端 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Tue, 04 Feb 2025 16:39:46 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Feb 2025 16:39:46 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>React</title>
       <link>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/react/</link>
       <pubDate>Tue, 04 Feb 2025 16:39:46 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/react/</guid>
-      <description>基础概念 ECMAScript ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。 核心特性：使用 let 和 const 代替 var；箭</description>
+      <description>&lt;h2 id=&#34;基础概念&#34;&gt;基础概念&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;ECMAScript&lt;/p&gt;&#xA;&lt;p&gt;ECMAScript（ES）是 JavaScript 的新标准，添加了许多新的语法和功能，使 JS 代码更简洁、强大、易读。&lt;/p&gt;&#xA;&lt;p&gt;核心特性：使用 let 和 const 代替 var；箭头函数；async 和 await等。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>前端开发</title>
       <link>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</link>
       <pubDate>Fri, 01 Mar 2019 11:01:18 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</guid>
-      <description>Sass 与 Less Sass背景 CSS 不是编程语言，虽然可以用它来开发网页样式，但是没有办法用它编程。SASS 的出现，让 CSS 实现了通过代码编程的方式来实现。 SASS 是</description>
+      <description>&lt;h2 id=&#34;sass-与-less&#34;&gt;Sass 与 Less&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Sass背景&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;CSS 不是编程语言，虽然可以用它来开发网页样式，但是没有办法用它编程。SASS 的出现，让 CSS 实现了通过代码编程的方式来实现。&lt;/li&gt;&#xA;&lt;li&gt;SASS 是一种可用于编写 CSS 的语言，是一种 CSS 预处理器，提供了许多便利的写法，让 CSS 的处理实现了可编程处理。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Less背景&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

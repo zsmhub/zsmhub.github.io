@@ -16,14 +16,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。Composer 是多平台的，我们努力使它在 Windows 、 Linux 以及 OSX 平台上运行的同样出色。 composer扩展包平台： https://packagist.org/ ~和^的意思很接近，在x.y的情况下是一样的都是代表x.y &lt;= 版本号 &lt; (x&#43;1).0，但是在版本号是x.y.z的情况下有区别，举个例子吧： ~1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 1.3.0
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/composer/" />
@@ -35,24 +36,30 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Composer" />
-<meta property="og:description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/composer/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-04-03T21:50:58&#43;08:00" />
-<meta property="article:modified_time" content="2019-04-03T22:45:33&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/composer/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Composer">
+  <meta property="og:description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。Composer 是多平台的，我们努力使它在 Windows 、 Linux 以及 OSX 平台上运行的同样出色。 composer扩展包平台： https://packagist.org/ ~和^的意思很接近，在x.y的情况下是一样的都是代表x.y &lt;= 版本号 &lt; (x&#43;1).0，但是在版本号是x.y.z的情况下有区别，举个例子吧： ~1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 1.3.0">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-04-03T21:50:58+08:00">
+    <meta property="article:modified_time" content="2019-04-03T22:45:33+08:00">
+    <meta property="article:tag" content="Php">
 
-<meta itemprop="name" content="Composer">
-<meta itemprop="description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理"><meta itemprop="datePublished" content="2019-04-03T21:50:58&#43;08:00" />
-<meta itemprop="dateModified" content="2019-04-03T22:45:33&#43;08:00" />
-<meta itemprop="wordCount" content="1428">
-<meta itemprop="keywords" content="php," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Composer"/>
-<meta name="twitter:description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理"/>
+  <meta itemprop="name" content="Composer">
+  <meta itemprop="description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。Composer 是多平台的，我们努力使它在 Windows 、 Linux 以及 OSX 平台上运行的同样出色。 composer扩展包平台： https://packagist.org/ ~和^的意思很接近，在x.y的情况下是一样的都是代表x.y &lt;= 版本号 &lt; (x&#43;1).0，但是在版本号是x.y.z的情况下有区别，举个例子吧： ~1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 1.3.0">
+  <meta itemprop="datePublished" content="2019-04-03T21:50:58+08:00">
+  <meta itemprop="dateModified" content="2019-04-03T22:45:33+08:00">
+  <meta itemprop="wordCount" content="1428">
+  <meta itemprop="keywords" content="Php">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Composer">
+  <meta name="twitter:description" content="pear pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具 phar: php档案包 Composer 概念：用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。Composer 是多平台的，我们努力使它在 Windows 、 Linux 以及 OSX 平台上运行的同样出色。 composer扩展包平台： https://packagist.org/ ~和^的意思很接近，在x.y的情况下是一样的都是代表x.y &lt;= 版本号 &lt; (x&#43;1).0，但是在版本号是x.y.z的情况下有区别，举个例子吧： ~1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 1.3.0">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +98,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +131,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -165,8 +182,7 @@
 <li>~和^的意思很接近，在x.y的情况下是一样的都是代表x.y &lt;= 版本号 &lt; (x+1).0，但是在版本号是x.y.z的情况下有区别，举个例子吧：
 <blockquote>
 <p>~1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 1.3.0</p>
-<p>^1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 2.0.0</p>
-</blockquote>
+<p>^1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 2.0.0</p></blockquote>
 </li>
 </ol>
 <h2 id="基本命令">基本命令</h2>
@@ -195,11 +211,10 @@
 <li>
 <p>php -d memory_limit=-1 /usr/local/bin/composer require  <!-- raw HTML omitted --> -&gt; 解决内存耗尽问题，保证安装成功</p>
 <blockquote>
-<p>composer require &ldquo;summerblue/generator:~1.0&rdquo; &ndash;dev -&gt; 后置参数 &ndash;dev 表明我们只在开发环境中使用</p>
-</blockquote>
+<p>composer require &ldquo;summerblue/generator:~1.0&rdquo; &ndash;dev -&gt; 后置参数 &ndash;dev 表明我们只在开发环境中使用</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -208,21 +223,21 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">// 安装包
-composer require hashids/hashids:2.0.0
-// 已安装 升级
-composer require hashids/hashids:3.0.0
-// 已安装 降级
-composer remove hashids/hashids
-composer require hashids/hashids:2.0.4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// 安装包
+</span></span><span class="line"><span class="cl">composer require hashids/hashids:2.0.0
+</span></span><span class="line"><span class="cl">// 已安装 升级
+</span></span><span class="line"><span class="cl">composer require hashids/hashids:3.0.0
+</span></span><span class="line"><span class="cl">// 已安装 降级
+</span></span><span class="line"><span class="cl">composer remove hashids/hashids
+</span></span><span class="line"><span class="cl">composer require hashids/hashids:2.0.4
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>接下来介绍几个日常生产的流程，来方便加深我们的理解</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -238,21 +253,21 @@ composer require hashids/hashids:2.0.4
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">&gt; 流程一：新项目流程
-&gt; - 创建 composer.json，并添加依赖到的扩展包；
-&gt; - 运行 composer install，安装扩展包并生成composer.lock；
-&gt; - 执行额外命令：php artisan ide-helper:generate 等
-&gt; - 提交 composer.lock 到代码版本控制器中，如：git<span class="p">;</span>
-&gt;
-&gt; 流程二：新人接手安装现有项目的扩展
-&gt; - 克隆项目后，根目录下直接运行 composer install 从composer.lock 中安装 指定版本 的扩展包以及其依赖；
-&gt; - 执行额外命令：php artisan ide-helper:generate 等
-&gt; - 此流程同样适用于生产环境代码的部署。
-&gt;
-&gt; 流程三：为项目添加新扩展包
-&gt; - 使用 composer require <span class="s2">&#34;new/package:version&#34;</span> 添加扩展包；
-&gt; - 提交更新后的 composer.json 和 composer.lock 到代码版本控制器中，如：git<span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">&gt; 流程一：新项目流程
+</span></span><span class="line"><span class="cl">&gt; - 创建 composer.json，并添加依赖到的扩展包；
+</span></span><span class="line"><span class="cl">&gt; - 运行 composer install，安装扩展包并生成composer.lock；
+</span></span><span class="line"><span class="cl">&gt; - 执行额外命令：php artisan ide-helper:generate 等
+</span></span><span class="line"><span class="cl">&gt; - 提交 composer.lock 到代码版本控制器中，如：git<span class="p">;</span>
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">&gt; 流程二：新人接手安装现有项目的扩展
+</span></span><span class="line"><span class="cl">&gt; - 克隆项目后，根目录下直接运行 composer install 从composer.lock 中安装 指定版本 的扩展包以及其依赖；
+</span></span><span class="line"><span class="cl">&gt; - 执行额外命令：php artisan ide-helper:generate 等
+</span></span><span class="line"><span class="cl">&gt; - 此流程同样适用于生产环境代码的部署。
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">&gt; 流程三：为项目添加新扩展包
+</span></span><span class="line"><span class="cl">&gt; - 使用 composer require <span class="s2">&#34;new/package:version&#34;</span> 添加扩展包；
+</span></span><span class="line"><span class="cl">&gt; - 提交更新后的 composer.json 和 composer.lock 到代码版本控制器中，如：git<span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -268,15 +283,15 @@ composer require hashids/hashids:2.0.4
 <p>实现全局辅助函数：打开根目录下的composer.json，找到加载配置项autoload，新增以下代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="s2">&#34;files&#34;</span>:<span class="o">[</span>
-    <span class="s2">&#34;app/helpers.php&#34;</span>
-<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="s2">&#34;files&#34;</span>:<span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;app/helpers.php&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -299,8 +314,7 @@ composer require hashids/hashids:2.0.4
 </ul>
 <h2 id="通常引入的-package-有这么些特征">通常引入的 package 有这么些特征</h2>
 <blockquote>
-<p>不要随意引入过多的 package，简单的功能自己写即可。</p>
-</blockquote>
+<p>不要随意引入过多的 package，简单的功能自己写即可。</p></blockquote>
 <ol>
 <li>通用类库，比如 jwt 、predis</li>
 <li>非常复杂的功能，比如 oauth（即 Laravel 的 passport）</li>
@@ -313,7 +327,7 @@ composer require hashids/hashids:2.0.4
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -385,22 +399,19 @@ composer require hashids/hashids:2.0.4
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -414,7 +425,7 @@ composer require hashids/hashids:2.0.4
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

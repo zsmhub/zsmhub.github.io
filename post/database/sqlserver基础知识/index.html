@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。 SQL Server 主要是和 MySQL 和 Oracle 二者竞争。 系统数据库（System Databa" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。
+SQL Server 主要是和 MySQL 和 Oracle 二者竞争。
+系统数据库（System Databases） SQL Server 有五个系统数据库：
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
@@ -35,24 +38,36 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="SQL Server 基础知识" />
-<meta property="og:description" content="SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。 SQL Server 主要是和 MySQL 和 Oracle 二者竞争。 系统数据库（System Databa" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-03-28T20:19:28&#43;08:00" />
-<meta property="article:modified_time" content="2019-03-28T20:19:28&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="SQL Server 基础知识">
+  <meta property="og:description" content="SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。
+SQL Server 主要是和 MySQL 和 Oracle 二者竞争。
+系统数据库（System Databases） SQL Server 有五个系统数据库：">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-03-28T20:19:28+08:00">
+    <meta property="article:modified_time" content="2019-03-28T20:19:28+08:00">
+    <meta property="article:tag" content="Sqlserver">
 
-<meta itemprop="name" content="SQL Server 基础知识">
-<meta itemprop="description" content="SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。 SQL Server 主要是和 MySQL 和 Oracle 二者竞争。 系统数据库（System Databa"><meta itemprop="datePublished" content="2019-03-28T20:19:28&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-28T20:19:28&#43;08:00" />
-<meta itemprop="wordCount" content="512">
-<meta itemprop="keywords" content="sqlserver," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SQL Server 基础知识"/>
-<meta name="twitter:description" content="SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。 SQL Server 主要是和 MySQL 和 Oracle 二者竞争。 系统数据库（System Databa"/>
+  <meta itemprop="name" content="SQL Server 基础知识">
+  <meta itemprop="description" content="SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。
+SQL Server 主要是和 MySQL 和 Oracle 二者竞争。
+系统数据库（System Databases） SQL Server 有五个系统数据库：">
+  <meta itemprop="datePublished" content="2019-03-28T20:19:28+08:00">
+  <meta itemprop="dateModified" content="2019-03-28T20:19:28+08:00">
+  <meta itemprop="wordCount" content="512">
+  <meta itemprop="keywords" content="Sqlserver">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SQL Server 基础知识">
+  <meta name="twitter:description" content="SQL Server SQL Server 是由微软公司（Microsoft）开发的关系型数据库（RDBMS）。
+SQL Server 主要是和 MySQL 和 Oracle 二者竞争。
+系统数据库（System Databases） SQL Server 有五个系统数据库：">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +106,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +139,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -174,7 +199,7 @@
 <h2 id="常用命令">常用命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -206,37 +231,37 @@
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- 创建登录账户
-</span><span class="c1">-- drop login dba_study;
-</span><span class="c1"></span><span class="k">create</span> <span class="n">login</span> <span class="n">dba_study</span> <span class="k">with</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;Admin888&#39;</span><span class="p">,</span> <span class="n">default_database</span><span class="o">=</span><span class="n">db_study</span><span class="p">;</span>
-
-<span class="c1">-- 创建数据库用户
-</span><span class="c1">-- drop login dba_study;
-</span><span class="c1"></span><span class="k">create</span> <span class="k">user</span> <span class="n">user_study</span> <span class="k">for</span> <span class="n">login</span> <span class="n">dba_study</span> <span class="k">with</span> <span class="n">default_schema</span><span class="o">=</span><span class="n">dbo</span><span class="p">;</span>
-
-<span class="c1">-- 用户授权
-</span><span class="c1"></span><span class="k">exec</span> <span class="n">sp_addrolemember</span> <span class="s1">&#39;db_owner&#39;</span><span class="p">,</span> <span class="s1">&#39;user_study&#39;</span><span class="p">;</span>
-
-<span class="cm">/*登录账户创建完成后可以用这个账户创建数据库连接*/</span>
-<span class="c1">-- create login ehr_kaoqin;
-</span><span class="c1"></span><span class="k">create</span> <span class="n">login</span> <span class="n">ehr_kaoqin</span> <span class="k">with</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;fg@1#2&#39;</span><span class="p">,</span> <span class="n">default_database</span><span class="o">=</span><span class="n">FEIDONG_EHR</span><span class="p">;</span>
-
-<span class="c1">-- create user ehr_kaoqin;
-</span><span class="c1"></span><span class="k">create</span> <span class="k">user</span> <span class="n">ehr_kaoqin</span> <span class="k">for</span> <span class="n">login</span> <span class="n">ehr_kaoqin</span> <span class="k">with</span> <span class="n">default_schema</span><span class="o">=</span><span class="n">dbo</span><span class="p">;</span>
-
-<span class="c1">-- 赋予数据库用户“dba”权限
-</span><span class="c1"></span><span class="k">exec</span> <span class="n">sp_addrolemember</span> <span class="s1">&#39;db_owner&#39;</span><span class="p">,</span> <span class="s1">&#39;ehr_kaoqin&#39;</span><span class="p">;</span>
-
-<span class="c1">-- 赋予数据库用户只读权限
-</span><span class="c1"></span><span class="k">exec</span> <span class="n">sp_addrolemember</span> <span class="s1">&#39;db_datareader&#39;</span><span class="p">,</span> <span class="s1">&#39;ehr_kaoqin&#39;</span><span class="p">;</span>
-
-<span class="c1">-- 授权某张表CURD权限
-</span><span class="c1"></span><span class="n">USE</span> <span class="n">FEIDONG_EHR</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">SELECT</span> <span class="k">ON</span> <span class="k">OBJECT</span><span class="p">::</span><span class="n">FEIDONG_EHR</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">PEREMPMS</span> <span class="k">TO</span> <span class="n">ehr_kaoqin</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="k">OBJECT</span><span class="p">::</span><span class="n">FEIDONG_EHR</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">PEREMPMS</span> <span class="k">TO</span> <span class="n">ehr_kaoqin</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">INSERT</span> <span class="k">ON</span> <span class="k">OBJECT</span><span class="p">::</span><span class="n">FEIDONG_EHR</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">PEREMPMS</span> <span class="k">TO</span> <span class="n">ehr_kaoqin</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">DELETE</span> <span class="k">ON</span> <span class="k">OBJECT</span><span class="p">::</span><span class="n">FEIDONG_EHR</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">PEREMPMS</span> <span class="k">TO</span> <span class="n">ehr_kaoqin</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 创建登录账户
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- drop login dba_study;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">dba_study</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;Admin888&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">default_database</span><span class="o">=</span><span class="n">db_study</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建数据库用户
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- drop login dba_study;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">user_study</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">dba_study</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">default_schema</span><span class="o">=</span><span class="n">dbo</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 用户授权
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">exec</span><span class="w"> </span><span class="n">sp_addrolemember</span><span class="w"> </span><span class="s1">&#39;db_owner&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user_study&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*登录账户创建完成后可以用这个账户创建数据库连接*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- create login ehr_kaoqin;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">ehr_kaoqin</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;fg@1#2&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">default_database</span><span class="o">=</span><span class="n">FEIDONG_EHR</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- create user ehr_kaoqin;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">ehr_kaoqin</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">ehr_kaoqin</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">default_schema</span><span class="o">=</span><span class="n">dbo</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 赋予数据库用户“dba”权限
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">exec</span><span class="w"> </span><span class="n">sp_addrolemember</span><span class="w"> </span><span class="s1">&#39;db_owner&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ehr_kaoqin&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 赋予数据库用户只读权限
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">exec</span><span class="w"> </span><span class="n">sp_addrolemember</span><span class="w"> </span><span class="s1">&#39;db_datareader&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ehr_kaoqin&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 授权某张表CURD权限
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">USE</span><span class="w"> </span><span class="n">FEIDONG_EHR</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">OBJECT</span><span class="p">::</span><span class="n">FEIDONG_EHR</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">PEREMPMS</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">ehr_kaoqin</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">OBJECT</span><span class="p">::</span><span class="n">FEIDONG_EHR</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">PEREMPMS</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">ehr_kaoqin</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">OBJECT</span><span class="p">::</span><span class="n">FEIDONG_EHR</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">PEREMPMS</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">ehr_kaoqin</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">OBJECT</span><span class="p">::</span><span class="n">FEIDONG_EHR</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="n">PEREMPMS</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">ehr_kaoqin</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -244,7 +269,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -316,22 +341,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -345,7 +367,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

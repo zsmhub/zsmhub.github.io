@@ -4,18 +4,17 @@
     <title>术语 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E6%9C%AF%E8%AF%AD/</link>
     <description>Recent content in 术语 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 14 May 2020 09:12:26 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E6%9C%AF%E8%AF%AD/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 May 2020 09:12:26 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E6%9C%AF%E8%AF%AD/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>记一下互联网术语</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</link>
       <pubDate>Thu, 14 May 2020 09:12:26 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/</guid>
-      <description>编程常用单词 tmp/temp: 临时对象 startAt/endAt: 开始时间/结束时间 prev/next: 上一个/下一个 职位 PM(Product Manager): 产品经理 AM(Account Manager): 客户经理 RD(Research &amp;amp; Develop): 研发 FE(Front End): 前端 指标 DAU(Daily Active Users): 日活跃数 响应时间(RT) :</description>
+      <description>&lt;h2 id=&#34;编程常用单词&#34;&gt;编程常用单词&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;tmp/temp: 临时对象&lt;/li&gt;&#xA;&lt;li&gt;startAt/endAt: 开始时间/结束时间&lt;/li&gt;&#xA;&lt;li&gt;prev/next: 上一个/下一个&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;职位&#34;&gt;职位&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;PM(Product Manager): 产品经理&lt;/li&gt;&#xA;&lt;li&gt;AM(Account Manager): 客户经理&lt;/li&gt;&#xA;&lt;li&gt;RD(Research &amp;amp; Develop): 研发&lt;/li&gt;&#xA;&lt;li&gt;FE(Front End): 前端&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;指标&#34;&gt;指标&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;DAU(Daily Active Users): 日活跃数&lt;/li&gt;&#xA;&lt;li&gt;响应时间(RT) : 响应时间是指系统对请求作出响应的时间。&lt;/li&gt;&#xA;&lt;li&gt;吞吐量(Throughput)：吞吐量是指系统在单位时间内处理请求的数量。&lt;/li&gt;&#xA;&lt;li&gt;并发用户数：并发用户数是指系统可以同时承载的正常使用系统功能的用户的数量。&lt;/li&gt;&#xA;&lt;li&gt;QPS每秒查询率(Query Per Second) ：每秒查询率QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。&lt;/li&gt;&#xA;&lt;li&gt;高可用（HA）：是分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计减少系统不能提供服务的时间。而服务器的可用性是指单位时间内（通常一年），服务器可以正常工作的时间比例。（可用性=平均故障间隔/（平均故障间隔 + 故障恢复平均时间））&lt;/li&gt;&#xA;&lt;li&gt;独立访问者数量（unique visitors，UV）、页面浏览数（page views，PV）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;程序员&#34;&gt;程序员&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;RPC(Remote Procedure Call): 远程过程调用，是一个计算机通信协议。该协议允许运行于一台计算机的程序调用另一台计算机的子程序，而程序员无需额外地为这个交互作用编程。值得注意是，两个或多个应用程序都分布在不同的服务器上，它们之间的调用都像是本地方法调用一样。&lt;/li&gt;&#xA;&lt;li&gt;PR 的全称是 Pull Request，经常用 Github 的同学对这个肯定很熟悉了。MR 的全称是 Merge Request，相信玩过 Gitlab 的同学都知道这个。『重点：pr 和 mr 本质上都是指合并代码请求，只是站在不同角度有不同的说法而已』&lt;/li&gt;&#xA;&lt;li&gt;SEO(Search Engine Optimization),中文是“搜索引擎优化”&lt;/li&gt;&#xA;&lt;li&gt;sso(Single sign-on)，单点登录&lt;/li&gt;&#xA;&lt;li&gt;OSS: 对象存储，OSS图片处理服务是阿里云OSS对外提供的海量、安全、低成本、高可靠的图片处理服务。您可以将原始图片上传保存在 OSS 上，通过简单的 RESTful 接口，在任何时间、任何地点、任何互联网设备上对图片进行处理。&lt;/li&gt;&#xA;&lt;li&gt;CDN(Content Delivery Network): 内容分发网络&lt;/li&gt;&#xA;&lt;li&gt;WAF(Web Application Firewall): Web 应用防火墙&lt;/li&gt;&#xA;&lt;li&gt;负载均衡：制定策略做资源的分配&lt;/li&gt;&#xA;&lt;li&gt;uuid: Universally Unique Identifier，通用唯一识别码&lt;/li&gt;&#xA;&lt;li&gt;dto: data transfer object，数据传输对象&lt;/li&gt;&#xA;&lt;li&gt;dao: data access object，数据访问对象&lt;/li&gt;&#xA;&lt;li&gt;OOM: Out of memory，内存溢出&lt;/li&gt;&#xA;&lt;li&gt;DTS: 数据传输服务DTS（Data Transmission Service）支持RDBMS、NoSQL、OLAP等数据源间的数据交互，集数据同步、迁移、订阅、集成、加工于一体，助您构建安全、可扩展、高可用的数据架构。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;旅游相关&#34;&gt;旅游相关&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;在线旅游（OTA，全称为Online Travel Agency），是旅游电子商务行业的专业词语。OTA是在线旅行社，主要是各种旅游产品的代理商，如携程，而平台主要提供旅游信息搜索，为顾客提供旅游代理商，其中也包括OTA在内的旅游产品信息，如爱彼迎。&lt;/li&gt;&#xA;&lt;li&gt;房源静态信息：酒店的名称，地址，电话，房型等&lt;/li&gt;&#xA;&lt;li&gt;房源动态信息：价格、房量&lt;/li&gt;&#xA;&lt;li&gt;房态：入住、预离（离店日期为今天）、在住、远期（入住日期为今天之后）、离店、关停/软装（关停：暂停出售，软装：装修）&lt;/li&gt;&#xA;&lt;li&gt;酒店会有保留房，民宿是整租&lt;/li&gt;&#xA;&lt;li&gt;及时确单&lt;/li&gt;&#xA;&lt;li&gt;PMS: 酒店物业管理系统（Property management System，简称PMS）&lt;/li&gt;&#xA;&lt;li&gt;ARI数据：酒店动态数据，如房价、房态和房量&lt;/li&gt;&#xA;&lt;li&gt;CRS: 酒店中央预订系统（Common Reporting Standard，简称CRS）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;特殊编码&#34;&gt;特殊编码&lt;/h2&gt;&#xA;&lt;p&gt;\u2005：特殊的空格字符，群里@人时高亮需要用到&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>memcached on ZsmHub - Blog</title>
+    <title>Memcached on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/memcached/</link>
-    <description>Recent content in memcached on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Memcached on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 04 Jan 2019 22:43:26 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/memcached/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Jan 2019 22:43:26 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/memcached/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Memcached</title>
       <link>https://zsmhub.github.io/post/database/memcached/</link>
       <pubDate>Fri, 04 Jan 2019 22:43:26 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/database/memcached/</guid>
-      <description>Memcached 是一个自由开源的，高性能，分布式内存对象缓存系统。 Memcached 是一种基于内存的 key-value 存储，用来存储小块的任意数据（字符串、对象）。 Memcached 官方网站：http:</description>
+      <description>&lt;p&gt;Memcached 是一个自由开源的，高性能，分布式内存对象缓存系统。&lt;/p&gt;&#xA;&lt;p&gt;Memcached 是一种基于内存的 key-value 存储，用来存储小块的任意数据（字符串、对象）。&lt;/p&gt;&#xA;&lt;p&gt;Memcached 官方网站：http://memcached.org/&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="This is a site of zsmhub-blog." /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ZsmHub - Blog" />
-<meta property="og:description" content="This is a site of zsmhub-blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://zsmhub.github.io/" />
+<meta property="og:url" content="https://zsmhub.github.io/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="ZsmHub - Blog">
+  <meta property="og:description" content="This is a site of zsmhub-blog.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ZsmHub - Blog">
-<meta itemprop="description" content="This is a site of zsmhub-blog."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ZsmHub - Blog"/>
-<meta name="twitter:description" content="This is a site of zsmhub-blog."/>
+  <meta itemprop="name" content="ZsmHub - Blog">
+  <meta itemprop="description" content="This is a site of zsmhub-blog.">
+  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ZsmHub - Blog">
+  <meta name="twitter:description" content="This is a site of zsmhub-blog.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -88,12 +93,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -112,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -120,115 +135,408 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/">直播开发</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/database/tablestore/">大数据表设计-TableStore</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-08-26 </span>
+      <span class="post-time"> 2020-08-02 </span>
       <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          <a href="/categories/database/"> database </a>
           </div>
-        <span class="more-meta"> 约 2000 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span class="more-meta"> 约 4297 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      腾讯云直播 使用腾讯 云直播·标准直播 产品进行直播需求开发 产品文档 基本概念 推流 主播将本地视频源和音频源推送到腾讯视频云服务器，在有些场景中也被称
+      <h2 id="简介">简介</h2>
+<p>表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存储和强大的索引引擎能够支持PB级存储、千万TPS以及毫秒级延迟的服务能力。</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
+      <a href="/post/database/tablestore/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/">安全层面-限流策略</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E5%92%8Cmariadb/">Mysql 和 MariaDB</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-08-12 </span>
+      <span class="post-time"> 2020-07-27 </span>
       <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          <a href="/categories/database/"> database </a>
           </div>
-        <span class="more-meta"> 约 1307 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      一、问题背景 最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和acc
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-08-05 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
-          </div>
-        <span class="more-meta"> 约 153 字 </span>
+        <span class="more-meta"> 约 184 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      云原生四大要点：DevOps+持续交付+微服务+容器。 总而言之，符合云原生架构的应用程序应该是：采用开源堆栈（K8S+Docker）进行容器
+      <h2 id="mysql-和-mariadb-的关系">Mysql 和 MariaDB 的关系</h2>
+<p>MariaDB 数据库管理系统是 MySQL 的一个分支，主要由开源社区在维护，采用GPL授权许可。</p>
+<p>开发这个分支的原因之一是：甲骨文公司收购了 MySQL 后，有将 MySQL 闭源的潜在风险，因此社区采用分支的方式来避开这个风险。</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E4%BA%91%E5%8E%9F%E7%94%9F/" class="read-more-link">阅读更多</a>
+      <a href="/post/database/mysql%E5%92%8Cmariadb/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/http%E5%AE%A2%E6%88%B7%E7%AB%AF/">Http客户端</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/golang/%E6%A1%86%E6%9E%B6-echo%E6%A1%86%E6%9E%B6/">Echo 框架</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-07-28 </span>
+      <span class="post-time"> 2020-07-26 </span>
       <div class="post-category">
           <a href="/categories/golang/"> golang </a>
           </div>
-        <span class="more-meta"> 约 2803 字 </span>
-        <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span class="more-meta"> 约 461 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      理解 timeout timeout 又可以细分为 connect timeout、read timeout、write timeout。而 read timeout 和 write timeout 必须是在 connect 之后才能发生。 ReadTime
+      <p><a href="https://echo.labstack.com/docs">官方文档</a></p>
+<h2 id="echo-入门示例">Echo 入门示例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/labstack/echo/v4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/labstack/echo/v4/middleware&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Echo instance</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">echo</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Middleware</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">e</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nf">Logger</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">e</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nf">Recover</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">e</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nf">BodyLimit</span><span class="p">(</span><span class="s">&#34;1M&#34;</span><span class="p">))</span> <span class="c1">// 限制http请求body大小，不设置默认无限制</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Routes</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">e</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Start server</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// e.Logger.Fatal(e.Start(&#34;:1323&#34;))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 平滑关闭，关闭服务前会等待所有http请求结束</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="s">&#34;:1323&#34;</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span> <span class="o">!=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ErrServerClosed</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Handler</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// return c.String(http.StatusOK, &#34;Hello, World!&#34;)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nf">Success</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="路由分组">路由分组</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">NoticeController</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">noticeController</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">NoticeController</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">Route</span> <span class="p">=</span> <span class="nx">echo</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">notice</span> <span class="o">:=</span> <span class="nx">Router</span><span class="p">.</span><span class="nf">Group</span><span class="p">(</span><span class="s">&#34;/notice&#34;</span><span class="p">,</span> <span class="nx">noticeAuthMiddleware</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 列表</span>
+</span></span><span class="line"><span class="cl"><span class="nx">notice</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">noticeController</span><span class="p">.</span><span class="nx">getList</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 新建</span>
+</span></span><span class="line"><span class="cl"><span class="nx">notice</span><span class="p">.</span><span class="nf">POST</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">noticeController</span><span class="p">.</span><span class="nx">createNotice</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 编辑</span>
+</span></span><span class="line"><span class="cl"><span class="nx">notice</span><span class="p">.</span><span class="nf">PUT</span><span class="p">(</span><span class="s">&#34;/:id&#34;</span><span class="p">,</span> <span class="nx">noticeController</span><span class="p">.</span><span class="nx">updateNotice</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 删除</span>
+</span></span><span class="line"><span class="cl"><span class="nx">notice</span><span class="p">.</span><span class="nf">DELETE</span><span class="p">(</span><span class="s">&#34;/:id&#34;</span><span class="p">,</span> <span class="nx">noticeController</span><span class="p">.</span><span class="nx">deleteNotice</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="context">context</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 获取上下文</span>
+</span></span><span class="line"><span class="cl"><span class="nx">req</span> <span class="o">:=</span> <span class="nx">httptest</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">MethodGet</span><span class="p">,</span> <span class="s">&#34;/url/xxx&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">resp</span> <span class="o">:=</span> <span class="nx">httptest</span><span class="p">.</span><span class="nf">NewRecorder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">Echo</span><span class="p">.</span><span class="nf">NewContext</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="其他">其他</h2>
+<blockquote>
+<p>echo path 之分</p>
     </div>
     <div class="read-more">
-      <a href="/post/golang/http%E5%AE%A2%E6%88%B7%E7%AB%AF/" class="read-more-link">阅读更多</a>
+      <a href="/post/golang/%E6%A1%86%E6%9E%B6-echo%E6%A1%86%E6%9E%B6/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%BF%90%E5%8A%A8%E4%B9%8B%E8%B7%AF/">运动之路</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-07-22 </span>
+      <span class="post-time"> 2020-07-19 </span>
       <div class="post-category">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
+          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
           </div>
-        <span class="more-meta"> 约 617 字 </span>
+        <span class="more-meta"> 约 513 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      TCC 分布式事务 TCC 是 Try、Confirm、Cancel 三个词语的缩写。 TCC 分为 3 个阶段 Try 阶段：尝试执行，完成所有业务检查（一致性）, 预留必须业务
+      <h2 id="游泳">游泳</h2>
+<ol>
+<li>游泳时不要同手同脚</li>
+<li>蛙泳的配合技术通常采用一次臂、一次腿、一次呼吸。两臂外划时，抬头吸气，然后收腿，伸臂时呼气；两臂向前将伸直时，两腿蹬夹水，臂腿伸直滑行，两臂内划时低头闭气。</li>
+</ol>
+<h2 id="打羽毛球">打羽毛球</h2>
+<h3 id="技巧">技巧</h3>
+<blockquote>
+<p>没事多看看女双或混双的比赛，多学习下</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%BF%90%E5%8A%A8%E4%B9%8B%E8%B7%AF/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/">Mysql高级知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-07-12 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 7021 字 </span>
+        <span class="more-meta"> 预计阅读 15 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="mysql-架构">MySQL 架构</h2>
+<p>连接层：最上层是一些客户端和连接服务。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现基于SSL的安全链接。服务器也会为安全接入的每个客户端验证它所具有的操作权限。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/mysql%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/">正反向代理简介</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-07-09 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/"> 程序员 </a>
+          </div>
+        <span class="more-meta"> 约 1671 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="正向代理">正向代理</h2>
+<blockquote>
+<p>正向代理隐藏了真实的请求客户端。（客户端需要主动做代理设置。）</p></blockquote>
+<p><img src="/images/2021/QQ20210831-113313@2x.png" alt="正向代理"></p>
+<p>比如<code>X花店</code>代A,B,C,D,E五位男生向Candy女生送匿名的生日鲜花，这里的X花店就是5位顾客的代理，花店代理的是客户，隐藏的是客户。这就是我们常说的代理。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%AE%80%E4%BB%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/">Go切片详解</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-07-08 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 3642 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="前言">前言</h2>
+<p>通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此诞生。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-07-02 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          </div>
+        <span class="more-meta"> 约 677 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="概述">概述</h2>
+<p>工作流实现功能包括：流程自定义、步骤自定义、步骤重复次数、步骤类型（串行/并行）、定义排序功能。</p>
+<p>工作流[workflow]：在多个参与人员之间按照事先定义好的规则传递信息、文档或任务的过程自动执行，从而实现某个预期的业务目标，或者促使该目标的实现。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/">Laravel 如何在预加载中指定查询的字段</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-06-30 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 211 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="预加载指定列">预加载指定列</h2>
+<p>并不是总需要获取关系的每一列。在这种情况下，Eloquent 允许你为关联指定想要获取的列：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$result</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;topics:user_id,body,title&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意：在使用这个特性时，一定要在要获取的列的列表中包含 id 列。『这里的 <code>id</code> 列是指关联字段列 <code>user_id</code> 』</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/laravel%E5%A6%82%E4%BD%95%E5%9C%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%AD%97%E6%AE%B5/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/nsq-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0/">NSQ-分布式实时消息处理平台</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-06-28 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 3988 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><img src="/images/2020/v2-b266260a17702af4509f6c7d2ba40d4a_r.jpg" alt="NSQ 架构"></p>
+<h2 id="nsq-简介">NSQ 简介</h2>
+<p>NSQ 是一个基于 Go 语言的分布式实时消息处理平台，它基于 MIT 开源协议发布，由 bitly 公司开源出来的一款简单易用的消息中间件。其设计的目的是用来大规模地处理每天数以十亿计级别的消息。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/nsq-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E5%B9%B3%E5%8F%B0/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -256,6 +564,8 @@
       <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
       <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
   
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -264,22 +574,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -293,7 +600,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

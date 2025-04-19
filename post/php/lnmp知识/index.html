@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="Install Linux 一键搭建 Lnmp 环境
+1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且后台运行方式启动所有容器 $ docker-compose up -d nginx php mysql # 创建并且已后台运行的方式启动nginx、php、mysql容器 $ docker-compose start php # 启动服务 $ docker-compose stop php # 停止服务 $ docker-compose restart php # 重启服务 $ docker-compose build php # 构建或者重新构建服务 $ docker-compose rm php # 删除并且停止php容器 $ docker-compose down # 停止并删除容器，网络，图像和挂载卷 配置文件 1 2 3 4 5 6 7 8 9 10 11 nginx 配置文件路径： cd /usr/local/nginx/conf/vhost mysql 安装路径 cd /etc/mysql/ php配置文件路径：php --ini [disable_functions: 禁用函数配置] php-fpm配置文件：/usr/local/php/etc/php-fpm.conf Redis 配置文件：/usr/local/redis/etc/redis.conf LNMP 日志文件 Nginx
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/" />
@@ -35,24 +38,37 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="PHP 开发环境之 Lnmp" />
-<meta property="og:description" content="Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-01-01T13:55:39&#43;08:00" />
-<meta property="article:modified_time" content="2019-01-01T13:55:39&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/php/lnmp%E7%9F%A5%E8%AF%86/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="PHP 开发环境之 Lnmp">
+  <meta property="og:description" content="Install Linux 一键搭建 Lnmp 环境
+1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且后台运行方式启动所有容器 $ docker-compose up -d nginx php mysql # 创建并且已后台运行的方式启动nginx、php、mysql容器 $ docker-compose start php # 启动服务 $ docker-compose stop php # 停止服务 $ docker-compose restart php # 重启服务 $ docker-compose build php # 构建或者重新构建服务 $ docker-compose rm php # 删除并且停止php容器 $ docker-compose down # 停止并删除容器，网络，图像和挂载卷 配置文件 1 2 3 4 5 6 7 8 9 10 11 nginx 配置文件路径： cd /usr/local/nginx/conf/vhost mysql 安装路径 cd /etc/mysql/ php配置文件路径：php --ini [disable_functions: 禁用函数配置] php-fpm配置文件：/usr/local/php/etc/php-fpm.conf Redis 配置文件：/usr/local/redis/etc/redis.conf LNMP 日志文件 Nginx">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-01-01T13:55:39+08:00">
+    <meta property="article:modified_time" content="2019-01-01T13:55:39+08:00">
+    <meta property="article:tag" content="Lnmp">
+    <meta property="article:tag" content="Php">
 
-<meta itemprop="name" content="PHP 开发环境之 Lnmp">
-<meta itemprop="description" content="Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且"><meta itemprop="datePublished" content="2019-01-01T13:55:39&#43;08:00" />
-<meta itemprop="dateModified" content="2019-01-01T13:55:39&#43;08:00" />
-<meta itemprop="wordCount" content="1234">
-<meta itemprop="keywords" content="lnmp,php," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PHP 开发环境之 Lnmp"/>
-<meta name="twitter:description" content="Install Linux 一键搭建 Lnmp 环境 1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且"/>
+  <meta itemprop="name" content="PHP 开发环境之 Lnmp">
+  <meta itemprop="description" content="Install Linux 一键搭建 Lnmp 环境
+1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且后台运行方式启动所有容器 $ docker-compose up -d nginx php mysql # 创建并且已后台运行的方式启动nginx、php、mysql容器 $ docker-compose start php # 启动服务 $ docker-compose stop php # 停止服务 $ docker-compose restart php # 重启服务 $ docker-compose build php # 构建或者重新构建服务 $ docker-compose rm php # 删除并且停止php容器 $ docker-compose down # 停止并删除容器，网络，图像和挂载卷 配置文件 1 2 3 4 5 6 7 8 9 10 11 nginx 配置文件路径： cd /usr/local/nginx/conf/vhost mysql 安装路径 cd /etc/mysql/ php配置文件路径：php --ini [disable_functions: 禁用函数配置] php-fpm配置文件：/usr/local/php/etc/php-fpm.conf Redis 配置文件：/usr/local/redis/etc/redis.conf LNMP 日志文件 Nginx">
+  <meta itemprop="datePublished" content="2019-01-01T13:55:39+08:00">
+  <meta itemprop="dateModified" content="2019-01-01T13:55:39+08:00">
+  <meta itemprop="wordCount" content="1234">
+  <meta itemprop="keywords" content="Lnmp,Php">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PHP 开发环境之 Lnmp">
+  <meta name="twitter:description" content="Install Linux 一键搭建 Lnmp 环境
+1 2 # 教程 https://github.com/licess/lnmp OR https://lnmp.org MacOs 一键搭建 Lnmp 环境
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # 教程 https://github.com/yeszao/dnmp # 常用命令 $ cd ~/dnmp $ docker-compose build # 镜像构建 $ docker-compose up -d # 创建并且后台运行方式启动所有容器 $ docker-compose up -d nginx php mysql # 创建并且已后台运行的方式启动nginx、php、mysql容器 $ docker-compose start php # 启动服务 $ docker-compose stop php # 停止服务 $ docker-compose restart php # 重启服务 $ docker-compose build php # 构建或者重新构建服务 $ docker-compose rm php # 删除并且停止php容器 $ docker-compose down # 停止并删除容器，网络，图像和挂载卷 配置文件 1 2 3 4 5 6 7 8 9 10 11 nginx 配置文件路径： cd /usr/local/nginx/conf/vhost mysql 安装路径 cd /etc/mysql/ php配置文件路径：php --ini [disable_functions: 禁用函数配置] php-fpm配置文件：/usr/local/php/etc/php-fpm.conf Redis 配置文件：/usr/local/redis/etc/redis.conf LNMP 日志文件 Nginx">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +107,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +140,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -156,20 +182,20 @@
 <p>Linux 一键搭建 Lnmp 环境</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 教程</span>
-https://github.com/licess/lnmp OR https://lnmp.org
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 教程</span>
+</span></span><span class="line"><span class="cl">https://github.com/licess/lnmp OR https://lnmp.org
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>MacOs 一键搭建 Lnmp 环境</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -187,30 +213,30 @@ https://github.com/licess/lnmp OR https://lnmp.org
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 教程</span>
-https://github.com/yeszao/dnmp
-
-<span class="c1"># 常用命令</span>
-$ <span class="nb">cd</span> ~/dnmp
-$ docker-compose build <span class="c1"># 镜像构建</span>
-$ docker-compose up -d                      <span class="c1"># 创建并且后台运行方式启动所有容器</span>
-$ docker-compose up -d nginx php  mysql     <span class="c1"># 创建并且已后台运行的方式启动nginx、php、mysql容器</span>
-
-$ docker-compose start php                  <span class="c1"># 启动服务</span>
-$ docker-compose stop php                   <span class="c1"># 停止服务</span>
-$ docker-compose restart php                <span class="c1"># 重启服务</span>
-$ docker-compose build php                  <span class="c1"># 构建或者重新构建服务</span>
-
-$ docker-compose rm php                     <span class="c1"># 删除并且停止php容器</span>
-$ docker-compose down                       <span class="c1"># 停止并删除容器，网络，图像和挂载卷</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 教程</span>
+</span></span><span class="line"><span class="cl">https://github.com/yeszao/dnmp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 常用命令</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> ~/dnmp
+</span></span><span class="line"><span class="cl">$ docker-compose build <span class="c1"># 镜像构建</span>
+</span></span><span class="line"><span class="cl">$ docker-compose up -d                      <span class="c1"># 创建并且后台运行方式启动所有容器</span>
+</span></span><span class="line"><span class="cl">$ docker-compose up -d nginx php  mysql     <span class="c1"># 创建并且已后台运行的方式启动nginx、php、mysql容器</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ docker-compose start php                  <span class="c1"># 启动服务</span>
+</span></span><span class="line"><span class="cl">$ docker-compose stop php                   <span class="c1"># 停止服务</span>
+</span></span><span class="line"><span class="cl">$ docker-compose restart php                <span class="c1"># 重启服务</span>
+</span></span><span class="line"><span class="cl">$ docker-compose build php                  <span class="c1"># 构建或者重新构建服务</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ docker-compose rm php                     <span class="c1"># 删除并且停止php容器</span>
+</span></span><span class="line"><span class="cl">$ docker-compose down                       <span class="c1"># 停止并删除容器，网络，图像和挂载卷</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
 <h2 id="配置文件">配置文件</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -223,18 +249,18 @@ $ docker-compose down                       <span class="c1"># 停止并删除�
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">nginx 配置文件路径：
-<span class="nb">cd</span> /usr/local/nginx/conf/vhost
-
-mysql 安装路径
-<span class="nb">cd</span> /etc/mysql/
-
-php配置文件路径：php --ini <span class="o">[</span>disable_functions: 禁用函数配置<span class="o">]</span>
-
-php-fpm配置文件：/usr/local/php/etc/php-fpm.conf
-
-Redis 配置文件：/usr/local/redis/etc/redis.conf
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">nginx 配置文件路径：
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/nginx/conf/vhost
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql 安装路径
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /etc/mysql/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">php配置文件路径：php --ini <span class="o">[</span>disable_functions: 禁用函数配置<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">php-fpm配置文件：/usr/local/php/etc/php-fpm.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Redis 配置文件：/usr/local/redis/etc/redis.conf
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="lnmp-日志文件">LNMP 日志文件</h2>
 <ol>
@@ -253,7 +279,7 @@ Redis 配置文件：/usr/local/redis/etc/redis.conf
 <p>MySQL</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -266,18 +292,18 @@ Redis 配置文件：/usr/local/redis/etc/redis.conf
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 记录Mysql运行过程中的Error、Warning、Note等信息，系统出错或者某条记录出问题可以查看Error日志。</span>
-&gt; show variables like <span class="s2">&#34;log_error&#34;</span><span class="p">;</span>
-
-<span class="c1"># 记录mysql的日常日志，包括查询、修改、更新等的每条sql。</span>
-&gt; show global variables like <span class="s2">&#34;%genera%&#34;</span>
-
-<span class="c1"># Binary Log：每一条会修改数据的sql都会记录到master的binlog中，slave在复制的时候sql进程会解析成和原来master端执行多相同的sql再执行。</span>
-&gt; show variables like <span class="s2">&#34;%log_bin%&#34;</span><span class="p">;</span>
-
-<span class="c1"># Mysql 慢查询日志</span>
-&gt; show variables like <span class="s2">&#34;%slow%&#34;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 记录Mysql运行过程中的Error、Warning、Note等信息，系统出错或者某条记录出问题可以查看Error日志。</span>
+</span></span><span class="line"><span class="cl">&gt; show variables like <span class="s2">&#34;log_error&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 记录mysql的日常日志，包括查询、修改、更新等的每条sql。</span>
+</span></span><span class="line"><span class="cl">&gt; show global variables like <span class="s2">&#34;%genera%&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Binary Log：每一条会修改数据的sql都会记录到master的binlog中，slave在复制的时候sql进程会解析成和原来master端执行多相同的sql再执行。</span>
+</span></span><span class="line"><span class="cl">&gt; show variables like <span class="s2">&#34;%log_bin%&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Mysql 慢查询日志</span>
+</span></span><span class="line"><span class="cl">&gt; show variables like <span class="s2">&#34;%slow%&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -287,7 +313,7 @@ Redis 配置文件：/usr/local/redis/etc/redis.conf
 <p>linux下apache获取root权限方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -296,14 +322,14 @@ Redis 配置文件：/usr/local/redis/etc/redis.conf
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">php中的exec函数可以执行很多命令（脚本）使用比较方便，但是在linux下需要给与权限。修改/etc/sudoers文件，做两处改动：
-
-&lt;1&gt;在文件中添加apache的用户，我用的apache2的用户名是www-data，有的是daemon、httpd等（查看一下自己的apache的配置文件即可）。添加的格式：
-www-data  <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span>  NOPASSWD:  ALL（格式在/etc/sudoer文件中有）。
-
-&lt;2&gt;在exec<span class="o">()</span>等系统命令调用函数中加入“sudo“（不需要密码）
-exec<span class="o">(</span><span class="s1">&#39;sudo chmod 777 -R /var/spool/cron/crontabs/www-data&#39;</span><span class="o">)</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">php中的exec函数可以执行很多命令（脚本）使用比较方便，但是在linux下需要给与权限。修改/etc/sudoers文件，做两处改动：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;1&gt;在文件中添加apache的用户，我用的apache2的用户名是www-data，有的是daemon、httpd等（查看一下自己的apache的配置文件即可）。添加的格式：
+</span></span><span class="line"><span class="cl">www-data  <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span>  NOPASSWD:  ALL（格式在/etc/sudoer文件中有）。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;2&gt;在exec<span class="o">()</span>等系统命令调用函数中加入“sudo“（不需要密码）
+</span></span><span class="line"><span class="cl">exec<span class="o">(</span><span class="s1">&#39;sudo chmod 777 -R /var/spool/cron/crontabs/www-data&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -313,7 +339,7 @@ exec<span class="o">(</span><span class="s1">&#39;sudo chmod 777 -R /var/spool/c
 <p>php 操作命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -331,30 +357,30 @@ exec<span class="o">(</span><span class="s1">&#39;sudo chmod 777 -R /var/spool/c
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">查看php进程： ps aux <span class="p">|</span> grep php
-启动命令：nohup /usr/local/php/sbin/php-fpm <span class="p">&amp;</span>
-php-fpm 关闭：
-方案一： <span class="nb">kill</span> -INT <span class="sb">`</span>cat /usr/local/php/var/run/php-fpm.pid<span class="sb">`</span>  <span class="o">[</span>php-fpm.pid路径在php-fpm.conf配置文件中查看<span class="o">]</span>
-方案二： killall php-fpm
-php-fpm 重启：
-<span class="nb">kill</span> -USR2 <span class="sb">`</span>cat /usr/local/php/var/run/php-fpm.pid<span class="sb">`</span>
-
-<span class="c1"># 查找配置文件路径</span>
-locate php.ini
-
-<span class="c1"># 查找 php 扩展</span>
-php -m <span class="p">|</span> grep swoole
-
-<span class="c1"># 查看 php 扩展版本</span>
-php --ri swoole
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">查看php进程： ps aux <span class="p">|</span> grep php
+</span></span><span class="line"><span class="cl">启动命令：nohup /usr/local/php/sbin/php-fpm <span class="p">&amp;</span>
+</span></span><span class="line"><span class="cl">php-fpm 关闭：
+</span></span><span class="line"><span class="cl">方案一： <span class="nb">kill</span> -INT <span class="sb">`</span>cat /usr/local/php/var/run/php-fpm.pid<span class="sb">`</span>  <span class="o">[</span>php-fpm.pid路径在php-fpm.conf配置文件中查看<span class="o">]</span>
+</span></span><span class="line"><span class="cl">方案二： killall php-fpm
+</span></span><span class="line"><span class="cl">php-fpm 重启：
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> -USR2 <span class="sb">`</span>cat /usr/local/php/var/run/php-fpm.pid<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查找配置文件路径</span>
+</span></span><span class="line"><span class="cl">locate php.ini
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查找 php 扩展</span>
+</span></span><span class="line"><span class="cl">php -m <span class="p">|</span> grep swoole
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看 php 扩展版本</span>
+</span></span><span class="line"><span class="cl">php --ri swoole
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>nginx 操作命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -364,20 +390,19 @@ php --ri swoole
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">启动命令：
-/usr/local/nginx/sbin/nginx
-关闭命令：
-/usr/local/nginx/sbin/nginx -s stop
-
-重启命令：
-/usr/local/nginx/sbin/nginx -t -- 检查修改后的配置是否正常运行
-/usr/local/nginx/sbin/nginx -s reload  -- 平滑重启
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">启动命令：
+</span></span><span class="line"><span class="cl">/usr/local/nginx/sbin/nginx
+</span></span><span class="line"><span class="cl">关闭命令：
+</span></span><span class="line"><span class="cl">/usr/local/nginx/sbin/nginx -s stop
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">重启命令：
+</span></span><span class="line"><span class="cl">/usr/local/nginx/sbin/nginx -t -- 检查修改后的配置是否正常运行
+</span></span><span class="line"><span class="cl">/usr/local/nginx/sbin/nginx -s reload  -- 平滑重启
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Nginx 是一款非常高性能的 HTTP 代理/反向代理服务器，服务开发中也经常使用它来做负载均衡。</p>
 <blockquote>
-<p>Nginx 实现负载均衡的方式主要有三种（Nginx 通过 Upstream 模块实现负载均衡）</p>
-</blockquote>
+<p>Nginx 实现负载均衡的方式主要有三种（Nginx 通过 Upstream 模块实现负载均衡）</p></blockquote>
 <ul>
 <li>轮询</li>
 <li>加权轮询</li>
@@ -388,13 +413,13 @@ php --ri swoole
 <p>mysql 操作命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">启动：service mysql start 或 /etc/init.d/mysql start
-关闭：service mysql stop
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">启动：service mysql start 或 /etc/init.d/mysql start
+</span></span><span class="line"><span class="cl">关闭：service mysql stop
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -404,7 +429,7 @@ php --ri swoole
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -477,22 +502,19 @@ php --ri swoole
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -506,7 +528,7 @@ php --ri swoole
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

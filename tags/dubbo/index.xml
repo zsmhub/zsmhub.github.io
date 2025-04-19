@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dubbo on ZsmHub - Blog</title>
+    <title>Dubbo on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/dubbo/</link>
-    <description>Recent content in dubbo on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Dubbo on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Sat, 16 May 2020 10:15:48 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/dubbo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 May 2020 10:15:48 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/dubbo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dubbo</title>
       <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/</link>
       <pubDate>Sat, 16 May 2020 10:15:48 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/</guid>
-      <description>Dubbo 简介 Apache Dubbo (incubating) |ˈdʌbəʊ| 是开源的一款高性能、轻量级的开源 Java RPC 框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及</description>
+      <description>&lt;h2 id=&#34;dubbo-简介&#34;&gt;Dubbo 简介&lt;/h2&gt;&#xA;&lt;p&gt;Apache Dubbo (incubating) |ˈdʌbəʊ| 是开源的一款高性能、轻量级的开源 Java RPC 框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

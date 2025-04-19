@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ZsmHub" /><meta name="description" content="在使用分布式并发原语时，除了需要考虑可用性和数据一致性，还需要考虑分布式设计带来的性能损耗问题。所以，在使用之前，你一定要做好性能的评估。 分" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="在使用分布式并发原语时，除了需要考虑可用性和数据一致性，还需要考虑分布式设计带来的性能损耗问题。所以，在使用之前，你一定要做好性能的评估。
+分布式互斥锁 基于redis的分布式互斥锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 package tool import ( &#34;context&#34; &#34;errors&#34; &#34;github.com/go-redis/redis/v8&#34; &#34;time&#34; ) // 分布式互斥锁 // 默认重试次数 var retryTimes = 20 // 默认重试频率 var retryInterval = time.Millisecond * 50 var ctx = context.Background() type DcsLock struct { rdb *redis.Client RetryTimes int RetryInterval time.Duration } func (m *DcsLock) SetRdb(rdb *redis.Client) *DcsLock { m.rdb = rdb m.RetryTimes = retryTimes m.RetryInterval = retryInterval return m } func (m *DcsLock) SetRetryTimes(i int) *DcsLock { m.RetryTimes = i return m } func (m *DcsLock) SetRetryInterval(t time.Duration) *DcsLock { m.RetryInterval = t return m } func (m *DcsLock) Lock(cacheKey string, ttl time.Duration) error { resp := false for i := 0; i &lt; m.RetryTimes; i&#43;&#43; { if m.SetNX(cacheKey, ttl) { resp = true break } time.Sleep(m.RetryInterval) } if !resp { return errors.New(&#34;抢锁失败，请稍后重试&#34;) } return nil } func (m *DcsLock) Unlock(cacheKey string) { m.DelSetNX(cacheKey) } func (m *DcsLock) SetNX(cacheKey string, ttl time.Duration) bool { if m.rdb.SetNX(ctx, cacheKey, 1, ttl).Val() { return true } return false } func (m *DcsLock) DelSetNX(cacheKey string) { m.rdb.Del(ctx, cacheKey) } 基于etcd的分布式互斥锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 package main import ( &#34;context&#34; &#34;go.etcd.io/etcd/client/v3&#34; &#34;go.etcd.io/etcd/client/v3/concurrency&#34; &#34;log&#34; &#34;math/rand&#34; &#34;strings&#34; &#34;time&#34; ) // etcd实现分布式互斥锁 var ( addr = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; lockName = &#34;my-test-lock&#34; ) func main() { rand.Seed(time.Now().UnixNano()) // etcd地址 endpoints := strings.Split(addr, &#34;,&#34;) // 生成一个etcd client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() useLock(cli) // 测试锁 } func useLock(cli *clientv3.Client) { // 为锁生成session「节点宕机对应 session 销毁，持有的锁会被释放」 s1, err := concurrency.NewSession(cli) if err != nil { log.Fatal(err) } defer s1.Close() // 得到一个分布式锁 locker := concurrency.NewMutex(s1, lockName) // 请求锁 log.Println(&#34;acquiring lock&#34;) if err := locker.Lock(context.TODO()); err != nil { log.Fatal(err) } log.Println(&#34;acquired lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(30)&#43;3) * time.Second) // 释放锁 if err := locker.Unlock(context.TODO()); err != nil { log.Fatal(err) } log.Println(&#34;released lock&#34;) } 分布式读写锁 基于etcd的分布式读写锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 package main import ( &#34;bufio&#34; &#34;flag&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; &#34;go.etcd.io/etcd/client/v3/concurrency&#34; &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;math/rand&#34; &#34;os&#34; &#34;strings&#34; &#34;time&#34; ) // etcd实现分布式读写锁 var ( rwAddr = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; rwLockName = &#34;my-test-lock&#34; ) func main() { rand.Seed(time.Now().UnixNano()) // 解析etcd地址 endpoints := strings.Split(rwAddr, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建session s1, err := concurrency.NewSession(cli) // 节点宕机对应 session 销毁，持有的锁会被释放 if err != nil { log.Fatal(err) } defer s1.Close() m1 := recipe.NewRWMutex(s1, rwLockName) // 从命令行读取命令 consolescanner := bufio.NewScanner(os.Stdin) log.Println(&#34;请输入指令w/r：&#34;) for consolescanner.Scan() { action := consolescanner.Text() switch action { case &#34;w&#34;: // 请求写锁 testWriteLocker(m1) case &#34;r&#34;: // 请求读锁 testReadLocker(m1) default: fmt.Println(&#34;unknown action&#34;) } log.Println(&#34;请输入指令w/r：&#34;) } } func testWriteLocker(m1 *recipe.RWMutex) { // 请求写锁 log.Println(&#34;acquiring write lock&#34;) if err := m1.Lock(); err != nil { log.Fatal(err) } log.Println(&#34;acquired write lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(10)&#43;3) * time.Second) // 释放写锁 if err := m1.Unlock(); err != nil { log.Fatal(err) } log.Println(&#34;released write lock&#34;) } func testReadLocker(m1 *recipe.RWMutex) { // 请求读锁 log.Println(&#34;acquiring read lock&#34;) if err := m1.RLock(); err != nil { log.Fatal(err) } log.Println(&#34;acquired read lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(10)&#43;3) * time.Second) // 释放写锁 if err := m1.RUnlock(); err != nil { log.Fatal(err) } log.Println(&#34;released read lock&#34;) } 分布式队列 基于etcd的分布式队列 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; recipe &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;os&#34; &#34;strings&#34; ) // etcd实现分布式队列 var ( etcdAddrQ = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; queueName = &#34;my-test-queue&#34; ) func main() { // 解析etcd地址 endpoints := strings.Split(etcdAddrQ, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建/获取队列 q := recipe.NewQueue(cli, queueName) // 从命令行读取命令 fmt.Println(&#34;请输入指令：push/pop，多参数用空格间隔&#34;) consolescanner := bufio.NewScanner(os.Stdin) for consolescanner.Scan() { action := consolescanner.Text() items := strings.Split(action, &#34; &#34;) switch items[0] { case &#34;push&#34;: // 加入队列 if len(items) != 2 { fmt.Println(&#34;must set value to push&#34;) continue } q.Enqueue(items[1]) // 入队 case &#34;pop&#34;: // 从队列弹出 v, err := q.Dequeue() // 出队 if err != nil { log.Fatal(err) } fmt.Println(v) // 输出出队的元素 case &#34;quit&#34;, &#34;exit&#34;: //退出 return default: fmt.Println(&#34;unknown action&#34;) } fmt.Println(&#34;请输入指令：push/pop，多参数用空格间隔&#34;) } } 分布式栅栏 基于etcd的分布式栅栏 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; recipe &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;os&#34; &#34;strings&#34; ) // 分布式栅栏 var ( etcdAddrB = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; barrierName = &#34;my-test-queue&#34; ) func main() { // 解析etcd地址 endpoints := strings.Split(etcdAddrB, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建/获取栅栏 b := recipe.NewBarrier(cli, barrierName) // 从命令行读取命令 fmt.Println(&#34;请输入指令hold/release/wait：&#34;) consolescanner := bufio.NewScanner(os.Stdin) for consolescanner.Scan() { action := consolescanner.Text() items := strings.Split(action, &#34; &#34;) switch items[0] { case &#34;hold&#34;: // 持有这个barrier if err := b.Hold(); err != nil { fmt.Printf(&#34;hold fail: %v\n&#34;, err) } else { fmt.Println(&#34;hold success&#34;) } case &#34;release&#34;: // 释放这个barrier if err := b.Release(); err != nil { fmt.Printf(&#34;released fail: %v\n&#34;, err) } else { fmt.Println(&#34;released success&#34;) } case &#34;wait&#34;: // 等待barrier被释放 if err := b.Wait(); err != nil { fmt.Printf(&#34;wait fail: %v\n&#34;, err) } else { fmt.Println(&#34;after wait&#34;) } case &#34;quit&#34;, &#34;exit&#34;: // 退出 return default: fmt.Println(&#34;unknown action&#34;) } fmt.Println(&#34;请输入指令hold/release/wait：&#34;) } } 分布式事务 todo
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.82.0 with theme even" />
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
 
 
 <link rel="canonical" href="https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F/" />
@@ -35,24 +37,33 @@
 
 
 
-<link href="/sass/main.min.eb0308f0e54ff86bb150b0f7f2912dd5f4eb4f67b1ee508094605ecd5b7dd679.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Go之分布式" />
-<meta property="og:description" content="在使用分布式并发原语时，除了需要考虑可用性和数据一致性，还需要考虑分布式设计带来的性能损耗问题。所以，在使用之前，你一定要做好性能的评估。 分" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-05-24T10:51:38&#43;08:00" />
-<meta property="article:modified_time" content="2022-12-29T10:51:38&#43;08:00" />
+<meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="Go之分布式">
+  <meta property="og:description" content="在使用分布式并发原语时，除了需要考虑可用性和数据一致性，还需要考虑分布式设计带来的性能损耗问题。所以，在使用之前，你一定要做好性能的评估。
+分布式互斥锁 基于redis的分布式互斥锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 package tool import ( &#34;context&#34; &#34;errors&#34; &#34;github.com/go-redis/redis/v8&#34; &#34;time&#34; ) // 分布式互斥锁 // 默认重试次数 var retryTimes = 20 // 默认重试频率 var retryInterval = time.Millisecond * 50 var ctx = context.Background() type DcsLock struct { rdb *redis.Client RetryTimes int RetryInterval time.Duration } func (m *DcsLock) SetRdb(rdb *redis.Client) *DcsLock { m.rdb = rdb m.RetryTimes = retryTimes m.RetryInterval = retryInterval return m } func (m *DcsLock) SetRetryTimes(i int) *DcsLock { m.RetryTimes = i return m } func (m *DcsLock) SetRetryInterval(t time.Duration) *DcsLock { m.RetryInterval = t return m } func (m *DcsLock) Lock(cacheKey string, ttl time.Duration) error { resp := false for i := 0; i &lt; m.RetryTimes; i&#43;&#43; { if m.SetNX(cacheKey, ttl) { resp = true break } time.Sleep(m.RetryInterval) } if !resp { return errors.New(&#34;抢锁失败，请稍后重试&#34;) } return nil } func (m *DcsLock) Unlock(cacheKey string) { m.DelSetNX(cacheKey) } func (m *DcsLock) SetNX(cacheKey string, ttl time.Duration) bool { if m.rdb.SetNX(ctx, cacheKey, 1, ttl).Val() { return true } return false } func (m *DcsLock) DelSetNX(cacheKey string) { m.rdb.Del(ctx, cacheKey) } 基于etcd的分布式互斥锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 package main import ( &#34;context&#34; &#34;go.etcd.io/etcd/client/v3&#34; &#34;go.etcd.io/etcd/client/v3/concurrency&#34; &#34;log&#34; &#34;math/rand&#34; &#34;strings&#34; &#34;time&#34; ) // etcd实现分布式互斥锁 var ( addr = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; lockName = &#34;my-test-lock&#34; ) func main() { rand.Seed(time.Now().UnixNano()) // etcd地址 endpoints := strings.Split(addr, &#34;,&#34;) // 生成一个etcd client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() useLock(cli) // 测试锁 } func useLock(cli *clientv3.Client) { // 为锁生成session「节点宕机对应 session 销毁，持有的锁会被释放」 s1, err := concurrency.NewSession(cli) if err != nil { log.Fatal(err) } defer s1.Close() // 得到一个分布式锁 locker := concurrency.NewMutex(s1, lockName) // 请求锁 log.Println(&#34;acquiring lock&#34;) if err := locker.Lock(context.TODO()); err != nil { log.Fatal(err) } log.Println(&#34;acquired lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(30)&#43;3) * time.Second) // 释放锁 if err := locker.Unlock(context.TODO()); err != nil { log.Fatal(err) } log.Println(&#34;released lock&#34;) } 分布式读写锁 基于etcd的分布式读写锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 package main import ( &#34;bufio&#34; &#34;flag&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; &#34;go.etcd.io/etcd/client/v3/concurrency&#34; &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;math/rand&#34; &#34;os&#34; &#34;strings&#34; &#34;time&#34; ) // etcd实现分布式读写锁 var ( rwAddr = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; rwLockName = &#34;my-test-lock&#34; ) func main() { rand.Seed(time.Now().UnixNano()) // 解析etcd地址 endpoints := strings.Split(rwAddr, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建session s1, err := concurrency.NewSession(cli) // 节点宕机对应 session 销毁，持有的锁会被释放 if err != nil { log.Fatal(err) } defer s1.Close() m1 := recipe.NewRWMutex(s1, rwLockName) // 从命令行读取命令 consolescanner := bufio.NewScanner(os.Stdin) log.Println(&#34;请输入指令w/r：&#34;) for consolescanner.Scan() { action := consolescanner.Text() switch action { case &#34;w&#34;: // 请求写锁 testWriteLocker(m1) case &#34;r&#34;: // 请求读锁 testReadLocker(m1) default: fmt.Println(&#34;unknown action&#34;) } log.Println(&#34;请输入指令w/r：&#34;) } } func testWriteLocker(m1 *recipe.RWMutex) { // 请求写锁 log.Println(&#34;acquiring write lock&#34;) if err := m1.Lock(); err != nil { log.Fatal(err) } log.Println(&#34;acquired write lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(10)&#43;3) * time.Second) // 释放写锁 if err := m1.Unlock(); err != nil { log.Fatal(err) } log.Println(&#34;released write lock&#34;) } func testReadLocker(m1 *recipe.RWMutex) { // 请求读锁 log.Println(&#34;acquiring read lock&#34;) if err := m1.RLock(); err != nil { log.Fatal(err) } log.Println(&#34;acquired read lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(10)&#43;3) * time.Second) // 释放写锁 if err := m1.RUnlock(); err != nil { log.Fatal(err) } log.Println(&#34;released read lock&#34;) } 分布式队列 基于etcd的分布式队列 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; recipe &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;os&#34; &#34;strings&#34; ) // etcd实现分布式队列 var ( etcdAddrQ = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; queueName = &#34;my-test-queue&#34; ) func main() { // 解析etcd地址 endpoints := strings.Split(etcdAddrQ, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建/获取队列 q := recipe.NewQueue(cli, queueName) // 从命令行读取命令 fmt.Println(&#34;请输入指令：push/pop，多参数用空格间隔&#34;) consolescanner := bufio.NewScanner(os.Stdin) for consolescanner.Scan() { action := consolescanner.Text() items := strings.Split(action, &#34; &#34;) switch items[0] { case &#34;push&#34;: // 加入队列 if len(items) != 2 { fmt.Println(&#34;must set value to push&#34;) continue } q.Enqueue(items[1]) // 入队 case &#34;pop&#34;: // 从队列弹出 v, err := q.Dequeue() // 出队 if err != nil { log.Fatal(err) } fmt.Println(v) // 输出出队的元素 case &#34;quit&#34;, &#34;exit&#34;: //退出 return default: fmt.Println(&#34;unknown action&#34;) } fmt.Println(&#34;请输入指令：push/pop，多参数用空格间隔&#34;) } } 分布式栅栏 基于etcd的分布式栅栏 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; recipe &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;os&#34; &#34;strings&#34; ) // 分布式栅栏 var ( etcdAddrB = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; barrierName = &#34;my-test-queue&#34; ) func main() { // 解析etcd地址 endpoints := strings.Split(etcdAddrB, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建/获取栅栏 b := recipe.NewBarrier(cli, barrierName) // 从命令行读取命令 fmt.Println(&#34;请输入指令hold/release/wait：&#34;) consolescanner := bufio.NewScanner(os.Stdin) for consolescanner.Scan() { action := consolescanner.Text() items := strings.Split(action, &#34; &#34;) switch items[0] { case &#34;hold&#34;: // 持有这个barrier if err := b.Hold(); err != nil { fmt.Printf(&#34;hold fail: %v\n&#34;, err) } else { fmt.Println(&#34;hold success&#34;) } case &#34;release&#34;: // 释放这个barrier if err := b.Release(); err != nil { fmt.Printf(&#34;released fail: %v\n&#34;, err) } else { fmt.Println(&#34;released success&#34;) } case &#34;wait&#34;: // 等待barrier被释放 if err := b.Wait(); err != nil { fmt.Printf(&#34;wait fail: %v\n&#34;, err) } else { fmt.Println(&#34;after wait&#34;) } case &#34;quit&#34;, &#34;exit&#34;: // 退出 return default: fmt.Println(&#34;unknown action&#34;) } fmt.Println(&#34;请输入指令hold/release/wait：&#34;) } } 分布式事务 todo">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-05-24T10:51:38+08:00">
+    <meta property="article:modified_time" content="2022-12-29T10:51:38+08:00">
+    <meta property="article:tag" content="分布式">
 
-<meta itemprop="name" content="Go之分布式">
-<meta itemprop="description" content="在使用分布式并发原语时，除了需要考虑可用性和数据一致性，还需要考虑分布式设计带来的性能损耗问题。所以，在使用之前，你一定要做好性能的评估。 分"><meta itemprop="datePublished" content="2022-05-24T10:51:38&#43;08:00" />
-<meta itemprop="dateModified" content="2022-12-29T10:51:38&#43;08:00" />
-<meta itemprop="wordCount" content="1851">
-<meta itemprop="keywords" content="分布式," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Go之分布式"/>
-<meta name="twitter:description" content="在使用分布式并发原语时，除了需要考虑可用性和数据一致性，还需要考虑分布式设计带来的性能损耗问题。所以，在使用之前，你一定要做好性能的评估。 分"/>
+  <meta itemprop="name" content="Go之分布式">
+  <meta itemprop="description" content="在使用分布式并发原语时，除了需要考虑可用性和数据一致性，还需要考虑分布式设计带来的性能损耗问题。所以，在使用之前，你一定要做好性能的评估。
+分布式互斥锁 基于redis的分布式互斥锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 package tool import ( &#34;context&#34; &#34;errors&#34; &#34;github.com/go-redis/redis/v8&#34; &#34;time&#34; ) // 分布式互斥锁 // 默认重试次数 var retryTimes = 20 // 默认重试频率 var retryInterval = time.Millisecond * 50 var ctx = context.Background() type DcsLock struct { rdb *redis.Client RetryTimes int RetryInterval time.Duration } func (m *DcsLock) SetRdb(rdb *redis.Client) *DcsLock { m.rdb = rdb m.RetryTimes = retryTimes m.RetryInterval = retryInterval return m } func (m *DcsLock) SetRetryTimes(i int) *DcsLock { m.RetryTimes = i return m } func (m *DcsLock) SetRetryInterval(t time.Duration) *DcsLock { m.RetryInterval = t return m } func (m *DcsLock) Lock(cacheKey string, ttl time.Duration) error { resp := false for i := 0; i &lt; m.RetryTimes; i&#43;&#43; { if m.SetNX(cacheKey, ttl) { resp = true break } time.Sleep(m.RetryInterval) } if !resp { return errors.New(&#34;抢锁失败，请稍后重试&#34;) } return nil } func (m *DcsLock) Unlock(cacheKey string) { m.DelSetNX(cacheKey) } func (m *DcsLock) SetNX(cacheKey string, ttl time.Duration) bool { if m.rdb.SetNX(ctx, cacheKey, 1, ttl).Val() { return true } return false } func (m *DcsLock) DelSetNX(cacheKey string) { m.rdb.Del(ctx, cacheKey) } 基于etcd的分布式互斥锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 package main import ( &#34;context&#34; &#34;go.etcd.io/etcd/client/v3&#34; &#34;go.etcd.io/etcd/client/v3/concurrency&#34; &#34;log&#34; &#34;math/rand&#34; &#34;strings&#34; &#34;time&#34; ) // etcd实现分布式互斥锁 var ( addr = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; lockName = &#34;my-test-lock&#34; ) func main() { rand.Seed(time.Now().UnixNano()) // etcd地址 endpoints := strings.Split(addr, &#34;,&#34;) // 生成一个etcd client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() useLock(cli) // 测试锁 } func useLock(cli *clientv3.Client) { // 为锁生成session「节点宕机对应 session 销毁，持有的锁会被释放」 s1, err := concurrency.NewSession(cli) if err != nil { log.Fatal(err) } defer s1.Close() // 得到一个分布式锁 locker := concurrency.NewMutex(s1, lockName) // 请求锁 log.Println(&#34;acquiring lock&#34;) if err := locker.Lock(context.TODO()); err != nil { log.Fatal(err) } log.Println(&#34;acquired lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(30)&#43;3) * time.Second) // 释放锁 if err := locker.Unlock(context.TODO()); err != nil { log.Fatal(err) } log.Println(&#34;released lock&#34;) } 分布式读写锁 基于etcd的分布式读写锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 package main import ( &#34;bufio&#34; &#34;flag&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; &#34;go.etcd.io/etcd/client/v3/concurrency&#34; &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;math/rand&#34; &#34;os&#34; &#34;strings&#34; &#34;time&#34; ) // etcd实现分布式读写锁 var ( rwAddr = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; rwLockName = &#34;my-test-lock&#34; ) func main() { rand.Seed(time.Now().UnixNano()) // 解析etcd地址 endpoints := strings.Split(rwAddr, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建session s1, err := concurrency.NewSession(cli) // 节点宕机对应 session 销毁，持有的锁会被释放 if err != nil { log.Fatal(err) } defer s1.Close() m1 := recipe.NewRWMutex(s1, rwLockName) // 从命令行读取命令 consolescanner := bufio.NewScanner(os.Stdin) log.Println(&#34;请输入指令w/r：&#34;) for consolescanner.Scan() { action := consolescanner.Text() switch action { case &#34;w&#34;: // 请求写锁 testWriteLocker(m1) case &#34;r&#34;: // 请求读锁 testReadLocker(m1) default: fmt.Println(&#34;unknown action&#34;) } log.Println(&#34;请输入指令w/r：&#34;) } } func testWriteLocker(m1 *recipe.RWMutex) { // 请求写锁 log.Println(&#34;acquiring write lock&#34;) if err := m1.Lock(); err != nil { log.Fatal(err) } log.Println(&#34;acquired write lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(10)&#43;3) * time.Second) // 释放写锁 if err := m1.Unlock(); err != nil { log.Fatal(err) } log.Println(&#34;released write lock&#34;) } func testReadLocker(m1 *recipe.RWMutex) { // 请求读锁 log.Println(&#34;acquiring read lock&#34;) if err := m1.RLock(); err != nil { log.Fatal(err) } log.Println(&#34;acquired read lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(10)&#43;3) * time.Second) // 释放写锁 if err := m1.RUnlock(); err != nil { log.Fatal(err) } log.Println(&#34;released read lock&#34;) } 分布式队列 基于etcd的分布式队列 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; recipe &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;os&#34; &#34;strings&#34; ) // etcd实现分布式队列 var ( etcdAddrQ = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; queueName = &#34;my-test-queue&#34; ) func main() { // 解析etcd地址 endpoints := strings.Split(etcdAddrQ, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建/获取队列 q := recipe.NewQueue(cli, queueName) // 从命令行读取命令 fmt.Println(&#34;请输入指令：push/pop，多参数用空格间隔&#34;) consolescanner := bufio.NewScanner(os.Stdin) for consolescanner.Scan() { action := consolescanner.Text() items := strings.Split(action, &#34; &#34;) switch items[0] { case &#34;push&#34;: // 加入队列 if len(items) != 2 { fmt.Println(&#34;must set value to push&#34;) continue } q.Enqueue(items[1]) // 入队 case &#34;pop&#34;: // 从队列弹出 v, err := q.Dequeue() // 出队 if err != nil { log.Fatal(err) } fmt.Println(v) // 输出出队的元素 case &#34;quit&#34;, &#34;exit&#34;: //退出 return default: fmt.Println(&#34;unknown action&#34;) } fmt.Println(&#34;请输入指令：push/pop，多参数用空格间隔&#34;) } } 分布式栅栏 基于etcd的分布式栅栏 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; recipe &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;os&#34; &#34;strings&#34; ) // 分布式栅栏 var ( etcdAddrB = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; barrierName = &#34;my-test-queue&#34; ) func main() { // 解析etcd地址 endpoints := strings.Split(etcdAddrB, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建/获取栅栏 b := recipe.NewBarrier(cli, barrierName) // 从命令行读取命令 fmt.Println(&#34;请输入指令hold/release/wait：&#34;) consolescanner := bufio.NewScanner(os.Stdin) for consolescanner.Scan() { action := consolescanner.Text() items := strings.Split(action, &#34; &#34;) switch items[0] { case &#34;hold&#34;: // 持有这个barrier if err := b.Hold(); err != nil { fmt.Printf(&#34;hold fail: %v\n&#34;, err) } else { fmt.Println(&#34;hold success&#34;) } case &#34;release&#34;: // 释放这个barrier if err := b.Release(); err != nil { fmt.Printf(&#34;released fail: %v\n&#34;, err) } else { fmt.Println(&#34;released success&#34;) } case &#34;wait&#34;: // 等待barrier被释放 if err := b.Wait(); err != nil { fmt.Printf(&#34;wait fail: %v\n&#34;, err) } else { fmt.Println(&#34;after wait&#34;) } case &#34;quit&#34;, &#34;exit&#34;: // 退出 return default: fmt.Println(&#34;unknown action&#34;) } fmt.Println(&#34;请输入指令hold/release/wait：&#34;) } } 分布式事务 todo">
+  <meta itemprop="datePublished" content="2022-05-24T10:51:38+08:00">
+  <meta itemprop="dateModified" content="2022-12-29T10:51:38+08:00">
+  <meta itemprop="wordCount" content="1851">
+  <meta itemprop="keywords" content="分布式">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Go之分布式">
+  <meta name="twitter:description" content="在使用分布式并发原语时，除了需要考虑可用性和数据一致性，还需要考虑分布式设计带来的性能损耗问题。所以，在使用之前，你一定要做好性能的评估。
+分布式互斥锁 基于redis的分布式互斥锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 package tool import ( &#34;context&#34; &#34;errors&#34; &#34;github.com/go-redis/redis/v8&#34; &#34;time&#34; ) // 分布式互斥锁 // 默认重试次数 var retryTimes = 20 // 默认重试频率 var retryInterval = time.Millisecond * 50 var ctx = context.Background() type DcsLock struct { rdb *redis.Client RetryTimes int RetryInterval time.Duration } func (m *DcsLock) SetRdb(rdb *redis.Client) *DcsLock { m.rdb = rdb m.RetryTimes = retryTimes m.RetryInterval = retryInterval return m } func (m *DcsLock) SetRetryTimes(i int) *DcsLock { m.RetryTimes = i return m } func (m *DcsLock) SetRetryInterval(t time.Duration) *DcsLock { m.RetryInterval = t return m } func (m *DcsLock) Lock(cacheKey string, ttl time.Duration) error { resp := false for i := 0; i &lt; m.RetryTimes; i&#43;&#43; { if m.SetNX(cacheKey, ttl) { resp = true break } time.Sleep(m.RetryInterval) } if !resp { return errors.New(&#34;抢锁失败，请稍后重试&#34;) } return nil } func (m *DcsLock) Unlock(cacheKey string) { m.DelSetNX(cacheKey) } func (m *DcsLock) SetNX(cacheKey string, ttl time.Duration) bool { if m.rdb.SetNX(ctx, cacheKey, 1, ttl).Val() { return true } return false } func (m *DcsLock) DelSetNX(cacheKey string) { m.rdb.Del(ctx, cacheKey) } 基于etcd的分布式互斥锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 package main import ( &#34;context&#34; &#34;go.etcd.io/etcd/client/v3&#34; &#34;go.etcd.io/etcd/client/v3/concurrency&#34; &#34;log&#34; &#34;math/rand&#34; &#34;strings&#34; &#34;time&#34; ) // etcd实现分布式互斥锁 var ( addr = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; lockName = &#34;my-test-lock&#34; ) func main() { rand.Seed(time.Now().UnixNano()) // etcd地址 endpoints := strings.Split(addr, &#34;,&#34;) // 生成一个etcd client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() useLock(cli) // 测试锁 } func useLock(cli *clientv3.Client) { // 为锁生成session「节点宕机对应 session 销毁，持有的锁会被释放」 s1, err := concurrency.NewSession(cli) if err != nil { log.Fatal(err) } defer s1.Close() // 得到一个分布式锁 locker := concurrency.NewMutex(s1, lockName) // 请求锁 log.Println(&#34;acquiring lock&#34;) if err := locker.Lock(context.TODO()); err != nil { log.Fatal(err) } log.Println(&#34;acquired lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(30)&#43;3) * time.Second) // 释放锁 if err := locker.Unlock(context.TODO()); err != nil { log.Fatal(err) } log.Println(&#34;released lock&#34;) } 分布式读写锁 基于etcd的分布式读写锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 package main import ( &#34;bufio&#34; &#34;flag&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; &#34;go.etcd.io/etcd/client/v3/concurrency&#34; &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;math/rand&#34; &#34;os&#34; &#34;strings&#34; &#34;time&#34; ) // etcd实现分布式读写锁 var ( rwAddr = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; rwLockName = &#34;my-test-lock&#34; ) func main() { rand.Seed(time.Now().UnixNano()) // 解析etcd地址 endpoints := strings.Split(rwAddr, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建session s1, err := concurrency.NewSession(cli) // 节点宕机对应 session 销毁，持有的锁会被释放 if err != nil { log.Fatal(err) } defer s1.Close() m1 := recipe.NewRWMutex(s1, rwLockName) // 从命令行读取命令 consolescanner := bufio.NewScanner(os.Stdin) log.Println(&#34;请输入指令w/r：&#34;) for consolescanner.Scan() { action := consolescanner.Text() switch action { case &#34;w&#34;: // 请求写锁 testWriteLocker(m1) case &#34;r&#34;: // 请求读锁 testReadLocker(m1) default: fmt.Println(&#34;unknown action&#34;) } log.Println(&#34;请输入指令w/r：&#34;) } } func testWriteLocker(m1 *recipe.RWMutex) { // 请求写锁 log.Println(&#34;acquiring write lock&#34;) if err := m1.Lock(); err != nil { log.Fatal(err) } log.Println(&#34;acquired write lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(10)&#43;3) * time.Second) // 释放写锁 if err := m1.Unlock(); err != nil { log.Fatal(err) } log.Println(&#34;released write lock&#34;) } func testReadLocker(m1 *recipe.RWMutex) { // 请求读锁 log.Println(&#34;acquiring read lock&#34;) if err := m1.RLock(); err != nil { log.Fatal(err) } log.Println(&#34;acquired read lock&#34;) // 等待一段时间 time.Sleep(time.Duration(rand.Intn(10)&#43;3) * time.Second) // 释放写锁 if err := m1.RUnlock(); err != nil { log.Fatal(err) } log.Println(&#34;released read lock&#34;) } 分布式队列 基于etcd的分布式队列 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; recipe &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;os&#34; &#34;strings&#34; ) // etcd实现分布式队列 var ( etcdAddrQ = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; queueName = &#34;my-test-queue&#34; ) func main() { // 解析etcd地址 endpoints := strings.Split(etcdAddrQ, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建/获取队列 q := recipe.NewQueue(cli, queueName) // 从命令行读取命令 fmt.Println(&#34;请输入指令：push/pop，多参数用空格间隔&#34;) consolescanner := bufio.NewScanner(os.Stdin) for consolescanner.Scan() { action := consolescanner.Text() items := strings.Split(action, &#34; &#34;) switch items[0] { case &#34;push&#34;: // 加入队列 if len(items) != 2 { fmt.Println(&#34;must set value to push&#34;) continue } q.Enqueue(items[1]) // 入队 case &#34;pop&#34;: // 从队列弹出 v, err := q.Dequeue() // 出队 if err != nil { log.Fatal(err) } fmt.Println(v) // 输出出队的元素 case &#34;quit&#34;, &#34;exit&#34;: //退出 return default: fmt.Println(&#34;unknown action&#34;) } fmt.Println(&#34;请输入指令：push/pop，多参数用空格间隔&#34;) } } 分布式栅栏 基于etcd的分布式栅栏 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 package main import ( &#34;bufio&#34; &#34;fmt&#34; &#34;go.etcd.io/etcd/client/v3&#34; recipe &#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34; &#34;log&#34; &#34;os&#34; &#34;strings&#34; ) // 分布式栅栏 var ( etcdAddrB = &#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34; barrierName = &#34;my-test-queue&#34; ) func main() { // 解析etcd地址 endpoints := strings.Split(etcdAddrB, &#34;,&#34;) // 创建etcd的client cli, err := clientv3.New(clientv3.Config{Endpoints: endpoints}) if err != nil { log.Fatal(err) } defer cli.Close() // 创建/获取栅栏 b := recipe.NewBarrier(cli, barrierName) // 从命令行读取命令 fmt.Println(&#34;请输入指令hold/release/wait：&#34;) consolescanner := bufio.NewScanner(os.Stdin) for consolescanner.Scan() { action := consolescanner.Text() items := strings.Split(action, &#34; &#34;) switch items[0] { case &#34;hold&#34;: // 持有这个barrier if err := b.Hold(); err != nil { fmt.Printf(&#34;hold fail: %v\n&#34;, err) } else { fmt.Println(&#34;hold success&#34;) } case &#34;release&#34;: // 释放这个barrier if err := b.Release(); err != nil { fmt.Printf(&#34;released fail: %v\n&#34;, err) } else { fmt.Println(&#34;released success&#34;) } case &#34;wait&#34;: // 等待barrier被释放 if err := b.Wait(); err != nil { fmt.Printf(&#34;wait fail: %v\n&#34;, err) } else { fmt.Println(&#34;after wait&#34;) } case &#34;quit&#34;, &#34;exit&#34;: // 退出 return default: fmt.Println(&#34;unknown action&#34;) } fmt.Println(&#34;请输入指令hold/release/wait：&#34;) } } 分布式事务 todo">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -91,12 +102,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">ZsmHub Blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -115,6 +135,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -173,7 +194,7 @@
 <h3 id="基于redis的分布式互斥锁">基于redis的分布式互斥锁</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -246,83 +267,83 @@
 </span><span class="lnt">71
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">tool</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;context&#34;</span>
-    <span class="s">&#34;errors&#34;</span>
-    <span class="s">&#34;github.com/go-redis/redis/v8&#34;</span>
-    <span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// 分布式互斥锁
-</span><span class="c1"></span>
-<span class="c1">// 默认重试次数
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">retryTimes</span> <span class="p">=</span> <span class="mi">20</span>
-
-<span class="c1">// 默认重试频率
-</span><span class="c1"></span><span class="kd">var</span> <span class="nx">retryInterval</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">50</span>
-
-<span class="kd">var</span> <span class="nx">ctx</span> <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
-
-<span class="kd">type</span> <span class="nx">DcsLock</span> <span class="kd">struct</span> <span class="p">{</span>
-    <span class="nx">rdb</span>           <span class="o">*</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Client</span>
-    <span class="nx">RetryTimes</span>    <span class="kt">int</span>
-    <span class="nx">RetryInterval</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">SetRdb</span><span class="p">(</span><span class="nx">rdb</span> <span class="o">*</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Client</span><span class="p">)</span> <span class="o">*</span><span class="nx">DcsLock</span> <span class="p">{</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">rdb</span> <span class="p">=</span> <span class="nx">rdb</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">RetryTimes</span> <span class="p">=</span> <span class="nx">retryTimes</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">RetryInterval</span> <span class="p">=</span> <span class="nx">retryInterval</span>
-    <span class="k">return</span> <span class="nx">m</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">SetRetryTimes</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="nx">DcsLock</span> <span class="p">{</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">RetryTimes</span> <span class="p">=</span> <span class="nx">i</span>
-    <span class="k">return</span> <span class="nx">m</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">SetRetryInterval</span><span class="p">(</span><span class="nx">t</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="o">*</span><span class="nx">DcsLock</span> <span class="p">{</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">RetryInterval</span> <span class="p">=</span> <span class="nx">t</span>
-    <span class="k">return</span> <span class="nx">m</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">Lock</span><span class="p">(</span><span class="nx">cacheKey</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ttl</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-    <span class="nx">resp</span> <span class="o">:=</span> <span class="kc">false</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">RetryTimes</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="nx">m</span><span class="p">.</span><span class="nf">SetNX</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">,</span> <span class="nx">ttl</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">resp</span> <span class="p">=</span> <span class="kc">true</span>
-            <span class="k">break</span>
-        <span class="p">}</span>
-        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">RetryInterval</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">!</span><span class="nx">resp</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;抢锁失败，请稍后重试&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">Unlock</span><span class="p">(</span><span class="nx">cacheKey</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nf">DelSetNX</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">SetNX</span><span class="p">(</span><span class="nx">cacheKey</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ttl</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="nx">m</span><span class="p">.</span><span class="nx">rdb</span><span class="p">.</span><span class="nf">SetNX</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">cacheKey</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ttl</span><span class="p">).</span><span class="nf">Val</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">true</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="kc">false</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">DelSetNX</span><span class="p">(</span><span class="nx">cacheKey</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">m</span><span class="p">.</span><span class="nx">rdb</span><span class="p">.</span><span class="nf">Del</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">cacheKey</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">tool</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;errors&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/go-redis/redis/v8&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 分布式互斥锁</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 默认重试次数</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">retryTimes</span> <span class="p">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 默认重试频率</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">retryInterval</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span> <span class="o">*</span> <span class="mi">50</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ctx</span> <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">DcsLock</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rdb</span>           <span class="o">*</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Client</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">RetryTimes</span>    <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">RetryInterval</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">SetRdb</span><span class="p">(</span><span class="nx">rdb</span> <span class="o">*</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Client</span><span class="p">)</span> <span class="o">*</span><span class="nx">DcsLock</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nx">rdb</span> <span class="p">=</span> <span class="nx">rdb</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nx">RetryTimes</span> <span class="p">=</span> <span class="nx">retryTimes</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nx">RetryInterval</span> <span class="p">=</span> <span class="nx">retryInterval</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">m</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">SetRetryTimes</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="nx">DcsLock</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nx">RetryTimes</span> <span class="p">=</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">m</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">SetRetryInterval</span><span class="p">(</span><span class="nx">t</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="o">*</span><span class="nx">DcsLock</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nx">RetryInterval</span> <span class="p">=</span> <span class="nx">t</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">m</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">Lock</span><span class="p">(</span><span class="nx">cacheKey</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ttl</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">resp</span> <span class="o">:=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">RetryTimes</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">m</span><span class="p">.</span><span class="nf">SetNX</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">,</span> <span class="nx">ttl</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">resp</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">RetryInterval</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">!</span><span class="nx">resp</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;抢锁失败，请稍后重试&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">Unlock</span><span class="p">(</span><span class="nx">cacheKey</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nf">DelSetNX</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">SetNX</span><span class="p">(</span><span class="nx">cacheKey</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ttl</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">m</span><span class="p">.</span><span class="nx">rdb</span><span class="p">.</span><span class="nf">SetNX</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">cacheKey</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">ttl</span><span class="p">).</span><span class="nf">Val</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">DcsLock</span><span class="p">)</span> <span class="nf">DelSetNX</span><span class="p">(</span><span class="nx">cacheKey</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span><span class="p">.</span><span class="nx">rdb</span><span class="p">.</span><span class="nf">Del</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">cacheKey</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="基于etcd的分布式互斥锁">基于etcd的分布式互斥锁</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -386,75 +407,75 @@
 </span><span class="lnt">62
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;context&#34;</span>
-    <span class="s">&#34;go.etcd.io/etcd/client/v3&#34;</span>
-    <span class="s">&#34;go.etcd.io/etcd/client/v3/concurrency&#34;</span>
-    <span class="s">&#34;log&#34;</span>
-    <span class="s">&#34;math/rand&#34;</span>
-    <span class="s">&#34;strings&#34;</span>
-    <span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// etcd实现分布式互斥锁
-</span><span class="c1"></span><span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">addr</span>     <span class="p">=</span> <span class="s">&#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34;</span>
-    <span class="nx">lockName</span> <span class="p">=</span> <span class="s">&#34;my-test-lock&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
-
-    <span class="c1">// etcd地址
-</span><span class="c1"></span>    <span class="nx">endpoints</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">addr</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
-
-    <span class="c1">// 生成一个etcd client
-</span><span class="c1"></span>    <span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">Endpoints</span><span class="p">:</span> <span class="nx">endpoints</span><span class="p">})</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">defer</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-
-    <span class="nf">useLock</span><span class="p">(</span><span class="nx">cli</span><span class="p">)</span> <span class="c1">// 测试锁
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">useLock</span><span class="p">(</span><span class="nx">cli</span> <span class="o">*</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 为锁生成session「节点宕机对应 session 销毁，持有的锁会被释放」
-</span><span class="c1"></span>    <span class="nx">s1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">concurrency</span><span class="p">.</span><span class="nf">NewSession</span><span class="p">(</span><span class="nx">cli</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">defer</span> <span class="nx">s1</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-
-    <span class="c1">// 得到一个分布式锁
-</span><span class="c1"></span>    <span class="nx">locker</span> <span class="o">:=</span> <span class="nx">concurrency</span><span class="p">.</span><span class="nf">NewMutex</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">lockName</span><span class="p">)</span>
-
-    <span class="c1">// 请求锁
-</span><span class="c1"></span>    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquiring lock&#34;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">locker</span><span class="p">.</span><span class="nf">Lock</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">TODO</span><span class="p">());</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquired lock&#34;</span><span class="p">)</span>
-
-    <span class="c1">// 等待一段时间
-</span><span class="c1"></span>    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-
-    <span class="c1">// 释放锁
-</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">locker</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">TODO</span><span class="p">());</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;released lock&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;go.etcd.io/etcd/client/v3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;go.etcd.io/etcd/client/v3/concurrency&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;math/rand&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// etcd实现分布式互斥锁</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">addr</span>     <span class="p">=</span> <span class="s">&#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">lockName</span> <span class="p">=</span> <span class="s">&#34;my-test-lock&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// etcd地址</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">endpoints</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">addr</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 生成一个etcd client</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">Endpoints</span><span class="p">:</span> <span class="nx">endpoints</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">useLock</span><span class="p">(</span><span class="nx">cli</span><span class="p">)</span> <span class="c1">// 测试锁</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">useLock</span><span class="p">(</span><span class="nx">cli</span> <span class="o">*</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 为锁生成session「节点宕机对应 session 销毁，持有的锁会被释放」</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">concurrency</span><span class="p">.</span><span class="nf">NewSession</span><span class="p">(</span><span class="nx">cli</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">s1</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 得到一个分布式锁</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">locker</span> <span class="o">:=</span> <span class="nx">concurrency</span><span class="p">.</span><span class="nf">NewMutex</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">lockName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 请求锁</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquiring lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">locker</span><span class="p">.</span><span class="nf">Lock</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">TODO</span><span class="p">());</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquired lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 等待一段时间</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 释放锁</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">locker</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">TODO</span><span class="p">());</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;released lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="分布式读写锁">分布式读写锁</h2>
 <h3 id="基于etcd的分布式读写锁">基于etcd的分布式读写锁</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -558,115 +579,115 @@
 </span><span class="lnt">102
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;bufio&#34;</span>
-    <span class="s">&#34;flag&#34;</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;go.etcd.io/etcd/client/v3&#34;</span>
-    <span class="s">&#34;go.etcd.io/etcd/client/v3/concurrency&#34;</span>
-    <span class="s">&#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34;</span>
-    <span class="s">&#34;log&#34;</span>
-    <span class="s">&#34;math/rand&#34;</span>
-    <span class="s">&#34;os&#34;</span>
-    <span class="s">&#34;strings&#34;</span>
-    <span class="s">&#34;time&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// etcd实现分布式读写锁
-</span><span class="c1"></span><span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">rwAddr</span>     <span class="p">=</span> <span class="s">&#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34;</span>
-    <span class="nx">rwLockName</span> <span class="p">=</span> <span class="s">&#34;my-test-lock&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
-
-    <span class="c1">// 解析etcd地址
-</span><span class="c1"></span>    <span class="nx">endpoints</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">rwAddr</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
-
-    <span class="c1">// 创建etcd的client
-</span><span class="c1"></span>    <span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">Endpoints</span><span class="p">:</span> <span class="nx">endpoints</span><span class="p">})</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">defer</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-
-    <span class="c1">// 创建session
-</span><span class="c1"></span>    <span class="nx">s1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">concurrency</span><span class="p">.</span><span class="nf">NewSession</span><span class="p">(</span><span class="nx">cli</span><span class="p">)</span> <span class="c1">// 节点宕机对应 session 销毁，持有的锁会被释放
-</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">defer</span> <span class="nx">s1</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-
-    <span class="nx">m1</span> <span class="o">:=</span> <span class="nx">recipe</span><span class="p">.</span><span class="nf">NewRWMutex</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">rwLockName</span><span class="p">)</span>
-
-    <span class="c1">// 从命令行读取命令
-</span><span class="c1"></span>    <span class="nx">consolescanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
-    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令w/r：&#34;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">action</span> <span class="o">:=</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">()</span>
-        <span class="k">switch</span> <span class="nx">action</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="s">&#34;w&#34;</span><span class="p">:</span> <span class="c1">// 请求写锁
-</span><span class="c1"></span>            <span class="nf">testWriteLocker</span><span class="p">(</span><span class="nx">m1</span><span class="p">)</span>
-        <span class="k">case</span> <span class="s">&#34;r&#34;</span><span class="p">:</span> <span class="c1">// 请求读锁
-</span><span class="c1"></span>            <span class="nf">testReadLocker</span><span class="p">(</span><span class="nx">m1</span><span class="p">)</span>
-        <span class="k">default</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;unknown action&#34;</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令w/r：&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">testWriteLocker</span><span class="p">(</span><span class="nx">m1</span> <span class="o">*</span><span class="nx">recipe</span><span class="p">.</span><span class="nx">RWMutex</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 请求写锁
-</span><span class="c1"></span>    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquiring write lock&#34;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">.</span><span class="nf">Lock</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquired write lock&#34;</span><span class="p">)</span>
-
-    <span class="c1">// 等待一段时间
-</span><span class="c1"></span>    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-
-    <span class="c1">// 释放写锁
-</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;released write lock&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">testReadLocker</span><span class="p">(</span><span class="nx">m1</span> <span class="o">*</span><span class="nx">recipe</span><span class="p">.</span><span class="nx">RWMutex</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 请求读锁
-</span><span class="c1"></span>    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquiring read lock&#34;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">.</span><span class="nf">RLock</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquired read lock&#34;</span><span class="p">)</span>
-
-    <span class="c1">// 等待一段时间
-</span><span class="c1"></span>    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-
-    <span class="c1">// 释放写锁
-</span><span class="c1"></span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">.</span><span class="nf">RUnlock</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;released read lock&#34;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;flag&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;go.etcd.io/etcd/client/v3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;go.etcd.io/etcd/client/v3/concurrency&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;math/rand&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// etcd实现分布式读写锁</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rwAddr</span>     <span class="p">=</span> <span class="s">&#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rwLockName</span> <span class="p">=</span> <span class="s">&#34;my-test-lock&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rand</span><span class="p">.</span><span class="nf">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解析etcd地址</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">endpoints</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">rwAddr</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建etcd的client</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">Endpoints</span><span class="p">:</span> <span class="nx">endpoints</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建session</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s1</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">concurrency</span><span class="p">.</span><span class="nf">NewSession</span><span class="p">(</span><span class="nx">cli</span><span class="p">)</span> <span class="c1">// 节点宕机对应 session 销毁，持有的锁会被释放</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">s1</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">m1</span> <span class="o">:=</span> <span class="nx">recipe</span><span class="p">.</span><span class="nf">NewRWMutex</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">rwLockName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 从命令行读取命令</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">consolescanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令w/r：&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">action</span> <span class="o">:=</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="nx">action</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;w&#34;</span><span class="p">:</span> <span class="c1">// 请求写锁</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">testWriteLocker</span><span class="p">(</span><span class="nx">m1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;r&#34;</span><span class="p">:</span> <span class="c1">// 请求读锁</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">testReadLocker</span><span class="p">(</span><span class="nx">m1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;unknown action&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令w/r：&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">testWriteLocker</span><span class="p">(</span><span class="nx">m1</span> <span class="o">*</span><span class="nx">recipe</span><span class="p">.</span><span class="nx">RWMutex</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 请求写锁</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquiring write lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">.</span><span class="nf">Lock</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquired write lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 等待一段时间</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 释放写锁</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;released write lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">testReadLocker</span><span class="p">(</span><span class="nx">m1</span> <span class="o">*</span><span class="nx">recipe</span><span class="p">.</span><span class="nx">RWMutex</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 请求读锁</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquiring read lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">.</span><span class="nf">RLock</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;acquired read lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 等待一段时间</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nf">Intn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 释放写锁</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m1</span><span class="p">.</span><span class="nf">RUnlock</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;released read lock&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="分布式队列">分布式队列</h2>
 <h3 id="基于etcd的分布式队列">基于etcd的分布式队列</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -729,74 +750,74 @@
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go">
-<span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;bufio&#34;</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;go.etcd.io/etcd/client/v3&#34;</span>
-    <span class="nx">recipe</span> <span class="s">&#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34;</span>
-    <span class="s">&#34;log&#34;</span>
-    <span class="s">&#34;os&#34;</span>
-    <span class="s">&#34;strings&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// etcd实现分布式队列
-</span><span class="c1"></span><span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">etcdAddrQ</span>     <span class="p">=</span> <span class="s">&#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34;</span>
-    <span class="nx">queueName</span> <span class="p">=</span> <span class="s">&#34;my-test-queue&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// 解析etcd地址
-</span><span class="c1"></span>    <span class="nx">endpoints</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">etcdAddrQ</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
-
-    <span class="c1">// 创建etcd的client
-</span><span class="c1"></span>    <span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">Endpoints</span><span class="p">:</span> <span class="nx">endpoints</span><span class="p">})</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">defer</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-
-    <span class="c1">// 创建/获取队列
-</span><span class="c1"></span>    <span class="nx">q</span> <span class="o">:=</span> <span class="nx">recipe</span><span class="p">.</span><span class="nf">NewQueue</span><span class="p">(</span><span class="nx">cli</span><span class="p">,</span> <span class="nx">queueName</span><span class="p">)</span>
-
-    <span class="c1">// 从命令行读取命令
-</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令：push/pop，多参数用空格间隔&#34;</span><span class="p">)</span>
-    <span class="nx">consolescanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">action</span> <span class="o">:=</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">()</span>
-        <span class="nx">items</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">)</span>
-        <span class="k">switch</span> <span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="s">&#34;push&#34;</span><span class="p">:</span> <span class="c1">// 加入队列
-</span><span class="c1"></span>            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">items</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;must set value to push&#34;</span><span class="p">)</span>
-                <span class="k">continue</span>
-            <span class="p">}</span>
-            <span class="nx">q</span><span class="p">.</span><span class="nf">Enqueue</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">// 入队
-</span><span class="c1"></span>        <span class="k">case</span> <span class="s">&#34;pop&#34;</span><span class="p">:</span> <span class="c1">// 从队列弹出
-</span><span class="c1"></span>            <span class="nx">v</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">q</span><span class="p">.</span><span class="nf">Dequeue</span><span class="p">()</span> <span class="c1">// 出队
-</span><span class="c1"></span>            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-            <span class="p">}</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="c1">// 输出出队的元素
-</span><span class="c1"></span>        <span class="k">case</span> <span class="s">&#34;quit&#34;</span><span class="p">,</span> <span class="s">&#34;exit&#34;</span><span class="p">:</span> <span class="c1">//退出
-</span><span class="c1"></span>            <span class="k">return</span>
-        <span class="k">default</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;unknown action&#34;</span><span class="p">)</span>
-        <span class="p">}</span>
-
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令：push/pop，多参数用空格间隔&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;go.etcd.io/etcd/client/v3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">recipe</span> <span class="s">&#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// etcd实现分布式队列</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">etcdAddrQ</span>     <span class="p">=</span> <span class="s">&#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">queueName</span> <span class="p">=</span> <span class="s">&#34;my-test-queue&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解析etcd地址</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">endpoints</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">etcdAddrQ</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建etcd的client</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">Endpoints</span><span class="p">:</span> <span class="nx">endpoints</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建/获取队列</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">q</span> <span class="o">:=</span> <span class="nx">recipe</span><span class="p">.</span><span class="nf">NewQueue</span><span class="p">(</span><span class="nx">cli</span><span class="p">,</span> <span class="nx">queueName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 从命令行读取命令</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令：push/pop，多参数用空格间隔&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">consolescanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">action</span> <span class="o">:=</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">items</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;push&#34;</span><span class="p">:</span> <span class="c1">// 加入队列</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">items</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;must set value to push&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">q</span><span class="p">.</span><span class="nf">Enqueue</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">// 入队</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;pop&#34;</span><span class="p">:</span> <span class="c1">// 从队列弹出</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">v</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">q</span><span class="p">.</span><span class="nf">Dequeue</span><span class="p">()</span> <span class="c1">// 出队</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="c1">// 输出出队的元素</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;quit&#34;</span><span class="p">,</span> <span class="s">&#34;exit&#34;</span><span class="p">:</span> <span class="c1">//退出</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;unknown action&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令：push/pop，多参数用空格间隔&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="分布式栅栏">分布式栅栏</h2>
 <h3 id="基于etcd的分布式栅栏">基于etcd的分布式栅栏</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -864,73 +885,73 @@
 </span><span class="lnt">66
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;bufio&#34;</span>
-    <span class="s">&#34;fmt&#34;</span>
-    <span class="s">&#34;go.etcd.io/etcd/client/v3&#34;</span>
-    <span class="nx">recipe</span> <span class="s">&#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34;</span>
-    <span class="s">&#34;log&#34;</span>
-    <span class="s">&#34;os&#34;</span>
-    <span class="s">&#34;strings&#34;</span>
-<span class="p">)</span>
-
-<span class="c1">// 分布式栅栏
-</span><span class="c1"></span><span class="kd">var</span> <span class="p">(</span>
-    <span class="nx">etcdAddrB</span>   <span class="p">=</span> <span class="s">&#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34;</span>
-    <span class="nx">barrierName</span> <span class="p">=</span> <span class="s">&#34;my-test-queue&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="c1">// 解析etcd地址
-</span><span class="c1"></span>    <span class="nx">endpoints</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">etcdAddrB</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
-
-    <span class="c1">// 创建etcd的client
-</span><span class="c1"></span>    <span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">Endpoints</span><span class="p">:</span> <span class="nx">endpoints</span><span class="p">})</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">defer</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-
-    <span class="c1">// 创建/获取栅栏
-</span><span class="c1"></span>    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">recipe</span><span class="p">.</span><span class="nf">NewBarrier</span><span class="p">(</span><span class="nx">cli</span><span class="p">,</span> <span class="nx">barrierName</span><span class="p">)</span>
-
-    <span class="c1">// 从命令行读取命令
-</span><span class="c1"></span>    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令hold/release/wait：&#34;</span><span class="p">)</span>
-    <span class="nx">consolescanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
-    <span class="k">for</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">action</span> <span class="o">:=</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">()</span>
-        <span class="nx">items</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">)</span>
-        <span class="k">switch</span> <span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="s">&#34;hold&#34;</span><span class="p">:</span> <span class="c1">// 持有这个barrier
-</span><span class="c1"></span>            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">b</span><span class="p">.</span><span class="nf">Hold</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;hold fail: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hold success&#34;</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="k">case</span> <span class="s">&#34;release&#34;</span><span class="p">:</span> <span class="c1">// 释放这个barrier
-</span><span class="c1"></span>            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">b</span><span class="p">.</span><span class="nf">Release</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;released fail: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;released success&#34;</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="k">case</span> <span class="s">&#34;wait&#34;</span><span class="p">:</span> <span class="c1">// 等待barrier被释放
-</span><span class="c1"></span>            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">b</span><span class="p">.</span><span class="nf">Wait</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;wait fail: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;after wait&#34;</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="k">case</span> <span class="s">&#34;quit&#34;</span><span class="p">,</span> <span class="s">&#34;exit&#34;</span><span class="p">:</span> <span class="c1">// 退出
-</span><span class="c1"></span>            <span class="k">return</span>
-        <span class="k">default</span><span class="p">:</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;unknown action&#34;</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令hold/release/wait：&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bufio&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;go.etcd.io/etcd/client/v3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">recipe</span> <span class="s">&#34;go.etcd.io/etcd/client/v3/experimental/recipes&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 分布式栅栏</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">etcdAddrB</span>   <span class="p">=</span> <span class="s">&#34;http://127.0.0.1:23791,http://127.0.0.1:23792,http://127.0.0.1:23793&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">barrierName</span> <span class="p">=</span> <span class="s">&#34;my-test-queue&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 解析etcd地址</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">endpoints</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">etcdAddrB</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建etcd的client</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">clientv3</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">clientv3</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">Endpoints</span><span class="p">:</span> <span class="nx">endpoints</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建/获取栅栏</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">recipe</span><span class="p">.</span><span class="nf">NewBarrier</span><span class="p">(</span><span class="nx">cli</span><span class="p">,</span> <span class="nx">barrierName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 从命令行读取命令</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令hold/release/wait：&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">consolescanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">action</span> <span class="o">:=</span> <span class="nx">consolescanner</span><span class="p">.</span><span class="nf">Text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">items</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="s">&#34; &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;hold&#34;</span><span class="p">:</span> <span class="c1">// 持有这个barrier</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">b</span><span class="p">.</span><span class="nf">Hold</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;hold fail: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hold success&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;release&#34;</span><span class="p">:</span> <span class="c1">// 释放这个barrier</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">b</span><span class="p">.</span><span class="nf">Release</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;released fail: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;released success&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;wait&#34;</span><span class="p">:</span> <span class="c1">// 等待barrier被释放</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">b</span><span class="p">.</span><span class="nf">Wait</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;wait fail: %v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;after wait&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s">&#34;quit&#34;</span><span class="p">,</span> <span class="s">&#34;exit&#34;</span><span class="p">:</span> <span class="c1">// 退出</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;unknown action&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请输入指令hold/release/wait：&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="分布式事务">分布式事务</h2>
 <p>todo</p>
@@ -940,7 +961,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content"><a href="https://zsmhub.github.io/" class="theme-link">ZsmHub</a></span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -1012,22 +1033,19 @@
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 -
+    主题 - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
   
 
   <span class="copyright-year">
-    &copy;
-    2019 -
-    2025
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ZsmHub</span>
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -1041,7 +1059,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.cddea96674a99fd8cea50d36fb19d9c91f497feea4af5ce4596afd2dbaab9202.js"></script>
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

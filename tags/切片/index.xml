@@ -4,18 +4,17 @@
     <title>切片 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%88%87%E7%89%87/</link>
     <description>Recent content in 切片 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Wed, 08 Jul 2020 09:40:36 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%88%87%E7%89%87/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Jul 2020 09:40:36 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%88%87%E7%89%87/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go切片详解</title>
       <link>https://zsmhub.github.io/post/golang/go%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Wed, 08 Jul 2020 09:40:36 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/golang/go%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/</guid>
-      <description>前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此</description>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此诞生。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

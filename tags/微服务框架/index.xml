@@ -4,27 +4,24 @@
     <title>微服务框架 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6/</link>
     <description>Recent content in 微服务框架 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 04 Jun 2021 15:43:03 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Jun 2021 15:43:03 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go Zero</title>
       <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-zero/</link>
       <pubDate>Fri, 04 Jun 2021 15:43:03 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-zero/</guid>
-      <description>官方文档 点击前往 启动服务 1 2 // API 或 rpc 代码运行 cd project/service/user/cmd/api &amp;amp;&amp;amp; go run user.go -f etc/user.yaml rpc调用链建议 在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如</description>
+      <description>&lt;h2 id=&#34;官方文档&#34;&gt;官方文档&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://go-zero.dev/cn/&#34;&gt;点击前往&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;启动服务&#34;&gt;启动服务&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;// API 或 rpc 代码运行&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; project/service/user/cmd/api &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; go run user.go -f etc/user.yaml&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;rpc调用链建议&#34;&gt;rpc调用链建议&lt;/h2&gt;&#xA;&lt;p&gt;在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：order服务调用了user服务，而user服务反过来也会调用order的服务， 当其中一个服务启动故障，就会相互影响，进入死循环，你order认为是user服务故障导致的，而user认为是order服务导致的，如果有大量服务存在相互调用链， 则需要考虑服务拆分是否合理。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Go Micro</title>
       <link>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-micro/</link>
       <pubDate>Fri, 18 Dec 2020 09:30:23 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-micro/</guid>
-      <description>micro 常用的几个命令 micro server //启动服务端 micro login //登录服务 user: admin pass: micro micro new XXX //新建服务 micro services //服务列表 micro run XXX //挂载服务 micro status //查看服务状态 micro logs XXX //</description>
+      <description>&lt;h2 id=&#34;micro-常用的几个命令&#34;&gt;micro 常用的几个命令&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;micro server //启动服务端&lt;/li&gt;&#xA;&lt;li&gt;micro login //登录服务 user: admin pass: micro&lt;/li&gt;&#xA;&lt;li&gt;micro new XXX //新建服务&lt;/li&gt;&#xA;&lt;li&gt;micro services //服务列表&lt;/li&gt;&#xA;&lt;li&gt;micro run XXX //挂载服务&lt;/li&gt;&#xA;&lt;li&gt;micro status //查看服务状态&lt;/li&gt;&#xA;&lt;li&gt;micro logs XXX //查看XXX服务日志&lt;/li&gt;&#xA;&lt;li&gt;micro service XXX //XXX服务详情&lt;/li&gt;&#xA;&lt;li&gt;micro XXX &amp;ndash;参数=值 //调用XXX服务返回结果&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;学习链接&#34;&gt;学习链接&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/micro/micro&#34;&gt;Micro 框架&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

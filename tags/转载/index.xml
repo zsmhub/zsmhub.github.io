@@ -4,36 +4,31 @@
     <title>转载 on ZsmHub - Blog</title>
     <link>https://zsmhub.github.io/tags/%E8%BD%AC%E8%BD%BD/</link>
     <description>Recent content in 转载 on ZsmHub - Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 10 Mar 2022 11:21:07 +0800</lastBuildDate><atom:link href="https://zsmhub.github.io/tags/%E8%BD%AC%E8%BD%BD/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Mar 2022 11:21:07 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/%E8%BD%AC%E8%BD%BD/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>稳定排序和不稳定排序</title>
       <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%92%8C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F/</link>
       <pubDate>Thu, 10 Mar 2022 11:21:07 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%92%8C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F/</guid>
-      <description>首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形</description>
+      <description>&lt;p&gt;首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Go 数组指针和指针数组的区别</title>
       <link>https://zsmhub.github.io/post/golang/go%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Tue, 05 May 2020 14:13:30 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/golang/go%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
-      <description>Golang中数组指针和指针数组区别 区别二者，字面上只看后两个字即可： 数组指针 ：它是一个指针，但是数据类型为数组，或者说指向数组 指针数组 ：它</description>
+      <description>&lt;h2 id=&#34;golang中数组指针和指针数组区别&#34;&gt;Golang中数组指针和指针数组区别&lt;/h2&gt;&#xA;&lt;p&gt;区别二者，字面上只看&lt;strong&gt;后两个字&lt;/strong&gt;即可：&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;数组指针&lt;/strong&gt; ：它是一个指针，但是数据类型为数组，或者说指向数组&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;指针数组&lt;/strong&gt; ：它是一个数组，该数组的元素都为地址值&lt;/p&gt;&#xA;&lt;h2 id=&#34;一数组指针&#34;&gt;一.数组指针&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1语法&#34;&gt;1.语法&lt;/h3&gt;&#xA;&lt;p&gt;var 变量名  *[数组大小] 数组类型：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>算法时间复杂度</title>
       <link>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</link>
       <pubDate>Wed, 04 Dec 2019 21:51:34 +0800</pubDate>
-      
       <guid>https://zsmhub.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</guid>
-      <description>算法复杂度 算法复杂度分为时间复杂度和空间复杂度。其作用： 时间复杂度是指执行这个算法所需要的计算工作量； 空间复杂度是指执行这个算法所需要的内存</description>
+      <description>&lt;h2 id=&#34;算法复杂度&#34;&gt;算法复杂度&lt;/h2&gt;&#xA;&lt;p&gt;算法复杂度分为时间复杂度和空间复杂度。其作用：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;时间复杂度是指执行这个算法所需要的计算工作量；&lt;/li&gt;&#xA;&lt;li&gt;空间复杂度是指执行这个算法所需要的内存空间；&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;时间复杂度基础概念&#34;&gt;时间复杂度基础概念&lt;/h2&gt;&#xA;&lt;p&gt;在计算机科学中，算法的时间复杂度（Time complexity）是一个函数，它定性描述该算法的运行时间。这是一个代表算法输入值的字符串的长度的函数。时间复杂度常用大O符号表述，不包括这个函数的低阶项和首项系数。使用这种方式时，时间复杂度可被称为是渐近的，亦即考察输入值大小趋近无穷时的情况。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
