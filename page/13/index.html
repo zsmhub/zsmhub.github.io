@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
-  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="datePublished" content="2025-04-22T14:58:36+08:00">
+  <meta itemprop="dateModified" content="2025-04-22T14:58:36+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,61 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/ide/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%B9%B3%E5%8F%B0/">常用软件和平台</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-19 </span>
+      <div class="post-category">
+          <a href="/categories/ide/"> ide </a>
+          </div>
+        <span class="more-meta"> 约 336 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="code">code</h2>
+<ul>
+<li>SourceTree</li>
+<li>TortoiseSvn / TortoiseGit</li>
+</ul>
+<h2 id="ide">IDE</h2>
+<ul>
+<li>sublime</li>
+<li>visual studio code</li>
+<li>phpStorm</li>
+<li>hbuilder</li>
+<li>gvim / macvim</li>
+</ul>
+<h2 id="database">database</h2>
+<ul>
+<li>powerdesigner / workbench</li>
+<li>navicat</li>
+<li>SQLyog</li>
+<li>sequelPro</li>
+<li>datagrip</li>
+<li>DBeaver</li>
+<li>Robot 3T (MongoDB)</li>
+</ul>
+<h2 id="ssh">ssh</h2>
+<ul>
+<li>
+<p>windows: SecureCRT</p>
+</li>
+<li>
+<p>MacOs: iTerm2</p>
+<blockquote>
+<p>powerlevel10k主题配置教程: <a href="https://cloud.tencent.com/developer/article/1822517">https://cloud.tencent.com/developer/article/1822517</a></p>
+<p>注意：由bash切换到zsh后 ~/.bash_profile 里面的环境变量的配置便不生效了，需要在 ~/.zshrc 中重新配置。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/ide/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%B9%B3%E5%8F%B0/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/ide/jetbrains/">JetBrains</a></h1>
@@ -524,307 +579,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E8%AE%B0%E4%B8%80%E4%B8%8B%E4%BA%92%E8%81%94%E7%BD%91%E8%AF%8D/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/">Go Json 技巧</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-12 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 710 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="omitempty">omitempty</h2>
-<p>忽略 struct 空字段，当字段的值为空值的时候，它不会出现在JSON数据中.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">Email</span>    <span class="kt">string</span> <span class="s">`json:&#34;email&#34;`</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">Password</span> <span class="kt">string</span> <span class="s">`json:&#34;password,omitempty&#34;`</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">jsonByte</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span> <span class="s">&#34;7@qq.com&#34;</span><span class="p">})</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">jsonByte</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 输出结果</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 不带 omitempty 的输出结果：{&#34;email&#34;:&#34;7@qq.com&#34;,&#34;password&#34;:&#34;&#34;}</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 带 omitempty 的输出结果：{&#34;email&#34;:&#34;7@qq.com&#34;}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="临时合并两个struct">临时合并两个struct</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">BlogPost</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">URL</span>   <span class="kt">string</span> <span class="s">`json:&#34;url&#34;`</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">Title</span> <span class="kt">string</span> <span class="s">`json:&#34;title&#34;`</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">Analytics</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">Visitors</span>  <span class="kt">int</span> <span class="s">`json:&#34;visitors&#34;`</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">PageViews</span> <span class="kt">int</span> <span class="s">`json:&#34;page_views&#34;`</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nx">blog</span> <span class="o">:=</span> <span class="nx">BlogPost</span><span class="p">{</span><span class="nx">URL</span><span class="p">:</span> <span class="s">&#34;http://www.x.com&#34;</span><span class="p">,</span> <span class="nx">Title</span><span class="p">:</span> <span class="s">&#34;title&#34;</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">analytics</span> <span class="o">:=</span> <span class="nx">Analytics</span><span class="p">{</span><span class="nx">Visitors</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">PageViews</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nx">jsonByte</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="nx">BlogPost</span>
-</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="nx">Analytics</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}{</span><span class="o">&amp;</span><span class="nx">blog</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">analytics</span><span class="p">})</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">jsonByte</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// 输出结果</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// {&#34;url&#34;:&#34;http://www.x.com&#34;,&#34;title&#34;:&#34;title&#34;,&#34;visitors&#34;:100,&#34;page_views&#34;:200}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="一个json切分成两个struct">一个json切分成两个struct</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">BlogPost</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">URL</span>   <span class="kt">string</span> <span class="s">`json:&#34;url&#34;`</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">Title</span> <span class="kt">string</span> <span class="s">`json:&#34;title&#34;`</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">Analytics</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">Visitors</span>  <span class="kt">int</span> <span class="s">`json:&#34;visitors&#34;`</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">PageViews</span> <span class="kt">int</span> <span class="s">`json:&#34;page_views&#34;`</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">blog</span>      <span class="nx">BlogPost</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">analytics</span> <span class="nx">Analytics</span>
-</span></span><span class="line"><span class="cl">    <span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">`{&#34;url&#34;:&#34;http://www.x.com&#34;,&#34;title&#34;:&#34;title&#34;,&#34;visitors&#34;:100,&#34;page_views&#34;:200}`</span><span class="p">),</span> <span class="o">&amp;</span><span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">       <span class="o">*</span><span class="nx">BlogPost</span>
-</span></span><span class="line"><span class="cl">       <span class="o">*</span><span class="nx">Analytics</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}{</span><span class="o">&amp;</span><span class="nx">blog</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">analytics</span><span class="p">})</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">blog</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">analytics</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// 输出结果</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// {http://www.x.com title}</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// {100 200}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="数字以字符串形式输出">数字以字符串形式输出</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Test</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">Email</span> <span class="kt">string</span> <span class="s">`json:&#34;email&#34;`</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">Field</span> <span class="kt">int</span>    <span class="s">`json:&#34;field,string&#34;`</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">jsonByte</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">Test</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span> <span class="s">&#34;7@qq.com&#34;</span><span class="p">,</span> <span class="nx">Field</span><span class="p">:</span> <span class="mi">100</span><span class="p">})</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">jsonByte</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 输出结果</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// {&#34;email&#34;:&#34;7@qq.com&#34;,&#34;field&#34;:&#34;100&#34;}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="json和map转换">json和map转换</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">jsonStr</span> <span class="o">:=</span> <span class="s">`
-</span></span></span><span class="line"><span class="cl"><span class="s">        {
-</span></span></span><span class="line"><span class="cl"><span class="s">          &#34;env&#34;: &#34;local&#34;,
-</span></span></span><span class="line"><span class="cl"><span class="s">          &#34;redis_address&#34;: &#34;127.0.0.1:6379&#34;,
-</span></span></span><span class="line"><span class="cl"><span class="s">          &#34;redis_password&#34;: &#34;xxx&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s">        }
-</span></span></span><span class="line"><span class="cl"><span class="s">    `</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// json转换成map</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">_</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">jsonStr</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">m</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="c1">// 输出：map[env:local redis_address:127.0.0.1:6379 redis_password:xxx]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// map转换成json</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">j</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">j</span><span class="p">))</span> <span class="c1">// 输出：{&#34;env&#34;:&#34;local&#34;,&#34;redis_address&#34;:&#34;127.0.0.1:6379&#34;,&#34;redis_password&#34;:&#34;xxx&#34;}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

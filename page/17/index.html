@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
-  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="datePublished" content="2025-04-22T14:58:36+08:00">
+  <meta itemprop="dateModified" content="2025-04-22T14:58:36+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,90 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/supervisor/">Supervisor</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-10-05 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          </div>
+        <span class="more-meta"> 约 789 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="安装">安装</h2>
+<p>brew install supervisor</p>
+<p>安装完成后会有如下几个命令工具</p>
+<ul>
+<li>supervisord，运行 Supervisor 时会启动一个进程 supervisord，它负责启动所管理的进程，并将所管理的进程作为自己的子进程来启动，而且可以在所管理的进程出现崩溃时自动重启</li>
+<li>supervisorctl，用户与 Supervisor 交互的工具，方便用户管理子进程，可用来 stop、start、restart</li>
+<li>echo_supervisord_conf，输出默认配置</li>
+</ul>
+<h2 id="常用命令">常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">supervisord -c /usr/supervisor/supervisord.conf // 启动 supervisor，通过 http://ip:9001/ 就可以查看supervisor的web界面
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">supervisorctl start horizon // 使用 supervisorctl 启动 horizon 脚本
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">supervisorctl reload // 重启，每次更改了脚本代码后需要reload
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">supervisorctl status // 查看进程启动状态
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="supervisorini-配置文件详解">supervisor.ini 配置文件详解</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">[</span>program:demotest<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">command</span><span class="o">=</span>python demotest.py <span class="m">10000</span>  <span class="c1"># 被监控的进程启动命令</span>
+</span></span><span class="line"><span class="cl"><span class="nv">directory</span><span class="o">=</span>/root/                <span class="c1"># 执行前要不要先cd到目录去，一般不用</span>
+</span></span><span class="line"><span class="cl"><span class="nv">priority</span><span class="o">=</span><span class="m">1</span>                    <span class="c1"># 数字越高，优先级越高</span>
+</span></span><span class="line"><span class="cl"><span class="nv">numprocs</span><span class="o">=</span><span class="m">1</span>                    <span class="c1"># 启动几个进程</span>
+</span></span><span class="line"><span class="cl"><span class="nv">autostart</span><span class="o">=</span><span class="nb">true</span>                <span class="c1"># 随着supervisord的启动而启动</span>
+</span></span><span class="line"><span class="cl"><span class="nv">autorestart</span><span class="o">=</span><span class="nb">true</span>              <span class="c1"># 自动重启。。当然要选上了</span>
+</span></span><span class="line"><span class="cl"><span class="nv">startretries</span><span class="o">=</span><span class="m">10</span>               <span class="c1"># 启动失败时的最多重试次数</span>
+</span></span><span class="line"><span class="cl"><span class="nv">exitcodes</span><span class="o">=</span><span class="m">0</span>                   <span class="c1"># 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定）</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stopsignal</span><span class="o">=</span>TERM               <span class="c1"># 用来杀死进程的信号，Default: TERM(即kill -15)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stopwaitsecs</span><span class="o">=</span><span class="m">10</span>               <span class="c1"># 发送SIGKILL前的等待时间，Default: 10</span>
+</span></span><span class="line"><span class="cl"><span class="nv">redirect_stderr</span><span class="o">=</span><span class="nb">true</span>          <span class="c1"># 重定向stderr到stdout</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Linux kill -15</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%90%8E%E7%AB%AF/supervisor/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Git 基础知识</a></h1>
@@ -412,34 +496,6 @@
     </div>
     <div class="read-more">
       <a href="/post/ide/vscode/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/">SonarQube 代码质量管理平台</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-06-15 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
-          </div>
-        <span class="more-meta"> 约 441 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="sonarlint-与-sonarqube">SonarLint 与 SonarQube</h2>
-<ul>
-<li>SonarLint 仅存在于 IDE（IntelliJ，Eclipse 和 Visual Studio）中。 其目的是在您键入代码时提供即时反馈。 为此，它专注于您要添加或更新的代码。</li>
-<li>SonarQube 是一个用于管理源代码质量的开放平台，它可以从多个维度检测代码质量，可以快速的定位代码中潜在的或者明显的 Bug、错误。它支持包括 Java、Python、Php、C/C++、C#、HTML、JavaScript、PL/SQL、Objective C 等二十多种编程语言的代码质量管理与检测。可作为我们日常开发中检测代码质量的重要工具。为此，它会定期分析项目的所有源代码行。</li>
-</ul>
-<p>简单的说 SonarLint 是 SonarQube 的单机版本。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

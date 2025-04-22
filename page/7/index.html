@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-04-19T07:55:16+08:00">
-  <meta itemprop="dateModified" content="2025-04-19T07:55:16+08:00">
+  <meta itemprop="datePublished" content="2025-04-22T14:58:36+08:00">
+  <meta itemprop="dateModified" content="2025-04-22T14:58:36+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,43 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-zero/">Go Zero</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-06-04 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
+          </div>
+        <span class="more-meta"> 约 627 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="官方文档">官方文档</h2>
+<p><a href="https://go-zero.dev/cn/">点击前往</a></p>
+<h2 id="启动服务">启动服务</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// API 或 rpc 代码运行
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> project/service/user/cmd/api <span class="o">&amp;&amp;</span> go run user.go -f etc/user.yaml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="rpc调用链建议">rpc调用链建议</h2>
+<p>在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：order服务调用了user服务，而user服务反过来也会调用order的服务， 当其中一个服务启动故障，就会相互影响，进入死循环，你order认为是user服务故障导致的，而user认为是order服务导致的，如果有大量服务存在相互调用链， 则需要考虑服务拆分是否合理。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-zero/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E5%90%91%E6%95%85%E9%9A%9C%E7%BC%96%E7%A8%8B/">面向故障编程</a></h1>
@@ -473,30 +510,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%94%B5%E5%95%86%E6%9E%B6%E6%9E%84/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8C%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/">Go中的单元测试和基准测试</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-04-14 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 3063 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="tdd">TDD</h2>
-<p>Test-Driven Development: 测试驱动开发，是敏捷开发中的一项核心实践和技术，也是一种设计方法论。TDD的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码确定需要编写什么产品代码。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/go%E4%B8%AD%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%92%8C%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
