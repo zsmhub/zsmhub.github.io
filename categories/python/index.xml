@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Fri, 10 May 2019 10:05:13 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 24 Apr 2025 16:06:34 +0800</lastBuildDate>
     <atom:link href="https://zsmhub.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>视频切割</title>
+      <link>https://zsmhub.github.io/post/python/%E8%A7%86%E9%A2%91%E5%88%87%E5%89%B2/</link>
+      <pubDate>Thu, 24 Apr 2025 16:06:34 +0800</pubDate>
+      <guid>https://zsmhub.github.io/post/python/%E8%A7%86%E9%A2%91%E5%88%87%E5%89%B2/</guid>
+      <description>&lt;p&gt;这是一个使用 ffmpeg+MoviePy 库开发的视频切割工具，可以将一个视频文件按照指定时长切割成多个片段。&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装依赖&#34;&gt;安装依赖&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install python&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install ffmpeg&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ./qiege &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; python3 -m venv venv &lt;span class=&#34;c1&#34;&gt;# 创建虚拟环境，只需创建一次&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; venv/bin/activate &lt;span class=&#34;c1&#34;&gt;# 后续运行程序前都需要先激活虚拟环境，然后在虚拟环境中运行你的程序&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install -r requirements.txt&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;使用方法&#34;&gt;使用方法&lt;/h2&gt;&#xA;&lt;p&gt;使用命令行运行程序，格式如下：&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Python 进程、线程和协程</title>
       <link>https://zsmhub.github.io/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/</link>

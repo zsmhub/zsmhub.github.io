@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-04-22T14:58:36+08:00">
-  <meta itemprop="dateModified" content="2025-04-22T14:58:36+08:00">
+  <meta itemprop="datePublished" content="2025-04-24T16:06:34+08:00">
+  <meta itemprop="dateModified" content="2025-04-24T16:06:34+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,40 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/composer/">Composer</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-04-03 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 1428 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="pear">pear</h2>
+<ul>
+<li>pear: 全称为PHP扩展与应用库(PHP Extension and Application Repository)。为了创建一个类似于Perl CPAN档案的工具</li>
+<li>phar: php档案包</li>
+</ul>
+<h2 id="composer">Composer</h2>
+<ol>
+<li>概念：用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。Composer 是多平台的，我们努力使它在 Windows 、 Linux 以及 OSX 平台上运行的同样出色。</li>
+<li>composer扩展包平台： <a href="https://packagist.org/">https://packagist.org/</a></li>
+<li>~和^的意思很接近，在x.y的情况下是一样的都是代表x.y &lt;= 版本号 &lt; (x+1).0，但是在版本号是x.y.z的情况下有区别，举个例子吧：
+<blockquote>
+<p>~1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 1.3.0</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/composer/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">SQL Server 基础知识</a></h1>
@@ -371,183 +405,6 @@
     </div>
     <div class="read-more">
       <a href="/post/docker/docker-k8s/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/docker/docker-compose/">docker-compose</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-02-01 </span>
-      <div class="post-category">
-          <a href="/categories/docker/"> docker </a>
-          </div>
-        <span class="more-meta"> 约 1306 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="简介">简介</h2>
-<p><a href="https://www.cnblogs.com/phpk/p/11205467.html">参考文章</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. docker-compose build
-</span></span><span class="line"><span class="cl">docker-compose build [options] [--build-arg key=val...] [SERVICE...]
-</span></span><span class="line"><span class="cl">构建（重新构建）项目中的服务容器。
-</span></span><span class="line"><span class="cl">选项包括：
-</span></span><span class="line"><span class="cl">–compress 通过gzip压缩构建上下环境
-</span></span><span class="line"><span class="cl">–force-rm 删除构建过程中的临时容器
-</span></span><span class="line"><span class="cl">–no-cache 构建镜像过程中不使用缓存
-</span></span><span class="line"><span class="cl">–pull 始终尝试通过拉取操作来获取更新版本的镜像
-</span></span><span class="line"><span class="cl">-m, –memory MEM为构建的容器设置内存大小
-</span></span><span class="line"><span class="cl">–build-arg key=val为服务设置build-time变量
-</span></span><span class="line"><span class="cl">服务容器一旦构建后，将会带上一个标记名。可以随时在项目目录下运行docker-compose build来重新构建服务
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2. docker-compose up
-</span></span><span class="line"><span class="cl">docker-compose up [options] [--scale SERVICE=NUM...] [SERVICE...]
-</span></span><span class="line"><span class="cl">选项包括：
-</span></span><span class="line"><span class="cl">-d 在后台运行服务容器
-</span></span><span class="line"><span class="cl">–no-color 不使用颜色来区分不同的服务的控制输出
-</span></span><span class="line"><span class="cl">–no-deps 不启动服务所链接的容器
-</span></span><span class="line"><span class="cl">–force-recreate 强制重新创建容器，不能与–no-recreate同时使用
-</span></span><span class="line"><span class="cl">–no-recreate 如果容器已经存在，则不重新创建，不能与–force-recreate同时使用
-</span></span><span class="line"><span class="cl">–no-build 不自动构建缺失的服务镜像
-</span></span><span class="line"><span class="cl">–build 在启动容器前构建服务镜像
-</span></span><span class="line"><span class="cl">–abort-on-container-exit 停止所有容器，如果任何一个容器被停止，不能与-d同时使用
-</span></span><span class="line"><span class="cl">-t, –timeout TIMEOUT 停止容器时候的超时（默认为10秒）
-</span></span><span class="line"><span class="cl">–remove-orphans 删除服务中没有在compose文件中定义的容器
-</span></span><span class="line"><span class="cl">–scale SERVICE=NUM 设置服务运行容器的个数，将覆盖在compose中通过scale指定的参数
-</span></span><span class="line"><span class="cl">docker-compose up
-</span></span><span class="line"><span class="cl">启动所有服务
-</span></span><span class="line"><span class="cl">docker-compose up -d
-</span></span><span class="line"><span class="cl">在后台所有启动服务
-</span></span><span class="line"><span class="cl">-f 指定使用的Compose模板文件，默认为docker-compose.yml，可以多次指定。
-</span></span><span class="line"><span class="cl">docker-compose -f docker-compose.yml up -d
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">3. docker-compose ps
-</span></span><span class="line"><span class="cl">docker-compose ps [options] [SERVICE...]
-</span></span><span class="line"><span class="cl">docker-compose ps
-</span></span><span class="line"><span class="cl">列出某项目目前的所有容器
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">4. docker-compose start
-</span></span><span class="line"><span class="cl">docker-compose start [SERVICE...]
-</span></span><span class="line"><span class="cl">docker-compose start
-</span></span><span class="line"><span class="cl">启动已经存在的服务容器。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">5. docker-compose restart
-</span></span><span class="line"><span class="cl">docker-compose restart [options] [SERVICE...]
-</span></span><span class="line"><span class="cl">重启项目中的服务。
-</span></span><span class="line"><span class="cl">选项包括：
-</span></span><span class="line"><span class="cl">-t, –timeout TIMEOUT，指定重启前停止容器的超时（默认为10秒）
-</span></span><span class="line"><span class="cl">docker-compose restart
-</span></span><span class="line"><span class="cl">重启项目中的服务
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">5. docker-compose logs
-</span></span><span class="line"><span class="cl">docker-compose logs [options] [SERVICE...]
-</span></span><span class="line"><span class="cl">查看服务容器的输出。默认情况下，docker-compose将对不同的服务输出使用不同的颜色来区分。可以通过–no-color来关闭颜色。
-</span></span><span class="line"><span class="cl">docker-compose logs
-</span></span><span class="line"><span class="cl">查看服务容器的输出
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">6. docker-compose rm
-</span></span><span class="line"><span class="cl">docker-compose rm [options] [SERVICE...]
-</span></span><span class="line"><span class="cl">删除所有（停止状态的）服务容器。
-</span></span><span class="line"><span class="cl">选项包括：
-</span></span><span class="line"><span class="cl">–f, –force，强制直接删除，包括非停止状态的容器
-</span></span><span class="line"><span class="cl">-v，删除容器所挂载的数据卷
-</span></span><span class="line"><span class="cl">docker-compose rm
-</span></span><span class="line"><span class="cl">删除所有（停止状态的）服务容器。推荐先执行docker-compose stop命令来停止容器。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">7. docker-compose stop
-</span></span><span class="line"><span class="cl">docker-compose stop [options] [SERVICE...]
-</span></span><span class="line"><span class="cl">显示各个容器运行的进程情况。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">8. docker-compose down
-</span></span><span class="line"><span class="cl">删除 docker-compose.yml 定义的所有容器
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="常见参数">常见参数</h2>
-<blockquote>
-<p>command：这里的书写方式支持多种，是等效的，我就是使用第三个书写方法。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/docker/docker-compose/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

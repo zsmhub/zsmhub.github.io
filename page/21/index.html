@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-04-22T14:58:36+08:00">
-  <meta itemprop="dateModified" content="2025-04-22T14:58:36+08:00">
+  <meta itemprop="datePublished" content="2025-04-24T16:06:34+08:00">
+  <meta itemprop="dateModified" content="2025-04-24T16:06:34+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,80 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Linux 基础知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-01-01 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
+          </div>
+        <span class="more-meta"> 约 5201 字 </span>
+        <span class="more-meta"> 预计阅读 11 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="基本命令">基本命令</h2>
+<ul>
+<li>
+<p>hostname -i: 查看服务器本地IP</p>
+</li>
+<li>
+<p>find: find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># find的使用格式如下：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;
+</span></span><span class="line"><span class="cl">　　- &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。
+</span></span><span class="line"><span class="cl">　　- &lt;指定条件&gt;： 所要搜索的文件的特征。
+</span></span><span class="line"><span class="cl">　　- &lt;指定动作&gt;： 对搜索结果进行特定的处理。
+</span></span><span class="line"><span class="cl">如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># find的使用实例：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find ./ -name <span class="s1">&#39;my*&#39;</span>
+</span></span><span class="line"><span class="cl">搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find ./ -name <span class="s1">&#39;my*&#39;</span> -ls
+</span></span><span class="line"><span class="cl">搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ find . -type f -mmin -10
+</span></span><span class="line"><span class="cl">搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件+特殊文件+目录。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>nohup: 不挂断地运行命令，该命令的一般形式为：nohup command &amp;</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/php/lnmp%E7%9F%A5%E8%AF%86/">PHP 开发环境之 Lnmp</a></h1>

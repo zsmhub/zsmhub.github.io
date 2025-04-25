@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-04-22T14:58:36+08:00">
-  <meta itemprop="dateModified" content="2025-04-22T14:58:36+08:00">
+  <meta itemprop="datePublished" content="2025-04-24T16:06:34+08:00">
+  <meta itemprop="dateModified" content="2025-04-24T16:06:34+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,45 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/">Go高级知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-08-30 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 1836 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="代码编译过程">代码编译过程</h2>
+<ol>
+<li>
+<p>全局变量会进行全局初始化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">noticeRepository</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">Notice</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">noticeRepository</span><span class="p">{}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>model 层为何不全局实例化？因为 model 层的结构体带有属性，如果全局初始化则 model 层结构体实例的属性可能会出现重复，导致数据异常！</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8/">Go之并发安全</a></h1>
@@ -460,36 +499,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AD%95%E5%A6%87%E7%9B%B8%E5%85%B3/">孕妇相关</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-08-04 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
-          </div>
-        <span class="more-meta"> 约 3599 字 </span>
-        <span class="more-meta"> 预计阅读 8 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p><img src="/images/2021/WechatIMG31904.jpeg" alt="孕检时间表"></p>
-<h2 id="孕妇忌讳">孕妇忌讳</h2>
-<ol>
-<li>不能吃：龙眼，薏米，山楂，人参，凉茶，祛湿茶等</li>
-<li>有甲减的孕妇不能吃海苔、紫菜、瑶柱、海虾等海产品</li>
-</ol>
-<h2 id="甲减孕妇注意">甲减孕妇注意</h2>
-<p>优甲乐过量可能导致的问题：心慌、手抖、易饥饿、多汗、暴躁，如出现这些症状，应减少药量</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AD%95%E5%A6%87%E7%9B%B8%E5%85%B3/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

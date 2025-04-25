@@ -14,7 +14,7 @@
       <link>https://zsmhub.github.io/post/ai/ai/</link>
       <pubDate>Mon, 24 Mar 2025 14:12:52 +0800</pubDate>
       <guid>https://zsmhub.github.io/post/ai/ai/</guid>
-      <description>&lt;h2 id=&#34;ai-agent智能体&#34;&gt;AI Agent（智能体）&lt;/h2&gt;&#xA;&lt;p&gt;AI Agent = LLM+Planning+Feedback+Tool use&lt;/p&gt;&#xA;&lt;p&gt;在人工智能领域中，一个 Agent 通常指的是能够自主决策、执行任务并接收反馈的智能体。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;LLM：语言模型（Language Model），即一种能够理解和生成自然语言的算法&lt;/li&gt;&#xA;&lt;li&gt;Planning：规划能力，即 Agent 能够制定行动计划以达成目标&lt;/li&gt;&#xA;&lt;li&gt;Feedback：表示 Agent 能够通过与环境互动来获取信息和调整自己的行为&lt;/li&gt;&#xA;&lt;li&gt;Tool use：表示 Agent 能够使用各种工具和技术来完成任务&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+      <description>&lt;h2 id=&#34;ai-agent智能体&#34;&gt;AI Agent（智能体）&lt;/h2&gt;&#xA;&lt;p&gt;AI Agent = LLM+Planning+Feedback+Tool use&lt;/p&gt;&#xA;&lt;p&gt;在人工智能领域中，一个 Agent 通常指的是能够自主决策、执行任务并接收反馈的智能体。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;LLM：语言模型（Language Model），即一种能够理解和生成自然语言的算法&lt;/li&gt;&#xA;&lt;li&gt;Planning：规划能力，即 Agent 能够制定行动计划以达成目标&lt;/li&gt;&#xA;&lt;li&gt;Feedback：表示 Agent 能够通过与环境互动来获取信息和调整自己的行为&lt;/li&gt;&#xA;&lt;li&gt;Tool use：表示 Agent 能够使用各种工具和技术来完成任务&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;mcp&#34;&gt;MCP&lt;/h2&gt;&#xA;&lt;p&gt;模型上下文协议（Model Context Protocol，简称MCP）是一种开放协议，旨在标准化应用程序向大型语言模型（Large Language Models，简称LLMs）提供上下文的方式 。它如同一个&lt;code&gt;通用接口&lt;/code&gt;，例如计算机上的&lt;code&gt;USB-C端口&lt;/code&gt;，使得各种AI模型能够以统一的方式连接到不同的数据源和工具 。通过提供标准化的连接方式，MCP简化了集成过程，增强了互操作性，并促进了AI应用的可扩展性 。&lt;/p&gt;</description>
     </item>
     <item>
       <title>如何绕过网站的IP封锁</title>
