@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 24 Apr 2025 16:06:34 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 21 May 2025 10:35:55 +0800</lastBuildDate>
     <atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golan</title>
+      <link>https://zsmhub.github.io/categories/golan/</link>
+      <pubDate>Wed, 21 May 2025 10:35:55 +0800</pubDate>
+      <guid>https://zsmhub.github.io/categories/golan/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Python</title>
       <link>https://zsmhub.github.io/categories/python/</link>
