@@ -548,6 +548,13 @@
   </url>
   
   <url>
+    <loc>https://zsmhub.github.io/post/ai/ai%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2023-03-02T15:14:30+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://zsmhub.github.io/tags/chatgpt/</loc>
     <lastmod>2023-03-02T15:14:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -556,13 +563,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/tags/openai/</loc>
-    <lastmod>2023-03-02T15:14:30+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/post/ai/%E7%8E%A9%E8%BD%ACai/</loc>
     <lastmod>2023-03-02T15:14:30+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
