@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%8B%9F%E4%BA%BA%E5%8C%96/</loc>
+    <lastmod>2025-07-03T16:37:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/post/</loc>
+    <lastmod>2025-07-03T16:37:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/</loc>
+    <lastmod>2025-07-03T16:37:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://zsmhub.github.io/categories/</loc>
     <lastmod>2025-05-21T10:35:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -16,21 +37,7 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/post/</loc>
-    <lastmod>2025-05-21T10:35:55+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://zsmhub.github.io/tags/</loc>
-    <lastmod>2025-05-21T10:35:55+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/</loc>
     <lastmod>2025-05-21T10:35:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

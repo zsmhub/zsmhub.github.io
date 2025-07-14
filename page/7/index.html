@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-05-21T10:35:55+08:00">
-  <meta itemprop="dateModified" content="2025-05-21T10:35:55+08:00">
+  <meta itemprop="datePublished" content="2025-07-03T16:37:05+08:00">
+  <meta itemprop="dateModified" content="2025-07-03T16:37:05+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,39 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-07-22 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
+          </div>
+        <span class="more-meta"> 约 617 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="tcc-分布式事务">TCC 分布式事务</h2>
+<p>TCC 是 Try、Confirm、Cancel 三个词语的缩写。</p>
+<blockquote>
+<p>TCC 分为 3 个阶段</p></blockquote>
+<ul>
+<li>Try 阶段：尝试执行，完成所有业务检查（一致性）, 预留必须业务资源（准隔离性）</li>
+<li>Confirm 阶段：如果所有分支的 Try 都成功了，则走到 Confirm 阶段。Confirm 真正执行业务，不作任何业务检查，只使用 Try 阶段预留的业务资源</li>
+<li>Cancel 阶段：如果所有分支的 Try 有一个失败了，则走到 Cancel 阶段。Cancel 释放 Try 阶段预留的业务资源。</li>
+</ul>
+<blockquote>
+<p>TCC 分布式事务里，有 3 个角色，与经典的 XA 分布式事务一样：</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%90%86%E8%B4%A2%E4%B9%8B%E8%B7%AF/">理财之路</a></h1>
@@ -480,31 +513,6 @@
     </div>
     <div class="read-more">
       <a href="/post/database/%E8%A1%8C%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%88%97%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0-etcd/">用 etcd 实现 API 网关</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-05-06 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
-          </div>
-        <span class="more-meta"> 约 3468 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="应用场景">应用场景</h2>
-<p>etcd 是一个高可用强一致性的键值仓库，在很多分布式系统架构中得到了广泛的应用，其最经典的使用场景就是服务发现。</p>
-<p>etcd 的场景默认处理的数据都是系统中的控制数据。所以etcd在系统中的角色不是其他NoSQL产品的替代品，更不能作为应用的主要数据存储。etcd中应该尽量只存储系统中服务的配置信息，对于应用数据只推荐把数据量很小，但是更新和访问频次都很高的数据存储在etcd中。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0-etcd/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

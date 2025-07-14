@@ -42,7 +42,7 @@
       <link>https://zsmhub.github.io/post/ide/vscode/</link>
       <pubDate>Wed, 19 Jun 2019 21:04:16 +0800</pubDate>
       <guid>https://zsmhub.github.io/post/ide/vscode/</guid>
-      <description>&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;cmd+P: 打开命令面板&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;直接输入文件名，跳转到文件&lt;/li&gt;&#xA;&lt;li&gt;? 列出当前可执行的动作&lt;/li&gt;&#xA;&lt;li&gt;: 跳转到行数，也可以 Cmd+G 直接进入&lt;/li&gt;&#xA;&lt;li&gt;&amp;gt; 显示并运行命令&lt;/li&gt;&#xA;&lt;li&gt;@ 函数名跳转&lt;/li&gt;&#xA;&lt;/ol&gt;&lt;/blockquote&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;光标『多点编辑』&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;option+click或option+cmd+up/option+cmd+down&lt;/li&gt;&#xA;&lt;li&gt;cmd+D: 搜索并选中下一个匹配值&lt;/li&gt;&#xA;&lt;li&gt;批量设置光标：cmd+shift+鼠标左键 或 cmd+鼠标左键&lt;/li&gt;&#xA;&lt;/ol&gt;&lt;/blockquote&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;shift+cmd+; : 查找历史命令&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;color-theme&#34;&gt;Color theme&lt;/h2&gt;&#xA;&lt;p&gt;常用主题：Monokai&lt;/p&gt;&#xA;&lt;h2 id=&#34;常用快捷键&#34;&gt;常用快捷键&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;cmd+P: 打开命令面板&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;直接输入文件名，跳转到文件&lt;/li&gt;&#xA;&lt;li&gt;? 列出当前可执行的动作&lt;/li&gt;&#xA;&lt;li&gt;: 跳转到行数，也可以 Cmd+G 直接进入&lt;/li&gt;&#xA;&lt;li&gt;&amp;gt; 显示并运行命令&lt;/li&gt;&#xA;&lt;li&gt;@ 函数名跳转&lt;/li&gt;&#xA;&lt;/ol&gt;&lt;/blockquote&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;光标『多点编辑』&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
