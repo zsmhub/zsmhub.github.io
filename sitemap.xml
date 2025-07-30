@@ -30,7 +30,7 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/categories/golan/</loc>
+    <loc>https://zsmhub.github.io/categories/golang/</loc>
     <lastmod>2025-05-21T10:35:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -109,13 +109,6 @@
   <url>
     <loc>https://zsmhub.github.io/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AF%BB%E5%8C%BB%E9%97%AE%E8%8D%AF-%E9%AB%98%E8%A1%80%E5%8E%8B/</loc>
     <lastmod>2025-04-19T07:55:16+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/golang/</loc>
-    <lastmod>2025-04-16T09:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -233,7 +226,7 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/categories/ai/</loc>
+    <loc>https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/</loc>
     <lastmod>2024-12-27T16:33:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -241,13 +234,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/</loc>
-    <lastmod>2024-12-27T16:33:14+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%A8%A1%E6%9D%BF/</loc>
     <lastmod>2024-12-27T16:33:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
