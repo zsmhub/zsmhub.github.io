@@ -55,7 +55,7 @@
   <meta itemprop="description" content="golang中判断两个slice是否相等 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package main import ( &#34;bytes&#34; &#34;fmt&#34; ) func main() { a := []byte{0, 1, 3, 2} b := []byte{0, 1, 3, 2} c := []byte{1, 1, 3, 2} fmt.Println(bytes.Equal(a, b)) fmt.Println(bytes.Equal(a, c)) } 计算中文长度 1 2 3 title := &#34;中国人a&#34; fmt.Println(len([]rune(title))) // 第一种方案：输出 4 fmt.Println(utf8.RuneCountInString(title)) // 第二种方案：输出 4 数据库初始化 什么是 DSN 信息？">
   <meta itemprop="datePublished" content="2021-01-08T17:57:02+08:00">
   <meta itemprop="dateModified" content="2021-01-08T17:57:02+08:00">
-  <meta itemprop="wordCount" content="3201">
+  <meta itemprop="wordCount" content="4997">
   <meta itemprop="keywords" content="Golang">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Go 常用案例">
@@ -147,8 +147,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3201 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 4997 字 </span>
+          <span class="more-meta"> 预计阅读 10 分钟 </span>
         
       </div>
     </header>
@@ -177,6 +177,7 @@
     <li><a href="#用正则表达式处理html代码">用正则表达式处理html代码</a></li>
     <li><a href="#对称加密算法">对称加密算法</a></li>
     <li><a href="#获取文件链接url的后缀">获取文件链接URL的后缀</a></li>
+    <li><a href="#ffmpeg--mediainfo">ffmpeg &amp; mediainfo</a></li>
   </ul>
 </nav>
   </div>
@@ -1428,6 +1429,407 @@
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">fileName</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Base</span><span class="p">(</span><span class="nx">parsedURL</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">filepath</span><span class="p">.</span><span class="nf">Ext</span><span class="p">(</span><span class="nx">fileName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ffmpeg--mediainfo">ffmpeg &amp; mediainfo</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @description 使用mediainfo计算本地音频或视频的时长，比ffmpeg更精确到毫秒
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @method GetMediaDurationByMediainfo
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param filePath string 本地音频或视频文件路径
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @return float64 时长（秒），错误信息
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">GetAudioDurationLocal</span><span class="p">(</span><span class="nx">filePath</span><span class="p">,</span> <span class="nx">mediainfoPath</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">float64</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="kd">var</span> <span class="nx">duration</span> <span class="kt">float64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1">// 检查文件是否存在</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Stat</span><span class="p">(</span><span class="nx">filePath</span><span class="p">);</span> <span class="nx">os</span><span class="p">.</span><span class="nf">IsNotExist</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;文件不存在: %s&#34;</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1">// 执行mediainfo命令，输出JSON格式</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="nx">mediainfoPath</span><span class="p">,</span> <span class="s">&#34;--Output=JSON&#34;</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">CombinedOutput</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;执行mediainfo命令失败: %v, 输出: %s&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1">// 解析JSON输出</span>
+</span></span><span class="line"><span class="cl">     <span class="kd">var</span> <span class="nx">mediainfoOutput</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">Media</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="nx">Track</span> <span class="p">[]</span><span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">Type</span>     <span class="kt">string</span> <span class="s">`json:&#34;@type&#34;`</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">Duration</span> <span class="kt">string</span> <span class="s">`json:&#34;Duration&#34;`</span>
+</span></span><span class="line"><span class="cl">               <span class="p">}</span> <span class="s">`json:&#34;track&#34;`</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span> <span class="s">`json:&#34;media&#34;`</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">mediainfoOutput</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;解析mediainfo JSON输出失败: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1">// 查找General或Video或Audio类型的track，获取Duration</span>
+</span></span><span class="line"><span class="cl">     <span class="c1">// Duration字段可能为毫秒或秒，需要根据实际情况判断</span>
+</span></span><span class="line"><span class="cl">     <span class="kd">var</span> <span class="nx">durationStr</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">     <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">track</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">mediainfoOutput</span><span class="p">.</span><span class="nx">Media</span><span class="p">.</span><span class="nx">Track</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 优先使用General类型的Duration，如果没有则使用Video或Audio</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="nx">track</span><span class="p">.</span><span class="nx">Type</span> <span class="o">==</span> <span class="s">&#34;General&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">track</span><span class="p">.</span><span class="nx">Duration</span> <span class="o">!=</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="nx">durationStr</span> <span class="p">=</span> <span class="nx">track</span><span class="p">.</span><span class="nx">Duration</span>
+</span></span><span class="line"><span class="cl">               <span class="k">break</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">track</span><span class="p">.</span><span class="nx">Type</span> <span class="o">==</span> <span class="s">&#34;Video&#34;</span> <span class="o">||</span> <span class="nx">track</span><span class="p">.</span><span class="nx">Type</span> <span class="o">==</span> <span class="s">&#34;Audio&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">track</span><span class="p">.</span><span class="nx">Duration</span> <span class="o">!=</span> <span class="s">&#34;&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">durationStr</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="nx">durationStr</span> <span class="p">=</span> <span class="nx">track</span><span class="p">.</span><span class="nx">Duration</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="nx">durationStr</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;无法从mediainfo输出中获取Duration信息&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1">// 处理Duration字符串，可能包含单位（如 &#34;12565 ms&#34; 或 &#34;12.565 s&#34;）</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">durationStr</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSpace</span><span class="p">(</span><span class="nx">durationStr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">durationStrLower</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">(</span><span class="nx">durationStr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="kd">var</span> <span class="nx">durationFloat</span> <span class="kt">float64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1">// 检查是否包含单位标识</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">durationStrLower</span><span class="p">,</span> <span class="s">&#34;ms&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">durationStrLower</span><span class="p">,</span> <span class="s">&#34;毫秒&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 包含毫秒单位，提取数值并转换为秒</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 移除单位标识，提取数字部分</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">durationStr</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSpace</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSuffix</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSuffix</span><span class="p">(</span><span class="nx">durationStrLower</span><span class="p">,</span> <span class="s">&#34;ms&#34;</span><span class="p">),</span> <span class="s">&#34;毫秒&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">durationStr</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSpace</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSuffix</span><span class="p">(</span><span class="nx">durationStr</span><span class="p">,</span> <span class="s">&#34;s&#34;</span><span class="p">))</span> <span class="c1">// 移除可能的 &#34;s&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">durationFloat</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseFloat</span><span class="p">(</span><span class="nx">durationStr</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="k">return</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;解析Duration值失败: %v, 原始值: %s&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">durationStr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">duration</span> <span class="p">=</span> <span class="nx">durationFloat</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">HasSuffix</span><span class="p">(</span><span class="nx">durationStrLower</span><span class="p">,</span> <span class="s">&#34;s&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">!</span><span class="nx">strings</span><span class="p">.</span><span class="nf">HasSuffix</span><span class="p">(</span><span class="nx">durationStrLower</span><span class="p">,</span> <span class="s">&#34;ms&#34;</span><span class="p">)</span> <span class="o">||</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">durationStrLower</span><span class="p">,</span> <span class="s">&#34;秒&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 包含秒单位（但不包含ms），提取数值即可</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">durationStr</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSpace</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSuffix</span><span class="p">(</span><span class="nx">durationStrLower</span><span class="p">,</span> <span class="s">&#34;s&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">durationStr</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSpace</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSuffix</span><span class="p">(</span><span class="nx">durationStr</span><span class="p">,</span> <span class="s">&#34;秒&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">durationFloat</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseFloat</span><span class="p">(</span><span class="nx">durationStr</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="k">return</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;解析Duration值失败: %v, 原始值: %s&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">durationStr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">duration</span> <span class="p">=</span> <span class="nx">durationFloat</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 不包含单位，需要判断是毫秒还是秒</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 通常mediainfo的Duration是毫秒，但如果值很小（小于1000），可能是秒</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">durationFloat</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseFloat</span><span class="p">(</span><span class="nx">durationStr</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="k">return</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;解析Duration值失败: %v, 原始值: %s&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">durationStr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          <span class="c1">// 如果值小于1000，可能是秒；否则认为是毫秒</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 注意：对于小于1秒的音频（如0.5秒），mediainfo可能返回500（毫秒）或0.5（秒）</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 这里采用保守策略：如果值小于1000，认为是秒；否则认为是毫秒</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="nx">durationFloat</span> <span class="p">&lt;</span> <span class="mi">1000</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="nx">duration</span> <span class="p">=</span> <span class="nx">durationFloat</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="nx">duration</span> <span class="p">=</span> <span class="nx">durationFloat</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="k">return</span> <span class="nx">duration</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取音频宽高-本地文件（eg：ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 /Users/xxx/Downloads/xxx.mp4）</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">GetMediaSizeLocal</span><span class="p">(</span><span class="nx">filepath</span><span class="p">,</span> <span class="nx">ffprobePath</span><span class="p">,</span> <span class="nx">bashPath</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">int64</span><span class="p">,</span> <span class="kt">int64</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="nx">bashPath</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="nx">ffprobePath</span><span class="o">+</span><span class="s">&#34; -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 &#34;</span><span class="o">+</span><span class="nx">filepath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">CombinedOutput</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;cmd err: &#34;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34;-&gt;&#34;</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sieStr</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">TrimSpace</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sizeArr</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="nx">sieStr</span><span class="p">,</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sizeArr</span><span class="p">)</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">height</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseInt</span><span class="p">(</span><span class="nx">sizeArr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">width</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nf">ParseInt</span><span class="p">(</span><span class="nx">sizeArr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 从视频中提取音频-链接</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">GetAudioFile</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="p">,</span> <span class="nx">bashPath</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">audioFile</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">err</span>       <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ext</span> <span class="o">:=</span> <span class="nf">GetUrlFileExt</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">ext</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ext</span> <span class="p">=</span> <span class="s">&#34;.mp4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">videoFile</span> <span class="o">:=</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span> <span class="o">+</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">().</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ext</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">DownLoad</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">videoFile</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">audioFile</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">audioFile</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nf">GetAudioFileLocal</span><span class="p">(</span><span class="nx">videoFile</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="p">,</span> <span class="nx">bashPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">audioFile</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="nx">videoFile</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">audioFile</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;remove err: &#34;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">audioFile</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 从视频中提取音频-本地文件（eg：ffmpeg -i /Users/xxx/Downloads/xxx.mp4 -f mp3 -vn /Users/xxx/Downloads/xxx.mp3）</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">GetAudioFileLocal</span><span class="p">(</span><span class="nx">videoPath</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="p">,</span> <span class="nx">bashPath</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">audioFile</span> <span class="o">:=</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span> <span class="o">+</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">().</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34;.mp3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="nx">bashPath</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="o">+</span><span class="s">&#34; -i &#34;</span><span class="o">+</span><span class="nx">videoPath</span><span class="o">+</span><span class="s">&#34; -f mp3 -vn &#34;</span><span class="o">+</span><span class="nx">audioFile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">CombinedOutput</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">audioFile</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;cmd err: &#34;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34;-&gt;&#34;</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">audioFile</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 转换音视频格式-链接</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// formatExt 转换格式后缀，如.mp3, .mp4</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TransferMediaFormat</span><span class="p">(</span><span class="nx">formatExt</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="p">,</span> <span class="nx">bashPath</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">outputFile</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">err</span>        <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ext</span> <span class="o">:=</span> <span class="nf">GetUrlFileExt</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">ext</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ext</span> <span class="p">=</span> <span class="nx">formatExt</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mediaFile</span> <span class="o">:=</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span> <span class="o">+</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">().</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ext</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">DownLoad</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">mediaFile</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">outputFile</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">outputFile</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nf">TransferMediaFormatLocal</span><span class="p">(</span><span class="nx">formatExt</span><span class="p">,</span> <span class="nx">mediaFile</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="p">,</span> <span class="nx">bashPath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">outputFile</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="nx">mediaFile</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">outputFile</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;remove err: &#34;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">outputFile</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 转换音视频格式-本地文件</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// formatExt 转换格式后缀，如.mp3, .mp4</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TransferMediaFormatLocal</span><span class="p">(</span><span class="nx">formatExt</span><span class="p">,</span> <span class="nx">mediaFile</span><span class="p">,</span> <span class="nx">filepath</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="p">,</span> <span class="nx">bashPath</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">outputFile</span> <span class="o">:=</span> <span class="nx">filepath</span> <span class="o">+</span> <span class="s">&#34;/&#34;</span> <span class="o">+</span> <span class="nx">uuid</span><span class="p">.</span><span class="nf">New</span><span class="p">().</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">formatExt</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="nx">bashPath</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="nx">ffmpegPath</span><span class="o">+</span><span class="s">&#34; -i &#34;</span><span class="o">+</span><span class="nx">mediaFile</span><span class="o">+</span><span class="s">&#34; &#34;</span><span class="o">+</span><span class="nx">outputFile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">CombinedOutput</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">outputFile</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;cmd err: &#34;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#34;-&gt;&#34;</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">outputFile</span><span class="p">,</span> <span class="kc">nil</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
