@@ -64,7 +64,7 @@ provider_secret
 作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。">
   <meta itemprop="datePublished" content="2021-09-24T16:46:43+08:00">
   <meta itemprop="dateModified" content="2022-08-12T16:46:43+08:00">
-  <meta itemprop="wordCount" content="5594">
+  <meta itemprop="wordCount" content="5609">
   <meta itemprop="keywords" content="企业微信">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="企业微信第三方应用开发">
@@ -159,7 +159,7 @@ provider_secret
         <div class="post-category">
             <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
             </div>
-          <span class="more-meta"> 约 5594 字 </span>
+          <span class="more-meta"> 约 5609 字 </span>
           <span class="more-meta"> 预计阅读 12 分钟 </span>
         
       </div>
@@ -177,7 +177,6 @@ provider_secret
     <li><a href="#第三方应用设置">第三方应用设置</a></li>
     <li><a href="#一些心得">一些心得</a></li>
     <li><a href="#特别留意">特别留意</a></li>
-    <li><a href="#企微微信客户端">企微微信客户端</a></li>
     <li><a href="#一些坑">一些坑</a></li>
     <li><a href="#前端问题">前端问题</a>
       <ul>
@@ -185,8 +184,7 @@ provider_secret
       </ul>
     </li>
     <li><a href="#会话内容存档">会话内容存档</a></li>
-    <li><a href="#下载企业微信旧版本">下载企业微信旧版本</a></li>
-    <li><a href="#企业微信调试工具">企业微信调试工具</a></li>
+    <li><a href="#企业微信客户端">企业微信客户端</a></li>
     <li><a href="#服务商回调服务器宕机情况">服务商回调服务器宕机情况</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
@@ -378,18 +376,6 @@ provider_secret
 <p><a href="https://developer.work.weixin.qq.com/document/path/90454">企微接口访问频率限制文档</a></p>
 </li>
 </ol>
-<h2 id="企微微信客户端">企微微信客户端</h2>
-<blockquote>
-<p>Mac版本开启调试模式</p></blockquote>
-<ol>
-<li>按下command+shift+control+D进入调试模式</li>
-<li>帮助-&gt;开发调试选项-&gt;开启webView元素审查</li>
-<li>内置浏览器右键</li>
-</ol>
-<p><img src="/images/2022/QQ20220414-102319@2x.png" alt="debug开启"></p>
-<blockquote>
-<p>获取会话 roomid 方式，用于向腾讯客服申请群解封</p></blockquote>
-<p>同时按下Ctrl+Shift+Command+D&mdash;&gt;进入debug模式&ndash;&gt;右键会话&ndash;&gt;复制会话id</p>
 <h2 id="一些坑">一些坑</h2>
 <ol>
 <li>前端发视频，有时发得出去，有时发不出去，原因未知</li>
@@ -462,7 +448,20 @@ provider_secret
 <img src="/images/2022/QQ20220716-091752@2x.png" alt="设置开启范围"></p>
 </li>
 </ul>
-<h2 id="下载企业微信旧版本">下载企业微信旧版本</h2>
+<h2 id="企业微信客户端">企业微信客户端</h2>
+<blockquote>
+<p>Mac版本开启调试模式</p></blockquote>
+<ol>
+<li>按下command+shift+control+D进入调试模式</li>
+<li>调试-&gt;浏览器、webView相关-&gt;开启webView元素审查</li>
+<li>内置浏览器右-&gt;检查元素</li>
+</ol>
+<p><img src="/images/2022/QQ20220414-102319@2x.png" alt="debug开启"></p>
+<blockquote>
+<p>获取会话 roomid 方式，用于向腾讯客服申请群解封</p></blockquote>
+<p>同时按下Ctrl+Shift+Command+D&mdash;&gt;进入debug模式&ndash;&gt;右键会话&ndash;&gt;复制会话id</p>
+<blockquote>
+<p>下载企业微信旧版本</p></blockquote>
 <p>由于企业微信软件更新新版本时，企微Mac桌面端有时会有bug导致侧边栏部分功能不可用，只能进行版本回退，故需要下载旧版的企微Mac桌面端。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -548,7 +547,8 @@ provider_secret
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="企业微信调试工具">企业微信调试工具</h2>
+</div><blockquote>
+<p>企业微信调试工具</p></blockquote>
 <p><a href="https://developer.work.weixin.qq.com/tool#/tab/invoke/tool">企业微信调试工具</a></p>
 <h2 id="服务商回调服务器宕机情况">服务商回调服务器宕机情况</h2>
 <p>如果服务商回调服务器宕机了几小时，没有接收企微回调事件。需要紧急修复的数据就是：增删客户、增删客户群和增删客户群成员，其他细节就不管了</p>
