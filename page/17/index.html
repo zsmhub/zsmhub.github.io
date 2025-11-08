@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-04T11:16:49+08:00">
-  <meta itemprop="dateModified" content="2025-11-04T11:16:49+08:00">
+  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,60 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/ide/excel/">Excel 使用总结</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-31 </span>
+      <div class="post-category">
+          <a href="/categories/ide/"> ide </a>
+          </div>
+        <span class="more-meta"> 约 523 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <ol>
+<li>
+<p>excel怎么删除空白单元格，就是右边的数据往左移动，填补空白单元格？</p>
+<p>答：选上数据区域，ctrl+G-&gt;定位条件-空值，这时区域内所有的空值都会被选上，在空值的位置右键-删除-右侧单元格左移</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/ide/excel/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/ide/vim/">Vim</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-31 </span>
+      <div class="post-category">
+          <a href="/categories/ide/"> ide </a>
+          </div>
+        <span class="more-meta"> 约 978 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><img src="/images/2020/QQ20200519-210231@2x.png" alt="点击查看大图"></p>
+<h2 id="vim-的-6-种模式">Vim 的 6 种模式</h2>
+<p>一般模式、编辑模式、命令模式、可视化模式、替换模式(R)、Ex模式。</p>
+<ol>
+<li>
+<p>在可视化模式下，可以对一个文本块的整体进行操作。例如，首先高亮选中一部分文本，然后用d命令删除这个文本块。可视化模式的好处在于，你可以在做改动之前，就看到操作将影响的文本。可视化模式可以分为以下三种：</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/ide/vim/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/web%E5%AE%89%E5%85%A8/%E6%8E%A5%E5%8F%A3%E5%AF%B9%E6%8E%A5%E5%AE%89%E5%85%A8%E6%80%A7%E6%96%B9%E6%A1%88/">接口对接安全性方案</a></h1>
@@ -431,73 +485,6 @@
     </div>
     <div class="read-more">
       <a href="/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">Laravel 常用组件</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-08-01 </span>
-      <div class="post-category">
-          <a href="/categories/php/"> php </a>
-          </div>
-        <span class="more-meta"> 约 1780 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="dingoapi">dingo/api</h2>
-<p>dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">composer require dingo/api
-</span></span><span class="line"><span class="cl">php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Dingo\Api\Provider\LaravelServiceProvider&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>注意点：</p></blockquote>
-<p>由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%85%A5%E9%97%A8/">Laravel 基础知识</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-08-01 </span>
-      <div class="post-category">
-          <a href="/categories/php/"> php </a>
-          </div>
-        <span class="more-meta"> 约 6702 字 </span>
-        <span class="more-meta"> 预计阅读 14 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="php-框架运行的核心三步">php 框架运行的核心三步</h2>
-<ol>
-<li>从入口进入 index.php</li>
-<li>解析 url，匹配路由</li>
-<li>根据路由，调用控制器，渲染视图</li>
-</ol>
-<blockquote>
-<p>tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/php/laravel%E5%85%A5%E9%97%A8/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

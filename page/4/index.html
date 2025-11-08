@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-04T11:16:49+08:00">
-  <meta itemprop="dateModified" content="2025-11-04T11:16:49+08:00">
+  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,77 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/">mac搭建Stable Diffusion Webui</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-03-30 </span>
+      <div class="post-category">
+          <a href="/categories/ai/"> AI </a>
+          </div>
+        <span class="more-meta"> 约 773 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="mac安装教程">mac安装教程</h2>
+<p><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon">https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon</a></p>
+<h2 id="启动命令">启动命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> ~/go/src/zsmhub/stable-diffusion-webui
+</span></span><span class="line"><span class="cl">./webui.sh --skip-torch-cuda-test --precision full --no-half
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="绘画模型下载平台">绘画模型下载平台</h2>
+<blockquote>
+<p>模型，别人训练好的绘画范本</p></blockquote>
+<p><a href="https://civitai.com">https://civitai.com</a></p>
+<p><a href="https://huggingface.co/models">https://huggingface.co</a></p>
+<h2 id="prompt-生成器">prompt 生成器</h2>
+<p><a href="http://www.atoolbox.net/Category.php?Id=32">http://www.atoolbox.net/Category.php?Id=32</a></p>
+<h2 id="lora">LoRA</h2>
+<p>可以简单把 LoRA 当成风格滤镜来理解。在 Prompt 中加入 LoRA 引用，即能大幅改变算图的结果，甚至也能同时套用多个 LoRA 来取得混合风格。使用上比单纯更换 model 或作 checkpoint merge 更有弹性且多变。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/ai/mac%E6%90%AD%E5%BB%BAstable-diffusion-webui/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F%E6%96%B9%E6%A1%88/">库存扣减方案</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-03-09 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          </div>
+        <span class="more-meta"> 约 956 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="设计流程图">设计流程图</h2>
+<p><img src="/images/2023/0472aa9a49b44c8ea52e752f6322a463.png" alt="img"></p>
+<h2 id="设计思路">设计思路</h2>
+<p>为了扛住高并发，我这里在两个地方做了库存扣减，第一个使用redis做预扣库存，第二个是数据库扣除实际库存；</p>
+<p>用户提交订单时，做的是reids中库存预扣，只有当实际支付完成后，才会做数据库层的库存扣减。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%BA%93%E5%AD%98%E6%89%A3%E5%87%8F%E6%96%B9%E6%A1%88/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/ai/ai%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8/">AI实际使用</a></h1>
@@ -358,86 +429,6 @@
     </div>
     <div class="read-more">
       <a href="/post/macos/applescript/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%AE%B2%E8%AF%9D%E6%8A%80%E5%B7%A7/">讲话技巧</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2022-07-11 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
-          </div>
-        <span class="more-meta"> 约 283 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="善用不同连接词">善用不同连接词</h2>
-<p><code>善用不同连接词，才不会一直「然后、然后」下去⋯⋯</code></p>
-<p>说话时使用的连接词非常重要，如果只有不断的重复然后……然后……，会让整段表达死板无趣，而在写作时如果只有一个连接词从头用到尾，那只会了无新意、阐述不明。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%AE%B2%E8%AF%9D%E6%8A%80%E5%B7%A7/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8go%E5%A4%9A%E7%89%88%E6%9C%ACmac/">Go语言环境安装及如何使用Go多版本（Mac）</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2022-07-06 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 400 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="go环境的卸载">go环境的卸载</h2>
-<ol>
-<li>
-<p>pkg方式安装go？</p>
-<p>删除/usr/local下的go目录即可</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo rm -rf /usr/local/go
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sudo rm -rf /etc/paths.d/go
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">vim ~/.bash_profile 或 vim ~/.zshrc <span class="c1"># 删除go的环境变量</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># go环境变量</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOROOT</span><span class="o">=</span>/usr/local/go  <span class="c1"># Go的安装目录</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span><span class="nv">$HOME</span>/go  <span class="c1"># 你的Go代码工作目录</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$GOPATH</span>/bin  <span class="c1"># 添加go命令所在路径</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>如果你是通过安装包的形式安装的go语言编译器，那么更新的方式也会非常简单，那就是直接下载新的go安装包。在安装新的时候，会自动删除掉旧的编译器。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/go%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E5%8F%8A%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8go%E5%A4%9A%E7%89%88%E6%9C%ACmac/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

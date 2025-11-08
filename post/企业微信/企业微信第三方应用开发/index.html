@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>企业微信第三方应用开发 - ZsmHub - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="" /><meta name="description" content="术语介绍 corpid
+每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看
+provider_secret
+作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.146.4 with theme even" />
+
+
+<link rel="canonical" href="https://zsmhub.github.io/post/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:url" content="https://zsmhub.github.io/post/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">
+  <meta property="og:site_name" content="ZsmHub - Blog">
+  <meta property="og:title" content="企业微信第三方应用开发">
+  <meta property="og:description" content="术语介绍 corpid
+每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看
+provider_secret
+作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-09-24T16:46:43+08:00">
+    <meta property="article:modified_time" content="2022-08-12T16:46:43+08:00">
+    <meta property="article:tag" content="企业微信">
+
+  <meta itemprop="name" content="企业微信第三方应用开发">
+  <meta itemprop="description" content="术语介绍 corpid
+每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看
+provider_secret
+作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。">
+  <meta itemprop="datePublished" content="2021-09-24T16:46:43+08:00">
+  <meta itemprop="dateModified" content="2022-08-12T16:46:43+08:00">
+  <meta itemprop="wordCount" content="5609">
+  <meta itemprop="keywords" content="企业微信">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="企业微信第三方应用开发">
+  <meta name="twitter:description" content="术语介绍 corpid
+每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看
+provider_secret
+作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。">
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZsmHub Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/navigation">
+        <li class="mobile-menu-item">导航</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZsmHub Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/navigation">导航</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">企业微信第三方应用开发</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-09-24 </span>
+        <div class="post-category">
+            <a href="/categories/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/"> 企业微信 </a>
+            </div>
+          <span class="more-meta"> 约 5609 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#术语介绍">术语介绍</a></li>
+    <li><a href="#区分三种类型access_token">区分三种类型access_token</a></li>
+    <li><a href="#前端js-sdk使用权限的签名算法">前端JS-SDK使用权限的签名算法</a></li>
+    <li><a href="#应用授权流程">应用授权流程</a></li>
+    <li><a href="#第三方应用设置">第三方应用设置</a></li>
+    <li><a href="#一些心得">一些心得</a></li>
+    <li><a href="#特别留意">特别留意</a></li>
+    <li><a href="#一些坑">一些坑</a></li>
+    <li><a href="#前端问题">前端问题</a>
+      <ul>
+        <li><a href="#上线注意">上线注意</a></li>
+      </ul>
+    </li>
+    <li><a href="#会话内容存档">会话内容存档</a></li>
+    <li><a href="#企业微信客户端">企业微信客户端</a></li>
+    <li><a href="#服务商回调服务器宕机情况">服务商回调服务器宕机情况</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="术语介绍">术语介绍</h2>
+<ol>
+<li>
+<p>corpid</p>
+<p>每个服务商同时也是一个企业微信的企业，都有唯一的corpid。获取此信息可在服务商管理后台“应用开发”－“通用开发参数”可查看</p>
+</li>
+<li>
+<p>provider_secret</p>
+<p>作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。</p>
+</li>
+<li>
+<p>suiteid/suite_secret</p>
+<p>suiteid（第三方应用ID）为应用的唯一身份标识，suite_secret为对应的调用身份密钥。</p>
+</li>
+<li>
+<p>suite_ticket</p>
+<p>suite_ticket与suite_secret配套使用，用于获取suite_access_token。</p>
+<p>suite_ticket由企业微信后台向登记的应用指令回调地址定期推送（10分钟），<code>用于加强调用者身份确认</code>（即使suite_secret泄露，也无法获取到suite_access_token）。</p>
+<p>若开发者丢失suite_ticket，除了等待定时推送的事件外，开发者也<code>可以在管理端手动触发推送</code>。</p>
+</li>
+<li>
+<p>userid &amp;&amp; open_userid(密文员工id)</p>
+<p>通过网页授权接口可以获取到当前用户的 userid &amp;&amp; open_userid 信息，如果需要获取用户的更多信息可以调用 通讯录管理 - 成员接口 来获取。</p>
+<ul>
+<li>userid用于在一个企业内唯一标识一个用户[企业微信帐号ID安全性全面升级后，userid=open_userid]</li>
+<li>open_userid：服务商内全局唯一。对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。 [第三方应用服务商可以将此字段作为用户id]</li>
+</ul>
+<p>external_userid（客户级别）是企业微信外部联系人的标识（企业内唯一，服务商内不唯一）。</p>
+</li>
+<li>
+<p>回调配置</p>
+<blockquote>
+<p>回调事件规则：企业微信服务器在五秒内收不到响应会断掉连接，并且重新发起请求，总共重试三次，每次间隔1秒，如果三次都失败后就不会再重试了！</p>
+<p>当接收成功后，http头部返回200表示接收ok，其他错误码企业微信后台会一律当做失败并发起重试</p></blockquote>
+<ul>
+<li>服务商后台 -&gt; 应用管理 -&gt; 第三方应用 -&gt; 数据回调URL：用于接收用户发送给应用的消息和事件，包括文本、图片、视频、位置、链接等消息和成员关注、取消关注、进入应用、通讯录变更等事件，详见<a href="https://work.weixin.qq.com/api/doc/90001/90143/90373">消息推送文档</a></li>
+<li>服务商后台 -&gt; 应用管理 -&gt; 第三方应用 -&gt; 指令回调URL（即第三方应用回调URL）：系统将会把此应用的授权变更事件以及ticket参数推送给此URL</li>
+<li>服务商后台 -&gt; 应用管理 -&gt; 通用开发参数 -&gt; 系统事件接收URL：<a href="https://work.weixin.qq.com/api/doc/90001/90143/90585">通过推广二维码企业微信注册成功事件</a></li>
+</ul>
+</li>
+<li>
+<p>应用上线与上架</p>
+<p>tip: 第三方应用可只上线，而不上架。</p>
+<p>上线应用-&gt;自有渠道推广，用户达到企业微信要求，程序达到优先要求-&gt;申请上架应用-&gt;企业微信联系联合体验优化,灰度测试优化-&gt;应用上架出现在企业微信应用市场</p>
+<p>上线应用的安装途径：1. 注册按钮（需程序实现自行构造测试授权链接）2. 推广二维码（设置入口：服务商管理后台 &gt; 应用推广 &gt; 推广二维码）</p>
+<p><img src="/images/2021/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy84OTc5Nzk0LWZhNDYwYzEzOGYyNjIxYWMucG5n.png" alt="应用开发与推广"></p>
+</li>
+</ol>
+<h2 id="区分三种类型access_token">区分三种类型access_token</h2>
+<p>在第三方应用开发提供的接口中，会涉及到三种类型的access_token。下面表格对这三类token的定义及使用场景进行说明，开发者应在不同场景中选择对应的token：</p>
+<p>服务商、第三方应用、授权企业的关系：一个服务商下有多个第三方应用，每个第三方应用可授权多个企业使用。</p>
+<table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>说明</th>
+          <th>适用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>服务商的token(provider_access_token)</td>
+          <td>以corpid（服务商CorpID）、provider_secret（服务商密钥）换取provider_access_token，代表的是服务商的身份</td>
+          <td>用于服务商级别的接口调用，比如登录授权、推广二维码等。说明文档参考 获取服务商凭证</td>
+      </tr>
+      <tr>
+          <td>第三方应用的token(suite_access_token)</td>
+          <td>以suite_id（第三方应用ID）、suite_secret（第三方应用密钥）换取suite_access_token，代表第三方应用的身份</td>
+          <td>用于获取第三方应用的预授权码，获取授权企业信息等。说明文档参考 获取第三方应用凭证</td>
+      </tr>
+      <tr>
+          <td>授权企业的token(access_token)</td>
+          <td>企业安装第三方应用后，第三方服务商以企业的corpid、永久授权码来获取access_token</td>
+          <td>用于操作授权企业相关接口，如通讯录管理，消息推送等。说明文档参考 获取企业凭证</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>access_token 在调用 api 之前怎么验证它的有效性？</p></blockquote>
+<p>方案：access_token如果失效调用接口会有返回错误码的，如果返回了42001/42009错误码，就是失效了，需要重新获取一次。</p>
+<ul>
+<li>42001：access_token已过期或provider_access_token已过期</li>
+<li>42009：suite_access_token已过期</li>
+</ul>
+<blockquote>
+<p>企业微信access_token在有效期内重复获取会返回相同结果，有效期正常情况下为7200秒（2小时）。</p></blockquote>
+<p>注意：<code>每次获取token时，该token都有2小时有效期</code>（<code>企业微信可能会出于运营需要，提前使access_token失效，开发者应实现access_token失效时重新获取的逻辑。</code>）</p>
+<p><code>整体来说，企业微信和微信公众号、小程序等都有对旧token的有效期做延长处理，access_token可以直接用redis缓存7200秒，redis过期后直接重新获取access_token即可。</code></p>
+<p><img src="/images/2021/qyapi_token_validate.png" alt="每次获取token时，该token都有2小时有效期"></p>
+<p><img src="/images/2022/WechatIMG815.jpeg" alt="微信公众号每次获取token时，该token都有2小时有效期"></p>
+<h2 id="前端js-sdk使用权限的签名算法">前端JS-SDK使用权限的签名算法</h2>
+<p><a href="https://work.weixin.qq.com/api/doc/90001/90144/90539">JS-SDK使用权限签名算法</a></p>
+<p>签名生成规则：</p>
+<ul>
+<li>参与签名的参数有四个: noncestr（随机字符串）, jsapi_ticket(如何获取参考“获取企业jsapi_ticket”以及“获取应用的jsapi_ticket接口”), timestamp（时间戳）, url（前端请求网页的URL， 不包含#及其后面部分）</li>
+<li>需实时生成签名，并缓存jsapi_ticket</li>
+</ul>
+<p>jsapi_ticket：分为 企业的jsapi_ticket(corp_jsapi_ticket) 和 应用的jsapi_ticket(app_jsapi_ticket)。jsapi_ticket是H5应用调用企业微信JS接口的临时票据。正常情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。</p>
+<h2 id="应用授权流程">应用授权流程</h2>
+<p><a href="https://work.weixin.qq.com/api/doc/90001/90143/90597">应用授权文档</a></p>
+<p><img src="/images/2021/1eb70248c93dbc87bfd51e4e9974ae33.png" alt="应用授权流程"></p>
+<h2 id="第三方应用设置">第三方应用设置</h2>
+<p>使用配置</p>
+<p><img src="/images/2021/QQ20211016-145743@2x.png" alt="使用配置"></p>
+<h2 id="一些心得">一些心得</h2>
+<blockquote>
+<p>对于第三方服务商来说，如何保证多个企业的所有员工唯一性？如何保证多个企业内的相同客户的唯一性？</p></blockquote>
+<ol>
+<li>使用我们第三方应用的是员工，不同企业的员工可以用 open_userid 保证唯一性（对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的）</li>
+<li>前端只能拿到客户的 external_userid，后端用该 corpid+external_userid 保证客户的唯一性（建议使用 uuid 等其他方案标识客户的唯一性）</li>
+</ol>
+<p><code>关于ExternalUserId</code></p>
+<p>ExternalUserId是企业微信外部联系人的标识，但需要开发者(尤其是第三方开发者)注意的是，对于同一个外部联系人，不同调用方（企业/第三方服务商）获取到的ExternalUserId是不同的。</p>
+<p><code>关于客户群ID</code></p>
+<p>企业微信为每个客户群生成唯一的ID（chat_id），同样需要注意的是，对于同一个群，不同调用方（企业/第三方服务商）获取到的chat_id是不同的</p>
+<blockquote>
+<p>获取客户详情API</p></blockquote>
+<p><a href="https://work.weixin.qq.com/api/doc/90001/90143/92265">获取客户详情API</a></p>
+<ul>
+<li>
+<p>请求参数说明</p>
+<p>access_token： 企业的access_token，非第三方服务商的access_token</p>
+<p>external_userid: 外部联系人的userid，注意不是企业成员的帐号。</p>
+<p><strong>对于第三方服务商来说，可以使用 external_userid 保证客户的唯一性</strong></p>
+</li>
+<li>
+<p>响应参数说明</p>
+<p>关于返回的unionid，如果是第三方应用调用该接口，则返回的unionid是该第三方服务商所关联的微信开发者帐号下的unionid。也就是说，同一个企业客户，企业自己调用，与第三方服务商调用，所返回的unionid不同；不同的服务商调用，所返回的unionid也不同。</p>
+<p><strong>这里其实是说第三方服务商调用客户详情API时，返回的客户 unionid 是第三方服务商微信开放平台上的 unionid</strong></p>
+<p><strong>第三方服务商服务于多个企业时，也可以使用 unionid 保证客户的唯一</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>回调消息/事件类型</p></blockquote>
+<pre><code>- MsgType: 消息类型，third(自定义的第三方应用事件)，text/image/voice等消息事件， event(其他事件)
+- EventType: 事件类型，当 MsgType 为 event 时存在
+- InfoType: 等同于EventType，是企业微信第三方应用的专用字段，此时我们可以自定义 MsgType=&quot;third&quot;，InfoType=EventType
+- ChangeType：变更类型，当 InfoType 为 change_external_contact 时存在
+</code></pre>
+<blockquote>
+<p>客户继承</p></blockquote>
+<pre><code>继承分在职继承、离职继承两种。在职员工客户只能转两次，有90天保护期。
+
+-  在企业微信中离职分两种情况
+
+    1. 员工主动退出企业（员工主动退出企业，他的客户可以当日做离职继承吗？答：不能继承，需要30天后才能继承，或者管理员主动删除员工）
+    2. 管理员主动在通讯录删除成员
+
+- 继承回调事件
+
+    1. 在职继承成功的话会有添加外部联系人和删除外部联系人的回调事件
+    2. 离职成员分配客户成功，会有添加外部联系人事件回调，没有删除外部联系人事件回调
+
+- [在职继承介绍](https://work.weixin.qq.com/nl/act/p/6dce987927674295)
+
+- [离职继承介绍](https://work.weixin.qq.com/wework_admin/frame#customer/pending_intro)
+</code></pre>
+<blockquote>
+<p>企业注销企业微信账号</p></blockquote>
+<p>企业注销企业微信账号，第三方应用会接收到取消授权事件。（InfoType=cancel_auth）</p>
+<blockquote>
+<p>前端保存 token 的方案</p></blockquote>
+<p>同一个设备，不同员工账号登录，在不进行oauh登录的情况下，怎么知道切换了账号？</p>
+<p>用cookie做下判断，企业微信在切换账号时，会清理cookie</p>
+<h2 id="特别留意">特别留意</h2>
+<ol>
+<li>
+<p>所有接口返回包里都有errcode、errmsg。开发者需根据errcode是否为0判断是否调用成功</p>
+</li>
+<li>
+<p>接口调用请求体和响应体是 json 格式，回调接口的请求体和响应体是 xml 格式</p>
+</li>
+<li>
+<p>如果第三方应用需要使用发微信小程序功能，需要先配置一个第三方小程序绑定微信小程序。授权企业需要同时安装第三方应用和第三方小程序（推广二维码支持应用和小程序混合推广）</p>
+</li>
+<li>
+<p>接口调用频率限制：</p>
+<ul>
+<li>获取access_token频率：每日限额2000次</li>
+<li>获取jsapi_ticket频率：一小时内，一个企业最多可获取400次，且单个应用不能超过100次</li>
+</ul>
+<p><a href="https://developer.work.weixin.qq.com/document/path/90454">企微接口访问频率限制文档</a></p>
+</li>
+</ol>
+<h2 id="一些坑">一些坑</h2>
+<ol>
+<li>前端发视频，有时发得出去，有时发不出去，原因未知</li>
+<li>解散企业会发送取消授权第三方应用事件，不过企微那边会延迟15天才会回调 cancel_auth 事件</li>
+</ol>
+<h2 id="前端问题">前端问题</h2>
+<ol>
+<li>
+<p>前端页面缓存问题如何解决?</p>
+<p>解决方案：前端路由nginx，设置浏览器不做页面缓存，直接读服务器的数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">location / <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    access_log /data/nginx/log/xxx.log api<span class="p">;</span>
+</span></span><span class="line"><span class="cl">    root /home/www/html<span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="nv">$request_filename</span> ~ .*<span class="se">\.</span><span class="o">(</span>htm<span class="p">|</span>html<span class="o">)</span>$<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            add_header Cache-Control no-cache<span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>如何清空local-storage？(token存储在local-storage)</p>
+<p>前端在代码加个版本号标识，每次加载前端页面框架时，触发检查版本号标识是否一致。如果代码的版本号标识和本地缓存中的版本号标识不一致，则清空本地缓存，重新登录。</p>
+</li>
+<li>
+<p>本地开发oauth2跳转问题：使用内网穿透、代理</p>
+</li>
+</ol>
+<h3 id="上线注意">上线注意</h3>
+<blockquote>
+<p>设置IP白名单</p></blockquote>
+<p>将代码运行服务器的IP设置为IP白名单（支持多个ip白名单），否则无法调用企业微信的api，配置路径：服务商后台-&gt;基本信息-&gt;<code>IP白名单</code></p>
+<blockquote>
+<p>生成推广二维码并获取推广包ID(template_id)</p></blockquote>
+<p>设置入口：服务商管理后台 &gt; 应用推广 &gt; 推广二维码</p>
+<blockquote>
+<p>应用市场搜索</p></blockquote>
+<p>功能位置：应用管理 -&gt; 应用推广 -&gt; 应用市场搜索</p>
+<p>如果开发的第三方应用是开放性的，建议开启支持可搜。</p>
+<h2 id="会话内容存档">会话内容存档</h2>
+<ul>
+<li><a href="https://developer.work.weixin.qq.com/document/path/91361">会话内容存档接口文档</a></li>
+<li><a href="https://github.com/NICEXAI/WeWorkFinanceSDK">企业微信会话存档SDK</a></li>
+<li><a href="https://mp.weixin.qq.com/s/__Ip3Q1-JwskWR4MPhGSBQ">企业微信会话存档开发爬坑记(golang+linux)</a></li>
+</ul>
+<p>目前只支持企业自行开通会话内容存档，第三方服务商只能让企业提供corpid、secret等配置信息，然后调用会话内容存档接口获取会话数据。</p>
+<p>会话内容存档是一个完全独立的功能，可单独部署一个服务运行，不需要建自建应用/第三方应用也可以正常运行。</p>
+<blockquote>
+<p>会话存档两种版本</p></blockquote>
+<ul>
+<li>
+<p>服务版：单价一年300元/人。开启后，可存档内部&amp;外部聊天（启用范围内成员的），外部聊天须外部好友同意存档（默认同意，可以拒绝）。</p>
+</li>
+<li>
+<p>企业版：单价一年600元/人。比服务版的多存档一项内容，企业版可以存档语音通话（非会议），视频通话暂不支持。</p>
+<p><code>按人数买的话，怎么分配额度给指定的某个员工？答：通过设置开启范围限制。</code>
+<img src="/images/2022/QQ20220716-091752@2x.png" alt="设置开启范围"></p>
+</li>
+</ul>
+<h2 id="企业微信客户端">企业微信客户端</h2>
+<blockquote>
+<p>Mac版本开启调试模式</p></blockquote>
+<ol>
+<li>按下command+shift+control+D进入调试模式</li>
+<li>调试-&gt;浏览器、webView相关-&gt;开启webView元素审查</li>
+<li>内置浏览器右-&gt;检查元素</li>
+</ol>
+<p><img src="/images/2022/QQ20220414-102319@2x.png" alt="debug开启"></p>
+<blockquote>
+<p>获取会话 roomid 方式，用于向腾讯客服申请群解封</p></blockquote>
+<p>同时按下Ctrl+Shift+Command+D&mdash;&gt;进入debug模式&ndash;&gt;右键会话&ndash;&gt;复制会话id</p>
+<blockquote>
+<p>下载企业微信旧版本</p></blockquote>
+<p>由于企业微信软件更新新版本时，企微Mac桌面端有时会有bug导致侧边栏部分功能不可用，只能进行版本回退，故需要下载旧版的企微Mac桌面端。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;io&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;path&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 下载企业微信旧版本-Mac桌面端</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">DownloadQiweiSoftwareOldVersion</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">90000</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">99999</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">version</span>  <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;4.0.8.%d&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>                                   <span class="c1">// 下载版本号</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fileName</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;WeCom_%s.dmg&#34;</span><span class="p">,</span> <span class="nx">version</span><span class="p">)</span>                         <span class="c1">// 保存文件名</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">url</span>      <span class="p">=</span> <span class="s">&#34;https://dldir1.qq.com/foxmail/wecom-mac/update/&#34;</span> <span class="o">+</span> <span class="nx">fileName</span> <span class="c1">// 下载链接</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;当前尝试下载版本号：%s&#34;</span><span class="p">,</span> <span class="nx">version</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">StatusCode</span> <span class="o">!=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">i</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">filePath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="s">&#34;./&#34;</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="nx">filePath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">io</span><span class="p">.</span><span class="nf">Copy</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="s">&#34;文件保存失败&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;下载成功，保存路径：&#34;</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>企业微信调试工具</p></blockquote>
+<p><a href="https://developer.work.weixin.qq.com/tool#/tab/invoke/tool">企业微信调试工具</a></p>
+<h2 id="服务商回调服务器宕机情况">服务商回调服务器宕机情况</h2>
+<p>如果服务商回调服务器宕机了几小时，没有接收企微回调事件。需要紧急修复的数据就是：增删客户、增删客户群和增删客户群成员，其他细节就不管了</p>
+<h2 id="参考文献">参考文献</h2>
+<p><a href="http://loriame.cn/archives/be1a3ce8.html">企业微信第三方服务商应用开发经验分享</a></p>
+<p><a href="https://www.daimajiaoliu.com/daima/7b746c1306d1804">企业微信服务商第三方应用开发流程</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content"></span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2022-08-12
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/other/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Git分支管理</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%A5%AE%E8%8C%B6%E4%B9%8B%E9%81%93/">
+            <span class="next-text nav-default">饮茶之道</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2021-09-24 16:46:43 \u002b0800 CST',
+        title: '企业微信第三方应用开发',
+        clientID: 'fe63c88fe7fc18e38512',
+        clientSecret: 'e44ced40487d261a6006f9af23a2f788bf1e0a85',
+        repo: 'zsmhub.github.io',
+        owner: 'zsmhub',
+        admin: ['zsmhub'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangshimiande@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zsmhub" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2025<span class="heart"><i class="iconfont icon-heart"></i></span><span>ZsmHub</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

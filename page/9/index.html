@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-04T11:16:49+08:00">
-  <meta itemprop="dateModified" content="2025-11-04T11:16:49+08:00">
+  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,147 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/%E5%B8%B8%E7%94%A8%E6%A1%88%E4%BE%8B/">Go 常用案例</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-01-08 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 4997 字 </span>
+        <span class="more-meta"> 预计阅读 10 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="golang中判断两个slice是否相等">golang中判断两个slice是否相等</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;bytes&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">a</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">b</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">c</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="计算中文长度">计算中文长度</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">title</span> <span class="o">:=</span> <span class="s">&#34;中国人a&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">([]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">title</span><span class="p">)))</span> <span class="c1">// 第一种方案：输出 4</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">utf8</span><span class="p">.</span><span class="nf">RuneCountInString</span><span class="p">(</span><span class="nx">title</span><span class="p">))</span> <span class="c1">// 第二种方案：输出 4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="数据库初始化">数据库初始化</h2>
+<blockquote>
+<p>什么是 DSN 信息？</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/%E5%B8%B8%E7%94%A8%E6%A1%88%E4%BE%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">位运算使用技巧</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-12-31 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          </div>
+        <span class="more-meta"> 约 1564 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="位运算概览">位运算概览</h2>
+<table>
+  <thead>
+      <tr>
+          <th>符号</th>
+          <th>描述</th>
+          <th>运算规则</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>&amp;</td>
+          <td>与</td>
+          <td>两个位都为1时，结果才为1 【选中A标签和B标签的用户bitmap=选中A标签的用户bitmap &amp; 选中标签的用户bitmap】</td>
+      </tr>
+      <tr>
+          <td>|</td>
+          <td>或</td>
+          <td>两个位都为0时，结果才为0 【选中A或B标签的用户bitmap=选中A标签的用户bitmap</td>
+      </tr>
+      <tr>
+          <td>^</td>
+          <td>异或</td>
+          <td>两个位相同为0，相异为1【可用于取非数据，如不包含某个标签的用户bitmap=全量用户bitmap ^ 包含某个标签的用户bitmap】</td>
+      </tr>
+      <tr>
+          <td>~</td>
+          <td>取反</td>
+          <td>0变1，1变0</td>
+      </tr>
+      <tr>
+          <td>&laquo;</td>
+          <td>左移(每左移 1 位就乘以 2)</td>
+          <td>各二进位全部左移若干位，高位丢弃，低位补0 【2的10次方=1024】</td>
+      </tr>
+      <tr>
+          <td>&raquo;</td>
+          <td>右移(每右移 1 位就除以 2)</td>
+          <td>各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>优点</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%90%8E%E7%AB%AF/%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-micro/">Go Micro</a></h1>
@@ -652,57 +793,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E7%B4%A0%E6%8F%8F%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-10-12 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
-          </div>
-        <span class="more-meta"> 约 903 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="为什么要用微服务">为什么要用微服务</h2>
-<p>小项目发展到大项目过程中，出于维护、稳定性等考虑，将一个整体项目分为多个微小服务。</p>
-<h2 id="为什么说做好微服务很难">为什么说做好微服务很难</h2>
-<p>要想做好微服务，我们需要理解和掌握的知识点非常多，从几个维度上来说：</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/oltp%E5%92%8Colap/">OLTP和OLAP</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-10-10 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> database </a>
-          </div>
-        <span class="more-meta"> 约 293 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>根据数据库处理的业务数据量，以及处理数据的不同方式，人们把数据库分为 OLTP 和 OLAP 两大类型。</p>
-<h2 id="oltp-vs-olap">OLTP vs OLAP</h2>
-<p>常见的 Oracle、MySQL 等数据库都属于 OLTP 类型，也就是 On-Line Transaction Processing，联机事务处理。OLTP 数据库处理请求和数据时对延迟要求很高，并且要保证数据的完整性和一致性。此类数据库是面向最终客户的，需要具备 7x24 不间断服务能力。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/database/oltp%E5%92%8Colap/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

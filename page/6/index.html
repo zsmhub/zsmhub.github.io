@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-04T11:16:49+08:00">
-  <meta itemprop="dateModified" content="2025-11-04T11:16:49+08:00">
+  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -135,11 +135,99 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/">企业微信自建应用代开发</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/">线上事故记录</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2022-03-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          </div>
+        <span class="more-meta"> 约 1245 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="一数据库宕机">一、数据库宕机</h2>
+<ol>
+<li>
+<p>事故时间：2020-08-25</p>
+</li>
+<li>
+<p>事故描述：</p>
+<ol>
+<li>大量慢查询</li>
+<li>阿里云数据库RDS，一主三从一备胎主库（共 5 个数据库），主从读写分离失效，大量请求涌入主库，主库承受不住请求压力，主库宕机，备胎主库也失效。</li>
+<li>主从延迟严重，从库失效，全部查询堆在主库，这样也会导致主库宕机。（比如删除大量数据、更新大量数据的时候）</li>
+</ol>
+</li>
+<li>
+<p>事故错误日志:</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E8%AE%B0%E5%BD%95/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/">多系统对接-签名校验案例(GO)</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2022-03-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          </div>
+        <span class="more-meta"> 约 1508 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="接口通讯规范">接口通讯规范</h2>
+<ul>
+<li>
+<p>签名规则：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 签名有效期暂定为 600 秒</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">platform</span> <span class="p">=</span> <span class="s">&#34;baidu&#34;</span>     <span class="c1">// 对接平台，正式测试环境保持一致</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">secret</span> <span class="p">=</span> <span class="s">&#34;test_123456&#34;</span>   <span class="c1">// 测试环境密钥，生产环境密钥私聊</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">requestTime</span> <span class="p">=</span> <span class="mi">1640163102</span> <span class="c1">// 秒级时间戳</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">loginStaffId</span> <span class="p">=</span> <span class="mi">123</span> <span class="c1">// 请求员工ID，便于权限控制</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 生成签名</span>
+</span></span><span class="line"><span class="cl"><span class="nx">sign</span> <span class="o">:=</span> <span class="nf">Md5</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d-%s-%s-%d&#34;</span><span class="p">,</span> <span class="nx">requestTime</span><span class="p">,</span> <span class="nx">platform</span><span class="p">,</span> <span class="nx">secret</span><span class="p">,</span> <span class="nx">loginStaffId</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>数据规范：</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bgo/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/">企业微信自建应用代开发</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2022-03-14 </span>
       <div class="post-category">
-          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          <a href="/categories/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/"> 企业微信 </a>
           </div>
         <span class="more-meta"> 约 171 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
@@ -163,7 +251,7 @@
 </ol>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -217,11 +305,11 @@
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">企业微信第三方应用开发</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">企业微信第三方应用开发</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2021-09-24 </span>
       <div class="post-category">
-          <a href="/categories/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/"> 实战案例 </a>
+          <a href="/categories/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/"> 企业微信 </a>
           </div>
         <span class="more-meta"> 约 5609 字 </span>
         <span class="more-meta"> 预计阅读 12 分钟 </span>
@@ -241,7 +329,7 @@
 <p>作为服务商身份的调用凭证，应妥善保管好该密钥，务必不能泄漏。</p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -407,54 +495,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E5%90%8E%E7%AB%AF/%E7%9B%B4%E6%92%AD%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/">安全层面-限流策略</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-08-12 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
-          </div>
-        <span class="more-meta"> 约 1307 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="一问题背景">一、问题背景</h2>
-<p>最近公司最近的几台线上服务器经常出现CPU覆盖过高,影响部分应用响应超时,产生了大量的短信和邮件报警,经过排查数据库日志和access.log,发现是API接口被刷,被恶意疯狂请求,最大一次大概120次/s。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/%E5%AE%89%E5%85%A8%E5%B1%82%E9%9D%A2-%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-08-05 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"> 服务器 </a>
-          </div>
-        <span class="more-meta"> 约 153 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>云原生四大要点：DevOps+持续交付+微服务+容器。</p>
-<p>总而言之，符合云原生架构的应用程序应该是：采用开源堆栈（K8S+Docker）进行容器化，基于微服务架构提高灵活性和可维护性，借助敏捷方法、DevOps支持持续迭代和运维自动化，利用云平台设施实现弹性伸缩、动态调度、优化资源利用率。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E4%BA%91%E5%8E%9F%E7%94%9F/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

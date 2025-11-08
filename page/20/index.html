@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-04T11:16:49+08:00">
-  <meta itemprop="dateModified" content="2025-11-04T11:16:49+08:00">
+  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,64 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/opcache%E4%B8%8Eopcode/">Opcache与Opcode</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-23 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 1465 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="相关文章">相关文章</h2>
+<ul>
+<li><a href="https://www.zybuluo.com/phper/note/1016714">Opcode是啥以及如何使用好Opcache</a></li>
+</ul>
+<h2 id="啥是opcache">啥是Opcache</h2>
+<ul>
+<li>Opcache 的前生是 Optimizer+ ，它是PHP的官方公司 Zend 开发的一款闭源但可以免费使用的 PHP 优化加速组件。 Optimizer+ 将PHP代码预编译生成的脚本文件 Opcode 缓存在共享内存中供以后反复使用，从而避免了从磁盘读取代码再次编译的时间消耗。同时，它还应用了一些代码优化模式，使得代码执行更快。从而加速PHP的执行。</li>
+</ul>
+<h2 id="opcache的生命周期">Opcache的生命周期</h2>
+<ol>
+<li>
+<p>正常的php代码的执行过程如下</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/opcache%E4%B8%8Eopcode/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/python/python%E5%B8%B8%E7%94%A8%E7%9A%84package%E5%92%8Cmodule/">Python 常用的 package 和 module</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-02-15 </span>
+      <div class="post-category">
+          <a href="/categories/python/"> python </a>
+          </div>
+        <span class="more-meta"> 约 2445 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="简介">简介</h2>
+<p>Python 是通过 module 组织代码的，一个 py 文件就是一个 module，module 又是通过 package 来组织的，package 是一个包含 <strong>init</strong>.py 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 <strong>init</strong>.py 的 module。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/python/python%E5%B8%B8%E7%94%A8%E7%9A%84package%E5%92%8Cmodule/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Python 基础知识</a></h1>
@@ -660,56 +718,6 @@
     </div>
     <div class="read-more">
       <a href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B8%80/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/memcached/">Memcached</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-04 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> database </a>
-          </div>
-        <span class="more-meta"> 约 835 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>Memcached 是一个自由开源的，高性能，分布式内存对象缓存系统。</p>
-<p>Memcached 是一种基于内存的 key-value 存储，用来存储小块的任意数据（字符串、对象）。</p>
-<p>Memcached 官方网站：http://memcached.org/</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/database/memcached/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/redis/">Redis</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-01-03 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> database </a>
-          </div>
-        <span class="more-meta"> 约 3825 字 </span>
-        <span class="more-meta"> 预计阅读 8 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="缓存分类">缓存分类</h2>
-<p>众所周知，不同的缓存速度是不同的，本地内存缓存 &gt; redis/memcache &gt; 磁盘缓存。</p>
-<p>PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使用变量（如 map）实现本地内存缓存。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/database/redis/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

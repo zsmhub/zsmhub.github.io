@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-04T11:16:49+08:00">
-  <meta itemprop="dateModified" content="2025-11-04T11:16:49+08:00">
+  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,73 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">Laravel 常用组件</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-08-01 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 1780 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="dingoapi">dingo/api</h2>
+<p>dingo/api 是一个 Lumen 和 Laravel 都可用的 RestFul 工具包，帮助我们快速的开始构建 RestFul Api。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">composer require dingo/api
+</span></span><span class="line"><span class="cl">php artisan vendor:publish --provider<span class="o">=</span><span class="s2">&#34;Dingo\Api\Provider\LaravelServiceProvider&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意点：</p></blockquote>
+<p>由于路由被 DingoApi 接管了，如果将来部署上线后你需要缓存路由，可以使用 php artisan api:cache 代替 php artisan route:cache ，本地测试请不要执行这个命令。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%85%A5%E9%97%A8/">Laravel 基础知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-08-01 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 6702 字 </span>
+        <span class="more-meta"> 预计阅读 14 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="php-框架运行的核心三步">php 框架运行的核心三步</h2>
+<ol>
+<li>从入口进入 index.php</li>
+<li>解析 url，匹配路由</li>
+<li>根据路由，调用控制器，渲染视图</li>
+</ol>
+<blockquote>
+<p>tip: 在第一步到第二步之间，会有更多的操作。比如自动加载，容器初始化等。这些都是为了后面的准备。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/laravel%E5%85%A5%E9%97%A8/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/web%E5%AE%89%E5%85%A8/%E9%BB%91%E5%AE%A2%E5%85%A5%E4%BE%B5/">黑客入侵</a></h1>
@@ -380,71 +447,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/">Restful架构</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-05-01 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
-          </div>
-        <span class="more-meta"> 约 1022 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="什么是restful架构">什么是RESTful架构</h2>
-<p>用 URL 定位资源，用 HTTP 动词描述操作</p>
-<ol>
-<li>
-<p>每一个URI代表一种资源；</p>
-</li>
-<li>
-<p>客户端和服务器之间，传递这种资源的某种表现层；</p>
-</li>
-<li>
-<p>客户端通过五个HTTP动词，对服务器端资源进行操作，实现&quot;表现层状态转化&quot;。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/">DevOps 与 NoOps</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-04-29 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
-          </div>
-        <span class="more-meta"> 约 709 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="devops">DevOps</h2>
-<p>DevOps是开发和运维的融合，是开发和运维工程师共同协作，定义应用从设计到交付全生命周期过程的实践。</p>
-<h2 id="noops">NoOps</h2>
-<ul>
-<li>NoOps的意思是无须操作。它的理念是去掉所有的平台管理部分，从而降低开发人员与基础设施之间的摩擦。</li>
-<li>NoOps的目的是定义一个不需要开发与运维相结合，就可以使流程顺利进行的过程。NoOps有一个目标：通过设计使所有东西都可以完成部署，而不需要任何人参与。</li>
-<li>NoOps大致的方法如下：开发人员将代码提交到代码库就已经完成了全部的部署。看起来与连续交付非常相似，但它所包含的范围更大，这里面不仅有应用程序，还包含了基础设施的部署。</li>
-</ul>
-<blockquote>
-<p>其实无所谓DevOps或NoOps。最根本的驱动是：用尽可能少的维护工作，去创建智能的基础设施，并将一切自动化。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/devops%E4%B8%8Enoops/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

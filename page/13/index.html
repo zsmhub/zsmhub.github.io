@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-04T11:16:49+08:00">
-  <meta itemprop="dateModified" content="2025-11-04T11:16:49+08:00">
+  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,593 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/">Mysql 经典案例</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-29 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 1241 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="too-many-connection-报错可能原因">too many connection 报错可能原因</h2>
+<ol>
+<li>
+<p>机器负载飙升，导致SQL执行效率下降，导致连接堆积</p>
+</li>
+<li>
+<p>业务访问量突增（或者有SQL注入现象），导致连接数打满</p>
+</li>
+<li>
+<p>出现“死锁”或者锁竞争严重，导致大量SQL堆积【如事务没有正确关闭、频繁更新导致资源争用等】</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/mysql%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E5%B8%B8%E7%94%A8%E5%BA%93/">Go 常用库</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-26 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 11596 字 </span>
+        <span class="more-meta"> 预计阅读 24 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="标准库">标准库</h2>
+<h3 id="time">time</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 获取当前时间，这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4-5</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取当天的年月日时间</span>
+</span></span><span class="line"><span class="cl"><span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nx">today</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Month</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Day</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">nowDayStart</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Month</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Day</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">nowDayEnd</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Month</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Day</span><span class="p">(),</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取时间戳</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timeUnix</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">()</span>              <span class="c1">//单位秒，10 位数</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timeUnixMill</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="mf">1e6</span>  <span class="c1">//单位毫秒，13 位数</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timeUnixMicro</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="mf">1e3</span> <span class="c1">//单位微秒，16 位数</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timeUnixNano</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UnixNano</span><span class="p">()</span>      <span class="c1">//单位纳秒，19 位数</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 时间戳转为日期格式</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timestamp</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="nx">timestamp</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span>     <span class="c1">// 秒级时间戳转换成日期</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timestamp</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">UnixMilli</span><span class="p">(</span><span class="nx">timestamp</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span> <span class="c1">// 毫秒级时间戳转换成日期</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取7月1日的time</span>
+</span></span><span class="line"><span class="cl"><span class="nx">month7Start</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ISO8601标准日期格式</span>
+</span></span><span class="line"><span class="cl"><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UTC</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">)</span> <span class="c1">// 世界统一时间：2024-09-20T07:01:44Z</span>
+</span></span><span class="line"><span class="cl"><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">)</span>       <span class="c1">// 本地时区时间：2024-09-20T15:01:44+08:00</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 时间字符串转为 time.Time，再转时间戳 timeUnix := tTime.Unix()</span>
+</span></span><span class="line"><span class="cl"><span class="nx">startTime</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="s">&#34;2024-02-28 10:24:26&#34;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">StringToTime</span><span class="p">(</span><span class="nx">t</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">location</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">LoadLocation</span><span class="p">(</span><span class="s">&#34;Asia/Shanghai&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{},</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">tTime</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">location</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">tTime</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// time.Time 转为时间字符串</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">FormatTime</span><span class="p">(</span><span class="nx">time</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// time.RFC3339 时间格式化</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">RFC3339ToTime</span><span class="p">(</span><span class="nx">value</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseInLocation</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 秒级时间戳转为 time.Time</span>
+</span></span><span class="line"><span class="cl"><span class="nx">datetime</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Unix</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="mi">1629107978</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 未来第30天</span>
+</span></span><span class="line"><span class="cl"><span class="nx">lastDay</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取5分钟前的时间</span>
+</span></span><span class="line"><span class="cl"><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Add</span><span class="p">(</span><span class="o">-</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取 1 小时之前的时间</span>
+</span></span><span class="line"><span class="cl"><span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseDuration</span><span class="p">(</span><span class="s">&#34;-1h&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">result</span> <span class="o">:=</span> <span class="nx">currentTime</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 睡眠 1 秒和 0.5 秒</span>
+</span></span><span class="line"><span class="cl"><span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Microsecond</span> <span class="o">*</span> <span class="mi">500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 两个时间点相差的天数</span>
+</span></span><span class="line"><span class="cl"><span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nx">today</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Month</span><span class="p">(),</span> <span class="nx">now</span><span class="p">.</span><span class="nf">Day</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">futureDay</span> <span class="o">:=</span> <span class="nx">today</span><span class="p">.</span><span class="nf">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;两个时间点相差的天数：%d\n&#34;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nx">futureDay</span><span class="p">.</span><span class="nf">Sub</span><span class="p">(</span><span class="nx">today</span><span class="p">).</span><span class="nf">Hours</span><span class="p">()</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 时间大小比较</span>
+</span></span><span class="line"><span class="cl"><span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nx">a</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="s">&#34;2019-03-10 11:00:00&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">b</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">,</span> <span class="s">&#34;2015-03-10 16:00:00&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;now a After: &#34;</span><span class="p">,</span><span class="nx">now</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;now a Before: &#34;</span><span class="p">,</span><span class="nx">now</span><span class="p">.</span><span class="nf">Before</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 时区设置，方法一：</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">zone</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">LoadLocation</span><span class="p">(</span><span class="s">&#34;Asia/Shanghai&#34;</span><span class="p">)</span> <span class="c1">// 地区标准时</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">In</span><span class="p">(</span><span class="nx">zone</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 时区设置，方法二：</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">zone</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">FixedZone</span><span class="p">(</span><span class="s">&#34;CST&#34;</span><span class="p">,</span> <span class="mi">8</span><span class="o">*</span><span class="mi">3600</span><span class="p">)</span> <span class="c1">// 东八区</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">In</span><span class="p">(</span><span class="nx">zone</span><span class="p">).</span><span class="nf">Format</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 定时器: time.NewTimer 和 time.NewTicker</span>
+</span></span><span class="line"><span class="cl"><span class="nx">NewTimer</span><span class="p">:</span> <span class="nx">只执行一次</span><span class="err">，</span><span class="nx">到时间执行</span>
+</span></span><span class="line"><span class="cl"><span class="nx">NewTicker</span><span class="p">:</span> <span class="nx">循环执行</span><span class="err">，</span><span class="nx">只要定义完成</span><span class="err">，</span><span class="nx">从此刻开始计时</span><span class="err">，</span><span class="nx">不需要任何其他的操作</span><span class="err">，</span><span class="nx">每隔固定时间都会触发</span><span class="err">。『</span><span class="nx">相比</span> <span class="nx">sleep</span><span class="err">，</span><span class="nx">资源占用少</span><span class="err">』</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">timer</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">timer</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTimer</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="k">case</span> <span class="o">&lt;-</span><span class="nx">timer</span><span class="p">.</span><span class="nx">C</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;3秒执行任务&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">timer</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span> <span class="c1">// 这里来提高 timer 的回收</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">ticker</span><span class="p">(</span><span class="nx">activityId</span><span class="p">,</span> <span class="nx">userId</span> <span class="kt">uint64</span><span class="p">)</span> <span class="p">(</span><span class="kt">bool</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">key</span> <span class="o">:=</span> <span class="s">&#34;keyxxx&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">times</span> <span class="kt">uint32</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ticker</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">NewTicker</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span> <span class="c1">// 定时器，定时往 channel 追加数据</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">ticker</span><span class="p">.</span><span class="nf">Stop</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">isLock</span> <span class="o">:=</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Redis</span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nx">Default</span><span class="p">).</span><span class="nf">SetNX</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">userId</span><span class="p">,</span> <span class="mi">1</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">).</span><span class="nf">Val</span><span class="p">()</span> <span class="c1">// 利用 redis 加锁</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">isLock</span> <span class="p">{</span> <span class="c1">// 是否是自身上锁</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 避免用户等待时间过长</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">times</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">times</span> <span class="p">&gt;</span> <span class="mi">100</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;抽奖失败&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;-</span><span class="nx">ticker</span><span class="p">.</span><span class="nx">C</span> <span class="c1">// 定时器时间未到，阻塞，相当于 sleep</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="encodingjson">encoding/json</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 输出json后的数据</span>
+</span></span><span class="line"><span class="cl"><span class="nx">data</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">userDevice</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// json解析成map并输出</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ret</span> <span class="kd">interface</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">ret</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ret</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="sync">sync</h3>
+<ul>
+<li>sync.Mutex &amp; sync.RWMutex</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span><span class="err">：</span><span class="nx">互斥锁</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Mutex</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">Mutex</span><span class="p">)</span> <span class="nf">Lock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">m</span> <span class="o">*</span><span class="nx">Mutex</span><span class="p">)</span> <span class="nf">Unlock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span><span class="p">:</span> <span class="nx">读写锁</span><span class="err">，</span><span class="nx">一般用在大量读操作</span><span class="err">、</span><span class="nx">少量写操作的情况</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mf">1.</span> <span class="nx">同时只能有一个</span> <span class="nx">goroutine</span> <span class="nx">能够获得写锁定</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="mf">2.</span> <span class="nx">同时可以有任意多个</span> <span class="nx">gorouinte</span> <span class="nx">获得读锁定</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="mf">3.</span> <span class="nx">同时只能存在写锁定或读锁定</span><span class="err">（</span><span class="nx">读和写互斥</span><span class="err">）。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Mutex在大量并发的情况下</span><span class="err">，</span><span class="nx">会造成锁等待</span><span class="err">，</span><span class="nx">对性能的影响比较大</span><span class="err">，</span><span class="nx">而读写锁可以提高性能</span><span class="err">。</span><span class="nx">如果某个读操作的协程加了锁</span><span class="err">，</span><span class="nx">其他的协程没必要处于等待状态</span><span class="err">，</span><span class="nx">可以并发地访问共享变量</span><span class="err">，</span><span class="nx">这样能让读操作并行</span><span class="err">，</span><span class="nx">提高读性能</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">Mutex</span> <span class="nx">本身不支持可重入锁</span><span class="err">，</span><span class="nx">不要</span> <span class="nx">copy</span> <span class="nx">已使用的</span> <span class="nx">Mutex</span><span class="err">，</span><span class="nx">避免死锁</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">可重入锁</span><span class="p">(</span><span class="nx">或递归锁</span><span class="p">)</span><span class="err">，</span><span class="nx">这是</span> <span class="nx">Java</span> <span class="nx">并发包中非常常用的一个同步原语</span><span class="err">。</span><span class="nx">它的基本行为和互斥锁相同</span><span class="err">，</span><span class="nx">但是加了一些扩展功能</span><span class="err">。</span><span class="nx">当一个线程获取锁时</span><span class="err">，</span><span class="nx">如果没有其它线程拥有这个锁</span><span class="err">，</span><span class="nx">那么</span><span class="err">，</span><span class="nx">这个线程就成功获取到这个锁</span><span class="err">。</span><span class="nx">之后</span><span class="err">，</span><span class="nx">如果其它线程再请求这个锁</span><span class="err">，</span><span class="nx">就会处于阻塞等待的状态</span><span class="err">。</span><span class="nx">但是</span><span class="err">，</span><span class="nx">如果拥有这把锁的线程再请求这把锁的话</span><span class="err">，</span><span class="nx">不会阻塞</span><span class="err">，</span><span class="nx">而是成功返回</span><span class="err">，</span><span class="nx">所以叫可重入锁</span><span class="err">（</span><span class="nx">有时候也叫做递归锁</span><span class="err">）。</span><span class="nx">只要你拥有这把锁</span><span class="err">，</span><span class="nx">你可以可着劲儿地调用</span><span class="err">，</span><span class="nx">比如通过递归实现一些算法</span><span class="err">，</span><span class="nx">调用者不会阻塞或者死锁</span><span class="err">。</span> <span class="s">`划重点了：Mutex 不是可重入的锁。`</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Counter</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Count</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">c</span> <span class="nx">Counter</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">Count</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">foo</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="c1">// 复制锁</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 这里Counter的参数是通过复制的方式传入的，导致死锁</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">c</span> <span class="nx">Counter</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Unlock</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;in foo&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">静态代码分析工具</span><span class="p">|</span><span class="nx">死锁检测工具</span><span class="err">，</span><span class="nx">使用go自带的vet工具</span><span class="err">，</span><span class="nx">或者是第三方的工具</span><span class="err">（</span><span class="nx">比如go</span><span class="o">-</span><span class="nx">deadlock</span><span class="err">、</span><span class="k">go</span><span class="o">-</span><span class="nx">tools</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">vet</span> <span class="nx">xxx</span><span class="p">.</span><span class="k">go</span>
+</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">tool</span> <span class="nx">vet</span> <span class="nx">source</span><span class="o">/</span><span class="nx">directory</span><span class="o">/*</span><span class="p">.</span><span class="k">go</span> <span class="c1">// 一个包下所有源文件进行检测</span>
+</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">vet</span> <span class="p">.</span><span class="o">/</span><span class="nx">source</span><span class="o">/</span><span class="nx">repository</span> <span class="c1">// 利用vet对一个package进行检查,当然传入的包名必须是 相对路径 或者完整package。</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>sync/atomic</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">原子锁</span><span class="err">：</span><span class="nx">Go</span> <span class="nx">语言的</span> <span class="nx">sync</span><span class="o">/</span><span class="nx">atomic</span> <span class="nx">包提供了对原子操作的支持</span><span class="err">，</span><span class="nx">用于同步访问整数和指针</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">之所以叫原子操作</span><span class="err">，</span><span class="nx">是因为一个原子在执行的时候</span><span class="err">，</span><span class="nx">其它线程不会看到执行一半的操作结果</span><span class="err">。</span><span class="nx">在其它线程看来</span><span class="err">，</span><span class="nx">原子操作要么执行完了</span><span class="err">，</span><span class="nx">要么还没有执行</span><span class="err">，</span><span class="nx">就像一个最小的粒子</span> <span class="o">-</span> <span class="nx">原子一样</span><span class="err">，</span><span class="nx">不可分割</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">*</span> <span class="nx">Go语言提供的原子操作都是非入侵式的</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="o">*</span> <span class="nx">这些函数提供的原子操作共有五种</span><span class="err">：</span><span class="nx">增减</span><span class="err">、</span><span class="nx">比较并交换</span><span class="err">、</span><span class="nx">载入</span><span class="err">、</span><span class="nx">存储</span><span class="err">、</span><span class="nx">交换</span><span class="err">。</span><span class="nx">eg</span><span class="p">:</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddUint32</span><span class="err">、</span><span class="nx">atomic</span><span class="p">.</span><span class="nx">CompareAndSwapUint32</span>
+</span></span><span class="line"><span class="cl"><span class="o">*</span> <span class="nx">原子操作支持的类型类型包括int32</span><span class="err">、</span><span class="kt">int64</span><span class="err">、</span><span class="kt">uint32</span><span class="err">、</span><span class="kt">uint64</span><span class="err">、</span><span class="kt">uintptr</span><span class="err">、</span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">原子操作与互斥锁的比较</span><span class="err">（</span><span class="nx">原子操作</span><span class="o">-</span><span class="p">&gt;</span><span class="nx">乐观锁</span><span class="err">，</span><span class="nx">互斥锁</span><span class="o">-</span><span class="p">&gt;</span><span class="nx">悲观锁</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="nx">原子操作的做法趋于乐观</span><span class="err">，</span><span class="nx">总是假设被操作值未曾被改变</span><span class="err">，</span><span class="nx">并一旦确认这个假设的真实性就立即进行值操作</span><span class="err">，</span><span class="nx">那么在被操作值被频繁变更的情况下</span><span class="err">，</span><span class="nx">原子操作并不那么容易成功</span><span class="err">。</span><span class="nx">而使用互斥锁的做法则趋于悲观</span><span class="err">，</span><span class="nx">我们总假设会有并发的操作要修改被操作的值</span><span class="err">，</span><span class="nx">并使用锁将相关操作放入临界区中加以保护</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">应用场景</span>
+</span></span><span class="line"><span class="cl"><span class="nx">不涉及到对资源复杂的竞争逻辑</span><span class="err">，</span><span class="nx">只是会并发地读写这个标志</span><span class="err">，</span><span class="nx">这类场景就适合使用</span> <span class="nx">atomic</span> <span class="nx">的原子操作</span><span class="err">，</span><span class="nx">如定时任务是否运行的标志</span><span class="err">、</span><span class="nx">计数器</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;sync/atomic&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 定时任务标识</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">isRunning</span> <span class="kt">int32</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">crontab</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">!</span><span class="nx">atomic</span><span class="p">.</span><span class="nf">CompareAndSwapInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">isRunning</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;该定时任务正在运行中...&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;该定时任务空闲...&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">_</span> <span class="p">=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">CompareAndSwapInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">isRunning</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 计数器</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">countAdd</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">50000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">atomic</span><span class="p">.</span><span class="nf">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nf">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;opsFinal:&#34;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>sync.WaitGroup</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 使用sync.WaitGroup方式保证所有goroutine都运行完毕</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span> <span class="c1">// 初始化等待组</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1">// 初始化计数器，设置为100</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span> <span class="c1">// 计数器-1</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span> <span class="c1">// 进程阻塞</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">#</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup对象不是一个引用类型</span><span class="err">，</span><span class="nx">在通过函数传值的时候需要使用地址</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span> <span class="o">:=</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">go</span> <span class="nf">f</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">wg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Wait</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 一定要通过指针传值，不然进程会进入死锁状态</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">f</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>sync.Map「并发安全」</li>
+</ul>
+<p>使用原因：map是不支持并发操作的，只读是线程安全的，同时写线程不安全，所以为了并发安全 &amp; 高效，请使用 sync.Map。「需要并发读写时，一般的做法是加锁，但这样性能并不高，故采用 sync.Map」</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E5%B8%B8%E7%94%A8%E5%BA%93/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/lb%E9%9B%86%E7%BE%A4/">LB 集群</a></h1>
@@ -630,54 +1217,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%80%A7%E6%95%99%E8%82%B2%E7%A7%91%E6%99%AE/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A4%AB%E5%A6%BB%E4%B9%8B%E9%97%B4/">夫妻之间</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-18 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
-          </div>
-        <span class="more-meta"> 约 1468 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="夫妻伴侣之间如何好好谈钱">夫妻、伴侣之间如何「好好谈钱」</h2>
-<p><code>夫妻、伴侣之间，千万不要害怕谈钱。</code>因为一个双方经过开诚布公讨论、有所共识的财务分配机制，对维系良好婚姻关系的帮助，绝对胜过任何感性的空头承诺，或双方讳莫如深闭口不谈。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A4%AB%E5%A6%BB%E4%B9%8B%E9%97%B4/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3/">API Gateway</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-17 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
-          </div>
-        <span class="more-meta"> 约 922 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="api-网关简介">API 网关简介</h2>
-<p>随着移动互联网的兴起、开放合作思维的盛行，不同终端和第三方开发者都需要大量的接入企业核心业务能力，此时各业务系统将会面临同一系列的问题，例如：如何让调用方快速接入、如何让业务方安全地对外开放能力，如何应对和控制业务洪峰调用等等。于是就诞生了一个隔离企业内部业务系统和外部系统调用的屏障 - API网关，它负责在上层抽象出各业务系统需要的通用功能，例如：鉴权、限流、ACL、降级等。另外随着近年来微服务的流行，API网关已经成为一个微服务架构中的标配组件。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/api%E7%BD%91%E5%85%B3/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
