@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node on ZsmHub - Blog</title>
+    <link>https://zsmhub.github.io/tags/node/</link>
+    <description>Recent content in Node on ZsmHub - Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>ZsmHub</copyright>
+    <lastBuildDate>Tue, 18 Nov 2025 11:23:31 +0800</lastBuildDate>
+    <atom:link href="https://zsmhub.github.io/tags/node/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node.js</title>
+      <link>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/node/</link>
+      <pubDate>Tue, 18 Nov 2025 11:23:31 +0800</pubDate>
+      <guid>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/node/</guid>
+      <description>&lt;p&gt;Node.js 是一个基于 Chrome V8 引擎 的 JavaScript 运行时环境，它允许开发者在 服务器端 运行 JavaScript 代码，而不仅仅局限于浏览器。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;核心定位&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Node.js 不是新的编程语言，而是让 JavaScript 脱离浏览器运行的 运行环境（包含执行引擎、内置 API 等）。&lt;/li&gt;&#xA;&lt;li&gt;核心价值：统一前后端开发语言（均使用 JavaScript），降低开发成本；同时利用 V8 引擎的高性能，实现高效的服务器端编程。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;node&#34;&gt;node&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install node&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;node -v&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;blockquote&gt;&#xA;&lt;p&gt;MacOS Node 升级&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
-  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,162 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/goadmin/">GoAdmin</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-08-18 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 1101 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="准备工作">准备工作</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 访问并登陆：</span>
+</span></span><span class="line"><span class="cl">- 登陆：http://127.0.0.1:9033/admin/login
+</span></span><span class="line"><span class="cl">- 账号：admin，密码：admin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 用命令安装扩展</span>
+</span></span><span class="line"><span class="cl">go get github.com/GoAdminGroup/go-admin/adm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 根据指示填写就可以初始化一个项目模板</span>
+</span></span><span class="line"><span class="cl">adm init -l cn
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 执行以下命令运行：</span>
+</span></span><span class="line"><span class="cl">&gt; make serve
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用工具快速生成数据模型文件 http://doc.go-admin.cn/zh/plugins/admin/</span>
+</span></span><span class="line"><span class="cl">1. adm generate -l cn // 注意：选择表格的时候，按空格选择，不是按回车
+</span></span><span class="line"><span class="cl">2. 使用在线生成工具 // 注意：输出路径为本地文件绝对路径
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="一些坑">一些坑</h2>
+<ol>
+<li>
+<p>K8S部署环境下，不支持多个Pod部署，否则非GET方式的接口会出现以下错误提示【todo 具体原因不知：有空再查下】</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/goadmin/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/">程序员必备的代码审查清单</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-08-17 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/"> 程序员 </a>
+          </div>
+        <span class="more-meta"> 约 694 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="编码规范">编码规范</h2>
+<ul>
+<li>编程思想由 MVC模式 转向 MBC模式，M：模型层，B: 业务逻辑层，C：控制器层</li>
+<li>路由命名：一般以 纯小写 或 小写+中划线 命名，比较易读</li>
+<li>变量名称使用小驼峰方案</li>
+<li>能不用 else 就不用，减少嵌套层数</li>
+<li>待处理代码加上 todo 做备注，容易找到待处理代码位置</li>
+</ul>
+<h2 id="常规项">常规项</h2>
+<ul>
+<li>代码能够工作么？它有没有实现预期的功能，逻辑是否正确等。</li>
+<li>所有的代码是否简单易懂？</li>
+<li>代码符合你所遵循的编程规范么？这通常包括大括号的位置，变量名和函数名，行的长度，缩进，格式和注释。</li>
+<li>是否存在多余的或是重复的代码？</li>
+<li>代码是否尽可能的模块化了？</li>
+<li>是否有可以被替换的全局变量？</li>
+<li>是否有被注释掉的代码？</li>
+<li>循环是否设置了长度和正确的终止条件？</li>
+<li>是否有可以被库函数替代的代码？</li>
+<li>是否有可以删除的日志或调试代码？</li>
+</ul>
+<h2 id="安全">安全</h2>
+<ul>
+<li>所有的数据输入是否都进行了检查（检测正确的类型，长度，格式和范围）并且进行了编码？</li>
+<li>在哪里使用了第三方工具，返回的错误是否被捕获？</li>
+<li>输出的值是否进行了检查并且编码？</li>
+<li>无效的参数值是否能够处理？</li>
+</ul>
+<h2 id="文档">文档</h2>
+<ul>
+<li>是否有注释，并且描述了代码的意图？</li>
+<li>所有的函数都有注释吗？</li>
+<li>对非常规行为和边界情况处理是否有描述？</li>
+<li>第三方库的使用和函数是否有文档？</li>
+<li>数据结构和计量单位是否进行了解释？</li>
+<li>是否有未完成的代码？如果是的话，是不是应该移除，或者用合适的标记进行标记比如‘TODO’？</li>
+</ul>
+<h2 id="测试">测试</h2>
+<ul>
+<li>代码是否可以测试？比如，不要添加太多的或是隐藏的依赖关系，不能够初始化对象，测试框架可以使用方法等。</li>
+<li>是否存在测试，它们是否可以被理解？比如，至少达到你满意的代码覆盖(code coverage)。</li>
+<li>单元测试是否真正的测试了代码是否可以完成预期的功能？</li>
+<li>是否检查了数组的“越界“错误？</li>
+<li>是否有可以被已经存在的API所替代的测试代码？</li>
+</ul>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%92%8C%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E/">IO - 同步异步，阻塞非阻塞</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-08-16 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"> 网络编程 </a>
+          </div>
+        <span class="more-meta"> 约 664 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>同步(Sync)/异步(Async)，阻塞(Block)/非阻塞(Unblock)</p>
+<p>两者定义的针对目标不同，异步同步是针对 <em>响应</em> 本身的，阻塞非阻塞是针对 <em>请求</em> 本身的。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E7%90%86%E8%A7%A3%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E5%92%8C%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a></h1>
@@ -335,218 +491,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/tablestore/">大数据表设计-TableStore</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-08-02 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> database </a>
-          </div>
-        <span class="more-meta"> 约 4297 字 </span>
-        <span class="more-meta"> 预计阅读 9 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="简介">简介</h2>
-<p>表格存储（Tablestore）是阿里云自研的NoSQL多模型数据库，提供海量结构化数据存储以及快速的查询和分析服务。表格存储的分布式存储和强大的索引引擎能够支持PB级存储、千万TPS以及毫秒级延迟的服务能力。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/database/tablestore/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E5%92%8Cmariadb/">Mysql 和 MariaDB</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-07-27 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> database </a>
-          </div>
-        <span class="more-meta"> 约 184 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="mysql-和-mariadb-的关系">Mysql 和 MariaDB 的关系</h2>
-<p>MariaDB 数据库管理系统是 MySQL 的一个分支，主要由开源社区在维护，采用GPL授权许可。</p>
-<p>开发这个分支的原因之一是：甲骨文公司收购了 MySQL 后，有将 MySQL 闭源的潜在风险，因此社区采用分支的方式来避开这个风险。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/database/mysql%E5%92%8Cmariadb/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/%E6%A1%86%E6%9E%B6-echo%E6%A1%86%E6%9E%B6/">Echo 框架</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-07-26 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 461 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p><a href="https://echo.labstack.com/docs">官方文档</a></p>
-<h2 id="echo-入门示例">Echo 入门示例</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/labstack/echo/v4&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/labstack/echo/v4/middleware&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Echo instance</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">echo</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// Middleware</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">e</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nf">Logger</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">e</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nf">Recover</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nx">e</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nf">BodyLimit</span><span class="p">(</span><span class="s">&#34;1M&#34;</span><span class="p">))</span> <span class="c1">// 限制http请求body大小，不设置默认无限制</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// Routes</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">e</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nx">hello</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// Start server</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// e.Logger.Fatal(e.Start(&#34;:1323&#34;))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// 平滑关闭，关闭服务前会等待所有http请求结束</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="s">&#34;:1323&#34;</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span> <span class="o">!=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ErrServerClosed</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Handler</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">hello</span><span class="p">(</span><span class="nx">c</span> <span class="nx">echo</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// return c.String(http.StatusOK, &#34;Hello, World!&#34;)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nf">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nf">Success</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="路由分组">路由分组</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">NoticeController</span> <span class="kd">struct</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">noticeController</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">NoticeController</span><span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">Route</span> <span class="p">=</span> <span class="nx">echo</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">notice</span> <span class="o">:=</span> <span class="nx">Router</span><span class="p">.</span><span class="nf">Group</span><span class="p">(</span><span class="s">&#34;/notice&#34;</span><span class="p">,</span> <span class="nx">noticeAuthMiddleware</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 列表</span>
-</span></span><span class="line"><span class="cl"><span class="nx">notice</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">noticeController</span><span class="p">.</span><span class="nx">getList</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 新建</span>
-</span></span><span class="line"><span class="cl"><span class="nx">notice</span><span class="p">.</span><span class="nf">POST</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">noticeController</span><span class="p">.</span><span class="nx">createNotice</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 编辑</span>
-</span></span><span class="line"><span class="cl"><span class="nx">notice</span><span class="p">.</span><span class="nf">PUT</span><span class="p">(</span><span class="s">&#34;/:id&#34;</span><span class="p">,</span> <span class="nx">noticeController</span><span class="p">.</span><span class="nx">updateNotice</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 删除</span>
-</span></span><span class="line"><span class="cl"><span class="nx">notice</span><span class="p">.</span><span class="nf">DELETE</span><span class="p">(</span><span class="s">&#34;/:id&#34;</span><span class="p">,</span> <span class="nx">noticeController</span><span class="p">.</span><span class="nx">deleteNotice</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="context">context</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 获取上下文</span>
-</span></span><span class="line"><span class="cl"><span class="nx">req</span> <span class="o">:=</span> <span class="nx">httptest</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">MethodGet</span><span class="p">,</span> <span class="s">&#34;/url/xxx&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">resp</span> <span class="o">:=</span> <span class="nx">httptest</span><span class="p">.</span><span class="nf">NewRecorder</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">Echo</span><span class="p">.</span><span class="nf">NewContext</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="其他">其他</h2>
-<blockquote>
-<p>echo path 之分</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/%E6%A1%86%E6%9E%B6-echo%E6%A1%86%E6%9E%B6/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

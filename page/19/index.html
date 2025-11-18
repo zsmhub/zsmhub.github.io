@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
-  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,117 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">PHP 常用函数</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-03 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 2462 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="时间函数">时间函数</h2>
+<ol>
+<li>
+<p>常用代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;PRC&#39;</span><span class="p">);</span> <span class="c1">//默认时区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">echo</span> <span class="s2">&#34;今天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">time</span><span class="p">()),</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;昨天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;-1 day&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;明天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 day&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一周后:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 week&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一周零两天四小时两秒后:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d G:H:s&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 week 2 days 4 hours 2 seconds&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;下个星期四:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;next Thursday&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;上个周一:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;last Monday&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一个月前:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;last month&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一个月后:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 month&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;十年后:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+10 year&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>一天前：换算成小时为单位，当前时间减去24h后，为一天前</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E4%BC%98%E5%8C%96/">Mysql 优化</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-01 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 2319 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="慢查询优化">慢查询优化</h2>
+<ol>
+<li>根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』</li>
+<li>使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、rows、filtered 这三个字段，rows 越小表示扫描记录数越少，filtered 越大表示过滤效果越好。</li>
+</ol>
+<blockquote>
+<p>限制 SQL 的最大执行时间</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/mysql%E4%BC%98%E5%8C%96/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/">持续集成工作流</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-05-27 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          </div>
+        <span class="more-meta"> 约 1133 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>互联网软件的开发和发布，已经形成了一套标准流程。</p>
+<h2 id="持续集成">持续集成</h2>
+<p>持续集成（Continuous integration，简称CI）指的是，频繁地（一天多次）将代码集成到主干。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/restful%E6%9E%B6%E6%9E%84/">Restful架构</a></h1>
@@ -332,89 +443,6 @@
     </div>
     <div class="read-more">
       <a href="/post/database/sqlserver%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">PHP 面向对象编程</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-03-09 </span>
-      <div class="post-category">
-          <a href="/categories/php/"> php </a>
-          </div>
-        <span class="more-meta"> 约 1398 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <ol>
-<li>
-<p>PHP开发中常用的代码复用有继承(extend)、多态(interface)、trait（性状）。</p>
-<blockquote>
-<p>OOP（Object Oriented Programming）：面向对象编程，三大特性：封装、继承、多态。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/php/php%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/">Python 进程、线程和协程</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-03-02 </span>
-      <div class="post-category">
-          <a href="/categories/python/"> python </a>
-          </div>
-        <span class="more-meta"> 约 2427 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="基本概念">基本概念</h2>
-<p>什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。</p>
-<p>无论多线程和多进程，IO的调度更多取决于系统，而协程的方式，调度来自用户，用户可以在函数中yield一个状态。使用协程可以实现高效的并发任务。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/python/python%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B-%E5%8D%8F%E7%A8%8B/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-03-01 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
-          </div>
-        <span class="more-meta"> 约 649 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="sass-与-less">Sass 与 Less</h2>
-<blockquote>
-<p>Sass背景</p></blockquote>
-<ul>
-<li>CSS 不是编程语言，虽然可以用它来开发网页样式，但是没有办法用它编程。SASS 的出现，让 CSS 实现了通过代码编程的方式来实现。</li>
-<li>SASS 是一种可用于编写 CSS 的语言，是一种 CSS 预处理器，提供了许多便利的写法，让 CSS 的处理实现了可编程处理。</li>
-</ul>
-<blockquote>
-<p>Less背景</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

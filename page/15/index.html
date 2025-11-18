@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
-  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,145 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/">Go 开发遇到的性能问题</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-09 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 653 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="原生-json-包效率低">原生 json 包效率低</h2>
+<h3 id="原因">原因</h3>
+<p>原生 json 包主要是用到了reflect，所以比较慢，推荐优先使用 json-iterator 包解析 json。</p>
+<h3 id="代码分析">代码分析</h3>
+<p>测试环境：macbook pro macos</p>
+<p>Go 版本: 1.14</p>
+<p>json-iterator 版本: v1.1.9</p>
+<blockquote>
+<p>测试解析单次大 json 的情况</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/php%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/">PHP注释规范</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-08 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 386 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="函数方法注释规范">函数/方法注释规范</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @param 定义函数或者方法的参数信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @return 定义函数或者方法的返回信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @throws 指明此函数可能抛出的错误异常,极其发生的情况
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @todo 指明应该改进或没有实现的地方
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @example 示例
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @deprecate 指明不推荐或者是废弃的信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @name 名字
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @author 函数作者的名字和邮箱地址
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @abstract 申明变量/类/方法
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @access 指明这个变量、类、函数/方法的存取权限
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @category 组织packages
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @copyright 指明版权信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @const 指明常量
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @exclude 指明当前的注释将不进行分析，不出现在文挡中
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @final 指明这是一个最终的类、方法、属性，禁止派生、修改。
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @global 指明在此函数中引用的全局变量
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @include 指明包含的文件的信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @link 定义在线连接
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @package 定义归属的包的信息
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @see 定义需要参考的函数、变量，并加入相应的超级连接。
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @since 指明该api函数或者方法是从哪个版本开始引入的
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @static 指明变量、类、函数是静态的。
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @var 定义说明变量/属性。
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @version 定义版本信息
+</span></span></span><span class="line"><span class="cl"><span class="sd">*/</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/php%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">PHP 的一些坑</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-07 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 666 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="大小写的坑">大小写的坑</h2>
+<p>mysql5.7 查询不区分大小写。</p>
+<p>php7.2 array_diff() 区分大小写，在不区分大小写的情况下取差集，应使用 array_udiff() 和 strcasecmp() 处理</p>
+<p>示例：array_udiff([&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;], [&lsquo;A&rsquo;, &lsquo;b&rsquo;], &lsquo;strcasecmp&rsquo;) // 输出 c</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/php%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%A1%88%E4%BE%8B/">Mysql 主从复制延时案例</a></h1>
@@ -346,100 +485,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/">Mysql 基础知识二</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-04-03 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> database </a>
-          </div>
-        <span class="more-meta"> 约 1579 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="一基础知识">一、基础知识</h2>
-<ol>
-<li>表存储引擎必须用InnoDB</li>
-<li>字符集必须使用utf8mb4 （utf8不是真utf8）</li>
-<li>禁止使用存储过程、视图、触发器、Event</li>
-<li>命名规则：库、表、字段列都必须小写，用 _ 分隔</li>
-<li>表必须有主键，默认推荐使用unsignd整形，命名为id，自增</li>
-<li>字段必须为not null，原则上每个字段必须有默认值</li>
-<li>合理建立索引</li>
-<li>三范式与反范式（业务出发，权衡利弊、适当冗余）</li>
-<li>分库分表：垂直拆分（分库）、水平拆分（分表）
-分表：垂直分割（一表变多表，结构相同）、水平分割（大表拆小表）</li>
-<li>数据库集群：主从架构</li>
-</ol>
-<h2 id="二事务锁索引数据库性能的死亡三角">二、事务、锁、索引，数据库性能的死亡三角</h2>
-<p>A. 事务</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/database/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BA%8C/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/%E6%A1%86%E6%9E%B6-iris%E6%A1%86%E6%9E%B6/">Iris 框架</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-04-01 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 544 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p><a href="https://www.iris-go.com/docs/#/">官方文档</a></p>
-<h2 id="iris-简介">Iris 简介</h2>
-<p>Iris 是一个拥有 MVC 架构模式的 Go Web 框架。</p>
-<p>Iris 以简单而强大的api而闻名。 除了 Iris 为您提供的低级访问权限。</p>
-<p>Iris 为您提供构建面向服务的应用程序的结构。 用 Iris 构建微服务很容易。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/%E6%A1%86%E6%9E%B6-iris%E6%A1%86%E6%9E%B6/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/">Golang 面试题</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-03-22 </span>
-      <div class="post-category">
-          <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
-          </div>
-        <span class="more-meta"> 约 44 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="常见问题">常见问题</h2>
-<ol>
-<li>垃圾回收、内存模型、内存调优、并发</li>
-</ol>
-<h2 id="参考文章">参考文章</h2>
-<p><a href="http://wen.topgoer.com/docs/gomianshiti/mianshiti">go语言面试题</a></p>
-<p><a href="https://github.com/KeKe-Li/data-structures-questions/blob/master/src/chapter05/golang.01.md">Golang面试问题汇总</a></p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/golang%E9%9D%A2%E8%AF%95%E9%A2%98/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

@@ -58,7 +58,7 @@
 越低级的语言，越贴近计算机，抽象程度低，执行效率高，比如C语言；越高级的语言，越贴近计算，抽象程度高，执行效率低，比如Python语言。">
   <meta itemprop="datePublished" content="2019-02-06T10:05:13+08:00">
   <meta itemprop="dateModified" content="2019-05-10T10:05:13+08:00">
-  <meta itemprop="wordCount" content="4266">
+  <meta itemprop="wordCount" content="4347">
   <meta itemprop="keywords" content="Python">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Python 基础知识">
@@ -151,7 +151,7 @@
         <div class="post-category">
             <a href="/categories/python/"> python </a>
             </div>
-          <span class="more-meta"> 约 4266 字 </span>
+          <span class="more-meta"> 约 4347 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -163,9 +163,9 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#python-简介">python 简介</a></li>
-    <li><a href="#启用虚拟环境">启用虚拟环境</a></li>
+    <li><a href="#安装多版本python">安装多版本python</a></li>
+    <li><a href="#虚拟环境">虚拟环境</a></li>
     <li><a href="#py-文件申明">.py 文件申明</a></li>
-    <li><a href="#开发规范">开发规范</a></li>
     <li><a href="#基础知识点">基础知识点</a></li>
     <li><a href="#定义默认参数">定义默认参数</a></li>
     <li><a href="#参数分类">参数分类</a></li>
@@ -182,15 +182,72 @@
 <p>在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。请始终牢记，代码越少，开发效率越高。</p>
 <p>越低级的语言，越贴近计算机，抽象程度低，执行效率高，比如C语言；越高级的语言，越贴近计算，抽象程度高，执行效率低，比如Python语言。</p>
 <p>人工智能领域：现在最流行的人工智能技术栈就是 TensorFlow 和 PyTorch</p>
-<h2 id="启用虚拟环境">启用虚拟环境</h2>
+<h2 id="安装多版本python">安装多版本python</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 安装 pyenv，pyenv 是一款轻量级的Python版本管理工具，它的工作原理是通过修改环境变量来指向你指定的Python版本。</span>
+</span></span><span class="line"><span class="cl">brew install pyenv
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 配置 pyenv 环境</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;export PYENV_ROOT=&#34;$HOME/.pyenv&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;command -v pyenv &gt;/dev/null || export PATH=&#34;$PYENV_ROOT/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;eval &#34;$(pyenv init -)&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 pyenv 安装 Python 版本</span>
+</span></span><span class="line"><span class="cl">pyenv install --list <span class="p">|</span> grep <span class="s2">&#34;3.10&#34;</span>
+</span></span><span class="line"><span class="cl">pyenv install 3.10.14
+</span></span><span class="line"><span class="cl">pyenv install 3.11.6
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 切换 Python 版本</span>
+</span></span><span class="line"><span class="cl">pyenv global 3.11.6
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看已安装的版本</span>
+</span></span><span class="line"><span class="cl">pyenv versions
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="虚拟环境">虚拟环境</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">python3 -m venv myenv
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">启用虚拟环境
+</span></span><span class="line"><span class="cl">python3 -m venv myenv
 </span></span><span class="line"><span class="cl"><span class="nb">source</span> myenv/bin/activate
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 退出虚拟环境</span>
+</span></span><span class="line"><span class="cl">deactivate
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除虚拟环境</span>
+</span></span><span class="line"><span class="cl">rm -rf myenv
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="py-文件申明">.py 文件申明</h2>
@@ -208,20 +265,6 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># -*- coding: utf-8 -*-</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">fileDir</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># 全局变量声明</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="开发规范">开发规范</h2>
-<p>开发环境根据自己的习惯安装 Python，推荐使用 pyenv，避免和已存在的版本造成冲突</p>
-<p>安装完 Python 后安装 pipenv</p>
-<p>通过使用环境变量控制必要的参数，如 redis 服务器地址，redis 队列名等，环境变量写在源码目录的 .env 文件中，格式如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">REDIS_HOST</span><span class="o">=</span>127.0.0.1
-</span></span><span class="line"><span class="cl"><span class="nv">REDIS_PORT</span><span class="o">=</span><span class="m">63790</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="基础知识点">基础知识点</h2>

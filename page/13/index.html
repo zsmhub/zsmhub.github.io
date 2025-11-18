@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
-  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,153 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/elasticstack/">ElasticStack</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-06-16 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+          </div>
+        <span class="more-meta"> 约 6477 字 </span>
+        <span class="more-meta"> 预计阅读 13 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><img src="/images/2020/2111_20190919085503769.png" alt="Elastic 产品生态"></p>
+<p><img src="/images/2020/2111_v2-3b578fddb1221bcdb250fcfdf3b070a2_r.jpg" alt="推荐架构"></p>
+<h2 id="elastic-stack">Elastic Stack</h2>
+<p>“ELK”是三个开源项目的首字母缩写，这三个项目分别是：Elasticsearch、Logstash 和 Kibana。</p>
+<p>Elasticsearch 是一个搜索和分析引擎，可扩展的高速体验，涵盖搜索、分析和存储。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%90%8E%E7%AB%AF/elasticstack/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/%E7%BC%93%E5%AD%98%E4%B9%8B%E9%9B%AA%E5%B4%A9-%E5%87%BB%E7%A9%BF-%E7%A9%BF%E9%80%8F/">缓存之雪崩、击穿、穿透</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-31 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 998 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="缓存雪崩">缓存雪崩</h2>
+<p>缓存雪崩是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到 DB，DB 瞬时压力过重导致雪崩。</p>
+<blockquote>
+<p>解决方案</p></blockquote>
+<p>缓存失效时的雪崩效应对底层系统的冲击非常可怕。大多数系统设计者考虑用加锁或者队列的方式保证缓存的单线程（进程）写，从而避免失效时大量的并发请求落到底层存储系统上。这里分享一个简单方案，就是将缓存失效时间分散开，比如我们可以在原有的失效时间基础上增加一个随机值，比如1-5分钟随机，这样每一个缓存的过期时间的重复率就会降低，就很难引发集体失效的事件。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/%E7%BC%93%E5%AD%98%E4%B9%8B%E9%9B%AA%E5%B4%A9-%E5%87%BB%E7%A9%BF-%E7%A9%BF%E9%80%8F/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8Bdefer%E4%BD%BF%E7%94%A8/">Go defer 使用</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-30 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 1001 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <blockquote>
+<p>golang <code>defer</code> 这个使用的执行流程一直很绕，所以决定写一篇文记录一下。</p></blockquote>
+<h2 id="规则一当defer被声明时其参数就会被实时解析">规则一：当defer被声明时，其<code>参数</code>就会被实时解析</h2>
+<h3 id="案例一">案例一</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nf">test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="k">defer</span> <span class="nf">f1</span><span class="p">(</span><span class="nf">f2</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="k">return</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">f1</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="k">return</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">f2</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="k">return</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出：132</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E4%B9%8Bdefer%E4%BD%BF%E7%94%A8/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/">Mysql 经典案例</a></h1>
@@ -1021,202 +1168,6 @@
     </div>
     <div class="read-more">
       <a href="/post/ide/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%B9%B3%E5%8F%B0/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/ide/jetbrains/">JetBrains</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-19 </span>
-      <div class="post-category">
-          <a href="/categories/ide/"> ide </a>
-          </div>
-        <span class="more-meta"> 约 1051 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="免费许可证计划">免费许可证计划</h2>
-<p><a href="https://www.jetbrains.com/zh-cn/community/opensource/#support">官网-开源开发许可证</a></p>
-<p><a href="https://juejin.cn/post/6911898186743283725">用开源项目申请JetBrains正版授权-教程</a></p>
-<h2 id="常用快捷键">常用快捷键</h2>
-<ul>
-<li><a href="https://www.evget.com/article/2017/10/18/27047.html">GoLand快捷键说明文章</a></li>
-<li><a href="https://blog.csdn.net/u010649766/article/details/84399950">Goland 快捷键整理</a></li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Double shift: 查找任何东西（包括代码、文件路径）
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + <span class="nb">shift</span> + f: 查找函数/代码位置
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + , : 打开ide配置
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + option + L: 代码格式化（默认1个tab会转换为4个空格）
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + B: 跳转函数定义位置，第二次按回到调用位置
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + L: 在当前文件跳转到某一行的指定处
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + D: duplicate current line
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + C: copy current line
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + delete: 删除当前行
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + E: 打开最近浏览过的的文件
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + Shift + 加号: 展开所以代码块
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + Shift + 减号: 折叠所有代码块
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + <span class="o">[</span> : 光标回退到上个光标位置
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + <span class="o">]</span> : 光标回退到后个光标位置
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + option + / : 块注释
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + n : 代码生成快捷键
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">control + g: 选中下一个相同的文本，可同时编辑
-</span></span><span class="line"><span class="cl">control + J: 快速查看代码相关文档
-</span></span><span class="line"><span class="cl">control + R / control+shift+R: go run test.go
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">command</span> + ctrl + g: 选中文件中所有相同的内容
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">shift</span> + esc: 关闭 Run 窗口
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Tab / Shift + Tab: 缩进代码 / 反缩进代码
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 自定义快捷键</span>
-</span></span><span class="line"><span class="cl">option + L: 选中当前行 <span class="o">[</span>setting-kaymap -&gt; <span class="k">select</span> line at caset<span class="o">]</span>
-</span></span><span class="line"><span class="cl">option + 鼠标左键：设置多个光标，同时编辑多个地方
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 方向键</span>
-</span></span><span class="line"><span class="cl">control+p: 光标向上移动一行
-</span></span><span class="line"><span class="cl">control+n: 光标向下移动一行
-</span></span><span class="line"><span class="cl">control+b: 光标向左移动一格
-</span></span><span class="line"><span class="cl">control+f: 光标向右移动一格
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="phpstorm-常用插件">PHPStorm 常用插件</h2>
-<ul>
-<li>
-<p>SonarLint: 代码静态提示</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/ide/jetbrains/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A5%B3%E6%80%A7%E8%BD%BB%E6%9D%BE%E4%BA%86%E8%A7%A3%E4%B8%8Bhpv/">女性轻松了解下HPV</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-18 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
-          </div>
-        <span class="more-meta"> 约 129 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p><img src="/images/2020/%E7%96%BE%E7%97%85/1.png" alt="hpv"></p>
-<p><img src="/images/2020/%E7%96%BE%E7%97%85/2.png" alt="hpv"></p>
-<p><img src="/images/2020/%E7%96%BE%E7%97%85/3.png" alt="hpv"></p>
-<p><img src="/images/2020/%E7%96%BE%E7%97%85/4.png" alt="hpv"></p>
-<h2 id="转载声明">转载声明</h2>
-<blockquote>
-<p>作者：香港卫生署学生健康服务</p>
-<p>链接：https://www.studenthealth.gov.hk/sc_chi/health/health_se/health_se.html</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A5%B3%E6%80%A7%E8%BD%BB%E6%9D%BE%E4%BA%86%E8%A7%A3%E4%B8%8Bhpv/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%80%A7%E6%95%99%E8%82%B2%E7%A7%91%E6%99%AE/">性教育科普</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-05-18 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
-          </div>
-        <span class="more-meta"> 约 213 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <blockquote>
-<p>提示：以下均是图片，可点击查看大图。</p></blockquote>
-<h2 id="一正确理解青春期">一、正确理解青春期</h2>
-<p><img src="/images/2020/sex/13.png" alt="点击查看图片">
-<img src="/images/2020/sex/14.png" alt="点击查看图片"></p>
-<h2 id="二在家庭中推行性教育">二、在家庭中推行性教育</h2>
-<p><img src="/images/2020/sex/3.png" alt="点击查看图片">
-<img src="/images/2020/sex/4.png" alt="点击查看图片"></p>
-<h2 id="三两性相处">三、两性相处</h2>
-<p><img src="/images/2020/sex/3.png" alt="点击查看图片">
-<img src="/images/2020/sex/4.png" alt="点击查看图片"></p>
-<h2 id="四约会与恋爱">四、约会与恋爱</h2>
-<p><img src="/images/2020/sex/5.png" alt="点击查看图片">
-<img src="/images/2020/sex/6.png" alt="点击查看图片"></p>
-<h2 id="五结婚与婚后">五、结婚与婚后</h2>
-<p><img src="/images/2020/sex/7.png" alt="点击查看图片">
-<img src="/images/2020/sex/8.png" alt="点击查看图片"></p>
-<h2 id="六保护自己杜绝性侵发">六、保护自己，杜绝性侵发</h2>
-<p><img src="/images/2020/sex/9.png" alt="点击查看图片">
-<img src="/images/2020/sex/10.png" alt="点击查看图片"></p>
-<h2 id="七孩子与避孕">七、孩子与避孕</h2>
-<p><img src="/images/2020/sex/11.png" alt="点击查看图片">
-<img src="/images/2020/sex/12.png" alt="点击查看图片"></p>
-<h2 id="八你的成长路">八、你的成长路</h2>
-<p><img src="/images/2020/sex/15.png" alt="点击查看图片">
-<img src="/images/2020/sex/16.png" alt="点击查看图片"></p>
-<h2 id="转载声明">转载声明</h2>
-<blockquote>
-<p>作者：香港卫生署学生健康服务</p>
-<p>链接：https://www.studenthealth.gov.hk/sc_chi/health/health_se/health_se.html</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E6%80%A7%E6%95%99%E8%82%B2%E7%A7%91%E6%99%AE/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

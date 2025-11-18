@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
-  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,103 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Git 基础知识</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-10-02 </span>
+      <div class="post-category">
+          <a href="/categories/other/"> other </a>
+          </div>
+        <span class="more-meta"> 约 2260 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="git-简介">Git 简介</h2>
+<p>版本控制工具，分布式版本控制系统</p>
+<h2 id="git-commit-注释标记">git commit 注释标记</h2>
+<p><a href="https://ruby-china.org/topics/15737">参考文章</a></p>
+<ul>
+<li>feat: 添加新功能</li>
+<li>fix: 修复bug</li>
+<li>docs: 仅仅修改了文档</li>
+<li>style: 仅仅修改了空格、格式缩进等等，不改变代码逻辑</li>
+<li>refactor: 代码重构，没有加新功能(即不是新增功能，也不是修改 bug 的代码变动)</li>
+<li>merge: 分支合并，解决冲突</li>
+<li>ui: 修改了一下样式</li>
+<li>test: 增加测试用例</li>
+<li>debug: 增加调试日志</li>
+<li>chore: 构建过程、辅助工具的变动</li>
+<li>perf: 提高性能</li>
+</ul>
+<h2 id="建立分支名规范">建立分支名规范</h2>
+<blockquote>
+<p>模板：开发者姓名拼音首字母_feat/fix_功能名</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/other/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/">Laravel 定时任务与常驻进程</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-09-04 </span>
+      <div class="post-category">
+          <a href="/categories/php/"> php </a>
+          </div>
+        <span class="more-meta"> 约 2036 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="任务调度功能">任务调度功能</h2>
+<p>Laravel 命令行调度器允许你在 Laravel 中对命令调度进行清晰流畅的定义。且使用这个任务调度器时，你只需要在你的服务器上创建单个 Cron 入口接口。你的任务调度在 app/Console/Kernel.php 的 schedule 方法中进行定义。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/php/laravel%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%B8%B8%E9%A9%BB%E8%BF%9B%E7%A8%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/">Mysql 事务和锁</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-09-01 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 4508 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="事务是必须满足4个条件acid">事务是必须满足4个条件（ACID）</h2>
+<ul>
+<li>A (Atomicity) 原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样</li>
+<li>C (Consistency) 一致性：在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏</li>
+<li>I (Isolation)隔离性：一个事务的执行不能其它事务干扰。即一个事务内部的操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能互相干扰</li>
+<li>D (Durability) 持久性：在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚</li>
+</ul>
+<h2 id="并发事务处理带来的问题">并发事务处理带来的问题</h2>
+<p>相对于串行处理来说，并发事务处理能大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多的用户。但并发事务处理也会带来一些问题，主要包括以下几种情况。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/mysql%E4%BA%8B%E5%8A%A1%E5%92%8C%E9%94%81/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/php/laravel%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">Laravel 常用组件</a></h1>
@@ -336,117 +433,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E5%90%8E%E7%AB%AF/sonarqube-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">PHP 常用函数</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-06-03 </span>
-      <div class="post-category">
-          <a href="/categories/php/"> php </a>
-          </div>
-        <span class="more-meta"> 约 2462 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="时间函数">时间函数</h2>
-<ol>
-<li>
-<p>常用代码</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">date_default_timezone_set</span><span class="p">(</span><span class="s1">&#39;PRC&#39;</span><span class="p">);</span> <span class="c1">//默认时区
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">echo</span> <span class="s2">&#34;今天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">time</span><span class="p">()),</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;昨天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;-1 day&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;明天:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 day&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一周后:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 week&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一周零两天四小时两秒后:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d G:H:s&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 week 2 days 4 hours 2 seconds&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;下个星期四:&#34;</span><span class="p">,</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;next Thursday&#34;</span><span class="p">)),</span> <span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;上个周一:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;last Monday&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一个月前:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;last month&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;一个月后:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+1 month&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;十年后:&#34;</span><span class="o">.</span><span class="nx">date</span><span class="p">(</span><span class="s2">&#34;Y-m-d&#34;</span><span class="p">,</span><span class="nx">strtotime</span><span class="p">(</span><span class="s2">&#34;+10 year&#34;</span><span class="p">))</span><span class="o">.</span><span class="s2">&#34;&lt;hr&gt;&#34;</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>一天前：换算成小时为单位，当前时间减去24h后，为一天前</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/php/php%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/database/mysql%E4%BC%98%E5%8C%96/">Mysql 优化</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-06-01 </span>
-      <div class="post-category">
-          <a href="/categories/database/"> database </a>
-          </div>
-        <span class="more-meta"> 约 2319 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="慢查询优化">慢查询优化</h2>
-<ol>
-<li>根据 where 条件，组建联合索引『每一次查询只能用上一个索引，所以需要好好利用联合索引』</li>
-<li>使用强制索引，使用 explain 分析查询 sql 时，需要关注 key、rows、filtered 这三个字段，rows 越小表示扫描记录数越少，filtered 越大表示过滤效果越好。</li>
-</ol>
-<blockquote>
-<p>限制 SQL 的最大执行时间</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/database/mysql%E4%BC%98%E5%8C%96/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/">持续集成工作流</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-05-27 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
-          </div>
-        <span class="more-meta"> 约 1133 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>互联网软件的开发和发布，已经形成了一套标准流程。</p>
-<h2 id="持续集成">持续集成</h2>
-<p>持续集成（Continuous integration，简称CI）指的是，频繁地（一天多次）将代码集成到主干。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

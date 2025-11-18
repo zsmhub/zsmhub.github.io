@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-08T09:28:43+08:00">
-  <meta itemprop="dateModified" content="2025-11-08T09:28:43+08:00">
+  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,152 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%89%8D%E7%AB%AF/vue/">Vue</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2025-11-18 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+          </div>
+        <span class="more-meta"> 约 416 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="使用-vite-构建-vue-项目的流程非常简洁">使用 Vite 构建 Vue 项目的流程非常简洁</h2>
+<ol>
+<li>创建项目：npm create vite@latest</li>
+<li>安装依赖：cd my-project &amp;&amp; npm install</li>
+<li>开发调试：npm run dev</li>
+<li>构建部署：npm run build</li>
+</ol>
+<h2 id="vite-创建的-vue-项目结构">Vite 创建的 Vue 项目结构</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">my-vue-app/
+</span></span><span class="line"><span class="cl">├── node_modules/        <span class="c1"># 项目依赖，由 npm install 生成</span>
+</span></span><span class="line"><span class="cl">├── public/              <span class="c1"># 静态资源目录。这里的文件会被直接复制到最终构建的根目录，不会被编译。</span>
+</span></span><span class="line"><span class="cl">│   └── favicon.ico
+</span></span><span class="line"><span class="cl">├── src/                 <span class="c1"># 源代码目录，你的主要工作区域</span>
+</span></span><span class="line"><span class="cl">│   ├── assets/          <span class="c1"># 存放需要被 Vite 处理的静态资源，如图片、CSS 等。</span>
+</span></span><span class="line"><span class="cl">│   ├── components/      <span class="c1"># 存放可复用的 Vue 组件。</span>
+</span></span><span class="line"><span class="cl">│   │   └── HelloWorld.vue
+</span></span><span class="line"><span class="cl">│   ├── router/          <span class="c1"># 路由配置文件 (如果选择了路由)。</span>
+</span></span><span class="line"><span class="cl">│   ├── stores/          <span class="c1"># Pinia 状态管理文件 (如果选择了 Pinia)。</span>
+</span></span><span class="line"><span class="cl">│   ├── views/           <span class="c1"># 存放页面级别的组件。</span>
+</span></span><span class="line"><span class="cl">│   ├── App.vue          <span class="c1"># 根组件。</span>
+</span></span><span class="line"><span class="cl">│   ├── main.ts          <span class="c1"># 入口文件。应用从这里开始执行。</span>
+</span></span><span class="line"><span class="cl">│   └── style.css        <span class="c1"># 全局样式文件。</span>
+</span></span><span class="line"><span class="cl">├── .eslintrc.js         <span class="c1"># ESLint 配置文件，用于代码检查。</span>
+</span></span><span class="line"><span class="cl">├── .gitignore           <span class="c1"># Git 忽略文件配置。</span>
+</span></span><span class="line"><span class="cl">├── index.html           <span class="c1"># 应用的 HTML 入口文件。</span>
+</span></span><span class="line"><span class="cl">├── package.json         <span class="c1"># 项目配置文件，包含依赖、脚本命令等。</span>
+</span></span><span class="line"><span class="cl">├── tsconfig.json        <span class="c1"># TypeScript 配置文件。</span>
+</span></span><span class="line"><span class="cl">└── vite.config.ts       <span class="c1"># Vite 的核心配置文件。</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%89%8D%E7%AB%AF/vue/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%89%8D%E7%AB%AF/node/">Node.js</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2025-11-18 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+          </div>
+        <span class="more-meta"> 约 435 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>Node.js 是一个基于 Chrome V8 引擎 的 JavaScript 运行时环境，它允许开发者在 服务器端 运行 JavaScript 代码，而不仅仅局限于浏览器。</p>
+<blockquote>
+<p>核心定位</p></blockquote>
+<ol>
+<li>Node.js 不是新的编程语言，而是让 JavaScript 脱离浏览器运行的 运行环境（包含执行引擎、内置 API 等）。</li>
+<li>核心价值：统一前后端开发语言（均使用 JavaScript），降低开发成本；同时利用 V8 引擎的高性能，实现高效的服务器端编程。</li>
+</ol>
+<h2 id="node">node</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">brew install node
+</span></span><span class="line"><span class="cl">node -v
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>MacOS Node 升级</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%89%8D%E7%AB%AF/node/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%9D%9E%E6%B4%B2%E9%BC%93/">非洲鼓</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2025-11-13 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
+          </div>
+        <span class="more-meta"> 约 295 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="咚嘟哒">咚、嘟、哒</h2>
+<ol>
+<li>
+<p>低音（B，Bass）</p>
+<p>对应发声 “咚”，是最厚重沉稳的音。演奏时用并拢的手掌（大拇指张开）拍打鼓面中心，靠手掌的重力和发力带动鼓腔共振，发出饱满的 “咚” 声，这也是非洲鼓的基础核心音。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%9D%9E%E6%B4%B2%E9%BC%93/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%94%B6%E8%B4%B9%E9%A1%B9%E7%9B%AE/">企业微信收费项目</a></h1>
@@ -813,120 +959,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A6%82%E6%9E%9C%E5%8F%91%E7%94%9F%E6%88%98%E4%B9%B1/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AF%BB%E5%8C%BB%E9%97%AE%E8%8D%AF-%E9%AB%98%E8%A1%80%E5%8E%8B/">寻医问药-高血压</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2025-04-19 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
-          </div>
-        <span class="more-meta"> 约 556 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="正常的血压范围">正常的血压范围</h2>
-<ul>
-<li>高压（收缩压）在90-140mmHg(12.0-18.7kpa)之间；</li>
-<li>低压（舒张压）在60-90mmHg(8.0-12.0kpa)之间；</li>
-</ul>
-<h2 id="脉搏">脉搏</h2>
-<p>正常成人脉搏为60到100次/分，常为每分钟70－80次，平均约72次/分。老年人较慢，为55到60次/分</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AF%BB%E5%8C%BB%E9%97%AE%E8%8D%AF-%E9%AB%98%E8%A1%80%E5%8E%8B/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E6%96%B0%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8/">Go新项目启动</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2025-04-16 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 874 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="启用-go-module-和-设置-go-模块代理">启用 Go Module 和 设置 Go 模块代理</h2>
-<p>包管理器 Go Modules，旨在取代工作区和 GOPATH。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">go mod init xxx<span class="o">(</span>项目名<span class="o">)</span> // 初始化go.mod
-</span></span><span class="line"><span class="cl">go mod vendor // go get 新依赖包后，将依赖包复制到项目下的 vendor 目录。
-</span></span><span class="line"><span class="cl">go mod tidy <span class="o">&amp;&amp;</span> go mod vendor // 整理现有的依赖，新增依赖包、删除缺失或者未使用的扩展包
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">go mod why // 这个命令用来解释为什么会依赖某个软件包，若要查看go.mod中某个间接依赖是被哪个依赖引入的，可以使用命令go mod why -m &lt;pkg&gt;来查看。eg: go mod why -m github.com/onsi/ginkgo【如何去掉间接依赖包？如果间接依赖包对应的源组件的新版本支持Go Modules，则升级源组件就能解决】
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">go env -w <span class="nv">GO111MODULE</span><span class="o">=</span>on
-</span></span><span class="line"><span class="cl">go env -w <span class="nv">GOPRIVATE</span><span class="o">=</span>gitlab.xxx.com <span class="c1"># 配置公司私域代码仓库</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>project 依赖包升级的两种方案</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/go%E6%96%B0%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/ai/ai/">AI</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2025-03-24 </span>
-      <div class="post-category">
-          <a href="/categories/ai/"> AI </a>
-          </div>
-        <span class="more-meta"> 约 366 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="ai-agent智能体">AI Agent（智能体）</h2>
-<p>AI Agent = LLM+Planning+Feedback+Tool use</p>
-<p>在人工智能领域中，一个 Agent 通常指的是能够自主决策、执行任务并接收反馈的智能体。</p>
-<ul>
-<li>LLM：语言模型（Language Model），即一种能够理解和生成自然语言的算法</li>
-<li>Planning：规划能力，即 Agent 能够制定行动计划以达成目标</li>
-<li>Feedback：表示 Agent 能够通过与环境互动来获取信息和调整自己的行为</li>
-<li>Tool use：表示 Agent 能够使用各种工具和技术来完成任务</li>
-</ul>
-<h2 id="mcp">MCP</h2>
-<p>模型上下文协议（Model Context Protocol，简称MCP）是一种开放协议，旨在标准化应用程序向大型语言模型（Large Language Models，简称LLMs）提供上下文的方式 。它如同一个<code>通用接口</code>，例如计算机上的<code>USB-C端口</code>，使得各种AI模型能够以统一的方式连接到不同的数据源和工具 。通过提供标准化的连接方式，MCP简化了集成过程，增强了互操作性，并促进了AI应用的可扩展性 。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/ai/ai/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
