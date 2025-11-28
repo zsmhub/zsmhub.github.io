@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
-  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="datePublished" content="2025-11-28T10:42:05+08:00">
+  <meta itemprop="dateModified" content="2025-11-28T10:42:05+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -135,27 +135,39 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%89%8D%E7%AB%AF/vue/">Vue</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%89%8D%E7%AB%AF/ai%E6%8F%90%E7%A4%BA%E8%AF%8D/">AI提示词</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2025-11-18 </span>
+      <span class="post-time"> 2025-11-28 </span>
       <div class="post-category">
           <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
           </div>
-        <span class="more-meta"> 约 416 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="more-meta"> 约 550 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h2 id="使用-vite-构建-vue-项目的流程非常简洁">使用 Vite 构建 Vue 项目的流程非常简洁</h2>
-<ol>
-<li>创建项目：npm create vite@latest</li>
-<li>安装依赖：cd my-project &amp;&amp; npm install</li>
-<li>开发调试：npm run dev</li>
-<li>构建部署：npm run build</li>
-</ol>
-<h2 id="vite-创建的-vue-项目结构">Vite 创建的 Vue 项目结构</h2>
+      <h2 id="后端生成markdown格式的api文档">后端生成markdown格式的API文档</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">请根据这个模块，输出指定文件夹下的所有接口文档，并存储到 docs/xxx.md 路径下，如docs/base.md，docs/user.md，docs/tg_capcut.md。
+</span></span><span class="line"><span class="cl">要求尽可能的详细，方便前端对接。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 后端域名</span>
+</span></span><span class="line"><span class="cl">生产环境：https://api.xxx.com
+</span></span><span class="line"><span class="cl">测试环境：http://127.0.0.1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="初始化前端项目生成代码提示词">初始化前端项目，生成代码提示词</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -178,31 +190,95 @@
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">my-vue-app/
-</span></span><span class="line"><span class="cl">├── node_modules/        <span class="c1"># 项目依赖，由 npm install 生成</span>
-</span></span><span class="line"><span class="cl">├── public/              <span class="c1"># 静态资源目录。这里的文件会被直接复制到最终构建的根目录，不会被编译。</span>
-</span></span><span class="line"><span class="cl">│   └── favicon.ico
-</span></span><span class="line"><span class="cl">├── src/                 <span class="c1"># 源代码目录，你的主要工作区域</span>
-</span></span><span class="line"><span class="cl">│   ├── assets/          <span class="c1"># 存放需要被 Vite 处理的静态资源，如图片、CSS 等。</span>
-</span></span><span class="line"><span class="cl">│   ├── components/      <span class="c1"># 存放可复用的 Vue 组件。</span>
-</span></span><span class="line"><span class="cl">│   │   └── HelloWorld.vue
-</span></span><span class="line"><span class="cl">│   ├── router/          <span class="c1"># 路由配置文件 (如果选择了路由)。</span>
-</span></span><span class="line"><span class="cl">│   ├── stores/          <span class="c1"># Pinia 状态管理文件 (如果选择了 Pinia)。</span>
-</span></span><span class="line"><span class="cl">│   ├── views/           <span class="c1"># 存放页面级别的组件。</span>
-</span></span><span class="line"><span class="cl">│   ├── App.vue          <span class="c1"># 根组件。</span>
-</span></span><span class="line"><span class="cl">│   ├── main.ts          <span class="c1"># 入口文件。应用从这里开始执行。</span>
-</span></span><span class="line"><span class="cl">│   └── style.css        <span class="c1"># 全局样式文件。</span>
-</span></span><span class="line"><span class="cl">├── .eslintrc.js         <span class="c1"># ESLint 配置文件，用于代码检查。</span>
-</span></span><span class="line"><span class="cl">├── .gitignore           <span class="c1"># Git 忽略文件配置。</span>
-</span></span><span class="line"><span class="cl">├── index.html           <span class="c1"># 应用的 HTML 入口文件。</span>
-</span></span><span class="line"><span class="cl">├── package.json         <span class="c1"># 项目配置文件，包含依赖、脚本命令等。</span>
-</span></span><span class="line"><span class="cl">├── tsconfig.json        <span class="c1"># TypeScript 配置文件。</span>
-</span></span><span class="line"><span class="cl">└── vite.config.ts       <span class="c1"># Vite 的核心配置文件。</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">请根据 ./docs 中的所有接口，实现一个完整的视频剪辑系统，包括用户登录模块、剪映草稿任务管理模块、阿里云oss上传等
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">实现以下页面：
+</span></span><span class="line"><span class="cl">1. 用户登录页面（参考 docs/user.md）
+</span></span><span class="line"><span class="cl">2. 个人中心页面，支持修改昵称、修改密码等（参考 docs/user.md）
+</span></span><span class="line"><span class="cl">3. 剪映草稿任务管理页面（参考 docs/tg_capcut.md）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">技术栈：
+</span></span><span class="line"><span class="cl">- Vue <span class="m">3</span> - 渐进式 JavaScript 框架
+</span></span><span class="line"><span class="cl">- Vite - 下一代前端构建工具
+</span></span><span class="line"><span class="cl">- Element Plus - Vue <span class="m">3</span> UI 组件库
+</span></span><span class="line"><span class="cl">- Vue Router - 官方路由管理器
+</span></span><span class="line"><span class="cl">- Pinia - Vue 状态管理库
+</span></span><span class="line"><span class="cl">- Axios - HTTP 请求库
+</span></span><span class="line"><span class="cl">- TypeScript - 类型安全的 JavaScript 超集
+</span></span><span class="line"><span class="cl">- Sass - CSS 预处理器
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">要求：
+</span></span><span class="line"><span class="cl">- 本地开发调试时，支持代码热更新
+</span></span><span class="line"><span class="cl">- 统一的API请求封装
+</span></span><span class="line"><span class="cl">- 统一的错误处理
+</span></span><span class="line"><span class="cl">- Token认证处理
+</span></span><span class="line"><span class="cl">- 路由守卫
+</span></span><span class="line"><span class="cl">- 使用axios进行API调用
+</span></span><span class="line"><span class="cl">- 统一loading状态管理
+</span></span><span class="line"><span class="cl">- oss文件默认上传到目录：xxx-front
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%89%8D%E7%AB%AF/ai%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%89%8D%E7%AB%AF/vue/">Vue</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2025-11-18 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+          </div>
+        <span class="more-meta"> 约 751 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="使用-vite-构建-vue-项目的流程非常简洁">使用 Vite 构建 Vue 项目的流程非常简洁</h2>
+<ol>
+<li>创建项目：npm create vite@latest</li>
+<li>安装依赖：cd my-project &amp;&amp; npm install</li>
+<li>开发调试：npm run dev</li>
+<li>生产环境构建部署：npm run build；测试环境构建部署：npm run build:test</li>
+<li>预览生产版本：npm run preview</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># package.json</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;scripts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;dev&#34;</span>: <span class="s2">&#34;vite&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;build&#34;</span>: <span class="s2">&#34;vue-tsc -b &amp;&amp; vite build&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;build:test&#34;</span>: <span class="s2">&#34;vue-tsc -b &amp;&amp; vite build --mode development&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;preview&#34;</span>: <span class="s2">&#34;vite preview&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>,
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="环境文件">环境文件</h2>
+<p>Vite 根据运行的<strong>命令</strong>自动选择对应的环境文件：</p>
     </div>
     <div class="read-more">
       <a href="/post/%E5%89%8D%E7%AB%AF/vue/" class="read-more-link">阅读更多</a>
@@ -926,39 +1002,6 @@
     </div>
     <div class="read-more">
       <a href="/post/python/%E8%A7%86%E9%A2%91%E5%88%87%E5%89%B2/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A6%82%E6%9E%9C%E5%8F%91%E7%94%9F%E6%88%98%E4%B9%B1/">如果发生战乱</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2025-04-22 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
-          </div>
-        <span class="more-meta"> 约 1986 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="一战前预警与准备阶段若有预兆">一、战前预警与准备阶段（若有预兆）</h2>
-<ol>
-<li>
-<p>关注官方预警与信息渠道</p>
-<ul>
-<li>密切关注政府发布的战争预警、紧急通知（如乌克兰的 “空袭警报” 系统），下载官方应急 APP（如乌克兰的 “Diya” 应用）。</li>
-<li>确认本地应急管理部门（如中国的应急管理部）的联系方式和指示，避免轻信非官方谣言。</li>
-</ul>
-</li>
-<li>
-<p>储备应急物资</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%A6%82%E6%9E%9C%E5%8F%91%E7%94%9F%E6%88%98%E4%B9%B1/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

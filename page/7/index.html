@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
-  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="datePublished" content="2025-11-28T10:42:05+08:00">
+  <meta itemprop="dateModified" content="2025-11-28T10:42:05+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,33 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%A5%AE%E8%8C%B6%E4%B9%8B%E9%81%93/">饮茶之道</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-09-15 </span>
+      <div class="post-category">
+          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
+          </div>
+        <span class="more-meta"> 约 2315 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="茶分六色">茶分六色</h2>
+<p>按茶叶的发酵程度排序：绿茶，黄茶，白茶，青茶，红茶，黑茶</p>
+<hr>
+<h2 id="绿茶抗氧化降火">绿茶——抗氧化、降火</h2>
+<p>绿茶是这六种茶中唯一的<code>不发酵茶</code>，保留了较多的天然物质；而鲜叶采摘后高温迅速杀青，遏制茶多酚的氧化，其抗氧化功能也是较强的。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E9%A5%AE%E8%8C%B6%E4%B9%8B%E9%81%93/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%AF%BB%E5%8C%BB%E9%97%AE%E8%8D%AF/">寻医问药</a></h1>
@@ -439,43 +466,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%8F%91%E5%B8%83/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-zero/">Go Zero</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-06-04 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"> 微服务 </a>
-          </div>
-        <span class="more-meta"> 约 627 字 </span>
-        <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="官方文档">官方文档</h2>
-<p><a href="https://go-zero.dev/cn/">点击前往</a></p>
-<h2 id="启动服务">启动服务</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// API 或 rpc 代码运行
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> project/service/user/cmd/api <span class="o">&amp;&amp;</span> go run user.go -f etc/user.yaml
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="rpc调用链建议">rpc调用链建议</h2>
-<p>在设计系统时，尽量做到服务之间调用链是单向的，而非循环调用，例如：order服务调用了user服务，而user服务反过来也会调用order的服务， 当其中一个服务启动故障，就会相互影响，进入死循环，你order认为是user服务故障导致的，而user认为是order服务导致的，如果有大量服务存在相互调用链， 则需要考虑服务拆分是否合理。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1/go-zero/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

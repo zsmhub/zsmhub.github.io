@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="" /><meta name="description" content="使用 Vite 构建 Vue 项目的流程非常简洁 创建项目：npm create vite@latest 安装依赖：cd my-project &amp;&amp; npm install 开发调试：npm run dev 构建部署：npm run build Vite 创建的 Vue 项目结构 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 my-vue-app/ ├── node_modules/ # 项目依赖，由 npm install 生成 ├── public/ # 静态资源目录。这里的文件会被直接复制到最终构建的根目录，不会被编译。 │ └── favicon.ico ├── src/ # 源代码目录，你的主要工作区域 │ ├── assets/ # 存放需要被 Vite 处理的静态资源，如图片、CSS 等。 │ ├── components/ # 存放可复用的 Vue 组件。 │ │ └── HelloWorld.vue │ ├── router/ # 路由配置文件 (如果选择了路由)。 │ ├── stores/ # Pinia 状态管理文件 (如果选择了 Pinia)。 │ ├── views/ # 存放页面级别的组件。 │ ├── App.vue # 根组件。 │ ├── main.ts # 入口文件。应用从这里开始执行。 │ └── style.css # 全局样式文件。 ├── .eslintrc.js # ESLint 配置文件，用于代码检查。 ├── .gitignore # Git 忽略文件配置。 ├── index.html # 应用的 HTML 入口文件。 ├── package.json # 项目配置文件，包含依赖、脚本命令等。 ├── tsconfig.json # TypeScript 配置文件。 └── vite.config.ts # Vite 的核心配置文件。 " /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
+<meta name="author" content="" /><meta name="description" content="使用 Vite 构建 Vue 项目的流程非常简洁 创建项目：npm create vite@latest 安装依赖：cd my-project &amp;&amp; npm install 开发调试：npm run dev 生产环境构建部署：npm run build；测试环境构建部署：npm run build:test 预览生产版本：npm run preview 1 2 3 4 5 6 7 # package.json &#34;scripts&#34;: { &#34;dev&#34;: &#34;vite&#34;, &#34;build&#34;: &#34;vue-tsc -b &amp;&amp; vite build&#34;, &#34;build:test&#34;: &#34;vue-tsc -b &amp;&amp; vite build --mode development&#34;, &#34;preview&#34;: &#34;vite preview&#34; }, 环境文件 Vite 根据运行的命令自动选择对应的环境文件：
+" /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
 
@@ -42,7 +43,7 @@
 <meta property="og:url" content="https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/vue/">
   <meta property="og:site_name" content="ZsmHub - Blog">
   <meta property="og:title" content="Vue">
-  <meta property="og:description" content="使用 Vite 构建 Vue 项目的流程非常简洁 创建项目：npm create vite@latest 安装依赖：cd my-project &amp;&amp; npm install 开发调试：npm run dev 构建部署：npm run build Vite 创建的 Vue 项目结构 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 my-vue-app/ ├── node_modules/ # 项目依赖，由 npm install 生成 ├── public/ # 静态资源目录。这里的文件会被直接复制到最终构建的根目录，不会被编译。 │ └── favicon.ico ├── src/ # 源代码目录，你的主要工作区域 │ ├── assets/ # 存放需要被 Vite 处理的静态资源，如图片、CSS 等。 │ ├── components/ # 存放可复用的 Vue 组件。 │ │ └── HelloWorld.vue │ ├── router/ # 路由配置文件 (如果选择了路由)。 │ ├── stores/ # Pinia 状态管理文件 (如果选择了 Pinia)。 │ ├── views/ # 存放页面级别的组件。 │ ├── App.vue # 根组件。 │ ├── main.ts # 入口文件。应用从这里开始执行。 │ └── style.css # 全局样式文件。 ├── .eslintrc.js # ESLint 配置文件，用于代码检查。 ├── .gitignore # Git 忽略文件配置。 ├── index.html # 应用的 HTML 入口文件。 ├── package.json # 项目配置文件，包含依赖、脚本命令等。 ├── tsconfig.json # TypeScript 配置文件。 └── vite.config.ts # Vite 的核心配置文件。">
+  <meta property="og:description" content="使用 Vite 构建 Vue 项目的流程非常简洁 创建项目：npm create vite@latest 安装依赖：cd my-project &amp;&amp; npm install 开发调试：npm run dev 生产环境构建部署：npm run build；测试环境构建部署：npm run build:test 预览生产版本：npm run preview 1 2 3 4 5 6 7 # package.json &#34;scripts&#34;: { &#34;dev&#34;: &#34;vite&#34;, &#34;build&#34;: &#34;vue-tsc -b &amp;&amp; vite build&#34;, &#34;build:test&#34;: &#34;vue-tsc -b &amp;&amp; vite build --mode development&#34;, &#34;preview&#34;: &#34;vite preview&#34; }, 环境文件 Vite 根据运行的命令自动选择对应的环境文件：">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -51,14 +52,14 @@
     <meta property="article:tag" content="Vue">
 
   <meta itemprop="name" content="Vue">
-  <meta itemprop="description" content="使用 Vite 构建 Vue 项目的流程非常简洁 创建项目：npm create vite@latest 安装依赖：cd my-project &amp;&amp; npm install 开发调试：npm run dev 构建部署：npm run build Vite 创建的 Vue 项目结构 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 my-vue-app/ ├── node_modules/ # 项目依赖，由 npm install 生成 ├── public/ # 静态资源目录。这里的文件会被直接复制到最终构建的根目录，不会被编译。 │ └── favicon.ico ├── src/ # 源代码目录，你的主要工作区域 │ ├── assets/ # 存放需要被 Vite 处理的静态资源，如图片、CSS 等。 │ ├── components/ # 存放可复用的 Vue 组件。 │ │ └── HelloWorld.vue │ ├── router/ # 路由配置文件 (如果选择了路由)。 │ ├── stores/ # Pinia 状态管理文件 (如果选择了 Pinia)。 │ ├── views/ # 存放页面级别的组件。 │ ├── App.vue # 根组件。 │ ├── main.ts # 入口文件。应用从这里开始执行。 │ └── style.css # 全局样式文件。 ├── .eslintrc.js # ESLint 配置文件，用于代码检查。 ├── .gitignore # Git 忽略文件配置。 ├── index.html # 应用的 HTML 入口文件。 ├── package.json # 项目配置文件，包含依赖、脚本命令等。 ├── tsconfig.json # TypeScript 配置文件。 └── vite.config.ts # Vite 的核心配置文件。">
+  <meta itemprop="description" content="使用 Vite 构建 Vue 项目的流程非常简洁 创建项目：npm create vite@latest 安装依赖：cd my-project &amp;&amp; npm install 开发调试：npm run dev 生产环境构建部署：npm run build；测试环境构建部署：npm run build:test 预览生产版本：npm run preview 1 2 3 4 5 6 7 # package.json &#34;scripts&#34;: { &#34;dev&#34;: &#34;vite&#34;, &#34;build&#34;: &#34;vue-tsc -b &amp;&amp; vite build&#34;, &#34;build:test&#34;: &#34;vue-tsc -b &amp;&amp; vite build --mode development&#34;, &#34;preview&#34;: &#34;vite preview&#34; }, 环境文件 Vite 根据运行的命令自动选择对应的环境文件：">
   <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
   <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
-  <meta itemprop="wordCount" content="416">
+  <meta itemprop="wordCount" content="751">
   <meta itemprop="keywords" content="Vue">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Vue">
-  <meta name="twitter:description" content="使用 Vite 构建 Vue 项目的流程非常简洁 创建项目：npm create vite@latest 安装依赖：cd my-project &amp;&amp; npm install 开发调试：npm run dev 构建部署：npm run build Vite 创建的 Vue 项目结构 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 my-vue-app/ ├── node_modules/ # 项目依赖，由 npm install 生成 ├── public/ # 静态资源目录。这里的文件会被直接复制到最终构建的根目录，不会被编译。 │ └── favicon.ico ├── src/ # 源代码目录，你的主要工作区域 │ ├── assets/ # 存放需要被 Vite 处理的静态资源，如图片、CSS 等。 │ ├── components/ # 存放可复用的 Vue 组件。 │ │ └── HelloWorld.vue │ ├── router/ # 路由配置文件 (如果选择了路由)。 │ ├── stores/ # Pinia 状态管理文件 (如果选择了 Pinia)。 │ ├── views/ # 存放页面级别的组件。 │ ├── App.vue # 根组件。 │ ├── main.ts # 入口文件。应用从这里开始执行。 │ └── style.css # 全局样式文件。 ├── .eslintrc.js # ESLint 配置文件，用于代码检查。 ├── .gitignore # Git 忽略文件配置。 ├── index.html # 应用的 HTML 入口文件。 ├── package.json # 项目配置文件，包含依赖、脚本命令等。 ├── tsconfig.json # TypeScript 配置文件。 └── vite.config.ts # Vite 的核心配置文件。">
+  <meta name="twitter:description" content="使用 Vite 构建 Vue 项目的流程非常简洁 创建项目：npm create vite@latest 安装依赖：cd my-project &amp;&amp; npm install 开发调试：npm run dev 生产环境构建部署：npm run build；测试环境构建部署：npm run build:test 预览生产版本：npm run preview 1 2 3 4 5 6 7 # package.json &#34;scripts&#34;: { &#34;dev&#34;: &#34;vite&#34;, &#34;build&#34;: &#34;vue-tsc -b &amp;&amp; vite build&#34;, &#34;build:test&#34;: &#34;vue-tsc -b &amp;&amp; vite build --mode development&#34;, &#34;preview&#34;: &#34;vite preview&#34; }, 环境文件 Vite 根据运行的命令自动选择对应的环境文件：">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,8 +147,8 @@
         <div class="post-category">
             <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
             </div>
-          <span class="more-meta"> 约 416 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 751 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -158,7 +159,14 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#使用-vite-构建-vue-项目的流程非常简洁">使用 Vite 构建 Vue 项目的流程非常简洁</a></li>
+    <li><a href="#环境文件">环境文件</a></li>
     <li><a href="#vite-创建的-vue-项目结构">Vite 创建的 Vue 项目结构</a></li>
+    <li><a href="#部署到生产环境">部署到生产环境</a>
+      <ul>
+        <li><a href="#步骤一构建生产版本">步骤一：构建生产版本</a></li>
+        <li><a href="#步骤二nginx-部署">步骤二：Nginx 部署</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -169,8 +177,62 @@
 <li>创建项目：npm create vite@latest</li>
 <li>安装依赖：cd my-project &amp;&amp; npm install</li>
 <li>开发调试：npm run dev</li>
-<li>构建部署：npm run build</li>
+<li>生产环境构建部署：npm run build；测试环境构建部署：npm run build:test</li>
+<li>预览生产版本：npm run preview</li>
 </ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># package.json</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;scripts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;dev&#34;</span>: <span class="s2">&#34;vite&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;build&#34;</span>: <span class="s2">&#34;vue-tsc -b &amp;&amp; vite build&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;build:test&#34;</span>: <span class="s2">&#34;vue-tsc -b &amp;&amp; vite build --mode development&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;preview&#34;</span>: <span class="s2">&#34;vite preview&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>,
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="环境文件">环境文件</h2>
+<p>Vite 根据运行的<strong>命令</strong>自动选择对应的环境文件：</p>
+<table>
+  <thead>
+      <tr>
+          <th>命令</th>
+          <th>mode</th>
+          <th>加载的文件（按优先级从高到低）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>npm run dev</code></td>
+          <td>development</td>
+          <td><code>.env.development</code> → <code>.env</code></td>
+      </tr>
+      <tr>
+          <td><code>npm run build:test</code></td>
+          <td>development</td>
+          <td><code>.env.development</code> → <code>.env</code></td>
+      </tr>
+      <tr>
+          <td><code>npm run preview</code></td>
+          <td>production</td>
+          <td><code>.env.production</code> → <code>.env</code></td>
+      </tr>
+      <tr>
+          <td><code>npm run build</code></td>
+          <td>production</td>
+          <td><code>.env.production</code> → <code>.env</code></td>
+      </tr>
+  </tbody>
+</table>
 <h2 id="vite-创建的-vue-项目结构">Vite 创建的 Vue 项目结构</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -218,6 +280,90 @@
 </span></span><span class="line"><span class="cl">└── vite.config.ts       <span class="c1"># Vite 的核心配置文件。</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h2 id="部署到生产环境">部署到生产环境</h2>
+<h3 id="步骤一构建生产版本">步骤一：构建生产版本</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /Users/xxx/dnmp/www/xxx-front
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. 安装依赖（如果没安装）</span>
+</span></span><span class="line"><span class="cl">npm install
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 构建生产版本</span>
+</span></span><span class="line"><span class="cl">npm run build
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>构建完成后会生成 <code>dist</code> 目录，里面就是可部署的静态文件。</p>
+<h3 id="步骤二nginx-部署">步骤二：Nginx 部署</h3>
+<ol>
+<li>将 <code>dist</code> 目录上传到服务器</li>
+<li>配置 Nginx：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">your-domain-xxxx.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/path/to/dist</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 处理 Vue Router 的 history 模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># API 代理到后端
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="s">/tg</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">proxy_pass</span> <span class="s">https://api.xxx.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 静态资源缓存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)</span>$ <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">expires</span> <span class="s">1y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">add_header</span> <span class="s">Cache-Control</span> <span class="s">&#34;public,</span> <span class="s">immutable&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
 </div>
     </div>
 
@@ -244,7 +390,11 @@
           <a href="/tags/vue/">vue</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/%E5%89%8D%E7%AB%AF/ai%E6%8F%90%E7%A4%BA%E8%AF%8D/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">AI提示词</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/post/%E5%89%8D%E7%AB%AF/node/">
             <span class="next-text nav-default">Node.js</span>
             <span class="next-text nav-mobile">下一篇</span>

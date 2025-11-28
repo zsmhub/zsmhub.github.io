@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
-  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="datePublished" content="2025-11-28T10:42:05+08:00">
+  <meta itemprop="dateModified" content="2025-11-28T10:42:05+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,307 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/">Go Json 技巧</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-12 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 710 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="omitempty">omitempty</h2>
+<p>忽略 struct 空字段，当字段的值为空值的时候，它不会出现在JSON数据中.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Email</span>    <span class="kt">string</span> <span class="s">`json:&#34;email&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Password</span> <span class="kt">string</span> <span class="s">`json:&#34;password,omitempty&#34;`</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">jsonByte</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span> <span class="s">&#34;7@qq.com&#34;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">jsonByte</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 输出结果</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 不带 omitempty 的输出结果：{&#34;email&#34;:&#34;7@qq.com&#34;,&#34;password&#34;:&#34;&#34;}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 带 omitempty 的输出结果：{&#34;email&#34;:&#34;7@qq.com&#34;}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="临时合并两个struct">临时合并两个struct</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">BlogPost</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">URL</span>   <span class="kt">string</span> <span class="s">`json:&#34;url&#34;`</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Title</span> <span class="kt">string</span> <span class="s">`json:&#34;title&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">Analytics</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Visitors</span>  <span class="kt">int</span> <span class="s">`json:&#34;visitors&#34;`</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">PageViews</span> <span class="kt">int</span> <span class="s">`json:&#34;page_views&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">blog</span> <span class="o">:=</span> <span class="nx">BlogPost</span><span class="p">{</span><span class="nx">URL</span><span class="p">:</span> <span class="s">&#34;http://www.x.com&#34;</span><span class="p">,</span> <span class="nx">Title</span><span class="p">:</span> <span class="s">&#34;title&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">analytics</span> <span class="o">:=</span> <span class="nx">Analytics</span><span class="p">{</span><span class="nx">Visitors</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">PageViews</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">jsonByte</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="nx">BlogPost</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="nx">Analytics</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}{</span><span class="o">&amp;</span><span class="nx">blog</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">analytics</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">jsonByte</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 输出结果</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// {&#34;url&#34;:&#34;http://www.x.com&#34;,&#34;title&#34;:&#34;title&#34;,&#34;visitors&#34;:100,&#34;page_views&#34;:200}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="一个json切分成两个struct">一个json切分成两个struct</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">BlogPost</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">URL</span>   <span class="kt">string</span> <span class="s">`json:&#34;url&#34;`</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Title</span> <span class="kt">string</span> <span class="s">`json:&#34;title&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">Analytics</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Visitors</span>  <span class="kt">int</span> <span class="s">`json:&#34;visitors&#34;`</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">PageViews</span> <span class="kt">int</span> <span class="s">`json:&#34;page_views&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">blog</span>      <span class="nx">BlogPost</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">analytics</span> <span class="nx">Analytics</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">`{&#34;url&#34;:&#34;http://www.x.com&#34;,&#34;title&#34;:&#34;title&#34;,&#34;visitors&#34;:100,&#34;page_views&#34;:200}`</span><span class="p">),</span> <span class="o">&amp;</span><span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="o">*</span><span class="nx">BlogPost</span>
+</span></span><span class="line"><span class="cl">       <span class="o">*</span><span class="nx">Analytics</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}{</span><span class="o">&amp;</span><span class="nx">blog</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">analytics</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">blog</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">analytics</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 输出结果</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// {http://www.x.com title}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// {100 200}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="数字以字符串形式输出">数字以字符串形式输出</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;encoding/json&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Test</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Email</span> <span class="kt">string</span> <span class="s">`json:&#34;email&#34;`</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Field</span> <span class="kt">int</span>    <span class="s">`json:&#34;field,string&#34;`</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">jsonByte</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">Test</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span> <span class="s">&#34;7@qq.com&#34;</span><span class="p">,</span> <span class="nx">Field</span><span class="p">:</span> <span class="mi">100</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">jsonByte</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 输出结果</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// {&#34;email&#34;:&#34;7@qq.com&#34;,&#34;field&#34;:&#34;100&#34;}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="json和map转换">json和map转换</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">jsonStr</span> <span class="o">:=</span> <span class="s">`
+</span></span></span><span class="line"><span class="cl"><span class="s">        {
+</span></span></span><span class="line"><span class="cl"><span class="s">          &#34;env&#34;: &#34;local&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s">          &#34;redis_address&#34;: &#34;127.0.0.1:6379&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s">          &#34;redis_password&#34;: &#34;xxx&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        }
+</span></span></span><span class="line"><span class="cl"><span class="s">    `</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// json转换成map</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">_</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">jsonStr</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="c1">// 输出：map[env:local redis_address:127.0.0.1:6379 redis_password:xxx]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// map转换成json</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">j</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">j</span><span class="p">))</span> <span class="c1">// 输出：{&#34;env&#34;:&#34;local&#34;,&#34;redis_address&#34;:&#34;127.0.0.1:6379&#34;,&#34;redis_password&#34;:&#34;xxx&#34;}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E4%B9%8Bjson%E6%8A%80%E5%B7%A7/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/golang/go%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/">Go 开发遇到的性能问题</a></h1>
@@ -459,32 +760,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/">数据传输方式汇总</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-04-10 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
-          </div>
-        <span class="more-meta"> 约 1349 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="json">json</h2>
-<p>JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。</p>
-<h2 id="yaml">yaml</h2>
-<p>YAML类似JSON，新的特性更强大，更适合人类阅读，也更紧凑。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F%E6%B1%87%E6%80%BB/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

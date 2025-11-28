@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-18T11:47:32+08:00">
-  <meta itemprop="dateModified" content="2025-11-18T11:47:32+08:00">
+  <meta itemprop="datePublished" content="2025-11-28T10:42:05+08:00">
+  <meta itemprop="dateModified" content="2025-11-28T10:42:05+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,29 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/%E6%A1%86%E6%9E%B6-goframe/">框架 Goframe</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-07-24 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 4 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p><a href="https://goframe.org/display/gf">官方文档</a></p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/%E6%A1%86%E6%9E%B6-goframe/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E4%BF%9D%E9%99%A9%E7%9B%B8%E5%85%B3/">保险相关</a></h1>
@@ -431,37 +454,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8B/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8Bgorm/">Go之GORM</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2022-09-02 </span>
-      <div class="post-category">
-          <a href="/categories/golang/"> golang </a>
-          </div>
-        <span class="more-meta"> 约 2313 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="gorm">GORM</h2>
-<ul>
-<li>设置某一字段为NULL：db.Model(&amp;foo).Where(&ldquo;id=xxx&rdquo;).Updates(map[string]interface{}{&ldquo;created_at&rdquo;: gorm.Expr(&ldquo;NULL&rdquo;)})</li>
-<li>FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环</li>
-<li>Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录.</li>
-<li>Assign(User{Age: 30}).FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库.</li>
-</ul>
-<blockquote>
-<p>数据类型建议</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/go%E4%B9%8Bgorm/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
