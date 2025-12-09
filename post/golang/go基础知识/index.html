@@ -58,7 +58,7 @@ Go 语言本身是由 C 语言开发的，而不是 Go 语言。但 Go 在 1.5 �
 Go 语言本身是由 C 语言开发的，而不是 Go 语言。但 Go 在 1.5 版本开始自举。">
   <meta itemprop="datePublished" content="2020-03-15T17:46:46+08:00">
   <meta itemprop="dateModified" content="2020-07-14T17:46:46+08:00">
-  <meta itemprop="wordCount" content="10699">
+  <meta itemprop="wordCount" content="10664">
   <meta itemprop="keywords" content="入门">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Go 基础知识">
@@ -151,7 +151,7 @@ Go 语言本身是由 C 语言开发的，而不是 Go 语言。但 Go 在 1.5 �
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 10699 字 </span>
+          <span class="more-meta"> 约 10664 字 </span>
           <span class="more-meta"> 预计阅读 22 分钟 </span>
         
       </div>
@@ -278,7 +278,7 @@ Go 语言本身是由 C 语言开发的，而不是 Go 语言。但 Go 在 1.5 �
 </span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">get</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">alibabacloud</span><span class="o">-</span><span class="k">go</span><span class="o">/</span><span class="nx">ice</span><span class="o">-</span><span class="mi">20201109</span><span class="o">/</span><span class="nx">v7</span><span class="err">@</span><span class="nx">latest</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="c1">// 下载并更新现有的依赖</span>
-</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span> <span class="c1">// 用来下载指定版本的远程代码包，不同版本会共存[go get 本质上可以理解为首先第一步是通过源码工具 git clone 代码到 src 下面，然后执行 go install]</span>
+</span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span> <span class="c1">// 在项目根目录下执行，用来下载并更新指定版本的第三方库</span>
 </span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">get</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">tal</span><span class="o">-</span><span class="nx">tech</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">zero</span><span class="err">@</span><span class="mi">5</span><span class="nx">b2282301862387d2a7d05efb51be910688fd5ab</span> <span class="c1">// 下载指定 commit 的远程代码包，执行完成后，go.mod 加入 github.com/tal-tech/go-zero v1.1.8-0.20210623065737-9ccb997ed85c，其中 v1.1.8 指最新 release ，0.20210623065737 指提交时间戳，9ccb997ed85c 指提交哈希前缀</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">go</span> <span class="nx">install</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">jinzhu</span><span class="o">/</span><span class="nx">gorm</span><span class="err">@</span><span class="nx">v1</span><span class="mf">.9</span> <span class="c1">// 安装本地已有的包</span>

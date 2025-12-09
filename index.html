@@ -135,13 +135,13 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%89%8D%E7%AB%AF/ai%E6%8F%90%E7%A4%BA%E8%AF%8D/">AI提示词</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%89%8D%E7%AB%AF/%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%E6%8F%90%E7%A4%BA%E8%AF%8D/">代码编写提示词</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2025-11-28 </span>
       <div class="post-category">
           <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
           </div>
-        <span class="more-meta"> 约 550 字 </span>
+        <span class="more-meta"> 约 903 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
@@ -151,20 +151,40 @@
       <h2 id="后端生成markdown格式的api文档">后端生成markdown格式的API文档</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">请根据这个模块，输出指定文件夹下的所有接口文档，并存储到 docs/xxx.md 路径下，如docs/base.md，docs/user.md，docs/tg_capcut.md。
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 初始化项目</span>
+</span></span><span class="line"><span class="cl">请根据这个模块，输出指定文件夹下的所有接口文档，并存储到 docs/xxx.md 路径下，如docs/base.md，docs/user.md，docs/tg_capcut.md。
 </span></span><span class="line"><span class="cl">要求尽可能的详细，方便前端对接。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># API响应参数说明</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;code&#34;</span>:0,<span class="s2">&#34;data&#34;</span>:<span class="o">{</span><span class="s2">&#34;id&#34;</span>:<span class="s2">&#34;xxx&#34;</span><span class="o">}</span>,<span class="s2">&#34;message&#34;</span>:<span class="s2">&#34;成功&#34;</span><span class="o">}</span>，其中code<span class="o">=</span>0标识成功，code<span class="o">=</span>1表示失败，data是响应数据
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 后端域名</span>
 </span></span><span class="line"><span class="cl">生产环境：https://api.xxx.com
 </span></span><span class="line"><span class="cl">测试环境：http://127.0.0.1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 后续新增接口</span>
+</span></span><span class="line"><span class="cl">参考docs/tg_capcut.md，输出 logic_tuiguang/controller/tg_crawler.go 下的所有接口文档，并存储到 docs/tg_crawler.md。
+</span></span><span class="line"><span class="cl">要求尽可能的详细，方便前端对接。
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="初始化前端项目生成代码提示词">初始化前端项目，生成代码提示词</h2>
@@ -196,9 +216,11 @@
 </span><span class="lnt">24
 </span><span class="lnt">25
 </span><span class="lnt">26
+</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">请根据 ./docs 中的所有接口，实现一个完整的视频剪辑系统，包括用户登录模块、剪映草稿任务管理模块、阿里云oss上传等
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 项目初始化</span>
+</span></span><span class="line"><span class="cl">请根据 docs 中的所有接口，实现一个完整的视频剪辑系统，包括用户登录模块、剪映草稿任务管理模块、阿里云oss上传等
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">实现以下页面：
 </span></span><span class="line"><span class="cl">1. 用户登录页面（参考 docs/user.md）
@@ -226,10 +248,32 @@
 </span></span><span class="line"><span class="cl">- oss文件默认上传到目录：xxx-front
 </span></span></code></pre></td></tr></table>
 </div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 新增页面功能</span>
+</span></span><span class="line"><span class="cl">请根据 docs/tg_crawler.md 中的所有接口，实现一个提取文案页面，新增菜单名“提取文案”。要求按照上传的图片页面风格设计。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">功能：
+</span></span><span class="line"><span class="cl">1. 展示列表，展示视频封面，封面为空则使用默认封面
+</span></span><span class="line"><span class="cl">2. 支持一键复制文案、查看文案
+</span></span><span class="line"><span class="cl">3. 支持删除
+</span></span><span class="line"><span class="cl">4. 支持下载视频
+</span></span></code></pre></td></tr></table>
+</div>
 </div>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%89%8D%E7%AB%AF/ai%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="read-more-link">阅读更多</a>
+      <a href="/post/%E5%89%8D%E7%AB%AF/%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%E6%8F%90%E7%A4%BA%E8%AF%8D/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
