@@ -17,6 +17,13 @@
       <description>&lt;h2 id=&#34;数据爬取服务及每次调用api的费用&#34;&gt;数据爬取服务及每次调用API的费用&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;收费单位：人民币&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://api.tikhub.io/#/&#34;&gt;https://api.tikhub.io/#/&lt;/a&gt; =&amp;gt; dy 0.0071 | xhs 0.071&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://getoneapi.com/&#34;&gt;https://getoneapi.com/&lt;/a&gt; =&amp;gt; dy 0.03 | xhs 0.08&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://justoneapi.com/zh/&#34;&gt;https://justoneapi.com/zh/&lt;/a&gt; =&amp;gt; dy 0.05 | xhs 0.08&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
+      <title>Git分支管理</title>
+      <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 07 Mar 2022 18:00:53 +0800</pubDate>
+      <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/</guid>
+      <description>&lt;h2 id=&#34;git分支管理及发版合并流程&#34;&gt;GIT分支管理及发版合并流程&lt;/h2&gt;&#xA;&lt;p&gt;主要分支：master(线上分支), uat(承接分支), release(预发布分支), develop(开发分支), yourname_feature(功能分支), yourname_hotfix(修复分支)&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>程序员必备的代码审查清单</title>
       <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E6%B8%85%E5%8D%95/</link>
       <pubDate>Mon, 17 Aug 2020 16:38:01 +0800</pubDate>
@@ -43,6 +50,13 @@
       <pubDate>Wed, 01 Jan 2020 15:59:09 +0800</pubDate>
       <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E4%BA%86%E8%A7%A3%E7%89%88%E6%9C%AC%E5%8F%B7/</guid>
       <description>&lt;h2 id=&#34;版本号迭代规则&#34;&gt;版本号迭代规则&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;系统重构：主版本号+1&lt;/li&gt;&#xA;&lt;li&gt;新增功能：次版本号+1&lt;/li&gt;&#xA;&lt;li&gt;BUG修复：修订号+1&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;常见案例&#34;&gt;常见案例&lt;/h2&gt;&#xA;&lt;p&gt;版本号的规范可采用很多公司采用的这套：http://semver.org/lang/zh-CN/&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Git 基础知识</title>
+      <link>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 02 Oct 2019 21:05:31 +0800</pubDate>
+      <guid>https://zsmhub.github.io/post/%E7%A8%8B%E5%BA%8F%E5%91%98/git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>&lt;h2 id=&#34;git-简介&#34;&gt;Git 简介&lt;/h2&gt;&#xA;&lt;p&gt;版本控制工具，分布式版本控制系统&lt;/p&gt;&#xA;&lt;h2 id=&#34;分支命名前缀&#34;&gt;分支命名前缀&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;type&amp;gt;/&amp;lt;description&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;main：主要开发分支（例如 main、master 或 develop）&lt;/li&gt;&#xA;&lt;li&gt;release/：用于准备发布的分支（例如 release/v1.2.0）&lt;/li&gt;&#xA;&lt;li&gt;feat/：用于新功能（例如 feat/add-login-page）&lt;/li&gt;&#xA;&lt;li&gt;fix/：用于错误修复（例如 fix/header-bug）&lt;/li&gt;&#xA;&lt;li&gt;hotfix/：用于紧急修复（例如 hotfix/security-patch）&lt;/li&gt;&#xA;&lt;li&gt;chore/：用于非代码任务，如依赖项、文档更新（例如 chore/update-dependencies）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;基本规则&lt;/p&gt;</description>
     </item>
     <item>
       <title>开发者须知</title>
