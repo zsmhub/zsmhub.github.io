@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-11-28T10:42:05+08:00">
-  <meta itemprop="dateModified" content="2025-11-28T10:42:05+08:00">
+  <meta itemprop="datePublished" content="2025-12-18T13:55:43+08:00">
+  <meta itemprop="dateModified" content="2025-12-18T13:55:43+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,30 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/database/redis-lua/">redis lua 脚本</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-10-17 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> database </a>
+          </div>
+        <span class="more-meta"> 约 587 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="原子执行">原子执行</h2>
+<p>Lua脚本在Redis中是以原子方式执行的，在Redis服务器执行EVAL命令时，在命令执行完毕并向调用者返回结果之前，只会执行当前命令指定的Lua脚本包含的所有逻辑，其它客户端发送的命令将被阻塞，直到EVAL命令执行完毕为止。因此LUA脚本不宜编写一些过于复杂了逻辑，必须尽量保证Lua脚本的效率，否则会影响其它客户端。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/database/redis-lua/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/golang/%E6%A1%86%E6%9E%B6-goframe/">框架 Goframe</a></h1>
@@ -430,30 +454,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E5%88%AE%E5%88%AE%E5%8D%A1%E6%8A%BD%E5%A5%96%E7%AE%80%E5%8D%95%E8%AE%BE%E8%AE%A1/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8B/">围棋</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2022-10-06 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/"> 生活笔记 </a>
-          </div>
-        <span class="more-meta"> 约 8325 字 </span>
-        <span class="more-meta"> 预计阅读 17 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>围棋的英文名有三种：中国读 Weiqi，西方读 Go，韩国读 baduk(发音：怕度)。</p>
-<p>围棋对局一般分为三个阶段：布局、中盘、收官。收官阶段也称为官子阶段。然而，这三个阶段之间并没有明显的界限，何时进入中盘，何时进入收官，完全取决于棋局的发展和对局者的决断。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E5%9B%B4%E6%A3%8B/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
