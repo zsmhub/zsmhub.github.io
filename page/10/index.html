@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2025-12-18T13:55:43+08:00">
-  <meta itemprop="dateModified" content="2025-12-18T13:55:43+08:00">
+  <meta itemprop="datePublished" content="2025-12-26T17:19:25+08:00">
+  <meta itemprop="dateModified" content="2025-12-26T17:19:25+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,55 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">Go的一些坑</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-11-13 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 2766 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="代码格式化">代码格式化</h2>
+<p>golang 自带的 go fmt 默认是是 tab 缩进， 而 goland IDE 的格式化默认是空格缩进【快捷键：option+command+L】</p>
+<h2 id="json的坑">json的坑</h2>
+<p>[]uint8 转 json 后，得不到想要的结果</p>
+<ul>
+<li>期待结果：[1, 2, 3]</li>
+<li>输出结果：&ldquo;AQID&rdquo;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">uint8</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">b</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">b</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="slicemapchannel本身就是引用类型">slice/map/channel本身就是引用类型</h2>
+<blockquote>
+<p>slice</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/%E7%AD%BE%E5%90%8D%E6%A0%A1%E9%AA%8C%E6%A1%88%E4%BE%8Bphp/">多系统对接-签名校验案例(PHP)</a></h1>
@@ -639,30 +688,6 @@
     </div>
     <div class="read-more">
       <a href="/post/other/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/php/php-fpm/">PHP-FPM</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-09-02 </span>
-      <div class="post-category">
-          <a href="/categories/php/"> php </a>
-          </div>
-        <span class="more-meta"> 约 1536 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="php-fpm">PHP-FPM</h2>
-<p>CGI是Common Gateway Interface（通用网管协议），用于让交互程序和Web服务器通信的协议。它负责处理URL的请求，启动一个进程，将客户端发送的数据作为输入，由Web服务器收集程序的输出并加上合适的头部，再发送回客户端。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/php/php-fpm/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

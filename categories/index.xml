@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>ZsmHub</copyright>
-    <lastBuildDate>Thu, 18 Dec 2025 13:55:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Dec 2025 17:19:25 +0800</lastBuildDate>
     <atom:link href="https://zsmhub.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自媒体</title>
+      <link>https://zsmhub.github.io/categories/%E8%87%AA%E5%AA%92%E4%BD%93/</link>
+      <pubDate>Fri, 26 Dec 2025 17:19:25 +0800</pubDate>
+      <guid>https://zsmhub.github.io/categories/%E8%87%AA%E5%AA%92%E4%BD%93/</guid>
+      <description></description>
+    </item>
     <item>
       <title>生活笔记</title>
       <link>https://zsmhub.github.io/categories/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/</link>
@@ -56,13 +63,6 @@
       <link>https://zsmhub.github.io/categories/python/</link>
       <pubDate>Thu, 24 Apr 2025 16:06:34 +0800</pubDate>
       <guid>https://zsmhub.github.io/categories/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>自媒体</title>
-      <link>https://zsmhub.github.io/categories/%E8%87%AA%E5%AA%92%E4%BD%93/</link>
-      <pubDate>Mon, 24 Feb 2025 11:35:11 +0800</pubDate>
-      <guid>https://zsmhub.github.io/categories/%E8%87%AA%E5%AA%92%E4%BD%93/</guid>
       <description></description>
     </item>
     <item>
