@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2026-01-07T14:08:35+08:00">
-  <meta itemprop="dateModified" content="2026-01-07T14:08:35+08:00">
+  <meta itemprop="datePublished" content="2026-01-10T14:44:36+08:00">
+  <meta itemprop="dateModified" content="2026-01-10T14:44:36+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,67 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">Hugo 使用教程</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-03 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/"> 博客 </a>
+          </div>
+        <span class="more-meta"> 约 815 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="hugo-是什么">Hugo 是什么</h2>
+<blockquote>
+<p>静态网站生成器</p></blockquote>
+<ul>
+<li>Hugo只有一个二进制文件（比如Windows里只是一个hugo.exe）</li>
+<li>Hugo可以将你写好的MarkDown格式的文章自动转换为静态的网页。</li>
+<li>Hugo内置web服务器，可以方便的用于本地调试。</li>
+</ul>
+<h2 id="安装命令">安装命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># v0.146</span>
+</span></span><span class="line"><span class="cl">brew install hugo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="hugo-常用命令">Hugo 常用命令</h2>
+<ul>
+<li>hugo new site quickstart // 新建一个博客网站</li>
+<li>hugo new post/xxx/xxx.md // 新建文章</li>
+<li>hugo server -D // Start the Hugo server</li>
+<li>hugo // 构建静态页面，不包含 draft=true 的文件</li>
+<li>hugo -D // 构建静态页面，包含 draft=true 的文件</li>
+</ul>
+<h2 id="hugo-项目目录">Hugo 项目目录</h2>
+<ul>
+<li>config.toml是网站的配置文件，这是一个TOML文件，全称是Tom’s Obvious, Minimal Language，这是它的作者GitHub联合创始人Tom Preston-Werner 觉得YAML不够优雅，捣鼓出来的一个新格式。</li>
+<li>theme 目录里放的是主题皮肤</li>
+<li>content 目录里放的是你写的markdown文章</li>
+<li>archetypes 目录里放的是生成 Markdown 的模板，在使用hugo new PAGE_NAME.md来创造一个新页面时，会根据archetypes目录下的模板，来生成新文件。</li>
+<li>static 目录里放的是一些图片、css、js等资源，如存在 static/images/test.png，则调用方式为 /images/test.png</li>
+<li>layouts 目录里放的是网站的模板文件</li>
+<li>public 存放所有静态页面的数据，如文章、图片</li>
+</ul>
+<h2 id="主题推荐">主题推荐</h2>
+<p>even：https://github.com/olOwOlo/hugo-theme-even/blob/master/README-zh.md</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/%E5%8D%9A%E5%AE%A2/hugo%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/im-%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6/">IM-心跳机制</a></h1>
@@ -436,34 +497,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/">SQL 面试题</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-02-21 </span>
-      <div class="post-category">
-          <a href="/categories/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/"> 面试必备 </a>
-          </div>
-        <span class="more-meta"> 约 1077 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="sql-问题总结文章">SQL 问题总结文章</h2>
-<p><a href="https://mp.weixin.qq.com/s/MCFHNOQnTtJ6MGVjM3DP4A">MySQL 三万字精华总结 + 面试100 问，吊打面试官绰绰有余</a></p>
-<h2 id="面试题">面试题</h2>
-<ol>
-<li>
-<p>假如有个公司，员工每天上班需要签到一次，要列出每个员工上周的签到率，用一条sql怎么写</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/sql%E9%9D%A2%E8%AF%95%E9%A2%98/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2026-01-07T14:08:35+08:00">
-  <meta itemprop="dateModified" content="2026-01-07T14:08:35+08:00">
+  <meta itemprop="datePublished" content="2026-01-10T14:44:36+08:00">
+  <meta itemprop="dateModified" content="2026-01-10T14:44:36+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,159 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/ai/ai%E5%88%9B%E4%BD%9C%E5%B9%B3%E5%8F%B0/">AI创作平台</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2026-01-10 </span>
+      <div class="post-category">
+          <a href="/categories/ai/"> AI </a>
+          </div>
+        <span class="more-meta"> 约 1063 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <blockquote>
+<p>费用统计时间：2026年1月10日</p></blockquote>
+<h2 id="国外费用">国外费用</h2>
+<ol>
+<li>sora2：支持10~25秒，标准版一个视频0.7元，高级版3.5元/个</li>
+<li>veo3： 支持4~8秒，标准版1元/秒，高级版2.8元/秒</li>
+</ol>
+<h2 id="国内费用">国内费用</h2>
+<ol>
+<li>通义万相：支持5~15秒，标准版0.6元/秒，高级版1元/秒</li>
+<li>即梦：支持5~12秒，1元/秒，2并发；API不支持最新的3.5Pro模型</li>
+<li>海螺：支持6~10秒，标准版一个视频&gt;=2元，高级版&gt;=3.5元/个</li>
+<li>可灵：支持5~10秒，付费模式只能购买资源包，3万起步，有效期3个月</li>
+</ol>
+<h2 id="发现的问题">发现的问题</h2>
+<ol>
+<li>AI视频对中文支持不友好，商品上的文字容易乱码</li>
+<li>国内视频平台容易生成不符合逻辑的操作</li>
+</ol>
+<h2 id="ai视频工作流的核心步骤">AI视频工作流的核心步骤</h2>
+<ol>
+<li>根据”xxx“主题生成x个分镜脚本</li>
+<li>生成分镜图片：每一个分镜脚本生成分镜图的提示词，包含中英文</li>
+<li>根据对应的分镜图，开始制作分镜视频</li>
+<li>等待所有视频生成</li>
+<li>所有视频合成剪辑</li>
+</ol>
+<h2 id="ai视频分镜提示词">AI视频分镜提示词</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">生成一个15秒电商带货短视频完整脚本，一个可直接用于 AI 视频生成工具（如：sora2）的一体化提示词，严格按照 15s 电商带货脚本来写，偏「高转化商品展示流」，基本复制即可用。根据以下基本信息：”xxx“，写一个介绍”xxx“的15秒视频合成提示词。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 参考示例</span>
+</span></span><span class="line"><span class="cl">一位气质清爽、身材匀称的年轻模特，穿着纯黑色显瘦长款羽绒服，
+</span></span><span class="line"><span class="cl">羽绒服轮廓立体、蓬松但不臃肿，面料细腻有光泽。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">【0–2秒】
+</span></span><span class="line"><span class="cl">寒冬户外环境，冷色背景，对比强烈，
+</span></span><span class="line"><span class="cl">模特迎着寒风大步向前走，
+</span></span><span class="line"><span class="cl">风吹动羽绒服，羽绒自然起伏，蓬松不塌，
+</span></span><span class="line"><span class="cl">慢动作特写，极具冲击力，瞬间抓眼球。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">【2–6秒】
+</span></span><span class="line"><span class="cl">超近景特写，
+</span></span><span class="line"><span class="cl">手按压羽绒服表面，羽绒被压缩后迅速回弹，
+</span></span><span class="line"><span class="cl">清晰展示高蓬松度和厚实保暖感，
+</span></span><span class="line"><span class="cl">切到模特站在户外，零下10℃环境，面色红润自然、不畏寒。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">【6–10秒】
+</span></span><span class="line"><span class="cl">模特正面、侧身、转身连贯展示，
+</span></span><span class="line"><span class="cl">长款直线剪裁，视觉拉长身形比例，
+</span></span><span class="line"><span class="cl">腰线自然收束，显瘦不臃肿，
+</span></span><span class="line"><span class="cl">走路镜头与站立镜头快速切换。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">【10–13秒】
+</span></span><span class="line"><span class="cl">日常通勤穿搭场景，
+</span></span><span class="line"><span class="cl">羽绒服搭配牛仔裤和靴子，
+</span></span><span class="line"><span class="cl">模特轻松行走、转身、回头，
+</span></span><span class="line"><span class="cl">整体风格百搭、干净、有质感。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">【13–15秒】
+</span></span><span class="line"><span class="cl">模特回头微笑定格，
+</span></span><span class="line"><span class="cl">羽绒服商品近景特写，
+</span></span><span class="line"><span class="cl">画面下方出现醒目下单字幕和按钮动画，
+</span></span><span class="line"><span class="cl">整体节奏轻快，有强烈购买引导。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">附加要求：
+</span></span><span class="line"><span class="cl">背景音乐：轻快、洗脑型电商BGM，节奏感强
+</span></span><span class="line"><span class="cl">自动对口型：自然真实
+</span></span><span class="line"><span class="cl">自动生成大字字幕：高对比、醒目、简洁
+</span></span><span class="line"><span class="cl">字幕关键词：保暖｜显瘦｜百搭｜现在下单
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">负面提示词：
+</span></span><span class="line"><span class="cl">不要杂乱背景，不要多人出镜，
+</span></span><span class="line"><span class="cl">不要廉价滤镜，不要模糊，
+</span></span><span class="line"><span class="cl">不要卡顿，不要过度磨皮，
+</span></span><span class="line"><span class="cl">不要夸张特效，不要无关道具。
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/ai/ai%E5%88%9B%E4%BD%9C%E5%B9%B3%E5%8F%B0/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/%E8%A7%86%E5%8A%9B%E9%AA%8C%E5%85%89%E5%8D%95/">视力验光单</a></h1>
@@ -682,36 +835,6 @@
     </div>
     <div class="read-more">
       <a href="/post/ai/ai%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%A4%BA%E4%BE%8B/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%B9%B3%E5%8F%B0%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/">平台数据爬取</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2025-11-04 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/"> 程序员 </a>
-          </div>
-        <span class="more-meta"> 约 46 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="数据爬取服务及每次调用api的费用">数据爬取服务及每次调用API的费用</h2>
-<blockquote>
-<p>收费单位：人民币</p></blockquote>
-<ol>
-<li><a href="https://api.tikhub.io/#/">https://api.tikhub.io/#/</a> =&gt; dy 0.0071 | xhs 0.071</li>
-<li><a href="https://getoneapi.com/">https://getoneapi.com/</a> =&gt; dy 0.03 | xhs 0.08</li>
-<li><a href="https://justoneapi.com/zh/">https://justoneapi.com/zh/</a> =&gt; dy 0.05 | xhs 0.08</li>
-</ol>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%B9%B3%E5%8F%B0%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

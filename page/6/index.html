@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="ZsmHub - Blog">
   <meta itemprop="description" content="This is a site of zsmhub-blog.">
-  <meta itemprop="datePublished" content="2026-01-07T14:08:35+08:00">
-  <meta itemprop="dateModified" content="2026-01-07T14:08:35+08:00">
+  <meta itemprop="datePublished" content="2026-01-10T14:44:36+08:00">
+  <meta itemprop="dateModified" content="2026-01-10T14:44:36+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ZsmHub - Blog">
   <meta name="twitter:description" content="This is a site of zsmhub-blog.">
@@ -133,6 +133,126 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/">Go之项目程序结构</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2022-06-14 </span>
+      <div class="post-category">
+          <a href="/categories/golang/"> golang </a>
+          </div>
+        <span class="more-meta"> 约 626 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="项目程序结构">项目程序结构</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── Dockerfile                // 镜像配置
+</span></span><span class="line"><span class="cl">├── docker-compose-local.yaml // docker-compose文件，方便开发环境的启动
+</span></span><span class="line"><span class="cl">├── Makefile                  // 自动化命令文件
+</span></span><span class="line"><span class="cl">├── README.md                 // 项目 readme
+</span></span><span class="line"><span class="cl">├── config.json               // 本地配置文件
+</span></span><span class="line"><span class="cl">├── config.json.example       // 本地配置文件示例
+</span></span><span class="line"><span class="cl">├── go.mod
+</span></span><span class="line"><span class="cl">├── go.sum
+</span></span><span class="line"><span class="cl">├── internal        // 代码实现
+</span></span><span class="line"><span class="cl">│   ├── config      // 配置信息目录
+</span></span><span class="line"><span class="cl">│   │   └── db.go   // 数据库配置
+</span></span><span class="line"><span class="cl">│   ├── cron        // 定时任务
+</span></span><span class="line"><span class="cl">│   ├── global      // 全局常量定义
+</span></span><span class="line"><span class="cl">│   ├── form        // 结构体定义
+</span></span><span class="line"><span class="cl">│   ├── lib         // 第三方库
+</span></span><span class="line"><span class="cl">│   ├── logic       // logic服务
+</span></span><span class="line"><span class="cl">│   │   ├── controller  // 控制器
+</span></span><span class="line"><span class="cl">│   │   ├── middleware  // 中间件
+</span></span><span class="line"><span class="cl">│   │   └── repository  // 业务层
+</span></span><span class="line"><span class="cl">│   ├── logic_admin     // logic_admin服务
+</span></span><span class="line"><span class="cl">│   │   ├── controller  // 控制器
+</span></span><span class="line"><span class="cl">│   │   ├── middleware  // 中间件
+</span></span><span class="line"><span class="cl">│   │   └── repository  // 业务层
+</span></span><span class="line"><span class="cl">│   ├── business        // 业务层共用代码，业务逻辑层的进一步抽象，主要目的是提供共用代码给各个服务的repository层调用，此层不允许直接调用各个服务的repository层方法
+</span></span><span class="line"><span class="cl">│   │   └── customer.go // 业务逻辑代码
+</span></span><span class="line"><span class="cl">│   ├── model           // 数据模型
+</span></span><span class="line"><span class="cl">│   │   └── customer.go // 客户模型定义
+</span></span><span class="line"><span class="cl">│   ├── dao             // data access object，model层对应的数据处理层
+</span></span><span class="line"><span class="cl">│   │   └── customer.go // 客户模型对应的数据处理层，比如增删改查
+</span></span><span class="line"><span class="cl">│   ├── mq              // mq
+</span></span><span class="line"><span class="cl">│   ├── socket          // socket
+</span></span><span class="line"><span class="cl">│   └── rpc             // rpc代码
+</span></span><span class="line"><span class="cl">├── log // 日志存放目录
+</span></span><span class="line"><span class="cl">├── main // 程序运行入口
+</span></span><span class="line"><span class="cl">│   ├── crontab.go // 定时任务
+</span></span><span class="line"><span class="cl">│   ├── logic.go   // 业务逻辑
+</span></span><span class="line"><span class="cl">│   ├── migrate.go // 迁移文件
+</span></span><span class="line"><span class="cl">│   ├── message.go // 消息处理
+</span></span><span class="line"><span class="cl">│   ├── newapi.go  // 生成API脚手架
+</span></span><span class="line"><span class="cl">│   ├── socket.go  // socket
+</span></span><span class="line"><span class="cl">│   └── script.go  // 临时跑数据脚本
+</span></span><span class="line"><span class="cl">└── vendor // 第三方扩展
+</span></span><span class="line"><span class="cl">    ├── github.com
+</span></span><span class="line"><span class="cl">    └── modules.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/go%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/golang/go%E4%B9%8B%E5%88%86%E5%B8%83%E5%BC%8F/">Go之分布式</a></h1>
@@ -1843,29 +1963,6 @@
     </div>
     <div class="read-more">
       <a href="/post/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%BB%BA%E5%BA%94%E7%94%A8%E4%BB%A3%E5%BC%80%E5%8F%91/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%92%8C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F/">稳定排序和不稳定排序</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2022-03-10 </span>
-      <div class="post-category">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"> 数据结构和算法 </a>
-          </div>
-        <span class="more-meta"> 约 2310 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>首先，排序算法的稳定性大家应该都知道，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%E5%92%8C%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
