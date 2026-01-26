@@ -413,7 +413,7 @@
       <div class="post-category">
           <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
           </div>
-        <span class="more-meta"> 约 1037 字 </span>
+        <span class="more-meta"> 约 1077 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
@@ -458,7 +458,7 @@
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 后续新增接口</span>
 </span></span><span class="line"><span class="cl">参考docs/tg_capcut.md，输出 logic_tuiguang/controller/tg_crawler.go 下的所有接口文档，并存储到 docs/*.md。
 </span></span><span class="line"><span class="cl">要求尽可能的详细，方便前端对接。
-</span></span><span class="line"><span class="cl">注意响应结果的created_at和update_at是毫秒级时间戳，int型；code<span class="o">=</span>0表示请求成功，code<span class="o">=</span>1表示请求失败。
+</span></span><span class="line"><span class="cl">注意响应结果的created_at和update_at是毫秒级时间戳，int型；code<span class="o">=</span>0表示请求成功，code<span class="o">=</span>1表示请求失败，code<span class="o">=</span>2表示请求失败需要重试，返回响应数据，code<span class="o">=</span>3表示无效token。
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="初始化前端项目生成代码提示词">初始化前端项目，生成代码提示词</h2>
