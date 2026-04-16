@@ -59,7 +59,7 @@
 分支命名前缀 1 &lt;type&gt;/&lt;description&gt; main：主要开发分支（例如 main、master 或 develop） release/：用于准备发布的分支（例如 release/v1.2.0） feat/：用于新功能（例如 feat/add-login-page） fix/：用于错误修复（例如 fix/header-bug） hotfix/：用于紧急修复（例如 hotfix/security-patch） chore/：用于非代码任务，如依赖项、文档更新（例如 chore/update-dependencies） 基本规则">
   <meta itemprop="datePublished" content="2019-10-02T21:05:31+08:00">
   <meta itemprop="dateModified" content="2020-05-09T16:05:31+08:00">
-  <meta itemprop="wordCount" content="2733">
+  <meta itemprop="wordCount" content="2763">
   <meta itemprop="keywords" content="Git,入门">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Git 基础知识">
@@ -152,7 +152,7 @@
         <div class="post-category">
             <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/"> 程序员 </a>
             </div>
-          <span class="more-meta"> 约 2733 字 </span>
+          <span class="more-meta"> 约 2763 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -296,10 +296,12 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git reset --hard &lt;old-commit-id&gt;
-</span></span><span class="line"><span class="cl">git push -f &lt;remote-name&gt; &lt;branch-name&gt;  <span class="c1">#git push -f origin uat，主要是加个-f参数『Settings-&gt;Repository-&gt;Protected branches: gilab:master默认分支是保护状态取消分支保护即可提交』</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> &lt;remote-name&gt; &lt;branch-name&gt;  <span class="c1">#git push -f origin uat，主要是加个-f参数『Settings-&gt;Repository-&gt;Protected branches: gilab:master默认分支是保护状态取消分支保护即可提交』</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -386,14 +388,14 @@
 </span></span><span class="line"><span class="cl">git pull origin develop <span class="c1"># 拉取远程分支代码到当前分支</span>
 </span></span><span class="line"><span class="cl">git checkout -b test_branch develop <span class="c1"># 在develop分支下创建新分支并切换分支</span>
 </span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git fetch --prune <span class="c1"># 手动清理远程追踪分支，自动删除本地已经不存在的远程分支缓存</span>
 </span></span><span class="line"><span class="cl">git branch -d test_branch <span class="c1"># 删除已合并的分支</span>
 </span></span><span class="line"><span class="cl">git branch -D test_branch <span class="c1"># 删除任意分支</span>
 </span></span><span class="line"><span class="cl">git branch <span class="p">|</span> grep <span class="s1">&#39;zsm_&#39;</span> <span class="p">|</span> xargs git branch -d <span class="c1"># 批量删除已合并分支 『xargs 是一个强有力的命令，它能够捕获一个命令的输出，然后传递给另外一个命令。』</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 拉取远程分支的 2 种方式</span>
 </span></span><span class="line"><span class="cl">git fetch origin develop <span class="o">&amp;&amp;</span> git checkout develop <span class="c1"># 拉取develop远程分支到本地</span>
-</span></span><span class="line"><span class="cl">git checkout -b develop origin/develop <span class="c1"># 本地创建并切换到 develop 分支</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git checkout -b develop origin/develop <span class="c1"># 本地创建并切换到 develop 分</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># 将一个分支上的所有commit（修改）合并为同一个commit，然后合并到当前分支【注意gitlab的mr会自动勾选上squash选项，多个提交者信息会统一变为分支创建者】</span>
 </span></span><span class="line"><span class="cl">git merge --squash feature_name
 </span></span><span class="line"><span class="cl">

@@ -413,8 +413,8 @@
       <div class="post-category">
           <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
           </div>
-        <span class="more-meta"> 约 1118 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 1849 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
@@ -437,9 +437,9 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 初始化项目</span>
-</span></span><span class="line"><span class="cl">请根据这个模块，输出指定文件夹下的所有接口文档，并存储到 docs/xxx.md 路径下，如docs/base.md，docs/user.md，docs/tg_capcut.md。
+</span></span><span class="line"><span class="cl">请根据 @xxx 这个模块，输出指定文件的所有接口文档，并存储到 docs/xxx.md 路径下，如docs/base.md，docs/user.md，docs/tg_capcut.md。
 </span></span><span class="line"><span class="cl">要求尽可能的详细，方便前端对接。
-</span></span><span class="line"><span class="cl">注意响应结果的created_at和update_at是毫秒级时间戳，int型。
+</span></span><span class="line"><span class="cl">注意响应结果的created_at和update_at是毫秒级时间戳，int型；code<span class="o">=</span>0表示请求成功，code<span class="o">=</span>1表示请求失败，code<span class="o">=</span>2表示请求失败需要重试，返回响应数据，code<span class="o">=</span>3表示无效token。
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">## API响应参数说明</span>
 </span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;code&#34;</span>:0,<span class="s2">&#34;data&#34;</span>:<span class="o">{</span><span class="s2">&#34;id&#34;</span>:<span class="s2">&#34;xxx&#34;</span><span class="o">}</span>,<span class="s2">&#34;message&#34;</span>:<span class="s2">&#34;成功&#34;</span><span class="o">}</span>，其中code<span class="o">=</span>0标识成功，code<span class="o">=</span>1表示失败，data是响应数据
@@ -457,10 +457,70 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 后续新增接口</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 后续新增整个模块接口</span>
 </span></span><span class="line"><span class="cl">参考docs/tg_capcut.md，输出 logic_tuiguang/controller/tg_crawler.go 下的所有接口文档，并存储到 docs/*.md。
 </span></span><span class="line"><span class="cl">要求尽可能的详细，方便前端对接。
 </span></span><span class="line"><span class="cl">注意响应结果的created_at和update_at是毫秒级时间戳，int型；code<span class="o">=</span>0表示请求成功，code<span class="o">=</span>1表示请求失败，code<span class="o">=</span>2表示请求失败需要重试，返回响应数据，code<span class="o">=</span>3表示无效token。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 后续新增部分接口</span>
+</span></span><span class="line"><span class="cl">【代码xxx】【@logic_oa/controller/customer.go】请根据这个模块，输出这几个api对应的接口文档并存储到 docs/xxx.md 路径下，如docs/base.md。
+</span></span><span class="line"><span class="cl">要求尽可能的详细，方便前端对接。
+</span></span><span class="line"><span class="cl">注意响应结果的created_at和update_at是毫秒级时间戳，int型。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## API响应参数说明</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;code&#34;</span>:0,<span class="s2">&#34;data&#34;</span>:<span class="o">{</span><span class="s2">&#34;id&#34;</span>:<span class="s2">&#34;xxx&#34;</span><span class="o">}</span>,<span class="s2">&#34;message&#34;</span>:<span class="s2">&#34;成功&#34;</span><span class="o">}</span>，其中code<span class="o">=</span>0标识成功，code<span class="o">=</span>1表示失败，data是响应数据
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 让AI写后端业务逻辑</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 参考 @README.md 的目录结构，实现录入订单的接口逻辑</span>
+</span></span><span class="line"><span class="cl">1. <span class="nv">sys_status</span><span class="o">=</span>global.SysStatusNoPay，platform<span class="o">=</span>global.SIYU，订单备注储存在表model.OrderRemark
+</span></span><span class="line"><span class="cl">2. 记得用mysql事务，报错回滚
+</span></span><span class="line"><span class="cl">3. 记得检查商品库存是否足够，不够则报错：repository.GoodsRepo.CheckStock<span class="o">(</span>req<span class="o">)</span>
+</span></span><span class="line"><span class="cl">4. 检查下收件人对应的客户是不是归属当前员工：staff, _ :<span class="o">=</span> c.Get<span class="o">(</span>global.KVStaff<span class="o">)</span>.<span class="o">(</span>model.Staff<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 注意</span>
+</span></span><span class="line"><span class="cl">1. mysql gorm 的相关逻辑代码放在 dao/*.go 里
+</span></span><span class="line"><span class="cl">2. 多个表同时修改优先用mysql事务，报错能回滚
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@logic_oa/controller/order.go Router.PUT<span class="o">(</span><span class="s2">&#34;/orders/:order_code&#34;</span>, OrderController.UpdateOrder<span class="o">)</span>.Name <span class="o">=</span> <span class="s2">&#34;修改订单&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 参考录入订单的逻辑，实现修改订单的接口逻辑</span>
+</span></span><span class="line"><span class="cl">1. 只有 <span class="nv">sys_status</span><span class="o">=</span>global.SysStatusNoPay 才能进行修改订单
+</span></span><span class="line"><span class="cl"><span class="c1">## 注意</span>
+</span></span><span class="line"><span class="cl">1. mysql gorm 的相关逻辑代码放在 dao/*.go 里
+</span></span><span class="line"><span class="cl">2. 多个表同时修改优先用mysql事务，报错能回滚
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="初始化前端项目生成代码提示词">初始化前端项目，生成代码提示词</h2>

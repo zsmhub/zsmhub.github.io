@@ -58,7 +58,7 @@ PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可
 PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可以使用变量（如 map）实现本地内存缓存。">
   <meta itemprop="datePublished" content="2019-01-03T22:38:49+08:00">
   <meta itemprop="dateModified" content="2020-08-07T22:38:49+08:00">
-  <meta itemprop="wordCount" content="3825">
+  <meta itemprop="wordCount" content="3816">
   <meta itemprop="keywords" content="Redis">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Redis">
@@ -151,7 +151,7 @@ PHP 可以使用静态变量（如 array）实现本地内存缓存，Golang 可
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 3825 字 </span>
+          <span class="more-meta"> 约 3816 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -223,19 +223,19 @@ keys 算法是遍历算法，复杂度是 O(n)，如果实例中有千万级以�
 <p>dbsize: 当前库key的数量</p>
 </li>
 <li>
-<p>del key：删除一个key</p>
-</li>
-<li>
-<p>ttl // 查看生存时间</p>
-</li>
-<li>
 <p>select 1: 切换到库 1</p>
 </li>
 <li>
-<p>info: 查看 redis 基本信息，包含多少库，多少 keys</p>
+<p>keys *: 查看当前库已存在的所有key</p>
 </li>
 <li>
-<p>keys * : 查看当前库已存在的所有key</p>
+<p>del key：删除一个key</p>
+</li>
+<li>
+<p>ttl key （以秒为单位）或 pttl key （以毫秒为单位）来查看 key 还有多久过期。[-1 表示永不过期]</p>
+</li>
+<li>
+<p>info: 查看 redis 基本信息，包含多少库，多少 keys</p>
 </li>
 <li>
 <p>keys pattern：返回满足给定pattern的所有key，eg: keys third_app*</p>
@@ -263,9 +263,6 @@ keys 算法是遍历算法，复杂度是 O(n)，如果实例中有千万级以�
 </li>
 <li>
 <p>expire key seconds：设置 key 在 n 秒后过期。</p>
-</li>
-<li>
-<p>ttl key （以秒为单位）或 pttl key （以毫秒为单位）来查看 key 还有多久过期。[-1 表示永不过期]</p>
 </li>
 </ul>
 <h2 id="scan">scan</h2>
