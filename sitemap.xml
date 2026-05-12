@@ -128,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://zsmhub.github.io/post/%E5%89%8D%E7%AB%AF/ai%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%E6%8F%90%E7%A4%BA%E8%AF%8D/</loc>
+    <loc>https://zsmhub.github.io/post/ai/ai%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%E6%8F%90%E7%A4%BA%E8%AF%8D/</loc>
     <lastmod>2025-11-28T10:42:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -136,13 +136,6 @@
   
   <url>
     <loc>https://zsmhub.github.io/tags/ai%E6%8F%90%E7%A4%BA%E8%AF%8D/</loc>
-    <lastmod>2025-11-28T10:42:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://zsmhub.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2025-11-28T10:42:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -157,6 +150,13 @@
   
   <url>
     <loc>https://zsmhub.github.io/tags/vue/</loc>
+    <lastmod>2025-11-18T11:47:32+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zsmhub.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2025-11-18T11:47:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

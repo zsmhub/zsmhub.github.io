@@ -59,7 +59,7 @@ MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出�
 如果主从复制之间出现延时，就会影响主从数据的一致性。">
   <meta itemprop="datePublished" content="2020-05-07T09:34:49+08:00">
   <meta itemprop="dateModified" content="2020-05-07T09:34:49+08:00">
-  <meta itemprop="wordCount" content="4314">
+  <meta itemprop="wordCount" content="4307">
   <meta itemprop="keywords" content="Mysql 主从复制">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mysql 主从复制延时案例">
@@ -152,7 +152,7 @@ MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出�
         <div class="post-category">
             <a href="/categories/database/"> database </a>
             </div>
-          <span class="more-meta"> 约 4314 字 </span>
+          <span class="more-meta"> 约 4307 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -233,7 +233,7 @@ MySQL 主从复制的延时一直是业界困扰已久的问题。延时的出�
 <p>如果是MySQL 5.7以上的版本，在MySQL 5.7，使用了基于逻辑时钟(Group Commit)的并行复制。而在MySQL 8.0，使用了基于Write Set的并行复制。这两种方案都能够提升回放binlog的性能，减少延时。</p>
 <h2 id="案例二主库执行大事务">案例二：主库执行大事务</h2>
 <p>大事务指一个事务的执行，耗时非常长。常见产生大事务的语句有：</p>
-<p>使用了大量速度很慢的导入数据语句，比如：INSERT INTO $tb、SELECT * FROM $tb、LOAD DATA INFILE等；</p>
+<p>使用了大量速度很慢的导入数据语句，比如：$tb、SELECT * FROM $tb、LOAD DATA INFILE等；</p>
 <p>使用了UPDATE、DELETE语句，对于一个很大的表进行全表的UPDATE和DELETE等。</p>
 <p>当这个事务在从库执行回放执行操作时，就有可能会产生主从复制延时。</p>
 <h3 id="现象描述-1">现象描述</h3>
