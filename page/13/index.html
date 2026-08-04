@@ -434,7 +434,7 @@
       <div class="post-category">
           <a href="/categories/golang/"> golang </a>
           </div>
-        <span class="more-meta"> 约 11583 字 </span>
+        <span class="more-meta"> 约 11617 字 </span>
         <span class="more-meta"> 预计阅读 24 分钟 </span>
     </div>
   </header>
@@ -554,6 +554,8 @@
 </span><span class="lnt">107
 </span><span class="lnt">108
 </span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 获取当前时间，这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4-5</span>
@@ -578,7 +580,9 @@
 </span></span><span class="line"><span class="cl"><span class="c1">// 获取7月1日的time</span>
 </span></span><span class="line"><span class="cl"><span class="nx">month7Start</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Date</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">Year</span><span class="p">(),</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Local</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// ISO8601标准日期格式</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// ISO8601标准日期格式 | 时区时间</span>
+</span></span><span class="line"><span class="cl"><span class="nx">str</span> <span class="o">:=</span> <span class="s">&#34;2020-03-02T00:00:00+08:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">t</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span> <span class="c1">// 时区时间字符串转为time.Time</span>
 </span></span><span class="line"><span class="cl"><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">UTC</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">)</span> <span class="c1">// 世界统一时间：2024-09-20T07:01:44Z</span>
 </span></span><span class="line"><span class="cl"><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Format</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">)</span>       <span class="c1">// 本地时区时间：2024-09-20T15:01:44+08:00</span>
 </span></span><span class="line"><span class="cl">
