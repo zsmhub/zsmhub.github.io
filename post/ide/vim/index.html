@@ -59,7 +59,7 @@ Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式
 在可视化模式下，可以对一个文本块的整体进行操作。例如，首先高亮选中一部分文本，然后用d命令删除这个文本块。可视化模式的好处在于，你可以在做改动之前，就看到操作将影响的文本。可视化模式可以分为以下三种：">
   <meta itemprop="datePublished" content="2019-12-31T20:53:44+08:00">
   <meta itemprop="dateModified" content="2019-12-31T20:53:44+08:00">
-  <meta itemprop="wordCount" content="978">
+  <meta itemprop="wordCount" content="1090">
   <meta itemprop="keywords" content="Ide">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Vim">
@@ -152,8 +152,8 @@ Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式
         <div class="post-category">
             <a href="/categories/ide/"> ide </a>
             </div>
-          <span class="more-meta"> 约 978 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1090 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -164,6 +164,7 @@ Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式
     <nav id="TableOfContents">
   <ul>
     <li><a href="#vim-的-6-种模式">Vim 的 6 种模式</a></li>
+    <li><a href="#搜索关键词">搜索关键词</a></li>
     <li><a href="#基本使用">基本使用</a></li>
   </ul>
 </nav>
@@ -196,6 +197,21 @@ Vim 的 6 种模式 一般模式、编辑模式、命令模式、可视化模式
 <p>命令模式</p>
 <ul>
 <li>一般模式下按冒号进入命令模式，eg: w, q, q!</li>
+</ul>
+</li>
+</ol>
+<h2 id="搜索关键词">搜索关键词</h2>
+<ol>
+<li>
+<p>基本搜索（命令模式）</p>
+<p>/ + 关键词 + Enter =&gt; 向下（正向）搜索关键词。</p>
+<p>例：/function 会从光标位置向下查找所有 function。</p>
+</li>
+<li>
+<p>遍历搜索结果</p>
+<ul>
+<li>n =&gt; 跳转到下一个匹配项（继续同方向搜索）。</li>
+<li>N =&gt; 跳转到上一个匹配项（反向跳转）。</li>
 </ul>
 </li>
 </ol>

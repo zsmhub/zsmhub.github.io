@@ -55,7 +55,7 @@
   <meta itemprop="description" content="并发实践 Go 的开发者极力推荐使用 Channel，不过，这两年，大家意识到，Channel 并不是处理并发问题的“银弹”，有时候使用并发原语更简单，而且不容易出错。">
   <meta itemprop="datePublished" content="2020-08-23T20:57:43+08:00">
   <meta itemprop="dateModified" content="2022-05-23T20:57:43+08:00">
-  <meta itemprop="wordCount" content="4440">
+  <meta itemprop="wordCount" content="4458">
   <meta itemprop="keywords" content="并发安全">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Go之并发安全">
@@ -147,7 +147,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 4440 字 </span>
+          <span class="more-meta"> 约 4458 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -542,10 +542,10 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">       <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="nx">model_interact</span><span class="p">.</span><span class="nx">Rabbit</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">             <span class="o">&lt;-</span><span class="nx">ch</span>
-</span></span><span class="line"><span class="cl">              <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;-</span><span class="nx">ch</span>      <span class="c1">// 先释放并发信号量</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span> <span class="c1">// 再减 WaitGroup 计数</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">recover</span><span class="p">()</span> <span class="c1">// 最后吞掉 panic</span>
 </span></span><span class="line"><span class="cl">          <span class="p">}()</span>
-</span></span><span class="line"><span class="cl">          <span class="k">defer</span> <span class="nb">recover</span><span class="p">()</span> <span class="c1">// defer 先进后出</span>
 </span></span><span class="line"><span class="cl">          <span class="nf">UpdateByUserId</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">UserId</span><span class="p">,</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span>
 </span></span><span class="line"><span class="cl">             <span class="s">&#34;challenge_chance&#34;</span><span class="p">:</span>       <span class="nx">gorm</span><span class="p">.</span><span class="nf">Expr</span><span class="p">(</span><span class="s">&#34;challenge_chance+?&#34;</span><span class="p">,</span> <span class="nx">model_interact</span><span class="p">.</span><span class="nx">RabbitMaxChallengeTimes</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">          <span class="p">})</span>
@@ -634,6 +634,8 @@
 </span><span class="lnt">44
 </span><span class="lnt">45
 </span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
@@ -662,8 +664,10 @@
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">       <span class="nx">wg</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">       <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="k">defer</span> <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">derve</span> <span class="nb">recover</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">          <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nx">wg</span><span class="p">.</span><span class="nf">Done</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">              <span class="nb">recover</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">          <span class="c1">// 直接返回结果集</span>
 </span></span><span class="line"><span class="cl">          <span class="nx">val</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">shared</span> <span class="o">:=</span> <span class="nx">g</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="s">&#34;cache_key_name&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">)</span> <span class="c1">// Do方法执行一个函数，并返回函数执行的结果。你需要提供一个 key，对于同一个 key，在同一时间只有一个在执行，同一个 key 并发的请求会等待。第一个执行的请求返回的结果，就是它的返回结果。函数 fn 是一个无参的函数，返回一个结果或者 error，而 Do 方法会返回函数执行的结果或者是 error，shared 会指示运行结果是否返回给多个请求。</span>

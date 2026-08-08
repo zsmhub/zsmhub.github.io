@@ -58,7 +58,7 @@ Go 语言本身是由 C 语言开发的，而不是 Go 语言。但 Go 在 1.5 �
 Go 语言本身是由 C 语言开发的，而不是 Go 语言。但 Go 在 1.5 版本开始自举。">
   <meta itemprop="datePublished" content="2020-03-15T17:46:46+08:00">
   <meta itemprop="dateModified" content="2020-07-14T17:46:46+08:00">
-  <meta itemprop="wordCount" content="10664">
+  <meta itemprop="wordCount" content="10669">
   <meta itemprop="keywords" content="入门">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Go 基础知识">
@@ -151,7 +151,7 @@ Go 语言本身是由 C 语言开发的，而不是 Go 语言。但 Go 在 1.5 �
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 10664 字 </span>
+          <span class="more-meta"> 约 10669 字 </span>
           <span class="more-meta"> 预计阅读 22 分钟 </span>
         
       </div>
@@ -1467,6 +1467,8 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 </span><span class="lnt">31
 </span><span class="lnt">32
 </span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
@@ -1490,7 +1492,9 @@ new用于类型的内存分配，并且内存对应的值为类型零值，返�
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">child</span><span class="p">(</span><span class="nx">ch</span> <span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="nb">recover</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">recover</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">num</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span> <span class="c1">// channel被close掉时才会返回非ok</span>
