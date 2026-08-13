@@ -55,7 +55,7 @@
   <meta itemprop="description" content="前言 通过上一篇博文，我们学习了数组的使用，但是数组有一个致命的缺陷，那就是大小固定，这个特性并不能满足我们平时的开发需求，所以Go的切片由此诞生。">
   <meta itemprop="datePublished" content="2020-07-08T09:40:36+08:00">
   <meta itemprop="dateModified" content="2020-07-08T09:40:36+08:00">
-  <meta itemprop="wordCount" content="3642">
+  <meta itemprop="wordCount" content="3798">
   <meta itemprop="keywords" content="切片">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Go切片详解">
@@ -147,7 +147,7 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 3642 字 </span>
+          <span class="more-meta"> 约 3798 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -159,6 +159,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#前言">前言</a></li>
+    <li><a href="#切片清空的三种写法">切片清空的三种写法</a></li>
     <li><a href="#创建和初始化切片">创建和初始化切片</a>
       <ul>
         <li><a href="#使用make创建切片">使用make创建切片</a></li>
@@ -187,7 +188,64 @@
 <p>切片的内存分布是连续的，所以你可以把切片当做一个大小不固定的数组。</p>
 <p>切片有三个字段的数据结构，这些数据结构包含Go 语言需要操作底层数组的元数据，这 3 个字段分别是指向底层数组的指针、切片访问的元素的个数（即长度）和切片允许增长到的元素个数（即容量）。后面会进一步讲解长度和容量的区别。</p>
 <p><img src="/images/2020/slice1.png" alt="picture alt"></p>
-<h2 id="创建和初始化切片">创建和初始化切片</h2>
+<h2 id="切片清空的三种写法">切片清空的三种写法</h2>
+<table>
+  <thead>
+      <tr>
+          <th>写法</th>
+          <th>底层数组</th>
+          <th>是否重新分配</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>s = s[:0]</td>
+          <td>复用旧的切片</td>
+          <td>0 次分配</td>
+      </tr>
+      <tr>
+          <td>s = []string</td>
+          <td>丢弃旧的</td>
+          <td>每次重置 = 1 次分配</td>
+      </tr>
+      <tr>
+          <td>s = nil</td>
+          <td>丢弃旧的</td>
+          <td>下次 append 时分配</td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Tmp</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;b&#34;</span><span class="p">,</span> <span class="s">&#34;c&#34;</span><span class="p">,</span> <span class="s">&#34;d&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">helper</span><span class="p">.</span><span class="nf">JsonMarshal</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span> <span class="c1">// [&#34;a&#34;,&#34;b&#34;,&#34;c&#34;,&#34;d&#34;]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// len=0 cap=4, len=0 意味着 slice 认为「我没有元素」，s[0] 会越界 panic。但 cap=4 没变，说明底层数组的容量还在。</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">helper</span><span class="p">.</span><span class="nf">JsonMarshal</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span> <span class="c1">// []</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">t</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="s">&#34;x&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">t</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="s">&#34;y&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">helper</span><span class="p">.</span><span class="nf">JsonMarshal</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span> <span class="c1">// [&#34;x&#34;,&#34;y&#34;,&#34;c&#34;,&#34;d&#34;]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">helper</span><span class="p">.</span><span class="nf">JsonMarshal</span><span class="p">(</span><span class="nx">t</span><span class="p">))</span> <span class="c1">// [&#34;x&#34;,&#34;y&#34;]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="创建和初始化切片">创建和初始化切片</h2>
 <p>切片的创建有多种方式，下面我们一一来讲解。</p>
 <h3 id="使用make创建切片">使用make创建切片</h3>
 <div class="highlight"><div class="chroma">
