@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="" /><meta name="description" content="GORM 设置某一字段为NULL：db.Model(&amp;foo).Where(&ldquo;id=xxx&rdquo;).Updates(map[string]interface{}{&ldquo;created_at&rdquo;: gorm.Expr(&ldquo;NULL&rdquo;)}) FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环 Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录. Assign(User{Age: 30}).FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库. 数据类型建议
+<meta name="author" content="" /><meta name="description" content="GORM 设置某一字段为NULL：db.Model(&amp;foo).Where(&ldquo;id=xxx&rdquo;).Updates(map[string]interface{}{&ldquo;created_at&rdquo;: gorm.Expr(&ldquo;NULL&rdquo;)})
 " /><meta name="keywords" content="Hugo, even, zsmhub, blog, php, golang" />
 
 
@@ -43,7 +43,7 @@
 <meta property="og:url" content="https://zsmhub.github.io/post/golang/go%E4%B9%8Bgorm/">
   <meta property="og:site_name" content="ZsmHub - Blog">
   <meta property="og:title" content="Go之GORM">
-  <meta property="og:description" content="GORM 设置某一字段为NULL：db.Model(&amp;foo).Where(“id=xxx”).Updates(map[string]interface{}{“created_at”: gorm.Expr(“NULL”)}) FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环 Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录. Assign(User{Age: 30}).FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库. 数据类型建议">
+  <meta property="og:description" content="GORM 设置某一字段为NULL：db.Model(&amp;foo).Where(“id=xxx”).Updates(map[string]interface{}{“created_at”: gorm.Expr(“NULL”)})">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -52,14 +52,14 @@
     <meta property="article:tag" content="Golang">
 
   <meta itemprop="name" content="Go之GORM">
-  <meta itemprop="description" content="GORM 设置某一字段为NULL：db.Model(&amp;foo).Where(“id=xxx”).Updates(map[string]interface{}{“created_at”: gorm.Expr(“NULL”)}) FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环 Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录. Assign(User{Age: 30}).FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库. 数据类型建议">
+  <meta itemprop="description" content="GORM 设置某一字段为NULL：db.Model(&amp;foo).Where(“id=xxx”).Updates(map[string]interface{}{“created_at”: gorm.Expr(“NULL”)})">
   <meta itemprop="datePublished" content="2022-09-02T17:14:30+08:00">
   <meta itemprop="dateModified" content="2022-09-02T17:14:30+08:00">
-  <meta itemprop="wordCount" content="2313">
+  <meta itemprop="wordCount" content="2545">
   <meta itemprop="keywords" content="Golang">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Go之GORM">
-  <meta name="twitter:description" content="GORM 设置某一字段为NULL：db.Model(&amp;foo).Where(“id=xxx”).Updates(map[string]interface{}{“created_at”: gorm.Expr(“NULL”)}) FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环 Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录. Assign(User{Age: 30}).FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库. 数据类型建议">
+  <meta name="twitter:description" content="GORM 设置某一字段为NULL：db.Model(&amp;foo).Where(“id=xxx”).Updates(map[string]interface{}{“created_at”: gorm.Expr(“NULL”)})">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -147,8 +147,8 @@
         <div class="post-category">
             <a href="/categories/golang/"> golang </a>
             </div>
-          <span class="more-meta"> 约 2313 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2545 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -171,10 +171,50 @@
     <div class="post-content">
       <h2 id="gorm">GORM</h2>
 <ul>
-<li>设置某一字段为NULL：db.Model(&amp;foo).Where(&ldquo;id=xxx&rdquo;).Updates(map[string]interface{}{&ldquo;created_at&rdquo;: gorm.Expr(&ldquo;NULL&rdquo;)})</li>
-<li>FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环</li>
-<li>Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录.</li>
-<li>Assign(User{Age: 30}).FirstOrCreate(&amp;user): 不管记录是否找到，都将参数赋值给 struct 并保存至数据库.</li>
+<li>
+<p>设置某一字段为NULL：db.Model(&amp;foo).Where(&ldquo;id=xxx&rdquo;).Updates(map[string]interface{}{&ldquo;created_at&rdquo;: gorm.Expr(&ldquo;NULL&rdquo;)})</p>
+</li>
+<li>
+<p>FindInBatches()：用于批量查询并处理记录，如果有使用select()，必须 select 主键（如id），否则会陷入无限循环</p>
+</li>
+<li>
+<p>Attrs(User{Age: 20}).FirstOrCreate(&amp;user): 如果记录未找到，将使用参数创建 struct 和记录.</p>
+</li>
+<li>
+<p>Assign(map[string]any{&ldquo;age&rdquo;: 20}).FirstOrCreate(&amp;user): 先select where条件是否存在，不存在则create，存在则update</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">// Assign示例
+</span></span><span class="line"><span class="cl">// 先select where条件是否存在，不存在则create，存在则update
+</span></span><span class="line"><span class="cl">// SELECT * FROM <span class="sb">`</span>rabbit_report_entity<span class="sb">`</span> WHERE <span class="nv">entity_id</span> <span class="o">=</span> <span class="m">1</span> ORDER BY <span class="sb">`</span>rabbit_report_entity<span class="sb">`</span>.<span class="sb">`</span>id<span class="sb">`</span> LIMIT <span class="m">1</span>
+</span></span><span class="line"><span class="cl">// INSERT INTO <span class="sb">`</span>rabbit_report_entity<span class="sb">`</span> <span class="o">(</span><span class="sb">`</span>entity_id<span class="sb">`</span>,<span class="sb">`</span>entity_name<span class="sb">`</span>,<span class="sb">`</span>total<span class="sb">`</span>,<span class="sb">`</span>rank<span class="sb">`</span><span class="o">)</span> VALUES <span class="o">(</span>1,<span class="s1">&#39;测试单位名&#39;</span>,12,1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">// UPDATE <span class="sb">`</span>rabbit_report_entity<span class="sb">`</span> SET <span class="sb">`</span>entity_name<span class="sb">`</span><span class="o">=</span><span class="s1">&#39;测试单位名2&#39;</span>,<span class="sb">`</span>rank<span class="sb">`</span><span class="o">=</span>2,<span class="sb">`</span>total<span class="sb">`</span><span class="o">=</span>122,<span class="sb">`</span>updated_at<span class="sb">`</span><span class="o">=</span><span class="s1">&#39;2026-08-26 16:26:52.537&#39;</span> WHERE <span class="nv">entity_id</span> <span class="o">=</span> <span class="m">1</span> AND <span class="sb">`</span>id<span class="sb">`</span> <span class="o">=</span> <span class="m">1</span> ORDER BY <span class="sb">`</span>rabbit_report_entity<span class="sb">`</span>.<span class="sb">`</span>id<span class="sb">`</span> LIMIT <span class="m">1</span>
+</span></span><span class="line"><span class="cl">model.RabbitReportEntity<span class="o">{}</span>.Model<span class="o">()</span>.
+</span></span><span class="line"><span class="cl">Where<span class="o">(</span><span class="s2">&#34;entity_id = ?&#34;</span>, 1<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Assign<span class="o">(</span>map<span class="o">[</span>string<span class="o">]</span>any<span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;entity_name&#34;</span>: report.EntityName,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;total&#34;</span>:       report.Total,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rank&#34;</span>:        report.Rank,
+</span></span><span class="line"><span class="cl"><span class="o">})</span>.
+</span></span><span class="line"><span class="cl">FirstOrCreate<span class="o">(</span><span class="p">&amp;</span>report<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 <blockquote>
 <p>数据类型建议</p></blockquote>
